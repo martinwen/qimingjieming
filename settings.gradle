@@ -1,1 +1,1 @@
-include ':app', ':ProjectTjywQmjm', ':AtomPublic'
+include ':app', ':ProjectTjywQmjm', ':AtomPublic', ':AtomNetwork'

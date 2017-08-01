@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
 
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
 
     defaultConfig {
+
         minSdkVersion rootProject.ext.androidMinSdkVersion
         targetSdkVersion rootProject.ext.androidTargetSdkVersion
 
@@ -13,17 +14,67 @@ android {
         versionCode rootProject.ext.proj[0].androidVersionCode
         versionName rootProject.ext.proj[0].androidVersionName
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
 
+        generatedDensities = []
     }
-    buildTypes {
+
+    aaptOptions {
+        additionalParameters "--no-version-vectors"
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    signingConfigs {
+
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            storeFile file('src/release/adrTjywQmjm.jks')
+            storePassword 'adrTjywQmjm'
+            keyAlias 'adrTjywQmjm'
+            keyPassword 'adrTjywQmjm'
+            v2SigningEnabled false
         }
+    }
+
+    buildTypes {
+
+        debug {
+            zipAlignEnabled true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles 'src/debug/proguard-rules.pro'
+            versionNameSuffix '-beta'
+            signingConfig signingConfigs.release
+            debuggable true
+        }
+
+        release {
+            zipAlignEnabled true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles 'src/release/proguard-rules.pro'
+            signingConfig signingConfigs.release
+            debuggable false
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
     }
 }
 
 dependencies {
-    implementation project(':AtomPublic')
+    compile project(':AtomNetwork')
+    compile project(':AtomPublic')
 }

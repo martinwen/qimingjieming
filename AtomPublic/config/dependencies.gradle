@@ -1,40 +1,47 @@
 dependencies {
 
-    implementation fackbookDependencies.fresco
-    implementation fackbookDependencies.frescoGif
-    implementation fackbookDependencies.facebookRebound
-    implementation fackbookDependencies.stetho
-    implementation fackbookDependencies.stethoOkHttp
+    compile rxDependencies.rxAndroid
+    compile rxDependencies.rxJava
+    compile rxDependencies.retrofit2Retrofit
+    compile rxDependencies.retrofit2ConverterJackson
+    compile rxDependencies.retrofit2AdapterRxjava
+
+    compile fackbookDependencies.fresco
+    compile fackbookDependencies.frescoGif
+    compile fackbookDependencies.facebookRebound
+    compile fackbookDependencies.stetho
+    compile fackbookDependencies.stethoOkHttp
 
     /* Android Support */
-    implementation supportDependencies.appcompatV7
-    implementation supportDependencies.supportRecyclerView
-    implementation supportDependencies.supportV4CoreUI
-    implementation supportDependencies.supportV4Fragment
-    implementation supportDependencies.supportAnnotation
-    implementation supportDependencies.supportDesign
-    implementation supportDependencies.supportPercent
-    implementation supportDependencies.supportCardview
-    implementation supportDependencies.supportMultidex
+    compile supportDependencies.appcompatV7
+    compile supportDependencies.supportRecyclerView
+    compile supportDependencies.supportV4CoreUI
+    compile supportDependencies.supportV4Fragment
+    compile supportDependencies.supportAnnotation
+    compile supportDependencies.supportDesign
+    compile supportDependencies.supportPercent
+    compile supportDependencies.supportCardview
+    compile supportDependencies.supportMultidex
 
     /*Nice Libraries*/
-    implementation niceLibraryDependencies.eventBus
-    implementation niceLibraryDependencies.nucleus
-    implementation niceLibraryDependencies.nucleusSupportV4
-    implementation niceLibraryDependencies.nucleusSupportV7
-    implementation niceLibraryDependencies.matisse
-    implementation niceLibraryDependencies.photoDraweeView
+    compile niceLibraryDependencies.eventBus
+    compile niceLibraryDependencies.nucleus
+    compile niceLibraryDependencies.nucleusSupportV4
+    compile niceLibraryDependencies.nucleusSupportV7
+    compile niceLibraryDependencies.matisse
+    compile niceLibraryDependencies.photoDraweeView
 
     /* Libraries */
-    implementation libraryDependencies.imageCrop
-    implementation libraryDependencies.timber
-    implementation libraryDependencies.roundCornerProgressBar
-    implementation libraryDependencies.swipeback
-    implementation libraryDependencies.umengAnalytics
-    implementation libraryDependencies.saripaar
-    implementation libraryDependencies.flexibleDivider
-    implementation libraryDependencies.rxPermissions
-    implementation libraryDependencies.navigationTabStrip
-    implementation libraryDependencies.chipsLayoutManager
-    implementation libraryDependencies.smoothRefreshLayout
+    compile libraryDependencies.imageCrop
+    compile libraryDependencies.timber
+    compile libraryDependencies.roundCornerProgressBar
+    compile libraryDependencies.swipeback
+    compile libraryDependencies.umengAnalytics
+    compile libraryDependencies.saripaar
+    compile libraryDependencies.flexibleDivider
+    compile libraryDependencies.rxPermissions
+    compile libraryDependencies.navigationTabStrip
+    compile libraryDependencies.chipsLayoutManager
+    compile libraryDependencies.smoothRefreshLayout
+    compile libraryDependencies.stanley
 }

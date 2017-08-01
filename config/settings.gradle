@@ -15,14 +15,14 @@ ext {
     ]
 
     // Android
-    androidBuildToolsVersion = "26.0.1"
-    androidMinSdkVersion = 19
-    androidTargetSdkVersion = 26
-    androidCompileSdkVersion = 26
+    androidBuildToolsVersion = "25.0.0"
+    androidMinSdkVersion = 15
+    androidTargetSdkVersion = 23
+    androidCompileSdkVersion = 25
 
     libVersions = [
 
-            VER_SupportBase                 : "26.0.0",
+            VER_SupportBase                 : "25.1.1",
             VER_SupportMultidex             : "1.0.0",
 
             VER_Rx_Java                     : "1.2.0",
@@ -38,7 +38,7 @@ ext {
             VER_Squareup_Retrofit_Jackson   : "2.2.0",
             VER_Squareup_Retrofit_Adapter   : "2.2.0",
 
-            VER_Facebook_Fresco             : "1.4.0",
+            VER_Facebook_Fresco             : "1.1.0",
             VER_Facebook_Rebound            : "0.3.8",
             VER_Facebook_Stetho             : "1.5.0",
 
@@ -59,7 +59,9 @@ ext {
             VER_Navigation_Tab_Strip        : "1.0.4",
             VER_Bottom_Navigation           : "2.0.6",
             VER_Chips_Layout_Manager        : "0.3.7@aar",
-            VER_SmoothRefreshLayout         : "1.3.4"
+            VER_SmoothRefreshLayout         : "1.3.4",
+            VER_Stanley                     : "1.0.1"
+
     ]
 
     supportDependencies = [
@@ -119,7 +121,7 @@ ext {
             navigationTabStrip              : "com.github.devlight.navigationtabstrip:navigationtabstrip:${libVersions.VER_Navigation_Tab_Strip}",
             ahBottomBavigation              : "com.aurelhubert:ahbottomnavigation:${libVersions.VER_Bottom_Navigation}",
             chipsLayoutManager              : "com.beloo.widget:ChipsLayoutManager:${libVersions.VER_Chips_Layout_Manager}",
-            smoothRefreshLayout             : "com.github.dkzwm:SmoothRefreshLayout:${libVersions.VER_SmoothRefreshLayout}"
-
+            smoothRefreshLayout             : "com.github.dkzwm:SmoothRefreshLayout:${libVersions.VER_SmoothRefreshLayout}",
+            stanley                         : "com.brianjmelton:stanley:${libVersions.VER_Stanley}",
     ]
 }

@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+
+android {
+
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
+    defaultConfig {
+
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+
+        versionCode 1
+        versionName "1.0"
+
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+
+        abortOnError false
+    }
+}
+
+dependencies {
+
+    compile supportDependencies.supportMultidex
+
+    compile fackbookDependencies.stetho
+    compile fackbookDependencies.stethoOkHttp
+
+    compile rxDependencies.rxAndroid
+    compile rxDependencies.rxJava
+    compile rxDependencies.retrofit2Retrofit
+    compile rxDependencies.retrofit2ConverterJackson
+    compile rxDependencies.retrofit2AdapterRxjava
+
+    compile rxDependencies.squareupOkio
+    compile rxDependencies.squareupOkhttp
+    compile rxDependencies.squareupLogging
+
+    compile niceLibraryDependencies.eventBus
+    compile niceLibraryDependencies.nucleus
+    compile niceLibraryDependencies.nucleusSupportV4
+    compile niceLibraryDependencies.nucleusSupportV7
+
+    compile libraryDependencies.timber
+    compile libraryDependencies.stanley
+}
