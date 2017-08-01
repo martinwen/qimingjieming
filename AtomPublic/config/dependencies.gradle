@@ -1,0 +1,40 @@
+dependencies {
+
+    implementation fackbookDependencies.fresco
+    implementation fackbookDependencies.frescoGif
+    implementation fackbookDependencies.facebookRebound
+    implementation fackbookDependencies.stetho
+    implementation fackbookDependencies.stethoOkHttp
+
+    /* Android Support */
+    implementation supportDependencies.appcompatV7
+    implementation supportDependencies.supportRecyclerView
+    implementation supportDependencies.supportV4CoreUI
+    implementation supportDependencies.supportV4Fragment
+    implementation supportDependencies.supportAnnotation
+    implementation supportDependencies.supportDesign
+    implementation supportDependencies.supportPercent
+    implementation supportDependencies.supportCardview
+    implementation supportDependencies.supportMultidex
+
+    /*Nice Libraries*/
+    implementation niceLibraryDependencies.eventBus
+    implementation niceLibraryDependencies.nucleus
+    implementation niceLibraryDependencies.nucleusSupportV4
+    implementation niceLibraryDependencies.nucleusSupportV7
+    implementation niceLibraryDependencies.matisse
+    implementation niceLibraryDependencies.photoDraweeView
+
+    /* Libraries */
+    implementation libraryDependencies.imageCrop
+    implementation libraryDependencies.timber
+    implementation libraryDependencies.roundCornerProgressBar
+    implementation libraryDependencies.swipeback
+    implementation libraryDependencies.umengAnalytics
+    implementation libraryDependencies.saripaar
+    implementation libraryDependencies.flexibleDivider
+    implementation libraryDependencies.rxPermissions
+    implementation libraryDependencies.navigationTabStrip
+    implementation libraryDependencies.chipsLayoutManager
+    implementation libraryDependencies.smoothRefreshLayout
+}

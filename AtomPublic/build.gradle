@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+
+apply from: "config/dependencies.gradle"
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs/baidu', include: ['*.jar'])
+    implementation fileTree(dir: 'libs/mi', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}

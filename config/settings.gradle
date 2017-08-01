@@ -1,0 +1,125 @@
+allprojects {
+    ext {
+
+    }
+}
+
+ext {
+    proj = [
+
+            qmjm = [
+                    androidApplicationId : "com.tjyw.qmjm",
+                    androidVersionCode : 10001000,
+                    androidVersionName : "1.0.0"
+            ]
+    ]
+
+    // Android
+    androidBuildToolsVersion = "26.0.1"
+    androidMinSdkVersion = 19
+    androidTargetSdkVersion = 26
+    androidCompileSdkVersion = 26
+
+    libVersions = [
+
+            VER_SupportBase                 : "26.0.0",
+            VER_SupportMultidex             : "1.0.0",
+
+            VER_Rx_Java                     : "1.2.0",
+            VER_Rx_Andorid                  : "1.2.0",
+            VER_Rx_Java_2                   : "2.0.1",
+            VER_Rx_Andorid_2                : "2.0.1",
+
+            VER_Squareup_Okio               : "1.11.0",
+            VER_Squareup_Okhttp             : "3.6.0",
+            VER_Squareup_Logging            : "3.6.0",
+            VER_Squareup_Retrofit           : "2.2.0",
+            VER_Squareup_Retrofit_Gson      : "2.2.0",
+            VER_Squareup_Retrofit_Jackson   : "2.2.0",
+            VER_Squareup_Retrofit_Adapter   : "2.2.0",
+
+            VER_Facebook_Fresco             : "1.4.0",
+            VER_Facebook_Rebound            : "0.3.8",
+            VER_Facebook_Stetho             : "1.5.0",
+
+            VER_Nice_Event_Bus              : "3.0.0",
+            VER_Nice_Nucleus                : "4.0.0",
+            VER_Nice_Matisse                : "0.4.3",
+            VER_Nice_PhotoDraweeView        : "1.1.3",
+
+            VER_Image_Crop                  : "1.0.1@aar",
+            VER_Timber                      : "4.5.1",
+            VER_RoundCornerProgressBar      : "2.0.3",
+            VER_Swipeback                   : "1.0.4",
+            VER_Umeng                       : "6.1.1",
+            VER_Saripaar                    : "2.0.3",
+            VER_Flexible_Divider            : "1.4.0",
+            VER_RxPermissions               : "0.9.4@aar",
+            VER_Leakcanary                  : "1.5.1",
+            VER_Navigation_Tab_Strip        : "1.0.4",
+            VER_Bottom_Navigation           : "2.0.6",
+            VER_Chips_Layout_Manager        : "0.3.7@aar",
+            VER_SmoothRefreshLayout         : "1.3.4"
+    ]
+
+    supportDependencies = [
+            appcompatV7                     : "com.android.support:appcompat-v7:${libVersions.VER_SupportBase}",
+            supportRecyclerView             : "com.android.support:recyclerview-v7:${libVersions.VER_SupportBase}",
+            supportV4                       : "com.android.support:support-v4:${libVersions.VER_SupportBase}",
+            supportV4Compat                 : "com.android.support:support-compat:${libVersions.VER_SupportBase}",
+            supportV4CoreUI                 : "com.android.support:support-core-ui:${libVersions.VER_SupportBase}",
+            supportV4Fragment               : "com.android.support:support-fragment:${libVersions.VER_SupportBase}",
+            supportAnnotation               : "com.android.support:support-annotations:${libVersions.VER_SupportBase}",
+            supportDesign                   : "com.android.support:design:${libVersions.VER_SupportBase}",
+            supportPercent                  : "com.android.support:percent:${libVersions.VER_SupportBase}",
+            supportCardview                 : "com.android.support:cardview-v7:${libVersions.VER_SupportBase}",
+            supportMultidex                 : "com.android.support:multidex:${libVersions.VER_SupportMultidex}"
+    ]
+
+    rxDependencies = [
+            rxAndroid                       : "io.reactivex:rxandroid:${libVersions.VER_Rx_Andorid}",
+            rxJava                          : "io.reactivex:rxjava:${libVersions.VER_Rx_Java}",
+            retrofit2Retrofit               : "com.squareup.retrofit2:retrofit:${libVersions.VER_Squareup_Retrofit}",
+            retrofit2ConverterGson          : "com.squareup.retrofit2:converter-gson:${libVersions.VER_Squareup_Retrofit_Gson}",
+            retrofit2ConverterJackson       : "com.squareup.retrofit2:converter-jackson:${libVersions.VER_Squareup_Retrofit_Jackson}",
+            retrofit2AdapterRxjava          : "com.squareup.retrofit2:adapter-rxjava:${libVersions.VER_Squareup_Retrofit_Adapter}",
+            squareupOkio                    : "com.squareup.okio:okio:${libVersions.VER_Squareup_Okio}",
+            squareupOkhttp                  : "com.squareup.okhttp3:okhttp:${libVersions.VER_Squareup_Okhttp}",
+            squareupLogging                 : "com.squareup.okhttp3:logging-interceptor:${libVersions.VER_Squareup_Logging}",
+    ]
+
+    fackbookDependencies = [
+            fresco                          : "com.facebook.fresco:fresco:${libVersions.VER_Facebook_Fresco}",
+            frescoGif                       : "com.facebook.fresco:animated-gif:${libVersions.VER_Facebook_Fresco}",
+            facebookRebound                 : "com.facebook.rebound:rebound:${libVersions.VER_Facebook_Rebound}",
+            stetho                          : "com.facebook.stetho:stetho:${libVersions.VER_Facebook_Stetho}",
+            stethoOkHttp                    : "com.facebook.stetho:stetho-okhttp3:${libVersions.VER_Facebook_Stetho}"
+    ]
+
+    niceLibraryDependencies = [
+            eventBus                        : "org.greenrobot:eventbus:${libVersions.VER_Nice_Event_Bus}",
+            nucleus                         : "info.android15.nucleus:nucleus:${libVersions.VER_Nice_Nucleus}",
+            nucleusSupportV4                : "info.android15.nucleus:nucleus-support-v4:${libVersions.VER_Nice_Nucleus}",
+            nucleusSupportV7                : "info.android15.nucleus:nucleus-support-v7:${libVersions.VER_Nice_Nucleus}",
+            matisse                         : "com.zhihu.android:matisse:${libVersions.VER_Nice_Matisse}",
+            photoDraweeView                 : "me.relex:photodraweeview:${libVersions.VER_Nice_PhotoDraweeView}"
+    ]
+
+    libraryDependencies = [
+            imageCrop                       : "com.soundcloud.android:android-crop:${libVersions.VER_Image_Crop}",
+            timber                          : "com.jakewharton.timber:timber:${libVersions.VER_Timber}",
+            roundCornerProgressBar          : "com.akexorcist:RoundCornerProgressBar:${libVersions.VER_RoundCornerProgressBar}",
+            swipeback                       : "com.hannesdorfmann:swipeback:${libVersions.VER_Swipeback}",
+            flexibleDivider                 : "com.yqritc:recyclerview-flexibledivider:${libVersions.VER_Flexible_Divider}",
+            rxPermissions                   : "com.tbruyelle.rxpermissions:rxpermissions:${libVersions.VER_RxPermissions}",
+            leakcanaryDebug                 : "com.squareup.leakcanary:leakcanary-android:${libVersions.VER_Leakcanary}",
+            leakcanaryRelease               : "com.squareup.leakcanary:leakcanary-android-no-op:${libVersions.VER_Leakcanary}",
+            umengAnalytics                  : "com.umeng.analytics:analytics:${libVersions.VER_Umeng}",
+            saripaar                        : "com.mobsandgeeks:android-saripaar:${libVersions.VER_Saripaar}",
+            navigationTabStrip              : "com.github.devlight.navigationtabstrip:navigationtabstrip:${libVersions.VER_Navigation_Tab_Strip}",
+            ahBottomBavigation              : "com.aurelhubert:ahbottomnavigation:${libVersions.VER_Bottom_Navigation}",
+            chipsLayoutManager              : "com.beloo.widget:ChipsLayoutManager:${libVersions.VER_Chips_Layout_Manager}",
+            smoothRefreshLayout             : "com.github.dkzwm:SmoothRefreshLayout:${libVersions.VER_SmoothRefreshLayout}"
+
+    ]
+}
