@@ -1,4 +1,4 @@
-package com.tjyw.atom.rely;
+package com.tjyw.atom.pub;
 
 import org.junit.Test;
 

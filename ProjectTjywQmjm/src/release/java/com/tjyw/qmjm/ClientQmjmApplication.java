@@ -27,11 +27,10 @@ public class ClientQmjmApplication extends MultiDexApplication {
         registerActivityLifecycleCallbacks(ForegroundCallbacks.getInstance());
 
         ClientInitializer.getInstance()
-                .atom(this, true)
+                .atom(this, false)
                 .fresco(this)
                 .leakCanary(this)
-                .crashReport(this)
-                .faceBookStetho(this);
+                .uMeng(this, Configure.UMeng.APP_KEY);
     }
 
     public static ClientQmjmApplication getContext() {
