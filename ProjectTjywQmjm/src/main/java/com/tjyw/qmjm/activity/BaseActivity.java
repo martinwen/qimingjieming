@@ -1,6 +1,7 @@
 package com.tjyw.qmjm.activity;
 
 import android.content.Intent;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -15,6 +16,7 @@ import com.tjyw.atom.pub.interfaces.IAtomPubTools;
 
 import java.io.Serializable;
 
+import butterknife.ButterKnife;
 import nucleus.presenter.Presenter;
 import nucleus.view.NucleusAppCompatActivity;
 
@@ -23,6 +25,12 @@ import nucleus.view.NucleusAppCompatActivity;
  */
 public class BaseActivity<P extends Presenter> extends NucleusAppCompatActivity<P>
         implements IAtomPubIntentExtra, IAtomPubFragment, IAtomPubTools {
+
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
+        ButterKnife.bind(this, this);
+    }
 
     @Override
     public Intent pGetIntent() {

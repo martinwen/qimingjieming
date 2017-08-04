@@ -3,6 +3,7 @@ package com.tjyw.qmjm;
 import android.content.res.Resources;
 import android.support.multidex.MultiDexApplication;
 
+import com.drivemode.android.typeface.TypefaceHelper;
 import com.tjyw.atom.pub.ForegroundCallbacks;
 
 import java.lang.ref.WeakReference;
@@ -32,6 +33,8 @@ public class ClientQmjmApplication extends MultiDexApplication {
                 .leakCanary(this)
                 .crashReport(this)
                 .faceBookStetho(this);
+
+        TypefaceHelper.initialize(this);
     }
 
     public static ClientQmjmApplication getContext() {

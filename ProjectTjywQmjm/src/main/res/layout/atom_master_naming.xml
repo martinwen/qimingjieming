@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/namingGenderMale"
+            style="@style/AtomStyle.BlackSuperBigText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="@string/atom_pub_resStringGenderMale" />
+
+        <TextView
+            android:id="@+id/namingGenderFemale"
+            style="@style/AtomStyle.BlackSuperBigText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="@string/atom_pub_resStringGenderFemale" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/AtomStyle.BlackSuperBigText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center_vertical|right"
+            android:text="@string/atom_pub_resStringSurnameDot" />
+
+        <EditText
+            android:id="@+id/namingSurname"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.0"
+            android:gravity="top"
+            android:maxLength="4"
+            android:maxLines="1"
+            android:theme="@style/AtomPubStyle.BottomLineEditText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/AtomStyle.BlackSuperBigText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center_vertical|right"
+            android:text="@string/atom_pub_resStringGivenNameDot" />
+
+        <EditText
+            android:id="@+id/namingGivenName"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.0"
+            android:gravity="top"
+            android:maxLength="4"
+            android:maxLines="1"
+            android:theme="@style/AtomPubStyle.BottomLineEditText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/AtomStyle.BlackSuperBigText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center_vertical|right"
+            android:text="@string/atom_pub_resStringDateOfBirthDot" />
+
+        <EditText
+            android:id="@+id/namingDateOfBirth"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.0"
+            android:gravity="top"
+            android:inputType="none"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:theme="@style/AtomPubStyle.BottomLineEditText" />
+    </LinearLayout>
+</LinearLayout>

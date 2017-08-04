@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="atom_pub_resStringMasterTabNaming">起名</string>
+    <string name="atom_pub_resStringMasterTabExplain">解名</string>
+    <string name="atom_pub_resStringMasterTabMine">我的</string>
+
+    <string name="atom_pub_resStringGenderMale">男</string>
+    <string name="atom_pub_resStringGenderFemale">女</string>
+    <string name="atom_pub_resStringSurname">姓</string>
+    <string name="atom_pub_resStringSurnameDot">姓：</string>
+    <string name="atom_pub_resStringGivenName">名</string>
+    <string name="atom_pub_resStringGivenNameDot">名：</string>
+    <string name="atom_pub_resStringDateOfBirth">出生时间</string>
+    <string name="atom_pub_resStringDateOfBirthDot">出生时间：</string>
+
+</resources>

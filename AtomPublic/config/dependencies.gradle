@@ -47,4 +47,6 @@ dependencies {
     compile libraryDependencies.smoothRefreshLayout
     compile libraryDependencies.stanley
     compile libraryDependencies.barlibrary
+    compile libraryDependencies.typefaceHelper
+
 }

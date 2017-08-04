@@ -13,7 +13,8 @@ public class ClientWelcomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.atom_qmjm_client_welcome);
+//        setContentView(R.layout.atom_qmjm_client_welcome);
+        setContentView(R.layout.atom_master_naming);
 
         ImmersionBar.with(this)
                 .statusBarColor(R.color.colorPrimary)
