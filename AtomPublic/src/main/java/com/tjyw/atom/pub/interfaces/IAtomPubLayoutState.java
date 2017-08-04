@@ -1,11 +1,11 @@
-package com.tjyw.qmjm.interfaces;
+package com.tjyw.atom.pub.interfaces;
 
 import android.view.View;
 
 /**
  * Created by stephen on 16-7-20.
  */
-public interface IClientLayoutState {
+public interface IAtomPubLayoutState {
 
     void pShowStateMasker(int state);
 

@@ -9,9 +9,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.tjyw.atom.network.utils.ArrayUtil;
-import com.tjyw.qmjm.interfaces.IClientFragment;
-import com.tjyw.qmjm.interfaces.IClientIntentExtra;
-import com.tjyw.qmjm.interfaces.IClientTools;
+import com.tjyw.atom.pub.interfaces.IAtomPubFragment;
+import com.tjyw.atom.pub.interfaces.IAtomPubIntentExtra;
+import com.tjyw.atom.pub.interfaces.IAtomPubTools;
 
 import java.io.Serializable;
 
@@ -22,7 +22,7 @@ import nucleus.view.NucleusAppCompatActivity;
  * Created by stephen on 17-8-1.
  */
 public class BaseActivity<P extends Presenter> extends NucleusAppCompatActivity<P>
-        implements IClientIntentExtra, IClientFragment, IClientTools {
+        implements IAtomPubIntentExtra, IAtomPubFragment, IAtomPubTools {
 
     @Override
     public Intent pGetIntent() {

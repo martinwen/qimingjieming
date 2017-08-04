@@ -1,11 +1,11 @@
-package com.tjyw.qmjm.interfaces;
+package com.tjyw.atom.pub.interfaces;
 
 import android.view.View;
 
 /**
  * Created by stephen on 03/01/2017.
  */
-public interface IClientToolBar {
+public interface IAtomPubToolBar {
 
     void tSetToolBar(CharSequence title);
 

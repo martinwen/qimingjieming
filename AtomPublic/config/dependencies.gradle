@@ -30,6 +30,8 @@ dependencies {
     compile niceLibraryDependencies.nucleusSupportV7
     compile niceLibraryDependencies.matisse
     compile niceLibraryDependencies.photoDraweeView
+    compile niceLibraryDependencies.butterKnife
+    compile niceLibraryDependencies.butterKnifeCompiler
 
     /* Libraries */
     compile libraryDependencies.imageCrop

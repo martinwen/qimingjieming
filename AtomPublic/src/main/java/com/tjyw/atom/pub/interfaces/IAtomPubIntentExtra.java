@@ -1,4 +1,4 @@
-package com.tjyw.qmjm.interfaces;
+package com.tjyw.atom.pub.interfaces;
 
 import android.content.Intent;
 
@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Created by stephen on 17-8-1.
  */
-public interface IClientIntentExtra {
+public interface IAtomPubIntentExtra {
 
     Intent pGetIntent();
 
