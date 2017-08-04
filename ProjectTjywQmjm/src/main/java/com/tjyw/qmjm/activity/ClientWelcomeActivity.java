@@ -2,6 +2,7 @@ package com.tjyw.qmjm.activity;
 
 import android.os.Bundle;
 
+import com.gyf.barlibrary.ImmersionBar;
 import com.tjyw.qmjm.R;
 
 /**
@@ -13,5 +14,9 @@ public class ClientWelcomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.atom_qmjm_client_welcome);
+
+        ImmersionBar.with(this)
+                .statusBarColor(R.color.colorPrimary)
+                .init();
     }
 }
