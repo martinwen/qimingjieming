@@ -44,4 +44,5 @@ dependencies {
     compile libraryDependencies.chipsLayoutManager
     compile libraryDependencies.smoothRefreshLayout
     compile libraryDependencies.stanley
+    compile libraryDependencies.barlibrary
 }
