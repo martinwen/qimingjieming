@@ -49,4 +49,5 @@ dependencies {
     compile libraryDependencies.barlibrary
     compile libraryDependencies.typefaceHelper
 
+    compile 'uk.co.chrisjenx:calligraphy:2.3.0'
 }

@@ -1,4 +1,8 @@
+import com.android.builder.model.ProductFlavor
+
 apply plugin: 'com.android.application'
+
+apply from: 'config/channel_product_flavors.gradle'
 
 android {
 
@@ -71,6 +75,49 @@ android {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/NOTICE.txt'
+    }
+
+    cleanOutputs()
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            differentNameAssemble(output, variant.productFlavors, defaultConfig.versionCode)
+        }
+    }
+}
+
+def differentNameAssemble(output, productFlavors, versionCode) {
+    def zipFile = output.outputFile
+    for (ProductFlavor flavor : productFlavors) {
+        def CLIENT_C_ID = flavor.getBuildConfigFields().get("CLIENT_C_ID").value
+        CLIENT_C_ID = CLIENT_C_ID.replace("\"", "")
+        def CLIENT_C_NAME = flavor.getBuildConfigFields().get("CLIENT_C_NAME").value
+        CLIENT_C_NAME = CLIENT_C_NAME.replace("\"", "")
+
+        def newApkName = null
+        if (output.baseName.contains("release")) {
+            newApkName = "adr_qmjm_master_${CLIENT_C_ID}_${CLIENT_C_NAME}_${versionCode}.apk"
+        } else {
+            newApkName = "adr_qmjm_master_${CLIENT_C_ID}_${CLIENT_C_NAME}_${versionCode}_${new Date().format('yyyyMMdd')}.apk"
+        }
+
+        output.outputFile = new File(zipFile.parent, newApkName)
+    }
+
+    zipFile.delete()
+}
+
+/**
+ * 清理build/outputs/apk目录
+ * */
+def cleanOutputs() {
+    File apkDir = new File("ProjectTjywQmjm/build/outputs/apk")
+    if (apkDir.exists() && apkDir.isDirectory()) {
+        apkDir.eachFile { outputFile ->
+            if (outputFile.name.endsWith("apk")) {
+                outputFile.delete()
+            }
+        }
     }
 }
 

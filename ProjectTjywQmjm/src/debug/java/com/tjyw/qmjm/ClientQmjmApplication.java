@@ -8,6 +8,8 @@ import com.tjyw.atom.pub.ForegroundCallbacks;
 
 import java.lang.ref.WeakReference;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+
 /**
  * Created by stephen on 1/6/16.
  */
@@ -35,6 +37,12 @@ public class ClientQmjmApplication extends MultiDexApplication {
                 .faceBookStetho(this);
 
         TypefaceHelper.initialize(this);
+
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/atom_pub_font_kati.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
     }
 
     public static ClientQmjmApplication getContext() {

@@ -3,8 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AtomNetwork/AtomNetwork.iml" filepath="$PROJECT_DIR$/AtomNetwork/AtomNetwork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AtomNetwork/AtomNetwork.iml" filepath="$PROJECT_DIR$/AtomNetwork/AtomNetwork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AtomPublic/AtomPublic.iml" filepath="$PROJECT_DIR$/AtomPublic/AtomPublic.iml" />
       <module fileurl="file://$PROJECT_DIR$/AtomPublic/AtomPublic.iml" filepath="$PROJECT_DIR$/AtomPublic/AtomPublic.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProjectTjywQmjm/ProjectTjywQmjm.iml" filepath="$PROJECT_DIR$/ProjectTjywQmjm/ProjectTjywQmjm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProjectTjywQmjm/ProjectTjywQmjm.iml" filepath="$PROJECT_DIR$/ProjectTjywQmjm/ProjectTjywQmjm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/adrTjywQmjm.iml" filepath="$PROJECT_DIR$/adrTjywQmjm.iml" />
       <module fileurl="file://$PROJECT_DIR$/adrTjywQmjm.iml" filepath="$PROJECT_DIR$/adrTjywQmjm.iml" />
     </modules>
   </component>
