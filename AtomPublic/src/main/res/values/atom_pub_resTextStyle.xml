@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="atom_ewsh_textColorBlack">#FF1C3144</color>
+    <color name="atom_ewsh_textColorBlack">#FF373737</color>
 
     <!-- 浅黑 -->
     <color name="atom_ewsh_textColorSomber">#FF8895B3</color>
 
-    <color name="atom_ewsh_textColorGrey">#FFB8B8B8</color>
+    <color name="atom_ewsh_textColorGrey">#FF848484</color>
 
     <color name="atom_ewsh_textColorDeepBlue">#FF0069CA</color>
     

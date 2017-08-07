@@ -50,5 +50,9 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activity.ClientMasterActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 </manifest>
