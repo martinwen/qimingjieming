@@ -16,6 +16,33 @@
         fresco:placeholderImage="@drawable/atom_client_master_background"
         fresco:placeholderImageScaleType="centerCrop" />
 
+    <FrameLayout
+        android:id="@+id/masterFragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/masterNamingFragment"
+            class="com.tjyw.atom.pub.fragment.AtomPubMasterNamingFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:tag="com.tjyw.atom.pub.fragment.AtomPubMasterNamingFragment" />
+
+        <fragment
+            android:id="@+id/masterExplainFragment"
+            class="com.tjyw.atom.pub.fragment.AtomPubMasterExplainFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:tag="com.tjyw.atom.pub.fragment.AtomPubMasterExplainFragment" />
+
+        <fragment
+            android:id="@+id/masterMineFragment"
+            class="com.tjyw.atom.pub.fragment.AtomPubMasterMineFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:tag="com.tjyw.atom.pub.fragment.AtomPubMasterMineFragment" />
+    </FrameLayout>
+
     <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
         android:id="@+id/atomPubClientMasterNavigation"
         android:layout_width="match_parent"

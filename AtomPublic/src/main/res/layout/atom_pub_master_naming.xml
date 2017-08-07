@@ -1,36 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:ignore="MissingPrefix">
+    android:padding="16dp">
+
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="64dp" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/namingGenderMale"
-            style="@style/AtomStyle.BlackSuperBigText"
-            fontPath="null"
+            style="@style/AtomStyle.WhiteSuperHugeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/atom_pub_selector_master_gender"
             android:gravity="center"
             android:padding="16dp"
             android:text="@string/atom_pub_resStringGenderMale" />
 
+        <android.support.v4.widget.Space
+            android:layout_width="48dp"
+            android:layout_height="1dp" />
+
         <TextView
             android:id="@+id/namingGenderFemale"
-            style="@style/AtomStyle.BlackSuperBigText"
-            fontPath="null"
+            style="@style/AtomStyle.WhiteSuperHugeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/atom_pub_selector_master_gender"
             android:gravity="center"
             android:padding="16dp"
             android:text="@string/atom_pub_resStringGenderFemale" />
@@ -39,7 +45,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="horizontal"
         android:padding="16dp">
 
@@ -49,24 +54,31 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
             android:gravity="center_vertical|right"
-            android:text="@string/atom_pub_resStringSurnameDot" />
+            android:text="@string/atom_pub_resStringSurname" />
+
+        <TextView
+            style="@style/AtomStyle.BlackSmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/atom_pub_resStringChineseDoc" />
 
         <EditText
             android:id="@+id/namingSurname"
             style="@style/AtomStyle.BlackNormalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2.0"
+            android:layout_weight="3.0"
             android:gravity="top"
+            android:hint="@string/atom_pub_resStringSurnameHint"
             android:maxLength="4"
             android:maxLines="1"
+            android:textColorHint="@color/atom_pub_resColorInputHint"
             android:theme="@style/AtomPubStyle.BottomLineEditText" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="horizontal"
         android:padding="16dp">
 
@@ -76,24 +88,31 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
             android:gravity="center_vertical|right"
-            android:text="@string/atom_pub_resStringGivenNameDot" />
+            android:text="@string/atom_pub_resStringGivenName" />
+
+        <TextView
+            style="@style/AtomStyle.BlackSmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/atom_pub_resStringChineseDoc" />
 
         <EditText
             android:id="@+id/namingGivenName"
             style="@style/AtomStyle.BlackNormalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2.0"
+            android:layout_weight="3.0"
             android:gravity="top"
+            android:hint="@string/atom_pub_resStringGivenNameHint"
             android:maxLength="4"
             android:maxLines="1"
+            android:textColorHint="@color/atom_pub_resColorInputHint"
             android:theme="@style/AtomPubStyle.BottomLineEditText" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="horizontal"
         android:padding="16dp">
 
@@ -103,18 +122,38 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
             android:gravity="center_vertical|right"
-            android:text="@string/atom_pub_resStringDateOfBirthDot" />
+            android:text="@string/atom_pub_resStringDateOfBirth" />
+
+        <TextView
+            style="@style/AtomStyle.BlackSmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/atom_pub_resStringChineseDoc" />
 
         <EditText
             android:id="@+id/namingDateOfBirth"
             style="@style/AtomStyle.BlackNormalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2.0"
+            android:layout_weight="3.0"
             android:gravity="top"
+            android:hint="@string/atom_pub_resStringDateOfBirthHint"
             android:inputType="none"
             android:maxLength="20"
             android:maxLines="1"
+            android:textColorHint="@color/atom_pub_resColorInputHint"
             android:theme="@style/AtomPubStyle.BottomLineEditText" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/namingConfirm"
+        style="@style/AtomStyle.WhiteHugeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/atom_pub_selector_master_confirm"
+        android:gravity="center"
+        android:minWidth="96dp"
+        android:text="@string/atom_pub_resStringOK" />
 </LinearLayout>

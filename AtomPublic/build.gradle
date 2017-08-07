@@ -34,4 +34,6 @@ dependencies {
     compile fileTree(dir: 'libs/baidu', include: ['*.jar'])
     compile fileTree(dir: 'libs/mi', include: ['*.jar'])
     compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile project(':AtomNetwork')
 }

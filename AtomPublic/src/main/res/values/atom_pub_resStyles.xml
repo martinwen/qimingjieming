@@ -4,8 +4,8 @@
     <style name="AtomPubStyle" parent="Theme.AppCompat.Light"></style>
 
     <style name="AtomPubStyle.BottomLineEditText">
-        <item name="colorControlNormal">@android:color/black</item>
-        <item name="colorControlActivated">@android:color/holo_green_dark</item>
+        <item name="colorControlNormal">#FFBBBBBB</item>
+        <item name="colorControlActivated">#FFBBBBBB</item>
     </style>
 
 </resources>

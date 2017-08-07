@@ -1,6 +1,7 @@
 package com.tjyw.atom.pub.interfaces;
 
 import android.content.Intent;
+import android.os.Bundle;
 
 import java.io.Serializable;
 
@@ -10,6 +11,8 @@ import java.io.Serializable;
 public interface IAtomPubIntentExtra {
 
     Intent pGetIntent();
+
+    Bundle pGetBundle();
 
     int pGetIntExtra(String key, int defaultValue);
 

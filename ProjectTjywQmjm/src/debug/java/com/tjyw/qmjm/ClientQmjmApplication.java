@@ -39,7 +39,7 @@ public class ClientQmjmApplication extends MultiDexApplication {
         TypefaceHelper.initialize(this);
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/atom_pub_font_kati.ttf")
+                .setDefaultFontPath("fonts/atom_pub_font_hyzk.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build()
         );

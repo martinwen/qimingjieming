@@ -37,13 +37,13 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <style name="AtomStyle.WhiteHugeText">
-        <item name="android:textSize">20dp</item>
+    <style name="AtomStyle.WhiteContentTitleText">
+        <item name="android:textSize">18dp</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 
-    <style name="AtomStyle.WhiteContentTitleText">
-        <item name="android:textSize">18dp</item>
+    <style name="AtomStyle.WhiteHugeText">
+        <item name="android:textSize">20dp</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 

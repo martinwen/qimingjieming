@@ -7,4 +7,6 @@
 
     <color name="atom_pub_resColorTabBackground">#FFDCDCDC</color>
 
+    <color name="atom_pub_resColorInputHint">#FFBCBCBC</color>
+
 </resources>
