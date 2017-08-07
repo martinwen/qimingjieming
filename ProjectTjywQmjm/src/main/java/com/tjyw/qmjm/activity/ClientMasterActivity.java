@@ -9,8 +9,8 @@ import com.aspsine.fragmentnavigator.FragmentNavigator;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.gyf.barlibrary.ImmersionBar;
-import com.tjyw.atom.pub.adapter.AtomPubClientMasterAdapter;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 
 import butterknife.BindView;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -28,21 +28,21 @@ public class ClientMasterActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.atom_pub_client_master);
+        setContentView(R.layout.atom_client_master);
 
         ImmersionBar.with(this)
                 .statusBarDarkFont(true)
                 .init();
 
-        fragmentNavigator = new FragmentNavigator(getSupportFragmentManager(), AtomPubClientMasterAdapter.newInstance(this), R.id.masterFragmentContainer);
+        fragmentNavigator = new FragmentNavigator(getSupportFragmentManager(), ClientMasterAdapter.newInstance(this), R.id.masterFragmentContainer);
         fragmentNavigator.onCreate(savedInstanceState);
 
         atomPubClientMasterNavigation.setAccentColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_ewsh_textColorBlack));
         atomPubClientMasterNavigation.setInactiveColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_ewsh_textColorGrey));
 
-        int size = AtomPubClientMasterAdapter.MASTER_TAB_RESOURCE.size();
+        int size = ClientMasterAdapter.MASTER_TAB_RESOURCE.size();
         for (int i = 0; i < size; i ++) {
-            Pair<Integer, Integer> masterTabResource = AtomPubClientMasterAdapter.getMasterTabResource(i);
+            Pair<Integer, Integer> masterTabResource = ClientMasterAdapter.getMasterTabResource(i);
             if (null != masterTabResource) {
                 atomPubClientMasterNavigation.addItem(
                         new AHBottomNavigationItem(
@@ -61,7 +61,7 @@ public class ClientMasterActivity extends BaseActivity {
             }
         });
 
-        atomPubClientMasterNavigation.setCurrentItem(AtomPubClientMasterAdapter.POSITION.NAMING, true);
+        atomPubClientMasterNavigation.setCurrentItem(ClientMasterAdapter.POSITION.NAMING, true);
     }
 
     @Override

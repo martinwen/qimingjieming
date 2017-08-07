@@ -3,5 +3,4 @@
 
     <item android:drawable="@drawable/atom_pub_ic_master_gender_press" android:state_pressed="true" />
     <item android:drawable="@drawable/atom_pub_ic_master_gender_select" android:state_selected="true" />
-    <item android:drawable="@drawable/atom_pub_ic_master_gender_select" />
 </selector>

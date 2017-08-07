@@ -1,15 +1,15 @@
-package com.tjyw.atom.pub.adapter;
+package com.tjyw.qmjm.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.util.Pair;
 
 import com.aspsine.fragmentnavigator.FragmentNavigatorAdapter;
-import com.tjyw.atom.pub.R;
 import com.tjyw.atom.pub.activity.AtomPubBaseActivity;
-import com.tjyw.atom.pub.fragment.AtomPubMasterExplainFragment;
-import com.tjyw.atom.pub.fragment.AtomPubMasterMineFragment;
-import com.tjyw.atom.pub.fragment.AtomPubMasterNamingFragment;
+import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.fragment.ClientMasterExplainFragment;
+import com.tjyw.qmjm.fragment.ClientMasterMineFragment;
+import com.tjyw.qmjm.fragment.ClientMasterNamingFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +17,10 @@ import java.util.List;
 /**
  * Created by stephen on 07/08/2017.
  */
-public class AtomPubClientMasterAdapter implements FragmentNavigatorAdapter {
+public class ClientMasterAdapter implements FragmentNavigatorAdapter {
 
-    public static AtomPubClientMasterAdapter newInstance(AtomPubBaseActivity context) {
-        return new AtomPubClientMasterAdapter(context);
+    public static ClientMasterAdapter newInstance(AtomPubBaseActivity context) {
+        return new ClientMasterAdapter(context);
     }
 
     public interface POSITION {
@@ -59,12 +59,12 @@ public class AtomPubClientMasterAdapter implements FragmentNavigatorAdapter {
     }
 
     public static Pair<Integer, Integer> getMasterTabResource(int position) {
-        return AtomPubClientMasterAdapter.MASTER_TAB_RESOURCE.get(position);
+        return ClientMasterAdapter.MASTER_TAB_RESOURCE.get(position);
     }
 
     protected AtomPubBaseActivity context;
 
-    public AtomPubClientMasterAdapter(AtomPubBaseActivity context) {
+    public ClientMasterAdapter(AtomPubBaseActivity context) {
         this.context = context;
     }
 
@@ -91,11 +91,11 @@ public class AtomPubClientMasterAdapter implements FragmentNavigatorAdapter {
     public String getTag(int position) {
         switch (position) {
             case POSITION.NAMING:
-                return AtomPubMasterNamingFragment.class.getName();
+                return ClientMasterNamingFragment.class.getName();
             case POSITION.EXPLAIN:
-                return AtomPubMasterExplainFragment.class.getName();
+                return ClientMasterExplainFragment.class.getName();
             case POSITION.MINE:
-                return AtomPubMasterMineFragment.class.getName();
+                return ClientMasterMineFragment.class.getName();
             default:
                 return null;
         }

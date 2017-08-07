@@ -23,24 +23,24 @@
 
         <fragment
             android:id="@+id/masterNamingFragment"
-            class="com.tjyw.atom.pub.fragment.AtomPubMasterNamingFragment"
+            class="com.tjyw.qmjm.fragment.ClientMasterNamingFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:tag="com.tjyw.atom.pub.fragment.AtomPubMasterNamingFragment" />
+            android:tag="com.tjyw.qmjm.fragment.ClientMasterNamingFragment" />
 
         <fragment
             android:id="@+id/masterExplainFragment"
-            class="com.tjyw.atom.pub.fragment.AtomPubMasterExplainFragment"
+            class="com.tjyw.qmjm.fragment.ClientMasterExplainFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:tag="com.tjyw.atom.pub.fragment.AtomPubMasterExplainFragment" />
+            android:tag="com.tjyw.qmjm.fragment.ClientMasterExplainFragment" />
 
         <fragment
             android:id="@+id/masterMineFragment"
-            class="com.tjyw.atom.pub.fragment.AtomPubMasterMineFragment"
+            class="com.tjyw.qmjm.fragment.ClientMasterMineFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:tag="com.tjyw.atom.pub.fragment.AtomPubMasterMineFragment" />
+            android:tag="com.tjyw.qmjm.fragment.ClientMasterMineFragment" />
     </FrameLayout>
 
     <com.aurelhubert.ahbottomnavigation.AHBottomNavigation

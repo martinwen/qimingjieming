@@ -18,28 +18,30 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/namingGenderMale"
+            android:id="@+id/masterNamingGenderMale"
             style="@style/AtomStyle.WhiteSuperHugeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/atom_pub_selector_master_gender"
             android:gravity="center"
             android:padding="16dp"
-            android:text="@string/atom_pub_resStringGenderMale" />
+            android:text="@string/atom_pub_resStringGenderMale"
+            android:textColor="@color/atom_pub_black2white" />
 
         <android.support.v4.widget.Space
             android:layout_width="48dp"
             android:layout_height="1dp" />
 
         <TextView
-            android:id="@+id/namingGenderFemale"
+            android:id="@+id/masterNamingGenderFemale"
             style="@style/AtomStyle.WhiteSuperHugeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/atom_pub_selector_master_gender"
             android:gravity="center"
             android:padding="16dp"
-            android:text="@string/atom_pub_resStringGenderFemale" />
+            android:text="@string/atom_pub_resStringGenderFemale"
+            android:textColor="@color/atom_pub_black2white" />
     </LinearLayout>
 
     <LinearLayout
@@ -63,7 +65,7 @@
             android:text="@string/atom_pub_resStringChineseDoc" />
 
         <EditText
-            android:id="@+id/namingSurname"
+            android:id="@+id/masterNamingSurname"
             style="@style/AtomStyle.BlackNormalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -97,7 +99,7 @@
             android:text="@string/atom_pub_resStringChineseDoc" />
 
         <EditText
-            android:id="@+id/namingGivenName"
+            android:id="@+id/masterNamingGivenName"
             style="@style/AtomStyle.BlackNormalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -131,7 +133,7 @@
             android:text="@string/atom_pub_resStringChineseDoc" />
 
         <EditText
-            android:id="@+id/namingDateOfBirth"
+            android:id="@+id/masterNamingDateOfBirth"
             style="@style/AtomStyle.BlackNormalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -146,7 +148,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/namingConfirm"
+        android:id="@+id/masterNamingConfirm"
         style="@style/AtomStyle.WhiteHugeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

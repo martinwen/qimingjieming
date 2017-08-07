@@ -26,7 +26,8 @@ import nucleus.view.NucleusSupportFragment;
 /**
  * Created by stephen on 07/08/2017.
  */
-public class AtomPubBaseFragment<P extends Presenter> extends NucleusSupportFragment<P> implements IAtomPubIntentExtra, IAtomPubFragment, IAtomPubTools {
+public class AtomPubBaseFragment<P extends Presenter> extends NucleusSupportFragment<P> implements View.OnClickListener,
+        IAtomPubIntentExtra, IAtomPubFragment, IAtomPubTools {
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -40,6 +41,11 @@ public class AtomPubBaseFragment<P extends Presenter> extends NucleusSupportFrag
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 
     @Override
