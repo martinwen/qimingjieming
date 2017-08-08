@@ -1,5 +1,5 @@
 /*
- * android-spinnerwheel
+ * android-antistatic.spinnerwheel
  * https://github.com/ai212983/android-spinnerwheel
  *
  * based on
@@ -22,7 +22,7 @@
  * limitations under the License.
  */
 
-package spinnerwheel;
+package antistatic.spinnerwheel;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -40,10 +40,10 @@ import com.tjyw.atom.pub.R;
 import java.util.LinkedList;
 import java.util.List;
 
-import spinnerwheel.adapters.WheelViewAdapter;
+import antistatic.spinnerwheel.adapters.WheelViewAdapter;
 
 /**
- * Abstract spinner spinnerwheel view.
+ * Abstract spinner antistatic.spinnerwheel view.
  * This class should be subclassed.
  *
  * @author Yuri Kanivets
@@ -356,14 +356,14 @@ public abstract class AbstractWheel extends View {
     }
 
     /**
-     * Scroll the spinnerwheel
+     * Scroll the antistatic.spinnerwheel
      *
      * @param itemsToScroll items to scroll
      * @param time          scrolling duration
      */
     public void scroll(int itemsToScroll, int time) {
         int distance = itemsToScroll * getItemDimension() - mScrollingOffset;
-        onScrollTouched(); // we have to emulate touch when scrolling spinnerwheel programmatically to light up stuff
+        onScrollTouched(); // we have to emulate touch when scrolling antistatic.spinnerwheel programmatically to light up stuff
         mScroller.scroll(distance, time);
     }
 
@@ -376,7 +376,7 @@ public abstract class AbstractWheel extends View {
     }
 
     /**
-     * Scrolls the spinnerwheel
+     * Scrolls the antistatic.spinnerwheel
      *
      * @param delta the scrolling value
      */
@@ -444,28 +444,28 @@ public abstract class AbstractWheel extends View {
     //--------------------------------------------------------------------------
 
     /**
-     * Returns over scroll dimension of the spinnerwheel — width for horizontal spinnerwheel, height for vertical
+     * Returns over scroll dimension of the antistatic.spinnerwheel — width for horizontal antistatic.spinnerwheel, height for vertical
      *
-     * @return over scroll width or height of the spinnerwheel
+     * @return over scroll width or height of the antistatic.spinnerwheel
      */
     abstract protected int getMaxOverScrollDimension();
 
     /**
-     * Returns base dimension of the spinnerwheel — width for horizontal spinnerwheel, height for vertical
+     * Returns base dimension of the antistatic.spinnerwheel — width for horizontal antistatic.spinnerwheel, height for vertical
      *
-     * @return width or height of the spinnerwheel
+     * @return width or height of the antistatic.spinnerwheel
      */
     abstract protected int getBaseDimension();
 
     /**
-     * Returns base dimension of base item — width for horizontal spinnerwheel, height for vertical
+     * Returns base dimension of base item — width for horizontal antistatic.spinnerwheel, height for vertical
      *
      * @return width or height of base item
      */
     abstract protected int getItemDimension();
 
     /**
-     * Processes MotionEvent and returns relevant position — x for horizontal spinnerwheel, y for vertical
+     * Processes MotionEvent and returns relevant position — x for horizontal antistatic.spinnerwheel, y for vertical
      *
      * @param event MotionEvent to be processed
      * @return relevant position of the MotionEvent
@@ -541,7 +541,7 @@ public abstract class AbstractWheel extends View {
 
     /**
      * Sets the desired count of visible items.
-     * Actual amount of visible items depends on spinnerwheel layout parameters.
+     * Actual amount of visible items depends on antistatic.spinnerwheel layout parameters.
      * To apply changes and rebuild view call measure().
      *
      * @param count the desired count for visible items
@@ -648,16 +648,16 @@ public abstract class AbstractWheel extends View {
     }
 
     /**
-     * Tests if spinnerwheel is cyclic. That means before the 1st item there is shown the last one
+     * Tests if antistatic.spinnerwheel is cyclic. That means before the 1st item there is shown the last one
      *
-     * @return true if spinnerwheel is cyclic
+     * @return true if antistatic.spinnerwheel is cyclic
      */
     public boolean isCyclic() {
         return mIsCyclic;
     }
 
     /**
-     * Set spinnerwheel cyclic flag
+     * Set antistatic.spinnerwheel cyclic flag
      *
      * @param isCyclic the flag to set
      */
@@ -674,7 +674,7 @@ public abstract class AbstractWheel extends View {
     //--------------------------------------------------------------------------
 
     /**
-     * Adds spinnerwheel changing listener
+     * Adds antistatic.spinnerwheel changing listener
      *
      * @param listener the listener
      */
@@ -683,7 +683,7 @@ public abstract class AbstractWheel extends View {
     }
 
     /**
-     * Removes spinnerwheel changing listener
+     * Removes antistatic.spinnerwheel changing listener
      *
      * @param listener the listener
      */
@@ -694,8 +694,8 @@ public abstract class AbstractWheel extends View {
     /**
      * Notifies changing listeners
      *
-     * @param oldValue the old spinnerwheel value
-     * @param newValue the new spinnerwheel value
+     * @param oldValue the old antistatic.spinnerwheel value
+     * @param newValue the new antistatic.spinnerwheel value
      */
     protected void notifyChangingListeners(int oldValue, int newValue) {
         for (OnWheelChangedListener listener : changingListeners) {
@@ -704,7 +704,7 @@ public abstract class AbstractWheel extends View {
     }
 
     /**
-     * Adds spinnerwheel scrolling listener
+     * Adds antistatic.spinnerwheel scrolling listener
      *
      * @param listener the listener
      */
@@ -713,7 +713,7 @@ public abstract class AbstractWheel extends View {
     }
 
     /**
-     * Removes spinnerwheel scrolling listener
+     * Removes antistatic.spinnerwheel scrolling listener
      *
      * @param listener the listener
      */
@@ -740,7 +740,7 @@ public abstract class AbstractWheel extends View {
     }
 
     /**
-     * Adds spinnerwheel clicking listener
+     * Adds antistatic.spinnerwheel clicking listener
      *
      * @param listener the listener
      */
@@ -749,7 +749,7 @@ public abstract class AbstractWheel extends View {
     }
 
     /**
-     * Removes spinnerwheel clicking listener
+     * Removes antistatic.spinnerwheel clicking listener
      *
      * @param listener the listener
      */
@@ -776,7 +776,7 @@ public abstract class AbstractWheel extends View {
     //--------------------------------------------------------------------------
 
     /**
-     * Rebuilds spinnerwheel items if necessary. Caches all unused items.
+     * Rebuilds antistatic.spinnerwheel items if necessary. Caches all unused items.
      *
      * @return true if items are rebuilt
      */
@@ -824,7 +824,7 @@ public abstract class AbstractWheel extends View {
     //----------------------------------
 
     /**
-     * Calculates range for spinnerwheel items
+     * Calculates range for antistatic.spinnerwheel items
      *
      * @return the items range
      */
@@ -856,7 +856,7 @@ public abstract class AbstractWheel extends View {
      * Checks whether item index is valid
      *
      * @param index the item index
-     * @return true if item index is not out of bounds or the spinnerwheel is cyclic
+     * @return true if item index is not out of bounds or the antistatic.spinnerwheel is cyclic
      */
     protected boolean isValidItemIndex(int index) {
         return (mViewAdapter != null) && (mViewAdapter.getItemsCount() > 0) &&

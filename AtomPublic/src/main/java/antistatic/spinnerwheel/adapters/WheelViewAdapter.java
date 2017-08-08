@@ -1,5 +1,5 @@
 /*
- * android-spinnerwheel
+ * android-antistatic.spinnerwheel
  * https://github.com/ai212983/android-spinnerwheel
  *
  * based on
@@ -22,7 +22,7 @@
  * limitations under the License.
  */
 
-package spinnerwheel.adapters;
+package antistatic.spinnerwheel.adapters;
 
 import android.database.DataSetObserver;
 import android.view.View;
@@ -34,7 +34,7 @@ import android.view.ViewGroup;
 public interface WheelViewAdapter {
     /**
      * Gets items count
-     * @return the count of spinnerwheel items
+     * @return the count of antistatic.spinnerwheel items
      */
     public int getItemsCount();
 
@@ -45,13 +45,13 @@ public interface WheelViewAdapter {
      * @param convertView the old view to reuse if possible
      * @param parent the parent that this view will eventually be attached to
      * @param currentItemIdx
-     * @return the spinnerwheel item View
+     * @return the antistatic.spinnerwheel item View
      */
     public View getItem(int index, View convertView, ViewGroup parent, int currentItemIdx);
 
     /**
-     * Get a View that displays an empty spinnerwheel item placed before the first or after
-     * the last spinnerwheel item.
+     * Get a View that displays an empty antistatic.spinnerwheel item placed before the first or after
+     * the last antistatic.spinnerwheel item.
      *
      * @param convertView the old view to reuse if possible
      * @param parent the parent that this view will eventually be attached to

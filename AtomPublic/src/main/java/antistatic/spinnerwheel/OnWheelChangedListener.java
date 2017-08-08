@@ -1,5 +1,5 @@
 /*
- * android-spinnerwheel
+ * android-antistatic.spinnerwheel
  * https://github.com/ai212983/android-spinnerwheel
  *
  * based on
@@ -22,18 +22,18 @@
  * limitations under the License.
  */
 
-package spinnerwheel;
+package antistatic.spinnerwheel;
 
 /**
  * Wheel changed listener interface.
- * <p>The onChanged() method is called whenever current spinnerwheel positions is changed:
+ * <p>The onChanged() method is called whenever current antistatic.spinnerwheel positions is changed:
  * <li> New Wheel position is set
  * <li> Wheel view is scrolled
  */
 public interface OnWheelChangedListener {
 	/**
 	 * Callback method to be invoked when current item changed
-	 * @param wheel the spinnerwheel view whose state has changed
+	 * @param wheel the antistatic.spinnerwheel view whose state has changed
 	 * @param oldValue the old value of current item
 	 * @param newValue the new value of current item
 	 */

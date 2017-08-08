@@ -10,8 +10,11 @@ import android.widget.TextView;
 
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.dialog.ClientLunarDatePicker;
+import com.xhinliang.lunarcalendar.LunarCalendar;
 
 import butterknife.BindView;
+import timber.log.Timber;
 
 /**
  * Created by stephen on 07/08/2017.
@@ -67,6 +70,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment {
                 masterNamingDateOfBirth.setText("" + v.getId());
                 break ;
             case R.id.masterNamingConfirm:
+                ClientLunarDatePicker.newInstance(getFragmentManager());
         }
     }
 }

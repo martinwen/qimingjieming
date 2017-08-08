@@ -1,5 +1,5 @@
 /*
- * android-spinnerwheel
+ * android-antistatic.spinnerwheel
  * https://github.com/ai212983/android-spinnerwheel
  *
  * based on
@@ -22,7 +22,7 @@
  * limitations under the License.
  */
 
-package spinnerwheel;
+package antistatic.spinnerwheel;
 
 /**
  * Wheel scrolled listener interface.
@@ -30,13 +30,13 @@ package spinnerwheel;
 public interface OnWheelScrollListener {
 	/**
 	 * Callback method to be invoked when scrolling started.
-	 * @param wheel the spinnerwheel view whose state has changed.
+	 * @param wheel the antistatic.spinnerwheel view whose state has changed.
 	 */
 	void onScrollingStarted(AbstractWheel wheel);
 	
 	/**
 	 * Callback method to be invoked when scrolling ended.
-	 * @param wheel the spinnerwheel view whose state has changed.
+	 * @param wheel the antistatic.spinnerwheel view whose state has changed.
 	 */
 	void onScrollingFinished(AbstractWheel wheel);
 }

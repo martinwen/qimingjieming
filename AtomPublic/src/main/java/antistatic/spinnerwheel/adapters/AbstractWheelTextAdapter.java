@@ -1,5 +1,5 @@
 /*
- * android-spinnerwheel
+ * android-antistatic.spinnerwheel
  * https://github.com/ai212983/android-spinnerwheel
  *
  * based on
@@ -21,7 +21,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package spinnerwheel.adapters;
+package antistatic.spinnerwheel.adapters;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -35,7 +35,7 @@ import android.widget.TextView;
 import com.tjyw.atom.pub.R;
 
 /**
- * Abstract spinnerwheel adapter provides common functionality for adapters.
+ * Abstract antistatic.spinnerwheel adapter provides common functionality for adapters.
  */
 public abstract class AbstractWheelTextAdapter extends AbstractWheelAdapter {
     

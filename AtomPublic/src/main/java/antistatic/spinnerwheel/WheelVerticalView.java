@@ -1,5 +1,5 @@
 /*
- * android-spinnerwheel
+ * android-antistatic.spinnerwheel
  * https://github.com/ai212983/android-spinnerwheel
  *
  * based on
@@ -22,7 +22,7 @@
  * limitations under the License.
  */
 
-package spinnerwheel;
+package antistatic.spinnerwheel;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -185,7 +185,7 @@ public class WheelVerticalView extends AbstractWheelView {
     }
 
     /**
-     * Returns height of the spinnerwheel
+     * Returns height of the antistatic.spinnerwheel
      * @return the item height
      */
     @Override

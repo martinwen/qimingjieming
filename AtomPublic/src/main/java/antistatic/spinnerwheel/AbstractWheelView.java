@@ -1,5 +1,5 @@
 /*
- * android-spinnerwheel
+ * android-antistatic.spinnerwheel
  * https://github.com/ai212983/android-spinnerwheel
  *
  * based on
@@ -22,7 +22,7 @@
  * limitations under the License.
  */
 
-package spinnerwheel;
+package antistatic.spinnerwheel;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -39,7 +39,7 @@ import com.nineoldandroids.animation.ObjectAnimator;
 import com.tjyw.atom.pub.R;
 
 /**
- * Abstract spinner spinnerwheel view.
+ * Abstract spinner antistatic.spinnerwheel view.
  * This class should be subclassed.
  *
  * @author Yuri Kanivets
@@ -74,10 +74,10 @@ public abstract class AbstractWheelView extends AbstractWheel {
 
     // configurable properties
 
-    /** The alpha of the selector spinnerwheel when it is dimmed. */
+    /** The alpha of the selector antistatic.spinnerwheel when it is dimmed. */
     protected int mItemsDimmedAlpha;
 
-    /** The alpha of separators spinnerwheel when they are shown. */
+    /** The alpha of separators antistatic.spinnerwheel when they are shown. */
     protected int mSelectionDividerActiveAlpha;
 
     /** The alpha of separators when they are is dimmed. */
@@ -111,12 +111,12 @@ public abstract class AbstractWheelView extends AbstractWheel {
     protected Paint mSeparatorsPaint;
 
     /**
-     * {@link Animator} for dimming the selector spinnerwheel.
+     * {@link Animator} for dimming the selector antistatic.spinnerwheel.
      */
     protected Animator mDimSelectorWheelAnimator;
 
     /**
-     * {@link Animator} for dimming the selector spinnerwheel.
+     * {@link Animator} for dimming the selector antistatic.spinnerwheel.
      */
     protected Animator mDimSeparatorsAnimator;
 
@@ -192,8 +192,8 @@ public abstract class AbstractWheelView extends AbstractWheel {
     /**
      * Recreates assets (like bitmaps) when layout size has been changed
      *
-     * @param width New spinnerwheel width
-     * @param height New spinnerwheel height
+     * @param width New antistatic.spinnerwheel width
+     * @param height New antistatic.spinnerwheel height
      */
     @Override
     protected void recreateAssets(int width, int height) {
@@ -204,7 +204,7 @@ public abstract class AbstractWheelView extends AbstractWheel {
 
     /**
      * Sets the <code>alpha</code> of the {@link Paint} for drawing separators
-     * spinnerwheel.
+     * antistatic.spinnerwheel.
      * @param alpha alpha value from 0 to 255
      */
     @SuppressWarnings("unused")  // Called via reflection
@@ -215,7 +215,7 @@ public abstract class AbstractWheelView extends AbstractWheel {
 
     /**
      * Sets the <code>coeff</code> of the {@link Paint} for drawing
-     * the selector spinnerwheel.
+     * the selector antistatic.spinnerwheel.
      *
      * @param coeff Coefficient from 0 (selector is passive) to 1 (selector is active)
      */
@@ -272,7 +272,7 @@ public abstract class AbstractWheelView extends AbstractWheel {
     //----------------------------------
 
     /**
-     * Fade the selector spinnerwheel via an animation.
+     * Fade the selector antistatic.spinnerwheel via an animation.
      *
      * @param animationDuration The duration of the animation.
      */
@@ -282,7 +282,7 @@ public abstract class AbstractWheelView extends AbstractWheel {
     }
 
     /**
-     * Fade the selector spinnerwheel via an animation.
+     * Fade the selector antistatic.spinnerwheel via an animation.
      *
      * @param animationDuration The duration of the animation.
      */

@@ -1,5 +1,5 @@
 /*
- * android-spinnerwheel
+ * android-antistatic.spinnerwheel
  * https://github.com/ai212983/android-spinnerwheel
  *
  * based on
@@ -22,18 +22,18 @@
  * limitations under the License.
  */
 
-package spinnerwheel;
+package antistatic.spinnerwheel;
 
 /**
  * Wheel clicked listener interface.
- * <p>The onItemClicked() method is called whenever a spinnerwheel item is clicked
+ * <p>The onItemClicked() method is called whenever a antistatic.spinnerwheel item is clicked
  * <li> New Wheel position is set
  * <li> Wheel view is scrolled
  */
 public interface OnWheelClickedListener {
     /**
      * Callback method to be invoked when current item clicked
-     * @param wheel the spinnerwheel view
+     * @param wheel the antistatic.spinnerwheel view
      * @param itemIndex the index of clicked item
      */
     void onItemClicked(AbstractWheel wheel, int itemIndex);

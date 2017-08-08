@@ -1,5 +1,5 @@
 /*
- * android-spinnerwheel
+ * android-antistatic.spinnerwheel
  * https://github.com/ai212983/android-spinnerwheel
  *
  * based on
@@ -22,7 +22,7 @@
  * limitations under the License.
  */
 
-package spinnerwheel.adapters;
+package antistatic.spinnerwheel.adapters;
 
 import android.content.Context;
 import android.database.DataSetObserver;
@@ -68,8 +68,8 @@ public class NumericWheelAdapter extends AbstractWheelTextAdapter {
      * Constructor
      *
      * @param context  the current context
-     * @param minValue the spinnerwheel min value
-     * @param maxValue the spinnerwheel max value
+     * @param minValue the antistatic.spinnerwheel min value
+     * @param maxValue the antistatic.spinnerwheel max value
      */
     public NumericWheelAdapter(Context context, int minValue, int maxValue) {
         this(context, minValue, maxValue, (String) null);
@@ -79,8 +79,8 @@ public class NumericWheelAdapter extends AbstractWheelTextAdapter {
      * Constructor
      *
      * @param context  the current context
-     * @param minValue the spinnerwheel min value
-     * @param maxValue the spinnerwheel max value
+     * @param minValue the antistatic.spinnerwheel min value
+     * @param maxValue the antistatic.spinnerwheel max value
      * @param format   the format string
      */
     public NumericWheelAdapter(Context context, int minValue, int maxValue, final String format) {

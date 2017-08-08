@@ -1,5 +1,5 @@
 /*
- * android-spinnerwheel
+ * android-antistatic.spinnerwheel
  * https://github.com/ai212983/android-spinnerwheel
  *
  * based on
@@ -27,7 +27,7 @@
  * Created by maytree on 16. 4. 6..
  **/
 
-package spinnerwheel.adapters;
+package antistatic.spinnerwheel.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -35,7 +35,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Abstract spinnerwheel adapter provides common functionality for adapters.
+ * Abstract antistatic.spinnerwheel adapter provides common functionality for adapters.
  */
 public abstract class AbstractWheelCustomAdapter extends AbstractWheelAdapter {
 

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/atom_master_lunar_background"
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <antistatic.spinnerwheel.WheelVerticalView
+            android:id="@+id/lunarPickerSwitchContainer"
+            android:layout_width="128dp"
+            android:layout_height="match_parent"
+            app:isAllVisible="true"
+            app:selectionDivider="@android:color/transparent"
+            app:selectionDividerActiveAlpha="255"
+            app:selectionDividerDimmedAlpha="255"
+            app:selectionDividerHeight="1px"
+            app:visibleItems="5" />
+
+        <antistatic.spinnerwheel.WheelVerticalView
+            android:id="@+id/lunarPickerYearContainer"
+            android:layout_width="128dp"
+            android:layout_height="match_parent"
+            app:isAllVisible="true"
+            app:selectionDivider="@android:color/transparent"
+            app:selectionDividerActiveAlpha="255"
+            app:selectionDividerDimmedAlpha="255"
+            app:selectionDividerHeight="1px"
+            app:visibleItems="5" />
+
+        <antistatic.spinnerwheel.WheelVerticalView
+            android:id="@+id/lunarPickerMonthContainer"
+            android:layout_width="128dp"
+            android:layout_height="match_parent"
+            app:isAllVisible="true"
+            app:selectionDivider="@android:color/transparent"
+            app:selectionDividerActiveAlpha="255"
+            app:selectionDividerDimmedAlpha="255"
+            app:selectionDividerHeight="1px"
+            app:visibleItems="5" />
+
+        <antistatic.spinnerwheel.WheelVerticalView
+            android:id="@+id/lunarPickerDayContainer"
+            android:layout_width="128dp"
+            android:layout_height="match_parent"
+            app:isAllVisible="true"
+            app:selectionDivider="@android:color/transparent"
+            app:selectionDividerActiveAlpha="255"
+            app:selectionDividerDimmedAlpha="255"
+            app:selectionDividerHeight="1px"
+            app:visibleItems="5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical">
+
+        <antistatic.spinnerwheel.WheelVerticalView
+            android:id="@+id/lunarPickerHourContainer"
+            android:layout_width="match_parent"
+            android:layout_height="128dp"
+            app:isAllVisible="true"
+            app:selectionDivider="@android:color/transparent"
+            app:selectionDividerActiveAlpha="255"
+            app:selectionDividerDimmedAlpha="255"
+            app:selectionDividerHeight="1px"
+            app:visibleItems="5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/AtomStyle.WhiteHugeText"
+                fontPath="@string/atom_pub_fontPath"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/atom_pub_selector_master_confirm"
+                android:gravity="center"
+                android:minWidth="96dp"
+                android:text="@string/atom_pub_resStringOK" />
+
+            <TextView
+                style="@style/AtomStyle.WhiteHugeText"
+                fontPath="@string/atom_pub_fontPath"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/atom_pub_selector_master_confirm"
+                android:gravity="center"
+                android:minWidth="96dp"
+                android:text="@string/atom_pub_resStringOK" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
