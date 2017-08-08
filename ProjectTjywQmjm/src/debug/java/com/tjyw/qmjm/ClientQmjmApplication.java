@@ -15,10 +15,6 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
  */
 public class ClientQmjmApplication extends MultiDexApplication {
 
-    public static int screenWidth = 480;
-
-    public static int screenHeight = 800;
-
     protected static WeakReference<ClientQmjmApplication> instance;
 
     @Override
@@ -39,8 +35,9 @@ public class ClientQmjmApplication extends MultiDexApplication {
         TypefaceHelper.initialize(this);
 
         CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/atom_pub_font_hyzk.ttf")
                 .setFontAttrId(R.attr.fontPath)
+                .disableCustomViewInflation()
+                .disablePrivateFactoryInjection()
                 .build()
         );
     }

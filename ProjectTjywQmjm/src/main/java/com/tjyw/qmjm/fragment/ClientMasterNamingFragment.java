@@ -19,10 +19,10 @@ import butterknife.BindView;
 public class ClientMasterNamingFragment extends AtomPubBaseFragment {
 
     @BindView(R.id.masterNamingGenderMale)
-    protected TextView masterNamingGenderMale;
+    protected ViewGroup masterNamingGenderMale;
 
     @BindView(R.id.masterNamingGenderFemale)
-    protected TextView masterNamingGenderFemale;
+    protected ViewGroup masterNamingGenderFemale;
 
     @BindView(R.id.masterNamingSurname)
     protected EditText masterNamingSurname;
@@ -50,6 +50,8 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment {
         masterNamingGenderMale.setOnClickListener(this);
         masterNamingGenderFemale.setOnClickListener(this);
         masterNamingConfirm.setOnClickListener(this);
+
+        masterNamingDateOfBirth.setKeyListener(null);
     }
 
     @Override
@@ -62,6 +64,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment {
             case R.id.masterNamingGenderFemale:
                 v.setSelected(true);
                 masterNamingGenderMale.setSelected(false);
+                masterNamingDateOfBirth.setText("" + v.getId());
                 break ;
             case R.id.masterNamingConfirm:
         }

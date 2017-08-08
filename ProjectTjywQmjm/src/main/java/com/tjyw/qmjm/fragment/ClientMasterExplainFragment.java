@@ -19,16 +19,16 @@ import butterknife.BindView;
 public class ClientMasterExplainFragment extends AtomPubBaseFragment {
 
     @BindView(R.id.masterExplainGenderMale)
-    protected TextView masterExplainGenderMale;
+    protected ViewGroup masterExplainGenderMale;
 
     @BindView(R.id.masterExplainGenderFemale)
-    protected TextView masterExplainGenderFemale;
+    protected ViewGroup masterExplainGenderFemale;
 
     @BindView(R.id.masterExplainSingleName)
-    protected TextView masterExplainSingleName;
+    protected ViewGroup masterExplainSingleName;
 
     @BindView(R.id.masterExplainDoubleName)
-    protected TextView masterExplainDoubleName;
+    protected ViewGroup masterExplainDoubleName;
 
     @BindView(R.id.masterExplainSurname)
     protected EditText masterExplainSurname;
