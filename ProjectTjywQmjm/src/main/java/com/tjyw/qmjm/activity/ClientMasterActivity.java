@@ -3,12 +3,14 @@ package com.tjyw.qmjm.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.util.Pair;
 
 import com.aspsine.fragmentnavigator.FragmentNavigator;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.gyf.barlibrary.ImmersionBar;
+import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 
@@ -46,7 +48,8 @@ public class ClientMasterActivity extends BaseActivity {
             if (null != masterTabResource) {
                 atomPubClientMasterNavigation.addItem(
                         new AHBottomNavigationItem(
-                                masterTabResource.first, masterTabResource.second, android.R.color.white
+                                ClientQmjmApplication.pGetString(masterTabResource.first),
+                                ContextCompat.getDrawable(ClientQmjmApplication.getContext(), masterTabResource.second)
                         )
                 );
             }
