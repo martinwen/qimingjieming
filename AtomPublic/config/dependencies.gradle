@@ -42,6 +42,7 @@ dependencies {
     compile libraryDependencies.saripaar
     compile libraryDependencies.flexibleDivider
     compile libraryDependencies.rxPermissions
+    compile libraryDependencies.ahBottomBavigation
     compile libraryDependencies.navigationTabStrip
     compile libraryDependencies.chipsLayoutManager
     compile libraryDependencies.smoothRefreshLayout
