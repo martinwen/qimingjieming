@@ -7,12 +7,18 @@
 
     <string name="atom_pub_resStringGenderMale">男</string>
     <string name="atom_pub_resStringGenderFemale">女</string>
+    <string name="atom_pub_resStringSingleName">单名</string>
+    <string name="atom_pub_resStringDoubleName">双名</string>
     <string name="atom_pub_resStringSurname">姓</string>
     <string name="atom_pub_resStringSurnameHint">您的姓氏（必须是汉字）</string>
     <string name="atom_pub_resStringGivenName">名</string>
     <string name="atom_pub_resStringGivenNameHint">您的名字（必须是汉字）</string>
     <string name="atom_pub_resStringDateOfBirth">出生时间</string>
     <string name="atom_pub_resStringDateOfBirthHint">选择您的出生时间</string>
+    <string name="atom_pub_resStringContain1st">指定字一</string>
+    <string name="atom_pub_resStringContain1stHint">选填指定名字第一个字</string>
+    <string name="atom_pub_resStringContain2nd">指定字二</string>
+    <string name="atom_pub_resStringContain2ndHint">选填指定名字第一个字</string>
 
     <string name="atom_pub_resStringChineseDoc">：</string>
     <string name="atom_pub_resStringOK">确定</string>
