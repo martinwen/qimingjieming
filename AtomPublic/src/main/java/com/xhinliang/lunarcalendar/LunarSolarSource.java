@@ -5,7 +5,7 @@ import android.util.Pair;
 import android.util.SparseArray;
 
 import com.tjyw.atom.network.utils.ArrayUtil;
-import com.xhinliang.lunarcalendar.holder.AbsGregorianMonthHolder;
+import com.xhinliang.lunarcalendar.holder.GregorianMonth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,26 +29,26 @@ public class LunarSolarSource {
      *
      * Pair.first和Pair.second的长度很可能不同，农历可能会多于公历的月份
      */
-    protected final SparseArray<Pair<List<AbsGregorianMonthHolder>, List<AbsGregorianMonthHolder>>> source = new SparseArray<Pair<List<AbsGregorianMonthHolder>, List<AbsGregorianMonthHolder>>>();
+    protected final SparseArray<Pair<List<GregorianMonth>, List<GregorianMonth>>> source = new SparseArray<Pair<List<GregorianMonth>, List<GregorianMonth>>>();
 
-    public Pair<List<AbsGregorianMonthHolder>, List<AbsGregorianMonthHolder>> get(int solarYear) {
+    public Pair<List<GregorianMonth>, List<GregorianMonth>> get(int solarYear) {
         return source.get(solarYear);
     }
 
-    public Pair<List<AbsGregorianMonthHolder>, List<AbsGregorianMonthHolder>> set(int solarYear) {
-        Pair<List<AbsGregorianMonthHolder>, List<AbsGregorianMonthHolder>> gregorianMonthHolderPair =
-                new Pair<List<AbsGregorianMonthHolder>, List<AbsGregorianMonthHolder>>(
-                        new ArrayList<AbsGregorianMonthHolder>(),
-                        new ArrayList<AbsGregorianMonthHolder>()
+    public Pair<List<GregorianMonth>, List<GregorianMonth>> set(int solarYear) {
+        Pair<List<GregorianMonth>, List<GregorianMonth>> gregorianMonthPair =
+                new Pair<List<GregorianMonth>, List<GregorianMonth>>(
+                        new ArrayList<GregorianMonth>(),
+                        new ArrayList<GregorianMonth>()
                 );
 
-        source.put(solarYear, gregorianMonthHolderPair);
+        source.put(solarYear, gregorianMonthPair);
 
         String lunarMonthNameCached = null; // 农历月的名称(公历月遍历时同月份中可能会出现两个农历月，缓存名称发现不同时，创建新的农历月集合)
-        AbsGregorianMonthHolder gregorianLunarMonthHolder = null;
+        GregorianMonth gregorianLunarMonth = null;
         for (int month = 1; month <= 12; month ++) { // 遍历公历月
-            AbsGregorianMonthHolder gregorianSolarMonthHolder = AbsGregorianMonthHolder.newSolarInstance();
-            gregorianMonthHolderPair.first.add(gregorianSolarMonthHolder);
+            GregorianMonth gregorianMonth = GregorianMonth.newInstance(false);
+            gregorianMonthPair.first.add(gregorianMonth);
 
             LunarCalendar[][] monthCalendar = LunarCalendar.obtainCalendar(solarYear, month);
             if (! ArrayUtil.isEmpty(monthCalendar)) {
@@ -58,18 +58,18 @@ public class LunarSolarSource {
                             if (null == day) {
                                 continue;
                             } else { // 设置公历月的日期数据
-                                gregorianSolarMonthHolder.absSetMonth(day);
-                                gregorianSolarMonthHolder.addLunarCalendar(day);
+                                gregorianMonth.absSetMonth(day);
+                                gregorianMonth.addLunarCalendar(day);
                             }
 
                             String lunarMonth = day.getLunarMonth();
                             if (null == lunarMonthNameCached || ! TextUtils.equals(lunarMonthNameCached, lunarMonth)) { // 同公历月中出现多个农历月时，生成新的农历月对象
                                 lunarMonthNameCached = lunarMonth;
-                                gregorianLunarMonthHolder = AbsGregorianMonthHolder.newLunarInstance();
-                                gregorianLunarMonthHolder.absSetMonth(day);
-                                gregorianMonthHolderPair.second.add(gregorianLunarMonthHolder);
+                                gregorianLunarMonth = GregorianMonth.newInstance(true);
+                                gregorianLunarMonth.absSetMonth(day);
+                                gregorianMonthPair.second.add(gregorianLunarMonth);
                             } else { // 设置农历月的日期数据
-                                gregorianLunarMonthHolder.addLunarCalendar(day);
+                                gregorianLunarMonth.addLunarCalendar(day);
                             }
                         }
                     }
@@ -77,6 +77,6 @@ public class LunarSolarSource {
             }
         }
 
-        return gregorianMonthHolderPair;
+        return gregorianMonthPair;
     }
 }

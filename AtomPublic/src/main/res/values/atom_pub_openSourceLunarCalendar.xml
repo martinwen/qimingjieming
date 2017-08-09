@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    
-    <string name="atom_pub_resSolar">农历</string>
-    <string name="atom_pub_resLunar">公历</string>
-
-</resources>

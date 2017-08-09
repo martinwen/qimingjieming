@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="atom_pub_resGregorianSolar">农历</string>
+    <string name="atom_pub_resGregorianLunar">公历</string>
+
+    <string name="atom_pub_resGregorianHour"></string>
+
+
+    时辰未清除（默认0点），
+    子时23点，
+    子时0点，
+    丑时1点，
+    丑时2点，
+    寅时3点，
+    寅时4点，
+    卯时5点，
+    卯时6点，
+    辰时7点，
+    辰时8点，
+    巳时9点，
+    巳时10点，
+    午时11点，
+    午时12点，
+    未时13点，
+    未时14点，
+    申时15点，
+    申时16点，
+    酉时17点，
+    酉时18点，
+    戌时19点，
+    戌时20点，
+    亥时21点，
+    亥时22点
+
+
+</resources>
