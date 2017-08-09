@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:padding="16dp">
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
 
         <com.crazypumpkin.versatilerecyclerview.library.WheelRecyclerView
             android:id="@+id/gregorianSwitchContainer"
@@ -23,7 +24,6 @@
             android:overScrollMode="never"
             android:scrollbars="none"
             app:dividerColor="@color/atom_pub_resColorDivider"
-            app:dividerWidth="96dp"
             app:selectTextColor="@color/atom_ewsh_textColorBlack"
             app:unselectTextColor="@color/atom_ewsh_textColorGrey" />
 
@@ -39,9 +39,9 @@
             android:overScrollMode="never"
             android:scrollbars="none"
             app:dividerColor="@color/atom_pub_resColorDivider"
-            app:dividerWidth="96dp"
             app:selectTextColor="@color/atom_ewsh_textColorBlack"
-            app:unselectTextColor="@color/atom_ewsh_textColorGrey" />
+            app:unselectTextColor="@color/atom_ewsh_textColorGrey"
+            app:wheelOffset="2" />
 
         <android.support.v4.widget.Space
             android:layout_width="8dp"
@@ -55,9 +55,9 @@
             android:overScrollMode="never"
             android:scrollbars="none"
             app:dividerColor="@color/atom_pub_resColorDivider"
-            app:dividerWidth="96dp"
             app:selectTextColor="@color/atom_ewsh_textColorBlack"
-            app:unselectTextColor="@color/atom_ewsh_textColorGrey" />
+            app:unselectTextColor="@color/atom_ewsh_textColorGrey"
+            app:wheelOffset="2" />
 
         <android.support.v4.widget.Space
             android:layout_width="8dp"
@@ -71,9 +71,9 @@
             android:overScrollMode="never"
             android:scrollbars="none"
             app:dividerColor="@color/atom_pub_resColorDivider"
-            app:dividerWidth="96dp"
             app:selectTextColor="@color/atom_ewsh_textColorBlack"
-            app:unselectTextColor="@color/atom_ewsh_textColorGrey" />
+            app:unselectTextColor="@color/atom_ewsh_textColorGrey"
+            app:wheelOffset="2" />
     </LinearLayout>
 
     <LinearLayout
@@ -89,7 +89,6 @@
             android:overScrollMode="never"
             android:scrollbars="none"
             app:dividerColor="@color/atom_pub_resColorDivider"
-            app:dividerWidth="96dp"
             app:selectTextColor="@color/atom_ewsh_textColorBlack"
             app:unselectTextColor="@color/atom_ewsh_textColorGrey" />
     </LinearLayout>
@@ -101,40 +100,30 @@
         android:orientation="horizontal"
         android:padding="16dp">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.0"
+        <TextView
+            android:id="@+id/gregorianCancel"
+            style="@style/AtomStyle.WhiteHugeText"
+            fontPath="@string/atom_pub_fontPath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/atom_pub_selector_master_confirm"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:text="@string/atom_pub_resStringCancel" />
 
-            <TextView
-                style="@style/AtomStyle.WhiteHugeText"
-                fontPath="@string/atom_pub_fontPath"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/atom_pub_selector_master_confirm"
-                android:gravity="center"
-                android:text="@string/atom_pub_resStringCancel" />
-        </LinearLayout>
+        <android.support.v4.widget.Space
+            android:layout_width="32dp"
+            android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.0"
+        <TextView
+            android:id="@+id/gregorianOK"
+            style="@style/AtomStyle.WhiteHugeText"
+            fontPath="@string/atom_pub_fontPath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/atom_pub_selector_master_confirm"
             android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/AtomStyle.WhiteHugeText"
-                fontPath="@string/atom_pub_fontPath"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/atom_pub_selector_master_confirm"
-                android:gravity="center"
-                android:text="@string/atom_pub_resStringOK" />
-        </LinearLayout>
+            android:text="@string/atom_pub_resStringOK" />
     </LinearLayout>
 </LinearLayout>

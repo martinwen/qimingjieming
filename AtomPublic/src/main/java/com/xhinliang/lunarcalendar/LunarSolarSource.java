@@ -35,7 +35,7 @@ public class LunarSolarSource {
         return source.get(solarYear);
     }
 
-    public void set(int solarYear) {
+    public Pair<List<AbsGregorianMonthHolder>, List<AbsGregorianMonthHolder>> set(int solarYear) {
         Pair<List<AbsGregorianMonthHolder>, List<AbsGregorianMonthHolder>> gregorianMonthHolderPair =
                 new Pair<List<AbsGregorianMonthHolder>, List<AbsGregorianMonthHolder>>(
                         new ArrayList<AbsGregorianMonthHolder>(),
@@ -76,5 +76,7 @@ public class LunarSolarSource {
                 }
             }
         }
+
+        return gregorianMonthHolderPair;
     }
 }

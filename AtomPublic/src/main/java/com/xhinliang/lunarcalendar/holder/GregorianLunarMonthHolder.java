@@ -22,4 +22,9 @@ public class GregorianLunarMonthHolder extends AbsGregorianMonthHolder {
     public String absGetMonth(Resources resources) {
         return lunarMonth;
     }
+
+    @Override
+    protected String absGetDateOfMonth(Resources resources, LunarCalendar calendar) {
+        return calendar.getLunarDay();
+    }
 }

@@ -47,8 +47,7 @@ public class WheelRecyclerView extends RecyclerView {
 
     private final int DEFAULT_DIVIDER_HEIGHT = Util.dp2px(1);
 
-    private final int DEFAULT_DIVIVER_COLOR = Color.parseColor("#E4F1FF");
-
+    private final int DEFAULT_DIVIDER_COLOR = Color.parseColor("#E4F1FF");
 
     private WheelAdapter mAdapter;
 
@@ -92,7 +91,7 @@ public class WheelRecyclerView extends RecyclerView {
         mOffset = ta.getInteger(R.styleable.WheelRecyclerView_wheelOffset, DEFAULT_OFFSET);
         mDividerWidth = ta.getDimension(R.styleable.WheelRecyclerView_dividerWidth, DEFAULT_DIVIDER_WIDTH);
         mDividerHeight = ta.getDimension(R.styleable.WheelRecyclerView_dividerHeight, DEFAULT_DIVIDER_HEIGHT);
-        mDividerColor = ta.getColor(R.styleable.WheelRecyclerView_dividerColor, DEFAULT_DIVIVER_COLOR);
+        mDividerColor = ta.getColor(R.styleable.WheelRecyclerView_dividerColor, DEFAULT_DIVIDER_COLOR);
 
         ta.recycle();
 
