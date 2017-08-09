@@ -30,7 +30,8 @@ public class ClientQmjmApplication extends MultiDexApplication {
                 .atom(this, false)
                 .fresco(this)
                 .leakCanary(this)
-                .uMeng(this, Configure.UMeng.APP_KEY);
+                .uMeng(this, Configure.UMeng.APP_KEY)
+                .calligraphy();
     }
 
     public static ClientQmjmApplication getContext() {

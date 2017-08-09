@@ -3,12 +3,9 @@ package com.tjyw.qmjm;
 import android.content.res.Resources;
 import android.support.multidex.MultiDexApplication;
 
-import com.drivemode.android.typeface.TypefaceHelper;
 import com.tjyw.atom.pub.ForegroundCallbacks;
 
 import java.lang.ref.WeakReference;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
  * Created by stephen on 1/6/16.
@@ -30,16 +27,8 @@ public class ClientQmjmApplication extends MultiDexApplication {
                 .fresco(this)
                 .leakCanary(this)
                 .crashReport(this)
-                .faceBookStetho(this);
-
-        TypefaceHelper.initialize(this);
-
-        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                .setFontAttrId(R.attr.fontPath)
-                .disableCustomViewInflation()
-                .disablePrivateFactoryInjection()
-                .build()
-        );
+                .faceBookStetho(this)
+                .calligraphy();
     }
 
     public static ClientQmjmApplication getContext() {

@@ -20,6 +20,8 @@ import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+
 /**
  * Created by stephen on 28/04/2017.
  */
@@ -179,6 +181,21 @@ public class ClientInitializer {
      */
     public ClientInitializer faceBookStetho(Context context) {
         Stetho.initializeWithDefaults(context);
+        return this;
+    }
+
+    /**
+     * 初始化字体工具
+     *
+     * @return
+     */
+    public ClientInitializer calligraphy() {
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setFontAttrId(R.attr.fontPath)
+                .disableCustomViewInflation()
+                .disablePrivateFactoryInjection()
+                .build()
+        );
         return this;
     }
 

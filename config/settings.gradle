@@ -63,7 +63,7 @@ ext {
             VER_SmoothRefreshLayout         : "1.3.4",
             VER_Stanley                     : "1.0.1",
             VER_BarLiberay                  : "2.2.7",
-            VER_TypefaceHelper              : "1.2.0@aar"
+            VER_Calligraphy                 : "2.3.0"
     ]
 
     supportDependencies = [
@@ -128,6 +128,6 @@ ext {
             smoothRefreshLayout             : "com.github.dkzwm:SmoothRefreshLayout:${libVersions.VER_SmoothRefreshLayout}",
             stanley                         : "com.brianjmelton:stanley:${libVersions.VER_Stanley}",
             barlibrary                      : "com.gyf.barlibrary:barlibrary:${libVersions.VER_BarLiberay}",
-            typefaceHelper                  : "com.drivemode:TypefaceHelper:${libVersions.VER_TypefaceHelper}",
+            calligraphy                     : "uk.co.chrisjenx:calligraphy:${libVersions.VER_Calligraphy}"
     ]
 }
