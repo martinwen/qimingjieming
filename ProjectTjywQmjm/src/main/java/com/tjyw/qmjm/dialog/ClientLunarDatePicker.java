@@ -11,25 +11,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 
+import com.crazypumpkin.versatilerecyclerview.library.WheelRecyclerView;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.inject.Injector;
-import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
-import com.xhinliang.lunarcalendar.LunarCalendar;
-import com.xhinliang.lunarcalendar.LunarSolarSource;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import antistatic.spinnerwheel.AbstractWheel;
-import antistatic.spinnerwheel.OnWheelScrollListener;
-import antistatic.spinnerwheel.WheelVerticalView;
-import antistatic.spinnerwheel.adapters.NumericWheelAdapter;
-import timber.log.Timber;
 
 /**
  * Created by stephen on 08/08/2017.
  */
-public class ClientLunarDatePicker extends DialogFragment implements OnWheelScrollListener {
+public class ClientLunarDatePicker extends DialogFragment implements WheelRecyclerView.OnSelectListener {
 
     public static ClientLunarDatePicker newInstance(FragmentManager manager) {
         ClientLunarDatePicker lunarDatePicker = new ClientLunarDatePicker();
@@ -39,20 +32,20 @@ public class ClientLunarDatePicker extends DialogFragment implements OnWheelScro
 
     protected View convertView;
 
-    @From(R.id.lunarPickerSwitchContainer)
-    protected WheelVerticalView lunarPickerSwitchContainer;
+    @From(R.id.gregorianSwitchContainer)
+    protected WheelRecyclerView gregorianSwitchContainer;
 
-    @From(R.id.lunarPickerYearContainer)
-    protected WheelVerticalView lunarPickerYearContainer;
+    @From(R.id.gregorianYearContainer)
+    protected WheelRecyclerView gregorianYearContainer;
 
-    @From(R.id.lunarPickerMonthContainer)
-    protected WheelVerticalView lunarPickerMonthContainer;
+    @From(R.id.gregorianMonthContainer)
+    protected WheelRecyclerView gregorianMonthContainer;
 
-    @From(R.id.lunarPickerDayContainer)
-    protected WheelVerticalView lunarPickerDayContainer;
+    @From(R.id.gregorianDayContainer)
+    protected WheelRecyclerView gregorianDayContainer;
 
-    @From(R.id.lunarPickerHourContainer)
-    protected WheelVerticalView lunarPickerHourContainer;
+    @From(R.id.gregorianHourContainer)
+    protected WheelRecyclerView gregorianHourContainer;
 
     @Nullable
     @Override
@@ -60,11 +53,10 @@ public class ClientLunarDatePicker extends DialogFragment implements OnWheelScro
         convertView = inflater.inflate(R.layout.atom_master_lunar_date_picker, container, true);
         Injector.inject(this, convertView);
 
-        lunarPickerSwitchContainer.addScrollingListener(this);
-        lunarPickerYearContainer.addScrollingListener(this); // 变年农历月份、日期可能改变
-        lunarPickerMonthContainer.addScrollingListener(this); // 变月时日期会变
-
-        lunarPickerYearContainer.setViewAdapter(new NumericWheelAdapter(ClientQmjmApplication.getContext(), 1900, 2099));
+        List<String> years = new ArrayList<String>();
+        years.add("公历");
+        years.add("农历");
+        gregorianSwitchContainer.setData(years);
 
         return convertView;
     }
@@ -78,24 +70,18 @@ public class ClientLunarDatePicker extends DialogFragment implements OnWheelScro
     }
 
     @Override
-    public void onScrollingStarted(AbstractWheel wheel) {
+    public void onSelect(WheelRecyclerView recyclerView, int position, String data) {
+        switch (recyclerView.getId()) {
+            case R.id.gregorianSwitchContainer:
+//                NumericWheelAdapter adapter = (NumericWheelAdapter) gregorianYearContainer.getViewAdapter();
+//                CharSequence year = adapter.getItemText(gregorianYearContainer.getCurrentItem());
+//
+//                LunarSolarSource.getInstance().set(Integer.parseInt(year.toString()));
+//
+//                Pair<List<AbsGregorianMonthHolder>, List<AbsGregorianMonthHolder>> pair = LunarSolarSource.getInstance().get(Integer.parseInt(year.toString()));
+//
+//                Timber.tag("ClientMasterNamingFragment").e("pair::%s", pair);
 
-    }
-
-    @Override
-    public void onScrollingFinished(AbstractWheel wheel) {
-        switch (wheel.getId()) {
-            case R.id.lunarPickerYearContainer:
-                NumericWheelAdapter adapter = (NumericWheelAdapter) lunarPickerYearContainer.getViewAdapter();
-                CharSequence year = adapter.getItemText(lunarPickerYearContainer.getCurrentItem());
-
-                LunarSolarSource.getInstance().set(ClientQmjmApplication.getContext(), Integer.parseInt(year.toString()));
-
-                List<List<LunarCalendar>> list = LunarSolarSource.getInstance().get(Integer.parseInt(year.toString()));
-
-                Timber.tag("ClientMasterNamingFragment").e("list::%s", list);
-
-                break ;
         }
     }
 }

@@ -10,74 +10,101 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="16dp">
 
-        <antistatic.spinnerwheel.WheelVerticalView
-            android:id="@+id/lunarPickerSwitchContainer"
-            android:layout_width="128dp"
-            android:layout_height="match_parent"
-            app:isAllVisible="true"
-            app:selectionDivider="@android:color/transparent"
-            app:selectionDividerActiveAlpha="255"
-            app:selectionDividerDimmedAlpha="255"
-            app:selectionDividerHeight="1px"
-            app:visibleItems="5" />
+        <com.crazypumpkin.versatilerecyclerview.library.WheelRecyclerView
+            android:id="@+id/gregorianSwitchContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:dividerColor="@color/atom_pub_resColorDivider"
+            app:dividerWidth="96dp"
+            app:selectTextColor="@color/atom_ewsh_textColorBlack"
+            app:unselectTextColor="@color/atom_ewsh_textColorGrey" />
 
-        <antistatic.spinnerwheel.WheelVerticalView
-            android:id="@+id/lunarPickerYearContainer"
-            android:layout_width="128dp"
-            android:layout_height="match_parent"
-            app:isAllVisible="true"
-            app:selectionDivider="@android:color/transparent"
-            app:selectionDividerActiveAlpha="255"
-            app:selectionDividerDimmedAlpha="255"
-            app:selectionDividerHeight="1px"
-            app:visibleItems="5" />
+        <android.support.v4.widget.Space
+            android:layout_width="8dp"
+            android:layout_height="wrap_content" />
 
-        <antistatic.spinnerwheel.WheelVerticalView
-            android:id="@+id/lunarPickerMonthContainer"
-            android:layout_width="128dp"
-            android:layout_height="match_parent"
-            app:isAllVisible="true"
-            app:selectionDivider="@android:color/transparent"
-            app:selectionDividerActiveAlpha="255"
-            app:selectionDividerDimmedAlpha="255"
-            app:selectionDividerHeight="1px"
-            app:visibleItems="5" />
+        <com.crazypumpkin.versatilerecyclerview.library.WheelRecyclerView
+            android:id="@+id/gregorianYearContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:dividerColor="@color/atom_pub_resColorDivider"
+            app:dividerWidth="96dp"
+            app:selectTextColor="@color/atom_ewsh_textColorBlack"
+            app:unselectTextColor="@color/atom_ewsh_textColorGrey" />
 
-        <antistatic.spinnerwheel.WheelVerticalView
-            android:id="@+id/lunarPickerDayContainer"
-            android:layout_width="128dp"
-            android:layout_height="match_parent"
-            app:isAllVisible="true"
-            app:selectionDivider="@android:color/transparent"
-            app:selectionDividerActiveAlpha="255"
-            app:selectionDividerDimmedAlpha="255"
-            app:selectionDividerHeight="1px"
-            app:visibleItems="5" />
+        <android.support.v4.widget.Space
+            android:layout_width="8dp"
+            android:layout_height="wrap_content" />
+
+        <com.crazypumpkin.versatilerecyclerview.library.WheelRecyclerView
+            android:id="@+id/gregorianMonthContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:dividerColor="@color/atom_pub_resColorDivider"
+            app:dividerWidth="96dp"
+            app:selectTextColor="@color/atom_ewsh_textColorBlack"
+            app:unselectTextColor="@color/atom_ewsh_textColorGrey" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="8dp"
+            android:layout_height="wrap_content" />
+
+        <com.crazypumpkin.versatilerecyclerview.library.WheelRecyclerView
+            android:id="@+id/gregorianDayContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:dividerColor="@color/atom_pub_resColorDivider"
+            app:dividerWidth="96dp"
+            app:selectTextColor="@color/atom_ewsh_textColorBlack"
+            app:unselectTextColor="@color/atom_ewsh_textColorGrey" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <antistatic.spinnerwheel.WheelVerticalView
-            android:id="@+id/lunarPickerHourContainer"
-            android:layout_width="match_parent"
-            android:layout_height="128dp"
-            app:isAllVisible="true"
-            app:selectionDivider="@android:color/transparent"
-            app:selectionDividerActiveAlpha="255"
-            app:selectionDividerDimmedAlpha="255"
-            app:selectionDividerHeight="1px"
-            app:visibleItems="5" />
+        <com.crazypumpkin.versatilerecyclerview.library.WheelRecyclerView
+            android:id="@+id/gregorianHourContainer"
+            android:layout_width="128dp"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:dividerColor="@color/atom_pub_resColorDivider"
+            app:dividerWidth="96dp"
+            app:selectTextColor="@color/atom_ewsh_textColorBlack"
+            app:unselectTextColor="@color/atom_ewsh_textColorGrey" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_weight="1.0"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -87,11 +114,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/atom_pub_selector_master_confirm"
                 android:gravity="center"
-                android:minWidth="96dp"
-                android:text="@string/atom_pub_resStringOK" />
+                android:text="@string/atom_pub_resStringCancel" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
                 style="@style/AtomStyle.WhiteHugeText"
@@ -99,10 +132,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/atom_pub_selector_master_confirm"
                 android:gravity="center"
-                android:minWidth="96dp"
                 android:text="@string/atom_pub_resStringOK" />
         </LinearLayout>
     </LinearLayout>

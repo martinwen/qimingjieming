@@ -22,4 +22,5 @@
 
     <string name="atom_pub_resStringChineseDoc">：</string>
     <string name="atom_pub_resStringOK">确定</string>
+    <string name="atom_pub_resStringCancel">取消</string>
 </resources>
