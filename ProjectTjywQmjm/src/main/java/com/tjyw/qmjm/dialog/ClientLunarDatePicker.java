@@ -131,6 +131,12 @@ public class ClientLunarDatePicker extends DialogFragment implements View.OnClic
         }
     }
 
+    /**
+     * 公历年滚动后回调，需要重新设置选中年份的月集合(当显示农历时，月份可能会变化，有可能多于12个月--出现闰月)
+     *
+     * @param solarYear                 选中公历年
+     * @param selectedMonthPosition     默认选中月份的下标
+     */
     protected void setGregorianDataWithSolarYear(int solarYear, int selectedMonthPosition) {
         Pair<List<GregorianMonth>, List<GregorianMonth>> gregorianMonthHolderPair = LunarSolarSource.getInstance().get(solarYear);
         if (null == gregorianMonthHolderPair) {
@@ -143,10 +149,16 @@ public class ClientLunarDatePicker extends DialogFragment implements View.OnClic
         }
     }
 
+    /**
+     * 重置月份滚轮的数据
+     *
+     * @param gregorianMonthList        选中公历年的月份集合
+     * @param position                  默认选中的下标
+     */
     protected void setGregorianMonthWithList(List<GregorianMonth> gregorianMonthList, int position) {
         List<String> solarMonth = new ArrayList<String>();
         int size = null == gregorianMonthList ? 0 : gregorianMonthList.size();
-        for (int i = 0; i < size; i ++) {
+        for (int i = 0; i < size; i ++) { // 遍历月份，获取月份显示方案(1月2月或正月二月)
             GregorianMonth gregorianMonth = gregorianMonthList.get(i);
             if (null != gregorianMonth) {
                 solarMonth.add(gregorianMonth.absGetMonth(ClientQmjmApplication.pGetResources()));
@@ -155,8 +167,16 @@ public class ClientLunarDatePicker extends DialogFragment implements View.OnClic
 
         gregorianMonthContainer.setData(solarMonth);
         gregorianMonthContainer.setSelect(position);
+
+        GregorianMonth gregorianMonth = gregorianMonthList.get(Math.min(position, gregorianMonthList.size() - 1));
+        setGregorianDayWithMonth(gregorianMonth);
     }
 
+    /**
+     * 重置日期滚轮的数据
+     *
+     * @param gregorianMonth        选中月
+     */
     protected void setGregorianDayWithMonth(GregorianMonth gregorianMonth) {
         if (null != gregorianMonth) {
             List<String> dateOfMonth = gregorianMonth.getDateOfMonth(ClientQmjmApplication.pGetResources());
@@ -164,6 +184,11 @@ public class ClientLunarDatePicker extends DialogFragment implements View.OnClic
         }
     }
 
+    /**
+     * 返回是否是公历年显示方式
+     *
+     * @return      true:公历 | false:农历 | default:公历
+     */
     protected boolean isGregorianSolar() {
         switch (gregorianSwitchContainer.getSelected()) {
             case 1:
