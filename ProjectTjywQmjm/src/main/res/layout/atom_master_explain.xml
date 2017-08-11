@@ -274,7 +274,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:background="@drawable/atom_pub_selector_master_confirm"
+        android:background="@drawable/atom_pub_selector_ink_text"
         android:gravity="center"
         android:minWidth="96dp"
         android:text="@string/atom_pub_resStringOK" />

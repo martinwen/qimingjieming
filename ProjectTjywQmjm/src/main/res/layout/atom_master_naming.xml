@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:orientation="vertical"
-    tools:ignore="MissingPrefix">
+    android:orientation="vertical">
 
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
@@ -31,8 +29,7 @@
                 android:src="@drawable/atom_pub_selector_master_gender" />
 
             <TextView
-                style="@style/AtomStyle.WhiteHugeText"
-                fontPath="@string/atom_pub_fontPath"
+                style="@style/AtomPubStyle.Ka.White"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:duplicateParentState="true"
@@ -58,8 +55,7 @@
                 android:src="@drawable/atom_pub_selector_master_gender" />
 
             <TextView
-                style="@style/AtomStyle.WhiteHugeText"
-                fontPath="@string/atom_pub_fontPath"
+                style="@style/AtomPubStyle.Ka.White"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:duplicateParentState="true"
@@ -76,10 +72,9 @@
         android:padding="16dp">
 
         <TextView
-            style="@style/AtomStyle.BlackSuperBigText"
+            style="@style/AtomPubStyle.Ka.Black"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            fontPath="@string/atom_pub_fontPath"
             android:layout_weight="1.0"
             android:gravity="center_vertical|right"
             android:text="@string/atom_pub_resStringSurname" />
@@ -111,8 +106,7 @@
         android:padding="16dp">
 
         <TextView
-            fontPath="@string/atom_pub_fontPath"
-            style="@style/AtomStyle.BlackSuperBigText"
+            style="@style/AtomPubStyle.Ka.Black"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
@@ -146,8 +140,7 @@
         android:padding="16dp">
 
         <TextView
-            style="@style/AtomStyle.BlackSuperBigText"
-            fontPath="@string/atom_pub_fontPath"
+            style="@style/AtomPubStyle.Ka.Black"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
@@ -176,15 +169,13 @@
     </LinearLayout>
 
     <TextView
-        fontPath="@string/atom_pub_fontPath"
         android:id="@+id/masterNamingConfirm"
-        style="@style/AtomStyle.WhiteHugeText"
+        style="@style/AtomPubStyle.Ka.White"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:background="@drawable/atom_pub_selector_master_confirm"
+        android:background="@drawable/atom_pub_selector_ink_text"
         android:gravity="center"
-        android:minWidth="96dp"
         android:text="@string/atom_pub_resStringOK" />
 </LinearLayout>

@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.activity.BaseActivity;
 import com.tjyw.qmjm.dialog.ClientLunarDatePicker;
+import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.xhinliang.lunarcalendar.LunarCalendar;
 
 import butterknife.BindView;
@@ -59,18 +61,20 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.masterNamingGenderMale:
-                v.setSelected(true);
-                masterNamingGenderFemale.setSelected(false);
-                break ;
-            case R.id.masterNamingGenderFemale:
-                v.setSelected(true);
-                masterNamingGenderMale.setSelected(false);
-                masterNamingDateOfBirth.setText("" + v.getId());
-                break ;
-            case R.id.masterNamingConfirm:
-                ClientLunarDatePicker.newInstance(getFragmentManager());
-        }
+        IClientActivityLaunchFactory.launchExplainMasterActivity((BaseActivity) getActivity());
+
+//        switch (v.getId()) {
+//            case R.id.masterNamingGenderMale:
+//                v.setSelected(true);
+//                masterNamingGenderFemale.setSelected(false);
+//                break ;
+//            case R.id.masterNamingGenderFemale:
+//                v.setSelected(true);
+//                masterNamingGenderMale.setSelected(false);
+//                masterNamingDateOfBirth.setText("" + v.getId());
+//                break ;
+//            case R.id.masterNamingConfirm:
+//                ClientLunarDatePicker.newInstance(getFragmentManager());
+//        }
     }
 }

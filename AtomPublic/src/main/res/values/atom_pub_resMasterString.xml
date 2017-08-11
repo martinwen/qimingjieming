@@ -23,4 +23,8 @@
     <string name="atom_pub_resStringChineseDoc">：</string>
     <string name="atom_pub_resStringOK">确定</string>
     <string name="atom_pub_resStringCancel">取消</string>
+
+    <string name="atom_pub_resStringExplainOverview">字义解释</string>
+    <string name="atom_pub_resStringExplainZodiac">生肖禁忌</string>
+    <string name="atom_pub_resStringExplainDestiny">三才五格</string>
 </resources>

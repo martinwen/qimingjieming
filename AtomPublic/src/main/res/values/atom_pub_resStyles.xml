@@ -8,4 +8,18 @@
         <item name="colorControlActivated">#FFBBBBBB</item>
     </style>
 
+    <style name="AtomPubStyle.Ka" parent="AtomStyle.BlackSuperBigText">
+        <item name="fontPath">@string/atom_pub_fontPath</item>
+    </style>
+
+    <style name="AtomPubStyle.Ka.Black" parent="AtomPubStyle.Ka">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/atom_pub_resTextColorBlack</item>
+    </style>
+
+    <style name="AtomPubStyle.Ka.White" parent="AtomPubStyle.Ka">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>

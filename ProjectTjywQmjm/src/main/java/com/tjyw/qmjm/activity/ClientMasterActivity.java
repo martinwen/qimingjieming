@@ -3,7 +3,6 @@ package com.tjyw.qmjm.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.util.Pair;
 
 import com.aspsine.fragmentnavigator.FragmentNavigator;
@@ -39,8 +38,8 @@ public class ClientMasterActivity extends BaseActivity {
         fragmentNavigator = new FragmentNavigator(getSupportFragmentManager(), ClientMasterAdapter.newInstance(this), R.id.masterFragmentContainer);
         fragmentNavigator.onCreate(savedInstanceState);
 
-        atomPubClientMasterNavigation.setAccentColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_ewsh_textColorBlack));
-        atomPubClientMasterNavigation.setInactiveColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_ewsh_textColorGrey));
+        atomPubClientMasterNavigation.setAccentColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorBlack));
+        atomPubClientMasterNavigation.setInactiveColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorGrey));
 
         int size = ClientMasterAdapter.MASTER_TAB_RESOURCE.size();
         for (int i = 0; i < size; i ++) {
