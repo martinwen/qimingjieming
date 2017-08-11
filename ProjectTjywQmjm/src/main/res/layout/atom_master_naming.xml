@@ -29,7 +29,7 @@
                 android:src="@drawable/atom_pub_selector_master_gender" />
 
             <TextView
-                style="@style/AtomPubStyle.Ka.White"
+                style="@style/AtomPubStyleKa.White"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:duplicateParentState="true"
@@ -55,7 +55,7 @@
                 android:src="@drawable/atom_pub_selector_master_gender" />
 
             <TextView
-                style="@style/AtomPubStyle.Ka.White"
+                style="@style/AtomPubStyleKa.White"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:duplicateParentState="true"
@@ -72,7 +72,7 @@
         android:padding="16dp">
 
         <TextView
-            style="@style/AtomPubStyle.Ka.Black"
+            style="@style/AtomPubStyleKa.Black"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
@@ -106,7 +106,7 @@
         android:padding="16dp">
 
         <TextView
-            style="@style/AtomPubStyle.Ka.Black"
+            style="@style/AtomPubStyleKa.Black"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
@@ -140,7 +140,7 @@
         android:padding="16dp">
 
         <TextView
-            style="@style/AtomPubStyle.Ka.Black"
+            style="@style/AtomPubStyleKa.Black"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
@@ -170,7 +170,7 @@
 
     <TextView
         android:id="@+id/masterNamingConfirm"
-        style="@style/AtomPubStyle.Ka.White"
+        style="@style/AtomPubStyleKa.White"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

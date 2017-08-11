@@ -59,7 +59,7 @@ public class AtomClientToolbarSupport implements IAtomPubToolBar, View.OnClickLi
         }
 
         if (hasBackBtn && null != atomPubToolBar) {
-//            atomPubToolBar.setNavigationIcon(R.drawable.ic_navi_back);
+            atomPubToolBar.setNavigationIcon(R.drawable.atom_pub_ic_backpress);
             atomPubToolBar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

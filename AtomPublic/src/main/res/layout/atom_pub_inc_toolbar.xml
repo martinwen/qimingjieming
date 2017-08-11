@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/atomPubToolBarCenterView"
-            style="@style/AtomStyle.WhiteBigText"
+            style="@style/AtomStyle.BlackBigText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -35,7 +35,7 @@
 
             <TextView
                 android:id="@+id/atomPubToolBarRightFirst"
-                style="@style/AtomStyle.WhiteSmallText"
+                style="@style/AtomStyle.BlackSmallText"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -59,7 +59,7 @@
 
                 <TextView
                     android:id="@+id/atomPubToolBarRightSecond"
-                    style="@style/AtomStyle.WhiteSmallText"
+                    style="@style/AtomStyle.BlackSmallText"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"

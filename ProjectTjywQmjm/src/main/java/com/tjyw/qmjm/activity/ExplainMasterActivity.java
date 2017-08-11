@@ -1,9 +1,9 @@
 package com.tjyw.qmjm.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
+import com.gyf.barlibrary.ImmersionBar;
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ExplainMasterAdapter;

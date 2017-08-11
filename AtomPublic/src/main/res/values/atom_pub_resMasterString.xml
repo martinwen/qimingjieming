@@ -24,6 +24,9 @@
     <string name="atom_pub_resStringOK">确定</string>
     <string name="atom_pub_resStringCancel">取消</string>
 
+    <string name="atom_pub_resStringExplainEvaluate">综合评价：</string>
+    <string name="atom_pub_resStringExplainGoodName">起吉祥好名</string>
+
     <string name="atom_pub_resStringExplainOverview">字义解释</string>
     <string name="atom_pub_resStringExplainZodiac">生肖禁忌</string>
     <string name="atom_pub_resStringExplainDestiny">三才五格</string>
