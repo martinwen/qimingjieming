@@ -8,12 +8,11 @@ import android.support.v4.util.Pair;
 import com.aspsine.fragmentnavigator.FragmentNavigator;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
-import com.gyf.barlibrary.ImmersionBar;
+import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 
-import butterknife.BindView;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -21,7 +20,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  */
 public class ClientMasterActivity extends BaseActivity {
 
-    @BindView(R.id.atomPubClientMasterNavigation)
+    @From(R.id.atomPubClientMasterNavigation)
     protected AHBottomNavigation atomPubClientMasterNavigation;
 
     protected FragmentNavigator fragmentNavigator;
@@ -29,9 +28,9 @@ public class ClientMasterActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.atom_client_master);
 
-        ImmersionBar.with(this)
+        setContentView(R.layout.atom_client_master);
+        immersionBarWith()
                 .statusBarDarkFont(true)
                 .init();
 

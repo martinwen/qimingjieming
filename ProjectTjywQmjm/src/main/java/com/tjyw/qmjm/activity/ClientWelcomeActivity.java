@@ -2,7 +2,6 @@ package com.tjyw.qmjm.activity;
 
 import android.os.Bundle;
 
-import com.gyf.barlibrary.ImmersionBar;
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
@@ -20,9 +19,9 @@ public class ClientWelcomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.atom_qmjm_client_welcome);
 
-        ImmersionBar.with(this)
+        setContentView(R.layout.atom_qmjm_client_welcome);
+        immersionBarWith()
                 .statusBarDarkFont(true)
                 .init();
 

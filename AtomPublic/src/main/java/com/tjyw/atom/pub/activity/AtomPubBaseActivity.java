@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.gyf.barlibrary.ImmersionBar;
 import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.pub.interfaces.IAtomPubFragment;
 import com.tjyw.atom.pub.interfaces.IAtomPubIntentExtra;
@@ -139,5 +140,9 @@ public abstract class AtomPubBaseActivity<P extends Presenter> extends NucleusAp
         if (null != imm) {
             imm.toggleSoftInput(0, InputMethodManager.HIDE_IMPLICIT_ONLY);
         }
+    }
+
+    protected ImmersionBar immersionBarWith() {
+        return ImmersionBar.with(this);
     }
 }

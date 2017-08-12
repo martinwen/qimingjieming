@@ -17,7 +17,7 @@
         android:orientation="horizontal">
 
         <FrameLayout
-            android:id="@+id/masterNamingGenderMale"
+            android:id="@+id/nGenderMale"
             android:layout_width="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
             android:layout_height="@dimen/atom_pubResDimenMasterSelectorBackgroundBound">
 
@@ -29,7 +29,7 @@
                 android:src="@drawable/atom_pub_selector_master_gender" />
 
             <TextView
-                style="@style/AtomPubStyleKa.White"
+                style="@style/AtomPubStyleKa.Black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:duplicateParentState="true"
@@ -39,11 +39,11 @@
         </FrameLayout>
 
         <android.support.v4.widget.Space
-            android:layout_width="48dp"
-            android:layout_height="1dp" />
+            android:layout_width="16dp"
+            android:layout_height="wrap_content" />
 
         <FrameLayout
-            android:id="@+id/masterNamingGenderFemale"
+            android:id="@+id/nGenderFemale"
             android:layout_width="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
             android:layout_height="@dimen/atom_pubResDimenMasterSelectorBackgroundBound">
 
@@ -55,12 +55,64 @@
                 android:src="@drawable/atom_pub_selector_master_gender" />
 
             <TextView
-                style="@style/AtomPubStyleKa.White"
+                style="@style/AtomPubStyleKa.Black"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:duplicateParentState="true"
                 android:gravity="center"
                 android:text="@string/atom_pub_resStringGenderFemale"
+                android:textColor="@color/atom_pub_black2white" />
+        </FrameLayout>
+
+        <android.support.v4.widget.Space
+            android:layout_width="16dp"
+            android:layout_height="wrap_content" />
+
+        <FrameLayout
+            android:id="@+id/nSingleName"
+            android:layout_width="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
+            android:layout_height="@dimen/atom_pubResDimenMasterSelectorBackgroundBound">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/atom_pub_selector_master_gender" />
+
+            <TextView
+                style="@style/AtomPubStyleKa.Black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:gravity="center"
+                android:text="@string/atom_pub_resStringSingleName"
+                android:textColor="@color/atom_pub_black2white" />
+        </FrameLayout>
+
+        <android.support.v4.widget.Space
+            android:layout_width="16dp"
+            android:layout_height="wrap_content" />
+
+        <FrameLayout
+            android:id="@+id/nDoubleName"
+            android:layout_width="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
+            android:layout_height="@dimen/atom_pubResDimenMasterSelectorBackgroundBound">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/atom_pub_selector_master_gender" />
+
+            <TextView
+                style="@style/AtomPubStyleKa.Black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:duplicateParentState="true"
+                android:gravity="center"
+                android:text="@string/atom_pub_resStringDoubleName"
                 android:textColor="@color/atom_pub_black2white" />
         </FrameLayout>
     </LinearLayout>
@@ -86,47 +138,13 @@
             android:text="@string/atom_pub_resStringChineseDoc" />
 
         <EditText
-            android:id="@+id/masterNamingSurname"
+            android:id="@+id/nSurname"
             style="@style/AtomStyle.BlackNormalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3.0"
             android:gravity="top"
             android:hint="@string/atom_pub_resStringSurnameHint"
-            android:maxLength="2"
-            android:maxLines="1"
-            android:textColorHint="@color/atom_pub_resColorInputHint"
-            android:theme="@style/AtomPubStyle.BottomLineEditText" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <TextView
-            style="@style/AtomPubStyleKa.Black"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:gravity="center_vertical|right"
-            android:text="@string/atom_pub_resStringGivenName" />
-
-        <TextView
-            style="@style/AtomStyle.BlackSmallText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/atom_pub_resStringChineseDoc" />
-
-        <EditText
-            android:id="@+id/masterNamingGivenName"
-            style="@style/AtomStyle.BlackNormalText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3.0"
-            android:gravity="top"
-            android:hint="@string/atom_pub_resStringGivenNameHint"
             android:maxLength="2"
             android:maxLines="1"
             android:textColorHint="@color/atom_pub_resColorInputHint"
@@ -154,7 +172,7 @@
             android:text="@string/atom_pub_resStringChineseDoc" />
 
         <EditText
-            android:id="@+id/masterNamingDateOfBirth"
+            android:id="@+id/nDateOfBirth"
             style="@style/AtomStyle.BlackNormalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -168,8 +186,78 @@
             android:theme="@style/AtomPubStyle.BottomLineEditText" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/AtomPubStyleKa.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center_vertical|right"
+            android:text="@string/atom_pub_resStringContain1st" />
+
+        <TextView
+            style="@style/AtomStyle.BlackSmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/atom_pub_resStringChineseDoc" />
+
+        <EditText
+            android:id="@+id/nContain1st"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.0"
+            android:gravity="top"
+            android:hint="@string/atom_pub_resStringContain1stHint"
+            android:inputType="none"
+            android:maxLength="2"
+            android:maxLines="1"
+            android:textColorHint="@color/atom_pub_resColorInputHint"
+            android:theme="@style/AtomPubStyle.BottomLineEditText" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/AtomPubStyleKa.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center_vertical|right"
+            android:text="@string/atom_pub_resStringContain2nd" />
+
+        <TextView
+            style="@style/AtomStyle.BlackSmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/atom_pub_resStringChineseDoc" />
+
+        <EditText
+            android:id="@+id/nContain2nd"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.0"
+            android:gravity="top"
+            android:hint="@string/atom_pub_resStringContain2ndHint"
+            android:inputType="none"
+            android:maxLength="2"
+            android:maxLines="1"
+            android:textColorHint="@color/atom_pub_resColorInputHint"
+            android:theme="@style/AtomPubStyle.BottomLineEditText" />
+    </LinearLayout>
+
     <TextView
-        android:id="@+id/masterNamingConfirm"
+        android:id="@id/atom_pub_resIdsOK"
         style="@style/AtomPubStyleKa.White"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -177,5 +265,6 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/atom_pub_selector_ink_text"
         android:gravity="center"
+        android:minWidth="96dp"
         android:text="@string/atom_pub_resStringOK" />
 </LinearLayout>
