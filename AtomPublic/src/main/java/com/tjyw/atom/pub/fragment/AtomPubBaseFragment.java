@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.pub.AtomPubDisplayConfigure;
 import com.tjyw.atom.pub.activity.AtomPubBaseActivity;
+import com.tjyw.atom.pub.inject.Injector;
 import com.tjyw.atom.pub.interfaces.IAtomPubFragment;
 import com.tjyw.atom.pub.interfaces.IAtomPubIntentExtra;
 import com.tjyw.atom.pub.interfaces.IAtomPubTools;
@@ -41,6 +42,7 @@ public class AtomPubBaseFragment<P extends Presenter> extends NucleusSupportFrag
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
+        Injector.inject(this, view);
     }
 
     @Override

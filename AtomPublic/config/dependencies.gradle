@@ -49,4 +49,9 @@ dependencies {
     compile libraryDependencies.stanley
     compile libraryDependencies.barlibrary
     compile libraryDependencies.calligraphy
+
+    compile mikePenzLibDependencies.fastAdapterCommons
+    compile(mikePenzLibDependencies.fastAdapter) {
+        transitive = true
+    }
 }

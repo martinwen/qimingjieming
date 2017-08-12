@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="atom_pub_resFasterAdapterType_ExplainHeaderWordItem" type="id"/>
+
+    <item name="atom_pub_resFasterAdapterType_ExplainOverviewItem" type="id"/>
+
+</resources>

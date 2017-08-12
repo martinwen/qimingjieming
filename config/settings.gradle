@@ -130,4 +130,15 @@ ext {
             barlibrary                      : "com.gyf.barlibrary:barlibrary:${libVersions.VER_BarLiberay}",
             calligraphy                     : "uk.co.chrisjenx:calligraphy:${libVersions.VER_Calligraphy}"
     ]
+
+    mikePenzLibVersions = [
+
+            VER_FastAdapter                 : "2.5.2@aar"
+    ]
+
+    mikePenzLibDependencies = [
+
+            fastAdapter                     : "com.mikepenz:fastadapter:${mikePenzLibVersions.VER_FastAdapter}",
+            fastAdapterCommons              : "com.mikepenz:fastadapter-commons:${mikePenzLibVersions.VER_FastAdapter}"
+    ]
 }
