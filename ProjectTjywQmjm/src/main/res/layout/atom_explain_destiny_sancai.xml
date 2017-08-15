@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:paddingTop="4dp"
+        android:textStyle="bold"
+        android:text="@string/atom_pub_resStringExplainSanCai" />
+
+    <TextView
+        android:id="@+id/bodyTitle"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:paddingTop="4dp"
+        tools:text="bodyTitle" />
+</LinearLayout>

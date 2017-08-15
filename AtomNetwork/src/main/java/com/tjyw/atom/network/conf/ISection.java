@@ -12,26 +12,12 @@ public interface ISection {
         int FEMALE = 2;
     }
 
-    interface STRING {
+    interface NAME_COUNT {
 
-        String N = "\n";
+        int SINGLE = 1;
+
+        int DOUBLE = 2;
     }
-
-    int[] AGE = {
-            18, 65
-    };
-
-    int[] Gender = {
-            GENDER.MALE, GENDER.FEMALE
-    };
-
-    int[] HEIGHT = {
-            150, 199
-    };
-
-    int[] WEIGHT = {
-            80, 199
-    };
 
     interface JSON {
 

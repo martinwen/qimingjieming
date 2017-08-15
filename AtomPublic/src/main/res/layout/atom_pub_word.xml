@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/bodyPinYin"
+        style="@style/AtomStyle.BlackSmallText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="8dp"
+        tools:text="bodyPinYin" />
+
+    <TextView
+        android:id="@+id/bodyWord"
+        style="@style/AtomStyle.BlackHugeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/atom_pub_ic_explain_tzg"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        tools:text="body" />
+
+    <TextView
+        android:id="@+id/bodyElement"
+        style="@style/AtomStyle.BlackSmallText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="8dp"
+        tools:text="bodyElement" />
+</merge>

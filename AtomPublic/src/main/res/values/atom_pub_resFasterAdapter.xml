@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- 解名详情页顶部名字 -->
     <item name="atom_pub_resFasterAdapterType_ExplainHeaderWordItem" type="id"/>
 
+    <!-- 解名详情页字义释解 -->
     <item name="atom_pub_resFasterAdapterType_ExplainOverviewItem" type="id"/>
+
+    <!-- 解名详情页三才五格(五格) -->
+    <item name="atom_pub_resFasterAdapterType_ExplainDestinyBodyItem" type="id"/>
+
+    <!-- 解名详情页三才五格(三才) -->
+    <item name="atom_pub_resFasterAdapterType_ExplainDestinyFooterItem" type="id"/>
+
+    <item name="atom_pub_resFasterAdapterType_NamingWordItem" type="id"/>
 
 </resources>

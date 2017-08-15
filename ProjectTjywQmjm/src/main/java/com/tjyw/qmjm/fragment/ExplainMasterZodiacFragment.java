@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.tjyw.atom.network.conf.IApiField;
+import com.tjyw.atom.network.model.Explain;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.qmjm.R;
 
@@ -14,8 +16,9 @@ import com.tjyw.qmjm.R;
  */
 public class ExplainMasterZodiacFragment extends AtomPubBaseFragment {
 
-    public static ExplainMasterZodiacFragment newInstance() {
+    public static ExplainMasterZodiacFragment newInstance(Explain explain) {
         Bundle bundle = new Bundle();
+        bundle.putSerializable(IApiField.E.explain, explain);
 
         ExplainMasterZodiacFragment fragment = new ExplainMasterZodiacFragment();
         fragment.setArguments(bundle);

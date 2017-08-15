@@ -12,15 +12,13 @@ import com.tjyw.atom.pub.inject.Injector;
 /**
  * Created by stephen on 11/08/2017.
  */
-public abstract class AtomPubFastAdapterAbstractItem<T, Item extends IItem & IClickable, VH extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder>
-        extends AbstractItem<Item, VH> {
+public abstract class AtomPubFastAdapterAbstractItem<T, Item extends IItem & IClickable, VH extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder> extends AbstractItem<Item, VH> {
 
     protected T src;
 
     public AtomPubFastAdapterAbstractItem(T src) {
         this.src = src;
     }
-
 
     public static abstract class AtomPubFastAdapterItemHolder<T> extends RecyclerView.ViewHolder {
 

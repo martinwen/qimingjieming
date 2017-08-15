@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
+import com.tjyw.atom.network.conf.IApiField;
+import com.tjyw.atom.network.model.Explain;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
@@ -23,8 +25,9 @@ import java.util.List;
  */
 public class ExplainMasterOverviewFragment extends AtomPubBaseFragment {
 
-    public static ExplainMasterOverviewFragment newInstance() {
+    public static ExplainMasterOverviewFragment newInstance(Explain explain) {
         Bundle bundle = new Bundle();
+        bundle.putSerializable(IApiField.E.explain, explain);
 
         ExplainMasterOverviewFragment fragment = new ExplainMasterOverviewFragment();
         fragment.setArguments(bundle);

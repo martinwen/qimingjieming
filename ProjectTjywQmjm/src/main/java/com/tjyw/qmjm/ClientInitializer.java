@@ -55,9 +55,9 @@ public class ClientInitializer {
     protected ClientInitializer atom(Context context, boolean enableStethoDebug) {
         Network.getInstance() // 网络层服务器地址、渠道设置等
                 .setNetworkApiServer(Configure.Network.SERVER)
-//                .setCid(FlavorsConfig.CLIENT_C_ID)
-//                .setCname(FlavorsConfig.CLIENT_C_NAME)
-//                .setPid(FlavorsConfig.CLIENT_P_ID)
+                .setCid(FlavorsConfig.CLIENT_C_ID)
+                .setCname(FlavorsConfig.CLIENT_C_NAME)
+                .setPid(FlavorsConfig.CLIENT_P_ID)
                 .setContext(context)
                 .setEnableStethoDebug(enableStethoDebug);
 

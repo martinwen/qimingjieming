@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <com.tjyw.qmjm.widget.NameWordContainer
+        android:id="@+id/nameWordSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="4dp" />
+
+    <com.tjyw.qmjm.widget.NameWordContainer
+        android:id="@+id/nameWordGivenNameFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="4dp" />
+
+    <com.tjyw.qmjm.widget.NameWordContainer
+        android:id="@+id/nameWordGivenNameSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="4dp" />
+
+    <android.support.v4.widget.Space
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0" />
+
+    <TextView
+        android:id="@+id/nameWordCollect"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:text="@string/atom_pub_resStringNamingCollect" />
+
+    <TextView
+        android:id="@+id/nameWordAnalysis"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="8dp"
+        android:text="@string/atom_pub_resStringNamingAnalysis" />
+</LinearLayout>

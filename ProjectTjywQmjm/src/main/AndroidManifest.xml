@@ -58,5 +58,9 @@
             android:name=".activity.ExplainMasterActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.NamingListActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 </manifest>

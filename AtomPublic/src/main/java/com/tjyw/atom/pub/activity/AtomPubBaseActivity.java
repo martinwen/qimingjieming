@@ -23,7 +23,13 @@ import nucleus.view.NucleusAppCompatActivity;
 /**
  * Created by stephen on 17-8-1.
  */
-public abstract class AtomPubBaseActivity<P extends Presenter> extends NucleusAppCompatActivity<P> implements IAtomPubIntentExtra, IAtomPubFragment, IAtomPubTools {
+public abstract class AtomPubBaseActivity<P extends Presenter> extends NucleusAppCompatActivity<P>
+        implements View.OnClickListener, IAtomPubIntentExtra, IAtomPubFragment, IAtomPubTools {
+
+    @Override
+    public void onClick(View v) {
+
+    }
 
     @Override
     public Intent pGetIntent() {

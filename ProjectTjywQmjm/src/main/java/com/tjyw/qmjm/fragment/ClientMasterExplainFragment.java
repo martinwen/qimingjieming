@@ -8,7 +8,11 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.Pattern;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
+import com.tjyw.atom.pub.interfaces.AtomPubValidationListener;
+import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.activity.BaseActivity;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
@@ -26,9 +30,11 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment {
     @BindView(R.id.nGenderFemale)
     protected ViewGroup nGenderFemale;
 
+    @Pattern(regex = "^[\\u4e00-\\u9fa5]{1,2}$")
     @BindView(R.id.nSurname)
     protected EditText nSurname;
 
+    @Pattern(regex = "^[\\u4e00-\\u9fa5]{1,2}$")
     @BindView(R.id.nGivenName)
     protected EditText nGivenName;
 
@@ -37,6 +43,8 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment {
 
     @BindView(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
+
+    protected Validator validator;
 
     @Nullable
     @Override
@@ -54,6 +62,17 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment {
         atom_pub_resIdsOK.setOnClickListener(this);
 
         nDateOfBirth.setKeyListener(null);
+
+        validator = new Validator(this);
+        validator.setValidationListener(new AtomPubValidationListener(ClientQmjmApplication.getContext()) {
+
+            @Override
+            public void onValidationSucceeded() {
+                IClientActivityLaunchFactory.launchExplainMasterActivity(
+                        (BaseActivity) getActivity(), nSurname.getText().toString(), nGivenName.getText().toString()
+                );
+            }
+        });
     }
 
     @Override
@@ -69,7 +88,7 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment {
                 nDateOfBirth.setText("" + v.getId());
                 break ;
             case R.id.atom_pub_resIdsOK:
-                IClientActivityLaunchFactory.launchExplainMasterActivity((BaseActivity) getActivity());
+                validator.validate();
 //                ClientLunarDatePicker.newInstance(getFragmentManager());
         }
     }

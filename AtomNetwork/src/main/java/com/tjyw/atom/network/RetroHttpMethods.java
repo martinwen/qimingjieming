@@ -4,6 +4,7 @@ import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tjyw.atom.network.interceptor.RetroRequestInterceptor;
+import com.tjyw.atom.network.services.HttpQmServices;
 
 import java.util.concurrent.TimeUnit;
 
@@ -34,6 +35,8 @@ public class RetroHttpMethods {
 
     protected Retrofit retrofit;
 
+    protected HttpQmServices httpQmServices;
+
     public RetroHttpMethods() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         if (Network.getInstance().isEnableStethoDebug()) {
@@ -61,6 +64,10 @@ public class RetroHttpMethods {
     }
 
     protected void createApiService(Retrofit retrofit) {
+        httpQmServices = retrofit.create(HttpQmServices.class);
+    }
 
+    public static HttpQmServices NAMING() {
+        return getInstance().httpQmServices;
     }
 }

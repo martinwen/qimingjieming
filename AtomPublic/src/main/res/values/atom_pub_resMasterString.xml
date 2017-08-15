@@ -15,14 +15,14 @@
     <string name="atom_pub_resStringGivenNameHint">您的名字（必须是汉字）</string>
     <string name="atom_pub_resStringDateOfBirth">出生时间</string>
     <string name="atom_pub_resStringDateOfBirthHint">选择您的出生时间</string>
-    <string name="atom_pub_resStringContain1st">指定字一</string>
-    <string name="atom_pub_resStringContain1stHint">选填指定名字第一个字</string>
-    <string name="atom_pub_resStringContain2nd">指定字二</string>
-    <string name="atom_pub_resStringContain2ndHint">选填指定名字第一个字</string>
 
     <string name="atom_pub_resStringChineseDoc">：</string>
     <string name="atom_pub_resStringOK">确定</string>
     <string name="atom_pub_resStringCancel">取消</string>
+
+    <string name="atom_pub_resStringNamingList">名字列表</string>
+    <string name="atom_pub_resStringNamingCollect">收藏</string>
+    <string name="atom_pub_resStringNamingAnalysis">解析</string>
 
     <string name="atom_pub_resStringExplainEvaluate">综合评价：</string>
     <string name="atom_pub_resStringExplainGoodName">起吉祥好名</string>
@@ -30,4 +30,12 @@
     <string name="atom_pub_resStringExplainOverview">字义解释</string>
     <string name="atom_pub_resStringExplainZodiac">生肖禁忌</string>
     <string name="atom_pub_resStringExplainDestiny">三才五格</string>
+    <string name="atom_pub_resStringExplainSanCai">三才</string>
+    <string name="atom_pub_resStringExplainSanCaiJiXiong">吉凶</string>
+    <string name="atom_pub_resStringExplainSanCaiZongLun">总论</string>
+    <string name="atom_pub_resStringExplainSanCaiJiChuYun">基础运</string>
+    <string name="atom_pub_resStringExplainSanCaiChengGongYun">成功运</string>
+    <string name="atom_pub_resStringExplainSanCaiReJiYun">人际运</string>
+    <string name="atom_pub_resStringExplainSanCaiXingGe">性格</string>
+    <string name="atom_pub_resStringExplainSanCaiShiYi">释义</string>
 </resources>

@@ -139,6 +139,7 @@ ext {
     mikePenzLibDependencies = [
 
             fastAdapter                     : "com.mikepenz:fastadapter:${mikePenzLibVersions.VER_FastAdapter}",
-            fastAdapterCommons              : "com.mikepenz:fastadapter-commons:${mikePenzLibVersions.VER_FastAdapter}"
+            fastAdapterCommons              : "com.mikepenz:fastadapter-commons:${mikePenzLibVersions.VER_FastAdapter}",
+            fastAdapterExtensions           : "com.mikepenz:fastadapter-extensions:${mikePenzLibVersions.VER_FastAdapter}"
     ]
 }

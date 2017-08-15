@@ -51,6 +51,7 @@ dependencies {
     compile libraryDependencies.calligraphy
 
     compile mikePenzLibDependencies.fastAdapterCommons
+    compile mikePenzLibDependencies.fastAdapterExtensions
     compile(mikePenzLibDependencies.fastAdapter) {
         transitive = true
     }

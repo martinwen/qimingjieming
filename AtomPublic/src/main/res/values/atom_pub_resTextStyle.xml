@@ -9,6 +9,8 @@
     <color name="atom_pub_resTextColorGrey">#FF848484</color>
 
     <color name="atom_pub_resTextColorDeepBlue">#FF0069CA</color>
+
+    <color name="atom_pub_resTextColorRed">#FFFF0000</color>
     
     <style name="AtomStyle" />
 
@@ -201,5 +203,55 @@
     <style name="AtomStyle.GreyContentTitleText">
         <item name="android:textSize">18dp</item>
         <item name="android:textColor">@color/atom_pub_resTextColorGrey</item>
+    </style>
+
+    <style name="AtomStyle.RedTinyText">
+        <item name="android:textSize">10dp</item>
+        <item name="android:textColor">@color/atom_pub_resTextColorRed</item>
+    </style>
+
+    <style name="AtomStyle.RedSmallText">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/atom_pub_resTextColorRed</item>
+    </style>
+
+    <style name="AtomStyle.RedNormalText">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/atom_pub_resTextColorRed</item>
+    </style>
+
+    <style name="AtomStyle.RedBigText">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@color/atom_pub_resTextColorRed</item>
+    </style>
+
+    <style name="AtomStyle.RedSuperBigText">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/atom_pub_resTextColorRed</item>
+    </style>
+
+    <style name="AtomStyle.RedHugeText">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/atom_pub_resTextColorRed</item>
+    </style>
+
+    <style name="AtomStyle.RedSuperHugeText">
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">@color/atom_pub_resTextColorRed</item>
+    </style>
+
+    <style name="AtomStyle.RedSuperHuge1Text">
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">@color/atom_pub_resTextColorRed</item>
+    </style>
+
+    <style name="AtomStyle.RedSuperLargeHugeText">
+        <item name="android:textSize">40dp</item>
+        <item name="android:textColor">@color/atom_pub_resTextColorRed</item>
+    </style>
+
+    <style name="AtomStyle.RedContentTitleText">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/atom_pub_resTextColorRed</item>
     </style>
 </resources>

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
+import com.tjyw.atom.network.model.Explain;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.qmjm.ClientQmjmApplication;
@@ -14,10 +15,10 @@ import java.util.List;
 /**
  * Created by stephen on 11/08/2017.
  */
-public class ExplainHeaderWordItem extends AtomPubFastAdapterAbstractItem<String, ExplainHeaderWordItem, ExplainHeaderWordItem.HeaderWordHolder> {
+public class ExplainHeaderWordItem extends AtomPubFastAdapterAbstractItem<Explain.Word, ExplainHeaderWordItem, ExplainHeaderWordItem.HeaderWordHolder> {
 
-    public ExplainHeaderWordItem(String s) {
-        super(s);
+    public ExplainHeaderWordItem(Explain.Word src) {
+        super(src);
     }
 
     @Override
@@ -41,7 +42,7 @@ public class ExplainHeaderWordItem extends AtomPubFastAdapterAbstractItem<String
         holder.onBindView(ClientQmjmApplication.getContext(), src);
     }
 
-    static class HeaderWordHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<String> {
+    static class HeaderWordHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<Explain.Word> {
 
         @From(R.id.bodyPinYin)
         protected TextView bodyPinYin;
@@ -57,10 +58,10 @@ public class ExplainHeaderWordItem extends AtomPubFastAdapterAbstractItem<String
         }
 
         @Override
-        public void onBindView(Context context, String s) {
-            bodyPinYin.setText(s);
-            bodyWord.setText(s);
-            bodyElement.setText(s);
+        public void onBindView(Context context, Explain.Word word) {
+            bodyPinYin.setText(word.jiantipinyin);
+            bodyWord.setText(word.word);
+            bodyElement.setText(word.wuxing);
         }
     }
 }

@@ -9,7 +9,7 @@ public interface Configure {
 
         String HOST = "api.erwanshenghuo.com";
 
-        String SERVER = String.format("http://%s/friend/", HOST);
+        String SERVER = String.format("http://%s/qm/", HOST);
     }
 
     interface MI_PUSH {
