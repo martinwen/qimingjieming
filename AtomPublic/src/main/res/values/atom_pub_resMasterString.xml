@@ -24,9 +24,9 @@
     <string name="atom_pub_resStringNamingCollect">收藏</string>
     <string name="atom_pub_resStringNamingAnalysis">解析</string>
 
+    <string name="atom_pub_resStringExplainWordElement">[ %s ]</string>
     <string name="atom_pub_resStringExplainEvaluate">综合评价：</string>
     <string name="atom_pub_resStringExplainGoodName">起吉祥好名</string>
-
     <string name="atom_pub_resStringExplainWord">%s:</string>
     <string name="atom_pub_resStringExplainPinYin">拼音[%s]</string>
     <string name="atom_pub_resStringExplainWuXing">五行:</string>

@@ -3,27 +3,29 @@ package com.tjyw.qmjm.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
+import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostExplainListener;
+import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.pub.inject.From;
+import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ExplainMasterAdapter;
-import com.tjyw.qmjm.item.ExplainHeaderWordItem;
+import com.tjyw.qmjm.holder.HeaderWordHolder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import nucleus.factory.RequiresPresenter;
+import rx.Observable;
+import rx.functions.Action1;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -33,7 +35,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<ExplainMasterActivity>> implements OnApiPostErrorListener, OnApiPostExplainListener {
 
     @From(R.id.explainNameContainer)
-    protected RecyclerView explainNameContainer;
+    protected ViewGroup explainNameContainer;
 
     @From(R.id.explainOverview)
     protected TextView explainOverview;
@@ -48,8 +50,6 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     protected ViewPager explainMasterContainer;
 
     protected ExplainMasterAdapter explainMasterAdapter;
-
-    protected FastItemAdapter<ExplainHeaderWordItem> explainHeaderWordAdapter;
 
     protected String postSurname;
 
@@ -72,9 +72,6 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
         explainOverview.setOnClickListener(this);
         explainZodiac.setOnClickListener(this);
         explainDestiny.setOnClickListener(this);
-
-        explainNameContainer.setAdapter(explainHeaderWordAdapter = new FastItemAdapter<ExplainHeaderWordItem>());
-        explainNameContainer.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
 
         getPresenter().postExplain(postSurname, postName);
     }
@@ -108,18 +105,29 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
 
     @Override
     public void postOnExplainSuccess(Explain explain) {
-        List<ExplainHeaderWordItem> itemList = new ArrayList<ExplainHeaderWordItem>();
-        List<Explain.Word> wordsList = explain.wordsList;
-        int size = wordsList.size();
-        for (int i = 0; i < size; i ++) {
-            itemList.add(new ExplainHeaderWordItem(wordsList.get(i)));
-        }
-
-        explainHeaderWordAdapter.set(itemList);
-        explainHeaderWordAdapter.notifyAdapterItemChanged(0);
-
         explainMasterContainer.setAdapter(
                 explainMasterAdapter = ExplainMasterAdapter.newInstance(getSupportFragmentManager(), explain)
         );
+
+        explainNameContainer.removeAllViews();
+        if (!ArrayUtil.isEmpty(explain.wordsList)) {
+            Observable.from(explain.wordsList)
+                    .take(3)
+                    .compose(RxSchedulersHelper.<Explain.Word>io_main())
+                    .subscribe(new Action1<Explain.Word>() {
+                        @Override
+                        public void call(Explain.Word word) {
+                            explainNameContainer.addView(
+                                    HeaderWordHolder.newInstance(ClientQmjmApplication.getContext(), word),
+                                    explainNameContainer.getChildCount()
+                            );
+                        }
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            throwable.printStackTrace();
+                        }
+                    });
+        }
     }
 }

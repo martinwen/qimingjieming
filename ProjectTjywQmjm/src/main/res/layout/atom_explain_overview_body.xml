@@ -38,6 +38,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:paddingLeft="4dp"
+            android:paddingRight="4dp"
             android:text="@string/atom_pub_resStringExplainWuXing" />
 
         <TextView

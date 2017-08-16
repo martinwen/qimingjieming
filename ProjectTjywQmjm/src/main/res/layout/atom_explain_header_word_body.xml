@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center" android:padding="16dp"
-    android:orientation="vertical">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp">
 
     <TextView
         android:id="@+id/bodyPinYin"
-        style="@style/AtomStyle.BlackSmallText"
+        style="@style/AtomStyle.BlackNormalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
@@ -25,12 +27,14 @@
         android:background="@drawable/atom_pub_ic_explain_tzg"
         android:ellipsize="end"
         android:gravity="center"
+        android:maxLength="1"
         android:maxLines="1"
+        android:textStyle="bold"
         tools:text="body" />
 
     <TextView
         android:id="@+id/bodyElement"
-        style="@style/AtomStyle.BlackSmallText"
+        style="@style/AtomStyle.RedNormalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
