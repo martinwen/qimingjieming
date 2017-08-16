@@ -16,6 +16,7 @@ import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.item.ExplainOverviewItem;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,15 +48,26 @@ public class ExplainMasterOverviewFragment extends AtomPubBaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        List<ExplainOverviewItem> itemList = new ArrayList<ExplainOverviewItem>();
-        itemList.add(new ExplainOverviewItem("郭"));
-        itemList.add(new ExplainOverviewItem("祎"));
-        itemList.add(new ExplainOverviewItem("赫"));
+        Explain explain = (Explain) pGetSerializableExtra(IApiField.E.explain);
+        if (null == explain) {
+            return ;
+        }
 
-        FastItemAdapter<ExplainOverviewItem> adapter = new FastItemAdapter<>();
-        adapter.set(itemList);
+        List<ExplainOverviewItem> itemList = new ArrayList<ExplainOverviewItem>();
+        for (int i = 0; i < explain.wordsList.size(); i ++) {
+            itemList.add(new ExplainOverviewItem(explain.wordsList.get(i)));
+        }
+
+        FastItemAdapter<ExplainOverviewItem> itemAdapter = new FastItemAdapter<ExplainOverviewItem>();
+        itemAdapter.set(itemList);
 
         explainOverviewContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
-        explainOverviewContainer.setAdapter(adapter);
+        explainOverviewContainer.setAdapter(itemAdapter);
+        explainOverviewContainer.addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
+                        .color(R.color.atom_pub_resColorDivider)
+                        .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDividerSize)
+                        .marginResId(R.dimen.atom_pubResDimenRecyclerViewDivider16dp, R.dimen.atom_pubResDimenRecyclerViewDivider16dp)
+                        .build());
     }
 }

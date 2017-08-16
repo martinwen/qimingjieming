@@ -1,10 +1,13 @@
 package com.tjyw.qmjm.item;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
 
+import com.tjyw.atom.network.model.Explain;
 import com.tjyw.atom.pub.inject.From;
+import com.tjyw.atom.pub.interfaces.IAtomPubElements;
 import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
@@ -14,10 +17,10 @@ import java.util.List;
 /**
  * Created by stephen on 11/08/2017.
  */
-public class ExplainOverviewItem extends AtomPubFastAdapterAbstractItem<String, ExplainOverviewItem, ExplainOverviewItem.OverviewHolder> {
+public class ExplainOverviewItem extends AtomPubFastAdapterAbstractItem<Explain.Word, ExplainOverviewItem, ExplainOverviewItem.OverviewHolder> {
 
-    public ExplainOverviewItem(String s) {
-        super(s);
+    public ExplainOverviewItem(Explain.Word src) {
+        super(src);
     }
 
     @Override
@@ -41,18 +44,50 @@ public class ExplainOverviewItem extends AtomPubFastAdapterAbstractItem<String, 
         holder.onBindView(ClientQmjmApplication.getContext(), src);
     }
 
-    public static class OverviewHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<String> {
+    public static class OverviewHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<Explain.Word> {
 
-        @From(R.id.bodyTitle)
-        protected TextView bodyTitle;
+        @From(R.id.bodyWord)
+        protected TextView bodyWord;
+
+        @From(R.id.bodyPinYin)
+        protected TextView bodyPinYin;
+
+        @From(R.id.bodyWuXing)
+        protected TextView bodyWuXing;
+
+        @From(R.id.bodyContent)
+        protected TextView bodyContent;
 
         public OverviewHolder(View itemView) {
             super(itemView);
         }
 
         @Override
-        public void onBindView(Context context, String s) {
-            bodyTitle.setText(s);
+        public void onBindView(Context context, Explain.Word word) {
+            bodyWord.setText(context.getString(R.string.atom_pub_resStringExplainWord, word.word));
+            bodyPinYin.setText(context.getString(R.string.atom_pub_resStringExplainPinYin, word.jiantipinyin));
+            bodyWuXing.setText(word.shuxing);
+            bodyContent.setText(word.xingxijieshi.trim());
+
+            switch (word.shuxing) {
+                case IAtomPubElements.METAL:
+                    bodyWuXing.setBackgroundResource(IAtomPubElements.Reference.METAL.second);
+                    break ;
+                case IAtomPubElements.WOOD:
+                    bodyWuXing.setBackgroundResource(IAtomPubElements.Reference.WOOD.second);
+                    break ;
+                case IAtomPubElements.WATER:
+                    bodyWuXing.setBackgroundResource(IAtomPubElements.Reference.WATER.second);
+                    break ;
+                case IAtomPubElements.FIRE:
+                    bodyWuXing.setBackgroundResource(IAtomPubElements.Reference.FIRE.second);
+                    break ;
+                case IAtomPubElements.EARTH:
+                    bodyWuXing.setBackgroundResource(IAtomPubElements.Reference.EARTH.second);
+                    break ;
+                default:
+                    bodyWuXing.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent));
+            }
         }
     }
 }

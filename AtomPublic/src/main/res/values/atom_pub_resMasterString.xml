@@ -27,6 +27,11 @@
     <string name="atom_pub_resStringExplainEvaluate">综合评价：</string>
     <string name="atom_pub_resStringExplainGoodName">起吉祥好名</string>
 
+    <string name="atom_pub_resStringExplainWord">%s:</string>
+    <string name="atom_pub_resStringExplainPinYin">拼音[%s]</string>
+    <string name="atom_pub_resStringExplainWuXing">五行:</string>
+    <string name="atom_pub_resStringExplainChinese">汉字解释</string>
+
     <string name="atom_pub_resStringExplainOverview">字义解释</string>
     <string name="atom_pub_resStringExplainZodiac">生肖禁忌</string>
     <string name="atom_pub_resStringExplainDestiny">三才五格</string>

@@ -29,17 +29,19 @@ public class Explain implements RetroResultItem {
 
         public String wuxing;
 
-        public String jiantipinyin;
-
         public int jiantibihua;
+
+        public String jiantipinyin;
 
         public String fanti;
 
         public String fantibihua;
 
-        public int tiange;
+        public String shuxing;
 
-        public int renge;
+        public String jibenjieshi; // 基本解释
+
+        public String xingxijieshi; // 详细解释
     }
 
     public static class NameScore implements RetroResultItem {

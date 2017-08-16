@@ -3,4 +3,10 @@
 
     <dimen name="atom_pubResDimenMasterSelectorBackgroundBound">56dp</dimen>
 
+    <dimen name="atom_pubResDimenRecyclerViewDividerSize">1px</dimen>
+
+    <dimen name="atom_pubResDimenRecyclerViewDivider8dp">8dp</dimen>
+
+    <dimen name="atom_pubResDimenRecyclerViewDivider16dp">16dp</dimen>
+
 </resources>
