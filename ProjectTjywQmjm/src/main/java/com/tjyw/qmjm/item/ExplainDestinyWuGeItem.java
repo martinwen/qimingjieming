@@ -47,6 +47,9 @@ public class ExplainDestinyWuGeItem extends AtomPubFastAdapterAbstractItem<Expla
         @From(R.id.bodyTitle)
         protected TextView bodyTitle;
 
+        @From(R.id.bodyCount)
+        protected TextView bodyCount;
+
         @From(R.id.bodySubTitle)
         protected TextView bodySubTitle;
 
