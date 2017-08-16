@@ -2,6 +2,7 @@ package com.tjyw.qmjm.activity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.View;
@@ -20,8 +21,6 @@ import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ExplainMasterAdapter;
 import com.tjyw.qmjm.holder.HeaderWordHolder;
-
-import java.util.List;
 
 import nucleus.factory.RequiresPresenter;
 import rx.Observable;
@@ -69,6 +68,7 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
             tSetToolBar(getString(R.string.atom_pub_resStringMasterTabExplain));
         }
 
+        explainOverview.setSelected(true);
         explainOverview.setOnClickListener(this);
         explainZodiac.setOnClickListener(this);
         explainDestiny.setOnClickListener(this);
@@ -85,12 +85,15 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.explainOverview:
+                setSelectedTab(v);
                 explainMasterAdapter.showOverviewFragment(explainMasterContainer);
                 break ;
             case R.id.explainZodiac:
+                setSelectedTab(v);
                 explainMasterAdapter.showZodiacFragment(explainMasterContainer);
                 break ;
             case R.id.explainDestiny:
+                setSelectedTab(v);
                 explainMasterAdapter.showDestinyFragment(explainMasterContainer);
                 break ;
             default:
@@ -128,6 +131,27 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
                             throwable.printStackTrace();
                         }
                     });
+        }
+    }
+
+    protected void setSelectedTab(View view) {
+        if (! view.isSelected()) {
+            view.setSelected(true);
+            view.setBackgroundResource(R.drawable.atom_pub_selector_ink_text);
+
+            switch (view.getId()) {
+                case R.id.explainOverview:
+                    explainZodiac.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
+                    explainDestiny.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
+                    break ;
+                case R.id.explainZodiac:
+                    explainOverview.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
+                    explainDestiny.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
+                    break ;
+                case R.id.explainDestiny:
+                    explainOverview.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
+                    explainZodiac.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
+            }
         }
     }
 }
