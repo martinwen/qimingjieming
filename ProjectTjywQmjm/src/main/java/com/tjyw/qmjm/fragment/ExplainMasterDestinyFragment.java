@@ -18,6 +18,7 @@ import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.item.ExplainDestinyWuGeItem;
 import com.tjyw.qmjm.item.ExplainDestinySanCaiItem;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +68,13 @@ public class ExplainMasterDestinyFragment extends AtomPubBaseFragment {
         explainDestinyAdapter = new HeaderAdapter<ExplainDestinySanCaiItem>();
         explainDestinyContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
         explainDestinyContainer.setAdapter(explainDestinyAdapter.wrap(itemAdapter));
+        explainDestinyContainer.addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
+                        .color(R.color.atom_pub_resColorDivider)
+                        .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDividerSize)
+                        .marginResId(R.dimen.atom_pubResDimenRecyclerViewDivider16dp, R.dimen.atom_pubResDimenRecyclerViewDivider16dp)
+                        .build());
+
         explainDestinyAdapter.add(new ExplainDestinySanCaiItem(explain.sancai));
     }
 }

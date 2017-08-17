@@ -21,6 +21,7 @@ import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ExplainMasterAdapter;
+import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.tjyw.qmjm.holder.HeaderWordHolder;
 
 import nucleus.factory.RequiresPresenter;
@@ -42,6 +43,9 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
 
     @From(R.id.explainEvaluateDesc)
     protected TextView explainEvaluateDesc;
+
+    @From(R.id.explainNaming)
+    protected TextView explainNaming;
 
     @From(R.id.explainOverview)
     protected TextView explainOverview;
@@ -79,6 +83,7 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
         explainOverview.setOnClickListener(this);
         explainZodiac.setOnClickListener(this);
         explainDestiny.setOnClickListener(this);
+        explainNaming.setOnClickListener(this);
 
         getPresenter().postExplain(postSurname, postName);
     }
@@ -91,6 +96,9 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.explainNaming:
+                IClientActivityLaunchFactory.launchClientMasterActivity(this, true);
+                break ;
             case R.id.explainOverview:
                 setSelectedTab(v);
                 explainMasterAdapter.showOverviewFragment(explainMasterContainer);

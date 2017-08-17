@@ -15,8 +15,11 @@ import java.util.List;
  */
 public class IClientActivityLaunchFactory {
 
-    public static void launchClientMasterActivity(BaseActivity context) {
+    public static void launchClientMasterActivity(BaseActivity context, boolean clear) {
         Intent intent = new Intent(context, ClientMasterActivity.class);
+        if (clear) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }
 
         context.startActivity(intent);
     }

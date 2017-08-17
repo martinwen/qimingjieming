@@ -30,7 +30,7 @@ public class ClientWelcomeActivity extends BaseActivity {
                 .subscribe(new Action1<Long>() {
                     @Override
                     public void call(Long aLong) {
-                        IClientActivityLaunchFactory.launchClientMasterActivity(ClientWelcomeActivity.this);
+                        IClientActivityLaunchFactory.launchClientMasterActivity(ClientWelcomeActivity.this, false);
                     }
                 }, new Action1<Throwable>() {
                     @Override
