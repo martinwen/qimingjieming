@@ -16,7 +16,7 @@
     <string name="atom_pub_resStringDateOfBirth">出生时间</string>
     <string name="atom_pub_resStringDateOfBirthHint">选择您的出生时间</string>
 
-    <string name="atom_pub_resStringChineseDoc">：</string>
+    <string name="atom_pub_resStringChineseDoc">:</string>
     <string name="atom_pub_resStringOK">确定</string>
     <string name="atom_pub_resStringCancel">取消</string>
 
@@ -25,7 +25,7 @@
     <string name="atom_pub_resStringNamingAnalysis">解析</string>
 
     <string name="atom_pub_resStringExplainWordElement">[ %s ]</string>
-    <string name="atom_pub_resStringExplainEvaluate">综合评价：</string>
+    <string name="atom_pub_resStringExplainEvaluate">综合评价: %d</string>
     <string name="atom_pub_resStringExplainGoodName">起吉祥好名</string>
     <string name="atom_pub_resStringExplainWord">%s:</string>
     <string name="atom_pub_resStringExplainPinYin">拼音[%s]</string>

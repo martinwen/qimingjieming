@@ -13,16 +13,17 @@
         android:ellipsize="end"
         android:gravity="center_vertical"
         android:paddingTop="4dp"
-        android:textStyle="bold"
-        android:text="@string/atom_pub_resStringExplainSanCai" />
+        android:text="@string/atom_pub_resStringExplainSanCai"
+        android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/bodyTitle"
+        android:id="@+id/bodyContent"
         style="@style/AtomStyle.BlackNormalText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:gravity="center_vertical"
+        android:lineSpacingExtra="8dp"
         android:paddingTop="4dp"
-        tools:text="bodyTitle" />
+        tools:text="bodyContent" />
 </LinearLayout>

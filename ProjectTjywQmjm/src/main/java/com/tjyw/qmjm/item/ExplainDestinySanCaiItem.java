@@ -44,8 +44,8 @@ public class ExplainDestinySanCaiItem extends AtomPubFastAdapterAbstractItem<Exp
 
     public static class DestinyFooterHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<Explain.SanCai> {
 
-        @From(R.id.bodyTitle)
-        protected TextView bodyTitle;
+        @From(R.id.bodyContent)
+        protected TextView bodyContent;
 
         public DestinyFooterHolder(View itemView) {
             super(itemView);
@@ -53,7 +53,7 @@ public class ExplainDestinySanCaiItem extends AtomPubFastAdapterAbstractItem<Exp
 
         @Override
         public void onBindView(Context context, Explain.SanCai sanCai) {
-            bodyTitle.setText(sanCai.shiyi);
+            bodyContent.setText(sanCai.shiyi);
         }
     }
 }

@@ -36,6 +36,12 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     @From(R.id.explainNameContainer)
     protected ViewGroup explainNameContainer;
 
+    @From(R.id.explainEvaluateValue)
+    protected TextView explainEvaluateValue;
+
+    @From(R.id.explainEvaluateDesc)
+    protected TextView explainEvaluateDesc;
+
     @From(R.id.explainOverview)
     protected TextView explainOverview;
 
@@ -111,6 +117,9 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
         explainMasterContainer.setAdapter(
                 explainMasterAdapter = ExplainMasterAdapter.newInstance(getSupportFragmentManager(), explain)
         );
+
+        explainEvaluateValue.setText(getString(R.string.atom_pub_resStringExplainEvaluate, explain.nameScore.score));
+        explainEvaluateDesc.setText(explain.nameScore.desc);
 
         explainNameContainer.removeAllViews();
         if (!ArrayUtil.isEmpty(explain.wordsList)) {

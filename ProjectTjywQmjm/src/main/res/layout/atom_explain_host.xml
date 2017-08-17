@@ -45,26 +45,31 @@
                     android:orientation="horizontal" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="8dp">
 
                     <TextView
+                        android:id="@+id/explainEvaluateValue"
                         style="@style/AtomStyle.GreyNormalText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:maxLines="1"
                         android:text="@string/atom_pub_resStringExplainEvaluate" />
 
                     <TextView
-                        android:id="@+id/explainEvaluateValue"
-                        style="@style/AtomStyle.SomberHugeText"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/explainEvaluateDesc"
+                        style="@style/AtomStyle.BlackSmallText"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:ellipsize="end"
                         android:gravity="center"
-                        android:text="一般" />
+                        android:lineSpacingExtra="4dp"
+                        android:maxLines="2"
+                        android:paddingTop="4dp" />
                 </LinearLayout>
 
                 <TextView

@@ -54,6 +54,7 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:gravity="center_vertical"
+        android:lineSpacingExtra="8dp"
         android:paddingTop="4dp"
         tools:text="bodyContent" />
 </LinearLayout>
