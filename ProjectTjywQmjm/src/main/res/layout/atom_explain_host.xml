@@ -80,7 +80,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 android:padding="8dp">
@@ -115,10 +114,10 @@
                         style="@style/AtomPubStyleKa.White"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/atom_pub_selector_ink_text"
                         android:gravity="center"
                         android:text="@string/atom_pub_resStringExplainZodiac"
-                        android:textColor="@color/atom_pub_black2white"
-                        tools:background="@drawable/atom_pub_selector_ink_text" />
+                        android:textColor="@color/atom_pub_black2white" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -133,10 +132,10 @@
                         style="@style/AtomPubStyleKa.White"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/atom_pub_selector_ink_text"
                         android:gravity="center"
                         android:text="@string/atom_pub_resStringExplainDestiny"
-                        android:textColor="@color/atom_pub_black2white"
-                        tools:background="@drawable/atom_pub_selector_ink_text" />
+                        android:textColor="@color/atom_pub_black2white" />
                 </LinearLayout>
             </LinearLayout>
 

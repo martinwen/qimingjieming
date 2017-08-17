@@ -137,20 +137,19 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     protected void setSelectedTab(View view) {
         if (! view.isSelected()) {
             view.setSelected(true);
-            view.setBackgroundResource(R.drawable.atom_pub_selector_ink_text);
 
             switch (view.getId()) {
                 case R.id.explainOverview:
-                    explainZodiac.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
-                    explainDestiny.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
+                    explainZodiac.setSelected(false);
+                    explainDestiny.setSelected(false);
                     break ;
                 case R.id.explainZodiac:
-                    explainOverview.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
-                    explainDestiny.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
+                    explainOverview.setSelected(false);
+                    explainDestiny.setSelected(false);
                     break ;
                 case R.id.explainDestiny:
-                    explainOverview.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
-                    explainZodiac.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
+                    explainOverview.setSelected(false);
+                    explainZodiac.setSelected(false);
             }
         }
     }

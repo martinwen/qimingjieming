@@ -107,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/atom_pub_selector_ink_text"
+            android:background="@drawable/atom_pub_selector_ink_text_no_default"
             android:gravity="center"
             android:text="@string/atom_pub_resStringCancel" />
 
@@ -122,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/atom_pub_selector_ink_text"
+            android:background="@drawable/atom_pub_selector_ink_text_no_default"
             android:gravity="center"
             android:text="@string/atom_pub_resStringOK" />
     </LinearLayout>
