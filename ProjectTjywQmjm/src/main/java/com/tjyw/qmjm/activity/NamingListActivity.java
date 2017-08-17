@@ -13,6 +13,7 @@ import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.dialog.NamingPayWindows;
 import com.tjyw.qmjm.item.NamingWordItem;
 
 import java.util.ArrayList;
@@ -54,6 +55,17 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         getPresenter().postNaming(
                 postSurname, postGender, postNameNumber
         );
+
+        namingListContainer.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                switch (newState) {
+                    case RecyclerView.SCROLL_STATE_IDLE:
+                        NamingPayWindows.newInstance(getSupportFragmentManager());
+                }
+            }
+        });
     }
 
     @Override

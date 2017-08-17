@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/atom_master_lunar_background"
+    android:padding="16dp">
+
+    <TextView
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/abc_action_bar_home_description" />
+
+    <TextView
+        android:id="@id/atom_pub_resIdsOK"
+        style="@style/AtomPubStyleKa.White"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@drawable/atom_pub_ic_ink_text_red"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringExplainGoodName" />
+</FrameLayout>

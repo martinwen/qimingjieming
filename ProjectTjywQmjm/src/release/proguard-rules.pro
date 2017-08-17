@@ -185,9 +185,8 @@
 -dontwarn com.xiaomi.push.**
 
 
-# ============  IPayNow  ============
--libraryjars ../../../AtomIPayNow/libs/ipaynow_alipay_v2.0.0.jar
--libraryjars ../../../AtomIPayNow/libs/ipaynow_base_v2.1.0.jar
--libraryjars ../../../AtomIPayNow/libs/ipaynow_wechatwp_v2.0.1.jar
+# ============  SwiftPay  ============
+-libraryjars ../../../AtomSwiftPay/libs/wftsdk_wap_1.4.jar
 
--keep class com.ipaynow.** {*;}
+-dontwarn com.swiftfintech.pay.**
+-keep class com.swiftfintech.pay.** { *;}

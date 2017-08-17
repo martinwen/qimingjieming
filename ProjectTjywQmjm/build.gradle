@@ -54,7 +54,7 @@ android {
             minifyEnabled false
             shrinkResources false
             proguardFiles 'src/debug/proguard-rules.pro'
-            versionNameSuffix '-beta'
+            versionNameSuffix '-debug'
             signingConfig signingConfigs.release
             debuggable true
         }
@@ -123,6 +123,7 @@ def cleanOutputs() {
 
 dependencies {
     compile project(':AtomNetwork')
+    compile project(':AtomSwiftPay')
     compile project(':AtomPublic')
 
     debugCompile libraryDependencies.leakcanaryDebug
