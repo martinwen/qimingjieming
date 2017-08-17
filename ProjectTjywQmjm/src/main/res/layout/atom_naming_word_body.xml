@@ -5,29 +5,12 @@
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
-    <com.tjyw.qmjm.widget.NameWordContainer
-        android:id="@+id/nameWordSurname"
+    <LinearLayout
+        android:id="@+id/nameWordContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical"
-        android:padding="4dp" />
-
-    <com.tjyw.qmjm.widget.NameWordContainer
-        android:id="@+id/nameWordGivenNameFirst"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="4dp" />
-
-    <com.tjyw.qmjm.widget.NameWordContainer
-        android:id="@+id/nameWordGivenNameSecond"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="4dp" />
+        android:orientation="horizontal" />
 
     <android.support.v4.widget.Space
         android:layout_width="0dp"

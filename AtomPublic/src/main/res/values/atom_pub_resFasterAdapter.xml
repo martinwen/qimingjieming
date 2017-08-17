@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- 解名详情页顶部名字 -->
-    <item name="atom_pub_resFasterAdapterType_ExplainHeaderWordItem" type="id"/>
-
     <!-- 解名详情页字义释解 -->
     <item name="atom_pub_resFasterAdapterType_ExplainOverviewItem" type="id"/>
 

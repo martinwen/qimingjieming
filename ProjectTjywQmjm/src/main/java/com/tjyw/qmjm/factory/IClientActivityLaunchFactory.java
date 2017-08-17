@@ -28,11 +28,11 @@ public class IClientActivityLaunchFactory {
         context.startActivity(intent);
     }
 
-    public static void launchNamingListActivity(BaseActivity context, String surname, int gender, int nameCount) {
+    public static void launchNamingListActivity(BaseActivity context, String surname, int gender, int nameNumber) {
         Intent intent = new Intent(context, NamingListActivity.class);
         intent.putExtra(IApiField.S.surname, surname);
         intent.putExtra(IApiField.G.gender, gender);
-        intent.putExtra(IApiField.N.nameNumber, nameCount);
+        intent.putExtra(IApiField.N.nameNumber, nameNumber);
         context.startActivity(intent);
     }
 }

@@ -5,7 +5,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
 
-import com.tjyw.atom.network.model.Explain;
+import com.tjyw.atom.network.model.NameCharacter;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.interfaces.IAtomPubElements;
 import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
@@ -17,9 +17,9 @@ import java.util.List;
 /**
  * Created by stephen on 11/08/2017.
  */
-public class ExplainOverviewItem extends AtomPubFastAdapterAbstractItem<Explain.Word, ExplainOverviewItem, ExplainOverviewItem.OverviewHolder> {
+public class ExplainOverviewItem extends AtomPubFastAdapterAbstractItem<NameCharacter, ExplainOverviewItem, ExplainOverviewItem.OverviewHolder> {
 
-    public ExplainOverviewItem(Explain.Word src) {
+    public ExplainOverviewItem(NameCharacter src) {
         super(src);
     }
 
@@ -44,7 +44,7 @@ public class ExplainOverviewItem extends AtomPubFastAdapterAbstractItem<Explain.
         holder.onBindView(ClientQmjmApplication.getContext(), src);
     }
 
-    public static class OverviewHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<Explain.Word> {
+    public static class OverviewHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<NameCharacter> {
 
         @From(R.id.bodyWord)
         protected TextView bodyWord;
@@ -63,13 +63,13 @@ public class ExplainOverviewItem extends AtomPubFastAdapterAbstractItem<Explain.
         }
 
         @Override
-        public void onBindView(Context context, Explain.Word word) {
-            bodyWord.setText(context.getString(R.string.atom_pub_resStringExplainWord, word.word));
-            bodyPinYin.setText(context.getString(R.string.atom_pub_resStringExplainPinYin, word.jiantipinyin));
-            bodyWuXing.setText(word.shuxing);
-            bodyContent.setText(word.xingxijieshi.trim());
+        public void onBindView(Context context, NameCharacter character) {
+            bodyWord.setText(context.getString(R.string.atom_pub_resStringExplainWord, character.word));
+            bodyPinYin.setText(context.getString(R.string.atom_pub_resStringExplainPinYin, character.jiantipinyin));
+            bodyWuXing.setText(character.shuxing);
+            bodyContent.setText(character.xingxijieshi.trim());
 
-            switch (word.shuxing) {
+            switch (character.shuxing) {
                 case IAtomPubElements.METAL:
                     bodyWuXing.setBackgroundResource(IAtomPubElements.Reference.METAL.second);
                     break ;

@@ -28,9 +28,9 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
 
     protected String postSurname;
 
-    protected int postGender = ISection.GENDER.MALE;
+    protected int postGender;
 
-    protected int postNameNumber = ISection.NAME_COUNT.SINGLE;
+    protected int postNameNumber;
 
     @From(R.id.namingListContainer)
     protected RecyclerView namingListContainer;
@@ -43,6 +43,9 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         if (TextUtils.isEmpty(postSurname)) {
             finish();
             return ;
+        } else {
+            postGender = pGetIntExtra(IApiField.G.gender, ISection.GENDER.MALE);
+            postNameNumber = pGetIntExtra(IApiField.N.nameNumber, ISection.NAME_COUNT.SINGLE);
         }
 
         setContentView(R.layout.atom_naming_list);

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
+import com.tjyw.atom.network.model.NameCharacter;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostExplainListener;
@@ -124,13 +125,13 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
         explainNameContainer.removeAllViews();
         if (!ArrayUtil.isEmpty(explain.wordsList)) {
             Observable.from(explain.wordsList)
-                    .take(3)
-                    .compose(RxSchedulersHelper.<Explain.Word>io_main())
-                    .subscribe(new Action1<Explain.Word>() {
+                    .take(4)
+                    .compose(RxSchedulersHelper.<NameCharacter>io_main())
+                    .subscribe(new Action1<NameCharacter>() {
                         @Override
-                        public void call(Explain.Word word) {
+                        public void call(NameCharacter character) {
                             explainNameContainer.addView(
-                                    HeaderWordHolder.newInstance(ClientQmjmApplication.getContext(), word),
+                                    HeaderWordHolder.newInstance(ClientQmjmApplication.getContext(), character),
                                     explainNameContainer.getChildCount()
                             );
                         }

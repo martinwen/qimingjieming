@@ -4,16 +4,16 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-import com.tjyw.atom.network.model.Explain;
+import com.tjyw.atom.network.model.NameCharacter;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.inject.Injector;
 import com.tjyw.qmjm.R;
 
 public class HeaderWordHolder  {
 
-    public static View newInstance(Context context, Explain.Word word) {
+    public static View newInstance(Context context, NameCharacter character) {
         View itemView = View.inflate(context, R.layout.atom_explain_header_word_body, null);
-        new HeaderWordHolder(itemView).onBindView(context, word);
+        new HeaderWordHolder(itemView).onBindView(context, character);
         return itemView;
     }
 
@@ -30,9 +30,9 @@ public class HeaderWordHolder  {
         Injector.inject(this, itemView);
     }
 
-    public void onBindView(Context context, Explain.Word word) {
-        bodyPinYin.setText(word.jiantipinyin);
-        bodyWord.setText(word.word);
-        bodyElement.setText(context.getString(R.string.atom_pub_resStringExplainWordElement, word.wuxing));
+    public void onBindView(Context context, NameCharacter character) {
+        bodyPinYin.setText(character.jiantipinyin);
+        bodyWord.setText(character.word);
+        bodyElement.setText(context.getString(R.string.atom_pub_resStringExplainWordElement, character.wuxing));
     }
 }

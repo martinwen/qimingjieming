@@ -11,38 +11,13 @@ public class Explain implements RetroResultItem {
 
     private static final long serialVersionUID = -2619753110314861329L;
 
-    public List<Word> wordsList;
+    public List<NameCharacter> wordsList;
 
     public NameScore nameScore;
 
     public List<WuGe> wugeList;
 
     public SanCai sancai;
-
-    public static class Word implements RetroResultItem {
-
-        private static final long serialVersionUID = 6943080322236702655L;
-
-        public String word;
-
-        public String type;
-
-        public String wuxing;
-
-        public int jiantibihua;
-
-        public String jiantipinyin;
-
-        public String fanti;
-
-        public String fantibihua;
-
-        public String shuxing;
-
-        public String jibenjieshi; // 基本解释
-
-        public String xingxijieshi; // 详细解释
-    }
 
     public static class NameScore implements RetroResultItem {
 

@@ -2,12 +2,17 @@ package com.tjyw.qmjm.item;
 
 import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.tjyw.atom.network.model.NameCharacter;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
+import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
-import com.tjyw.qmjm.widget.NameWordContainer;
+import com.tjyw.qmjm.holder.HeaderWordHolder;
+
+import java.util.List;
 
 /**
  * Created by stephen on 14/08/2017.
@@ -33,16 +38,16 @@ public class NamingWordItem extends AtomPubFastAdapterAbstractItem<String, Namin
         return R.layout.atom_naming_word_body;
     }
 
+    @Override
+    public void bindView(NamingWordHolder holder, List<Object> payloads) {
+        super.bindView(holder, payloads);
+        holder.onBindView(ClientQmjmApplication.getContext(), src);
+    }
+
     static class NamingWordHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<String> {
 
-        @From(R.id.nameWordSurname)
-        protected NameWordContainer nameWordSurname;
-
-        @From(R.id.nameWordGivenNameFirst)
-        protected NameWordContainer nameWordGivenNameFirst;
-
-        @From(R.id.nameWordGivenNameSecond)
-        protected NameWordContainer nameWordGivenNameSecond;
+        @From(R.id.nameWordContainer)
+        protected ViewGroup nameWordContainer;
 
         @From(R.id.nameWordCollect)
         protected TextView nameWordCollect;
@@ -55,8 +60,16 @@ public class NamingWordItem extends AtomPubFastAdapterAbstractItem<String, Namin
         }
 
         @Override
-        public void onBindView(Context context, String s) {
+        public void onBindView(Context context, String name) {
+            nameWordContainer.removeAllViews();
 
+            for (int i = 0; i < name.length(); i++) {
+                String word = String.valueOf(name.charAt(i));
+                nameWordContainer.addView(
+                        HeaderWordHolder.newInstance(ClientQmjmApplication.getContext(), new NameCharacter(word)),
+                        nameWordContainer.getChildCount()
+                );
+            }
         }
     }
 }
