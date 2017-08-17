@@ -7,8 +7,7 @@ import com.tjyw.qmjm.activity.BaseActivity;
 import com.tjyw.qmjm.activity.ClientMasterActivity;
 import com.tjyw.qmjm.activity.ExplainMasterActivity;
 import com.tjyw.qmjm.activity.NamingListActivity;
-
-import java.util.List;
+import com.tjyw.qmjm.activity.PayOrderActivity;
 
 /**
  * Created by stephen on 07/08/2017.
@@ -36,6 +35,11 @@ public class IClientActivityLaunchFactory {
         intent.putExtra(IApiField.S.surname, surname);
         intent.putExtra(IApiField.G.gender, gender);
         intent.putExtra(IApiField.N.nameNumber, nameNumber);
+        context.startActivity(intent);
+    }
+
+    public static void launchPayOrderActivity(BaseActivity context) {
+        Intent intent = new Intent(context, PayOrderActivity.class);
         context.startActivity(intent);
     }
 }

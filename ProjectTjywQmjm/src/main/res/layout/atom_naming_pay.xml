@@ -20,5 +20,5 @@
         android:layout_gravity="bottom|center_horizontal"
         android:background="@drawable/atom_pub_ic_ink_text_red"
         android:gravity="center"
-        android:text="@string/atom_pub_resStringExplainGoodName" />
+        android:text="@string/atom_pub_resStringPayPay" />
 </FrameLayout>

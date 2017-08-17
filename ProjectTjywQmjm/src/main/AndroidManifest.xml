@@ -69,5 +69,9 @@
             android:name=".activity.NamingListActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.PayOrderActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 </manifest>

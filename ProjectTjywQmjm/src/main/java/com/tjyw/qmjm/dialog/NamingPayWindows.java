@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.inject.Injector;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.activity.BaseActivity;
+import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 
 /**
  * Created by stephen on 17-8-17.
@@ -44,6 +46,7 @@ public class NamingPayWindows extends DialogFragment implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.atom_pub_resIdsOK:
+                IClientActivityLaunchFactory.launchPayOrderActivity((BaseActivity) getActivity());
                 dismissAllowingStateLoss();
         }
     }
