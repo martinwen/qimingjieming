@@ -8,4 +8,6 @@ public interface IPost {
     int Explain = 1;
 
     int Naming = 2;
+
+    int PayOrder = 3;
 }

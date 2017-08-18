@@ -12,37 +12,37 @@ import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Pattern;
 import com.tjyw.atom.network.conf.ISection;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
+import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.interfaces.AtomPubValidationListener;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.activity.BaseActivity;
+import com.tjyw.qmjm.dialog.ClientLunarDatePicker;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
-
-import butterknife.BindView;
 
 /**
  * Created by stephen on 07/08/2017.
  */
 public class ClientMasterExplainFragment extends AtomPubBaseFragment {
 
-    @BindView(R.id.nGenderMale)
+    @From(R.id.nGenderMale)
     protected ViewGroup nGenderMale;
 
-    @BindView(R.id.nGenderFemale)
+    @From(R.id.nGenderFemale)
     protected ViewGroup nGenderFemale;
 
     @Pattern(regex = "^[\\u4e00-\\u9fa5]{1,2}$")
-    @BindView(R.id.nSurname)
+    @From(R.id.nSurname)
     protected EditText nSurname;
 
     @Pattern(regex = "^[\\u4e00-\\u9fa5]{1,2}$")
-    @BindView(R.id.nGivenName)
+    @From(R.id.nGivenName)
     protected EditText nGivenName;
 
-    @BindView(R.id.nDateOfBirth)
+    @From(R.id.nDateOfBirth)
     protected EditText nDateOfBirth;
 
-    @BindView(R.id.atom_pub_resIdsOK)
+    @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
 
     protected int postGender = ISection.GENDER.MALE;
@@ -64,6 +64,7 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment {
         nGenderFemale.setOnClickListener(this);
         atom_pub_resIdsOK.setOnClickListener(this);
 
+        nDateOfBirth.setOnClickListener(this);
         nDateOfBirth.setKeyListener(null);
 
         validator = new Validator(this);
@@ -95,9 +96,11 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment {
                 v.setSelected(true);
                 nGenderMale.setSelected(false);
                 break ;
+            case R.id.nDateOfBirth:
+                ClientLunarDatePicker.newInstance(getFragmentManager());
+                break ;
             case R.id.atom_pub_resIdsOK:
                 validator.validate();
-//                ClientLunarDatePicker.newInstance(getFragmentManager());
         }
     }
 }

@@ -4,6 +4,7 @@ import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tjyw.atom.network.interceptor.RetroRequestInterceptor;
+import com.tjyw.atom.network.services.HttpPayServices;
 import com.tjyw.atom.network.services.HttpQmServices;
 
 import java.util.concurrent.TimeUnit;
@@ -37,6 +38,8 @@ public class RetroHttpMethods {
 
     protected HttpQmServices httpQmServices;
 
+    protected HttpPayServices httpPayServices;
+
     public RetroHttpMethods() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         if (Network.getInstance().isEnableStethoDebug()) {
@@ -69,5 +72,9 @@ public class RetroHttpMethods {
 
     public static HttpQmServices NAMING() {
         return getInstance().httpQmServices;
+    }
+
+    public static HttpPayServices PAY() {
+        return getInstance().httpPayServices;
     }
 }

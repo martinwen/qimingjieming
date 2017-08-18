@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import timber.log.Timber;
+
 /**
  * Created by stephen on 08/08/2017.
  */
@@ -70,25 +72,31 @@ public class ClientLunarDatePicker extends DialogFragment implements View.OnClic
         gregorianOK.setOnClickListener(this);
 
         List<String> gregorian = new ArrayList<String>();
-        gregorian.add(ClientQmjmApplication.pGetString(R.string.atom_pub_resGregorianSolar));
         gregorian.add(ClientQmjmApplication.pGetString(R.string.atom_pub_resGregorianLunar));
+        gregorian.add(ClientQmjmApplication.pGetString(R.string.atom_pub_resGregorianSolar));
         gregorianSwitchContainer.setData(gregorian);
 
         gregorianSwitchContainer.setOnSelectListener(this);
         gregorianYearContainer.setOnSelectListener(this);
         gregorianMonthContainer.setOnSelectListener(this);
 
+        Calendar calendar = DateTimeUtils.getCurrentDate();
+        int solarYear = calendar.get(Calendar.YEAR);
+        int solarMonth = calendar.get(Calendar.MONTH);
+        int solarDay = calendar.get(Calendar.DAY_OF_MONTH);
+
         List<String> years = new ArrayList<String>();
-        for (int i = 0; i < 148; i ++) {
+        for (int i = 0; i <= 148; i ++) {
             years.add(String.valueOf(i + 1901));
         }
 
         gregorianYearContainer.setData(years);
-
-        Calendar calendar = DateTimeUtils.getCurrentDate();
-        int solarYear = calendar.get(Calendar.YEAR);
         gregorianYearContainer.setSelect(Math.abs(solarYear - 1901));
-        setGregorianDataWithSolarYear(solarYear, calendar.get(Calendar.MONTH));
+
+        setGregorianDataWithSolarYear(solarYear);
+
+        gregorianMonthContainer.setSelect(solarMonth);
+        gregorianDayContainer.setSelect(solarDay);
 
         return convertView;
     }
@@ -113,13 +121,13 @@ public class ClientLunarDatePicker extends DialogFragment implements View.OnClic
 
     @Override
     public void onSelect(WheelRecyclerView recyclerView, int position, String data) {
+        Timber.tag("Gx").e("position::%d, data::%s, recyclerView::%s", position, data, recyclerView);
         switch (recyclerView.getId()) {
             case R.id.gregorianSwitchContainer:
 
                 break ;
             case R.id.gregorianYearContainer:
-                int solarYear = Integer.parseInt(data);
-                setGregorianDataWithSolarYear(solarYear, gregorianMonthContainer.getSelected());
+                setGregorianDataWithSolarYear(Integer.parseInt(data));
                 break ;
             case R.id.gregorianMonthContainer:
                 if (null != gregorianSelected) {
@@ -135,9 +143,8 @@ public class ClientLunarDatePicker extends DialogFragment implements View.OnClic
      * 公历年滚动后回调，需要重新设置选中年份的月集合(当显示农历时，月份可能会变化，有可能多于12个月--出现闰月)
      *
      * @param solarYear                 选中公历年
-     * @param selectedMonthPosition     默认选中月份的下标
      */
-    protected void setGregorianDataWithSolarYear(int solarYear, int selectedMonthPosition) {
+    protected void setGregorianDataWithSolarYear(int solarYear) {
         Pair<List<GregorianMonth>, List<GregorianMonth>> gregorianMonthHolderPair = LunarSolarSource.getInstance().get(solarYear);
         if (null == gregorianMonthHolderPair) {
             gregorianMonthHolderPair = LunarSolarSource.getInstance().set(solarYear);
@@ -145,7 +152,7 @@ public class ClientLunarDatePicker extends DialogFragment implements View.OnClic
 
         if (null != gregorianMonthHolderPair) {
             gregorianSelected = gregorianMonthHolderPair;
-            setGregorianMonthWithList(isGregorianSolar() ? gregorianSelected.first : gregorianSelected.second, selectedMonthPosition);
+            setGregorianMonthWithList(isGregorianSolar() ? gregorianSelected.first : gregorianSelected.second);
         }
     }
 
@@ -153,9 +160,8 @@ public class ClientLunarDatePicker extends DialogFragment implements View.OnClic
      * 重置月份滚轮的数据
      *
      * @param gregorianMonthList        选中公历年的月份集合
-     * @param position                  默认选中的下标
      */
-    protected void setGregorianMonthWithList(List<GregorianMonth> gregorianMonthList, int position) {
+    protected void setGregorianMonthWithList(List<GregorianMonth> gregorianMonthList) {
         List<String> solarMonth = new ArrayList<String>();
         int size = null == gregorianMonthList ? 0 : gregorianMonthList.size();
         for (int i = 0; i < size; i ++) { // 遍历月份，获取月份显示方案(1月2月或正月二月)
@@ -166,10 +172,7 @@ public class ClientLunarDatePicker extends DialogFragment implements View.OnClic
         }
 
         gregorianMonthContainer.setData(solarMonth);
-        gregorianMonthContainer.setSelect(position);
-
-        GregorianMonth gregorianMonth = gregorianMonthList.get(Math.min(position, gregorianMonthList.size() - 1));
-        setGregorianDayWithMonth(gregorianMonth);
+        setGregorianDayWithMonth(gregorianMonthList.get(0));
     }
 
     /**
@@ -191,9 +194,9 @@ public class ClientLunarDatePicker extends DialogFragment implements View.OnClic
      */
     protected boolean isGregorianSolar() {
         switch (gregorianSwitchContainer.getSelected()) {
-            case 1:
+            case 0:
                 return true;
-            case 2:
+            case 1:
                 return false;
             default:
                 return true;

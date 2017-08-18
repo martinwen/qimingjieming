@@ -154,6 +154,8 @@ public interface IApiField {
         String version = "version";
 
         String versionCode = "versionCode";
+
+        String vipId = "vipId";
     }
 
     interface W {
