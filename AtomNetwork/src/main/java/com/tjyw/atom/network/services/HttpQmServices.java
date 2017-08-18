@@ -35,7 +35,9 @@ public interface HttpQmServices {
     @POST(API.JM)
     Observable<RetroResult<Explain>> postExplain(
             @Field(IApiField.S.surname) String surname,
-            @Field(IApiField.N.name) String name
+            @Field(IApiField.N.name) String name,
+            @Field(IApiField.D.day) String day,
+            @Field(IApiField.G.gender) int gender
     );
 
 }

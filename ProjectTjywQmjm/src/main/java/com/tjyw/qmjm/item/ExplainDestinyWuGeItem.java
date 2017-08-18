@@ -63,6 +63,7 @@ public class ExplainDestinyWuGeItem extends AtomPubFastAdapterAbstractItem<Expla
         @Override
         public void onBindView(Context context, Explain.WuGe wuGe) {
             bodyTitle.setText(wuGe.name);
+            bodyCount.setText(String.valueOf(wuGe.number));
             bodySubTitle.setText(wuGe.zonglun);
             bodyContent.setText(wuGe.shiyi);
         }

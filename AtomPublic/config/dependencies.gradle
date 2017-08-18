@@ -49,6 +49,7 @@ dependencies {
     compile libraryDependencies.stanley
     compile libraryDependencies.barlibrary
     compile libraryDependencies.calligraphy
+    compile libraryDependencies.circularProgressView
 
     compile mikePenzLibDependencies.fastAdapterCommons
     compile mikePenzLibDependencies.fastAdapterExtensions

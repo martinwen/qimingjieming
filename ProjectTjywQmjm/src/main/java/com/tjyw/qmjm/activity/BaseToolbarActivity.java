@@ -16,15 +16,14 @@ public class BaseToolbarActivity<P extends Presenter> extends BaseActivity<P> im
     protected AtomClientToolbarSupport atomClientToolbarSupport;
 
     @Override
-    public void setContentView(@LayoutRes int layoutResID) {
-        super.setContentView(layoutResID);
-        atomClientToolbarSupport = AtomClientToolbarSupport.newInstance(null, findViewById(android.R.id.content));
+    protected void initLayoutSupport(View source) {
+        super.initLayoutSupport(source);
+        atomClientToolbarSupport = AtomClientToolbarSupport.newInstance(this, source);
     }
 
     @Override
-    public void setContentView(View view) {
-        super.setContentView(view);
-        atomClientToolbarSupport = AtomClientToolbarSupport.newInstance(null, view);
+    public void setContentView(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
     }
 
     @Override
@@ -64,8 +63,6 @@ public class BaseToolbarActivity<P extends Presenter> extends BaseActivity<P> im
 
     @Override
     public void tOnToolbarRightViewClick(View v) {
-        if (null != atomClientToolbarSupport) {
-            atomClientToolbarSupport.tOnToolbarRightViewClick(v);
-        }
+
     }
 }

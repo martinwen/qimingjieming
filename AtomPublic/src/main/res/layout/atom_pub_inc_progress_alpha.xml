@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.tjyw.atom.pub.widget.AtomPubInterceptFrameLayout
+        android:id="@+id/atomPubProgressView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#55000000"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <com.github.rahatarmanahmed.cpv.CircularProgressView
+            android:layout_width="@dimen/atom_pubResDimenLoadingCircularProgressBound"
+            android:layout_height="@dimen/atom_pubResDimenLoadingCircularProgressBound"
+            android:layout_gravity="center"
+            app:cpv_animAutostart="true"
+            app:cpv_color="?colorPrimaryDark"
+            app:cpv_indeterminate="true"
+            app:cpv_thickness="4dp" />
+    </com.tjyw.atom.pub.widget.AtomPubInterceptFrameLayout>
+</merge>

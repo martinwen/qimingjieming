@@ -2,7 +2,6 @@ package com.tjyw.qmjm.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.widget.TextView;
 
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
+import com.tjyw.atom.network.conf.ISection;
 import com.tjyw.atom.network.model.Explain;
 import com.tjyw.atom.network.model.NameCharacter;
 import com.tjyw.atom.network.presenter.NamingPresenter;
@@ -85,7 +85,13 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
         explainDestiny.setOnClickListener(this);
         explainNaming.setOnClickListener(this);
 
-        getPresenter().postExplain(postSurname, postName);
+        maskerShowProgressView(false);
+        getPresenter().postExplain(
+                postSurname,
+                postName,
+                pGetStringExtra(IApiField.D.data, null),
+                pGetIntExtra(IApiField.G.gender, ISection.GENDER.MALE)
+        );
     }
 
     @Override
@@ -119,10 +125,12 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     @Override
     public void postOnExplainError(int postId, Throwable throwable) {
         throwable.printStackTrace();
+        maskerShowMaskerLayout(getString(R.string.atom_pub_resStringNetworkBroken), R.string.atom_pub_resStringRetry);
     }
 
     @Override
     public void postOnExplainSuccess(Explain explain) {
+        maskerHideProgressView();
         explainMasterContainer.setAdapter(
                 explainMasterAdapter = ExplainMasterAdapter.newInstance(getSupportFragmentManager(), explain)
         );
@@ -150,6 +158,17 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
                         }
                     });
         }
+    }
+
+    @Override
+    public void maskerOnClick(View view) {
+        maskerShowProgressView(false);
+        getPresenter().postExplain(
+                postSurname,
+                postName,
+                pGetStringExtra(IApiField.D.data, null),
+                pGetIntExtra(IApiField.G.gender, ISection.GENDER.MALE)
+        );
     }
 
     protected void setSelectedTab(View view) {

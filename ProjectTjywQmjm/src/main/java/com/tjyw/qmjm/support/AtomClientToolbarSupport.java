@@ -107,7 +107,9 @@ public class AtomClientToolbarSupport implements IAtomPubToolBar, View.OnClickLi
 
     @Override
     public void tOnToolbarRightViewClick(View v) {
-
+        if (null != iAtomPubToolBar) {
+            iAtomPubToolBar.tOnToolbarRightViewClick(v);
+        }
     }
 
     @Override
@@ -115,9 +117,7 @@ public class AtomClientToolbarSupport implements IAtomPubToolBar, View.OnClickLi
         switch (v.getId()) {
             case R.id.atomPubToolBarRightFirst:
             case R.id.atomPubToolBarRightSecond:
-                if (null != iAtomPubToolBar) {
-                    iAtomPubToolBar.tOnToolbarRightViewClick(v);
-                }
+                tOnToolbarRightViewClick(v);
                 break ;
         }
     }

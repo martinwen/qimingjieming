@@ -23,10 +23,12 @@ public class IClientActivityLaunchFactory {
         context.startActivity(intent);
     }
 
-    public static void launchExplainMasterActivity(BaseActivity context, String surname, String name) {
+    public static void launchExplainMasterActivity(BaseActivity context, String surname, String name, String day, int gender) {
         Intent intent = new Intent(context, ExplainMasterActivity.class);
         intent.putExtra(IApiField.S.surname, surname);
         intent.putExtra(IApiField.N.name, name);
+        intent.putExtra(IApiField.D.data, day);
+        intent.putExtra(IApiField.G.gender, gender);
         context.startActivity(intent);
     }
 

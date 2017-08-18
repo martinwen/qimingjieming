@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/atomPubMaskerRootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.tjyw.atom.pub.widget.AtomPubInterceptLinearLayout
+            android:id="@+id/atomPubMaskerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/atom_pub_resColorBackground"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="32dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/atomPubMaskerImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:scaleType="center"
+                android:src="@drawable/atom_pub_ic_illegal" />
+
+            <TextView
+                android:id="@+id/atomPubMaskerMsg"
+                style="@style/AtomStyle.GreySmallText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="16dp"
+                tools:text="@string/atom_pub_resStringNetworkBroken" />
+
+            <TextView
+                android:id="@+id/atomPubMaskerClickText"
+                style="@style/AtomPubStyleKa.White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/atom_pub_selector_ink_text_no_default"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                tools:text="@string/atom_pub_resStringRetry" />
+        </com.tjyw.atom.pub.widget.AtomPubInterceptLinearLayout>
+
+        <include layout="@layout/atom_pub_inc_progress_alpha" />
+    </FrameLayout>
+</merge>

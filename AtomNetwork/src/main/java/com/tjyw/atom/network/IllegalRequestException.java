@@ -19,4 +19,9 @@ public class IllegalRequestException extends Exception {
             this.message = result.message;
         }
     }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
 }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Pattern;
+import com.tjyw.atom.network.conf.ISection;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.interfaces.AtomPubValidationListener;
 import com.tjyw.qmjm.ClientQmjmApplication;
@@ -44,6 +45,8 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment {
     @BindView(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
 
+    protected int postGender = ISection.GENDER.MALE;
+
     protected Validator validator;
 
     @Nullable
@@ -69,7 +72,11 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment {
             @Override
             public void onValidationSucceeded() {
                 IClientActivityLaunchFactory.launchExplainMasterActivity(
-                        (BaseActivity) getActivity(), nSurname.getText().toString(), nGivenName.getText().toString()
+                        (BaseActivity) getActivity(),
+                        nSurname.getText().toString(),
+                        nGivenName.getText().toString(),
+                        "1990-07-15 00",
+                        postGender
                 );
             }
         });
@@ -79,13 +86,14 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.nGenderMale:
+                postGender = ISection.GENDER.MALE;
                 v.setSelected(true);
                 nGenderFemale.setSelected(false);
                 break ;
             case R.id.nGenderFemale:
+                postGender = ISection.GENDER.FEMALE;
                 v.setSelected(true);
                 nGenderMale.setSelected(false);
-                nDateOfBirth.setText("" + v.getId());
                 break ;
             case R.id.atom_pub_resIdsOK:
                 validator.validate();

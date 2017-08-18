@@ -67,7 +67,7 @@ public class ExplainOverviewItem extends AtomPubFastAdapterAbstractItem<NameChar
             bodyWord.setText(context.getString(R.string.atom_pub_resStringExplainWord, character.word));
             bodyPinYin.setText(context.getString(R.string.atom_pub_resStringExplainPinYin, character.jiantipinyin));
             bodyWuXing.setText(character.shuxing);
-            bodyContent.setText(character.xingxijieshi.trim());
+            bodyContent.setText(character.xiangxijieshi.trim());
 
             switch (character.shuxing) {
                 case IAtomPubElements.METAL:

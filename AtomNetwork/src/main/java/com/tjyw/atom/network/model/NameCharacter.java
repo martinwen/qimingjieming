@@ -32,5 +32,5 @@ public class NameCharacter implements RetroResultItem {
 
     public String jibenjieshi; // 基本解释
 
-    public String xingxijieshi; // 详细解释
+    public String xiangxijieshi; // 详细解释
 }

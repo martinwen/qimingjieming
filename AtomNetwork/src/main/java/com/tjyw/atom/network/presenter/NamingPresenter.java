@@ -19,8 +19,8 @@ import rx.functions.Action1;
  */
 public class NamingPresenter<V extends ViewWithPresenter> extends BasePresenter<V> {
 
-    public void postExplain(String surname, String name) {
-        RetroHttpMethods.NAMING().postExplain(surname, name)
+    public void postExplain(String surname, String name, String day, int gender) {
+        RetroHttpMethods.NAMING().postExplain(surname, name, day, gender)
                 .compose(RxSchedulersHelper.<RetroResult<Explain>>io_main())
                 .subscribe(new Action1<RetroResult<Explain>>() {
                     @Override
