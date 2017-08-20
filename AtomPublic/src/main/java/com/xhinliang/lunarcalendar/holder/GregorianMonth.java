@@ -2,6 +2,7 @@ package com.xhinliang.lunarcalendar.holder;
 
 import android.content.res.Resources;
 
+import com.tjyw.atom.network.utils.ArrayUtil;
 import com.xhinliang.lunarcalendar.LunarCalendar;
 
 import java.util.ArrayList;
@@ -30,6 +31,10 @@ public abstract class GregorianMonth {
         return null != lunarCalendar && null != calendarList && calendarList.add(lunarCalendar);
     }
 
+    public LunarCalendar getLastLunarCalendar() {
+        return ArrayUtil.isEmpty(calendarList) ? null : calendarList.get(calendarList.size() - 1);
+    }
+
     public List<String> getDateOfMonth(Resources resources) {
         int size = null == calendarList ? 0 : calendarList.size();
         if (size == 0) {
@@ -47,6 +52,10 @@ public abstract class GregorianMonth {
         return dateOfMonth;
     }
 
+    public List<LunarCalendar> getCalendarList() {
+        return calendarList;
+    }
+
     public abstract void absSetMonth(LunarCalendar lunarCalendar);
 
     public abstract String absGetMonth(Resources resources);
@@ -60,7 +69,11 @@ public abstract class GregorianMonth {
         @Override
         public void absSetMonth(LunarCalendar lunarCalendar) {
             if (null != lunarCalendar) {
-                this.lunarMonth = lunarCalendar.getLunarMonth();
+                if (null != lunarCalendar.getLunar() && lunarCalendar.getLunar().isLeap) {
+                    this.lunarMonth = "闰" + lunarCalendar.getLunarMonth();
+                } else {
+                    this.lunarMonth = lunarCalendar.getLunarMonth();
+                }
             }
         }
 

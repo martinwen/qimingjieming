@@ -3,6 +3,7 @@ package com.xhinliang.lunarcalendar;
 
 import com.xhinliang.lunarcalendar.utils.TextUtils;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -15,7 +16,10 @@ import java.util.GregorianCalendar;
  * @author XhinLiang 2016-02-06
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class LunarCalendar {
+public class LunarCalendar implements Serializable {
+
+    private static final long serialVersionUID = -7244998665102448040L;
+
     private static final String[] MONTH_NAME = {"零", "正月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "冬月", "腊月"};
 
     private boolean isToday, isWeekend;
@@ -137,7 +141,7 @@ public class LunarCalendar {
 
     public String getFullLunarStr() {
         checkLunar();
-        return String.format("%s年%s月%s", getLunarYear(), getLunarMonth(), getLunarDay());
+        return String.format("%s年%s%s", getLunarYear(), getLunarMonth(), getLunarDay());
     }
 
     public String getSubTitle() {

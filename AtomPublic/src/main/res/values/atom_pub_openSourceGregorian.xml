@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
-    <string name="atom_pub_resGregorianSolar">农历</string>
-    <string name="atom_pub_resGregorianLunar">公历</string>
 
-    <string name="atom_pub_resGregorianHour"></string>
+    <string-array name="atom_pub_resGregorian">
+        <item>公历</item>
+        <item>农历</item>
+    </string-array>
 
-
-    时辰未清除（默认0点），
-    子时23点，
-    子时0点，
-    丑时1点，
-    丑时2点，
-    寅时3点，
-    寅时4点，
-    卯时5点，
-    卯时6点，
-    辰时7点，
-    辰时8点，
-    巳时9点，
-    巳时10点，
-    午时11点，
-    午时12点，
-    未时13点，
-    未时14点，
-    申时15点，
-    申时16点，
-    酉时17点，
-    酉时18点，
-    戌时19点，
-    戌时20点，
-    亥时21点，
-    亥时22点
-
-
+    <string-array name="atom_pub_resGregorianHour">
+        <item>时辰未清除(默认0点)</item>
+        <item>子时23点</item>
+        <item>子时0点</item>
+        <item>丑时1点</item>
+        <item>丑时2点</item>
+        <item>寅时3点</item>
+        <item>寅时4点</item>
+        <item>卯时5点</item>
+        <item>卯时6点</item>
+        <item>辰时7点</item>
+        <item>辰时8点</item>
+        <item>巳时9点</item>
+        <item>巳时10点</item>
+        <item>午时11点</item>
+        <item>午时12点</item>
+        <item>未时13点</item>
+        <item>未时14点</item>
+        <item>申时15点</item>
+        <item>申时16点</item>
+        <item>酉时17点</item>
+        <item>酉时18点</item>
+        <item>戌时19点</item>
+        <item>戌时20点</item>
+        <item>亥时21点</item>
+        <item>亥时22点</item>
+    </string-array>
 </resources>

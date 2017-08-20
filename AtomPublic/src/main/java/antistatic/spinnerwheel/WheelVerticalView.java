@@ -152,7 +152,7 @@ public class WheelVerticalView extends AbstractWheelView {
             float[] positions = {0, p3, p3, p1,     p1,         p2,     p2, p4, p4, 1};
             shader = new LinearGradient(0, 0, 0, h, colors, positions, Shader.TileMode.CLAMP);
         }
-        mSelectorWheelPaint.setShader(shader);
+//        mSelectorWheelPaint.setShader(shader);
         invalidate();
     }
 

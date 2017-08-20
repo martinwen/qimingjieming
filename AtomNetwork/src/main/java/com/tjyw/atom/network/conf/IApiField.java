@@ -26,6 +26,8 @@ public interface IApiField {
 
         String data = "data";
 
+        String date = "date";
+
         String day = "day";
     }
 

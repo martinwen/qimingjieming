@@ -25,7 +25,7 @@ public class ClientWelcomeActivity extends BaseActivity {
                 .statusBarDarkFont(true)
                 .init();
 
-        Observable.timer(2, TimeUnit.SECONDS)
+        Observable.timer(100, TimeUnit.MILLISECONDS)
                 .compose(RxSchedulersHelper.<Long>io_main())
                 .subscribe(new Action1<Long>() {
                     @Override

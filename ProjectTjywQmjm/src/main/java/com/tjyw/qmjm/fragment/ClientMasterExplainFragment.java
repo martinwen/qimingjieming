@@ -11,19 +11,21 @@ import android.widget.TextView;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Pattern;
 import com.tjyw.atom.network.conf.ISection;
+import com.tjyw.atom.network.utils.DateTimeUtils;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.interfaces.AtomPubValidationListener;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.activity.BaseActivity;
-import com.tjyw.qmjm.dialog.ClientLunarDatePicker;
+import com.tjyw.qmjm.dialog.GregorianWindows;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
+import com.xhinliang.lunarcalendar.LunarCalendar;
 
 /**
  * Created by stephen on 07/08/2017.
  */
-public class ClientMasterExplainFragment extends AtomPubBaseFragment {
+public class ClientMasterExplainFragment extends AtomPubBaseFragment implements GregorianWindows.OnGregorianSelectedListener {
 
     @From(R.id.nGenderMale)
     protected ViewGroup nGenderMale;
@@ -46,6 +48,8 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment {
     protected TextView atom_pub_resIdsOK;
 
     protected int postGender = ISection.GENDER.MALE;
+
+    protected LunarCalendar postCalendar;
 
     protected Validator validator;
 
@@ -97,10 +101,20 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment {
                 nGenderMale.setSelected(false);
                 break ;
             case R.id.nDateOfBirth:
-                ClientLunarDatePicker.newInstance(getFragmentManager());
+                GregorianWindows.newInstance(getFragmentManager(), postCalendar, this);
                 break ;
             case R.id.atom_pub_resIdsOK:
                 validator.validate();
+        }
+    }
+
+    @Override
+    public void onGregorianSelected(LunarCalendar calendar, boolean isGregorianSolar) {
+        this.postCalendar = calendar;
+        if (isGregorianSolar) {
+            nDateOfBirth.setText(DateTimeUtils.printCalendarByPattern(DateTimeUtils.getCalendar(calendar.getDate()), DateTimeUtils.yyyy_MM_dd));
+        } else {
+            nDateOfBirth.setText(calendar.getFullLunarStr());
         }
     }
 }

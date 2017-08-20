@@ -3,6 +3,6 @@
     android:id="@+id/tv_name"
     style="@style/AtomStyle.BlackBigText"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="36dp"
     android:gravity="center"
     android:textStyle="bold" />

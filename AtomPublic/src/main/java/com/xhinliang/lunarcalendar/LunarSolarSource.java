@@ -10,6 +10,8 @@ import com.xhinliang.lunarcalendar.holder.GregorianMonth;
 import java.util.ArrayList;
 import java.util.List;
 
+import timber.log.Timber;
+
 /**
  * Created by stephen on 08/08/2017.
  */
@@ -67,9 +69,20 @@ public class LunarSolarSource {
                                 lunarMonthNameCached = lunarMonth;
                                 gregorianLunarMonth = GregorianMonth.newInstance(true);
                                 gregorianLunarMonth.absSetMonth(day);
+                                gregorianLunarMonth.addLunarCalendar(day);
                                 gregorianMonthPair.second.add(gregorianLunarMonth);
                             } else { // 设置农历月的日期数据
-                                gregorianLunarMonth.addLunarCalendar(day);
+                                LunarCalendar last = gregorianLunarMonth.getLastLunarCalendar();
+                                if (null != last && null != last.getLunar() && last.getLunar().isLeap != day.getLunar().isLeap) {
+                                    Timber.tag("gx").e("last::%s, current::%s", last, day);
+                                    lunarMonthNameCached = lunarMonth;
+                                    gregorianLunarMonth = GregorianMonth.newInstance(true);
+                                    gregorianLunarMonth.absSetMonth(day);
+                                    gregorianLunarMonth.addLunarCalendar(day);
+                                    gregorianMonthPair.second.add(gregorianLunarMonth);
+                                } else {
+                                    gregorianLunarMonth.addLunarCalendar(day);
+                                }
                             }
                         }
                     }

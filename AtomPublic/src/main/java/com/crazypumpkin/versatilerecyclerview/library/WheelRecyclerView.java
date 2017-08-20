@@ -144,7 +144,7 @@ public class WheelRecyclerView extends RecyclerView {
         mDatas.clear();
         mDatas.addAll(datas);
         mAdapter.notifyDataSetChanged();
-        setSelect(0);
+        setSelect(getSelected());
         scrollTo(0,0);
     }
 
@@ -206,20 +206,25 @@ public class WheelRecyclerView extends RecyclerView {
                 if (firstVisiblePos == RecyclerView.NO_POSITION) {
                     return;
                 }
+
+                int selected = 0;
                 Rect rect = new Rect();
                 mLayoutManager.findViewByPosition(firstVisiblePos).getHitRect(rect);
                 if (Math.abs(rect.top) > mItemHeight / 2) {
                     smoothScrollBy(0, rect.bottom);
-                    mSelected = firstVisiblePos + 1;
+                    selected = firstVisiblePos + 1;
 
                 } else {
                     smoothScrollBy(0, rect.top);
-                    mSelected = firstVisiblePos;
-                }
-                if (mOnSelectListener != null) {
-                    mOnSelectListener.onSelect(WheelRecyclerView.this, mSelected, mDatas.get(mSelected));
+                    selected = firstVisiblePos;
                 }
 
+                if (mSelected != selected) {
+                    mSelected = selected;
+                    if (mOnSelectListener != null) {
+                        mOnSelectListener.onSelect(WheelRecyclerView.this, mSelected, mDatas.get(mSelected));
+                    }
+                }
             }
         }
 

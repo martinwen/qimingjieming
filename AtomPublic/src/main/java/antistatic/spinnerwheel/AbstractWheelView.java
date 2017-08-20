@@ -277,8 +277,8 @@ public abstract class AbstractWheelView extends AbstractWheel {
      * @param animationDuration The duration of the animation.
      */
     private void fadeSelectorWheel(long animationDuration) {
-        mDimSelectorWheelAnimator.setDuration(animationDuration);
-        mDimSelectorWheelAnimator.start();
+//        mDimSelectorWheelAnimator.setDuration(animationDuration);
+//        mDimSelectorWheelAnimator.start();
     }
 
     /**
@@ -287,8 +287,8 @@ public abstract class AbstractWheelView extends AbstractWheel {
      * @param animationDuration The duration of the animation.
      */
     private void lightSeparators(long animationDuration) {
-        mDimSeparatorsAnimator.setDuration(animationDuration);
-        mDimSeparatorsAnimator.start();
+//        mDimSeparatorsAnimator.setDuration(animationDuration);
+//        mDimSeparatorsAnimator.start();
     }
 
 
