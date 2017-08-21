@@ -1,9 +1,9 @@
 package com.tjyw.atom.network.services;
 
 import com.tjyw.atom.network.conf.IApiField;
-import com.tjyw.atom.network.model.Explain;
+import com.tjyw.atom.network.model.Pay;
 import com.tjyw.atom.network.model.PayOrder;
-import com.tjyw.atom.network.result.RetroListResult;
+import com.tjyw.atom.network.result.RetroPayPreviewResult;
 import com.tjyw.atom.network.result.RetroResult;
 
 import retrofit2.http.Field;
@@ -18,13 +18,29 @@ public interface HttpPayServices {
 
     interface API {
 
+        String LIST = "pay/list";
+
         String ORDER = "pay/order";
+
+        String PREVIEW = "pay/payService";
     }
+
+    @FormUrlEncoded
+    @POST(API.LIST)
+    Observable<RetroResult<Pay>> postPay(
+            @Field(IApiField.I.ignore) int ignore
+    );
 
     @FormUrlEncoded
     @POST(API.ORDER)
     Observable<RetroResult<PayOrder>> postPayOrder(
+            @Field(IApiField.V.vipId) int vipId
+    );
+
+    @FormUrlEncoded
+    @POST(API.PREVIEW)
+    Observable<RetroResult<RetroPayPreviewResult>> postPayPreview(
             @Field(IApiField.V.vipId) int vipId,
-            @Field(IApiField.S.sessionKey) String sessionKey
+            @Field(IApiField.P.payType) int payType
     );
 }

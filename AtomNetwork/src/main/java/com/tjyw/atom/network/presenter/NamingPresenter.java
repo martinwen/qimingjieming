@@ -1,6 +1,5 @@
 package com.tjyw.atom.network.presenter;
 
-
 import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.RetroHttpMethods;
 import com.tjyw.atom.network.RxSchedulersHelper;
@@ -25,13 +24,12 @@ public class NamingPresenter<V extends ViewWithPresenter> extends BasePresenter<
                 .subscribe(new Action1<RetroResult<Explain>>() {
                     @Override
                     public void call(RetroResult<Explain> result) {
-                        if (presenterView instanceof OnApiPostErrorListener) {
-                            if (null == result || result.illegalRequest()) {
-                                ((OnApiPostErrorListener) presenterView).postOnExplainError(
-                                        IPost.Explain, new IllegalRequestException(result));
-                            } else {
-                                ((OnApiPostExplainListener) presenterView).postOnExplainSuccess(result.items);
+                        if (null == result || result.illegalRequest()) {
+                            if (presenterView instanceof OnApiPostErrorListener) {
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Explain, new IllegalRequestException(result));
                             }
+                        } else if (presenterView instanceof OnApiPostExplainListener) {
+                            ((OnApiPostExplainListener) presenterView).postOnExplainSuccess(result.items);
                         }
                     }
                 }, new Action1<Throwable>() {
@@ -50,13 +48,12 @@ public class NamingPresenter<V extends ViewWithPresenter> extends BasePresenter<
                 .subscribe(new Action1<RetroResult<RetroListResult<String>>>() {
                     @Override
                     public void call(RetroResult<RetroListResult<String>> result) {
-                        if (presenterView instanceof OnApiPostErrorListener) {
-                            if (null == result || result.illegalRequest()) {
-                                ((OnApiPostErrorListener) presenterView).postOnExplainError(
-                                        IPost.Naming, new IllegalRequestException(result));
-                            } else {
-                                ((OnApiPostNamingListener) presenterView).postOnNamingSuccess(result.items.list);
+                        if (null == result || result.illegalRequest()) {
+                            if (presenterView instanceof OnApiPostErrorListener) {
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Naming, new IllegalRequestException(result));
                             }
+                        } else if (presenterView instanceof OnApiPostNamingListener) {
+                            ((OnApiPostNamingListener) presenterView).postOnNamingSuccess(result.items.list);
                         }
                     }
                 }, new Action1<Throwable>() {

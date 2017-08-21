@@ -11,6 +11,7 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
+import com.tjyw.atom.alipay.PayConfigure;
 import com.tjyw.atom.network.Network;
 import com.tjyw.atom.network.utils.DateTimeUtils;
 import com.tjyw.atom.network.utils.Documents;
@@ -61,16 +62,16 @@ public class ClientInitializer {
                 .setContext(context)
                 .setEnableStethoDebug(enableStethoDebug);
 
-//        PayConfigure.getInstance() // 支付通道参数设置
-//                .setContext(context)
-//                .setAppId(Configure.ALI.APP_ID)
-//                .setPartner(Configure.ALI.PARTNER)
-//                .setSeller(Configure.ALI.SELLER)
-//                .setRsaPrivate(Configure.ALI.RSA_PRIVATE)
-//                .setRsaPublic(Configure.ALI.RSA_PUBLIC)
-//                .setNotifyUrl(Configure.ALI.NOTIFY_URL)
-//                .setWxAppId(Configure.WX.APP_ID) // 微信只需要APP_ID
-//                .dump();
+        PayConfigure.getInstance() // 支付通道参数设置
+                .setContext(context)
+                .setAppId(Configure.ALI.APP_ID)
+                .setPartner(Configure.ALI.PARTNER)
+                .setSeller(Configure.ALI.SELLER)
+                .setRsaPrivate(Configure.ALI.RSA_PRIVATE)
+                .setRsaPublic(Configure.ALI.RSA_PUBLIC)
+                .setNotifyUrl(Configure.ALI.NOTIFY_URL)
+                .setWxAppId(Configure.WX.APP_ID) // 微信只需要APP_ID
+                .dump();
 
         return this;
     }

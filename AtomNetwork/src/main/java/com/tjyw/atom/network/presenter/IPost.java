@@ -10,4 +10,8 @@ public interface IPost {
     int Naming = 2;
 
     int PayOrder = 3;
+
+    int PayList = 4;
+
+    int PayPreview = 5;
 }

@@ -46,7 +46,7 @@ public class RetroRequestInterceptor implements Interceptor {
 
         FormBody body = (FormBody) chain.request().body();
         ObjectNode params = JsonUtil.getInstance().getEmptyNode();
-        params.put(IApiField.S.sessionKey, session);
+//        params.put(IApiField.S.sessionKey, session);
 
         int size = body.size();
         for (int i = 0; i < size; i ++) {
@@ -89,7 +89,7 @@ public class RetroRequestInterceptor implements Interceptor {
         HttpUrl.Builder newRequestUrlBuilder = requestUrl.newBuilder();
 
         ObjectNode params = JsonUtil.getInstance().getEmptyNode();
-        params.put(IApiField.S.sessionKey, session);
+//        params.put(IApiField.S.sessionKey, session);
         for (String key : requestUrl.queryParameterNames()) {
             params.put(key, requestUrl.queryParameter(key));
         }

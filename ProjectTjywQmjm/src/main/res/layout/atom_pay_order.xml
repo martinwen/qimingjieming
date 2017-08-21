@@ -93,25 +93,6 @@
                 android:layout_height="1px"
                 android:scaleType="fitXY"
                 android:src="@color/atom_pub_resColorDivider" />
-
-            <TextView
-                android:id="@+id/payUseBankCard"
-                style="@style/AtomStyle.BlackNormalText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/atom_pub_ic_pay_bank"
-                android:drawablePadding="16dp"
-                android:drawableRight="@drawable/atom_pub_selector_pay_checked"
-                android:gravity="center_vertical"
-                android:minLines="1"
-                android:padding="16dp"
-                android:text="@string/atom_pub_resStringPayUseBankCard" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:scaleType="fitXY"
-                android:src="@color/atom_pub_resColorDivider" />
         </LinearLayout>
 
         <TextView

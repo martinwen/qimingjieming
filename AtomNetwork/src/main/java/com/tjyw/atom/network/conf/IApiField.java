@@ -12,6 +12,8 @@ public interface IApiField {
 
     interface B {
 
+        String body = "body";
+
         String build = "build";
     }
 
@@ -96,6 +98,8 @@ public interface IApiField {
         String offset = "offset";
 
         String orderNo = "orderNo";
+
+        String out_trade_no = "out_trade_no";
     }
 
     interface P {
@@ -110,6 +114,8 @@ public interface IApiField {
 
         String platform = "platform";
 
+        String product_code = "product_code";
+
         String province = "province";
     }
 
@@ -120,15 +126,21 @@ public interface IApiField {
     interface R {
 
         String result = "result";
+
+        String resultStatus = "resultStatus";
     }
 
     interface S {
+
+        String seller_id = "seller_id";
 
         String screenHeight = "screenHeight";
 
         String screenWidth = "screenWidth";
 
         String sessionKey = "sessionKey";
+
+        String subject = "subject";
 
         String surname = "surname";
     }
@@ -140,6 +152,10 @@ public interface IApiField {
         String telephone = "telephone";
 
         String text = "text";
+
+        String timeout_express = "timeout_express";
+
+        String total_amount = "total_amount";
 
         String type = "type";
     }

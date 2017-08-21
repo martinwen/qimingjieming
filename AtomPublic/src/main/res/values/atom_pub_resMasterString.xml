@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="atom_pub_resStringPermissionByUserDeny">您需要开启相关的使用权限才可以继续操作，可通过 设置-应用程序 来允许您所需要的权限</string>
+
     <string name="atom_pub_resStringMasterTabNaming">起名</string>
     <string name="atom_pub_resStringMasterTabExplain">解名</string>
     <string name="atom_pub_resStringMasterTabMine">我的</string>
@@ -50,7 +52,6 @@
     <string name="atom_pub_resStringPayPrice">商品价格: ￥%s</string>
     <string name="atom_pub_resStringPayUseAliPay">支付宝</string>
     <string name="atom_pub_resStringPayUseWxPay">微信</string>
-    <string name="atom_pub_resStringPayUseBankCard">银行卡</string>
     <string name="atom_pub_resStringPayPay">立即支付</string>
 
     <!-- 加载/重试 -->

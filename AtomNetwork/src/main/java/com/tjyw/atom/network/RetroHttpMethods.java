@@ -68,6 +68,7 @@ public class RetroHttpMethods {
 
     protected void createApiService(Retrofit retrofit) {
         httpQmServices = retrofit.create(HttpQmServices.class);
+        httpPayServices = retrofit.create(HttpPayServices.class);
     }
 
     public static HttpQmServices NAMING() {
