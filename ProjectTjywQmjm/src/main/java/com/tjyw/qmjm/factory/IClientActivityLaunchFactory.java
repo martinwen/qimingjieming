@@ -14,8 +14,9 @@ import com.tjyw.qmjm.activity.PayOrderActivity;
  */
 public class IClientActivityLaunchFactory {
 
-    public static void launchClientMasterActivity(BaseActivity context, boolean clear) {
+    public static void launchClientMasterActivity(BaseActivity context, int position, boolean clear) {
         Intent intent = new Intent(context, ClientMasterActivity.class);
+        intent.putExtra(IApiField.T.t, position);
         if (clear) {
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }

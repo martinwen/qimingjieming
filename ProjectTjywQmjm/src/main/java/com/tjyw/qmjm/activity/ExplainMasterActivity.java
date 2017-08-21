@@ -20,6 +20,7 @@ import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 import com.tjyw.qmjm.adapter.ExplainMasterAdapter;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.tjyw.qmjm.holder.HeaderWordHolder;
@@ -103,7 +104,7 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.explainNaming:
-                IClientActivityLaunchFactory.launchClientMasterActivity(this, true);
+                IClientActivityLaunchFactory.launchClientMasterActivity(this, ClientMasterAdapter.POSITION.NAMING, true);
                 break ;
             case R.id.explainOverview:
                 setSelectedTab(v);

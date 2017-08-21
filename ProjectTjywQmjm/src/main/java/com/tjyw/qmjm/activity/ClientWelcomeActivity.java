@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -30,7 +31,7 @@ public class ClientWelcomeActivity extends BaseActivity {
                 .subscribe(new Action1<Long>() {
                     @Override
                     public void call(Long aLong) {
-                        IClientActivityLaunchFactory.launchClientMasterActivity(ClientWelcomeActivity.this, false);
+                        IClientActivityLaunchFactory.launchClientMasterActivity(ClientWelcomeActivity.this, ClientMasterAdapter.POSITION.NAMING, false);
                     }
                 }, new Action1<Throwable>() {
                     @Override

@@ -1,6 +1,7 @@
 package com.tjyw.qmjm.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
@@ -8,6 +9,7 @@ import android.support.v4.util.Pair;
 import com.aspsine.fragmentnavigator.FragmentNavigator;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
+import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
@@ -62,11 +64,22 @@ public class ClientMasterActivity extends BaseActivity {
             }
         });
 
-        atomPubClientMasterNavigation.setCurrentItem(ClientMasterAdapter.POSITION.NAMING, true);
+        atomPubClientMasterNavigation.setCurrentItem(pGetIntExtra(IApiField.T.t, ClientMasterAdapter.POSITION.NAMING), true);
     }
 
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (null == intent) {
+
+        } else if (intent.hasExtra(IApiField.T.t)) {
+            int position = intent.getIntExtra(IApiField.T.t, ClientMasterAdapter.POSITION.NAMING);
+            atomPubClientMasterNavigation.setCurrentItem(position, true);
+        }
     }
 }
