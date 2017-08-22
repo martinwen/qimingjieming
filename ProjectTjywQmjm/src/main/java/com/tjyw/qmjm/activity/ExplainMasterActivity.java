@@ -90,7 +90,7 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
         getPresenter().postExplain(
                 postSurname,
                 postName,
-                pGetStringExtra(IApiField.D.data, null),
+                pGetStringExtra(IApiField.D.day, null),
                 pGetIntExtra(IApiField.G.gender, ISection.GENDER.MALE)
         );
     }

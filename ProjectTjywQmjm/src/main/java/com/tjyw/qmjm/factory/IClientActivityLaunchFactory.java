@@ -28,7 +28,7 @@ public class IClientActivityLaunchFactory {
         Intent intent = new Intent(context, ExplainMasterActivity.class);
         intent.putExtra(IApiField.S.surname, surname);
         intent.putExtra(IApiField.N.name, name);
-        intent.putExtra(IApiField.D.data, day);
+        intent.putExtra(IApiField.D.day, day);
         intent.putExtra(IApiField.G.gender, gender);
         context.startActivity(intent);
     }

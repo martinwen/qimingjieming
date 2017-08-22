@@ -3,14 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/atom_master_lunar_background"
+    android:minWidth="244dp"
     android:padding="16dp">
 
     <TextView
+        android:id="@+id/payServiceContent"
         style="@style/AtomStyle.BlackBigText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/abc_action_bar_home_description" />
+        android:gravity="center" />
 
     <TextView
         android:id="@id/atom_pub_resIdsOK"

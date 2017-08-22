@@ -22,6 +22,8 @@ import com.tjyw.qmjm.dialog.GregorianWindows;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.xhinliang.lunarcalendar.LunarCalendar;
 
+import java.util.Calendar;
+
 /**
  * Created by stephen on 07/08/2017.
  */
@@ -47,9 +49,11 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
 
+    protected GregorianWindows gregorianWindows;
+
     protected int postGender = ISection.GENDER.MALE;
 
-    protected LunarCalendar postCalendar;
+    protected String postDay;
 
     protected Validator validator;
 
@@ -80,7 +84,7 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
                         (BaseActivity) getActivity(),
                         nSurname.getText().toString(),
                         nGivenName.getText().toString(),
-                        "1990-07-15 00",
+                        postDay,
                         postGender
                 );
             }
@@ -101,7 +105,12 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
                 nGenderMale.setSelected(false);
                 break ;
             case R.id.nDateOfBirth:
-                GregorianWindows.newInstance(getFragmentManager(), postCalendar, this);
+                if (null == gregorianWindows) {
+                    gregorianWindows = GregorianWindows.newInstance(getFragmentManager(), null, this);
+                } else {
+                    gregorianWindows.show(getFragmentManager(), GregorianWindows.class.getName());
+                }
+
                 break ;
             case R.id.atom_pub_resIdsOK:
                 validator.validate();
@@ -109,12 +118,25 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
     }
 
     @Override
-    public void onGregorianSelected(LunarCalendar calendar, boolean isGregorianSolar) {
-        this.postCalendar = calendar;
+    public void gregorianOnSelected(LunarCalendar lunarCalendar, boolean isGregorianSolar, String hour, int postHour) {
+        Calendar calendar = DateTimeUtils.getCalendar(lunarCalendar.getDate());
+        if (null != calendar) {
+            calendar.set(Calendar.HOUR_OF_DAY, postHour);
+            postDay = DateTimeUtils.printCalendarByPattern(calendar, DateTimeUtils.yyyy_MM_dd_HH);
+        }
+
         if (isGregorianSolar) {
-            nDateOfBirth.setText(DateTimeUtils.printCalendarByPattern(DateTimeUtils.getCalendar(calendar.getDate()), DateTimeUtils.yyyy_MM_dd));
+            nDateOfBirth.setText(DateTimeUtils.printCalendarByPattern(calendar, ClientQmjmApplication.pGetString(R.string.atom_pub_resStringDateSolar)));
         } else {
-            nDateOfBirth.setText(calendar.getFullLunarStr());
+            nDateOfBirth.setText(
+                    ClientQmjmApplication.pGetString(
+                            R.string.atom_pub_resStringDateLunar,
+                            lunarCalendar.getLunarYear(),
+                            lunarCalendar.getLunarMonth(),
+                            lunarCalendar.getLunarDay(),
+                            hour
+                    )
+            );
         }
     }
 }

@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
+import android.text.TextUtils;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import antistatic.spinnerwheel.AbstractWheel;
 import antistatic.spinnerwheel.OnWheelChangedListener;
@@ -54,7 +57,7 @@ public class GregorianWindows extends DialogFragment implements View.OnClickList
 
     public interface OnGregorianSelectedListener {
 
-        void onGregorianSelected(LunarCalendar calendar, boolean isGregorianSolar);
+        void gregorianOnSelected(LunarCalendar calendar, boolean isGregorianSolar, String hour, int hh);
     }
 
     @From(R.id.gregorianSwitchContainer)
@@ -77,6 +80,8 @@ public class GregorianWindows extends DialogFragment implements View.OnClickList
 
     @From(R.id.gregorianOK)
     protected TextView gregorianOK;
+
+    protected List<String> gregorianHourList;
 
     protected Pair<List<GregorianMonth>, List<GregorianMonth>> gregorianMonthHolderPair;
 
@@ -124,7 +129,7 @@ public class GregorianWindows extends DialogFragment implements View.OnClickList
         String[] resGregorianHour = ClientQmjmApplication.pGetResources().getStringArray(R.array.atom_pub_resGregorianHour);
         if (! ArrayUtil.isEmpty(resGregorianHour)) {
             gregorianHourContainer.setViewAdapter(
-                    new ListWheelAdapter<String>(getContext(), Arrays.asList(resGregorianHour))
+                    new ListWheelAdapter<String>(getContext(), gregorianHourList = Arrays.asList(resGregorianHour))
             );
             gregorianHourContainer.setCurrentItem(1, false);
         }
@@ -151,7 +156,20 @@ public class GregorianWindows extends DialogFragment implements View.OnClickList
                 if (null != adapter) {
                     LunarCalendar calendar = adapter.get(gregorianDayContainer.getCurrentItem());
                     if (null != calendar && null != onGregorianSelectedListener) {
-                        onGregorianSelectedListener.onGregorianSelected(calendar, isGregorianSolar());
+                        if (! ArrayUtil.isEmpty(gregorianHourList)) {
+                            int position = gregorianHourContainer.getCurrentItem();
+                            String hour = gregorianHourList.get(position == 0 ? 2 : position); // 不清楚的时候默认按子时0点计算
+                            if (! TextUtils.isEmpty(hour)) {
+                                int hh = 0;
+                                Pattern pattern = Pattern.compile("[0-9]{1,2}");
+                                Matcher matcher = pattern.matcher(hour);
+                                if (matcher.find()) {
+                                    hh = Integer.parseInt(matcher.group());
+                                }
+
+                                onGregorianSelectedListener.gregorianOnSelected(calendar, isGregorianSolar(), hour, hh);
+                            }
+                        }
                     }
                 }
 
