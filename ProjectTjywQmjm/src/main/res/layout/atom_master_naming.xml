@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
@@ -8,7 +9,7 @@
 
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
-        android:layout_height="64dp" />
+        android:layout_height="96dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -117,74 +118,120 @@
         </FrameLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/nSurnameLabel"
             style="@style/AtomPubStyleKa.Black"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.0"
+            android:layout_alignBottom="@+id/nSurname"
             android:gravity="center_vertical|right"
-            android:text="@string/atom_pub_resStringSurname" />
+            android:text="@string/atom_pub_resStringSurname"
+            android:textStyle="bold"
+            app:layout_widthPercent="25%" />
 
         <TextView
+            android:id="@+id/nSurnameLabelDot"
             style="@style/AtomStyle.BlackSmallText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/atom_pub_resStringChineseDoc" />
+            android:layout_alignBottom="@+id/nSurname"
+            android:layout_toRightOf="@+id/nSurnameLabel"
+            android:paddingLeft="2dp"
+            android:text="@string/atom_pub_resStringChineseDoc"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/nSurname"
             style="@style/AtomStyle.BlackNormalText"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3.0"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@+id/nSurnameLabel"
+            android:background="@android:color/transparent"
             android:gravity="top"
             android:hint="@string/atom_pub_resStringSurnameHint"
             android:maxLength="2"
             android:maxLines="1"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp"
+            android:text="郭"
             android:textColorHint="@color/atom_pub_resColorInputHint"
-            android:theme="@style/AtomPubStyle.BottomLineEditText" />
-    </LinearLayout>
+            app:layout_widthPercent="65%" />
 
-    <LinearLayout
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignLeft="@+id/nSurname"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/nSurname"
+            android:layout_marginTop="4dp"
+            android:scaleType="fitXY"
+            android:src="#FFBBBBBB" />
+    </android.support.percent.PercentRelativeLayout>
+
+    <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/nDateOfBirthLabel"
             style="@style/AtomPubStyleKa.Black"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1.0"
+            android:layout_alignBottom="@+id/nDateOfBirth"
             android:gravity="center_vertical|right"
-            android:text="@string/atom_pub_resStringDateOfBirth" />
+            android:text="@string/atom_pub_resStringDateOfBirth"
+            android:textStyle="bold"
+            app:layout_widthPercent="25%" />
 
         <TextView
+            android:id="@+id/nDateOfBirthLabelDot"
             style="@style/AtomStyle.BlackSmallText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/atom_pub_resStringChineseDoc" />
+            android:layout_alignBottom="@+id/nDateOfBirth"
+            android:layout_toRightOf="@+id/nDateOfBirthLabel"
+            android:paddingLeft="2dp"
+            android:text="@string/atom_pub_resStringChineseDoc"
+            android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:id="@+id/nDateOfBirth"
             style="@style/AtomStyle.BlackNormalText"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="3.0"
-            android:gravity="top"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@+id/nDateOfBirthLabel"
+            android:background="@android:color/transparent"
             android:hint="@string/atom_pub_resStringDateOfBirthHint"
-            android:inputType="none"
-            android:maxLength="20"
             android:maxLines="1"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="8dp"
             android:textColorHint="@color/atom_pub_resColorInputHint"
-            android:theme="@style/AtomPubStyle.BottomLineEditText" />
-    </LinearLayout>
+            app:layout_widthPercent="65%" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignLeft="@+id/nDateOfBirth"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/nDateOfBirth"
+            android:layout_marginTop="4dp"
+            android:scaleType="fitXY"
+            android:src="#FFBBBBBB" />
+    </android.support.percent.PercentRelativeLayout>
 
     <TextView
         android:id="@id/atom_pub_resIdsOK"

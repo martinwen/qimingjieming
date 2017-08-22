@@ -27,6 +27,7 @@ public interface HttpQmServices {
     @POST(API.QM)
     Observable<RetroResult<RetroListResult<String>>> postNaming(
             @Field(IApiField.S.surname) String surname,
+            @Field(IApiField.D.day) String day,
             @Field(IApiField.G.gender) int gender,
             @Field(IApiField.N.nameNumber) int nameNumber
     );

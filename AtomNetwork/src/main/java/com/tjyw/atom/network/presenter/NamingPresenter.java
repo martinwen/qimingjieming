@@ -42,8 +42,8 @@ public class NamingPresenter<V extends ViewWithPresenter> extends BasePresenter<
                 });
     }
 
-    public void postNaming(String surname, int gender, int nameNumber) {
-        RetroHttpMethods.NAMING().postNaming(surname, gender, nameNumber)
+    public void postNaming(String surname, String day, int gender, int nameNumber) {
+        RetroHttpMethods.NAMING().postNaming(surname, day, gender, nameNumber)
                 .compose(RxSchedulersHelper.<RetroResult<RetroListResult<String>>>io_main())
                 .subscribe(new Action1<RetroResult<RetroListResult<String>>>() {
                     @Override

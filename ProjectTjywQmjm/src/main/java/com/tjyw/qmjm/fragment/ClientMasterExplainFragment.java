@@ -44,7 +44,7 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
     protected EditText nGivenName;
 
     @From(R.id.nDateOfBirth)
-    protected EditText nDateOfBirth;
+    protected TextView nDateOfBirth;
 
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
@@ -70,10 +70,8 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
         nGenderMale.setSelected(true);
         nGenderMale.setOnClickListener(this);
         nGenderFemale.setOnClickListener(this);
-        atom_pub_resIdsOK.setOnClickListener(this);
-
         nDateOfBirth.setOnClickListener(this);
-        nDateOfBirth.setKeyListener(null);
+        atom_pub_resIdsOK.setOnClickListener(this);
 
         validator = new Validator(this);
         validator.setValidationListener(new AtomPubValidationListener(ClientQmjmApplication.getContext()) {

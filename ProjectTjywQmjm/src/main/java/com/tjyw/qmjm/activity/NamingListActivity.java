@@ -53,7 +53,10 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         tSetToolBar(getString(R.string.atom_pub_resStringNamingList));
 
         getPresenter().postNaming(
-                postSurname, postGender, postNameNumber
+                postSurname,
+                pGetStringExtra(IApiField.D.day, null),
+                postGender,
+                postNameNumber
         );
 
         namingListContainer.addOnScrollListener(new RecyclerView.OnScrollListener() {

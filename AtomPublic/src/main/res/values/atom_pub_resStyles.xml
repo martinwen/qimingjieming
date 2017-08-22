@@ -8,6 +8,11 @@
         <item name="colorControlActivated">#FFBBBBBB</item>
     </style>
 
+    <style name="AtomPubStyle.NoLineEditText">
+        <item name="colorControlNormal">@android:color/transparent</item>
+        <item name="colorControlActivated">@android:color/transparent</item>
+    </style>
+
     <style name="AtomPubStyleKa" parent="AtomStyle.BlackSuperBigText">
         <item name="fontPath">@string/atom_pub_fontPath</item>
     </style>

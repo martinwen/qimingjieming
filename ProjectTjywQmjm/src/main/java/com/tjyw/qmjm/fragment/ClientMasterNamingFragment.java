@@ -13,14 +13,18 @@ import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Pattern;
 import com.tjyw.atom.network.conf.ISection;
 import com.tjyw.atom.network.presenter.NamingPresenter;
+import com.tjyw.atom.network.utils.DateTimeUtils;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.interfaces.AtomPubValidationListener;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.activity.BaseActivity;
+import com.tjyw.qmjm.dialog.GregorianWindows;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
+import com.xhinliang.lunarcalendar.LunarCalendar;
 
+import java.util.Calendar;
 import java.util.List;
 
 import nucleus.factory.RequiresPresenter;
@@ -29,7 +33,7 @@ import nucleus.factory.RequiresPresenter;
  * Created by stephen on 07/08/2017.
  */
 @RequiresPresenter(NamingPresenter.class)
-public class ClientMasterNamingFragment extends AtomPubBaseFragment {
+public class ClientMasterNamingFragment extends AtomPubBaseFragment implements GregorianWindows.OnGregorianSelectedListener {
 
     @From(R.id.nGenderMale)
     protected ViewGroup nGenderMale;
@@ -48,14 +52,18 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment {
     protected EditText nSurname;
 
     @From(R.id.nDateOfBirth)
-    protected EditText nDateOfBirth;
+    protected TextView nDateOfBirth;
 
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
 
+    protected GregorianWindows gregorianWindows;
+
     protected int postGender = ISection.GENDER.MALE;
 
     protected int postNameNumber = ISection.NAME_COUNT.SINGLE;
+
+    protected String postDay;
 
     protected Validator validator;
 
@@ -75,7 +83,11 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment {
             @Override
             public void onValidationSucceeded() {
                 IClientActivityLaunchFactory.launchNamingListActivity(
-                        (BaseActivity) getActivity(), nSurname.getText().toString(), postGender, postNameNumber
+                        (BaseActivity) getActivity(),
+                        nSurname.getText().toString(),
+                        postDay,
+                        postGender,
+                        postNameNumber
                 );
             }
         });
@@ -87,6 +99,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment {
         nGenderFemale.setOnClickListener(this);
         nNameNumberSingle.setOnClickListener(this);
         nNameNumberDouble.setOnClickListener(this);
+        nDateOfBirth.setOnClickListener(this);
         atom_pub_resIdsOK.setOnClickListener(this);
     }
 
@@ -113,8 +126,39 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment {
                 v.setSelected(true);
                 nNameNumberSingle.setSelected(false);
                 break ;
+            case R.id.nDateOfBirth:
+                if (null == gregorianWindows) {
+                    gregorianWindows = GregorianWindows.newInstance(getFragmentManager(), null, this);
+                } else {
+                    gregorianWindows.show(getFragmentManager(), GregorianWindows.class.getName());
+                }
+
+                break ;
             case R.id.atom_pub_resIdsOK:
                 validator.validate();
+        }
+    }
+
+    @Override
+    public void gregorianOnSelected(LunarCalendar lunarCalendar, boolean isGregorianSolar, String hour, int postHour) {
+        Calendar calendar = DateTimeUtils.getCalendar(lunarCalendar.getDate());
+        if (null != calendar) {
+            calendar.set(Calendar.HOUR_OF_DAY, postHour);
+            postDay = DateTimeUtils.printCalendarByPattern(calendar, DateTimeUtils.yyyy_MM_dd_HH);
+        }
+
+        if (isGregorianSolar) {
+            nDateOfBirth.setText(DateTimeUtils.printCalendarByPattern(calendar, ClientQmjmApplication.pGetString(R.string.atom_pub_resStringDateSolar)));
+        } else {
+            nDateOfBirth.setText(
+                    ClientQmjmApplication.pGetString(
+                            R.string.atom_pub_resStringDateLunar,
+                            lunarCalendar.getLunarYear(),
+                            lunarCalendar.getLunarMonth(),
+                            lunarCalendar.getLunarDay(),
+                            hour
+                    )
+            );
         }
     }
 }
