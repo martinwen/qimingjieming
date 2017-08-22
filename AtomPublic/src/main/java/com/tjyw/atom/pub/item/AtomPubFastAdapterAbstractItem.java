@@ -14,7 +14,7 @@ import com.tjyw.atom.pub.inject.Injector;
  */
 public abstract class AtomPubFastAdapterAbstractItem<T, Item extends IItem & IClickable, VH extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder> extends AbstractItem<Item, VH> {
 
-    protected T src;
+    public T src;
 
     public AtomPubFastAdapterAbstractItem(T src) {
         this.src = src;

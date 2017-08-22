@@ -12,4 +12,6 @@
 
     <item name="atom_pub_resFasterAdapterType_NamingWordItem" type="id"/>
 
+    <item name="atom_pub_resFasterAdapterType_MasterMineItem" type="id"/>
+
 </resources>

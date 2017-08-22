@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="atom_pub_resArrayMasterMine">
+        <item>我的订单</item>
+        <item>名字收藏</item>
+        <item>客服中心</item>
+        <item>百家姓</item>
+        <item>周公解梦</item>
+        <item>全唐诗</item>
+        <item>十二生肖</item>
+        <item>育儿宝典</item>
+        <item>孕期宝典</item>
+    </string-array>
+</resources>

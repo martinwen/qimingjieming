@@ -54,6 +54,17 @@
     <string name="atom_pub_resStringPayUseWxPay">微信</string>
     <string name="atom_pub_resStringPayPay">立即支付</string>
 
+    <!-- 我的页面 -->
+    <string name="atom_pub_resStringMineOrder">我的订单</string>
+    <string name="atom_pub_resStringMineCollect">名字收藏</string>
+    <string name="atom_pub_resStringMineService">客服中心</string>
+    <string name="atom_pub_resStringMineBJX">百家姓</string>
+    <string name="atom_pub_resStringMineZGJM">周公解梦</string>
+    <string name="atom_pub_resStringMineQTS">全唐诗</string>
+    <string name="atom_pub_resStringMineZodiac">十二生肖</string>
+    <string name="atom_pub_resStringMineBaby">育儿宝典</string>
+    <string name="atom_pub_resStringMinePregnant">孕期宝典</string>
+
     <!-- 加载/重试 -->
     <string name="atom_pub_resStringNetworkBroken">网络连接失败，请检测网络是否可用</string>
     <string name="atom_pub_resStringRetry">重试</string>
