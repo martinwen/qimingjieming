@@ -22,7 +22,7 @@ public interface HttpPayServices {
 
         String ORDER = "pay/order";
 
-        String PREVIEW = "pay/payService";
+        String PREVIEW = "pay/preview";
     }
 
     @FormUrlEncoded

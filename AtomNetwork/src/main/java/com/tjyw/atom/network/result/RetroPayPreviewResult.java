@@ -7,15 +7,11 @@ public class RetroPayPreviewResult implements RetroResultItem  {
 
     private static final long serialVersionUID = 7738852811160932790L;
 
-    public int payType;
-
     public int money;
 
     public String orderNo;
 
     public String title;
-
-    public PreviewData data;
 
     public static class PreviewData implements RetroResultItem {
 
