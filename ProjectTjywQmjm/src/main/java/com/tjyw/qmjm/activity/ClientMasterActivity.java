@@ -59,6 +59,14 @@ public class ClientMasterActivity extends BaseActivity {
         atomPubClientMasterNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
+                switch (position) {
+                    case ClientMasterAdapter.POSITION.NAMING:
+                    case ClientMasterAdapter.POSITION.EXPLAIN:
+                        immersionBar.fitsSystemWindows(false).transparentStatusBar().statusBarDarkFont(true).init();
+                        break ;
+                    case ClientMasterAdapter.POSITION.MINE:
+                        immersionBar.fitsSystemWindows(true).statusBarColor(R.color.colorPrimary).statusBarDarkFont(true).init();
+                }
                 fragmentNavigator.showFragment(position, false, false);
                 return true;
             }

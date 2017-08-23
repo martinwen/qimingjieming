@@ -52,9 +52,9 @@ public class MasterMineItem extends AtomPubFastAdapterAbstractItem<Pair<Integer,
         }
 
         @Override
-        public void onBindView(Context context, Pair<Integer, Integer> stringIntegerPair) {
-            bodyTitle.setText(stringIntegerPair.first);
-//            bodyTitle.setCompoundDrawablesWithIntrinsicBounds(0, stringIntegerPair.second, 0, 0);
+        public void onBindView(Context context, Pair<Integer, Integer> pair) {
+            bodyTitle.setText(pair.first);
+            bodyTitle.setCompoundDrawablesWithIntrinsicBounds(0, pair.second, 0, 0);
         }
     }
 }

@@ -26,6 +26,16 @@ import nucleus.view.NucleusAppCompatActivity;
 public abstract class AtomPubBaseActivity<P extends Presenter> extends NucleusAppCompatActivity<P>
         implements View.OnClickListener, IAtomPubIntentExtra, IAtomPubFragment, IAtomPubTools {
 
+    protected ImmersionBar immersionBar;
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != immersionBar) {
+            immersionBar.destroy();
+        }
+    }
+
     @Override
     public void onClick(View v) {
 
@@ -149,6 +159,6 @@ public abstract class AtomPubBaseActivity<P extends Presenter> extends NucleusAp
     }
 
     protected ImmersionBar immersionBarWith() {
-        return ImmersionBar.with(this);
+        return immersionBar = ImmersionBar.with(this);
     }
 }

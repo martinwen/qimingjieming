@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/bodyPinYin"
-        style="@style/AtomStyle.BlackSmallText"
+        style="@style/AtomStyle.BlackTinyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"

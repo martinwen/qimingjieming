@@ -10,6 +10,15 @@
         android:background="?colorPrimary"
         android:padding="16dp">
 
+        <TextView
+            android:id="@+id/userAccount"
+            style="@style/AtomStyle.GreyBigText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ic_launcher"
+            android:drawablePadding="16dp"
+            android:gravity="center_vertical"
+            android:text="@string/atom_pub_resStringMineUserAccount" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

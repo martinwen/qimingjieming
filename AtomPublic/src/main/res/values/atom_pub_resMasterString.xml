@@ -57,6 +57,7 @@
     <string name="atom_pub_resStringPayPay">立即支付</string>
 
     <!-- 我的页面 -->
+    <string name="atom_pub_resStringMineUserAccount">注册帐号: %s</string>
     <string name="atom_pub_resStringMineOrder">我的订单</string>
     <string name="atom_pub_resStringMineCollect">名字收藏</string>
     <string name="atom_pub_resStringMineService">客服中心</string>

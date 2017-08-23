@@ -69,8 +69,6 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment {
                         break ;
                 }
 
-                showToast(item.src.toString());
-
                 return true;
             }
         });
