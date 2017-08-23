@@ -2,6 +2,7 @@ package com.tjyw.atom.network.services;
 
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
+import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.atom.network.result.RetroResult;
 
@@ -25,7 +26,7 @@ public interface HttpQmServices {
 
     @FormUrlEncoded
     @POST(API.QM)
-    Observable<RetroResult<RetroListResult<String>>> postNaming(
+    Observable<RetroResult<RetroListResult<NameDefinition>>> postNameDefinition(
             @Field(IApiField.S.surname) String surname,
             @Field(IApiField.D.day) String day,
             @Field(IApiField.G.gender) int gender,

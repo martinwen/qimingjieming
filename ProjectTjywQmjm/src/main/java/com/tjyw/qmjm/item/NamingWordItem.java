@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.model.NameCharacter;
+import com.tjyw.atom.network.model.NameDefinition;
+import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.qmjm.ClientQmjmApplication;
@@ -17,9 +19,9 @@ import java.util.List;
 /**
  * Created by stephen on 14/08/2017.
  */
-public class NamingWordItem extends AtomPubFastAdapterAbstractItem<String, NamingWordItem, NamingWordItem.NamingWordHolder> {
+public class NamingWordItem extends AtomPubFastAdapterAbstractItem<NameDefinition, NamingWordItem, NamingWordItem.NamingWordHolder> {
 
-    public NamingWordItem(String src) {
+    public NamingWordItem(NameDefinition src) {
         super(src);
     }
 
@@ -44,7 +46,7 @@ public class NamingWordItem extends AtomPubFastAdapterAbstractItem<String, Namin
         holder.onBindView(ClientQmjmApplication.getContext(), src);
     }
 
-    static class NamingWordHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<String> {
+    static class NamingWordHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<NameDefinition> {
 
         @From(R.id.nameWordContainer)
         protected ViewGroup nameWordContainer;
@@ -60,15 +62,19 @@ public class NamingWordItem extends AtomPubFastAdapterAbstractItem<String, Namin
         }
 
         @Override
-        public void onBindView(Context context, String name) {
+        public void onBindView(Context context, NameDefinition nameDefinition) {
             nameWordContainer.removeAllViews();
 
-            for (int i = 0; i < name.length(); i++) {
-                String word = String.valueOf(name.charAt(i));
-                nameWordContainer.addView(
-                        HeaderWordHolder.newInstance(ClientQmjmApplication.getContext(), new NameCharacter(word)),
-                        nameWordContainer.getChildCount()
-                );
+            List<NameCharacter> wordsList = nameDefinition.wordsList;
+            if (! ArrayUtil.isEmpty(wordsList)) {
+                for (int i = 0; i < wordsList.size(); i ++) {
+                    NameCharacter character = wordsList.get(i);
+                    if (null != character) {
+                        nameWordContainer.addView(
+                                HeaderWordHolder.newInstance(ClientQmjmApplication.getContext(), character), nameWordContainer.getChildCount()
+                        );
+                    }
+                }
             }
         }
     }

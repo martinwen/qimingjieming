@@ -4,6 +4,7 @@ import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.RetroHttpMethods;
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.model.Explain;
+import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostExplainListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
@@ -42,12 +43,12 @@ public class NamingPresenter<V extends ViewWithPresenter> extends BasePresenter<
                 });
     }
 
-    public void postNaming(String surname, String day, int gender, int nameNumber) {
-        RetroHttpMethods.NAMING().postNaming(surname, day, gender, nameNumber)
-                .compose(RxSchedulersHelper.<RetroResult<RetroListResult<String>>>io_main())
-                .subscribe(new Action1<RetroResult<RetroListResult<String>>>() {
+    public void postNameDefinition(String surname, String day, int gender, int nameNumber) {
+        RetroHttpMethods.NAMING().postNameDefinition(surname, day, gender, nameNumber)
+                .compose(RxSchedulersHelper.<RetroResult<RetroListResult<NameDefinition>>>io_main())
+                .subscribe(new Action1<RetroResult<RetroListResult<NameDefinition>>>() {
                     @Override
-                    public void call(RetroResult<RetroListResult<String>> result) {
+                    public void call(RetroResult<RetroListResult<NameDefinition>> result) {
                         if (null == result || result.illegalRequest()) {
                             if (presenterView instanceof OnApiPostErrorListener) {
                                 ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Naming, new IllegalRequestException(result));

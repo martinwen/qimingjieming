@@ -4,17 +4,23 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.view.View;
 
+import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ISection;
+import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.pub.inject.From;
+import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.dialog.NamingPayWindows;
 import com.tjyw.qmjm.item.NamingWordItem;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +42,8 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     @From(R.id.namingListContainer)
     protected RecyclerView namingListContainer;
 
+    protected FastItemAdapter<NamingWordItem> nameDefinitionAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +60,22 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         setContentView(R.layout.atom_naming_list);
         tSetToolBar(getString(R.string.atom_pub_resStringNamingList));
 
-        getPresenter().postNaming(
-                postSurname,
-                pGetStringExtra(IApiField.D.day, null),
-                postGender,
-                postNameNumber
-        );
+        nameDefinitionAdapter = new FastItemAdapter<NamingWordItem>();
+        nameDefinitionAdapter.withOnClickListener(new FastAdapter.OnClickListener<NamingWordItem>() {
+            @Override
+            public boolean onClick(View v, IAdapter<NamingWordItem> adapter, NamingWordItem item, int position) {
+                return false;
+            }
+        });
+
+        namingListContainer.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        namingListContainer.setAdapter(nameDefinitionAdapter);
+        namingListContainer.addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
+                        .color(R.color.atom_pub_resColorDivider)
+                        .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDividerSize)
+                        .marginResId(R.dimen.atom_pubResDimenRecyclerViewDivider8dp)
+                        .build());
 
         namingListContainer.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
@@ -69,6 +87,13 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
                 }
             }
         });
+
+        getPresenter().postNameDefinition(
+                postSurname,
+                pGetStringExtra(IApiField.D.day, null),
+                postGender,
+                postNameNumber
+        );
     }
 
     @Override
@@ -77,17 +102,15 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     }
 
     @Override
-    public void postOnNamingSuccess(List<String> result) {
+    public void postOnNamingSuccess(List<NameDefinition> result) {
         List<NamingWordItem> itemList = new ArrayList<NamingWordItem>();
-        int size = result.size();
-        for (int i = 0; i < size; i ++) {
-            itemList.add(new NamingWordItem(result.get(i)));
+        int size = null == result ? 0 : result.size();
+        if (size > 0) {
+            for (int i = 0; i < size; i++) {
+                itemList.add(new NamingWordItem(result.get(i)));
+            }
+
+            nameDefinitionAdapter.add(itemList);
         }
-
-        FastItemAdapter<NamingWordItem> fastItemAdapter = new FastItemAdapter<>();
-        fastItemAdapter.set(itemList);
-
-        namingListContainer.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-        namingListContainer.setAdapter(fastItemAdapter);
     }
 }

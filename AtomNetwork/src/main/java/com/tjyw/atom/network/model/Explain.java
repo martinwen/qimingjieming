@@ -19,15 +19,6 @@ public class Explain implements RetroResultItem {
 
     public SanCai sancai;
 
-    public static class NameScore implements RetroResultItem {
-
-        private static final long serialVersionUID = -1221679170908492997L;
-
-        public int score;
-
-        public String desc;
-    }
-
     public static class WuGe implements RetroResultItem {
 
         private static final long serialVersionUID = -4216193048087371723L;

@@ -1,5 +1,7 @@
 package com.tjyw.atom.network.presenter.listener;
 
+import com.tjyw.atom.network.model.NameDefinition;
+
 import java.util.List;
 
 /**
@@ -7,5 +9,5 @@ import java.util.List;
  */
 public interface OnApiPostNamingListener {
 
-    void postOnNamingSuccess(List<String> result);
+    void postOnNamingSuccess(List<NameDefinition> result);
 }
