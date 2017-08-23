@@ -46,7 +46,7 @@ public class NamingWordItem extends AtomPubFastAdapterAbstractItem<NameDefinitio
         holder.onBindView(ClientQmjmApplication.getContext(), src);
     }
 
-    static class NamingWordHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<NameDefinition> {
+    public static class NamingWordHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<NameDefinition> {
 
         @From(R.id.nameWordContainer)
         protected ViewGroup nameWordContainer;
@@ -76,6 +76,10 @@ public class NamingWordItem extends AtomPubFastAdapterAbstractItem<NameDefinitio
                     }
                 }
             }
+        }
+
+        public TextView getNameWordCollect() {
+            return nameWordCollect;
         }
     }
 }

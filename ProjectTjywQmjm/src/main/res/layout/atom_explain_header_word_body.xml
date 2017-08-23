@@ -5,18 +5,18 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp">
+    android:padding="8dp">
 
     <TextView
         android:id="@+id/bodyPinYin"
-        style="@style/AtomStyle.BlackNormalText"
+        style="@style/AtomStyle.BlackSmallText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:gravity="center"
+        android:maxLength="12"
         android:maxLines="1"
-        android:padding="8dp"
+        android:paddingBottom="8dp"
         tools:text="bodyPinYin" />
 
     <TextView
@@ -34,12 +34,12 @@
 
     <TextView
         android:id="@+id/bodyElement"
-        style="@style/AtomStyle.RedNormalText"
+        style="@style/AtomStyle.RedSmallText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
-        android:padding="8dp"
+        android:paddingTop="8dp"
         tools:text="bodyElement" />
 </LinearLayout>

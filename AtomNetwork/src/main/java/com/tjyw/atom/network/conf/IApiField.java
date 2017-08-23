@@ -60,6 +60,8 @@ public interface IApiField {
 
         String id = "id";
 
+        String info = "info";
+
         String images = "images";
 
         String imageIds = "imageIds";

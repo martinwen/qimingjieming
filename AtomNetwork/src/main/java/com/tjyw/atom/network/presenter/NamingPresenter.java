@@ -8,6 +8,7 @@ import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostExplainListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
+import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.atom.network.result.RetroResult;
 
@@ -45,16 +46,16 @@ public class NamingPresenter<V extends ViewWithPresenter> extends BasePresenter<
 
     public void postNameDefinition(String surname, String day, int gender, int nameNumber) {
         RetroHttpMethods.NAMING().postNameDefinition(surname, day, gender, nameNumber)
-                .compose(RxSchedulersHelper.<RetroResult<RetroListResult<NameDefinition>>>io_main())
-                .subscribe(new Action1<RetroResult<RetroListResult<NameDefinition>>>() {
+                .compose(RxSchedulersHelper.<RetroResult<RNameDefinition>>io_main())
+                .subscribe(new Action1<RetroResult<RNameDefinition>>() {
                     @Override
-                    public void call(RetroResult<RetroListResult<NameDefinition>> result) {
+                    public void call(RetroResult<RNameDefinition> result) {
                         if (null == result || result.illegalRequest()) {
                             if (presenterView instanceof OnApiPostErrorListener) {
                                 ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Naming, new IllegalRequestException(result));
                             }
                         } else if (presenterView instanceof OnApiPostNamingListener) {
-                            ((OnApiPostNamingListener) presenterView).postOnNamingSuccess(result.items.list);
+                            ((OnApiPostNamingListener) presenterView).postOnNamingSuccess(result.items);
                         }
                     }
                 }, new Action1<Throwable>() {

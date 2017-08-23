@@ -145,9 +145,6 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
     @Override
     public void postOnPayPreviewSuccess(RetroPayPreviewResult result, int payType) {
-        result.orderNo = "20170823105428895112509330004";
-        result.money = 1;
-        result.title = getClass().getName();
         PayAlipayBuilder.getInstance().build(this, result, this);
     }
 
