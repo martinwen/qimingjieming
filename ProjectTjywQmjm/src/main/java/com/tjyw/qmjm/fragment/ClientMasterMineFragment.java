@@ -8,12 +8,18 @@ import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.brianjmelton.stanley.ProxyGenerator;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
+import com.tjyw.atom.network.interfaces.IPrefUser;
+import com.tjyw.atom.network.model.UserInfo;
+import com.tjyw.atom.network.utils.JsonUtil;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.inject.From;
+import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.item.MasterMineItem;
 
@@ -24,6 +30,9 @@ import java.util.List;
  * Created by stephen on 07/08/2017.
  */
 public class ClientMasterMineFragment extends AtomPubBaseFragment {
+
+    @From(R.id.masterMineUserAccount)
+    protected TextView masterMineUserAccount;
 
     @From(R.id.masterMineContainer)
     protected RecyclerView masterMineContainer;
@@ -37,6 +46,14 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        IPrefUser user = new ProxyGenerator().create(ClientQmjmApplication.getContext(), IPrefUser.class);
+        if (null != user) {
+            UserInfo userInfo = JsonUtil.getInstance().fromJson(user.getUserInfo(), UserInfo.class);
+            if (null != userInfo) {
+                masterMineUserAccount.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringMineUserAccount, userInfo.account));
+            }
+        }
 
         FastItemAdapter<MasterMineItem> adapter = new FastItemAdapter<MasterMineItem>();
         masterMineContainer.setAdapter(adapter);

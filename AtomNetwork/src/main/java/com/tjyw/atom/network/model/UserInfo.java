@@ -11,7 +11,15 @@ public class UserInfo implements RetroResultItem {
 
     public String account;
 
+    public String photo;
+
     public String name;
 
+    public int gender;
 
+    public String sessionKey;
+
+    public String birth;
+
+    public String mobile;
 }

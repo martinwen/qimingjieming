@@ -1,10 +1,14 @@
 package com.tjyw.atom.network.interfaces;
 
+import android.content.Context;
+
 import com.brianjmelton.stanley.annot.Accessor;
+import com.brianjmelton.stanley.annot.Proxy;
 
 /**
  * Created by stephen on 17-8-1.
  */
+@Proxy(name = "IPrefUser", mode = Context.MODE_PRIVATE)
 public interface IPrefUser {
 
     interface KEY {
@@ -22,7 +26,7 @@ public interface IPrefUser {
     @Accessor(key = KEY.KEY_USER_ID)
     void setUserId(String userId);
 
-    @Accessor(key = KEY.KEY_USER_SESSION)
+    @Accessor(key = KEY.KEY_USER_SESSION, _String = "")
     String getUserSession();
 
     @Accessor(key = KEY.KEY_USER_SESSION)

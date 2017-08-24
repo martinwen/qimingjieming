@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tjyw.atom.network.interceptor.RetroRequestInterceptor;
 import com.tjyw.atom.network.services.HttpPayServices;
 import com.tjyw.atom.network.services.HttpQmServices;
+import com.tjyw.atom.network.services.HttpUserServices;
 
 import java.util.concurrent.TimeUnit;
 
@@ -40,6 +41,8 @@ public class RetroHttpMethods {
 
     protected HttpPayServices httpPayServices;
 
+    protected HttpUserServices httpUserServices;
+
     public RetroHttpMethods() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         if (Network.getInstance().isEnableStethoDebug()) {
@@ -69,6 +72,7 @@ public class RetroHttpMethods {
     protected void createApiService(Retrofit retrofit) {
         httpQmServices = retrofit.create(HttpQmServices.class);
         httpPayServices = retrofit.create(HttpPayServices.class);
+        httpUserServices = retrofit.create(HttpUserServices.class);
     }
 
     public static HttpQmServices NAMING() {
@@ -77,5 +81,9 @@ public class RetroHttpMethods {
 
     public static HttpPayServices PAY() {
         return getInstance().httpPayServices;
+    }
+
+    public static HttpUserServices USER() {
+        return getInstance().httpUserServices;
     }
 }

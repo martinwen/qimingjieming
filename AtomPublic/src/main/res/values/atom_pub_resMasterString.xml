@@ -21,6 +21,7 @@
     <string name="atom_pub_resStringDateLunar">%1$s年%2$s%3$s %4$s</string>
 
     <string name="atom_pub_resStringChineseDoc">:</string>
+    <string name="atom_pub_resStringTip">提示</string>
     <string name="atom_pub_resStringOK">确定</string>
     <string name="atom_pub_resStringCancel">取消</string>
 

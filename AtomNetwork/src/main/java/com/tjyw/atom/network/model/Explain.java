@@ -1,5 +1,6 @@
 package com.tjyw.atom.network.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tjyw.atom.network.result.RetroResultItem;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public class Explain implements RetroResultItem {
     public List<WuGe> wugeList;
 
     public SanCai sancai;
+
+    @JsonProperty("bazi")
+    public NameZodiac nameZodiac;
 
     public static class WuGe implements RetroResultItem {
 
