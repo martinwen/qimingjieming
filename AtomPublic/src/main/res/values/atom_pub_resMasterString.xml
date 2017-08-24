@@ -69,6 +69,17 @@
     <string name="atom_pub_resStringMineBaby">育儿宝典</string>
     <string name="atom_pub_resStringMinePregnant">孕期宝典</string>
 
+    <!-- 用户登录注册 -->
+    <string name="atom_pub_resStringUserSignIn">登录</string>
+    <string name="atom_pub_resStringUserSignMobileHint">请输入您的手机号</string>
+    <string name="atom_pub_resStringUserSignMobileIllegal">请输入11位手机号</string>
+    <string name="atom_pub_resStringUserSignAuthCodeHint">请输入短信验证码</string>
+    <string name="atom_pub_resStringUserSignAuthCodeIllegal">请输入6位验证码</string>
+    <string name="atom_pub_resStringUserSignAuthCodeGet">获取验证码</string>
+    <string name="atom_pub_resStringUserSignAuthCodeCounting">%d s</string>
+    <string name="atom_pub_resStringUserSignAuthCodeReSend">重发验证码</string>
+    <string name="atom_pub_resStringUserSignTip">* 未注用户册手机号，登录时将自动完成帐号注册</string>
+
     <!-- 加载/重试 -->
     <string name="atom_pub_resStringNetworkBroken">网络连接失败，请检测网络是否可用</string>
     <string name="atom_pub_resStringRetry">重试</string>

@@ -9,7 +9,6 @@ import android.view.animation.Animation;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Pattern;
 import com.tjyw.atom.network.conf.ISection;
@@ -26,7 +25,6 @@ import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.xhinliang.lunarcalendar.LunarCalendar;
 
 import java.util.Calendar;
-import java.util.List;
 
 import nucleus.factory.RequiresPresenter;
 

@@ -8,6 +8,7 @@ import com.tjyw.qmjm.activity.ClientMasterActivity;
 import com.tjyw.qmjm.activity.ExplainMasterActivity;
 import com.tjyw.qmjm.activity.NamingListActivity;
 import com.tjyw.qmjm.activity.PayOrderActivity;
+import com.tjyw.qmjm.activity.UserSignInActivity;
 
 /**
  * Created by stephen on 07/08/2017.
@@ -44,6 +45,11 @@ public class IClientActivityLaunchFactory {
 
     public static void launchPayOrderActivity(BaseActivity context) {
         Intent intent = new Intent(context, PayOrderActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void launchUserSignInActivity(BaseActivity context) {
+        Intent intent = new Intent(context, UserSignInActivity.class);
         context.startActivity(intent);
     }
 }

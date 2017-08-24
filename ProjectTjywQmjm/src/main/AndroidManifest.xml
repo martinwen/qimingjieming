@@ -35,9 +35,8 @@
     <application
         android:name=".ClientQmjmApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/atom_ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="icon, label, name">
@@ -84,6 +83,10 @@
 
         <activity
             android:name=".activity.PayOrderActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.UserSignInActivity"
             android:screenOrientation="portrait" />
 
     </application>

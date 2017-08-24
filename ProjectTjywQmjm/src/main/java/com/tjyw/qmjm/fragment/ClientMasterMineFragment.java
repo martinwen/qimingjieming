@@ -21,6 +21,8 @@ import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.activity.BaseActivity;
+import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.tjyw.qmjm.item.MasterMineItem;
 
 import java.util.ArrayList;
@@ -83,6 +85,7 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment {
                     case R.string.atom_pub_resStringMineZodiac:
                     case R.string.atom_pub_resStringMineBaby:
                     case R.string.atom_pub_resStringMinePregnant:
+                        IClientActivityLaunchFactory.launchUserSignInActivity((BaseActivity) getActivity());
                         break ;
                 }
 
