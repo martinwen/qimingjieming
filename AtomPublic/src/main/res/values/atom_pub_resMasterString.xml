@@ -19,6 +19,7 @@
     <string name="atom_pub_resStringDateOfBirthHint">选择您的出生时间</string>
     <string name="atom_pub_resStringDateSolar">yyyy年MM月dd日 HH时</string>
     <string name="atom_pub_resStringDateLunar">%1$s年%2$s%3$s %4$s</string>
+    <string name="atom_pub_resStringNameInputHint">请输入您的姓氏/名字，最多2个汉字</string>
 
     <string name="atom_pub_resStringChineseDoc">:</string>
     <string name="atom_pub_resStringTip">提示</string>

@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mobsandgeeks.saripaar.Validator;
+import com.mobsandgeeks.saripaar.annotation.Length;
 import com.mobsandgeeks.saripaar.annotation.Pattern;
 import com.tjyw.atom.network.conf.ISection;
 import com.tjyw.atom.network.utils.DateTimeUtils;
@@ -35,14 +36,15 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
     @From(R.id.nGenderFemale)
     protected ViewGroup nGenderFemale;
 
-    @Pattern(regex = "^[\\u4e00-\\u9fa5]{1,2}$")
+    @Pattern(regex = "^[\\u4e00-\\u9fa5]{1,2}$", messageResId = R.string.atom_pub_resStringNameInputHint)
     @From(R.id.nSurname)
     protected EditText nSurname;
 
-    @Pattern(regex = "^[\\u4e00-\\u9fa5]{1,2}$")
+    @Pattern(regex = "^[\\u4e00-\\u9fa5]{1,2}$", messageResId = R.string.atom_pub_resStringNameInputHint)
     @From(R.id.nGivenName)
     protected EditText nGivenName;
 
+    @Length(min = 1, messageResId = R.string.atom_pub_resStringDateOfBirthHint)
     @From(R.id.nDateOfBirth)
     protected TextView nDateOfBirth;
 
