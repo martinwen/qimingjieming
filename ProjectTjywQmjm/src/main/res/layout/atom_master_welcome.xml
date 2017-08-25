@@ -1,28 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="@drawable/atom_pub_png_welcome_top" />
+    android:layout_height="match_parent">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:src="@drawable/atom_pub_png_welcome_bottom" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:padding="16dp"
-        android:scaleType="center"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         android:src="@drawable/atom_pub_png_welcome_slogan" />
 </FrameLayout>

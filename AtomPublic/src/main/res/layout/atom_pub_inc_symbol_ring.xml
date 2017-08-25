@@ -10,5 +10,5 @@
         android:layout_below="@+id/atomPubToolBar"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/atom_pub_png_master_background" />
+        android:src="@drawable/atom_pub_png_symbol_ring" />
 </merge>

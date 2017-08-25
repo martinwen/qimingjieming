@@ -8,7 +8,7 @@
     android:gravity="bottom"
     android:orientation="vertical">
 
-    <include layout="@layout/atom_pub_inc_symbol_bg" />
+    <include layout="@layout/atom_pub_inc_symbol_ring" />
 
     <FrameLayout
         android:id="@+id/masterFragmentContainer"
