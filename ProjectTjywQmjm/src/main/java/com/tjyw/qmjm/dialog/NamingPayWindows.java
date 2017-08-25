@@ -32,6 +32,12 @@ public class NamingPayWindows extends DialogFragment implements View.OnClickList
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.AtomPubStyle_Translucent_Dialog);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,5 +64,4 @@ public class NamingPayWindows extends DialogFragment implements View.OnClickList
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         return dialog;
     }
-
 }

@@ -1,6 +1,7 @@
 package com.tjyw.qmjm.activity;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,6 +35,7 @@ import java.util.concurrent.TimeUnit;
 import nucleus.factory.RequiresPresenter;
 import rx.functions.Action1;
 import timber.log.Timber;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Created by stephen on 17-8-17.
@@ -70,6 +72,11 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         payUseAlipay.setOnClickListener(this);
         payUseWxPay.setOnClickListener(this);
         atom_pub_resIdsOK.setOnClickListener(this);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override

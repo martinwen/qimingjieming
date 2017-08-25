@@ -1,5 +1,6 @@
 package com.tjyw.qmjm.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -31,6 +32,7 @@ import java.util.List;
 
 import nucleus.factory.RequiresPresenter;
 import timber.log.Timber;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Created by stephen on 14/08/2017.
@@ -50,6 +52,11 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     protected FastItemAdapter<NamingWordItem> nameDefinitionAdapter;
 
     protected RNameDefinition.Param postParam;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

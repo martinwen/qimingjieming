@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/atom_master_lunar_background"
-    android:minWidth="244dp"
-    android:padding="16dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/atom_pub_png_pay_window"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/atom_pub_png_pay_window_slogan" />
 
     <TextView
         android:id="@+id/payServiceContent"
         style="@style/AtomStyle.BlackBigText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center" />
+        android:gravity="center"
+        android:padding="16dp" />
 
     <TextView
         android:id="@id/atom_pub_resIdsOK"
@@ -22,4 +30,4 @@
         android:background="@drawable/atom_pub_ic_ink_text_red"
         android:gravity="center"
         android:text="@string/atom_pub_resStringPayPay" />
-</FrameLayout>
+</LinearLayout>
