@@ -31,6 +31,10 @@ import rx.functions.Action1;
 @RequiresPresenter(UserPresenter.class)
 public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelcomeActivity>> {
 
+    static final int DELAY_TO_LAUNCH_MASTER = 2000;
+
+    protected long createMillisTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,7 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
                 .statusBarDarkFont(true)
                 .init();
 
+        createMillisTime = System.currentTimeMillis();
         IPrefUser user = new ProxyGenerator().create(getApplicationContext(), IPrefUser.class);
         if (null != user && ! TextUtils.isEmpty(user.getUserSession())) { // 判断本地是否有用户信息
             RetroHttpMethods.PAY().postPayOrder(1) // 有用户信息时，只请求init接口初始化
@@ -114,7 +119,20 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
     }
 
     protected void launchMasterActivity() {
-        IClientActivityLaunchFactory.launchClientMasterActivity(this, ClientMasterAdapter.POSITION.NAMING, false);
-        finish();
+        createMillisTime = Math.abs(createMillisTime - System.currentTimeMillis());
+        if (createMillisTime < DELAY_TO_LAUNCH_MASTER) {
+            Observable.timer((DELAY_TO_LAUNCH_MASTER - createMillisTime), TimeUnit.MILLISECONDS)
+                    .compose(RxSchedulersHelper.<Long>io_main())
+                    .subscribe(new Action1<Long>() {
+                        @Override
+                        public void call(Long aLong) {
+                            IClientActivityLaunchFactory.launchClientMasterActivity(ClientWelcomeActivity.this, ClientMasterAdapter.POSITION.NAMING, false);
+                            finish();
+                        }
+                    });
+        } else {
+            IClientActivityLaunchFactory.launchClientMasterActivity(this, ClientMasterAdapter.POSITION.NAMING, false);
+            finish();
+        }
     }
 }
