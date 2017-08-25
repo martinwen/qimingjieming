@@ -15,8 +15,8 @@
             style="@style/AtomStyle.GreyBigText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@mipmap/atom_ic_launcher"
-            android:drawablePadding="16dp"
+            android:drawableLeft="@drawable/atom_pub_png_logo"
+            android:drawablePadding="8dp"
             android:gravity="center_vertical"
             android:text="@string/atom_pub_resStringMineUserAccount" />
     </LinearLayout>

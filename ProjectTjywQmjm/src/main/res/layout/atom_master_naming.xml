@@ -162,7 +162,7 @@
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingTop="8dp"
-            android:text="郭"
+            android:text="苏"
             android:textColorHint="@color/atom_pub_resColorInputHint"
             app:layout_widthPercent="65%" />
 

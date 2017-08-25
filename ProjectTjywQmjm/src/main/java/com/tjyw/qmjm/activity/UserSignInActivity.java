@@ -47,8 +47,6 @@ public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSi
 
     protected Subscription countDownSubscribe;
 
-    protected Validator authCodeValidator;
-
     protected Validator signInValidator;
 
     @Override
@@ -60,14 +58,6 @@ public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSi
 
         userSignInAuthCodeGet.setOnClickListener(this);
         atom_pub_resIdsOK.setOnClickListener(this);
-
-        authCodeValidator = new Validator(this);
-        authCodeValidator.setValidationListener(new AtomPubValidationListener(getApplicationContext()) {
-            @Override
-            public void onValidationSucceeded() {
-                sendCodeCountDown();
-            }
-        });
 
         signInValidator = new Validator(this);
         signInValidator.setValidationListener(new AtomPubValidationListener(getApplicationContext()) {
@@ -95,7 +85,11 @@ public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.userSignInAuthCodeGet:
-                authCodeValidator.validateBefore(userSignInAuthCode);
+                if (userSignInMobile.length() < 11) {
+                    showToast(R.string.atom_pub_resStringUserSignMobileIllegal);
+                } else {
+                    sendCodeCountDown();
+                }
                 break ;
             case R.id.atom_pub_resIdsOK:
                 signInValidator.validate();

@@ -25,8 +25,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_margin="8dp"
+                android:padding="8dp"
                 android:scaleType="center"
-                android:src="@drawable/atom_pub_png_logo" />
+                android:src="@mipmap/atom_ic_launcher" />
 
             <android.support.percent.PercentRelativeLayout
                 android:layout_width="match_parent"
