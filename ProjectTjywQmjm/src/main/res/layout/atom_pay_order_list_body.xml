@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:src="@drawable/atom_pub_png_logo" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/bodyOrderNo"
+            style="@style/AtomStyle.GreySmallText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="bodyOrderNo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/bodyTitle"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                tools:text="bodyOrderNo" />
+
+            <TextView
+                android:id="@+id/bodyPrice"
+                style="@style/AtomStyle.RedNormalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingLeft="8dp"
+                tools:text="bodyPrice" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/bodyOrderDate"
+            style="@style/AtomStyle.GreySmallText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="bodyOrderDate" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:src="@drawable/atom_pub_ic_pay_order_done" />
+
+    <ImageView
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:paddingLeft="8dp"
+        android:scaleType="center"
+        android:src="@drawable/atom_pub_ic_right_arrow" />
+</LinearLayout>

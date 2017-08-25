@@ -68,6 +68,12 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         setContentView(R.layout.atom_pay_order);
         tSetToolBar(getString(R.string.atom_pub_resStringPayOrder));
 
+        immersionBarWith()
+                .fitsSystemWindows(true)
+                .statusBarColor(R.color.colorPrimary)
+                .statusBarDarkFont(true)
+                .init();
+
         payUseAlipay.setSelected(true);
         payUseAlipay.setOnClickListener(this);
         payUseWxPay.setOnClickListener(this);

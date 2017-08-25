@@ -78,6 +78,12 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
         } else {
             setContentView(R.layout.atom_explain_host);
             tSetToolBar(getString(R.string.atom_pub_resStringMasterTabExplain));
+
+            immersionBarWith()
+                    .fitsSystemWindows(true)
+                    .statusBarColor(R.color.colorPrimary)
+                    .statusBarDarkFont(true)
+                    .init();
         }
 
         explainOverview.setSelected(true);

@@ -74,6 +74,12 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         setContentView(R.layout.atom_naming_list);
         tSetToolBar(getString(R.string.atom_pub_resStringNamingList));
 
+        immersionBarWith()
+                .fitsSystemWindows(true)
+                .statusBarColor(R.color.colorPrimary)
+                .statusBarDarkFont(true)
+                .init();
+
         nameDefinitionAdapter = new FastItemAdapter<NamingWordItem>();
         nameDefinitionAdapter.withOnClickListener(new FastAdapter.OnClickListener<NamingWordItem>() {
             @Override

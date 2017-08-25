@@ -12,6 +12,12 @@
 
     <item name="atom_pub_resFasterAdapterType_NamingWordItem" type="id"/>
 
+    <!-- 我的页面九宫格 -->
     <item name="atom_pub_resFasterAdapterType_MasterMineItem" type="id"/>
+
+    <!-- 我的订单 -->
+    <item name="atom_pub_resFasterAdapterType_PayOrderListItem" type="id"/>
+
+
 
 </resources>

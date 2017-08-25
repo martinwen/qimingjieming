@@ -8,6 +8,7 @@ import com.tjyw.qmjm.activity.ClientMasterActivity;
 import com.tjyw.qmjm.activity.ExplainMasterActivity;
 import com.tjyw.qmjm.activity.NamingListActivity;
 import com.tjyw.qmjm.activity.PayOrderActivity;
+import com.tjyw.qmjm.activity.PayOrderListActivity;
 import com.tjyw.qmjm.activity.UserSignInActivity;
 
 /**
@@ -45,6 +46,11 @@ public class IClientActivityLaunchFactory {
 
     public static void launchPayOrderActivity(BaseActivity context) {
         Intent intent = new Intent(context, PayOrderActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void launchPayOrderListActivity(BaseActivity context) {
+        Intent intent = new Intent(context, PayOrderListActivity.class);
         context.startActivity(intent);
     }
 

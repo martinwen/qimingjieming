@@ -71,7 +71,8 @@
 
         <activity
             android:name=".activity.ClientMasterActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".activity.ExplainMasterActivity"
@@ -83,6 +84,10 @@
 
         <activity
             android:name=".activity.PayOrderActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.PayOrderListActivity"
             android:screenOrientation="portrait" />
 
         <activity

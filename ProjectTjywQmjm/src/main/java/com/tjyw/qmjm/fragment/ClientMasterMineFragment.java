@@ -77,6 +77,8 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment {
             public boolean onClick(View v, IAdapter<MasterMineItem> adapter, MasterMineItem item, int position) {
                 switch (item.src.first) {
                     case R.string.atom_pub_resStringMineOrder:
+                        IClientActivityLaunchFactory.launchPayOrderListActivity((BaseActivity) getActivity());
+                        break ;
                     case R.string.atom_pub_resStringMineCollect:
                     case R.string.atom_pub_resStringMineService:
                     case R.string.atom_pub_resStringMineBJX:

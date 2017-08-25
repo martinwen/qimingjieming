@@ -49,7 +49,8 @@
     <string name="atom_pub_resStringExplainSanCaiReJiYun">人际运</string>
     <string name="atom_pub_resStringExplainSanCaiXingGe">性格</string>
     <string name="atom_pub_resStringExplainSanCaiShiYi">释义</string>
-    
+
+    <!-- 支付 -->
     <string name="atom_pub_resStringPay"></string>
     <string name="atom_pub_resStringPayOrder">支付订单</string>
     <string name="atom_pub_resStringPayService">购买服务: %s</string>
@@ -57,6 +58,9 @@
     <string name="atom_pub_resStringPayUseAliPay">支付宝</string>
     <string name="atom_pub_resStringPayUseWxPay">微信</string>
     <string name="atom_pub_resStringPayPay">立即支付</string>
+    <!-- 支付列表 -->
+    <string name="atom_pub_resStringPayList">我的订单</string>
+    <string name="atom_pub_resStringPayNoData">没有订单记录</string>
 
     <!-- 我的页面 -->
     <string name="atom_pub_resStringMineUserAccount">注册帐号: %s</string>

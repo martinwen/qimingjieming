@@ -56,6 +56,12 @@ public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSi
         setContentView(R.layout.atom_user_sign_in);
         tSetToolBar(getString(R.string.atom_pub_resStringUserSignIn));
 
+        immersionBarWith()
+                .fitsSystemWindows(true)
+                .statusBarColor(R.color.colorPrimary)
+                .statusBarDarkFont(true)
+                .init();
+
         userSignInAuthCodeGet.setOnClickListener(this);
         atom_pub_resIdsOK.setOnClickListener(this);
 
