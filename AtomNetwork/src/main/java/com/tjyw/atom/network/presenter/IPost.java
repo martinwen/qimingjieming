@@ -16,4 +16,8 @@ public interface IPost {
     int PayPreview = 5;
 
     int UserRegister = 6;
+
+    int UserLoginCode = 7;
+
+    int UserLogin = 8;
 }

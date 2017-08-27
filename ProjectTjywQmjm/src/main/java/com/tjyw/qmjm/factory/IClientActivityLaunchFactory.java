@@ -3,6 +3,8 @@ package com.tjyw.qmjm.factory;
 import android.content.Intent;
 
 import com.tjyw.atom.network.conf.IApiField;
+import com.tjyw.atom.network.conf.ICode;
+import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.qmjm.activity.BaseActivity;
 import com.tjyw.qmjm.activity.ClientMasterActivity;
 import com.tjyw.qmjm.activity.ExplainMasterActivity;
@@ -56,6 +58,11 @@ public class IClientActivityLaunchFactory {
 
     public static void launchUserSignInActivity(BaseActivity context) {
         Intent intent = new Intent(context, UserSignInActivity.class);
-        context.startActivity(intent);
+        context.startActivityForResult(intent, ICode.SECTION.SS);
+    }
+
+    public static void launchUserSignInActivity(AtomPubBaseFragment context) {
+        Intent intent = new Intent(context.getActivity(), UserSignInActivity.class);
+        context.startActivityForResult(intent, ICode.SECTION.SS);
     }
 }

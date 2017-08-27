@@ -11,4 +11,14 @@ public interface OnApiUserPostListener {
 
         void postOnUserRegisterSuccess(UserInfo result);
     }
+
+    interface PostUserLoginCodeListener {
+
+        void postOnUserLoginCodeSuccess(String mobile);
+    }
+
+    interface PostUserLoginListener {
+
+        void postOnUserLoginSuccess(UserInfo result);
+    }
 }

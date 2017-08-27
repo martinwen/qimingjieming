@@ -6,11 +6,19 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.brianjmelton.stanley.ProxyGenerator;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Length;
 import com.mobsandgeeks.saripaar.annotation.Order;
+import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.RxSchedulersHelper;
+import com.tjyw.atom.network.conf.ICode;
+import com.tjyw.atom.network.interfaces.IPrefUser;
+import com.tjyw.atom.network.model.UserInfo;
 import com.tjyw.atom.network.presenter.UserPresenter;
+import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
+import com.tjyw.atom.network.presenter.listener.OnApiUserPostListener;
+import com.tjyw.atom.network.utils.JsonUtil;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.interfaces.AtomPubValidationListener;
 import com.tjyw.qmjm.R;
@@ -27,7 +35,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * Created by stephen on 24/08/2017.
  */
 @RequiresPresenter(UserPresenter.class)
-public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSignInActivity>> {
+public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSignInActivity>>
+        implements OnApiUserPostListener.PostUserLoginCodeListener, OnApiUserPostListener.PostUserLoginListener, OnApiPostErrorListener {
 
     @Order(1)
     @Length(min = 11, messageResId = R.string.atom_pub_resStringUserSignMobileIllegal)
@@ -70,6 +79,7 @@ public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSi
             @Override
             public void onValidationSucceeded() {
                 maskerShowProgressView(true);
+                getPresenter().postUserLogin(userSignInMobile.getText().toString(), userSignInAuthCode.getText().toString());
             }
         });
     }
@@ -94,7 +104,8 @@ public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSi
                 if (userSignInMobile.length() < 11) {
                     showToast(R.string.atom_pub_resStringUserSignMobileIllegal);
                 } else {
-                    sendCodeCountDown();
+                    maskerShowProgressView(true);
+                    getPresenter().postUserGetLoginCode(userSignInMobile.getText().toString());
                 }
                 break ;
             case R.id.atom_pub_resIdsOK:
@@ -131,5 +142,34 @@ public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSi
                         userSignInAuthCodeGet.setEnabled(true);
                     }
                 });
+    }
+
+    @Override
+    public void postOnUserLoginCodeSuccess(String mobile) {
+        sendCodeCountDown();
+        maskerHideProgressView();
+        pHideSoftInput();
+    }
+
+    @Override
+    public void postOnUserLoginSuccess(UserInfo result) {
+        IPrefUser user = new ProxyGenerator().create(getApplicationContext(), IPrefUser.class);
+        if (null != user) {
+            user.setUserSession(result.sessionKey);
+            user.setUserInfo(JsonUtil.getInstance().toJsonString(result));
+        }
+
+        setResult(ICode.SS.OK);
+        finish();
+    }
+
+    @Override
+    public void postOnExplainError(int postId, Throwable throwable) {
+        maskerHideProgressView();
+        if (throwable instanceof IllegalRequestException) {
+            showToast(throwable.getMessage());
+        } else {
+            showToast(R.string.atom_pub_resStringNetworkBroken);
+        }
     }
 }
