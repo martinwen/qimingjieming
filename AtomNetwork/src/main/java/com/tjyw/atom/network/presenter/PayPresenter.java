@@ -42,8 +42,8 @@ public class PayPresenter<V extends ViewWithPresenter> extends BasePresenter<V> 
                 });
     }
 
-    public void postPayOrder(int vipId) {
-        RetroHttpMethods.PAY().postPayOrder(vipId)
+    public void postPayOrder(int vipId, String surname, String day, int gender, int nameNumber) {
+        RetroHttpMethods.PAY().postPayOrder(vipId, surname, day, gender, nameNumber)
                 .compose(RxSchedulersHelper.<RetroResult<PayOrder>>io_main())
                 .subscribe(new Action1<RetroResult<PayOrder>>() {
                     @Override
@@ -66,8 +66,8 @@ public class PayPresenter<V extends ViewWithPresenter> extends BasePresenter<V> 
                 });
     }
 
-    public void postPayPreview(int vipId, final int payType) {
-        RetroHttpMethods.PAY().postPayPreview(vipId, payType)
+    public void postPayPreview(int vipId, String surname, String day, int gender, int nameNumber) {
+        RetroHttpMethods.PAY().postPayPreview(vipId, surname, day, gender, nameNumber)
                 .compose(RxSchedulersHelper.<RetroResult<RetroPayPreviewResult>>io_main())
                 .subscribe(new Action1<RetroResult<RetroPayPreviewResult>>() {
                     @Override
@@ -77,7 +77,7 @@ public class PayPresenter<V extends ViewWithPresenter> extends BasePresenter<V> 
                                 ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.PayPreview, new IllegalRequestException(result));
                             }
                         } else if (presenterView instanceof OnApiPayPostListener.PostPayPreviewListener) {
-                            ((OnApiPayPostListener.PostPayPreviewListener) presenterView).postOnPayPreviewSuccess(result.items, payType);
+                            ((OnApiPayPostListener.PostPayPreviewListener) presenterView).postOnPayPreviewSuccess(result.items);
                         }
                     }
                 }, new Action1<Throwable>() {

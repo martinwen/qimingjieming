@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
+import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.qmjm.activity.BaseActivity;
 import com.tjyw.qmjm.activity.ClientMasterActivity;
@@ -11,6 +12,7 @@ import com.tjyw.qmjm.activity.ExplainMasterActivity;
 import com.tjyw.qmjm.activity.NamingListActivity;
 import com.tjyw.qmjm.activity.PayOrderActivity;
 import com.tjyw.qmjm.activity.PayOrderListActivity;
+import com.tjyw.qmjm.activity.UserFavoriteListActivity;
 import com.tjyw.qmjm.activity.UserSignInActivity;
 
 /**
@@ -46,8 +48,9 @@ public class IClientActivityLaunchFactory {
         context.startActivity(intent);
     }
 
-    public static void launchPayOrderActivity(BaseActivity context) {
+    public static void launchPayOrderActivity(BaseActivity context, RNameDefinition.Param param) {
         Intent intent = new Intent(context, PayOrderActivity.class);
+        intent.putExtra(IApiField.P.param, param);
         context.startActivity(intent);
     }
 
@@ -63,6 +66,11 @@ public class IClientActivityLaunchFactory {
 
     public static void launchUserSignInActivity(AtomPubBaseFragment context) {
         Intent intent = new Intent(context.getActivity(), UserSignInActivity.class);
+        context.startActivityForResult(intent, ICode.SECTION.SS);
+    }
+
+    public static void launchUserFavoriteListActivity(AtomPubBaseFragment context) {
+        Intent intent = new Intent(context.getActivity(), UserFavoriteListActivity.class);
         context.startActivityForResult(intent, ICode.SECTION.SS);
     }
 }

@@ -21,6 +21,6 @@ public interface OnApiPayPostListener {
 
     interface PostPayPreviewListener {
 
-        void postOnPayPreviewSuccess(RetroPayPreviewResult result, int payType);
+        void postOnPayPreviewSuccess(RetroPayPreviewResult result);
     }
 }

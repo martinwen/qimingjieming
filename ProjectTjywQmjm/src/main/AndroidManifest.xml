@@ -95,5 +95,9 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
+        <activity
+            android:name=".activity.UserFavoriteListActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 </manifest>

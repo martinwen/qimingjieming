@@ -4,12 +4,10 @@ import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.RetroHttpMethods;
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.model.Explain;
-import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostExplainListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.RNameDefinition;
-import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.atom.network.result.RetroResult;
 
 import nucleus.view.ViewWithPresenter;
@@ -18,7 +16,7 @@ import rx.functions.Action1;
 /**
  * Created by stephen on 31/03/2017.
  */
-public class NamingPresenter<V extends ViewWithPresenter> extends BasePresenter<V> {
+public class NamingPresenter<V extends ViewWithPresenter> extends FavoritePresenter<V> {
 
     public void postExplain(String surname, String name, String day, int gender) {
         RetroHttpMethods.NAMING().postExplain(surname, name, day, gender)

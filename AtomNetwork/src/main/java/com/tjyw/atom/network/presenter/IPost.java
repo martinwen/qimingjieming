@@ -20,4 +20,8 @@ public interface IPost {
     int UserLoginCode = 7;
 
     int UserLogin = 8;
+
+    int FavoriteAdd = 9;
+
+    int FavoriteList = 10;
 }

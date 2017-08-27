@@ -34,13 +34,20 @@ public interface HttpPayServices {
     @FormUrlEncoded
     @POST(API.ORDER)
     Observable<RetroResult<PayOrder>> postPayOrder(
-            @Field(IApiField.V.vipId) int vipId
+            @Field(IApiField.V.vipId) int vipId,
+            @Field(IApiField.S.surname) String surname,
+            @Field(IApiField.D.day) String day,
+            @Field(IApiField.G.gender) int gender,
+            @Field(IApiField.N.nameNumber) int nameNumber
     );
 
     @FormUrlEncoded
     @POST(API.PREVIEW)
     Observable<RetroResult<RetroPayPreviewResult>> postPayPreview(
             @Field(IApiField.V.vipId) int vipId,
-            @Field(IApiField.P.payType) int payType
+            @Field(IApiField.S.surname) String surname,
+            @Field(IApiField.D.day) String day,
+            @Field(IApiField.G.gender) int gender,
+            @Field(IApiField.N.nameNumber) int nameNumber
     );
 }

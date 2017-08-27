@@ -19,11 +19,13 @@ import com.tjyw.atom.alipay.IAlipayCallback;
 import com.tjyw.atom.alipay.PayAlipayBuilder;
 import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.RxSchedulersHelper;
+import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.model.PayOrder;
 import com.tjyw.atom.network.presenter.PayPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
+import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientInitializer;
@@ -61,18 +63,26 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
     protected PayOrderHandler payOrderHandler;
 
+    protected RNameDefinition.Param param;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.atom_pay_order);
-        tSetToolBar(getString(R.string.atom_pub_resStringPayOrder));
+        param = (RNameDefinition.Param) pGetSerializableExtra(IApiField.P.param);
+        if (null == param) {
+            finish();
+            return ;
+        } else {
+            setContentView(R.layout.atom_pay_order);
+            tSetToolBar(getString(R.string.atom_pub_resStringPayOrder));
 
-        immersionBarWith()
-                .fitsSystemWindows(true)
-                .statusBarColor(R.color.colorPrimary)
-                .statusBarDarkFont(true)
-                .init();
+            immersionBarWith()
+                    .fitsSystemWindows(true)
+                    .statusBarColor(R.color.colorPrimary)
+                    .statusBarDarkFont(true)
+                    .init();
+        }
 
         payUseAlipay.setSelected(true);
         payUseAlipay.setOnClickListener(this);
@@ -136,7 +146,13 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
     protected void doPostPay() {
         if (payUseAlipay.isSelected()) {
-            getPresenter().postPayPreview(1, 2);
+            getPresenter().postPayPreview(
+                    1,
+                    param.surname,
+                    param.day,
+                    param.gender,
+                    param.nameNumber
+            );
         } else if (payUseWxPay.isSelected()) {
             if (null == payOrderHandler) {
                 payOrderHandler = new PayOrderHandler(PayOrderActivity.this);
@@ -144,7 +160,13 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
             PayHandlerManager.registerHandler(PayHandlerManager.PAY_H5_RESULT, payOrderHandler);
             maskerShowProgressView(true);
-            getPresenter().postPayOrder(1);
+            getPresenter().postPayOrder(
+                    1,
+                    param.surname,
+                    param.day,
+                    param.gender,
+                    param.nameNumber
+            );
         }
     }
 
@@ -157,7 +179,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     }
 
     @Override
-    public void postOnPayPreviewSuccess(RetroPayPreviewResult result, int payType) {
+    public void postOnPayPreviewSuccess(RetroPayPreviewResult result) {
         PayAlipayBuilder.getInstance().build(this, result, this);
     }
 
@@ -213,6 +235,5 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                 context = null;
             }
         }
-
     }
 }

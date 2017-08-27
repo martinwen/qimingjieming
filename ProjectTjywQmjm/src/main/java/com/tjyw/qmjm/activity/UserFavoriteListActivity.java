@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.View;
 
 import com.mikepenz.fastadapter.FastAdapter;
@@ -14,19 +13,13 @@ import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.listeners.ClickEventHook;
 import com.tjyw.atom.network.IllegalRequestException;
-import com.tjyw.atom.network.conf.IApiField;
-import com.tjyw.atom.network.conf.ISection;
+import com.tjyw.atom.network.presenter.FavoritePresenter;
 import com.tjyw.atom.network.presenter.IPost;
-import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiFavoritePostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
-import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.pub.inject.From;
-import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
-import com.tjyw.qmjm.dialog.NamingPayWindows;
-import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.tjyw.qmjm.item.NamingWordItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
@@ -39,18 +32,12 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 /**
  * Created by stephen on 14/08/2017.
  */
-@RequiresPresenter(NamingPresenter.class)
-public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<NamingListActivity>>
-        implements OnApiPostErrorListener, OnApiPostNamingListener, OnApiFavoritePostListener.PostFavoriteAddListener {
+@RequiresPresenter(FavoritePresenter.class)
+public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresenter<UserFavoriteListActivity>>
+        implements OnApiPostErrorListener, OnApiFavoritePostListener.PostFavoriteAddListener, OnApiFavoritePostListener.PostFavoriteListListener, OnApiFavoritePostListener.PostFavoriteRemoveListener {
 
-    protected String postSurname;
-
-    protected int postGender;
-
-    protected int postNameNumber;
-
-    @From(R.id.namingListContainer)
-    protected RecyclerView namingListContainer;
+    @From(R.id.favoriteListContainer)
+    protected RecyclerView favoriteListContainer;
 
     protected FastItemAdapter<NamingWordItem> nameDefinitionAdapter;
 
@@ -65,17 +52,8 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        postSurname = pGetStringExtra(IApiField.S.surname, null);
-        if (TextUtils.isEmpty(postSurname)) {
-            finish();
-            return ;
-        } else {
-            postGender = pGetIntExtra(IApiField.G.gender, ISection.GENDER.MALE);
-            postNameNumber = pGetIntExtra(IApiField.N.nameNumber, ISection.NAME_COUNT.SINGLE);
-        }
-
-        setContentView(R.layout.atom_naming_list);
-        tSetToolBar(getString(R.string.atom_pub_resStringNamingList));
+        setContentView(R.layout.atom_user_favorite_list);
+        tSetToolBar(getString(R.string.atom_pub_resStringFavoriteList));
 
         immersionBarWith()
                 .fitsSystemWindows(true)
@@ -87,15 +65,6 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         nameDefinitionAdapter.withOnClickListener(new FastAdapter.OnClickListener<NamingWordItem>() {
             @Override
             public boolean onClick(View v, IAdapter<NamingWordItem> adapter, NamingWordItem item, int position) {
-                if (null != postParam) {
-                    IClientActivityLaunchFactory.launchExplainMasterActivity(
-                            NamingListActivity.this,
-                            postParam.surname,
-                            item.src.getGivenName(),
-                            postParam.day,
-                            postParam.gender
-                    );
-                }
                 return true;
             }
         }).withItemEvent(new ClickEventHook<NamingWordItem>() {
@@ -111,39 +80,21 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
 
             @Override
             public void onClick(View v, int position, FastAdapter<NamingWordItem> fastAdapter, NamingWordItem item) {
-                if (null != postParam) {
-                    maskerShowProgressView(true);
-                    getPresenter().postFavoriteAdd(
-                            postParam.surname,
-                            item.src.getGivenName(),
-                            postParam.day,
-                            postParam.gender
-                    );
-                }
+                getPresenter().postFavoriteRemove(
+                        item.src.getSurname(), item.src.getGivenName()
+                );
             }
         });
 
-        namingListContainer.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-        namingListContainer.setAdapter(nameDefinitionAdapter);
-        namingListContainer.addItemDecoration(
-                new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
+        favoriteListContainer.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        favoriteListContainer.setAdapter(nameDefinitionAdapter);
+        favoriteListContainer.addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(getApplicationContext())
                         .color(R.color.atom_pub_resColorDivider)
                         .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDividerSize)
                         .marginResId(R.dimen.atom_pubResDimenRecyclerViewDivider16dp)
                         .showLastDivider()
                         .build());
-
-        namingListContainer.addOnScrollListener(new RecyclerView.OnScrollListener() {
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                switch (newState) {
-                    case RecyclerView.SCROLL_STATE_IDLE:
-                        postParam.nameNumber = postNameNumber;
-                        NamingPayWindows.newInstance(getSupportFragmentManager(), postParam);
-                }
-            }
-        });
 
         maskerOnClick(null);
     }
@@ -151,19 +102,14 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     @Override
     public void maskerOnClick(View view) {
         maskerShowProgressView(false);
-        getPresenter().postNameDefinition(
-                postSurname,
-                pGetStringExtra(IApiField.D.day, null),
-                postGender,
-                postNameNumber
-        );
+        getPresenter().postFavoriteList();
     }
 
     @Override
     public void postOnExplainError(int postId, Throwable throwable) {
         throwable.printStackTrace();
         switch (postId) {
-            case IPost.Naming:
+            case IPost.FavoriteList:
                 if (throwable instanceof IllegalRequestException) {
                     maskerShowMaskerLayout(throwable.getMessage(), R.string.atom_pub_resStringRetry);
                 } else {
@@ -176,7 +122,12 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     }
 
     @Override
-    public void postOnNamingSuccess(RNameDefinition result) {
+    public void postOnFavoriteAddSuccess() {
+        nameDefinitionAdapter.notifyAdapterDataSetChanged();
+    }
+
+    @Override
+    public void postOnFavoriteListSuccess(RNameDefinition result) {
         maskerHideProgressView();
         if (null != result) {
             postParam = result.param;
@@ -187,13 +138,14 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
                     itemList.add(new NamingWordItem(result.get(i)));
                 }
 
-                nameDefinitionAdapter.add(itemList);
+                nameDefinitionAdapter.set(itemList);
             }
         }
     }
 
     @Override
-    public void postOnFavoriteAddSuccess() {
-        nameDefinitionAdapter.notifyAdapterDataSetChanged();
+    public void postOnFavoriteRemoveSuccess() {
+        maskerShowProgressView(false);
+        getPresenter().postFavoriteList();
     }
 }

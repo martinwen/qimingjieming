@@ -4,6 +4,8 @@ import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tjyw.atom.network.interceptor.RetroRequestInterceptor;
+import com.tjyw.atom.network.services.HttpClientServices;
+import com.tjyw.atom.network.services.HttpFavoriteService;
 import com.tjyw.atom.network.services.HttpPayServices;
 import com.tjyw.atom.network.services.HttpQmServices;
 import com.tjyw.atom.network.services.HttpUserServices;
@@ -37,11 +39,15 @@ public class RetroHttpMethods {
 
     protected Retrofit retrofit;
 
+    protected HttpClientServices httpClientServices;
+
     protected HttpQmServices httpQmServices;
 
     protected HttpPayServices httpPayServices;
 
     protected HttpUserServices httpUserServices;
+
+    protected HttpFavoriteService httpFavoriteService;
 
     public RetroHttpMethods() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -70,9 +76,15 @@ public class RetroHttpMethods {
     }
 
     protected void createApiService(Retrofit retrofit) {
+        httpClientServices = retrofit.create(HttpClientServices.class);
         httpQmServices = retrofit.create(HttpQmServices.class);
         httpPayServices = retrofit.create(HttpPayServices.class);
         httpUserServices = retrofit.create(HttpUserServices.class);
+        httpFavoriteService = retrofit.create(HttpFavoriteService.class);
+    }
+
+    public static HttpClientServices CLIENT() {
+        return getInstance().httpClientServices;
     }
 
     public static HttpQmServices NAMING() {
@@ -85,5 +97,9 @@ public class RetroHttpMethods {
 
     public static HttpUserServices USER() {
         return getInstance().httpUserServices;
+    }
+
+    public static HttpFavoriteService FAVORITE() {
+        return getInstance().httpFavoriteService;
     }
 }

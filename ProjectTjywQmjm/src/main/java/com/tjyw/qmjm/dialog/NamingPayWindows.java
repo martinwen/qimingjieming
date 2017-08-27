@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 
+import com.tjyw.atom.network.conf.IApiField;
+import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.inject.Injector;
 import com.tjyw.qmjm.R;
@@ -23,14 +25,20 @@ import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
  */
 public class NamingPayWindows extends DialogFragment implements View.OnClickListener {
 
-    public static NamingPayWindows newInstance(FragmentManager manager) {
+    public static NamingPayWindows newInstance(FragmentManager manager, RNameDefinition.Param param) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(IApiField.P.param, param);
+
         NamingPayWindows windows = new NamingPayWindows();
+        windows.setArguments(bundle);
         windows.show(manager, NamingPayWindows.class.getName());
         return windows;
     }
 
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
+
+    protected RNameDefinition.Param param;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,11 +57,26 @@ public class NamingPayWindows extends DialogFragment implements View.OnClickList
     }
 
     @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        if (null != getArguments()) {
+            param = (RNameDefinition.Param) getArguments().getSerializable(IApiField.P.param);
+        }
+
+        if (null == param) {
+            dismissAllowingStateLoss();
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.atom_pub_resIdsOK:
-                IClientActivityLaunchFactory.launchPayOrderActivity((BaseActivity) getActivity());
                 dismissAllowingStateLoss();
+                if (null != param) {
+                    IClientActivityLaunchFactory.launchPayOrderActivity((BaseActivity) getActivity(), param);
+                }
         }
     }
 

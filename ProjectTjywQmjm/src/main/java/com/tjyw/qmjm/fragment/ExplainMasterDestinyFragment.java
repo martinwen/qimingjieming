@@ -73,6 +73,7 @@ public class ExplainMasterDestinyFragment extends AtomPubBaseFragment {
                         .color(R.color.atom_pub_resColorDivider)
                         .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDividerSize)
                         .marginResId(R.dimen.atom_pubResDimenRecyclerViewDivider16dp, R.dimen.atom_pubResDimenRecyclerViewDivider16dp)
+                        .showLastDivider()
                         .build());
 
         explainDestinyAdapter.add(new ExplainDestinySanCaiItem(explain.sancai));

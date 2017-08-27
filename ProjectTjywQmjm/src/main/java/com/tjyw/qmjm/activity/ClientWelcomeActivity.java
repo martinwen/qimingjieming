@@ -8,8 +8,9 @@ import android.text.TextUtils;
 import com.brianjmelton.stanley.ProxyGenerator;
 import com.tjyw.atom.network.RetroHttpMethods;
 import com.tjyw.atom.network.RxSchedulersHelper;
+import com.tjyw.atom.network.interfaces.IPrefClient;
 import com.tjyw.atom.network.interfaces.IPrefUser;
-import com.tjyw.atom.network.model.PayOrder;
+import com.tjyw.atom.network.model.ClientInit;
 import com.tjyw.atom.network.model.UserInfo;
 import com.tjyw.atom.network.presenter.UserPresenter;
 import com.tjyw.atom.network.result.RetroResult;
@@ -47,12 +48,16 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
         createMillisTime = System.currentTimeMillis();
         IPrefUser user = new ProxyGenerator().create(getApplicationContext(), IPrefUser.class);
         if (null != user && ! TextUtils.isEmpty(user.getUserSession())) { // 判断本地是否有用户信息
-            RetroHttpMethods.PAY().postPayOrder(1) // 有用户信息时，只请求init接口初始化
-                    .compose(RxSchedulersHelper.<RetroResult<PayOrder>>io_main())
-                    .subscribe(new Action1<RetroResult<PayOrder>>() {
+            RetroHttpMethods.CLIENT().postClientInit(1) // 有用户信息时，只请求init接口初始化
+                    .compose(RxSchedulersHelper.<RetroResult<ClientInit>>io_main())
+                    .subscribe(new Action1<RetroResult<ClientInit>>() {
                         @Override
-                        public void call(RetroResult<PayOrder> result) { // 成功后进入主界面
+                        public void call(RetroResult<ClientInit> result) { // 成功后进入主界面
                             launchMasterActivity();
+                            IPrefClient client = new ProxyGenerator().create(getApplicationContext(), IPrefClient.class);
+                            if (null != client) {
+                                client.setClientInit(JsonUtil.getInstance().toJsonString(result.items));
+                            }
                         }
                     }, new Action1<Throwable>() {
                         @Override
@@ -64,13 +69,19 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
         } else { // 没有用户信息时，先请求register接口创建用户，再访问init接口初始化
             Observable.merge(
                     RetroHttpMethods.USER().postUserRegister(1),
-                    RetroHttpMethods.PAY().postPayPreview(1, 1)
+                    RetroHttpMethods.CLIENT().postClientInit(1)
             ).compose(RxSchedulersHelper.<RetroResult<?>>io_main())
                     .subscribe(new Action1<RetroResult<?>>() {
                         @Override
                         public void call(RetroResult<?> result) {
                             if (result.items instanceof UserInfo) {
                                 saveUserInfo((UserInfo) result.items);
+                            } else if (result.items instanceof ClientInit) {
+                                IPrefClient client = new ProxyGenerator().create(getApplicationContext(), IPrefClient.class);
+                                if (null != client) {
+                                    ClientInit clientInit = (ClientInit) result.items;
+                                    client.setClientInit(JsonUtil.getInstance().toJsonString(clientInit));
+                                }
                             }
                         }
                     }, new Action1<Throwable>() {

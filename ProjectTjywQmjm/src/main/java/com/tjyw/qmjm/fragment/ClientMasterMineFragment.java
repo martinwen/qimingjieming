@@ -80,6 +80,8 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment {
                         IClientActivityLaunchFactory.launchPayOrderListActivity((BaseActivity) getActivity());
                         break ;
                     case R.string.atom_pub_resStringMineCollect:
+                        IClientActivityLaunchFactory.launchUserFavoriteListActivity(ClientMasterMineFragment.this);
+                        break ;
                     case R.string.atom_pub_resStringMineService:
                     case R.string.atom_pub_resStringMineBJX:
                     case R.string.atom_pub_resStringMineZGJM:

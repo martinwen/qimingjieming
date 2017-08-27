@@ -110,6 +110,8 @@ public interface IApiField {
 
         String packageName = "packageName";
 
+        String param = "param";
+
         String password = "password";
 
         String payType = "payType";

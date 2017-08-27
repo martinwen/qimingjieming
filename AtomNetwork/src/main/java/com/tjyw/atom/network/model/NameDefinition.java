@@ -38,4 +38,23 @@ public class NameDefinition implements RetroResultItem {
             return givenName.toString();
         }
     }
+
+    public String getSurname() {
+        if (ArrayUtil.isEmpty(wordsList)) {
+            return null;
+        } else {
+            StringBuilder surname = new StringBuilder();
+            int size = wordsList.size();
+            for (int i = 0; i < size; i ++) {
+                NameCharacter character = wordsList.get(i);
+                if (null != character) {
+                    if (! character.isGivenCharacter()) {
+                        surname.append(character.word);
+                    }
+                }
+            }
+
+            return surname.toString();
+        }
+    }
 }
