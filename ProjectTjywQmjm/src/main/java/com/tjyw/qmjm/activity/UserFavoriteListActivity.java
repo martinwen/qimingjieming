@@ -118,7 +118,7 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
 
     @Override
     public void maskerOnClick(View view) {
-        onRefreshBegin(true);
+        favoriteListRefreshLayout.autoRefresh(true);
     }
 
     @Override
