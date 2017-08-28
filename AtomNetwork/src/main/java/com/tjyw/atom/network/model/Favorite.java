@@ -6,12 +6,4 @@ package com.tjyw.atom.network.model;
 public class Favorite extends NameDefinition {
 
     private static final long serialVersionUID = -3072486651990601515L;
-
-    public String surname;
-
-    public String name;
-
-    public String day;
-
-    public int gender;
 }

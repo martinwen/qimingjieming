@@ -22,6 +22,13 @@ public class NameDefinition implements RetroResultItem {
 
     public boolean favorite;
 
+    // surname、day、gender 在收藏列表和订单列表会附带(用于点击后进入解名详情页的请求参数)
+    public String surname;
+
+    public String day;
+
+    public int gender;
+
     public String getGivenName() {
         if (ArrayUtil.isEmpty(wordsList)) {
             return null;

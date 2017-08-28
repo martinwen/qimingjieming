@@ -12,7 +12,7 @@
         android:id="@+id/atomPubToolBar"
         layout="@layout/atom_pub_inc_toolbar" />
 
-    <include layout="@layout/atom_pub_inc_symbol_ring" />
+    <include layout="@layout/atom_pub_inc_symbol" />
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"

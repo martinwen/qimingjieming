@@ -14,6 +14,7 @@ import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.tjyw.qmjm.item.PayOrderListItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
@@ -59,6 +60,7 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
         payOrderAdapter.withOnClickListener(new FastAdapter.OnClickListener<PayOrderListItem>() {
             @Override
             public boolean onClick(View v, IAdapter<PayOrderListItem> adapter, PayOrderListItem item, int position) {
+                IClientActivityLaunchFactory.launchPayOrderNameListActivity(PayOrderListActivity.this, item.src.name);
                 return true;
             }
         });
