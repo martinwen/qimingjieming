@@ -1,7 +1,6 @@
 package com.tjyw.qmjm.support;
 
 import android.graphics.Color;
-import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.inject.Injector;
 import com.tjyw.atom.pub.interfaces.IAtomPubLayoutSupportMasker;
-import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 
 /**
@@ -80,13 +78,18 @@ public class AtomClientMaskerSupport implements View.OnClickListener, IAtomPubLa
     }
 
     @Override
-    public void maskerShowMaskerLayout(String msg, @StringRes int clickLabelRes) {
+    public void maskerShowMaskerLayout(String msg, int clickLabelRes) {
         atomPubMaskerContainer.setVisibility(View.VISIBLE);
         maskerHideProgressView();
 
         atomPubMaskerMsg.setText(msg);
-        atomPubMaskerClickText.setText(clickLabelRes);
-        atomPubMaskerClickText.setOnClickListener(this);
+        if (clickLabelRes > 0) {
+            atomPubMaskerClickText.setVisibility(View.VISIBLE);
+            atomPubMaskerClickText.setText(clickLabelRes);
+            atomPubMaskerClickText.setOnClickListener(this);
+        } else {
+            atomPubMaskerClickText.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override

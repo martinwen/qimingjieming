@@ -11,13 +11,18 @@ import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.item.PayOrderListItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
+import me.dkzwm.widget.srl.SmoothRefreshLayout;
 import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by stephen on 25/08/2017.
  */
 @RequiresPresenter(PayPresenter.class)
-public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOrderListActivity>> {
+public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOrderListActivity>>
+        implements SmoothRefreshLayout.OnRefreshListener {
+
+    @From(R.id.payOrderRefreshLayout)
+    protected SmoothRefreshLayout payOrderRefreshLayout;
 
     @From(R.id.payOrderContainer)
     protected RecyclerView payOrderContainer;
@@ -49,5 +54,22 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
         adapter.add(new PayOrderListItem(null));
         adapter.add(new PayOrderListItem(null));
         adapter.add(new PayOrderListItem(null));
+
+        payOrderRefreshLayout.setOnRefreshListener(this);
+        onRefreshBegin(true);
+    }
+
+    @Override
+    public void onRefreshBegin(boolean isRefresh) {
+        if (isRefresh) {
+
+        } else {
+
+        }
+    }
+
+    @Override
+    public void onRefreshComplete(boolean isSuccessful) {
+
     }
 }

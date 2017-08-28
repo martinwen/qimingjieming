@@ -13,7 +13,6 @@
             android:id="@+id/atomPubMaskerContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/atom_pub_resColorBackground"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:paddingTop="32dp"
@@ -30,7 +29,7 @@
 
             <TextView
                 android:id="@+id/atomPubMaskerMsg"
-                style="@style/AtomStyle.GreySmallText"
+                style="@style/AtomStyle.BlackNormalText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"

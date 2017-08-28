@@ -30,7 +30,6 @@ import java.util.List;
 
 import me.dkzwm.widget.srl.SmoothRefreshLayout;
 import nucleus.factory.RequiresPresenter;
-import timber.log.Timber;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -114,7 +113,7 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
                         .build());
 
         favoriteListRefreshLayout.setOnRefreshListener(this);
-        onRefreshBegin(true);
+        favoriteListRefreshLayout.autoRefresh(true);
     }
 
     @Override
@@ -134,7 +133,7 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
 
     @Override
     public void onRefreshComplete(boolean isSuccessful) {
-        Timber.tag("Gx").e("onRefreshComplete::isSuccessful::%s", isSuccessful);
+
     }
 
     @Override
@@ -155,11 +154,15 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
 
     @Override
     public void postOnFavoriteListSuccess(RetroListResult<Favorite> result) {
-        maskerHideProgressView();
         if (null == result) {
+            maskerHideProgressView();
             favoriteListRefreshLayout.setDisableLoadMore(true);
             favoriteListRefreshLayout.refreshComplete();
             return ;
+        } else if (result.size() == 0 && favoriteListRefreshLayout.isRefreshing()) {
+            maskerShowMaskerLayout(getString(R.string.atom_pub_resStringFavoriteListNoData), 0);
+        } else {
+            maskerHideProgressView();
         }
 
         int size = result.size();
@@ -180,6 +183,6 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
 
     @Override
     public void postOnFavoriteRemoveSuccess(Object item) {
-        onRefreshBegin(true);
+        favoriteListRefreshLayout.autoRefresh(true);
     }
 }
