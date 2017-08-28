@@ -192,8 +192,10 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         }
     }
 
+
     @Override
     public void postOnFavoriteAddSuccess() {
+        maskerHideProgressView();
         nameDefinitionAdapter.notifyAdapterDataSetChanged();
     }
 }

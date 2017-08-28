@@ -23,5 +23,7 @@ public interface IPost {
 
     int FavoriteAdd = 9;
 
-    int FavoriteList = 10;
+    int FavoriteRemove = 10;
+
+    int FavoriteList = 11;
 }

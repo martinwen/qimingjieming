@@ -12,10 +12,16 @@
 
         <include layout="@layout/atom_pub_inc_symbol" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/favoriteListContainer"
+        <me.dkzwm.widget.srl.MaterialSmoothRefreshLayout
+            android:id="@+id/favoriteListRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/favoriteListContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </me.dkzwm.widget.srl.MaterialSmoothRefreshLayout>
 
         <include layout="@layout/atom_pub_inc_loading" />
     </RelativeLayout>

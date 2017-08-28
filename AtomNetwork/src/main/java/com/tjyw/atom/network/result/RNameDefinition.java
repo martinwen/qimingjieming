@@ -9,6 +9,8 @@ import com.tjyw.atom.network.model.NameDefinition;
  */
 public class RNameDefinition extends RetroListResult<NameDefinition> {
 
+    private static final long serialVersionUID = -7187365063506464362L;
+
     @JsonProperty(IApiField.I.info)
     public Param param;
 

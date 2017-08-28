@@ -3,10 +3,11 @@ package com.tjyw.atom.network.presenter;
 import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.RetroHttpMethods;
 import com.tjyw.atom.network.RxSchedulersHelper;
+import com.tjyw.atom.network.model.Favorite;
 import com.tjyw.atom.network.presenter.listener.OnApiFavoritePostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.result.REmptyResult;
-import com.tjyw.atom.network.result.RNameDefinition;
+import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.atom.network.result.RetroResult;
 
 import nucleus.view.ViewWithPresenter;
@@ -41,15 +42,15 @@ public class FavoritePresenter<V extends ViewWithPresenter> extends BasePresente
                 });
     }
 
-    public void postFavoriteRemove(String surname, String name) {
-        RetroHttpMethods.FAVORITE().postFavoriteRemove(surname, name)
+    public void postFavoriteRemove(int id) {
+        RetroHttpMethods.FAVORITE().postFavoriteRemove(id)
                 .compose(RxSchedulersHelper.<RetroResult<REmptyResult>>io_main())
                 .subscribe(new Action1<RetroResult<REmptyResult>>() {
                     @Override
                     public void call(RetroResult<REmptyResult> result) {
                         if (null == result || result.illegalRequest()) {
                             if (presenterView instanceof OnApiPostErrorListener) {
-                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.FavoriteAdd, new IllegalRequestException(result));
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.FavoriteRemove, new IllegalRequestException(result));
                             }
                         } else if (presenterView instanceof OnApiFavoritePostListener.PostFavoriteRemoveListener) {
                             ((OnApiFavoritePostListener.PostFavoriteRemoveListener) presenterView).postOnFavoriteRemoveSuccess();
@@ -59,7 +60,7 @@ public class FavoritePresenter<V extends ViewWithPresenter> extends BasePresente
                     @Override
                     public void call(Throwable throwable) {
                         if (presenterView instanceof OnApiPostErrorListener) {
-                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.FavoriteAdd, throwable);
+                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.FavoriteRemove, throwable);
                         }
                     }
                 });
@@ -67,23 +68,23 @@ public class FavoritePresenter<V extends ViewWithPresenter> extends BasePresente
 
     public void postFavoriteList() {
         RetroHttpMethods.FAVORITE().postFavoriteList(1)
-                .compose(RxSchedulersHelper.<RetroResult<RNameDefinition>>io_main())
-                .subscribe(new Action1<RetroResult<RNameDefinition>>() {
+                .compose(RxSchedulersHelper.<RetroResult<RetroListResult<Favorite>>>io_main())
+                .subscribe(new Action1<RetroResult<RetroListResult<Favorite>>>() {
                     @Override
-                    public void call(RetroResult<RNameDefinition> result) {
+                    public void call(RetroResult<RetroListResult<Favorite>> result) {
                         if (null == result || result.illegalRequest()) {
                             if (presenterView instanceof OnApiPostErrorListener) {
-                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.FavoriteAdd, new IllegalRequestException(result));
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.FavoriteList, new IllegalRequestException(result));
                             }
                         } else if (presenterView instanceof OnApiFavoritePostListener.PostFavoriteListListener) {
-                            ((OnApiFavoritePostListener.PostFavoriteListListener) presenterView).postOnFavoriteListSuccess(result.items);
+                            ((OnApiFavoritePostListener.PostFavoriteListListener) presenterView).postOnFavoriteListSuccess(result.items.list);
                         }
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
                         if (presenterView instanceof OnApiPostErrorListener) {
-                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.FavoriteAdd, throwable);
+                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.FavoriteList, throwable);
                         }
                     }
                 });

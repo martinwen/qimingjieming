@@ -13,19 +13,22 @@ import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.listeners.ClickEventHook;
 import com.tjyw.atom.network.IllegalRequestException;
+import com.tjyw.atom.network.model.Favorite;
 import com.tjyw.atom.network.presenter.FavoritePresenter;
 import com.tjyw.atom.network.presenter.IPost;
 import com.tjyw.atom.network.presenter.listener.OnApiFavoritePostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
-import com.tjyw.atom.network.result.RNameDefinition;
+import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.R;
-import com.tjyw.qmjm.item.NamingWordItem;
+import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
+import com.tjyw.qmjm.item.UserFavoriteItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import me.dkzwm.widget.srl.SmoothRefreshLayout;
 import nucleus.factory.RequiresPresenter;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -36,12 +39,13 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresenter<UserFavoriteListActivity>>
         implements OnApiPostErrorListener, OnApiFavoritePostListener.PostFavoriteAddListener, OnApiFavoritePostListener.PostFavoriteListListener, OnApiFavoritePostListener.PostFavoriteRemoveListener {
 
+    @From(R.id.favoriteListRefreshLayout)
+    protected SmoothRefreshLayout favoriteListRefreshLayout;
+
     @From(R.id.favoriteListContainer)
     protected RecyclerView favoriteListContainer;
 
-    protected FastItemAdapter<NamingWordItem> nameDefinitionAdapter;
-
-    protected RNameDefinition.Param postParam;
+    protected FastItemAdapter<UserFavoriteItem> userFavoriteAdapter;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -61,33 +65,41 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
                 .statusBarDarkFont(true)
                 .init();
 
-        nameDefinitionAdapter = new FastItemAdapter<NamingWordItem>();
-        nameDefinitionAdapter.withOnClickListener(new FastAdapter.OnClickListener<NamingWordItem>() {
+        userFavoriteAdapter = new FastItemAdapter<UserFavoriteItem>();
+        userFavoriteAdapter.withOnClickListener(new FastAdapter.OnClickListener<UserFavoriteItem>() {
             @Override
-            public boolean onClick(View v, IAdapter<NamingWordItem> adapter, NamingWordItem item, int position) {
+            public boolean onClick(View v, IAdapter<UserFavoriteItem> adapter, UserFavoriteItem item, int position) {
+                if (null != item.src) {
+                    IClientActivityLaunchFactory.launchExplainMasterActivity(
+                            UserFavoriteListActivity.this,
+                            item.src.surname,
+                            item.src.getGivenName(),
+                            item.src.day,
+                            item.src.gender
+                    );
+                }
                 return true;
             }
-        }).withItemEvent(new ClickEventHook<NamingWordItem>() {
+        }).withItemEvent(new ClickEventHook<UserFavoriteItem>() {
             @Nullable
             @Override
             public View onBind(@NonNull RecyclerView.ViewHolder viewHolder) {
-                if (viewHolder instanceof NamingWordItem.NamingWordHolder) {
-                    return ((NamingWordItem.NamingWordHolder) viewHolder).getNameWordCollect();
+                if (viewHolder instanceof UserFavoriteItem.UserFavoriteHolder) {
+                    return ((UserFavoriteItem.UserFavoriteHolder) viewHolder).getNameWordCollect();
                 } else {
                     return super.onBind(viewHolder);
                 }
             }
 
             @Override
-            public void onClick(View v, int position, FastAdapter<NamingWordItem> fastAdapter, NamingWordItem item) {
-                getPresenter().postFavoriteRemove(
-                        item.src.getSurname(), item.src.getGivenName()
-                );
+            public void onClick(View v, int position, FastAdapter<UserFavoriteItem> fastAdapter, UserFavoriteItem item) {
+                maskerShowProgressView(true);
+                getPresenter().postFavoriteRemove(item.src.id);
             }
         });
 
         favoriteListContainer.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-        favoriteListContainer.setAdapter(nameDefinitionAdapter);
+        favoriteListContainer.setAdapter(userFavoriteAdapter);
         favoriteListContainer.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(getApplicationContext())
                         .color(R.color.atom_pub_resColorDivider)
@@ -123,29 +135,25 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
 
     @Override
     public void postOnFavoriteAddSuccess() {
-        nameDefinitionAdapter.notifyAdapterDataSetChanged();
+        userFavoriteAdapter.notifyAdapterDataSetChanged();
     }
 
     @Override
-    public void postOnFavoriteListSuccess(RNameDefinition result) {
+    public void postOnFavoriteListSuccess(List<Favorite> result) {
         maskerHideProgressView();
-        if (null != result) {
-            postParam = result.param;
-            int size = result.size();
-            if (size > 0) {
-                List<NamingWordItem> itemList = new ArrayList<NamingWordItem>();
-                for (int i = 0; i < size; i++) {
-                    itemList.add(new NamingWordItem(result.get(i)));
-                }
+        int size = null == result ? 0 : result.size();
+        List<UserFavoriteItem> itemList = new ArrayList<UserFavoriteItem>();
+        for (int i = 0; i < size; i++) {
+            itemList.add(new UserFavoriteItem(result.get(i)));
+        }
 
-                nameDefinitionAdapter.set(itemList);
-            }
+        if (! ArrayUtil.isEmpty(itemList)) {
+            userFavoriteAdapter.set(itemList);
         }
     }
 
     @Override
     public void postOnFavoriteRemoveSuccess() {
-        maskerShowProgressView(false);
         getPresenter().postFavoriteList();
     }
 }

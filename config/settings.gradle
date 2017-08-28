@@ -60,7 +60,7 @@ ext {
             VER_Navigation_Tab_Strip        : "1.0.4",
             VER_AHBottomNavigation          : "2.0.6",
             VER_Chips_Layout_Manager        : "0.3.7@aar",
-            VER_SmoothRefreshLayout         : "1.3.4",
+            VER_SmoothRefreshLayout         : "1.4.3",
             VER_Stanley                     : "1.0.1",
             VER_BarLiberay                  : "2.2.7",
             VER_Calligraphy                 : "2.3.0",

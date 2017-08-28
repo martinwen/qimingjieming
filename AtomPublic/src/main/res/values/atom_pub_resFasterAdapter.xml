@@ -18,6 +18,9 @@
     <!-- 我的订单 -->
     <item name="atom_pub_resFasterAdapterType_PayOrderListItem" type="id"/>
 
+    <!-- 我的收藏 -->
+    <item name="atom_pub_resFasterAdapterType_UserFavoriteItem" type="id"/>
+
 
 
 </resources>

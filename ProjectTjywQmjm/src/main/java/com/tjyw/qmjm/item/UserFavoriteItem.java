@@ -5,8 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.tjyw.atom.network.model.Favorite;
 import com.tjyw.atom.network.model.NameCharacter;
-import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
@@ -17,22 +17,22 @@ import com.tjyw.qmjm.holder.HeaderWordHolder;
 import java.util.List;
 
 /**
- * Created by stephen on 14/08/2017.
+ * Created by stephen on 27/08/2017.
  */
-public class NamingWordItem extends AtomPubFastAdapterAbstractItem<NameDefinition, NamingWordItem, NamingWordItem.NamingWordHolder> {
+public class UserFavoriteItem extends AtomPubFastAdapterAbstractItem<Favorite, UserFavoriteItem, UserFavoriteItem.UserFavoriteHolder> {
 
-    public NamingWordItem(NameDefinition src) {
+    public UserFavoriteItem(Favorite src) {
         super(src);
     }
 
     @Override
-    public NamingWordHolder getViewHolder(View v) {
-        return new NamingWordHolder(v);
+    public UserFavoriteHolder getViewHolder(View v) {
+        return new UserFavoriteHolder(v);
     }
 
     @Override
     public int getType() {
-        return R.id.atom_pub_resFasterAdapterType_NamingWordItem;
+        return R.id.atom_pub_resFasterAdapterType_UserFavoriteItem;
     }
 
     @Override
@@ -41,12 +41,12 @@ public class NamingWordItem extends AtomPubFastAdapterAbstractItem<NameDefinitio
     }
 
     @Override
-    public void bindView(NamingWordHolder holder, List<Object> payloads) {
+    public void bindView(UserFavoriteHolder holder, List<Object> payloads) {
         super.bindView(holder, payloads);
         holder.onBindView(ClientQmjmApplication.getContext(), src);
     }
 
-    public static class NamingWordHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<NameDefinition> {
+    public static class UserFavoriteHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<Favorite> {
 
         @From(R.id.nameWordContainer)
         protected ViewGroup nameWordContainer;
@@ -54,15 +54,18 @@ public class NamingWordItem extends AtomPubFastAdapterAbstractItem<NameDefinitio
         @From(R.id.nameWordCollect)
         protected TextView nameWordCollect;
 
-        public NamingWordHolder(View itemView) {
+        public UserFavoriteHolder(View itemView) {
             super(itemView);
+
+            nameWordCollect.setSelected(true);
+            nameWordCollect.setText(R.string.atom_pub_resStringNamingFavorited);
         }
 
         @Override
-        public void onBindView(Context context, NameDefinition nameDefinition) {
+        public void onBindView(Context context, Favorite favorite) {
             nameWordContainer.removeAllViews();
 
-            List<NameCharacter> wordsList = nameDefinition.wordsList;
+            List<NameCharacter> wordsList = favorite.wordsList;
             if (! ArrayUtil.isEmpty(wordsList)) {
                 for (int i = 0; i < wordsList.size(); i ++) {
                     NameCharacter character = wordsList.get(i);
