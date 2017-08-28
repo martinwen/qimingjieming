@@ -12,6 +12,8 @@ public class NameDefinition implements RetroResultItem {
 
     private static final long serialVersionUID = 3037741131798324414L;
 
+    public int id;
+
     public List<NameCharacter> wordsList;
 
     public NameScore nameScore;

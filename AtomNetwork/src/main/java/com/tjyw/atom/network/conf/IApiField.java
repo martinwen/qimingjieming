@@ -81,6 +81,8 @@ public interface IApiField {
         String lastDateLong = "lastDateLong";
 
         String length = "length";
+
+        String limit = "limit";
     }
 
     interface M {

@@ -1,26 +1,26 @@
 package com.tjyw.atom.network.presenter.listener;
 
 import com.tjyw.atom.network.model.Favorite;
-
-import java.util.List;
+import com.tjyw.atom.network.result.RIdentifyResult;
+import com.tjyw.atom.network.result.RetroListResult;
 
 /**
  * Created by stephen on 27/08/2017.
  */
 public interface OnApiFavoritePostListener {
 
-    interface PostFavoriteListListener {
+    interface PostListListener {
 
-        void postOnFavoriteListSuccess(List<Favorite> result);
+        void postOnFavoriteListSuccess(RetroListResult<Favorite> result);
     }
 
-    interface PostFavoriteAddListener {
+    interface PostAddListener {
 
-        void postOnFavoriteAddSuccess();
+        void postOnFavoriteAddSuccess(RIdentifyResult result, Object item);
     }
 
-    interface PostFavoriteRemoveListener {
+    interface PostRemoveListener {
 
-        void postOnFavoriteRemoveSuccess();
+        void postOnFavoriteRemoveSuccess(Object item);
     }
 }

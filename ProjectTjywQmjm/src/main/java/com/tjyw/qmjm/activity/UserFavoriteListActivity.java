@@ -18,7 +18,7 @@ import com.tjyw.atom.network.presenter.FavoritePresenter;
 import com.tjyw.atom.network.presenter.IPost;
 import com.tjyw.atom.network.presenter.listener.OnApiFavoritePostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
-import com.tjyw.atom.network.utils.ArrayUtil;
+import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
@@ -30,6 +30,7 @@ import java.util.List;
 
 import me.dkzwm.widget.srl.SmoothRefreshLayout;
 import nucleus.factory.RequiresPresenter;
+import timber.log.Timber;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -37,7 +38,9 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  */
 @RequiresPresenter(FavoritePresenter.class)
 public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresenter<UserFavoriteListActivity>>
-        implements OnApiPostErrorListener, OnApiFavoritePostListener.PostFavoriteAddListener, OnApiFavoritePostListener.PostFavoriteListListener, OnApiFavoritePostListener.PostFavoriteRemoveListener {
+        implements SmoothRefreshLayout.OnRefreshListener, OnApiPostErrorListener, OnApiFavoritePostListener.PostListListener, OnApiFavoritePostListener.PostRemoveListener {
+
+    static final int PAGE_SIZE = 10;
 
     @From(R.id.favoriteListRefreshLayout)
     protected SmoothRefreshLayout favoriteListRefreshLayout;
@@ -46,6 +49,8 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
     protected RecyclerView favoriteListContainer;
 
     protected FastItemAdapter<UserFavoriteItem> userFavoriteAdapter;
+
+    protected int pageNo;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -94,7 +99,7 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
             @Override
             public void onClick(View v, int position, FastAdapter<UserFavoriteItem> fastAdapter, UserFavoriteItem item) {
                 maskerShowProgressView(true);
-                getPresenter().postFavoriteRemove(item.src.id);
+                getPresenter().postFavoriteRemove(item.src.id, item);
             }
         });
 
@@ -108,13 +113,28 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
                         .showLastDivider()
                         .build());
 
-        maskerOnClick(null);
+        favoriteListRefreshLayout.setOnRefreshListener(this);
+        onRefreshBegin(true);
     }
 
     @Override
     public void maskerOnClick(View view) {
-        maskerShowProgressView(false);
-        getPresenter().postFavoriteList();
+        onRefreshBegin(true);
+    }
+
+    @Override
+    public void onRefreshBegin(boolean isRefresh) {
+        if (isRefresh) {
+            maskerShowProgressView(true);
+            getPresenter().postFavoriteList(pageNo = 0 , PAGE_SIZE);
+        } else {
+            getPresenter().postFavoriteList((++ pageNo) * PAGE_SIZE, PAGE_SIZE);
+        }
+    }
+
+    @Override
+    public void onRefreshComplete(boolean isSuccessful) {
+        Timber.tag("Gx").e("onRefreshComplete::isSuccessful::%s", isSuccessful);
     }
 
     @Override
@@ -134,26 +154,32 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
     }
 
     @Override
-    public void postOnFavoriteAddSuccess() {
-        userFavoriteAdapter.notifyAdapterDataSetChanged();
-    }
-
-    @Override
-    public void postOnFavoriteListSuccess(List<Favorite> result) {
+    public void postOnFavoriteListSuccess(RetroListResult<Favorite> result) {
         maskerHideProgressView();
-        int size = null == result ? 0 : result.size();
+        if (null == result) {
+            favoriteListRefreshLayout.setDisableLoadMore(true);
+            favoriteListRefreshLayout.refreshComplete();
+            return ;
+        }
+
+        int size = result.size();
         List<UserFavoriteItem> itemList = new ArrayList<UserFavoriteItem>();
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i ++) {
             itemList.add(new UserFavoriteItem(result.get(i)));
         }
 
-        if (! ArrayUtil.isEmpty(itemList)) {
+        if (favoriteListRefreshLayout.isRefreshing()) {
             userFavoriteAdapter.set(itemList);
+        } else {
+            userFavoriteAdapter.add(itemList);
         }
+
+        favoriteListRefreshLayout.setDisableLoadMore(userFavoriteAdapter.getAdapterItemCount() >= result.totalCount);
+        favoriteListRefreshLayout.refreshComplete();
     }
 
     @Override
-    public void postOnFavoriteRemoveSuccess() {
-        getPresenter().postFavoriteList();
+    public void postOnFavoriteRemoveSuccess(Object item) {
+        onRefreshBegin(true);
     }
 }

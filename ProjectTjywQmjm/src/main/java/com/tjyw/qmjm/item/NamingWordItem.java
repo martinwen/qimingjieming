@@ -73,6 +73,9 @@ public class NamingWordItem extends AtomPubFastAdapterAbstractItem<NameDefinitio
                     }
                 }
             }
+
+            nameWordCollect.setSelected(nameDefinition.favorite);
+            nameWordCollect.setText(nameDefinition.favorite ? R.string.atom_pub_resStringNamingFavorited :  R.string.atom_pub_resStringNamingFavorite);
         }
 
         public TextView getNameWordCollect() {

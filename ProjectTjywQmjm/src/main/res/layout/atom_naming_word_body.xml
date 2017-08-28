@@ -27,7 +27,7 @@
         android:drawableTop="@drawable/atom_pub_selector_collect"
         android:gravity="center"
         android:maxLines="1"
-        android:padding="8dp"
+        android:minWidth="64dp"
         android:text="@string/atom_pub_resStringNamingCollect" />
 
     <android.support.v4.widget.Space
@@ -42,6 +42,6 @@
         android:drawableTop="@drawable/atom_pub_ic_explain_right_arrow"
         android:gravity="center"
         android:maxLines="1"
-        android:padding="8dp"
+        android:minWidth="64dp"
         android:text="@string/atom_pub_resStringNamingAnalysis" />
 </LinearLayout>

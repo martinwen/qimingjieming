@@ -21,6 +21,7 @@ import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiFavoritePostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
+import com.tjyw.atom.network.result.RIdentifyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
@@ -41,7 +42,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  */
 @RequiresPresenter(NamingPresenter.class)
 public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<NamingListActivity>>
-        implements OnApiPostErrorListener, OnApiPostNamingListener, OnApiFavoritePostListener.PostFavoriteAddListener {
+        implements OnApiPostErrorListener, OnApiPostNamingListener, OnApiFavoritePostListener.PostAddListener, OnApiFavoritePostListener.PostRemoveListener {
 
     protected String postSurname;
 
@@ -113,12 +114,17 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
             public void onClick(View v, int position, FastAdapter<NamingWordItem> fastAdapter, NamingWordItem item) {
                 if (null != postParam) {
                     maskerShowProgressView(true);
-                    getPresenter().postFavoriteAdd(
-                            postParam.surname,
-                            item.src.getGivenName(),
-                            postParam.day,
-                            postParam.gender
-                    );
+                    if (item.src.favorite && item.src.id > 0) {
+                        getPresenter().postFavoriteRemove(item.src.id, item);
+                    } else {
+                        getPresenter().postFavoriteAdd(
+                                postParam.surname,
+                                item.src.getGivenName(),
+                                postParam.day,
+                                postParam.gender,
+                                item
+                        );
+                    }
                 }
             }
         });
@@ -192,10 +198,24 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         }
     }
 
+    @Override
+    public void postOnFavoriteAddSuccess(RIdentifyResult result, Object item) {
+        maskerHideProgressView();
+        if (item instanceof NamingWordItem) {
+            NamingWordItem namingWordItem = (NamingWordItem) item;
+            namingWordItem.src.id = result.id;
+            namingWordItem.src.favorite = true;
+            nameDefinitionAdapter.notifyAdapterDataSetChanged();
+        }
+    }
 
     @Override
-    public void postOnFavoriteAddSuccess() {
+    public void postOnFavoriteRemoveSuccess(Object item) {
         maskerHideProgressView();
-        nameDefinitionAdapter.notifyAdapterDataSetChanged();
+        if (item instanceof NamingWordItem) {
+            NamingWordItem namingWordItem = (NamingWordItem) item;
+            namingWordItem.src.favorite = false;
+            nameDefinitionAdapter.notifyAdapterDataSetChanged();
+        }
     }
 }

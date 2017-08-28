@@ -7,8 +7,6 @@ public class Favorite extends NameDefinition {
 
     private static final long serialVersionUID = -3072486651990601515L;
 
-    public int id;
-
     public String surname;
 
     public String name;
@@ -16,6 +14,4 @@ public class Favorite extends NameDefinition {
     public String day;
 
     public int gender;
-
-    public NameScore nameScore;
 }
