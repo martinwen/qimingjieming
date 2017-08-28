@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
+import com.tjyw.atom.network.model.Order;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.qmjm.ClientQmjmApplication;
@@ -14,9 +15,9 @@ import java.util.List;
 /**
  * Created by stephen on 25/08/2017.
  */
-public class PayOrderListItem extends AtomPubFastAdapterAbstractItem<String, PayOrderListItem, PayOrderListItem.PayOrderListHolder> {
+public class PayOrderListItem extends AtomPubFastAdapterAbstractItem<Order, PayOrderListItem, PayOrderListItem.PayOrderListHolder> {
 
-    public PayOrderListItem(String src) {
+    public PayOrderListItem(Order src) {
         super(src);
     }
 
@@ -41,7 +42,7 @@ public class PayOrderListItem extends AtomPubFastAdapterAbstractItem<String, Pay
         holder.onBindView(ClientQmjmApplication.getContext(), src);
     }
 
-    public static class PayOrderListHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<String> {
+    public static class PayOrderListHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<Order> {
 
         @From(R.id.bodyOrderNo)
         protected TextView bodyOrderNo;
@@ -60,8 +61,11 @@ public class PayOrderListItem extends AtomPubFastAdapterAbstractItem<String, Pay
         }
 
         @Override
-        public void onBindView(Context context, String s) {
-
+        public void onBindView(Context context, Order order) {
+            bodyOrderNo.setText(order.name);
+            bodyTitle.setText(order.title);
+            bodyPrice.setText(context.getString(R.string.atom_pub_resStringRMB_s, order.money));
+            bodyOrderDate.setText(order.dateCreated);
         }
     }
 }

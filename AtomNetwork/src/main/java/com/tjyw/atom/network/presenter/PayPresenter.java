@@ -3,10 +3,12 @@ package com.tjyw.atom.network.presenter;
 import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.RetroHttpMethods;
 import com.tjyw.atom.network.RxSchedulersHelper;
+import com.tjyw.atom.network.model.Order;
 import com.tjyw.atom.network.model.Pay;
 import com.tjyw.atom.network.model.PayOrder;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
+import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
 import com.tjyw.atom.network.result.RetroResult;
 
@@ -61,6 +63,30 @@ public class PayPresenter<V extends ViewWithPresenter> extends BasePresenter<V> 
                     public void call(Throwable throwable) {
                         if (presenterView instanceof OnApiPostErrorListener) {
                             ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.PayOrder, throwable);
+                        }
+                    }
+                });
+    }
+
+    public void postPayOrderList(int offset, int limit) {
+        RetroHttpMethods.PAY().postPayOrderList(offset, limit)
+                .compose(RxSchedulersHelper.<RetroResult<RetroListResult<Order>>>io_main())
+                .subscribe(new Action1<RetroResult<RetroListResult<Order>>>() {
+                    @Override
+                    public void call(RetroResult<RetroListResult<Order>> result) {
+                        if (null == result || result.illegalRequest()) {
+                            if (presenterView instanceof OnApiPostErrorListener) {
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Pay.PayOrderList, new IllegalRequestException(result));
+                            }
+                        } else if (presenterView instanceof OnApiPayPostListener.PostPayOrderListListener) {
+                            ((OnApiPayPostListener.PostPayOrderListListener) presenterView).postOnPayOrderListSuccess(result.items);
+                        }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        if (presenterView instanceof OnApiPostErrorListener) {
+                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Pay.PayOrderList, throwable);
                         }
                     }
                 });

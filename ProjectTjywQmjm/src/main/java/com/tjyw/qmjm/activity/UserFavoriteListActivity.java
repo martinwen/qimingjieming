@@ -102,7 +102,7 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
             }
         });
 
-        favoriteListContainer.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        favoriteListContainer.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         favoriteListContainer.setAdapter(userFavoriteAdapter);
         favoriteListContainer.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(getApplicationContext())

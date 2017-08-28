@@ -26,4 +26,15 @@ public interface IPost {
     int FavoriteRemove = 10;
 
     int FavoriteList = 11;
+
+    interface Pay {
+
+        int PayOrder = 1;
+
+        int PayOrderList = 2;
+
+        int PayOrderNameList = 3;
+
+        int PayPreview = 4;
+    }
 }

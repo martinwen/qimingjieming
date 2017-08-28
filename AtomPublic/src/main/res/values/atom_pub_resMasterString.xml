@@ -92,4 +92,8 @@
     <!-- 加载/重试 -->
     <string name="atom_pub_resStringNetworkBroken">网络连接失败，请检测网络是否可用</string>
     <string name="atom_pub_resStringRetry">重试</string>
+
+    <!-- -->
+    <string name="atom_pub_resStringRMB_s">￥%s</string>
+
 </resources>

@@ -1,6 +1,7 @@
 package com.tjyw.atom.network.services;
 
 import com.tjyw.atom.network.conf.IApiField;
+import com.tjyw.atom.network.model.Order;
 import com.tjyw.atom.network.model.Pay;
 import com.tjyw.atom.network.model.PayOrder;
 import com.tjyw.atom.network.result.RNameDefinition;
@@ -22,19 +23,29 @@ public interface HttpPayServices {
 
         String LIST = "pay/list";
 
+        String PREVIEW = "pay/preview";
+
         String ORDER = "pay/order";
 
-        String ORDER_LIST = "pay/list";
+        String ORDER_LIST = "order/list";
 
-        String ORDER_NAME_LIST = "pay/nameList";
-
-        String PREVIEW = "pay/preview";
+        String ORDER_NAME_LIST = "order/nameList";
     }
 
     @FormUrlEncoded
     @POST(API.LIST)
     Observable<RetroResult<Pay>> postPay(
             @Field(IApiField.I.ignore) int ignore
+    );
+
+    @FormUrlEncoded
+    @POST(API.PREVIEW)
+    Observable<RetroResult<RetroPayPreviewResult>> postPayPreview(
+            @Field(IApiField.V.vipId) int vipId,
+            @Field(IApiField.S.surname) String surname,
+            @Field(IApiField.D.day) String day,
+            @Field(IApiField.G.gender) int gender,
+            @Field(IApiField.N.nameNumber) int nameNumber
     );
 
     @FormUrlEncoded
@@ -49,8 +60,7 @@ public interface HttpPayServices {
 
     @FormUrlEncoded
     @POST(API.ORDER_LIST)
-    Observable<RetroResult<RetroListResult<PayOrder>>> postPayOrderList(
-            @Field(IApiField.I.ignore) int ignore,
+    Observable<RetroResult<RetroListResult<Order>>> postPayOrderList(
             @Field(IApiField.O.offset) int offset,
             @Field(IApiField.L.limit) int limit
     );
@@ -59,15 +69,5 @@ public interface HttpPayServices {
     @POST(API.ORDER_NAME_LIST)
     Observable<RetroResult<RNameDefinition>> postPayOrderNameList(
             @Field(IApiField.O.orderNo) String orderNo
-    );
-
-    @FormUrlEncoded
-    @POST(API.PREVIEW)
-    Observable<RetroResult<RetroPayPreviewResult>> postPayPreview(
-            @Field(IApiField.V.vipId) int vipId,
-            @Field(IApiField.S.surname) String surname,
-            @Field(IApiField.D.day) String day,
-            @Field(IApiField.G.gender) int gender,
-            @Field(IApiField.N.nameNumber) int nameNumber
     );
 }
