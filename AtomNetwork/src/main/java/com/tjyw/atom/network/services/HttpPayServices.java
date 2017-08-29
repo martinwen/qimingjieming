@@ -68,6 +68,8 @@ public interface HttpPayServices {
     @FormUrlEncoded
     @POST(API.ORDER_NAME_LIST)
     Observable<RetroResult<RNameDefinition>> postPayOrderNameList(
-            @Field(IApiField.O.orderNo) String orderNo
+            @Field(IApiField.O.orderNo) String orderNo,
+            @Field(IApiField.O.offset) int offset,
+            @Field(IApiField.L.limit) int limit
     );
 }
