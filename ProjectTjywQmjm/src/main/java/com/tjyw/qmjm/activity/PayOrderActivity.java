@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,6 +25,7 @@ import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.model.PayOrder;
+import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.presenter.PayPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
@@ -46,11 +50,11 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderActivity>>
         implements OnApiPayPostListener.PostPayOrderListener, OnApiPayPostListener.PostPayPreviewListener, OnApiPostErrorListener, IAlipayCallback {
 
-    @From(R.id.payService)
-    protected TextView payService;
+    @From(R.id.payServiceName)
+    protected TextView payServiceName;
 
-    @From(R.id.payPrice)
-    protected TextView payPrice;
+    @From(R.id.payServicePrice)
+    protected TextView payServicePrice;
 
     @From(R.id.payUseAlipay)
     protected TextView payUseAlipay;
@@ -65,12 +69,15 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
     protected RNameDefinition.Param param;
 
+    protected PayService payService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         param = (RNameDefinition.Param) pGetSerializableExtra(IApiField.P.param);
-        if (null == param) {
+        payService = (PayService) pGetSerializableExtra(IApiField.P.payService);
+        if (null == param || null == payService) {
             finish();
             return ;
         } else {
@@ -83,6 +90,13 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                     .statusBarDarkFont(true)
                     .init();
         }
+
+        SpannableStringBuilder builder = new SpannableStringBuilder(getString(R.string.atom_pub_resStringPayPrice));
+        int length = builder.length();
+        builder.append(getString(R.string.atom_pub_resStringRMB_s, payService.money));
+        builder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.atom_pub_resTextColorRed)), length, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        payServicePrice.setText(builder);
+        payServiceName.setText(getString(R.string.atom_pub_resStringPayService, payService.service));
 
         payUseAlipay.setSelected(true);
         payUseAlipay.setOnClickListener(this);

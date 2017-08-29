@@ -105,7 +105,7 @@
 # ============  Fresco  ============
 
 
-# ============  Pay  ============
+# ============  PayService  ============
 -keep class com.alipay.android.app.IAlixPay{*;}
 -keep class com.alipay.android.app.IAlixPay$Stub{*;}
 -keep class com.alipay.android.app.IRemoteServiceCallback{*;}
@@ -115,7 +115,7 @@
 -keep class com.alipay.mobilesecuritysdk.*
 
 -keepc class com.tencent.mm.sdk.** { *; }
-# ============  Pay  ============
+# ============  PayService  ============
 
 
 # ============  Netwrk  ============

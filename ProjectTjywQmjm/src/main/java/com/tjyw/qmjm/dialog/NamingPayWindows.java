@@ -13,9 +13,11 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.conf.IApiField;
+import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.inject.Injector;
+import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.activity.BaseActivity;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
@@ -25,9 +27,10 @@ import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
  */
 public class NamingPayWindows extends DialogFragment implements View.OnClickListener {
 
-    public static NamingPayWindows newInstance(FragmentManager manager, RNameDefinition.Param param) {
+    public static NamingPayWindows newInstance(FragmentManager manager, RNameDefinition.Param param, PayService payService) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(IApiField.P.param, param);
+        bundle.putSerializable(IApiField.P.payService, payService);
 
         NamingPayWindows windows = new NamingPayWindows();
         windows.setArguments(bundle);
@@ -35,10 +38,24 @@ public class NamingPayWindows extends DialogFragment implements View.OnClickList
         return windows;
     }
 
+    @From(R.id.bodySurname)
+    protected TextView bodySurname;
+
+    @From(R.id.bodyDate)
+    protected TextView bodyDate;
+
+    @From(R.id.bodyServiceName)
+    protected TextView bodyServiceName;
+
+    @From(R.id.bodyServicePrice)
+    protected TextView bodyServicePrice;
+
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
 
     protected RNameDefinition.Param param;
+
+    protected PayService payService;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,10 +79,16 @@ public class NamingPayWindows extends DialogFragment implements View.OnClickList
 
         if (null != getArguments()) {
             param = (RNameDefinition.Param) getArguments().getSerializable(IApiField.P.param);
+            payService = (PayService) getArguments().getSerializable(IApiField.P.payService);
         }
 
-        if (null == param) {
+        if (null == payService) {
             dismissAllowingStateLoss();
+        } else {
+            bodySurname.setText(payService.surname);
+            bodyDate.setText(payService.day);
+            bodyServiceName.setText(payService.service);
+            bodyServicePrice.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s, payService.money));
         }
     }
 
@@ -75,7 +98,7 @@ public class NamingPayWindows extends DialogFragment implements View.OnClickList
             case R.id.atom_pub_resIdsOK:
                 dismissAllowingStateLoss();
                 if (null != param) {
-                    IClientActivityLaunchFactory.launchPayOrderActivity((BaseActivity) getActivity(), param);
+                    IClientActivityLaunchFactory.launchPayOrderActivity((BaseActivity) getActivity(), param, payService);
                 }
         }
     }

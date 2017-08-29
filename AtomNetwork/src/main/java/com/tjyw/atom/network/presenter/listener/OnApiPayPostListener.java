@@ -1,7 +1,7 @@
 package com.tjyw.atom.network.presenter.listener;
 
 import com.tjyw.atom.network.model.Order;
-import com.tjyw.atom.network.model.Pay;
+import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.model.PayOrder;
 import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
@@ -11,9 +11,9 @@ import com.tjyw.atom.network.result.RetroPayPreviewResult;
  */
 public interface OnApiPayPostListener {
 
-    interface PostPayListener {
+    interface PostPayServiceListener {
 
-        void postOnPaySuccess(Pay pay);
+        void postOnPayServiceSuccess(PayService payService);
     }
 
     interface PostPayOrderListener {

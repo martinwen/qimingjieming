@@ -16,9 +16,11 @@ import com.mikepenz.fastadapter.listeners.ClickEventHook;
 import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ISection;
+import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.presenter.IPost;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiFavoritePostListener;
+import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.RIdentifyResult;
@@ -42,7 +44,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  */
 @RequiresPresenter(NamingPresenter.class)
 public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<NamingListActivity>>
-        implements OnApiPostErrorListener, OnApiPostNamingListener, OnApiFavoritePostListener.PostAddListener, OnApiFavoritePostListener.PostRemoveListener {
+        implements OnApiPostErrorListener, OnApiPostNamingListener, OnApiFavoritePostListener.PostAddListener, OnApiFavoritePostListener.PostRemoveListener, OnApiPayPostListener.PostPayServiceListener {
 
     protected String postSurname;
 
@@ -55,7 +57,11 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
 
     protected FastItemAdapter<NamingWordItem> nameDefinitionAdapter;
 
+    protected NamingPayWindows namingPayWindows;
+
     protected RNameDefinition.Param postParam;
+
+    protected PayService payService;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -146,7 +152,14 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
                 switch (newState) {
                     case RecyclerView.SCROLL_STATE_IDLE:
                         postParam.nameNumber = postNameNumber;
-                        NamingPayWindows.newInstance(getSupportFragmentManager(), postParam);
+                        if (null == payService) {
+                            maskerShowProgressView(true);
+                            getPresenter().postPayService(postParam.surname, postParam.day);
+                        } else if (null == namingPayWindows) {
+                            namingPayWindows = NamingPayWindows.newInstance(getSupportFragmentManager(), postParam, payService);
+                        } else {
+                            namingPayWindows.show(getSupportFragmentManager(), NamingPayWindows.class.getName());
+                        }
                 }
             }
         });
@@ -216,6 +229,17 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
             NamingWordItem namingWordItem = (NamingWordItem) item;
             namingWordItem.src.favorite = false;
             nameDefinitionAdapter.notifyAdapterDataSetChanged();
+        }
+    }
+
+    @Override
+    public void postOnPayServiceSuccess(PayService payService) {
+        maskerHideProgressView();
+        this.payService = payService;
+        if (null == namingPayWindows) {
+            namingPayWindows = NamingPayWindows.newInstance(getSupportFragmentManager(), postParam, payService);
+        } else {
+            namingPayWindows.show(getSupportFragmentManager(), NamingPayWindows.class.getName());
         }
     }
 }

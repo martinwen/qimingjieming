@@ -116,6 +116,8 @@ public interface IApiField {
 
         String password = "password";
 
+        String payService = "payService";
+
         String payType = "payType";
 
         String pid = "pid";

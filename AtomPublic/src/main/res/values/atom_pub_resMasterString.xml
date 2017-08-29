@@ -58,7 +58,7 @@
     <string name="atom_pub_resStringPay"></string>
     <string name="atom_pub_resStringPayOrder">支付订单</string>
     <string name="atom_pub_resStringPayService">购买服务: %s</string>
-    <string name="atom_pub_resStringPayPrice">商品价格: ￥%s</string>
+    <string name="atom_pub_resStringPayPrice">商品价格: </string>
     <string name="atom_pub_resStringPayUseAliPay">支付宝</string>
     <string name="atom_pub_resStringPayUseWxPay">微信</string>
     <string name="atom_pub_resStringPayPay">立即支付</string>

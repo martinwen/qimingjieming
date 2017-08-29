@@ -4,8 +4,8 @@ import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.RetroHttpMethods;
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.model.Order;
-import com.tjyw.atom.network.model.Pay;
 import com.tjyw.atom.network.model.PayOrder;
+import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
@@ -22,18 +22,18 @@ import rx.functions.Action1;
  */
 public class PayPresenter<V extends ViewWithPresenter> extends FavoritePresenter<V> {
 
-    public void postPay() {
-        RetroHttpMethods.PAY().postPay(1)
-                .compose(RxSchedulersHelper.<RetroResult<Pay>>io_main())
-                .subscribe(new Action1<RetroResult<Pay>>() {
+    public void postPayService(String surname, String day) {
+        RetroHttpMethods.PAY().postPayService(surname, day)
+                .compose(RxSchedulersHelper.<RetroResult<PayService>>io_main())
+                .subscribe(new Action1<RetroResult<PayService>>() {
                     @Override
-                    public void call(RetroResult<Pay> result) {
+                    public void call(RetroResult<PayService> result) {
                         if (null == result || result.illegalRequest()) {
                             if (presenterView instanceof OnApiPostErrorListener) {
                                 ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.PayOrder, new IllegalRequestException(result));
                             }
-                        } else if (presenterView instanceof OnApiPayPostListener.PostPayListener) {
-                            ((OnApiPayPostListener.PostPayListener) presenterView).postOnPaySuccess(result.items);
+                        } else if (presenterView instanceof OnApiPayPostListener.PostPayServiceListener) {
+                            ((OnApiPayPostListener.PostPayServiceListener) presenterView).postOnPayServiceSuccess(result.items);
                         }
                     }
                 }, new Action1<Throwable>() {

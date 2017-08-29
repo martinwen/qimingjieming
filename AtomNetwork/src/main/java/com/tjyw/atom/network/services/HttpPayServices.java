@@ -2,7 +2,7 @@ package com.tjyw.atom.network.services;
 
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Order;
-import com.tjyw.atom.network.model.Pay;
+import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.model.PayOrder;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.result.RetroListResult;
@@ -21,7 +21,7 @@ public interface HttpPayServices {
 
     interface API {
 
-        String LIST = "pay/list";
+        String SHOW = "pay/show";
 
         String PREVIEW = "pay/preview";
 
@@ -33,9 +33,10 @@ public interface HttpPayServices {
     }
 
     @FormUrlEncoded
-    @POST(API.LIST)
-    Observable<RetroResult<Pay>> postPay(
-            @Field(IApiField.I.ignore) int ignore
+    @POST(API.SHOW)
+    Observable<RetroResult<PayService>> postPayService(
+            @Field(IApiField.S.surname) String surname,
+            @Field(IApiField.D.day) String day
     );
 
     @FormUrlEncoded

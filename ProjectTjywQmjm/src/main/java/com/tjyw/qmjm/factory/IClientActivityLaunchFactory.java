@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
+import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.qmjm.activity.BaseActivity;
@@ -49,9 +50,10 @@ public class IClientActivityLaunchFactory {
         context.startActivity(intent);
     }
 
-    public static void launchPayOrderActivity(BaseActivity context, RNameDefinition.Param param) {
+    public static void launchPayOrderActivity(BaseActivity context, RNameDefinition.Param param, PayService payService) {
         Intent intent = new Intent(context, PayOrderActivity.class);
         intent.putExtra(IApiField.P.param, param);
+        intent.putExtra(IApiField.P.payService, payService);
         context.startActivity(intent);
     }
 

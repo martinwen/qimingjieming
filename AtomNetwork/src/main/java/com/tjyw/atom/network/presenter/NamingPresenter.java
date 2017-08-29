@@ -16,7 +16,7 @@ import rx.functions.Action1;
 /**
  * Created by stephen on 31/03/2017.
  */
-public class NamingPresenter<V extends ViewWithPresenter> extends FavoritePresenter<V> {
+public class NamingPresenter<V extends ViewWithPresenter> extends PayPresenter<V> {
 
     public void postExplain(String surname, String name, String day, int gender) {
         RetroHttpMethods.NAMING().postExplain(surname, name, day, gender)
