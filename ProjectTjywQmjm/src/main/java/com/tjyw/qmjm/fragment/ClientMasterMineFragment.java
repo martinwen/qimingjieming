@@ -131,6 +131,8 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment {
                     masterMineUserSignIn.setOnClickListener(this);
                 } else {
                     masterMineUserSignIn.setText(R.string.atom_pub_resStringUserSignInOK);
+                    masterMineUserSignIn.setOnClickListener(null);
+                    masterMineUserSignIn.setClickable(false);
                 }
             }
         }
