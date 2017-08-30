@@ -172,7 +172,6 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                 payOrderHandler = new PayOrderHandler(PayOrderActivity.this);
             }
 
-            PayHandlerManager.registerHandler(PayHandlerManager.PAY_H5_RESULT, payOrderHandler);
             maskerShowProgressView(true);
             getPresenter().postPayOrder(
                     1,
@@ -186,6 +185,8 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
     @Override
     public void postOnPayOrderSuccess(PayOrder payOrder) {
+        PayHandlerManager.registerHandler(PayHandlerManager.PAY_H5_RESULT, payOrderHandler);
+
         RequestMsg msg = new RequestMsg();
         msg.setTokenId(payOrder.token_id);
         msg.setTradeType(MainApplication.PAY_WX_WAP);

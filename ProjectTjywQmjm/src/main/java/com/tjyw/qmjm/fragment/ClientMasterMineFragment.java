@@ -1,9 +1,11 @@
 package com.tjyw.qmjm.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import com.brianjmelton.stanley.ProxyGenerator;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
+import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.interfaces.IPrefUser;
 import com.tjyw.atom.network.model.UserInfo;
 import com.tjyw.atom.network.utils.JsonUtil;
@@ -33,6 +36,9 @@ import java.util.List;
  */
 public class ClientMasterMineFragment extends AtomPubBaseFragment {
 
+    @From(R.id.masterMineUserSignIn)
+    protected TextView masterMineUserSignIn;
+
     @From(R.id.masterMineUserAccount)
     protected TextView masterMineUserAccount;
 
@@ -49,13 +55,7 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        IPrefUser user = new ProxyGenerator().create(ClientQmjmApplication.getContext(), IPrefUser.class);
-        if (null != user) {
-            UserInfo userInfo = JsonUtil.getInstance().fromJson(user.getUserInfo(), UserInfo.class);
-            if (null != userInfo) {
-                masterMineUserAccount.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringMineUserAccount, userInfo.account));
-            }
-        }
+        drawWithUserInfo();
 
         FastItemAdapter<MasterMineItem> adapter = new FastItemAdapter<MasterMineItem>();
         masterMineContainer.setAdapter(adapter);
@@ -89,12 +89,50 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment {
                     case R.string.atom_pub_resStringMineZodiac:
                     case R.string.atom_pub_resStringMineBaby:
                     case R.string.atom_pub_resStringMinePregnant:
-                        IClientActivityLaunchFactory.launchUserSignInActivity((BaseActivity) getActivity());
                         break ;
                 }
 
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case ICode.SECTION.SS:
+                switch (resultCode) {
+                    case ICode.SS.OK:
+                        drawWithUserInfo();
+                }
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.masterMineUserSignIn:
+                IClientActivityLaunchFactory.launchUserSignInActivity(this);
+                break ;
+            default:
+                super.onClick(v);
+        }
+    }
+
+    protected void drawWithUserInfo() {
+        IPrefUser user = new ProxyGenerator().create(ClientQmjmApplication.getContext(), IPrefUser.class);
+        if (null != user) {
+            UserInfo userInfo = JsonUtil.getInstance().fromJson(user.getUserInfo(), UserInfo.class);
+            if (null != userInfo) {
+                masterMineUserAccount.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringMineUserAccount, userInfo.account));
+                if (TextUtils.isEmpty(userInfo.mobile)) {
+                    masterMineUserSignIn.setText(R.string.atom_pub_resStringUserSignInClick);
+                    masterMineUserSignIn.setOnClickListener(this);
+                } else {
+                    masterMineUserSignIn.setText(R.string.atom_pub_resStringUserSignInOK);
+                }
+            }
+        }
     }
 }

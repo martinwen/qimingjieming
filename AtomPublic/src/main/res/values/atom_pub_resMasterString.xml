@@ -80,6 +80,8 @@
 
     <!-- 用户登录注册 -->
     <string name="atom_pub_resStringUserSignIn">登录</string>
+    <string name="atom_pub_resStringUserSignInClick">点击登录</string>
+    <string name="atom_pub_resStringUserSignInOK">已登录</string>
     <string name="atom_pub_resStringUserSignMobileHint">请输入您的手机号</string>
     <string name="atom_pub_resStringUserSignMobileIllegal">请输入11位手机号</string>
     <string name="atom_pub_resStringUserSignAuthCodeHint">请输入短信验证码</string>

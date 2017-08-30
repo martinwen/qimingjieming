@@ -8,17 +8,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?colorPrimary"
-        android:padding="16dp">
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
 
-        <TextView
-            android:id="@+id/masterMineUserAccount"
-            style="@style/AtomStyle.GreyBigText"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/atom_pub_png_logo" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/atom_pub_png_logo"
-            android:drawablePadding="8dp"
             android:gravity="center_vertical"
-            android:text="@string/atom_pub_resStringMineUserAccount" />
+            android:orientation="vertical"
+            android:paddingLeft="8dp">
+
+            <TextView
+                android:id="@+id/masterMineUserSignIn"
+                style="@style/AtomStyle.GreyBigText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/atom_pub_ic_login"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="8dp"
+                android:text="@string/atom_pub_resStringUserSignInClick" />
+
+            <TextView
+                android:id="@+id/masterMineUserAccount"
+                style="@style/AtomStyle.GreyBigText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingTop="8dp"
+                android:text="@string/atom_pub_resStringMineUserAccount" />
+        </LinearLayout>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
