@@ -18,6 +18,7 @@ import com.tjyw.atom.network.utils.JsonUtil;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.concurrent.TimeUnit;
 
@@ -98,9 +99,10 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
                                         .setPositiveButton(R.string.atom_pub_resStringOK, new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
+                                                MobclickAgent.onKillProcess(getApplicationContext());
                                                 finish();
                                             }
-                                        });
+                                        }).show();
                             }
                         }
                     }, new Action0() {
