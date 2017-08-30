@@ -1,14 +1,17 @@
 package com.tjyw.qmjm.factory;
 
 import android.content.Intent;
+import android.support.annotation.StringRes;
 
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
+import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.activity.BaseActivity;
 import com.tjyw.qmjm.activity.ClientMasterActivity;
+import com.tjyw.qmjm.activity.ClientTouchActivity;
 import com.tjyw.qmjm.activity.ExplainMasterActivity;
 import com.tjyw.qmjm.activity.NamingListActivity;
 import com.tjyw.qmjm.activity.PayOrderActivity;
@@ -81,5 +84,16 @@ public class IClientActivityLaunchFactory {
     public static void launchUserFavoriteListActivity(AtomPubBaseFragment context) {
         Intent intent = new Intent(context.getActivity(), UserFavoriteListActivity.class);
         context.startActivityForResult(intent, ICode.SECTION.SS);
+    }
+
+    public static void launchTouchActivity(AtomPubBaseFragment context, String touchUrl, @StringRes int title) {
+        launchTouchActivity(context, touchUrl, ClientQmjmApplication.pGetString(title));
+    }
+
+    public static void launchTouchActivity(AtomPubBaseFragment context, String touchUrl, String title) {
+        Intent intent = new Intent(context.getActivity(), ClientTouchActivity.class);
+        intent.putExtra(IApiField.U.url, touchUrl);
+        intent.putExtra(IApiField.T.title, title);
+        context.startActivity(intent);
     }
 }

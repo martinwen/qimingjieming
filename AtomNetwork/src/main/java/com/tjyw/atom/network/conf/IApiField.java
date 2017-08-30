@@ -165,6 +165,8 @@ public interface IApiField {
 
         String timeout_express = "timeout_express";
 
+        String title = "title";
+
         String total_amount = "total_amount";
 
         String type = "type";
@@ -173,6 +175,8 @@ public interface IApiField {
     interface U {
 
         String uid = "uid";
+
+        String url = "url";
 
         String user = "user";
     }

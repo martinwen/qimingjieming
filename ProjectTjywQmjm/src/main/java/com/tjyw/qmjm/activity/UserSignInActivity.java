@@ -159,6 +159,7 @@ public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSi
             user.setUserInfo(JsonUtil.getInstance().toJsonString(result));
         }
 
+        pHideSoftInput();
         setResult(ICode.SS.OK);
         finish();
     }

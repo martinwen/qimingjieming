@@ -37,4 +37,9 @@ public interface IPost {
 
         int PayPreview = 4;
     }
+
+    interface Client {
+
+        int Init = 1;
+    }
 }

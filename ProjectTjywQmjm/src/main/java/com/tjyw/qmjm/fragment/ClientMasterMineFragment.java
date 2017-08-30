@@ -17,8 +17,12 @@ import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.ICode;
+import com.tjyw.atom.network.interfaces.IPrefClient;
 import com.tjyw.atom.network.interfaces.IPrefUser;
+import com.tjyw.atom.network.model.ClientInit;
 import com.tjyw.atom.network.model.UserInfo;
+import com.tjyw.atom.network.presenter.ClientPresenter;
+import com.tjyw.atom.network.presenter.listener.OnApiClientPostListener;
 import com.tjyw.atom.network.utils.JsonUtil;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.inject.From;
@@ -31,10 +35,13 @@ import com.tjyw.qmjm.item.MasterMineItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import nucleus.factory.RequiresPresenter;
+
 /**
  * Created by stephen on 07/08/2017.
  */
-public class ClientMasterMineFragment extends AtomPubBaseFragment {
+@RequiresPresenter(ClientPresenter.class)
+public class ClientMasterMineFragment extends AtomPubBaseFragment<ClientPresenter<ClientMasterMineFragment>> implements OnApiClientPostListener.PostClientInitListener {
 
     @From(R.id.masterMineUserSignIn)
     protected TextView masterMineUserSignIn;
@@ -44,6 +51,8 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment {
 
     @From(R.id.masterMineContainer)
     protected RecyclerView masterMineContainer;
+
+    protected ClientInit clientInit;
 
     @Nullable
     @Override
@@ -56,6 +65,14 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         drawWithUserInfo();
+
+        IPrefClient client = new ProxyGenerator().create(ClientQmjmApplication.getContext(), IPrefClient.class);
+        if (null != client) {
+            clientInit = JsonUtil.getInstance().parseObject(client.getClientInit(), ClientInit.class);
+            if (null == clientInit) {
+                getPresenter().postClientInit();
+            }
+        }
 
         FastItemAdapter<MasterMineItem> adapter = new FastItemAdapter<MasterMineItem>();
         masterMineContainer.setAdapter(adapter);
@@ -83,12 +100,24 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment {
                         IClientActivityLaunchFactory.launchUserFavoriteListActivity(ClientMasterMineFragment.this);
                         break ;
                     case R.string.atom_pub_resStringMineService:
+                        break ;
                     case R.string.atom_pub_resStringMineBJX:
+                        IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, clientInit.baijiaxing, R.string.atom_pub_resStringMineBJX);
+                        break ;
                     case R.string.atom_pub_resStringMineZGJM:
+                        IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, clientInit.jiemeng, R.string.atom_pub_resStringMineZGJM);
+                        break ;
                     case R.string.atom_pub_resStringMineQTS:
+                        IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, clientInit.quantangshi, R.string.atom_pub_resStringMineQTS);
+                        break ;
                     case R.string.atom_pub_resStringMineZodiac:
+                        IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, clientInit.shengxiao, R.string.atom_pub_resStringMineZodiac);
+                        break ;
                     case R.string.atom_pub_resStringMineBaby:
+                        IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, clientInit.yuer, R.string.atom_pub_resStringMineBaby);
+                        break ;
                     case R.string.atom_pub_resStringMinePregnant:
+                        IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, clientInit.yunqibaodian, R.string.atom_pub_resStringMinePregnant);
                         break ;
                 }
 
@@ -135,6 +164,14 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment {
                     masterMineUserSignIn.setClickable(false);
                 }
             }
+        }
+    }
+
+    @Override
+    public void postOnClientInitSuccess(ClientInit clientInit) {
+        IPrefClient client = new ProxyGenerator().create(ClientQmjmApplication.getContext(), IPrefClient.class);
+        if (null != client && null != clientInit) {
+            client.setClientInit(JsonUtil.getInstance().toJsonString(this.clientInit = clientInit));
         }
     }
 }

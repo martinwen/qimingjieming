@@ -103,5 +103,9 @@
             android:name=".activity.UserFavoriteListActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.ClientTouchActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 </manifest>
