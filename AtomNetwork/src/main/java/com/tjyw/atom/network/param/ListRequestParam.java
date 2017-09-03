@@ -21,7 +21,7 @@ public class ListRequestParam implements Serializable {
 
     public int gender = ISection.GENDER.MALE;
 
-    public int nameNumber = ISection.NAME_COUNT.SINGLE;
+    public int nameNumber = ISection.NAME_COUNT.DOUBLE;
 
     public String orderNo;
 }

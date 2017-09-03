@@ -40,8 +40,8 @@
         </FrameLayout>
 
         <android.support.v4.widget.Space
-            android:layout_width="16dp"
-            android:layout_height="wrap_content" />
+            android:layout_width="48dp"
+            android:layout_height="1dp" />
 
         <FrameLayout
             android:id="@+id/nGenderFemale"
@@ -64,10 +64,14 @@
                 android:text="@string/atom_pub_resStringGenderFemale"
                 android:textColor="@color/atom_pub_black2white" />
         </FrameLayout>
+    </LinearLayout>
 
-        <android.support.v4.widget.Space
-            android:layout_width="16dp"
-            android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <FrameLayout
             android:id="@+id/nNameNumberSingle"
@@ -92,8 +96,8 @@
         </FrameLayout>
 
         <android.support.v4.widget.Space
-            android:layout_width="16dp"
-            android:layout_height="wrap_content" />
+            android:layout_width="48dp"
+            android:layout_height="1dp" />
 
         <FrameLayout
             android:id="@+id/nNameNumberDouble"

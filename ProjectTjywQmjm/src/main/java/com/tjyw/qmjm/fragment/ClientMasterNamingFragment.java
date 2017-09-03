@@ -95,7 +95,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements G
         });
 
         nGenderMale.setSelected(true);
-        nNameNumberSingle.setSelected(true);
+        nNameNumberDouble.setSelected(true);
 
         nGenderMale.setOnClickListener(this);
         nGenderFemale.setOnClickListener(this);
