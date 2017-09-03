@@ -122,7 +122,7 @@ public class ClientTouchActivity extends BaseToolbarActivity {
 
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                maskerShowMaskerLayout(error.toString(), 0);
+//                maskerShowMaskerLayout(error.toString(), 0);
             }
 
             @Override

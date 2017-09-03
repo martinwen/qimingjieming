@@ -8,9 +8,12 @@ import android.view.View;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
+import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.model.Order;
+import com.tjyw.atom.network.presenter.IPost;
 import com.tjyw.atom.network.presenter.PayPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
+import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.R;
@@ -29,7 +32,7 @@ import nucleus.factory.RequiresPresenter;
  */
 @RequiresPresenter(PayPresenter.class)
 public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOrderListActivity>>
-        implements SmoothRefreshLayout.OnRefreshListener, OnApiPayPostListener.PostPayOrderListListener {
+        implements SmoothRefreshLayout.OnRefreshListener, OnApiPostErrorListener, OnApiPayPostListener.PostPayOrderListListener {
 
     static final int PAGE_SIZE = 10;
 
@@ -102,7 +105,7 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
             payOrderRefreshLayout.refreshComplete();
             return ;
         } else if (result.size() == 0 && payOrderRefreshLayout.isRefreshing()) {
-            maskerShowMaskerLayout(getString(R.string.atom_pub_resStringFavoriteListNoData), 0);
+            maskerShowMaskerLayout(getString(R.string.atom_pub_resStringPayNoData), 0);
         } else {
             maskerHideProgressView();
         }
@@ -121,5 +124,22 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
 
         payOrderRefreshLayout.setDisableLoadMore(payOrderAdapter.getAdapterItemCount() >= result.totalCount);
         payOrderRefreshLayout.refreshComplete();
+    }
+
+    @Override
+    public void postOnExplainError(int postId, Throwable throwable) {
+        throwable.printStackTrace();
+        switch (postId) {
+            case IPost.Pay.PayOrderList:
+                payOrderRefreshLayout.refreshComplete();
+                if (throwable instanceof IllegalRequestException) {
+                    maskerShowMaskerLayout(throwable.getMessage(), R.string.atom_pub_resStringRetry);
+                } else {
+                    maskerShowMaskerLayout(getString(R.string.atom_pub_resStringNetworkBroken), R.string.atom_pub_resStringRetry);
+                }
+                break ;
+            default:
+                maskerHideProgressView();
+        }
     }
 }

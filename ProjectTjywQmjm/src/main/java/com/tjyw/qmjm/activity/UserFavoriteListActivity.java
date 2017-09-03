@@ -141,6 +141,7 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
         throwable.printStackTrace();
         switch (postId) {
             case IPost.FavoriteList:
+                favoriteListRefreshLayout.refreshComplete();
                 if (throwable instanceof IllegalRequestException) {
                     maskerShowMaskerLayout(throwable.getMessage(), R.string.atom_pub_resStringRetry);
                 } else {
