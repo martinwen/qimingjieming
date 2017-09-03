@@ -32,8 +32,44 @@
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:maxLines="1"
+            android:paddingRight="8dp"
             android:textStyle="bold"
             tools:text="bodyCount" />
+
+        <TextView
+            android:id="@+id/bodyJiXiong"
+            style="@style/AtomStyle.BlackBigText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingRight="8dp"
+            android:textStyle="bold"
+            tools:text="bodyXiongJi" />
+
+        <TextView
+            style="@style/AtomStyle.BlackBigText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:text="@string/atom_pub_resStringExplainWuXing"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/bodyWuXing"
+            style="@style/AtomStyle.WhiteSmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/atom_pub_ic_elements_earth"
+            android:gravity="center"
+            android:maxLength="2"
+            android:maxLines="1"
+            android:text="Wx"
+            android:visibility="invisible" />
     </LinearLayout>
 
     <TextView

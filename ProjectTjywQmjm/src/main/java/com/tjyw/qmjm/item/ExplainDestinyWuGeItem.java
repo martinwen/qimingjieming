@@ -56,6 +56,12 @@ public class ExplainDestinyWuGeItem extends AtomPubFastAdapterAbstractItem<Expla
         @From(R.id.bodyContent)
         protected TextView bodyContent;
 
+        @From(R.id.bodyJiXiong)
+        protected TextView bodyJiXiong;
+
+        @From(R.id.bodyWuXing)
+        protected TextView bodyWuXing;
+
         public DestinyBodyHolder(View itemView) {
             super(itemView);
         }
@@ -66,6 +72,7 @@ public class ExplainDestinyWuGeItem extends AtomPubFastAdapterAbstractItem<Expla
             bodyCount.setText(String.valueOf(wuGe.number));
             bodySubTitle.setText(wuGe.zonglun);
             bodyContent.setText(wuGe.shiyi);
+            bodyJiXiong.setText(wuGe.jixiong);
         }
     }
 }
