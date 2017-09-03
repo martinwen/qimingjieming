@@ -26,13 +26,12 @@ import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.model.PayOrder;
 import com.tjyw.atom.network.model.PayService;
+import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.PayPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
-import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
 import com.tjyw.atom.pub.inject.From;
-import com.tjyw.qmjm.ClientInitializer;
 import com.tjyw.qmjm.R;
 
 import java.lang.ref.WeakReference;
@@ -67,7 +66,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
     protected PayOrderHandler payOrderHandler;
 
-    protected RNameDefinition.Param param;
+    protected ListRequestParam param;
 
     protected PayService payService;
 
@@ -75,7 +74,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        param = (RNameDefinition.Param) pGetSerializableExtra(IApiField.P.param);
+        param = (ListRequestParam) pGetSerializableExtra(IApiField.P.param);
         payService = (PayService) pGetSerializableExtra(IApiField.P.payService);
         if (null == param || null == payService) {
             finish();
@@ -112,7 +111,10 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Timber.tag("Gx").e("data.getExtras::%s", data.getExtras());
+//        Intent result = new Intent();
+//        data.putExtra(IApiField.O.orderNo, orderNo);
+//        setResult(ICode.PAY.ALIPAY_SUCCESS, result);
+//        finish();
     }
 
     @Override
@@ -159,6 +161,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     }
 
     protected void doPostPay() {
+        maskerShowProgressView(true);
         if (payUseAlipay.isSelected()) {
             getPresenter().postPayPreview(
                     1,
@@ -186,6 +189,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     @Override
     public void postOnPayOrderSuccess(PayOrder payOrder) {
         PayHandlerManager.registerHandler(PayHandlerManager.PAY_H5_RESULT, payOrderHandler);
+        maskerHideProgressView();
 
         RequestMsg msg = new RequestMsg();
         msg.setTokenId(payOrder.token_id);
@@ -196,6 +200,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     @Override
     public void postOnPayPreviewSuccess(RetroPayPreviewResult result) {
         PayAlipayBuilder.getInstance().build(this, result, this);
+        maskerHideProgressView();
     }
 
     @Override
@@ -210,11 +215,13 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     }
 
     @Override
-    public void pOnAliPayCallback(int resultStatus, AlipayResult result) {
+    public void pOnAliPayCallback(int resultStatus, AlipayResult result, String orderNo) {
         switch (resultStatus) {
             case RESULT_STATUS.SUCCESS:
-                setResult(ICode.PAY.ALIPAY_SUCCESS);
-                ClientInitializer.getInstance().clearUserLocalCacheData(getApplicationContext());
+                Intent data = new Intent();
+                data.putExtra(IApiField.O.orderNo, orderNo);
+                setResult(ICode.PAY.ALIPAY_SUCCESS, data);
+                finish();
                 break ;
             case RESULT_STATUS.FAIL:
             default:

@@ -13,6 +13,7 @@ import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Length;
 import com.mobsandgeeks.saripaar.annotation.Pattern;
 import com.tjyw.atom.network.conf.ISection;
+import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.utils.DateTimeUtils;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
@@ -60,11 +61,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements G
 
     protected GregorianWindows gregorianWindows;
 
-    protected int postGender = ISection.GENDER.MALE;
-
-    protected int postNameNumber = ISection.NAME_COUNT.SINGLE;
-
-    protected String postDay;
+    protected ListRequestParam listRequestParam;
 
     protected Validator validator;
 
@@ -76,6 +73,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements G
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        listRequestParam = new ListRequestParam();
         return inflater.inflate(R.layout.atom_master_naming, null);
     }
 
@@ -83,17 +81,15 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements G
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         validator = new Validator(this);
         validator.setValidationListener(new AtomPubValidationListener(ClientQmjmApplication.getContext()) {
 
             @Override
             public void onValidationSucceeded() {
+                listRequestParam.surname = nSurname.getText().toString();
                 IClientActivityLaunchFactory.launchNamingListActivity(
-                        (BaseActivity) getActivity(),
-                        nSurname.getText().toString(),
-                        postDay,
-                        postGender,
-                        postNameNumber
+                        (BaseActivity) getActivity(), listRequestParam
                 );
             }
         });
@@ -113,22 +109,22 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements G
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.nGenderMale:
-                postGender = ISection.GENDER.MALE;
+                listRequestParam.gender = ISection.GENDER.MALE;
                 v.setSelected(true);
                 nGenderFemale.setSelected(false);
                 break ;
             case R.id.nGenderFemale:
-                postGender = ISection.GENDER.FEMALE;
+                listRequestParam.gender = ISection.GENDER.FEMALE;
                 v.setSelected(true);
                 nGenderMale.setSelected(false);
                 break ;
             case R.id.nNameNumberSingle:
-                postNameNumber = ISection.NAME_COUNT.SINGLE;
+                listRequestParam.nameNumber = ISection.NAME_COUNT.SINGLE;
                 v.setSelected(true);
                 nNameNumberDouble.setSelected(false);
                 break ;
             case R.id.nNameNumberDouble:
-                postNameNumber = ISection.NAME_COUNT.DOUBLE;
+                listRequestParam.nameNumber = ISection.NAME_COUNT.DOUBLE;
                 v.setSelected(true);
                 nNameNumberSingle.setSelected(false);
                 break ;
@@ -150,7 +146,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements G
         Calendar calendar = DateTimeUtils.getCalendar(lunarCalendar.getDate());
         if (null != calendar) {
             calendar.set(Calendar.HOUR_OF_DAY, postHour);
-            postDay = DateTimeUtils.printCalendarByPattern(calendar, DateTimeUtils.yyyy_MM_dd_HH);
+            listRequestParam.day = DateTimeUtils.printCalendarByPattern(calendar, DateTimeUtils.yyyy_MM_dd_HH);
         }
 
         if (isGregorianSolar) {

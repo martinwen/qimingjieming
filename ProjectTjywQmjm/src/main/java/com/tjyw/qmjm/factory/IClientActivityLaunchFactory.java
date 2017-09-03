@@ -6,7 +6,7 @@ import android.support.annotation.StringRes;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.model.PayService;
-import com.tjyw.atom.network.result.RNameDefinition;
+import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.activity.BaseActivity;
@@ -44,20 +44,17 @@ public class IClientActivityLaunchFactory {
         context.startActivity(intent);
     }
 
-    public static void launchNamingListActivity(BaseActivity context, String surname, String day, int gender, int nameNumber) {
+    public static void launchNamingListActivity(BaseActivity context, ListRequestParam listRequestParam) {
         Intent intent = new Intent(context, NamingListActivity.class);
-        intent.putExtra(IApiField.S.surname, surname);
-        intent.putExtra(IApiField.D.day, day);
-        intent.putExtra(IApiField.G.gender, gender);
-        intent.putExtra(IApiField.N.nameNumber, nameNumber);
+        intent.putExtra(IApiField.P.param, listRequestParam);
         context.startActivity(intent);
     }
 
-    public static void launchPayOrderActivity(BaseActivity context, RNameDefinition.Param param, PayService payService) {
+    public static void launchPayOrderActivity(BaseActivity context, ListRequestParam param, PayService payService) {
         Intent intent = new Intent(context, PayOrderActivity.class);
         intent.putExtra(IApiField.P.param, param);
         intent.putExtra(IApiField.P.payService, payService);
-        context.startActivity(intent);
+        context.startActivityForResult(intent, ICode.SECTION.PAY);
     }
 
     public static void launchPayOrderListActivity(BaseActivity context) {

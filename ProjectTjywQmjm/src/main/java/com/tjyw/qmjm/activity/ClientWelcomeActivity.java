@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.widget.ImageView;
 
 import com.brianjmelton.stanley.ProxyGenerator;
 import com.tjyw.atom.network.RetroHttpMethods;
@@ -15,6 +16,7 @@ import com.tjyw.atom.network.model.UserInfo;
 import com.tjyw.atom.network.presenter.UserPresenter;
 import com.tjyw.atom.network.result.RetroResult;
 import com.tjyw.atom.network.utils.JsonUtil;
+import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
@@ -36,6 +38,9 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
     static final int DELAY_TO_LAUNCH_MASTER = 2000;
 
     protected long createMillisTime;
+
+    @From(R.id.welcomeSloganView)
+    protected ImageView welcomeSloganView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

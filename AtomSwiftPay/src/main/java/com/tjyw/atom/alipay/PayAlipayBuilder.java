@@ -31,15 +31,15 @@ public class PayAlipayBuilder {
         return builder;
     }
 
-    protected String buildAlipayInfo(RetroPayPreviewResult result) {
-        Map<String, String> params = OrderInfoUtil2_0.buildOrderParamMap(PayConfigure.getInstance().appId, result);
+    protected String buildAlipayInfo(RetroPayPreviewResult payPreviewResult) {
+        Map<String, String> params = OrderInfoUtil2_0.buildOrderParamMap(PayConfigure.getInstance().appId, payPreviewResult);
         String orderParam = OrderInfoUtil2_0.buildOrderParam(params);
         String sign = OrderInfoUtil2_0.getSign(params, PayConfigure.getInstance().rsaPrivate);
         return new StringBuilder(orderParam).append(ISymbol.AND).append(sign).toString();
     }
 
-    public void build(Activity context, final RetroPayPreviewResult result, final IAlipayCallback callback) {
-        final String payInfo = buildAlipayInfo(result);
+    public void build(Activity context, final RetroPayPreviewResult payPreviewResult, final IAlipayCallback callback) {
+        final String payInfo = buildAlipayInfo(payPreviewResult);
         if (TextUtils.isEmpty(payInfo) || null == callback) {
             return ;
         } else {
@@ -60,7 +60,7 @@ public class PayAlipayBuilder {
                     @Override
                     public void call(Map<String,String> resultMap) {
                         if (null == resultMap) {
-                            callback.pOnAliPayCallback(IAlipayCallback.RESULT_STATUS.FAIL, null);
+                            callback.pOnAliPayCallback(IAlipayCallback.RESULT_STATUS.FAIL, null, payPreviewResult.orderNo);
                         } else {
                             int resultStatus = IAlipayCallback.RESULT_STATUS.FAIL;
                             if (resultMap.containsKey(IApiField.R.resultStatus)) {
@@ -74,14 +74,14 @@ public class PayAlipayBuilder {
                                 }
                             }
 
-                            callback.pOnAliPayCallback(resultStatus, result);
+                            callback.pOnAliPayCallback(resultStatus, result, payPreviewResult.orderNo);
                         }
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
                         throwable.printStackTrace();
-                        callback.pOnAliPayCallback(IAlipayCallback.RESULT_STATUS.FAIL, null);
+                        callback.pOnAliPayCallback(IAlipayCallback.RESULT_STATUS.FAIL, null, payPreviewResult.orderNo);
                     }
                 });
     }

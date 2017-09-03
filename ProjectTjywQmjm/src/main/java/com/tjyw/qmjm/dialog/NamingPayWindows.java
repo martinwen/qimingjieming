@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.PayService;
-import com.tjyw.atom.network.result.RNameDefinition;
+import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.inject.Injector;
 import com.tjyw.qmjm.ClientQmjmApplication;
@@ -27,7 +27,7 @@ import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
  */
 public class NamingPayWindows extends DialogFragment implements View.OnClickListener {
 
-    public static NamingPayWindows newInstance(FragmentManager manager, RNameDefinition.Param param, PayService payService) {
+    public static NamingPayWindows newInstance(FragmentManager manager, ListRequestParam param, PayService payService) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(IApiField.P.param, param);
         bundle.putSerializable(IApiField.P.payService, payService);
@@ -53,7 +53,7 @@ public class NamingPayWindows extends DialogFragment implements View.OnClickList
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
 
-    protected RNameDefinition.Param param;
+    protected ListRequestParam param;
 
     protected PayService payService;
 
@@ -78,7 +78,7 @@ public class NamingPayWindows extends DialogFragment implements View.OnClickList
         super.onViewCreated(view, savedInstanceState);
 
         if (null != getArguments()) {
-            param = (RNameDefinition.Param) getArguments().getSerializable(IApiField.P.param);
+            param = (ListRequestParam) getArguments().getSerializable(IApiField.P.param);
             payService = (PayService) getArguments().getSerializable(IApiField.P.payService);
         }
 

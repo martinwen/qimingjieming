@@ -22,5 +22,5 @@ public interface IAlipayCallback {
         int UNKNOWN = 6004; // 支付结果未知（有可能已经支付成功），请查询商户订单列表中订单的支付状态
     }
 
-    void pOnAliPayCallback(int resultStatus, AlipayResult result);
+    void pOnAliPayCallback(int resultStatus, AlipayResult result, String orderNo);
 }

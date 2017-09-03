@@ -1,6 +1,7 @@
 package com.tjyw.qmjm.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,8 +16,9 @@ import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.listeners.ClickEventHook;
 import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.conf.IApiField;
-import com.tjyw.atom.network.conf.ISection;
+import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.model.PayService;
+import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.IPost;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiFavoritePostListener;
@@ -43,14 +45,11 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * Created by stephen on 14/08/2017.
  */
 @RequiresPresenter(NamingPresenter.class)
-public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<NamingListActivity>>
-        implements OnApiPostErrorListener, OnApiPostNamingListener, OnApiFavoritePostListener.PostAddListener, OnApiFavoritePostListener.PostRemoveListener, OnApiPayPostListener.PostPayServiceListener {
-
-    protected String postSurname;
-
-    protected int postGender;
-
-    protected int postNameNumber;
+public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<NamingListActivity>> implements
+        OnApiPostErrorListener,
+        OnApiPostNamingListener,
+        OnApiFavoritePostListener.PostAddListener, OnApiFavoritePostListener.PostRemoveListener,
+        OnApiPayPostListener.PostPayServiceListener {
 
     @From(R.id.namingListContainer)
     protected RecyclerView namingListContainer;
@@ -59,7 +58,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
 
     protected NamingPayWindows namingPayWindows;
 
-    protected RNameDefinition.Param postParam;
+    protected ListRequestParam listRequestParam;
 
     protected PayService payService;
 
@@ -72,35 +71,32 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        postSurname = pGetStringExtra(IApiField.S.surname, null);
-        if (TextUtils.isEmpty(postSurname)) {
+        listRequestParam = (ListRequestParam) pGetSerializableExtra(IApiField.P.param);
+        if (null == listRequestParam) {
             finish();
             return ;
         } else {
-            postGender = pGetIntExtra(IApiField.G.gender, ISection.GENDER.MALE);
-            postNameNumber = pGetIntExtra(IApiField.N.nameNumber, ISection.NAME_COUNT.SINGLE);
+            setContentView(R.layout.atom_naming_list);
+            tSetToolBar(getString(R.string.atom_pub_resStringNamingList));
+
+            immersionBarWith()
+                    .fitsSystemWindows(true)
+                    .statusBarColor(R.color.colorPrimary)
+                    .statusBarDarkFont(true)
+                    .init();
         }
-
-        setContentView(R.layout.atom_naming_list);
-        tSetToolBar(getString(R.string.atom_pub_resStringNamingList));
-
-        immersionBarWith()
-                .fitsSystemWindows(true)
-                .statusBarColor(R.color.colorPrimary)
-                .statusBarDarkFont(true)
-                .init();
 
         nameDefinitionAdapter = new FastItemAdapter<NamingWordItem>();
         nameDefinitionAdapter.withOnClickListener(new FastAdapter.OnClickListener<NamingWordItem>() {
             @Override
             public boolean onClick(View v, IAdapter<NamingWordItem> adapter, NamingWordItem item, int position) {
-                if (null != postParam) {
+                if (null != listRequestParam) {
                     IClientActivityLaunchFactory.launchExplainMasterActivity(
                             NamingListActivity.this,
-                            postParam.surname,
+                            listRequestParam.surname,
                             item.src.getGivenName(),
-                            postParam.day,
-                            postParam.gender
+                            listRequestParam.day,
+                            listRequestParam.gender
                     );
                 }
                 return true;
@@ -118,16 +114,16 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
 
             @Override
             public void onClick(View v, int position, FastAdapter<NamingWordItem> fastAdapter, NamingWordItem item) {
-                if (null != postParam) {
+                if (null != listRequestParam) {
                     maskerShowProgressView(true);
                     if (item.src.favorite && item.src.id > 0) {
                         getPresenter().postFavoriteRemove(item.src.id, item);
                     } else {
                         getPresenter().postFavoriteAdd(
-                                postParam.surname,
+                                listRequestParam.surname,
                                 item.src.getGivenName(),
-                                postParam.day,
-                                postParam.gender,
+                                listRequestParam.day,
+                                listRequestParam.gender,
                                 item
                         );
                     }
@@ -151,31 +147,44 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 switch (newState) {
                     case RecyclerView.SCROLL_STATE_IDLE:
-                        postParam.nameNumber = postNameNumber;
-                        if (null == payService) {
-                            maskerShowProgressView(true);
-                            getPresenter().postPayService(postParam.surname, postParam.day);
-                        } else if (null == namingPayWindows) {
-                            namingPayWindows = NamingPayWindows.newInstance(getSupportFragmentManager(), postParam, payService);
-                        } else {
-                            namingPayWindows.show(getSupportFragmentManager(), NamingPayWindows.class.getName());
+                        if (TextUtils.isEmpty(listRequestParam.orderNo)) {
+                            if (null == payService) {
+                                maskerShowProgressView(true);
+                                getPresenter().postPayService(listRequestParam.surname, listRequestParam.day);
+                            } else if (null == namingPayWindows) {
+                                namingPayWindows = NamingPayWindows.newInstance(getSupportFragmentManager(), listRequestParam, payService);
+                            } else if (!namingPayWindows.isVisible()) {
+                                namingPayWindows.show(getSupportFragmentManager(), NamingPayWindows.class.getName());
+                            }
                         }
                 }
             }
         });
 
-        maskerOnClick(null);
+        requestListData();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case ICode.SECTION.PAY:
+                switch (resultCode) {
+                    case ICode.PAY.ALIPAY_SUCCESS:
+                    case ICode.PAY.WX_SUCCESS:
+                        if (null != data) {
+                            listRequestParam.orderNo = data.getStringExtra(IApiField.O.orderNo);
+                            if (! TextUtils.isEmpty(listRequestParam.orderNo)) {
+                                requestListData();
+                            }
+                        }
+                }
+        }
     }
 
     @Override
     public void maskerOnClick(View view) {
-        maskerShowProgressView(false);
-        getPresenter().postNameDefinition(
-                postSurname,
-                pGetStringExtra(IApiField.D.day, null),
-                postGender,
-                postNameNumber
-        );
+        requestListData();
     }
 
     @Override
@@ -198,7 +207,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     public void postOnNamingSuccess(RNameDefinition result) {
         maskerHideProgressView();
         if (null != result) {
-            postParam = result.param;
+            listRequestParam = result.param;
             int size = result.size();
             if (size > 0) {
                 List<NamingWordItem> itemList = new ArrayList<NamingWordItem>();
@@ -237,9 +246,23 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         maskerHideProgressView();
         this.payService = payService;
         if (null == namingPayWindows) {
-            namingPayWindows = NamingPayWindows.newInstance(getSupportFragmentManager(), postParam, payService);
+            namingPayWindows = NamingPayWindows.newInstance(getSupportFragmentManager(), listRequestParam, payService);
         } else {
             namingPayWindows.show(getSupportFragmentManager(), NamingPayWindows.class.getName());
+        }
+    }
+
+    protected void requestListData() {
+        maskerShowProgressView(false);
+        if (TextUtils.isEmpty(listRequestParam.orderNo)) {
+            getPresenter().postNameDefinition(
+                    listRequestParam.surname,
+                    listRequestParam.day,
+                    listRequestParam.gender,
+                    listRequestParam.nameNumber
+            );
+        } else {
+            getPresenter().postPayOrderNameList(listRequestParam.orderNo);
         }
     }
 }
