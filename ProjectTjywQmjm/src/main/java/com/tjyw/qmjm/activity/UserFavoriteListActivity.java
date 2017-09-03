@@ -14,6 +14,7 @@ import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.listeners.ClickEventHook;
 import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.model.Favorite;
+import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.FavoritePresenter;
 import com.tjyw.atom.network.presenter.IPost;
 import com.tjyw.atom.network.presenter.listener.OnApiFavoritePostListener;
@@ -75,11 +76,7 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
             public boolean onClick(View v, IAdapter<UserFavoriteItem> adapter, UserFavoriteItem item, int position) {
                 if (null != item.src) {
                     IClientActivityLaunchFactory.launchExplainMasterActivity(
-                            UserFavoriteListActivity.this,
-                            item.src.surname,
-                            item.src.getGivenName(),
-                            item.src.day,
-                            item.src.gender
+                            UserFavoriteListActivity.this, new ListRequestParam(item.src)
                     );
                 }
                 return true;
@@ -117,7 +114,7 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
     }
 
     @Override
-    public void maskerOnClick(View view) {
+    public void maskerOnClick(View view, int clickLabelRes) {
         favoriteListRefreshLayout.autoRefresh(true);
     }
 

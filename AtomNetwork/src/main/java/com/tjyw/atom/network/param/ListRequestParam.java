@@ -2,6 +2,7 @@ package com.tjyw.atom.network.param;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tjyw.atom.network.conf.ISection;
+import com.tjyw.atom.network.model.NameDefinition;
 
 import java.io.Serializable;
 
@@ -24,4 +25,15 @@ public class ListRequestParam implements Serializable {
     public int nameNumber = ISection.NAME_COUNT.DOUBLE;
 
     public String orderNo;
+
+    public ListRequestParam() {
+
+    }
+
+    public ListRequestParam(NameDefinition definition) {
+        this.surname = definition.surname;
+        this.name = definition.getGivenName();
+        this.day = definition.day;
+        this.gender = definition.gender;
+    }
 }

@@ -19,8 +19,8 @@ public class AtomPubInterceptLinearLayout extends LinearLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        return true;
-    }
+//    @Override
+//    public boolean dispatchTouchEvent(MotionEvent ev) {
+//        return true;
+//    }
 }

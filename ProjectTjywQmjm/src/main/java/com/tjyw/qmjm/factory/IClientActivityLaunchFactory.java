@@ -35,12 +35,9 @@ public class IClientActivityLaunchFactory {
         context.startActivity(intent);
     }
 
-    public static void launchExplainMasterActivity(BaseActivity context, String surname, String name, String day, int gender) {
+    public static void launchExplainMasterActivity(BaseActivity context, ListRequestParam listRequestParam) {
         Intent intent = new Intent(context, ExplainMasterActivity.class);
-        intent.putExtra(IApiField.S.surname, surname);
-        intent.putExtra(IApiField.N.name, name);
-        intent.putExtra(IApiField.D.day, day);
-        intent.putExtra(IApiField.G.gender, gender);
+        intent.putExtra(IApiField.P.param, listRequestParam);
         context.startActivity(intent);
     }
 

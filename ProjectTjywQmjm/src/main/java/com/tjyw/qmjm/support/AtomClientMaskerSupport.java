@@ -55,7 +55,7 @@ public class AtomClientMaskerSupport implements View.OnClickListener, IAtomPubLa
         switch (v.getId()) {
             case R.id.atomPubMaskerClickText:
                 if (null != maskerClickListener) {
-                    maskerClickListener.maskerOnClick(v);
+                    maskerClickListener.maskerOnClick(v, (Integer) v.getTag());
                 }
         }
     }
@@ -83,6 +83,7 @@ public class AtomClientMaskerSupport implements View.OnClickListener, IAtomPubLa
         maskerHideProgressView();
 
         atomPubMaskerMsg.setText(msg);
+        atomPubMaskerClickText.setTag(clickLabelRes);
         if (clickLabelRes > 0) {
             atomPubMaskerClickText.setVisibility(View.VISIBLE);
             atomPubMaskerClickText.setText(clickLabelRes);

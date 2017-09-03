@@ -67,6 +67,7 @@
     <!-- 支付列表 -->
     <string name="atom_pub_resStringPayList">我的订单</string>
     <string name="atom_pub_resStringPayNoData">没有订单记录</string>
+    <string name="atom_pub_resStringPayToName">去起名</string>
 
     <!-- 我的页面 -->
     <string name="atom_pub_resStringMineUserAccount">注册帐号: %s</string>

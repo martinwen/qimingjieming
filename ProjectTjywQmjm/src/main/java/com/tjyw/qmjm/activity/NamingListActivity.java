@@ -91,13 +91,9 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
             @Override
             public boolean onClick(View v, IAdapter<NamingWordItem> adapter, NamingWordItem item, int position) {
                 if (null != listRequestParam) {
+                    listRequestParam.name = item.src.getGivenName();
                     IClientActivityLaunchFactory.launchExplainMasterActivity(
-                            NamingListActivity.this,
-                            listRequestParam.surname,
-                            item.src.getGivenName(),
-                            listRequestParam.day,
-                            listRequestParam.gender
-                    );
+                            NamingListActivity.this, listRequestParam);
                 }
                 return true;
             }
@@ -183,7 +179,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     }
 
     @Override
-    public void maskerOnClick(View view) {
+    public void maskerOnClick(View view, int clickLabelRes) {
         requestListData();
     }
 

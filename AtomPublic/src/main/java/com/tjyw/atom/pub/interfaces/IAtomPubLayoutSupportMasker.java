@@ -10,7 +10,7 @@ public interface IAtomPubLayoutSupportMasker {
 
     interface OnMaskerClickListener {
 
-        void maskerOnClick(View view);
+        void maskerOnClick(View view, int clickLabelRes);
     }
 
     void maskerShowProgressView(boolean isAlpha);

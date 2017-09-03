@@ -17,6 +17,7 @@ import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.tjyw.qmjm.item.PayOrderListItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
@@ -83,6 +84,17 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
     }
 
     @Override
+    public void maskerOnClick(View view, int clickLabelRes) {
+        switch (clickLabelRes) {
+            case R.string.atom_pub_resStringPayToName:
+                IClientActivityLaunchFactory.launchClientMasterActivity(this, ClientMasterAdapter.POSITION.NAMING, true);
+                break ;
+            default:
+                payOrderRefreshLayout.autoRefresh(true);
+        }
+    }
+
+    @Override
     public void onRefreshBegin(boolean isRefresh) {
         if (isRefresh) {
             maskerShowProgressView(true);
@@ -105,7 +117,7 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
             payOrderRefreshLayout.refreshComplete();
             return ;
         } else if (result.size() == 0 && payOrderRefreshLayout.isRefreshing()) {
-            maskerShowMaskerLayout(getString(R.string.atom_pub_resStringPayNoData), 0);
+            maskerShowMaskerLayout(getString(R.string.atom_pub_resStringPayNoData), R.string.atom_pub_resStringPayToName);
         } else {
             maskerHideProgressView();
         }

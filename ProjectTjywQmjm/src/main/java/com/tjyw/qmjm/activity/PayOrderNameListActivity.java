@@ -13,6 +13,7 @@ import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.listeners.ClickEventHook;
 import com.tjyw.atom.network.conf.IApiField;
+import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.PayPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiFavoritePostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
@@ -67,11 +68,7 @@ public class PayOrderNameListActivity extends BaseToolbarActivity<PayPresenter<P
             @Override
             public boolean onClick(View v, IAdapter<NamingWordItem> adapter, NamingWordItem item, int position) {
                 IClientActivityLaunchFactory.launchExplainMasterActivity(
-                        PayOrderNameListActivity.this,
-                        item.src.surname,
-                        item.src.getGivenName(),
-                        item.src.day,
-                        item.src.gender
+                        PayOrderNameListActivity.this, new ListRequestParam(item.src)
                 );
                 return true;
             }
@@ -113,11 +110,12 @@ public class PayOrderNameListActivity extends BaseToolbarActivity<PayPresenter<P
                         .showLastDivider()
                         .build());
 
-        maskerOnClick(null);
+        maskerShowProgressView(false);
+        getPresenter().postPayOrderNameList(orderNo);
     }
 
     @Override
-    public void maskerOnClick(View view) {
+    public void maskerOnClick(View view, int clickLabelRes) {
         maskerShowProgressView(false);
         getPresenter().postPayOrderNameList(orderNo);
     }

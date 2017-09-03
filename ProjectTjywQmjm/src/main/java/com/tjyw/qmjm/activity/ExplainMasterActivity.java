@@ -3,16 +3,15 @@ package com.tjyw.qmjm.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
-import com.tjyw.atom.network.conf.ISection;
 import com.tjyw.atom.network.model.Explain;
 import com.tjyw.atom.network.model.NameCharacter;
+import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostExplainListener;
@@ -35,6 +34,9 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  */
 @RequiresPresenter(NamingPresenter.class)
 public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<ExplainMasterActivity>> implements OnApiPostErrorListener, OnApiPostExplainListener {
+
+    @From(R.id.explainMasterHeaderContainer)
+    protected ViewGroup explainMasterHeaderContainer;
 
     @From(R.id.explainNameContainer)
     protected ViewGroup explainNameContainer;
@@ -62,17 +64,14 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
 
     protected ExplainMasterAdapter explainMasterAdapter;
 
-    protected String postSurname;
-
-    protected String postName;
+    protected ListRequestParam listRequestParam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        postSurname = pGetStringExtra(IApiField.S.surname, null);
-        postName = pGetStringExtra(IApiField.N.name, null);
-        if (TextUtils.isEmpty(postSurname) || TextUtils.isEmpty(postName)) {
+        listRequestParam = (ListRequestParam) pGetSerializableExtra(IApiField.P.param);
+        if (null == listRequestParam) {
             finish();
             return ;
         } else {
@@ -94,10 +93,10 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
 
         maskerShowProgressView(false);
         getPresenter().postExplain(
-                postSurname,
-                postName,
-                pGetStringExtra(IApiField.D.day, null),
-                pGetIntExtra(IApiField.G.gender, ISection.GENDER.MALE)
+                listRequestParam.surname,
+                listRequestParam.name,
+                listRequestParam.day,
+                listRequestParam.gender
         );
     }
 
@@ -132,12 +131,14 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     @Override
     public void postOnExplainError(int postId, Throwable throwable) {
         throwable.printStackTrace();
+        explainMasterHeaderContainer.setVisibility(View.INVISIBLE);
         maskerShowMaskerLayout(getString(R.string.atom_pub_resStringNetworkBroken), R.string.atom_pub_resStringRetry);
     }
 
     @Override
     public void postOnExplainSuccess(Explain explain) {
         maskerHideProgressView();
+        explainMasterHeaderContainer.setVisibility(View.VISIBLE);
         explainMasterContainer.setAdapter(
                 explainMasterAdapter = ExplainMasterAdapter.newInstance(getSupportFragmentManager(), explain)
         );
@@ -168,13 +169,13 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     }
 
     @Override
-    public void maskerOnClick(View view) {
+    public void maskerOnClick(View view, int clickLabelRes) {
         maskerShowProgressView(false);
         getPresenter().postExplain(
-                postSurname,
-                postName,
-                pGetStringExtra(IApiField.D.data, null),
-                pGetIntExtra(IApiField.G.gender, ISection.GENDER.MALE)
+                listRequestParam.surname,
+                listRequestParam.name,
+                listRequestParam.day,
+                listRequestParam.gender
         );
     }
 

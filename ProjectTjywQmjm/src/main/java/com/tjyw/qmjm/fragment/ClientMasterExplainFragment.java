@@ -12,6 +12,7 @@ import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Length;
 import com.mobsandgeeks.saripaar.annotation.Pattern;
 import com.tjyw.atom.network.conf.ISection;
+import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.utils.DateTimeUtils;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.inject.From;
@@ -53,15 +54,14 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
 
     protected GregorianWindows gregorianWindows;
 
-    protected int postGender = ISection.GENDER.MALE;
-
-    protected String postDay;
+    protected ListRequestParam listRequestParam;
 
     protected Validator validator;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        listRequestParam = new ListRequestParam();
         return inflater.inflate(R.layout.atom_master_explain, null);
     }
 
@@ -80,12 +80,11 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
 
             @Override
             public void onValidationSucceeded() {
+                listRequestParam.surname = nSurname.getText().toString();
+                listRequestParam.name = nGivenName.getText().toString();
+
                 IClientActivityLaunchFactory.launchExplainMasterActivity(
-                        (BaseActivity) getActivity(),
-                        nSurname.getText().toString(),
-                        nGivenName.getText().toString(),
-                        postDay,
-                        postGender
+                        (BaseActivity) getActivity(), listRequestParam
                 );
             }
         });
@@ -95,12 +94,12 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.nGenderMale:
-                postGender = ISection.GENDER.MALE;
+                listRequestParam.gender = ISection.GENDER.MALE;
                 v.setSelected(true);
                 nGenderFemale.setSelected(false);
                 break ;
             case R.id.nGenderFemale:
-                postGender = ISection.GENDER.FEMALE;
+                listRequestParam.gender = ISection.GENDER.FEMALE;
                 v.setSelected(true);
                 nGenderMale.setSelected(false);
                 break ;
@@ -122,7 +121,7 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
         Calendar calendar = DateTimeUtils.getCalendar(lunarCalendar.getDate());
         if (null != calendar) {
             calendar.set(Calendar.HOUR_OF_DAY, postHour);
-            postDay = DateTimeUtils.printCalendarByPattern(calendar, DateTimeUtils.yyyy_MM_dd_HH);
+            listRequestParam.day = DateTimeUtils.printCalendarByPattern(calendar, DateTimeUtils.yyyy_MM_dd_HH);
         }
 
         if (isGregorianSolar) {
