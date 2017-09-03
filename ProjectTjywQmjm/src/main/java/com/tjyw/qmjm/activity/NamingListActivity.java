@@ -147,7 +147,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 switch (newState) {
                     case RecyclerView.SCROLL_STATE_IDLE:
-                        if (TextUtils.isEmpty(listRequestParam.orderNo)) {
+                        if (! recyclerView.canScrollVertically(1) && TextUtils.isEmpty(listRequestParam.orderNo)) {
                             if (null == payService) {
                                 maskerShowProgressView(true);
                                 getPresenter().postPayService(listRequestParam.surname, listRequestParam.day);
