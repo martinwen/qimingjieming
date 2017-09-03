@@ -183,6 +183,7 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
 
     @Override
     public void postOnFavoriteRemoveSuccess(Object item) {
+        showToast(R.string.atom_pub_resStringFavoriteHintRemove);
         favoriteListRefreshLayout.autoRefresh(true);
     }
 }
