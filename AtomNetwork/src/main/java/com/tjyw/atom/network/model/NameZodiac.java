@@ -21,6 +21,8 @@ public class NameZodiac implements RetroResultItem {
 
     public String shengxiaojieshao;
 
+    public String shengxiaoxiji;
+
     public List<String> bazi;
 
     public List<String> shishen;

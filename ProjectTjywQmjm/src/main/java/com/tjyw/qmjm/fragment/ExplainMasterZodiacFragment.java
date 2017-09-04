@@ -42,7 +42,7 @@ public class ExplainMasterZodiacFragment extends AtomPubBaseFragment {
 
         Explain explain = (Explain) pGetSerializableExtra(IApiField.E.explain);
         if (null != explain && null != explain.nameZodiac) {
-            explainZodiacContent.setText(explain.nameZodiac.shengxiaojieshao);
+            explainZodiacContent.setText(explain.nameZodiac.shengxiaoxiji);
         }
     }
 }
