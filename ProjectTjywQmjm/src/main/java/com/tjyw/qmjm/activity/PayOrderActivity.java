@@ -64,7 +64,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
     protected PayOrderHandler payOrderHandler;
 
-    protected ListRequestParam param;
+    protected ListRequestParam listRequestParam;
 
     protected PayService payService;
 
@@ -72,9 +72,9 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        param = (ListRequestParam) pGetSerializableExtra(IApiField.P.param);
+        listRequestParam = (ListRequestParam) pGetSerializableExtra(IApiField.P.param);
         payService = (PayService) pGetSerializableExtra(IApiField.P.payService);
-        if (null == param || null == payService) {
+        if (null == listRequestParam || null == payService) {
             finish();
             return ;
         } else {
@@ -109,10 +109,15 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        Intent result = new Intent();
-//        data.putExtra(IApiField.O.orderNo, orderNo);
-//        setResult(ICode.PAY.ALIPAY_SUCCESS, result);
-//        finish();
+        if (null != data) {
+            String result = data.getStringExtra("resultCode");
+            if ("success".equalsIgnoreCase(result)) {
+                data = new Intent();
+                data.putExtra(IApiField.O.orderNo, listRequestParam.orderNo);
+                setResult(ICode.PAY.WX_SUCCESS, data);
+                finish();
+            }
+        }
     }
 
     @Override
@@ -167,25 +172,26 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
             maskerShowProgressView(true);
             getPresenter().postPayPreview(
                     1,
-                    param.surname,
-                    param.day,
-                    param.gender,
-                    param.nameNumber
+                    listRequestParam.surname,
+                    listRequestParam.day,
+                    listRequestParam.gender,
+                    listRequestParam.nameNumber
             );
         } else if (payUseWxPay.isSelected()) {
             maskerShowProgressView(true);
             getPresenter().postPayOrder(
                     1,
-                    param.surname,
-                    param.day,
-                    param.gender,
-                    param.nameNumber
+                    listRequestParam.surname,
+                    listRequestParam.day,
+                    listRequestParam.gender,
+                    listRequestParam.nameNumber
             );
         }
     }
 
     @Override
     public void postOnPayOrderSuccess(PayOrder payOrder) {
+        listRequestParam.orderNo = payOrder.orderNo;
         if (null == payOrderHandler) {
             payOrderHandler = new PayOrderHandler(PayOrderActivity.this);
         }
@@ -201,6 +207,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
     @Override
     public void postOnPayPreviewSuccess(RetroPayPreviewResult result) {
+        listRequestParam.orderNo = result.orderNo;
         PayAlipayBuilder.getInstance().build(this, result, this);
         maskerHideProgressView();
     }
@@ -221,7 +228,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         switch (resultStatus) {
             case RESULT_STATUS.SUCCESS:
                 Intent data = new Intent();
-                data.putExtra(IApiField.O.orderNo, orderNo);
+                data.putExtra(IApiField.O.orderNo, listRequestParam.orderNo);
                 setResult(ICode.PAY.ALIPAY_SUCCESS, data);
                 finish();
                 break ;
