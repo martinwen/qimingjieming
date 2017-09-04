@@ -38,6 +38,15 @@ public interface IPost {
         int PayPreview = 4;
     }
 
+    interface User {
+
+        int Register = 1;
+
+        int LoginCode = 2;
+
+        int Login = 3;
+    }
+
     interface Client {
 
         int Init = 1;
