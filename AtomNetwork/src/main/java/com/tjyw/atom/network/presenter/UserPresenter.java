@@ -25,7 +25,7 @@ public class UserPresenter<V extends ViewWithPresenter> extends BasePresenter<V>
                     public void call(RetroResult<UserInfo> result) {
                         if (null == result || null == result.items) {
                             if (presenterView instanceof OnApiPostErrorListener) {
-                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.UserRegister, new IllegalRequestException(result));
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.User.Register, new IllegalRequestException(result));
                             }
                         } else if (presenterView instanceof OnApiUserPostListener.PostUserRegisterListener) {
                             ((OnApiUserPostListener.PostUserRegisterListener) presenterView).postOnUserRegisterSuccess(result.items);
@@ -35,7 +35,7 @@ public class UserPresenter<V extends ViewWithPresenter> extends BasePresenter<V>
                     @Override
                     public void call(Throwable throwable) {
                         if (presenterView instanceof OnApiPostErrorListener) {
-                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.UserRegister, throwable);
+                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.User.Register, throwable);
                         }
                     }
                 });
@@ -49,7 +49,7 @@ public class UserPresenter<V extends ViewWithPresenter> extends BasePresenter<V>
                     public void call(RetroResult<REmptyResult> result) {
                         if (null == result || null == result.items) {
                             if (presenterView instanceof OnApiPostErrorListener) {
-                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.UserRegister, new IllegalRequestException(result));
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.User.LoginCode, new IllegalRequestException(result));
                             }
                         } else if (presenterView instanceof OnApiUserPostListener.PostUserLoginCodeListener) {
                             ((OnApiUserPostListener.PostUserLoginCodeListener) presenterView).postOnUserLoginCodeSuccess(mobile);
@@ -59,7 +59,7 @@ public class UserPresenter<V extends ViewWithPresenter> extends BasePresenter<V>
                     @Override
                     public void call(Throwable throwable) {
                         if (presenterView instanceof OnApiPostErrorListener) {
-                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.UserRegister, throwable);
+                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.User.LoginCode, throwable);
                         }
                     }
                 });
@@ -73,7 +73,7 @@ public class UserPresenter<V extends ViewWithPresenter> extends BasePresenter<V>
                     public void call(RetroResult<UserInfo> result) {
                         if (null == result || null == result.items) {
                             if (presenterView instanceof OnApiPostErrorListener) {
-                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.UserRegister, new IllegalRequestException(result));
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.User.Login, new IllegalRequestException(result));
                             }
                         } else if (presenterView instanceof OnApiUserPostListener.PostUserLoginListener) {
                             ((OnApiUserPostListener.PostUserLoginListener) presenterView).postOnUserLoginSuccess(result.items);
@@ -83,7 +83,7 @@ public class UserPresenter<V extends ViewWithPresenter> extends BasePresenter<V>
                     @Override
                     public void call(Throwable throwable) {
                         if (presenterView instanceof OnApiPostErrorListener) {
-                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.UserRegister, throwable);
+                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.User.Login, throwable);
                         }
                     }
                 });

@@ -15,6 +15,7 @@ import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.interfaces.IPrefUser;
 import com.tjyw.atom.network.model.UserInfo;
+import com.tjyw.atom.network.presenter.IPost;
 import com.tjyw.atom.network.presenter.UserPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiUserPostListener;
@@ -146,6 +147,7 @@ public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSi
 
     @Override
     public void postOnUserLoginCodeSuccess(String mobile) {
+        showToast(R.string.atom_pub_resStringUserSignAuthCodeSuccess);
         sendCodeCountDown();
         maskerHideProgressView();
         pHideSoftInput();
@@ -159,6 +161,7 @@ public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSi
             user.setUserInfo(JsonUtil.getInstance().toJsonString(result));
         }
 
+        showToast(R.string.atom_pub_resStringUserSignInSuccess);
         pHideSoftInput();
         setResult(ICode.SS.OK);
         finish();
@@ -167,10 +170,16 @@ public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSi
     @Override
     public void postOnExplainError(int postId, Throwable throwable) {
         maskerHideProgressView();
-        if (throwable instanceof IllegalRequestException) {
-            showToast(throwable.getMessage());
-        } else {
-            showToast(R.string.atom_pub_resStringNetworkBroken);
+        switch (postId) {
+            case IPost.User.Login:
+                if (throwable instanceof IllegalRequestException) {
+                    showToast(throwable.getMessage());
+                } else {
+                    showToast(R.string.atom_pub_resStringNetworkBroken);
+                }
+                break ;
+            case IPost.User.LoginCode:
+                showToast(R.string.atom_pub_resStringUserSignAuthCodeError);
         }
     }
 }
