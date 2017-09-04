@@ -12,6 +12,9 @@
 
     <item name="atom_pub_resFasterAdapterType_NamingWordItem" type="id"/>
 
+    <!-- 起名列表页的底部 -->
+    <item name="atom_pub_resFasterAdapterType_NameDefinitionFooterItem" type="id"/>
+
     <!-- 我的页面九宫格 -->
     <item name="atom_pub_resFasterAdapterType_MasterMineItem" type="id"/>
 

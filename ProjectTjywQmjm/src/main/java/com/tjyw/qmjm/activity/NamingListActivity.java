@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
+import com.mikepenz.fastadapter.adapters.FooterAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.listeners.ClickEventHook;
 import com.tjyw.atom.network.IllegalRequestException;
@@ -28,10 +29,12 @@ import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.RIdentifyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.pub.inject.From;
+import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.dialog.NamingPayWindows;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
+import com.tjyw.qmjm.item.NameDefinitionFooterItem;
 import com.tjyw.qmjm.item.NamingWordItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
@@ -54,7 +57,9 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     @From(R.id.namingListContainer)
     protected RecyclerView namingListContainer;
 
-    protected FastItemAdapter<NamingWordItem> nameDefinitionAdapter;
+    protected FastItemAdapter<AtomPubFastAdapterAbstractItem> nameDefinitionAdapter;
+
+    protected FooterAdapter<NameDefinitionFooterItem> nameDefinitionFooterAdapter;
 
     protected NamingPayWindows namingPayWindows;
 
@@ -86,23 +91,9 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
                     .init();
         }
 
-        nameDefinitionAdapter = new FastItemAdapter<NamingWordItem>();
-        nameDefinitionAdapter.withOnClickListener(new FastAdapter.OnClickListener<NamingWordItem>() {
-            @Override
-            public boolean onClick(View v, IAdapter<NamingWordItem> adapter, NamingWordItem item, int position) {
-                if (null != listRequestParam) {
-                    if (hasOrderNo()) {
-                        ListRequestParam param = new ListRequestParam(item.src);
-                        IClientActivityLaunchFactory.launchExplainMasterActivity(NamingListActivity.this, param);
-                    } else {
-                        ListRequestParam param = (ListRequestParam) listRequestParam.clone();
-                        param.name = item.src.getGivenName();
-                        IClientActivityLaunchFactory.launchExplainMasterActivity(NamingListActivity.this, param);
-                    }
-                }
-                return true;
-            }
-        }).withItemEvent(new ClickEventHook<NamingWordItem>() {
+        nameDefinitionFooterAdapter = new FooterAdapter<NameDefinitionFooterItem>();
+        nameDefinitionAdapter = new FastItemAdapter<AtomPubFastAdapterAbstractItem>();
+        nameDefinitionAdapter.withItemEvent(new ClickEventHook<AtomPubFastAdapterAbstractItem>() {
             @Nullable
             @Override
             public View onBind(@NonNull RecyclerView.ViewHolder viewHolder) {
@@ -114,15 +105,16 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
             }
 
             @Override
-            public void onClick(View v, int position, FastAdapter<NamingWordItem> fastAdapter, NamingWordItem item) {
-                if (null != listRequestParam) {
-                    maskerShowProgressView(true);
-                    if (item.src.favorite && item.src.id > 0) {
-                        getPresenter().postFavoriteRemove(item.src.id, item);
-                    } else {
+            public void onClick(View v, int position, FastAdapter<AtomPubFastAdapterAbstractItem> fastAdapter, AtomPubFastAdapterAbstractItem item) {
+                maskerShowProgressView(true);
+                if (item instanceof NamingWordItem) {
+                    NamingWordItem namingWordItem = (NamingWordItem) item;
+                    if (namingWordItem.src.favorite && namingWordItem.src.id > 0) {
+                        getPresenter().postFavoriteRemove(namingWordItem.src.id, item);
+                    } else if (null != listRequestParam) {
                         getPresenter().postFavoriteAdd(
                                 listRequestParam.surname,
-                                item.src.getGivenName(),
+                                namingWordItem.src.getGivenName(),
                                 listRequestParam.day,
                                 listRequestParam.gender,
                                 item
@@ -130,10 +122,25 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
                     }
                 }
             }
+        }).withOnClickListener(new FastAdapter.OnClickListener<AtomPubFastAdapterAbstractItem>() {
+            @Override
+            public boolean onClick(View v, IAdapter<AtomPubFastAdapterAbstractItem> adapter, AtomPubFastAdapterAbstractItem item, int position) {
+                if (item instanceof NamingWordItem) {
+                    if (hasOrderNo()) {
+                        ListRequestParam param = new ListRequestParam(((NamingWordItem) item).src);
+                        IClientActivityLaunchFactory.launchExplainMasterActivity(NamingListActivity.this, param);
+                    } else {
+                        ListRequestParam param = (ListRequestParam) listRequestParam.clone();
+                        param.name = ((NamingWordItem) item).src.getGivenName();
+                        IClientActivityLaunchFactory.launchExplainMasterActivity(NamingListActivity.this, param);
+                    }
+                }
+                return true;
+            }
         });
 
         namingListContainer.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-        namingListContainer.setAdapter(nameDefinitionAdapter);
+        namingListContainer.setAdapter(nameDefinitionFooterAdapter.wrap(nameDefinitionAdapter));
         namingListContainer.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
                         .color(R.color.atom_pub_resColorDivider)
@@ -176,6 +183,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
                         if (null != data) {
                             listRequestParam.orderNo = data.getStringExtra(IApiField.O.orderNo);
                             if (hasOrderNo()) {
+                                nameDefinitionAdapter.clear();
                                 requestListData();
                             }
                         }
@@ -214,13 +222,17 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
             listRequestParam = result.param;
         }
 
-        List<NamingWordItem> itemList = new ArrayList<NamingWordItem>();
+        List<AtomPubFastAdapterAbstractItem> itemList = new ArrayList<AtomPubFastAdapterAbstractItem>();
         int size = result.size();
         for (int i = 0; i < size; i ++) {
             itemList.add(new NamingWordItem(result.get(i)));
         }
 
-        nameDefinitionAdapter.set(itemList);
+        nameDefinitionAdapter.add(itemList);
+        if (hasOrderNo()) {
+            nameDefinitionFooterAdapter.add(new NameDefinitionFooterItem(null));
+            namingListContainer.setAdapter(nameDefinitionFooterAdapter);
+        }
     }
 
     @Override

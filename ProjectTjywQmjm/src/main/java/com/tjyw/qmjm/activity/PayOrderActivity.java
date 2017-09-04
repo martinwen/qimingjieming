@@ -201,7 +201,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
         RequestMsg msg = new RequestMsg();
         msg.setTokenId(payOrder.token_id);
-        msg.setTradeType(MainApplication.PAY_WX_WAP);
+        msg.setTradeType(payOrder.services);
         PayPlugin.unifiedH5Pay(this, msg);
     }
 
