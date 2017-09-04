@@ -9,100 +9,107 @@
 
     <include layout="@layout/atom_pub_inc_symbol" />
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/atomPubToolBar"
-        android:orientation="vertical">
+        android:layout_below="@id/atomPubToolBar">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/payServiceName"
-                style="@style/AtomStyle.BlackNormalText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:minLines="1"
-                android:text="@string/atom_pub_resStringPayService" />
-
-            <TextView
-                android:id="@+id/payServicePrice"
-                style="@style/AtomStyle.BlackNormalText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:minLines="1"
-                android:paddingTop="16dp"
-                android:text="@string/atom_pub_resStringPayPrice" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:background="@android:color/white"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:scaleType="fitXY"
-                android:src="@color/atom_pub_resColorDivider" />
-
-            <TextView
-                android:id="@+id/payUseAlipay"
-                style="@style/AtomStyle.BlackNormalText"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/atom_pub_ic_pay_alipay"
-                android:drawablePadding="16dp"
-                android:drawableRight="@drawable/atom_pub_selector_pay_checked"
-                android:gravity="center_vertical"
-                android:minLines="1"
-                android:padding="16dp"
-                android:text="@string/atom_pub_resStringPayUseAliPay" />
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="16dp">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:scaleType="fitXY"
-                android:src="@color/atom_pub_resColorDivider" />
+                <TextView
+                    android:id="@+id/payServiceName"
+                    style="@style/AtomStyle.BlackNormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minLines="1"
+                    android:text="@string/atom_pub_resStringPayService" />
 
-            <TextView
-                android:id="@+id/payUseWxPay"
-                style="@style/AtomStyle.BlackNormalText"
+                <TextView
+                    android:id="@+id/payServicePrice"
+                    style="@style/AtomStyle.BlackNormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minLines="1"
+                    android:paddingTop="16dp"
+                    android:text="@string/atom_pub_resStringPayPrice" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/atom_pub_ic_pay_wx"
-                android:drawablePadding="16dp"
-                android:drawableRight="@drawable/atom_pub_selector_pay_checked"
-                android:gravity="center_vertical"
-                android:minLines="1"
-                android:padding="16dp"
-                android:text="@string/atom_pub_resStringPayUseWxPay" />
+                android:layout_marginTop="32dp"
+                android:background="@android:color/white"
+                android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:scaleType="fitXY"
-                android:src="@color/atom_pub_resColorDivider" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:scaleType="fitXY"
+                    android:src="@color/atom_pub_resColorDivider" />
+
+                <TextView
+                    android:id="@+id/payUseAlipay"
+                    style="@style/AtomStyle.BlackNormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/atom_pub_ic_pay_alipay"
+                    android:drawablePadding="16dp"
+                    android:drawableRight="@drawable/atom_pub_selector_pay_checked"
+                    android:gravity="center_vertical"
+                    android:minLines="1"
+                    android:padding="16dp"
+                    android:text="@string/atom_pub_resStringPayUseAliPay" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:scaleType="fitXY"
+                    android:src="@color/atom_pub_resColorDivider" />
+
+                <TextView
+                    android:id="@+id/payUseWxPay"
+                    style="@style/AtomStyle.BlackNormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/atom_pub_ic_pay_wx"
+                    android:drawablePadding="16dp"
+                    android:drawableRight="@drawable/atom_pub_selector_pay_checked"
+                    android:gravity="center_vertical"
+                    android:minLines="1"
+                    android:padding="16dp"
+                    android:text="@string/atom_pub_resStringPayUseWxPay" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:scaleType="fitXY"
+                    android:src="@color/atom_pub_resColorDivider" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@id/atom_pub_resIdsOK"
+                style="@style/AtomPubStyleKa.White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/atom_pub_ic_ink_text_red"
+                android:gravity="center"
+                android:text="@string/atom_pub_resStringPayPay" />
         </LinearLayout>
 
-        <TextView
-            android:id="@id/atom_pub_resIdsOK"
-            style="@style/AtomPubStyleKa.White"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/atom_pub_ic_ink_text_red"
-            android:gravity="center"
-            android:text="@string/atom_pub_resStringPayPay" />
-    </LinearLayout>
+        <include layout="@layout/atom_pub_inc_loading" />
+    </FrameLayout>
 </RelativeLayout>

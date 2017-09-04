@@ -91,9 +91,14 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
             @Override
             public boolean onClick(View v, IAdapter<NamingWordItem> adapter, NamingWordItem item, int position) {
                 if (null != listRequestParam) {
-                    listRequestParam.name = item.src.getGivenName();
-                    IClientActivityLaunchFactory.launchExplainMasterActivity(
-                            NamingListActivity.this, listRequestParam);
+                    if (hasOrderNo()) {
+                        ListRequestParam param = new ListRequestParam(item.src);
+                        IClientActivityLaunchFactory.launchExplainMasterActivity(NamingListActivity.this, param);
+                    } else {
+                        ListRequestParam param = (ListRequestParam) listRequestParam.clone();
+                        param.name = item.src.getGivenName();
+                        IClientActivityLaunchFactory.launchExplainMasterActivity(NamingListActivity.this, param);
+                    }
                 }
                 return true;
             }
@@ -143,7 +148,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 switch (newState) {
                     case RecyclerView.SCROLL_STATE_IDLE:
-                        if (! recyclerView.canScrollVertically(1) && TextUtils.isEmpty(listRequestParam.orderNo)) {
+                        if (! recyclerView.canScrollVertically(1) && ! hasOrderNo()) {
                             if (null == payService) {
                                 maskerShowProgressView(true);
                                 getPresenter().postPayService(listRequestParam.surname, listRequestParam.day);
@@ -170,7 +175,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
                     case ICode.PAY.WX_SUCCESS:
                         if (null != data) {
                             listRequestParam.orderNo = data.getStringExtra(IApiField.O.orderNo);
-                            if (! TextUtils.isEmpty(listRequestParam.orderNo)) {
+                            if (hasOrderNo()) {
                                 requestListData();
                             }
                         }
@@ -202,18 +207,20 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     @Override
     public void postOnNamingSuccess(RNameDefinition result) {
         maskerHideProgressView();
-        if (null != result) {
+        if (null == result || result.size() == 0) {
+            maskerShowMaskerLayout(getString(R.string.atom_pub_resStringNetworkBroken), 0);
+            return ;
+        } else if (hasOrderNo() && null != result.param) {
             listRequestParam = result.param;
-            int size = result.size();
-            if (size > 0) {
-                List<NamingWordItem> itemList = new ArrayList<NamingWordItem>();
-                for (int i = 0; i < size; i++) {
-                    itemList.add(new NamingWordItem(result.get(i)));
-                }
-
-                nameDefinitionAdapter.add(itemList);
-            }
         }
+
+        List<NamingWordItem> itemList = new ArrayList<NamingWordItem>();
+        int size = result.size();
+        for (int i = 0; i < size; i ++) {
+            itemList.add(new NamingWordItem(result.get(i)));
+        }
+
+        nameDefinitionAdapter.set(itemList);
     }
 
     @Override
@@ -251,16 +258,22 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     }
 
     protected void requestListData() {
-        maskerShowProgressView(false);
-        if (TextUtils.isEmpty(listRequestParam.orderNo)) {
-            getPresenter().postNameDefinition(
-                    listRequestParam.surname,
-                    listRequestParam.day,
-                    listRequestParam.gender,
-                    listRequestParam.nameNumber
-            );
-        } else {
-            getPresenter().postPayOrderNameList(listRequestParam.orderNo);
+        if (null != listRequestParam) {
+            maskerShowProgressView(false);
+            if (hasOrderNo()) {
+                getPresenter().postPayOrderNameList(listRequestParam.orderNo);
+            } else {
+                getPresenter().postNameDefinition(
+                        listRequestParam.surname,
+                        listRequestParam.day,
+                        listRequestParam.gender,
+                        listRequestParam.nameNumber
+                );
+            }
         }
+    }
+
+    protected boolean hasOrderNo() {
+        return null != listRequestParam && ! TextUtils.isEmpty(listRequestParam.orderNo);
     }
 }

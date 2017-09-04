@@ -35,11 +35,9 @@ import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.R;
 
 import java.lang.ref.WeakReference;
-import java.util.concurrent.TimeUnit;
 
 import nucleus.factory.RequiresPresenter;
 import rx.functions.Action1;
-import timber.log.Timber;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -137,32 +135,36 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                 payUseAlipay.setSelected(false);
                 break ;
             case R.id.atom_pub_resIdsOK:
-                new RxPermissions(this)
-                        .request(Manifest.permission.READ_PHONE_STATE)
-                        .delay(1, TimeUnit.SECONDS)
-                        .compose(RxSchedulersHelper.<Boolean>io_main())
-                        .subscribe(new Action1<Boolean>() {
-                            @Override
-                            public void call(Boolean granted) {
-                                if (granted) {
-                                    doPostPay();
-                                } else {
+                RxPermissions permissions = new RxPermissions(this);
+                if (permissions.isGranted(Manifest.permission.READ_PHONE_STATE)) {
+                    doPostPay();
+                } else {
+                    permissions
+                            .request(Manifest.permission.READ_PHONE_STATE)
+                            .compose(RxSchedulersHelper.<Boolean>io_main())
+                            .subscribe(new Action1<Boolean>() {
+                                @Override
+                                public void call(Boolean granted) {
+                                    if (granted) {
+                                        doPostPay();
+                                    } else {
+                                        showToast(R.string.atom_pub_resStringPermissionByUserDeny);
+                                    }
+                                }
+                            }, new Action1<Throwable>() {
+                                @Override
+                                public void call(Throwable throwable) {
+                                    throwable.printStackTrace();
                                     showToast(R.string.atom_pub_resStringPermissionByUserDeny);
                                 }
-                            }
-                        }, new Action1<Throwable>() {
-                            @Override
-                            public void call(Throwable throwable) {
-                                throwable.printStackTrace();
-                                showToast(R.string.atom_pub_resStringPermissionByUserDeny);
-                            }
-                        });
+                            });
+                }
         }
     }
 
     protected void doPostPay() {
-        maskerShowProgressView(true);
         if (payUseAlipay.isSelected()) {
+            maskerShowProgressView(true);
             getPresenter().postPayPreview(
                     1,
                     param.surname,
@@ -171,10 +173,6 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                     param.nameNumber
             );
         } else if (payUseWxPay.isSelected()) {
-            if (null == payOrderHandler) {
-                payOrderHandler = new PayOrderHandler(PayOrderActivity.this);
-            }
-
             maskerShowProgressView(true);
             getPresenter().postPayOrder(
                     1,
@@ -188,6 +186,10 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
     @Override
     public void postOnPayOrderSuccess(PayOrder payOrder) {
+        if (null == payOrderHandler) {
+            payOrderHandler = new PayOrderHandler(PayOrderActivity.this);
+        }
+
         PayHandlerManager.registerHandler(PayHandlerManager.PAY_H5_RESULT, payOrderHandler);
         maskerHideProgressView();
 

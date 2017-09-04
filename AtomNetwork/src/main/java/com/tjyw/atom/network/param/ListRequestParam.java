@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Created by stephen on 30/08/2017.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ListRequestParam implements Serializable {
+public class ListRequestParam implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 4152121590171607400L;
 
@@ -35,5 +35,15 @@ public class ListRequestParam implements Serializable {
         this.name = definition.getGivenName();
         this.day = definition.day;
         this.gender = definition.gender;
+    }
+
+    @Override
+    public Object clone() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

@@ -10,6 +10,7 @@ import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.model.Order;
+import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.IPost;
 import com.tjyw.atom.network.presenter.PayPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
@@ -64,7 +65,9 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
         payOrderAdapter.withOnClickListener(new FastAdapter.OnClickListener<PayOrderListItem>() {
             @Override
             public boolean onClick(View v, IAdapter<PayOrderListItem> adapter, PayOrderListItem item, int position) {
-                IClientActivityLaunchFactory.launchPayOrderNameListActivity(PayOrderListActivity.this, item.src.name);
+                ListRequestParam listRequestParam = new ListRequestParam();
+                listRequestParam.orderNo = item.src.name;
+                IClientActivityLaunchFactory.launchNamingListActivity(PayOrderListActivity.this, listRequestParam);
                 return true;
             }
         });

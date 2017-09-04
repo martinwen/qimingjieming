@@ -16,7 +16,6 @@ import com.tjyw.qmjm.activity.ExplainMasterActivity;
 import com.tjyw.qmjm.activity.NamingListActivity;
 import com.tjyw.qmjm.activity.PayOrderActivity;
 import com.tjyw.qmjm.activity.PayOrderListActivity;
-import com.tjyw.qmjm.activity.PayOrderNameListActivity;
 import com.tjyw.qmjm.activity.UserFavoriteListActivity;
 import com.tjyw.qmjm.activity.UserSignInActivity;
 
@@ -56,12 +55,6 @@ public class IClientActivityLaunchFactory {
 
     public static void launchPayOrderListActivity(BaseActivity context) {
         Intent intent = new Intent(context, PayOrderListActivity.class);
-        context.startActivity(intent);
-    }
-
-    public static void launchPayOrderNameListActivity(BaseActivity context, String orderNo) {
-        Intent intent = new Intent(context, PayOrderNameListActivity.class);
-        intent.putExtra(IApiField.O.orderNo, orderNo);
         context.startActivity(intent);
     }
 
