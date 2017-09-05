@@ -107,7 +107,7 @@ public class GregorianWindows extends DialogFragment implements View.OnClickList
         String[] resGregorian = ClientQmjmApplication.pGetResources().getStringArray(R.array.atom_pub_resGregorian);
         if (! ArrayUtil.isEmpty(resGregorian)) {
             gregorianSwitchContainer.setViewAdapter(
-                    new ListWheelAdapter<String>(getContext(), Arrays.asList(resGregorian))
+                    new ListWheelAdapter<String>(ClientQmjmApplication.getContext(), Arrays.asList(resGregorian))
             );
         }
 
@@ -119,7 +119,7 @@ public class GregorianWindows extends DialogFragment implements View.OnClickList
         Calendar calendar = DateTimeUtils.getCurrentDate();
         int solarYear = calendar.get(Calendar.YEAR);
 
-        gregorianYearContainer.setViewAdapter(new ListWheelAdapter<Integer>(getContext(), years));
+        gregorianYearContainer.setViewAdapter(new ListWheelAdapter<Integer>(ClientQmjmApplication.getContext(), years));
         gregorianYearContainer.setCurrentItem(Math.abs(solarYear - 1901));
         setGregorianDataWithSolarYear(solarYear);
 
@@ -129,7 +129,7 @@ public class GregorianWindows extends DialogFragment implements View.OnClickList
         String[] resGregorianHour = ClientQmjmApplication.pGetResources().getStringArray(R.array.atom_pub_resGregorianHour);
         if (! ArrayUtil.isEmpty(resGregorianHour)) {
             gregorianHourContainer.setViewAdapter(
-                    new ListWheelAdapter<String>(getContext(), gregorianHourList = Arrays.asList(resGregorianHour))
+                    new ListWheelAdapter<String>(ClientQmjmApplication.getContext(), gregorianHourList = Arrays.asList(resGregorianHour))
             );
             gregorianHourContainer.setCurrentItem(1, false);
         }
@@ -230,7 +230,7 @@ public class GregorianWindows extends DialogFragment implements View.OnClickList
             }
 
             gregorianMonthContainer.setViewAdapter(
-                    new ListWheelAdapter<String>(getContext(), solarMonth)
+                    new ListWheelAdapter<String>(ClientQmjmApplication.getContext(), solarMonth)
             );
 
             int selectedMonth = Math.min(gregorianMonthContainer.getCurrentItem(), gregorianMonthList.size() - 1);
@@ -245,7 +245,7 @@ public class GregorianWindows extends DialogFragment implements View.OnClickList
      */
     protected void setGregorianDayWithMonth(GregorianMonth gregorianMonth) {
         if (null != gregorianMonth) {
-            GregorianCalendarAdapter adapter = new GregorianCalendarAdapter(getContext(), gregorianMonth.getCalendarList(), isGregorianSolar());
+            GregorianCalendarAdapter adapter = new GregorianCalendarAdapter(ClientQmjmApplication.getContext(), gregorianMonth.getCalendarList(), isGregorianSolar());
             gregorianDayContainer.setViewAdapter(adapter);
             gregorianDayContainer.setCurrentItem(Math.min(gregorianDayContainer.getCurrentItem(), adapter.getItemsCount() - 1));
         }
