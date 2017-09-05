@@ -122,10 +122,12 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         if (null != payOrderHandler) {
             payOrderHandler.clear();
+            payOrderHandler = null;
         }
+
+        super.onDestroy();
     }
 
     @Override
@@ -248,14 +250,16 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
         @Override
         public void handleMessage(Message msg) {
-            PayOrderActivity payOrderActivity = context.get();
-            if (null != payOrderActivity && ! payOrderActivity.isFinishing()) {
-                switch (msg.what) {
-                    case PayHandlerManager.PAY_H5_FAILED:
-                        payOrderActivity.showToast(String.valueOf(msg.obj));
+            if (null != context) {
+                PayOrderActivity payOrderActivity = context.get();
+                if (null != payOrderActivity && !payOrderActivity.isFinishing()) {
+                    switch (msg.what) {
+                        case PayHandlerManager.PAY_H5_FAILED:
+                            payOrderActivity.showToast(String.valueOf(msg.obj));
+                    }
+                } else {
+                    clear();
                 }
-            } else {
-                clear();
             }
         }
 
