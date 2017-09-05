@@ -13,19 +13,24 @@ import com.tjyw.qmjm.fragment.ExplainMasterZodiacFragment;
 /**
  * Created by stephen on 17-8-11.
  */
-public abstract class ExplainMasterAdapter extends FragmentPagerAdapter {
+public class ExplainMasterAdapter extends FragmentPagerAdapter {
+
+    public interface POSITION {
+
+        int OVERVIEW = 0;
+
+        int ZODIAC = 1;
+
+        int DESTINY = 2;
+
+        int ALL = 3;
+    }
 
     public static ExplainMasterAdapter newInstance(FragmentManager fragmentManager, Explain explain) {
-        if (false) {
-            return new ExplainDoubleAdapter(fragmentManager)
-                    .setOverviewFragment(ExplainMasterOverviewFragment.newInstance(explain))
-                    .setDestinyFragment(ExplainMasterDestinyFragment.newInstance(explain));
-        } else {
-            return new ExplainPerfectAdapter(fragmentManager)
+        return new ExplainMasterAdapter(fragmentManager)
                     .setOverviewFragment(ExplainMasterOverviewFragment.newInstance(explain))
                     .setZodiacFragment(ExplainMasterZodiacFragment.newInstance(explain))
                     .setDestinyFragment(ExplainMasterDestinyFragment.newInstance(explain));
-        }
     }
 
     protected ExplainMasterOverviewFragment overviewFragment;
@@ -56,11 +61,11 @@ public abstract class ExplainMasterAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0:
+            case POSITION.OVERVIEW:
                 return overviewFragment;
-            case 1:
+            case POSITION.ZODIAC:
                 return zodiacFragment;
-            case 2:
+            case POSITION.DESTINY:
             default:
                 return destinyFragment;
         }
@@ -68,75 +73,24 @@ public abstract class ExplainMasterAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return POSITION.ALL;
     }
 
-    public abstract void showOverviewFragment(ViewPager container);
-
-    public abstract void showZodiacFragment(ViewPager container);
-
-    public abstract void showDestinyFragment(ViewPager container);
-
-    static class ExplainPerfectAdapter extends ExplainMasterAdapter {
-
-        public ExplainPerfectAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public void showOverviewFragment(ViewPager container) {
-            if (null != container) {
-                container.setCurrentItem(0);
-            }
-        }
-
-        @Override
-        public void showZodiacFragment(ViewPager container) {
-            if (null != container) {
-                container.setCurrentItem(1);
-            }
-        }
-
-        @Override
-        public void showDestinyFragment(ViewPager container) {
-            if (null != container) {
-                container.setCurrentItem(2);
-            }
+    public void showOverviewFragment(ViewPager container) {
+        if (null != container) {
+            container.setCurrentItem(0);
         }
     }
 
-    static class ExplainDoubleAdapter extends ExplainPerfectAdapter {
-
-        public ExplainDoubleAdapter(FragmentManager fm) {
-            super(fm);
+    public void showZodiacFragment(ViewPager container) {
+        if (null != container) {
+            container.setCurrentItem(1);
         }
+    }
 
-        @Override
-        public void showZodiacFragment(ViewPager container) {
-
-        }
-
-        @Override
-        public void showDestinyFragment(ViewPager container) {
-            if (null != container) {
-                container.setCurrentItem(1);
-            }
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                    return overviewFragment;
-                case 1:
-                default:
-                    return destinyFragment;
-            }
-        }
-
-        @Override
-        public int getCount() {
-            return 2;
+    public void showDestinyFragment(ViewPager container) {
+        if (null != container) {
+            container.setCurrentItem(2);
         }
     }
 }

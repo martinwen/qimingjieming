@@ -91,6 +91,23 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
         explainDestiny.setOnClickListener(this);
         explainNaming.setOnClickListener(this);
 
+        explainMasterContainer.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case ExplainMasterAdapter.POSITION.OVERVIEW:
+                        onClick(explainOverview);
+                        break ;
+                    case ExplainMasterAdapter.POSITION.ZODIAC:
+                        onClick(explainZodiac);
+                        break ;
+                    case ExplainMasterAdapter.POSITION.DESTINY:
+                        onClick(explainDestiny);
+                }
+            }
+        });
+
         maskerShowProgressView(false);
         getPresenter().postExplain(
                 listRequestParam.surname,
