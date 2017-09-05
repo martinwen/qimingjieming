@@ -81,6 +81,8 @@
     <string name="atom_pub_resStringMineZodiac">十二生肖</string>
     <string name="atom_pub_resStringMineBaby">育儿宝典</string>
     <string name="atom_pub_resStringMinePregnant">孕期宝典</string>
+    <string name="atom_pub_resStringMineAbout">关于我们</string>
+    <string name="atom_pub_resStringMineFeedback">信息反馈</string>
 
     <!-- 用户登录注册 -->
     <string name="atom_pub_resStringUserSignIn">登录</string>

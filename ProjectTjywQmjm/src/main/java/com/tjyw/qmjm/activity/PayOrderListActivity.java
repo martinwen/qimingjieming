@@ -1,5 +1,6 @@
 package com.tjyw.qmjm.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +29,7 @@ import java.util.List;
 
 import me.dkzwm.widget.srl.SmoothRefreshLayout;
 import nucleus.factory.RequiresPresenter;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Created by stephen on 25/08/2017.
@@ -47,6 +49,11 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
     protected FastItemAdapter<PayOrderListItem> payOrderAdapter;
 
     protected int pageNo;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -88,6 +88,8 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment<ClientPresente
         itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineZodiac, R.drawable.atom_pub_ic_mine_zodiac)));
         itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineBaby, R.drawable.atom_pub_ic_mine_baby)));
         itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMinePregnant, R.drawable.atom_pub_ic_mine_pregnant)));
+        itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineAbout, R.drawable.atom_pub_ic_mine_about)));
+        itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineFeedback, R.drawable.atom_pub_ic_mine_feedback)));
 
         adapter.add(itemList).withOnClickListener(new FastAdapter.OnClickListener<MasterMineItem>() {
             @Override
@@ -119,6 +121,9 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment<ClientPresente
                     case R.string.atom_pub_resStringMinePregnant:
                         IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, clientInit.yunqibaodian, R.string.atom_pub_resStringMinePregnant);
                         break ;
+                    case R.string.atom_pub_resStringMineAbout:
+                        break ;
+                    case R.string.atom_pub_resStringMineFeedback:
                 }
 
                 return true;

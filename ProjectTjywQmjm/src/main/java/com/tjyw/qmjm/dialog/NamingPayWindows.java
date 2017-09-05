@@ -69,6 +69,7 @@ public class NamingPayWindows extends DialogFragment implements View.OnClickList
         View convertView = inflater.inflate(R.layout.atom_naming_pay, container, true);
         Injector.inject(this, convertView);
 
+        convertView.setOnClickListener(this);
         atom_pub_resIdsOK.setOnClickListener(this);
         return convertView;
     }
@@ -100,6 +101,9 @@ public class NamingPayWindows extends DialogFragment implements View.OnClickList
                 if (null != param) {
                     IClientActivityLaunchFactory.launchPayOrderActivity((BaseActivity) getActivity(), param, payService);
                 }
+                break ;
+            default:
+                dismissAllowingStateLoss();
         }
     }
 
