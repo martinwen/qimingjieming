@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingLeft="8dp"
     android:paddingRight="8dp">
 
     <TextView
@@ -25,7 +24,7 @@
         style="@style/AtomStyle.BlackSuperBigText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/atom_pub_ic_explain_tzg_small"
+        android:background="@drawable/atom_pub_ic_explain_tzg"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLength="1"

@@ -20,28 +20,28 @@
 
     <TextView
         android:id="@+id/nameWordCollect"
-        style="@style/AtomStyle.BlackNormalText"
+        style="@style/AtomStyle.BlackSmallText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawablePadding="8dp"
+        android:drawablePadding="4dp"
         android:drawableTop="@drawable/atom_pub_selector_collect"
         android:gravity="center"
         android:maxLines="1"
-        android:minWidth="48dp"
-        android:text="@string/atom_pub_resStringNamingCollect" />
+        android:minWidth="36dp"
+        android:text="@string/atom_pub_resStringNamingFavorite" />
 
     <android.support.v4.widget.Space
         android:layout_width="8dp"
         android:layout_height="wrap_content" />
 
     <TextView
-        style="@style/AtomStyle.BlackNormalText"
+        style="@style/AtomStyle.BlackSmallText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawablePadding="8dp"
+        android:drawablePadding="4dp"
         android:drawableTop="@drawable/atom_pub_ic_explain_right_arrow"
         android:gravity="center"
         android:maxLines="1"
-        android:minWidth="48dp"
+        android:minWidth="36dp"
         android:text="@string/atom_pub_resStringNamingAnalysis" />
 </LinearLayout>

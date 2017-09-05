@@ -27,7 +27,6 @@
     <string name="atom_pub_resStringCancel">取消</string>
 
     <string name="atom_pub_resStringNamingList">推荐起名</string>
-    <string name="atom_pub_resStringNamingCollect">收藏</string>
     <string name="atom_pub_resStringNamingFavorite">收藏</string>
     <string name="atom_pub_resStringNamingFavorited">已收藏</string>
     <string name="atom_pub_resStringNamingAnalysis">解析</string>

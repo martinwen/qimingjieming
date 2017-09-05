@@ -145,7 +145,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
                 new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
                         .color(R.color.atom_pub_resColorDivider)
                         .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDividerSize)
-                        .marginResId(R.dimen.atom_pubResDimenRecyclerViewDivider16dp)
+                        .marginResId(R.dimen.atom_pubResDimenRecyclerViewDivider8dp)
                         .showLastDivider()
                         .build());
 
