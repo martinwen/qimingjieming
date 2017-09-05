@@ -11,9 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="172dp"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:orientation="horizontal">
 
         <antistatic.spinnerwheel.WheelVerticalView
             android:id="@+id/gregorianSwitchContainer"
@@ -80,9 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="172dp"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:orientation="horizontal">
 
         <antistatic.spinnerwheel.WheelVerticalView
             android:id="@+id/gregorianHourContainer"
