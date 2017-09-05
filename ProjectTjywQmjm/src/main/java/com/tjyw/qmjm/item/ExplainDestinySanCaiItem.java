@@ -44,6 +44,9 @@ public class ExplainDestinySanCaiItem extends AtomPubFastAdapterAbstractItem<Exp
 
     public static class DestinyFooterHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<Explain.SanCai> {
 
+        @From(R.id.bodyWuXing)
+        protected TextView bodyWuXing;
+
         @From(R.id.bodyContent)
         protected TextView bodyContent;
 
@@ -53,6 +56,7 @@ public class ExplainDestinySanCaiItem extends AtomPubFastAdapterAbstractItem<Exp
 
         @Override
         public void onBindView(Context context, Explain.SanCai sanCai) {
+            bodyWuXing.setText(sanCai.sancai);
             bodyContent.setText(sanCai.shiyi);
         }
     }

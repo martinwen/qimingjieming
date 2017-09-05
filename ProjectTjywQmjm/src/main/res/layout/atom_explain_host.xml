@@ -52,7 +52,7 @@
 
                     <TextView
                         android:id="@+id/explainEvaluateValue"
-                        style="@style/AtomStyle.GreyNormalText"
+                        style="@style/AtomStyle.RedNormalText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
