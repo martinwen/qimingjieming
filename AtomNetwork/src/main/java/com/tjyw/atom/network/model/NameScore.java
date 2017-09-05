@@ -8,5 +8,7 @@ public class NameScore implements RetroResultItem {
 
     public int score;
 
+    public String evaluation;
+
     public String desc;
 }

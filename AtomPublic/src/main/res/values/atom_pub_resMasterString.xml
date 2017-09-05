@@ -38,7 +38,7 @@
     <string name="atom_pub_resStringFavoriteHintRemove">取消收藏</string>
 
     <string name="atom_pub_resStringExplainWordElement">[ %s ]</string>
-    <string name="atom_pub_resStringExplainEvaluate">综合评价: %d</string>
+    <string name="atom_pub_resStringExplainEvaluate">综合评价: %s</string>
     <string name="atom_pub_resStringExplainGoodName">起吉祥好名</string>
     <string name="atom_pub_resStringExplainWord">%s:</string>
     <string name="atom_pub_resStringExplainPinYin">拼音[%s]</string>

@@ -143,7 +143,7 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
                 explainMasterAdapter = ExplainMasterAdapter.newInstance(getSupportFragmentManager(), explain)
         );
 
-        explainEvaluateValue.setText(getString(R.string.atom_pub_resStringExplainEvaluate, explain.nameScore.score));
+        explainEvaluateValue.setText(getString(R.string.atom_pub_resStringExplainEvaluate, explain.nameScore.evaluation));
         explainEvaluateDesc.setText(explain.nameScore.desc);
 
         explainNameContainer.removeAllViews();
