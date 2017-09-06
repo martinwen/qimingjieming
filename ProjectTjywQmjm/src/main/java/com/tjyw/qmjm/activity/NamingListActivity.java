@@ -111,6 +111,14 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
                     NamingWordItem namingWordItem = (NamingWordItem) item;
                     if (namingWordItem.src.favorite && namingWordItem.src.id > 0) {
                         getPresenter().postFavoriteRemove(namingWordItem.src.id, item);
+                    } else if (hasOrderNo()) {
+                        getPresenter().postFavoriteAdd(
+                                namingWordItem.src.surname,
+                                namingWordItem.src.getGivenName(),
+                                namingWordItem.src.day,
+                                namingWordItem.src.gender,
+                                item
+                        );
                     } else if (null != listRequestParam) {
                         getPresenter().postFavoriteAdd(
                                 listRequestParam.surname,
@@ -193,6 +201,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
 
     @Override
     public void maskerOnClick(View view, int clickLabelRes) {
+        super.maskerOnClick(view, clickLabelRes);
         requestListData();
     }
 

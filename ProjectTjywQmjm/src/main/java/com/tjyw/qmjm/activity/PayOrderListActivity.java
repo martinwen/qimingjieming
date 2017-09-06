@@ -95,6 +95,7 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
 
     @Override
     public void maskerOnClick(View view, int clickLabelRes) {
+        super.maskerOnClick(view, clickLabelRes);
         switch (clickLabelRes) {
             case R.string.atom_pub_resStringPayToName:
                 IClientActivityLaunchFactory.launchClientMasterActivity(this, ClientMasterAdapter.POSITION.NAMING, true);

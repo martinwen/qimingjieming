@@ -187,6 +187,7 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
 
     @Override
     public void maskerOnClick(View view, int clickLabelRes) {
+        super.maskerOnClick(view, clickLabelRes);
         maskerShowProgressView(false);
         getPresenter().postExplain(
                 listRequestParam.surname,

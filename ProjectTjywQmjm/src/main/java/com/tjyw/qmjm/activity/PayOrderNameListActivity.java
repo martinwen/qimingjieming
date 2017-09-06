@@ -116,6 +116,7 @@ public class PayOrderNameListActivity extends BaseToolbarActivity<PayPresenter<P
 
     @Override
     public void maskerOnClick(View view, int clickLabelRes) {
+        super.maskerOnClick(view, clickLabelRes);
         maskerShowProgressView(false);
         getPresenter().postPayOrderNameList(orderNo);
     }

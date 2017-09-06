@@ -34,7 +34,7 @@ public class BaseActivity<P extends Presenter> extends AtomPubBaseActivity<P> im
 
     @Override
     public void maskerOnClick(View view, int clickLabelRes) {
-
+        maskerHideMaskerLayout();
     }
 
     @Override
