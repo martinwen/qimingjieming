@@ -20,6 +20,7 @@
         android:layout_below="@+id/atomPubToolBar">
 
         <android.support.design.widget.AppBarLayout
+            app:layout_behavior="com.tjyw.qmjm.widget.FlingBehavior"
             android:id="@+id/explainMasterHeaderContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
