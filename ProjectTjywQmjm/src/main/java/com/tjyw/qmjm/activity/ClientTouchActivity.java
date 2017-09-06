@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
@@ -56,6 +57,7 @@ public class ClientTouchActivity extends BaseToolbarActivity {
         settings.setDomStorageEnabled(true);
         settings.setGeolocationEnabled(true);
         settings.setDisplayZoomControls(false);
+        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
 
         touchWebView.setInitialScale(39);
         settings.setUseWideViewPort(true);
@@ -89,6 +91,16 @@ public class ClientTouchActivity extends BaseToolbarActivity {
         super.onPause();
         if (null != touchWebView) {
             touchWebView.onPause();
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && touchWebView.canGoBack()) {
+            touchWebView.goBack();
+            return true;
+        } else {
+            return super.onKeyDown(keyCode, event);
         }
     }
 
