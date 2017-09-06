@@ -44,6 +44,8 @@ public class Explain implements RetroResultItem {
 
         private static final long serialVersionUID = -7944160821550718175L;
 
+        public String sancai;
+
         public String jixiong;
 
         public String zonglun;
