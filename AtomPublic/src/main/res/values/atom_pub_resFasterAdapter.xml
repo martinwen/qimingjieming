@@ -4,6 +4,9 @@
     <!-- 解名详情页字义释解 -->
     <item name="atom_pub_resFasterAdapterType_ExplainOverviewItem" type="id"/>
 
+    <!-- 解名详情页生肖喜忌 -->
+    <item name="atom_pub_resFasterAdapterType_ExplainZodiacItem" type="id"/>
+
     <!-- 解名详情页三才五格(五格) -->
     <item name="atom_pub_resFasterAdapterType_ExplainDestinyBodyItem" type="id"/>
 

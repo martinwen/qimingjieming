@@ -14,32 +14,35 @@
 
         <TextView
             android:id="@+id/bodyWord"
-            style="@style/AtomStyle.BlackNormalText"
+            style="@style/AtomStyle.BlackBigText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:maxLength="3"
+            android:paddingRight="8dp"
+            android:textStyle="bold"
             tools:text="@string/atom_pub_resStringExplainWord" />
 
         <TextView
             android:id="@+id/bodyPinYin"
-            style="@style/AtomStyle.RedNormalText"
+            style="@style/AtomStyle.RedBigText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:maxLength="30"
             android:maxLines="1"
-            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:textStyle="bold"
             tools:text="@string/atom_pub_resStringExplainPinYin" />
 
         <TextView
-            style="@style/AtomStyle.BlackNormalText"
+            style="@style/AtomStyle.BlackBigText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
-            android:text="@string/atom_pub_resStringExplainWuXing" />
+            android:paddingRight="8dp"
+            android:text="@string/atom_pub_resStringExplainWuXing"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/bodyWuXing"
@@ -54,11 +57,11 @@
     </LinearLayout>
 
     <TextView
-        style="@style/AtomStyle.BlackNormalText"
+        style="@style/AtomStyle.BlackBigText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:paddingTop="8dp"
+        android:paddingTop="4dp"
         android:text="@string/atom_pub_resStringExplainChinese"
         android:textStyle="bold" />
 
@@ -69,5 +72,5 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:lineSpacingExtra="8dp"
-        android:paddingTop="8dp" />
+        android:paddingTop="4dp" />
 </LinearLayout>

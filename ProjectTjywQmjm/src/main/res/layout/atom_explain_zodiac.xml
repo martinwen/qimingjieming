@@ -1,34 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/explainZodiacContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <TextView
-            style="@style/AtomStyle.BlackBigText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:paddingTop="4dp"
-            android:text="@string/atom_pub_resStringExplainZodiac"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/explainZodiacContent"
-            style="@style/AtomStyle.BlackNormalText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:lineSpacingExtra="8dp"
-            android:paddingTop="8dp"
-            tools:text="explainZodiacContent" />
-    </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+        android:layout_height="match_parent" />
+</LinearLayout>

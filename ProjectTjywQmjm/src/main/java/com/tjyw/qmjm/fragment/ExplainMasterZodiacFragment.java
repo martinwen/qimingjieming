@@ -2,16 +2,22 @@ package com.tjyw.qmjm.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
+import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.inject.From;
+import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.item.ExplainZodiacItem;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 /**
  * Created by stephen on 17-8-11.
@@ -27,8 +33,8 @@ public class ExplainMasterZodiacFragment extends AtomPubBaseFragment {
         return fragment;
     }
 
-    @From(R.id.explainZodiacContent)
-    protected TextView explainZodiacContent;
+    @From(R.id.explainZodiacContainer)
+    protected RecyclerView explainZodiacContainer;
 
     @Nullable
     @Override
@@ -41,8 +47,21 @@ public class ExplainMasterZodiacFragment extends AtomPubBaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         Explain explain = (Explain) pGetSerializableExtra(IApiField.E.explain);
-        if (null != explain && null != explain.nameZodiac) {
-            explainZodiacContent.setText(explain.nameZodiac.shengxiaoxiji);
+        if (null == explain || null == explain.nameZodiac) {
+            return ;
         }
+
+        FastItemAdapter<ExplainZodiacItem> itemAdapter = new FastItemAdapter<ExplainZodiacItem>();
+        itemAdapter.add(new ExplainZodiacItem(new Pair<Integer, String>(R.string.atom_pub_resStringExplainZodiacXi, explain.nameZodiac.shengxiaoxi)));
+        itemAdapter.add(new ExplainZodiacItem(new Pair<Integer, String>(R.string.atom_pub_resStringExplainZodiacJi, explain.nameZodiac.shengxiaoji)));
+
+        explainZodiacContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
+        explainZodiacContainer.setAdapter(itemAdapter);
+        explainZodiacContainer.addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
+                        .color(R.color.atom_pub_resColorDivider)
+                        .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDividerSize)
+                        .marginResId(R.dimen.atom_pubResDimenRecyclerViewDivider16dp, R.dimen.atom_pubResDimenRecyclerViewDivider16dp)
+                        .build());
     }
 }
