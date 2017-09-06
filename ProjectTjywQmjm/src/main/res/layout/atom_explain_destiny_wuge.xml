@@ -56,8 +56,7 @@
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
             android:text="@string/atom_pub_resStringExplainWuXing"
-            android:textStyle="bold"
-            android:visibility="invisible" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/bodyWuXing"
@@ -68,8 +67,7 @@
             android:gravity="center"
             android:maxLength="2"
             android:maxLines="1"
-            android:text="Wx"
-            android:visibility="invisible" />
+            android:text="Wx" />
     </LinearLayout>
 
     <TextView

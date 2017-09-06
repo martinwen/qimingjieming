@@ -31,6 +31,8 @@ public class Explain implements RetroResultItem {
 
         public int number;
 
+        public String wuxing;
+
         public String jixiong;
 
         public String zonglun;

@@ -1,11 +1,13 @@
 package com.tjyw.qmjm.item;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.model.Explain;
 import com.tjyw.atom.pub.inject.From;
+import com.tjyw.atom.pub.interfaces.IAtomPubElements;
 import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
@@ -73,6 +75,27 @@ public class ExplainDestinyWuGeItem extends AtomPubFastAdapterAbstractItem<Expla
             bodySubTitle.setText(wuGe.zonglun);
             bodyContent.setText(wuGe.shiyi);
             bodyJiXiong.setText(wuGe.jixiong);
+            bodyWuXing.setText(wuGe.wuxing);
+
+            switch (wuGe.wuxing) {
+                case IAtomPubElements.METAL:
+                    bodyWuXing.setBackgroundResource(IAtomPubElements.Reference.METAL.second);
+                    break ;
+                case IAtomPubElements.WOOD:
+                    bodyWuXing.setBackgroundResource(IAtomPubElements.Reference.WOOD.second);
+                    break ;
+                case IAtomPubElements.WATER:
+                    bodyWuXing.setBackgroundResource(IAtomPubElements.Reference.WATER.second);
+                    break ;
+                case IAtomPubElements.FIRE:
+                    bodyWuXing.setBackgroundResource(IAtomPubElements.Reference.FIRE.second);
+                    break ;
+                case IAtomPubElements.EARTH:
+                    bodyWuXing.setBackgroundResource(IAtomPubElements.Reference.EARTH.second);
+                    break ;
+                default:
+                    bodyWuXing.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent));
+            }
         }
     }
 }
