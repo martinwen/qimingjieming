@@ -81,13 +81,13 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment<ClientPresente
         List<MasterMineItem> itemList = new ArrayList<MasterMineItem>();
         itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineOrder, R.drawable.atom_pub_ic_mine_order)));
         itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineCollect, R.drawable.atom_pub_ic_mine_collect)));
-        itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineService, R.drawable.atom_pub_ic_mine_service)));
+//        itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineService, R.drawable.atom_pub_ic_mine_service)));
         itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineBJX, R.drawable.atom_pub_ic_mine_bjx)));
         itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineZGJM, R.drawable.atom_pub_ic_mine_zgjm)));
         itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineQTS, R.drawable.atom_pub_ic_mine_qts)));
         itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineZodiac, R.drawable.atom_pub_ic_mine_zodiac)));
-        itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineBaby, R.drawable.atom_pub_ic_mine_baby)));
-        itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMinePregnant, R.drawable.atom_pub_ic_mine_pregnant)));
+//        itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineBaby, R.drawable.atom_pub_ic_mine_baby)));
+//        itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMinePregnant, R.drawable.atom_pub_ic_mine_pregnant)));
         itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineAbout, R.drawable.atom_pub_ic_mine_about)));
         itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineFeedback, R.drawable.atom_pub_ic_mine_feedback)));
 
@@ -122,8 +122,10 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment<ClientPresente
                         IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, clientInit.yunqibaodian, R.string.atom_pub_resStringMinePregnant);
                         break ;
                     case R.string.atom_pub_resStringMineAbout:
+                        IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, clientInit.about, R.string.atom_pub_resStringMineAbout);
                         break ;
                     case R.string.atom_pub_resStringMineFeedback:
+                        IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, clientInit.feedback, R.string.atom_pub_resStringMineFeedback);
                 }
 
                 return true;

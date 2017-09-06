@@ -20,4 +20,8 @@ public class ClientInit implements RetroResultItem {
     public String yuer;
 
     public String yunqibaodian;
+
+    public String about;
+
+    public String feedback;
 }
