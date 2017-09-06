@@ -84,7 +84,6 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements G
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         validator = new Validator(this);
         validator.setValidationListener(new AtomPubValidationListener(ClientQmjmApplication.getContext()) {
 
