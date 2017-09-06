@@ -156,7 +156,8 @@
 -keep class se.emilsjolander.sprinkles.annotations.** { *; }
 
 # for model
--keep class com.syty.atom.network.model.** { *; }
+-keep class com.tjyw.atom.network.model.** { *; }
+-keep class com.tjyw.atom.network.interfaces.** { *; }
 # ============  Netwrk  ============
 
 
@@ -165,9 +166,7 @@
 -keep class com.brianjmelton.stanley.annot.** { *; }
 -keep class com.beloo.widget.** { *; }
 
--keep class com.tjyw.jrjy.holder.** { *; }
--keep class com.tjyw.jrjy.fragment.UserMasterFragment { *; }
--keep class com.tjyw.jrjy.interfaces.IEwshPreferences { *; }
+-keep class com.tjyw.qmjm.item.** { *; }
 
 # android-saripaar
 -keep class com.mobsandgeeks.saripaar.** {*;}
