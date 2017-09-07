@@ -71,9 +71,10 @@ public class RetroRequestInterceptor implements Interceptor {
                         .build()
         ).build();
 
+        Timber.tag(TAG).e("Request Cid::%s, Pid::%s, session::%s", Network.getInstance().getCid(), Network.getInstance().getPid(), session);
         Response response = chain.proceed(newRequest);
         String responseString = response.body().string();
-        Timber.tag(TAG).e("InterceptFormBody::Request Json::%s", responseString);
+        Timber.tag(TAG).e("Request Json::%s", responseString);
         return response.newBuilder()
                 .body(ResponseBody.create(MediaType.parse("application/x-www-form-urlencoded;"), responseString))
                 .build();
@@ -112,9 +113,10 @@ public class RetroRequestInterceptor implements Interceptor {
                         .build()
         ).build();
 
+        Timber.tag(TAG).e("Request Cid::%s, Pid::%s, session::%s", Network.getInstance().getCid(), Network.getInstance().getPid(), session);
         Response response = chain.proceed(newRequest);
         String responseString = response.body().string();
-        Timber.tag(TAG).e("InterceptNormalBody::Request Json::%s", responseString);
+        Timber.tag(TAG).e("Request Json::%s", responseString);
         return response.newBuilder()
                 .body(ResponseBody.create(MediaType.parse("application/x-www-form-urlencoded;"), responseString))
                 .build();

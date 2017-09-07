@@ -72,8 +72,6 @@ public class ClientInitializer {
                 .setWxAppId(Configure.WX.APP_ID) // 微信只需要APP_ID
                 .dump();
 
-        Toast.makeText(context, Network.getInstance().getFullChannel(), Toast.LENGTH_LONG).show();
-
         return this;
     }
 
