@@ -87,6 +87,8 @@ public interface IApiField {
 
     interface M {
 
+        String memo = "memo";
+
         String message = "message";
 
         String mobile = "mobile";
@@ -149,6 +151,12 @@ public interface IApiField {
         String screenWidth = "screenWidth";
 
         String sessionKey = "sessionKey";
+
+        String statusCode = "statusCode";
+
+        String statusChannel = "statusChannel";
+
+        String statusMsg = "statusMsg";
 
         String subject = "subject";
 

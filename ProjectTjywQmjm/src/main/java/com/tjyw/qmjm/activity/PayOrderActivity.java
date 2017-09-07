@@ -8,11 +8,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.TextView;
 
-import com.swiftfintech.pay.MainApplication;
 import com.swiftfintech.pay.activity.PayPlugin;
 import com.swiftfintech.pay.bean.RequestMsg;
 import com.swiftfintech.pay.handle.PayHandlerManager;
@@ -116,6 +116,13 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                 data.putExtra(IApiField.O.orderNo, listRequestParam.orderNo);
                 setResult(ICode.PAY.WX_SUCCESS, data);
                 finish();
+            } else if (! TextUtils.isEmpty(listRequestParam.orderNo)) {
+                getPresenter().postPayLog(
+                        listRequestParam.orderNo,
+                        "9999",
+                        2,
+                        result
+                );
             }
         }
     }
@@ -195,7 +202,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     public void postOnPayOrderSuccess(PayOrder payOrder) {
         listRequestParam.orderNo = payOrder.orderNo;
         if (null == payOrderHandler) {
-            payOrderHandler = new PayOrderHandler(PayOrderActivity.this);
+            payOrderHandler = new PayOrderHandler(PayOrderActivity.this, payOrder.orderNo);
         }
 
         PayHandlerManager.registerHandler(PayHandlerManager.PAY_H5_RESULT, payOrderHandler);
@@ -236,7 +243,14 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                 break ;
             case RESULT_STATUS.FAIL:
             default:
-
+                if (null != result && ! TextUtils.isEmpty(listRequestParam.orderNo)) {
+                    getPresenter().postPayLog(
+                            listRequestParam.orderNo,
+                            String.valueOf(resultStatus),
+                            1,
+                            null == result.alipay_trade_app_pay_response ? null : result.alipay_trade_app_pay_response.msg
+                    );
+                }
         }
     }
 
@@ -244,18 +258,31 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
         protected WeakReference<PayOrderActivity> context;
 
-        public PayOrderHandler(PayOrderActivity payOrderActivity) {
+        protected String orderNo;
+
+        public PayOrderHandler(PayOrderActivity payOrderActivity, String orderNo) {
             this.context = new WeakReference<PayOrderActivity>(payOrderActivity);
+            this.orderNo = orderNo;
         }
 
         @Override
         public void handleMessage(Message msg) {
             if (null != context) {
                 PayOrderActivity payOrderActivity = context.get();
-                if (null != payOrderActivity && !payOrderActivity.isFinishing()) {
+                if (null != payOrderActivity && ! payOrderActivity.isFinishing()) {
                     switch (msg.what) {
                         case PayHandlerManager.PAY_H5_FAILED:
                             payOrderActivity.showToast(String.valueOf(msg.obj));
+                            try {
+                                payOrderActivity.getPresenter().postPayLog(
+                                        orderNo,
+                                        "9999",
+                                        2,
+                                        String.valueOf(msg.obj)
+                                );
+                            } catch (Throwable throwable) {
+                                throwable.printStackTrace();
+                            }
                     }
                 } else {
                     clear();

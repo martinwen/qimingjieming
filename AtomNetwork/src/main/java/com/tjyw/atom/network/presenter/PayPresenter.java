@@ -9,6 +9,7 @@ import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
+import com.tjyw.atom.network.result.REmptyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
@@ -90,6 +91,22 @@ public class PayPresenter<V extends ViewWithPresenter> extends FavoritePresenter
                         if (presenterView instanceof OnApiPostErrorListener) {
                             ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.PayOrder, throwable);
                         }
+                    }
+                });
+    }
+
+    public void postPayLog(String orderNo, String statusCode, int statusChannel, String statusMsg) {
+        RetroHttpMethods.PAY().postPayLog(orderNo, statusCode, statusChannel, statusMsg)
+                .compose(RxSchedulersHelper.<RetroResult<REmptyResult>>io_main())
+                .subscribe(new Action1<RetroResult<REmptyResult>>() {
+                    @Override
+                    public void call(RetroResult<REmptyResult> result) {
+
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+
                     }
                 });
     }
