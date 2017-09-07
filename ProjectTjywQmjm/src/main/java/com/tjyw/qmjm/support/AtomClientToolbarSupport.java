@@ -63,11 +63,8 @@ public class AtomClientToolbarSupport implements IAtomPubToolBar, View.OnClickLi
             atomPubToolBar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Context context = v.getContext();
-                    if (context instanceof FragmentActivity) {
-                        ((FragmentActivity) context).onBackPressed();
-                    } else if (context instanceof Activity) {
-                        ((Activity) context).onBackPressed();
+                    if (null != iAtomPubToolBar) {
+                        iAtomPubToolBar.tOnToolbarNavigationClick(v);
                     }
                 }
             });
@@ -103,6 +100,16 @@ public class AtomClientToolbarSupport implements IAtomPubToolBar, View.OnClickLi
     @Override
     public void tSetToolbarRightSecondBubble(int count) {
         atomPubToolBarRightSecondBubble.setVisibility(count > 0 ? View.VISIBLE : View.INVISIBLE);
+    }
+
+    @Override
+    public void tOnToolbarNavigationClick(View v) {
+        Context context = v.getContext();
+        if (context instanceof FragmentActivity) {
+            ((FragmentActivity) context).onBackPressed();
+        } else if (context instanceof Activity) {
+            ((Activity) context).onBackPressed();
+        }
     }
 
     @Override

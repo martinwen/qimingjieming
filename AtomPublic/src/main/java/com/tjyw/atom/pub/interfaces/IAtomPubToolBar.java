@@ -17,5 +17,7 @@ public interface IAtomPubToolBar {
 
     void tSetToolbarRightSecondBubble(int count);
 
+    void tOnToolbarNavigationClick(View v);
+
     void tOnToolbarRightViewClick(View v);
 }

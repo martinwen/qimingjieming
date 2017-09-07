@@ -62,6 +62,13 @@ public class BaseToolbarActivity<P extends Presenter> extends BaseActivity<P> im
     }
 
     @Override
+    public void tOnToolbarNavigationClick(View v) {
+        if (null != atomClientToolbarSupport) {
+            atomClientToolbarSupport.tOnToolbarNavigationClick(v);
+        }
+    }
+
+    @Override
     public void tOnToolbarRightViewClick(View v) {
 
     }
