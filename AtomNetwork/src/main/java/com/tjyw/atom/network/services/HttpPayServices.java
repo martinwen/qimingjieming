@@ -2,8 +2,9 @@ package com.tjyw.atom.network.services;
 
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Order;
-import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.model.PayOrder;
+import com.tjyw.atom.network.model.PayService;
+import com.tjyw.atom.network.result.REmptyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
@@ -26,6 +27,8 @@ public interface HttpPayServices {
         String PREVIEW = "pay/preview";
 
         String ORDER = "pay/order";
+
+        String LOG = "pay/log";
 
         String ORDER_LIST = "order/list";
 
@@ -57,6 +60,15 @@ public interface HttpPayServices {
             @Field(IApiField.D.day) String day,
             @Field(IApiField.G.gender) int gender,
             @Field(IApiField.N.nameNumber) int nameNumber
+    );
+
+    @FormUrlEncoded
+    @POST(API.LOG)
+    Observable<RetroResult<REmptyResult>> postPayLog(
+            @Field(IApiField.O.orderNo) String orderNo,
+            @Field(IApiField.S.statusCode) String statusCode,
+            @Field(IApiField.S.statusChannel) int statusChannel,
+            @Field(IApiField.S.statusMsg) String statusMsg
     );
 
     @FormUrlEncoded

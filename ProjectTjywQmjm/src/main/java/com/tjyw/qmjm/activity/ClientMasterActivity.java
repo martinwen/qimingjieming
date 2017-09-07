@@ -1,10 +1,12 @@
 package com.tjyw.qmjm.activity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
+import android.support.v7.app.AlertDialog;
 
 import com.aspsine.fragmentnavigator.FragmentNavigator;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
@@ -14,6 +16,7 @@ import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ClientMasterAdapter;
+import com.umeng.analytics.MobclickAgent;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -89,5 +92,21 @@ public class ClientMasterActivity extends BaseActivity {
             int position = intent.getIntExtra(IApiField.T.t, ClientMasterAdapter.POSITION.NAMING);
             atomPubClientMasterNavigation.setCurrentItem(position, true);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.atom_pub_resStringTip)
+                .setMessage(R.string.atom_pub_resStringAppQuit)
+                .setNegativeButton(R.string.atom_pub_resStringCancel, null)
+                .setPositiveButton(R.string.atom_pub_resStringOK, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        MobclickAgent.onKillProcess(ClientMasterActivity.this);
+                        ClientMasterActivity.super.onBackPressed();
+                    }
+                })
+                .show();
     }
 }

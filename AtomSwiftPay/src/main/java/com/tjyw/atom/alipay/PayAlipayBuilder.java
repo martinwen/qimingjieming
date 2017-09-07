@@ -74,6 +74,12 @@ public class PayAlipayBuilder {
                                 }
                             }
 
+                            if (null == result) {
+                                result = new AlipayResult();
+                                result.alipay_trade_app_pay_response = new AlipayResult.Response();
+                                result.alipay_trade_app_pay_response.msg = resultMap.get(IApiField.M.memo);
+                            }
+
                             callback.pOnAliPayCallback(resultStatus, result, payPreviewResult.orderNo);
                         }
                     }

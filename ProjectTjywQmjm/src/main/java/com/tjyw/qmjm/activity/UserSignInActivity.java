@@ -105,6 +105,7 @@ public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSi
                 if (userSignInMobile.length() < 11) {
                     showToast(R.string.atom_pub_resStringUserSignMobileIllegal);
                 } else {
+                    v.setOnClickListener(null);
                     maskerShowProgressView(true);
                     getPresenter().postUserGetLoginCode(userSignInMobile.getText().toString());
                 }
@@ -179,6 +180,7 @@ public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSi
                 }
                 break ;
             case IPost.User.LoginCode:
+                userSignInAuthCodeGet.setOnClickListener(this);
                 showToast(R.string.atom_pub_resStringUserSignAuthCodeError);
         }
     }

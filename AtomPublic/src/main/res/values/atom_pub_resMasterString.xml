@@ -31,10 +31,11 @@
     <string name="atom_pub_resStringNamingFavorited">已收藏</string>
     <string name="atom_pub_resStringNamingAnalysis">解析</string>
     <string name="atom_pub_resStringNamingListEnd">已经到底了</string>
+    <string name="atom_pub_resStringNamingListLack">没有匹配到合适的名字</string>
     <string name="atom_pub_resStringFavoriteList">我的收藏</string>
     <string name="atom_pub_resStringFavoriteListNoData">没有收藏名字</string>
-    <string name="atom_pub_resStringFavoriteHintAdd">已加入</string>
-    <string name="atom_pub_resStringFavoriteHintRemove">取消收藏</string>
+    <string name="atom_pub_resStringFavoriteHintAdd">已加入收藏</string>
+    <string name="atom_pub_resStringFavoriteHintRemove">已取消收藏</string>
 
     <string name="atom_pub_resStringExplainWordElement">[ %s ]</string>
     <string name="atom_pub_resStringExplainEvaluate">综合评价: %s</string>
@@ -104,6 +105,7 @@
     <!-- 加载/重试 -->
     <string name="atom_pub_resStringNetworkBroken">网络连接失败，请检测网络是否可用</string>
     <string name="atom_pub_resStringRetry">重试</string>
+    <string name="atom_pub_resStringAppQuit">您确认要退出应用吗</string>
 
     <!-- -->
     <string name="atom_pub_resStringRMB_s">￥%s</string>
