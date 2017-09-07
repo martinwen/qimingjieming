@@ -69,12 +69,12 @@
 }
 
 -assumenosideeffects class android.util.Log {
-#    public static *** d(...);
-#    public static *** v(...);
-#    public static *** i(...);
-#    public static *** e(...);
-#    public static *** wtf(...);
-#    public static *** println(...);
+    public static *** d(...);
+    public static *** v(...);
+    public static *** i(...);
+    public static *** e(...);
+    public static *** wtf(...);
+    public static *** println(...);
 }
 
 # ============  EventBus  ============

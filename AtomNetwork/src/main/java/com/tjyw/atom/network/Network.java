@@ -4,12 +4,15 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import com.tjyw.atom.network.conf.IChannel;
+import com.tjyw.atom.network.utils.ChannelUtil;
+
 import timber.log.Timber;
 
 /**
  * Created by stephen on 10/02/2017.
  */
-public class Network {
+public class Network implements NetworkFlavorsConfig {
 
     public static final String TAG = Network.class.getSimpleName();
 
@@ -47,11 +50,7 @@ public class Network {
 
     protected String networkApiServer;
 
-    protected String cid;
-
-    protected String cname;
-
-    protected String pid;
+    protected NetworkFlavorsConfig networkFlavorsConfig;
 
     protected boolean enableStethoDebug;
 
@@ -82,30 +81,8 @@ public class Network {
         return this;
     }
 
-    public String getCid() {
-        return this.cid;
-    }
-
-    public Network setCid(String cid) {
-        this.cid = cid;
-        return this;
-    }
-
-    public String getPid() {
-        return this.pid;
-    }
-
-    public Network setPid(String pid) {
-        this.pid = pid;
-        return this;
-    }
-
-    public String getCname() {
-        return cname;
-    }
-
-    public Network setCname(String cname) {
-        this.cname = cname;
+    public Network setNetworkFlavorsConfig(NetworkFlavorsConfig networkFlavorsConfig) {
+        this.networkFlavorsConfig = networkFlavorsConfig;
         return this;
     }
 
@@ -118,7 +95,11 @@ public class Network {
     }
 
     public String getFullChannel() {
-        return String.format("%s ( %s )", this.cid, this.cname);
+        if (null == networkFlavorsConfig) {
+            return null;
+        } else {
+            return String.format("%s ( %s )", networkFlavorsConfig.getCid(), networkFlavorsConfig.getCName());
+        }
     }
 
     public boolean isEnableStethoDebug() {
@@ -131,5 +112,20 @@ public class Network {
 
     protected static void initDatabases() {
 
+    }
+
+    @Override
+    public String getCid() {
+        return null == networkFlavorsConfig ? IChannel.C1000.CID : networkFlavorsConfig.getCid();
+    }
+
+    @Override
+    public String getCName() {
+        return null == networkFlavorsConfig ? IChannel.C1000.NAME : networkFlavorsConfig.getCName();
+    }
+
+    @Override
+    public String getPid() {
+        return null == networkFlavorsConfig ? ChannelUtil.PID : networkFlavorsConfig.getPid();
     }
 }

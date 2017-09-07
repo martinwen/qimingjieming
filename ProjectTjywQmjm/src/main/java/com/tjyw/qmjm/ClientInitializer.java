@@ -56,9 +56,8 @@ public class ClientInitializer {
     protected ClientInitializer atom(Context context, boolean enableStethoDebug) {
         Network.getInstance() // 网络层服务器地址、渠道设置等
                 .setNetworkApiServer(Configure.Network.SERVER)
-                .setCid(FlavorsConfig.CLIENT_C_ID)
-                .setCname(FlavorsConfig.CLIENT_C_NAME)
-                .setPid(FlavorsConfig.CLIENT_P_ID)
+                .setNetworkFlavorsConfig(new FlavorsConfig.NetworkBuildConfig())
+                .setNetworkFlavorsConfig(new FlavorsConfig.NetworkChannelConfig(context))
                 .setContext(context)
                 .setEnableStethoDebug(enableStethoDebug);
 
@@ -72,6 +71,8 @@ public class ClientInitializer {
                 .setNotifyUrl(Configure.ALI.NOTIFY_URL)
                 .setWxAppId(Configure.WX.APP_ID) // 微信只需要APP_ID
                 .dump();
+
+        Toast.makeText(context, Network.getInstance().getFullChannel(), Toast.LENGTH_LONG).show();
 
         return this;
     }
