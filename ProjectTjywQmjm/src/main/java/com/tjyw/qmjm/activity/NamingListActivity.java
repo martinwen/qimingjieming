@@ -16,6 +16,7 @@ import com.mikepenz.fastadapter.adapters.FooterAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.listeners.ClickEventHook;
 import com.tjyw.atom.network.IllegalRequestException;
+import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.model.PayService;
@@ -40,8 +41,11 @@ import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import nucleus.factory.RequiresPresenter;
+import rx.Observable;
+import rx.functions.Action1;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -191,8 +195,22 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
                         if (null != data) {
                             listRequestParam.orderNo = data.getStringExtra(IApiField.O.orderNo);
                             if (hasOrderNo()) {
-                                nameDefinitionAdapter.clear();
-                                requestListData();
+                                maskerShowProgressView(false);
+                                Observable.timer(2, TimeUnit.SECONDS)
+                                        .compose(RxSchedulersHelper.<Long>io_main())
+                                        .subscribe(new Action1<Long>() {
+                                            @Override
+                                            public void call(Long aLong) {
+                                                nameDefinitionAdapter.clear();
+                                                requestListData();
+                                            }
+                                        }, new Action1<Throwable>() {
+                                            @Override
+                                            public void call(Throwable throwable) {
+                                                nameDefinitionAdapter.clear();
+                                                requestListData();
+                                            }
+                                        });
                             }
                         }
                 }
@@ -224,8 +242,11 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     @Override
     public void postOnNamingSuccess(RNameDefinition result) {
         maskerHideProgressView();
-        if (null == result || result.size() == 0) {
+        if (null == result) {
             maskerShowMaskerLayout(getString(R.string.atom_pub_resStringNetworkBroken), 0);
+            return ;
+        } else if (result.size() == 0) {
+            maskerShowMaskerLayout(getString(R.string.atom_pub_resStringNamingListLack), R.string.atom_pub_resStringRetry);
             return ;
         } else if (hasOrderNo() && null != result.param) {
             listRequestParam = result.param;
