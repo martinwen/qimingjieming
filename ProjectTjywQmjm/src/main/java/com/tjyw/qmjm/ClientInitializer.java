@@ -57,7 +57,7 @@ public class ClientInitializer {
         Network.getInstance() // 网络层服务器地址、渠道设置等
                 .setNetworkApiServer(Configure.Network.SERVER)
                 .setNetworkFlavorsConfig(new FlavorsConfig.NetworkBuildConfig())
-                .setNetworkFlavorsConfig(new FlavorsConfig.NetworkChannelConfig(context))
+//                .setNetworkFlavorsConfig(new FlavorsConfig.NetworkChannelConfig(context))
                 .setContext(context)
                 .setEnableStethoDebug(enableStethoDebug);
 

@@ -88,8 +88,8 @@ android {
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             println "===variant.buildType.getName()::${variant.buildType.getName()}"
-            speedyAssemble(output, defaultConfig.versionCode)
-//            differentNameAssemble(output, variant.productFlavors, defaultConfig.versionCode)
+//            speedyAssemble(output, defaultConfig.versionCode)
+            differentNameAssemble(output, variant.productFlavors, defaultConfig.versionCode)
         }
     }
 }

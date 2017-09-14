@@ -15,20 +15,20 @@ public class FlavorsConfig {
 
         @Override
         public String getCid() {
-            return null;
-//            return BuildConfig.CLIENT_C_ID;
+//            return null;
+            return BuildConfig.CLIENT_C_ID;
         }
 
         @Override
         public String getCName() {
-            return null;
-//            return BuildConfig.CLIENT_C_NAME;
+//            return null;
+            return BuildConfig.CLIENT_C_NAME;
         }
 
         @Override
         public String getPid() {
-            return null;
-//            return BuildConfig.CLIENT_P_ID;
+//            return null;
+            return BuildConfig.CLIENT_P_ID;
         }
     }
 
