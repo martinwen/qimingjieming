@@ -9,4 +9,6 @@
 
     <color name="atom_pub_resColorInputHint">#FFBCBCBC</color>
 
+    <color name="atom_pubResColorImageDefault">#FFDCDCDC</color>
+
 </resources>

@@ -28,5 +28,9 @@
     <item name="atom_pub_resFasterAdapterType_UserFavoriteItem" type="id"/>
 
 
+    <!-- 在线客服::本地QA问题 -->
+    <item name="atom_pub_resFasterAdapterType_MessageHotLineLocalInboxItem" type="id"/>
+
+
 
 </resources>

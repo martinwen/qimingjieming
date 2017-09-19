@@ -51,4 +51,11 @@ public interface IPost {
 
         int Init = 1;
     }
+
+    interface HotLine {
+
+        int Detail = 1;
+
+        int Write = 2;
+    }
 }

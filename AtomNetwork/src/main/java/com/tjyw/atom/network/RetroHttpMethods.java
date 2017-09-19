@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tjyw.atom.network.interceptor.RetroRequestInterceptor;
 import com.tjyw.atom.network.services.HttpClientServices;
 import com.tjyw.atom.network.services.HttpFavoriteService;
+import com.tjyw.atom.network.services.HttpMessageHotLineServices;
 import com.tjyw.atom.network.services.HttpPayServices;
 import com.tjyw.atom.network.services.HttpQmServices;
 import com.tjyw.atom.network.services.HttpUserServices;
@@ -48,6 +49,8 @@ public class RetroHttpMethods {
     protected HttpUserServices httpUserServices;
 
     protected HttpFavoriteService httpFavoriteService;
+
+    protected HttpMessageHotLineServices httpMessageHotLineServices;
 
     public RetroHttpMethods() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -101,5 +104,9 @@ public class RetroHttpMethods {
 
     public static HttpFavoriteService FAVORITE() {
         return getInstance().httpFavoriteService;
+    }
+
+    public static HttpMessageHotLineServices HOTLINE() {
+        return getInstance().httpMessageHotLineServices;
     }
 }

@@ -31,6 +31,8 @@ public interface IApiField {
         String date = "date";
 
         String day = "day";
+
+        String detail = "detail";
     }
 
     interface E {
@@ -133,9 +135,13 @@ public interface IApiField {
 
     interface Q {
 
+        String qaAnswer = "qaAnswer";
+
     }
 
     interface R {
+
+        String red = "red";
 
         String result = "result";
 
@@ -187,6 +193,8 @@ public interface IApiField {
         String url = "url";
 
         String user = "user";
+
+        String userId = "userId";
     }
 
     interface V {

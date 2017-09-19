@@ -11,4 +11,10 @@
 
     <dimen name="atom_pubResDimenRecyclerViewDivider16dp">16dp</dimen>
 
+    <!-- 用户圆形头像默认边框粗度 -->
+    <dimen name="atom_pubResDimenUserAvatarBorderDefault">1dp</dimen>
+
+    <!-- 用户头像(小)图片的高度(多用于对话聊天页) -->
+    <dimen name="atom_pubResDimenUserTinyAvatarDiameter">48dp</dimen>
+
 </resources>

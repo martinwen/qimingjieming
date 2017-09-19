@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="atom_pubResStringMessageConverseDefaultInboxText">我都不知道说什么了</string>
+    <string name="atom_pubResStringMessageReplyHint">请输入您要回复信息</string>
+    <string name="atom_pubResStringMessageSend">发送</string>
+    <string name="atom_pubResStringMessageConverseWaiting">您的消息已发送，请耐心等待TA的回复</string>
+
+</resources>
