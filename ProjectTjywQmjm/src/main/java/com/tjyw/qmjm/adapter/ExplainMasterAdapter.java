@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import com.tjyw.atom.network.model.Explain;
 import com.tjyw.qmjm.fragment.ExplainMasterDestinyFragment;
 import com.tjyw.qmjm.fragment.ExplainMasterOverviewFragment;
+import com.tjyw.qmjm.fragment.ExplainMasterSanCaiFragment;
 import com.tjyw.qmjm.fragment.ExplainMasterZodiacFragment;
 
 /**
@@ -23,14 +24,17 @@ public class ExplainMasterAdapter extends FragmentPagerAdapter {
 
         int DESTINY = 2;
 
-        int ALL = 3;
+        int SANCAI = 3;
+
+        int ALL = 4;
     }
 
     public static ExplainMasterAdapter newInstance(FragmentManager fragmentManager, Explain explain) {
         return new ExplainMasterAdapter(fragmentManager)
                     .setOverviewFragment(ExplainMasterOverviewFragment.newInstance(explain))
                     .setZodiacFragment(ExplainMasterZodiacFragment.newInstance(explain))
-                    .setDestinyFragment(ExplainMasterDestinyFragment.newInstance(explain));
+                    .setDestinyFragment(ExplainMasterDestinyFragment.newInstance(explain))
+                    .setSanCaiFragment(ExplainMasterSanCaiFragment.newInstance(explain));
     }
 
     protected ExplainMasterOverviewFragment overviewFragment;
@@ -38,6 +42,8 @@ public class ExplainMasterAdapter extends FragmentPagerAdapter {
     protected ExplainMasterZodiacFragment zodiacFragment;
 
     protected ExplainMasterDestinyFragment destinyFragment;
+
+    protected ExplainMasterSanCaiFragment sanCaiFragment;
 
     public ExplainMasterAdapter(FragmentManager fm) {
         super(fm);
@@ -58,6 +64,11 @@ public class ExplainMasterAdapter extends FragmentPagerAdapter {
         return this;
     }
 
+    public ExplainMasterAdapter setSanCaiFragment(ExplainMasterSanCaiFragment sanCaiFragment) {
+        this.sanCaiFragment = sanCaiFragment;
+        return this;
+    }
+
     @Override
     public Fragment getItem(int position) {
         switch (position) {
@@ -66,8 +77,10 @@ public class ExplainMasterAdapter extends FragmentPagerAdapter {
             case POSITION.ZODIAC:
                 return zodiacFragment;
             case POSITION.DESTINY:
-            default:
                 return destinyFragment;
+            case POSITION.SANCAI:
+            default:
+                return sanCaiFragment;
         }
     }
 
@@ -78,19 +91,25 @@ public class ExplainMasterAdapter extends FragmentPagerAdapter {
 
     public void showOverviewFragment(ViewPager container) {
         if (null != container) {
-            container.setCurrentItem(0);
+            container.setCurrentItem(POSITION.OVERVIEW);
         }
     }
 
     public void showZodiacFragment(ViewPager container) {
         if (null != container) {
-            container.setCurrentItem(1);
+            container.setCurrentItem(POSITION.ZODIAC);
         }
     }
 
     public void showDestinyFragment(ViewPager container) {
         if (null != container) {
-            container.setCurrentItem(2);
+            container.setCurrentItem(POSITION.DESTINY);
+        }
+    }
+
+    public void showSanCaiFragment(ViewPager container) {
+        if (null != container) {
+            container.setCurrentItem(POSITION.SANCAI);
         }
     }
 }

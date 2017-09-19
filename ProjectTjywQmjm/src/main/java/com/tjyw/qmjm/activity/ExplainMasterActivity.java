@@ -59,6 +59,9 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     @From(R.id.explainDestiny)
     protected TextView explainDestiny;
 
+    @From(R.id.explainSanCai)
+    protected TextView explainSanCai;
+
     @From(R.id.explainMasterContainer)
     protected ViewPager explainMasterContainer;
 
@@ -89,6 +92,7 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
         explainOverview.setOnClickListener(this);
         explainZodiac.setOnClickListener(this);
         explainDestiny.setOnClickListener(this);
+        explainSanCai.setOnClickListener(this);
         explainNaming.setOnClickListener(this);
 
         explainMasterContainer.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -97,13 +101,16 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
             public void onPageSelected(int position) {
                 switch (position) {
                     case ExplainMasterAdapter.POSITION.OVERVIEW:
-                        onClick(explainOverview);
+                        setSelectedTab(explainOverview);
                         break ;
                     case ExplainMasterAdapter.POSITION.ZODIAC:
-                        onClick(explainZodiac);
+                        setSelectedTab(explainZodiac);
                         break ;
                     case ExplainMasterAdapter.POSITION.DESTINY:
-                        onClick(explainDestiny);
+                        setSelectedTab(explainDestiny);
+                        break ;
+                    case ExplainMasterAdapter.POSITION.SANCAI:
+                        setSelectedTab(explainSanCai);
                 }
             }
         });
@@ -139,6 +146,10 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
             case R.id.explainDestiny:
                 setSelectedTab(v);
                 explainMasterAdapter.showDestinyFragment(explainMasterContainer);
+                break ;
+            case R.id.explainSanCai:
+                setSelectedTab(v);
+                explainMasterAdapter.showSanCaiFragment(explainMasterContainer);
                 break ;
             default:
                 super.onClick(v);
@@ -205,14 +216,22 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
                 case R.id.explainOverview:
                     explainZodiac.setSelected(false);
                     explainDestiny.setSelected(false);
+                    explainSanCai.setSelected(false);
                     break ;
                 case R.id.explainZodiac:
                     explainOverview.setSelected(false);
                     explainDestiny.setSelected(false);
+                    explainSanCai.setSelected(false);
                     break ;
                 case R.id.explainDestiny:
                     explainOverview.setSelected(false);
                     explainZodiac.setSelected(false);
+                    explainSanCai.setSelected(false);
+                    break ;
+                case R.id.explainSanCai:
+                    explainOverview.setSelected(false);
+                    explainZodiac.setSelected(false);
+                    explainDestiny.setSelected(false);
             }
         }
     }

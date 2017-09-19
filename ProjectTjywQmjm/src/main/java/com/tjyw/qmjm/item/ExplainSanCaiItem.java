@@ -15,9 +15,9 @@ import java.util.List;
 /**
  * Created by stephen on 15/08/2017.
  */
-public class ExplainDestinySanCaiItem extends AtomPubFastAdapterAbstractItem<Explain.SanCai, ExplainDestinySanCaiItem, ExplainDestinySanCaiItem.DestinyFooterHolder> {
+public class ExplainSanCaiItem extends AtomPubFastAdapterAbstractItem<Explain.SanCai, ExplainSanCaiItem, ExplainSanCaiItem.DestinyFooterHolder> {
 
-    public ExplainDestinySanCaiItem(Explain.SanCai src) {
+    public ExplainSanCaiItem(Explain.SanCai src) {
         super(src);
     }
 

@@ -16,8 +16,8 @@ import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
-import com.tjyw.qmjm.item.ExplainDestinyWuGeItem;
-import com.tjyw.qmjm.item.ExplainDestinySanCaiItem;
+import com.tjyw.qmjm.item.ExplainWuGeItem;
+import com.tjyw.qmjm.item.ExplainSanCaiItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class ExplainMasterDestinyFragment extends AtomPubBaseFragment {
     @From(R.id.explainDestinyContainer)
     protected RecyclerView explainDestinyContainer;
 
-    protected HeaderAdapter<ExplainDestinySanCaiItem> explainDestinyAdapter;
+    protected HeaderAdapter<ExplainSanCaiItem> explainDestinyAdapter;
 
     @Nullable
     @Override
@@ -56,26 +56,5 @@ public class ExplainMasterDestinyFragment extends AtomPubBaseFragment {
         if (null == explain) {
             return ;
         }
-
-        List<ExplainDestinyWuGeItem> itemList = new ArrayList<ExplainDestinyWuGeItem>();
-        for (int i = 0; i < explain.wugeList.size(); i ++) {
-            itemList.add(new ExplainDestinyWuGeItem(explain.wugeList.get(i)));
-        }
-
-        FastItemAdapter<ExplainDestinyWuGeItem> itemAdapter = new FastItemAdapter<ExplainDestinyWuGeItem>();
-        itemAdapter.set(itemList);
-
-        explainDestinyAdapter = new HeaderAdapter<ExplainDestinySanCaiItem>();
-        explainDestinyContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
-        explainDestinyContainer.setAdapter(explainDestinyAdapter.wrap(itemAdapter));
-        explainDestinyContainer.addItemDecoration(
-                new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
-                        .color(R.color.atom_pub_resColorDivider)
-                        .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDividerSize)
-                        .marginResId(R.dimen.atom_pubResDimenRecyclerViewDivider16dp, R.dimen.atom_pubResDimenRecyclerViewDivider16dp)
-                        .showLastDivider()
-                        .build());
-
-        explainDestinyAdapter.add(new ExplainDestinySanCaiItem(explain.sancai));
     }
 }

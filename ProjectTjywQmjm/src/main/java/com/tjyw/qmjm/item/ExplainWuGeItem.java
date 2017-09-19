@@ -17,9 +17,9 @@ import java.util.List;
 /**
  * Created by stephen on 15/08/2017.
  */
-public class ExplainDestinyWuGeItem extends AtomPubFastAdapterAbstractItem<Explain.WuGe, ExplainDestinyWuGeItem, ExplainDestinyWuGeItem.DestinyBodyHolder> {
+public class ExplainWuGeItem extends AtomPubFastAdapterAbstractItem<Explain.WuGe, ExplainWuGeItem, ExplainWuGeItem.DestinyBodyHolder> {
 
-    public ExplainDestinyWuGeItem(Explain.WuGe src) {
+    public ExplainWuGeItem(Explain.WuGe src) {
         super(src);
     }
 
