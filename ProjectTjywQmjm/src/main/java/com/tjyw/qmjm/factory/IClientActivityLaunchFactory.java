@@ -13,6 +13,7 @@ import com.tjyw.qmjm.activity.BaseActivity;
 import com.tjyw.qmjm.activity.ClientMasterActivity;
 import com.tjyw.qmjm.activity.ClientTouchActivity;
 import com.tjyw.qmjm.activity.ExplainMasterActivity;
+import com.tjyw.qmjm.activity.NameMasterActivity;
 import com.tjyw.qmjm.activity.NamingListActivity;
 import com.tjyw.qmjm.activity.PayOrderActivity;
 import com.tjyw.qmjm.activity.PayOrderListActivity;
@@ -40,10 +41,17 @@ public class IClientActivityLaunchFactory {
         context.startActivity(intent);
     }
 
-    public static void launchNamingListActivity(BaseActivity context, ListRequestParam listRequestParam) {
-        Intent intent = new Intent(context, NamingListActivity.class);
+    public static void launchNameMasterActivity(BaseActivity context, ListRequestParam listRequestParam) {
+        Intent intent = new Intent(context, NameMasterActivity.class);
         intent.putExtra(IApiField.P.param, listRequestParam);
         context.startActivity(intent);
+    }
+
+    public static void launchNamingListActivity(BaseActivity context, ListRequestParam listRequestParam) {
+//        Intent intent = new Intent(context, NamingListActivity.class);
+//        intent.putExtra(IApiField.P.param, listRequestParam);
+//        context.startActivity(intent);
+        launchNameMasterActivity(context, listRequestParam);
     }
 
     public static void launchPayOrderActivity(BaseActivity context, ListRequestParam param, PayService payService) {
