@@ -26,11 +26,24 @@
     <string name="atom_pub_resStringOK">确定</string>
     <string name="atom_pub_resStringCancel">取消</string>
 
+    <!-- 起名页 -->
     <string name="atom_pub_resStringName">起名</string>
     <string name="atom_pub_resStringNameAnalyze">资料分析</string>
     <string name="atom_pub_resStringNameRecommend">推荐名字</string>
     <string name="atom_pub_resStringNameLucky">天降吉名</string>
 
+    <!-- 八字 -->
+    <string name="atom_pub_resStringBaZi">八字</string>
+    <string name="atom_pub_resStringBaZiShiShen">十神</string>
+    <string name="atom_pub_resStringBaZiGanZhi">干支</string>
+    <string name="atom_pub_resStringBaZiWuXing">五行</string>
+    <string name="atom_pub_resStringBaZiNaYin">纳音</string>
+    <string name="atom_pub_resStringBaZiCangGan">藏干</string>
+    <string name="atom_pub_resStringBaZiSiZhu">四柱</string>
+    <string name="atom_pub_resStringBaZiNianZhu">年柱</string>
+    <string name="atom_pub_resStringBaZiYueZhu">月柱</string>
+    <string name="atom_pub_resStringBaZiRiZhu">日柱</string>
+    <string name="atom_pub_resStringBaZiShiZhu">时柱</string>
 
     <string name="atom_pub_resStringNamingList">推荐起名</string>
     <string name="atom_pub_resStringNamingFavorite">收藏</string>

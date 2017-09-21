@@ -11,4 +11,6 @@
 
     <color name="atom_pubResColorImageDefault">#FFDCDCDC</color>
 
+    <color name="atom_pubResColorBaziBackground">#FFFEF3D2</color>
+
 </resources>

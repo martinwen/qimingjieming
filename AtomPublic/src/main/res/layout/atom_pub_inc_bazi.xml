@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="@color/atom_pubResColorBaziBackground"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringBaZiSiZhu" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="@color/atom_pubResColorBaziBackground"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringBaZiNianZhu" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="@color/atom_pubResColorBaziBackground"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringBaZiYueZhu" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="@color/atom_pubResColorBaziBackground"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringBaZiRiZhu" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="@color/atom_pubResColorBaziBackground"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringBaZiShiZhu" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <!-- 十神 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="@color/atom_pubResColorBaziBackground"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringBaZiShiShen" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiShiShenFirst"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiShiShenSecond"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiShiShenThird"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiShiShenFourth"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <!-- 干支 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="@color/atom_pubResColorBaziBackground"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringBaZiGanZhi" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiGanZhiFirst"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiGanZhiSecond"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiGanZhiThird"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiGanZhiFourth"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <!-- 五行 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="@color/atom_pubResColorBaziBackground"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringBaZiWuXing" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiWuXingFirst"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiWuXingSecond"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiWuXingThird"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiWuXingFourth"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <!-- 藏干 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="@color/atom_pubResColorBaziBackground"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringBaZiCangGan" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiCangGanFirst"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiCangGanSecond"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiCangGanThird"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiCangGanFourth"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <!-- 纳音 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:background="@color/atom_pubResColorBaziBackground"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringBaZiNaYin" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiNaYinFirst"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiNaYinSecond"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiNaYinThird"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/baZiNaYinFourth"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+    </LinearLayout>
+</merge>

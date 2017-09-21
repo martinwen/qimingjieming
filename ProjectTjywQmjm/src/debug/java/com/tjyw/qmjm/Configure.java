@@ -7,7 +7,7 @@ public interface Configure {
 
     interface Network {
 
-        String HOST = "api.qimingjieming.com";
+        String HOST = "api.qimingjieming.com:8088";
 
         String SERVER = String.format("http://%s/qm/", HOST);
     }
@@ -44,16 +44,5 @@ public interface Configure {
     interface UMeng {
 
         String APP_KEY = "59af62124ad1563ba6000059";
-    }
-
-    interface ACRA {
-
-        String REPORT = "http://erwanshenghuo.com:5984/acralyzer/_design/acralyzer/index.html"; // nuuneoi
-
-        String HOST = "http://www.erwanshenghuo.com:5984/acra-myapp/_design/acra-storage/_update/report";
-
-        String USER = "adrTodayDating";
-
-        String PASS = "adrTodayDating";
     }
 }

@@ -164,7 +164,7 @@
             android:maxLength="2"
             android:maxLines="1"
             android:paddingLeft="8dp"
-            android:paddingRight="8dp"
+            android:paddingRight="8dp" android:text="郭"
             android:paddingTop="8dp"
             android:textColorHint="@color/atom_pub_resColorInputHint"
             app:layout_widthPercent="65%" />
