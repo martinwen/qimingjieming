@@ -31,6 +31,12 @@
     <string name="atom_pub_resStringNameAnalyze">资料分析</string>
     <string name="atom_pub_resStringNameRecommend">推荐名字</string>
     <string name="atom_pub_resStringNameLucky">天降吉名</string>
+    <string name="atom_pub_resStringNameSolar">公历</string>
+    <string name="atom_pub_resStringNameSolarDot">公历：</string>
+    <string name="atom_pub_resStringNameLunar">农历</string>
+    <string name="atom_pub_resStringNameLunarDot">农历：</string>
+    <string name="atom_pub_resStringNameGender">性别</string>
+    <string name="atom_pub_resStringNameGenderDot">性别：</string>
 
     <!-- 八字 -->
     <string name="atom_pub_resStringBaZi">八字</string>
@@ -62,6 +68,8 @@
     <string name="atom_pub_resStringExplainWord">%s:</string>
     <string name="atom_pub_resStringExplainPinYin">拼音[%s]</string>
     <string name="atom_pub_resStringExplainWuXing">五行:</string>
+    <string name="atom_pub_resStringExplainLiShu">理数: %d</string>
+    <string name="atom_pub_resStringExplainWuXingFormat">五行: %s</string>
     <string name="atom_pub_resStringExplainChinese">汉字解释</string>
 
     <string name="atom_pub_resStringExplainOverview">字义解释</string>
@@ -69,13 +77,19 @@
     <string name="atom_pub_resStringExplainZodiacXi">生肖喜用</string>
     <string name="atom_pub_resStringExplainZodiacJi">生肖忌用</string>
     <string name="atom_pub_resStringExplainDestiny">八字命运</string>
+    <string name="atom_pub_resStringExplainDestinyYunShiXiangJie">运势详解</string>
+    <string name="atom_pub_resStringExplainDestinyShiYe">事业</string>
+    <string name="atom_pub_resStringExplainDestinyXueYe">学业</string>
+    <string name="atom_pub_resStringExplainDestinyCaiYun">财运</string>
+    <string name="atom_pub_resStringExplainDestinyAiQing">爱情</string>
     <string name="atom_pub_resStringExplainSanCaiWuGe">三才五格</string>
     <string name="atom_pub_resStringExplainSanCai">三才</string>
-    <string name="atom_pub_resStringExplainSanCaiJiXiong">吉凶</string>
-    <string name="atom_pub_resStringExplainSanCaiZongLun">总论</string>
+    <string name="atom_pub_resStringExplainSanCaiPeiZhi">三才配置</string>
+    <string name="atom_pub_resStringExplainSanCaiJiXiong">吉凶分析</string>
+    <string name="atom_pub_resStringExplainSanCaiZongLun">命运简批</string>
     <string name="atom_pub_resStringExplainSanCaiJiChuYun">基础运</string>
     <string name="atom_pub_resStringExplainSanCaiChengGongYun">成功运</string>
-    <string name="atom_pub_resStringExplainSanCaiReJiYun">人际运</string>
+    <string name="atom_pub_resStringExplainSanCaiRenJiGuanXi">人际关系</string>
     <string name="atom_pub_resStringExplainSanCaiXingGe">性格</string>
     <string name="atom_pub_resStringExplainSanCaiShiYi">释义</string>
 
@@ -129,5 +143,17 @@
 
     <!-- -->
     <string name="atom_pub_resStringRMB_s">￥%s</string>
+    <string name="atom_pub_resStringZodiac1_Rat">鼠</string>
+    <string name="atom_pub_resStringZodiac2_Ox">牛</string>
+    <string name="atom_pub_resStringZodiac3_Tiger">虎</string>
+    <string name="atom_pub_resStringZodiac4_Rabbit">兔</string>
+    <string name="atom_pub_resStringZodiac5_Dragon">龙</string>
+    <string name="atom_pub_resStringZodiac6_Snake">蛇</string>
+    <string name="atom_pub_resStringZodiac7_Horse">马</string>
+    <string name="atom_pub_resStringZodiac8_Goat">羊</string>
+    <string name="atom_pub_resStringZodiac9_Monkey">猴</string>
+    <string name="atom_pub_resStringZodiac10_Cock">鸡</string>
+    <string name="atom_pub_resStringZodiac11_Dog">狗</string>
+    <string name="atom_pub_resStringZodiac12_Pig">猪</string>
 
 </resources>

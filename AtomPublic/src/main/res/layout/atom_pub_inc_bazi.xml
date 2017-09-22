@@ -6,6 +6,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         android:orientation="vertical">
 
         <ImageView
@@ -34,7 +35,7 @@
                 android:layout_weight="1.0"
                 android:background="@color/atom_pubResColorBaziBackground"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp"
                 android:text="@string/atom_pub_resStringBaZiSiZhu" />
 
@@ -52,7 +53,7 @@
                 android:layout_weight="1.0"
                 android:background="@color/atom_pubResColorBaziBackground"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp"
                 android:text="@string/atom_pub_resStringBaZiNianZhu" />
 
@@ -70,7 +71,7 @@
                 android:layout_weight="1.0"
                 android:background="@color/atom_pubResColorBaziBackground"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp"
                 android:text="@string/atom_pub_resStringBaZiYueZhu" />
 
@@ -88,7 +89,7 @@
                 android:layout_weight="1.0"
                 android:background="@color/atom_pubResColorBaziBackground"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp"
                 android:text="@string/atom_pub_resStringBaZiRiZhu" />
 
@@ -106,7 +107,7 @@
                 android:layout_weight="1.0"
                 android:background="@color/atom_pubResColorBaziBackground"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp"
                 android:text="@string/atom_pub_resStringBaZiShiZhu" />
 
@@ -144,7 +145,7 @@
                 android:layout_weight="1.0"
                 android:background="@color/atom_pubResColorBaziBackground"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp"
                 android:text="@string/atom_pub_resStringBaZiShiShen" />
 
@@ -162,7 +163,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -179,7 +180,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -196,7 +197,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -213,7 +214,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -250,7 +251,7 @@
                 android:layout_weight="1.0"
                 android:background="@color/atom_pubResColorBaziBackground"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp"
                 android:text="@string/atom_pub_resStringBaZiGanZhi" />
 
@@ -268,7 +269,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -285,7 +286,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -302,7 +303,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -319,7 +320,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -373,7 +374,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -390,7 +391,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -407,7 +408,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -424,7 +425,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -478,7 +479,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -495,7 +496,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -512,7 +513,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -529,7 +530,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -566,7 +567,7 @@
                 android:layout_weight="1.0"
                 android:background="@color/atom_pubResColorBaziBackground"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp"
                 android:text="@string/atom_pub_resStringBaZiNaYin" />
 
@@ -584,7 +585,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -601,7 +602,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -618,7 +619,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView
@@ -635,7 +636,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.0"
                 android:gravity="center"
-                android:lineSpacingExtra="4dp"
+                android:lineSpacingExtra="8dp"
                 android:padding="4dp" />
 
             <ImageView

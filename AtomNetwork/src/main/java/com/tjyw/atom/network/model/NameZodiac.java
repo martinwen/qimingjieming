@@ -34,4 +34,12 @@ public class NameZodiac implements RetroResultItem {
     public List<String> nayin;
 
     public String pianpang;
+
+    public String shiye;
+
+    public String xueye;
+
+    public String caiyun;
+
+    public String aiqing;
 }

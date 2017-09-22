@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <!-- 事业 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringExplainDestinyShiYe" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/yunShiShiYe"
+                style="@style/AtomStyle.GreyNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5.0"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="8dp"
+                android:padding="8dp"
+                tools:text="yunShiShiYe" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <!-- 学业 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringExplainDestinyXueYe" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/yunShiXueYe"
+                style="@style/AtomStyle.GreyNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="5.0"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="8dp"
+                android:padding="8dp"
+                tools:text="yunShiXueYe" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <!-- 财运 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringExplainDestinyCaiYun" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/yunShiCaiYun"
+                style="@style/AtomStyle.GreyNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="5.0"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="8dp"
+                android:padding="8dp"
+                tools:text="yunShiCaiYun" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <!-- 爱情 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:lineSpacingExtra="8dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringExplainDestinyAiQing" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/yunShiAiQing"
+                style="@style/AtomStyle.GreyNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="5.0"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="8dp"
+                android:padding="8dp"
+                tools:text="yunShiAiQing" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+    </LinearLayout>
+</merge>

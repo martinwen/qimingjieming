@@ -47,8 +47,23 @@ public class ExplainSanCaiItem extends AtomPubFastAdapterAbstractItem<Explain.Sa
         @From(R.id.bodyWuXing)
         protected TextView bodyWuXing;
 
-        @From(R.id.bodyContent)
-        protected TextView bodyContent;
+        @From(R.id.bodyJiXiong)
+        protected TextView bodyJiXiong;
+
+        @From(R.id.bodyZongLun)
+        protected TextView bodyZongLun;
+
+        @From(R.id.bodyJiChuYun)
+        protected TextView bodyJiChuYun;
+
+        @From(R.id.bodyChengGongYun)
+        protected TextView bodyChengGongYun;
+
+        @From(R.id.bodyRenJiGuanXi)
+        protected TextView bodyRenJiGuanXi;
+
+        @From(R.id.bodyXingGe)
+        protected TextView bodyXingGe;
 
         public DestinyFooterHolder(View itemView) {
             super(itemView);
@@ -57,7 +72,13 @@ public class ExplainSanCaiItem extends AtomPubFastAdapterAbstractItem<Explain.Sa
         @Override
         public void onBindView(Context context, Explain.SanCai sanCai) {
             bodyWuXing.setText(sanCai.sancai);
-            bodyContent.setText(sanCai.shiyi);
+            bodyJiXiong.setText(sanCai.jixiong);
+            bodyZongLun.setText(sanCai.zonglun);
+            bodyJiChuYun.setText(sanCai.jichuyun);
+            bodyChengGongYun.setText(sanCai.chenggongyun);
+            bodyRenJiGuanXi.setText(sanCai.renjiyun);
+            bodyRenJiGuanXi.setText(sanCai.renjiyun);
+            bodyXingGe.setText(sanCai.xingge);
         }
     }
 }

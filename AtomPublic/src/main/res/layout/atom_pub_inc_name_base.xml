@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical|right"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringNameSolarDot" />
+
+            <TextView
+                android:id="@+id/nameBaseSolar"
+                style="@style/AtomStyle.RedNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5.0"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp"
+                tools:text="nameBaseSolar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical|right"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringNameLunarDot" />
+
+            <TextView
+                android:id="@+id/nameBaseLunar"
+                style="@style/AtomStyle.RedNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5.0"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp"
+                tools:text="nameBaseSolar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="36dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical|right"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringNameGenderDot" />
+
+            <TextView
+                android:id="@+id/nameBaseGender"
+                style="@style/AtomStyle.RedNormalText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5.0"
+                android:gravity="center_vertical"
+                android:lineSpacingExtra="4dp"
+                android:padding="4dp"
+                tools:text="nameBaseGender" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/nameBaseZodiac"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:scaleType="center"
+        tools:src="@drawable/atom_pub_png_zodiac_1_rat" />
+</FrameLayout>

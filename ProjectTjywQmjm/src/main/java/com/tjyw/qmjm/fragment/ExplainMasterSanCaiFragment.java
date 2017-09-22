@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mikepenz.fastadapter.adapters.HeaderAdapter;
+import com.mikepenz.fastadapter.adapters.FooterAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
@@ -18,7 +18,6 @@ import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.item.ExplainSanCaiItem;
 import com.tjyw.qmjm.item.ExplainWuGeItem;
-import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +39,7 @@ public class ExplainMasterSanCaiFragment extends AtomPubBaseFragment {
     @From(R.id.explainScWgContainer)
     protected RecyclerView explainScWgContainer;
 
-    protected HeaderAdapter<ExplainSanCaiItem> explainDestinyAdapter;
+    protected FooterAdapter<ExplainSanCaiItem> explainDestinyAdapter;
 
     @Nullable
     @Override
@@ -65,16 +64,9 @@ public class ExplainMasterSanCaiFragment extends AtomPubBaseFragment {
         FastItemAdapter<ExplainWuGeItem> itemAdapter = new FastItemAdapter<ExplainWuGeItem>();
         itemAdapter.set(itemList);
 
-        explainDestinyAdapter = new HeaderAdapter<ExplainSanCaiItem>();
+        explainDestinyAdapter = new FooterAdapter<>();
         explainScWgContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
         explainScWgContainer.setAdapter(explainDestinyAdapter.wrap(itemAdapter));
-        explainScWgContainer.addItemDecoration(
-                new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
-                        .color(R.color.atom_pub_resColorDivider)
-                        .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDividerSize)
-                        .marginResId(R.dimen.atom_pubResDimenRecyclerViewDivider16dp, R.dimen.atom_pubResDimenRecyclerViewDivider16dp)
-                        .showLastDivider()
-                        .build());
 
         explainDestinyAdapter.add(new ExplainSanCaiItem(explain.sancai));
     }

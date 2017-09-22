@@ -25,4 +25,31 @@ public interface ISection {
 
         String ARRAY = "[]";
     }
+
+    interface ZODIAC {
+
+        String Zodiac1_Rat = "鼠";
+
+        String Zodiac2_Ox = "牛";
+
+        String Zodiac3_Tiger = "虎";
+
+        String Zodiac4_Rabbit = "兔";
+
+        String Zodiac5_Dragon = "龙";
+
+        String Zodiac6_Snake = "蛇";
+
+        String Zodiac7_Horse = "马";
+
+        String Zodiac8_Goat = "羊";
+
+        String Zodiac9_Monkey = "猴";
+
+        String Zodiac10_Cock = "鸡";
+
+        String Zodiac11_Dog = "狗";
+
+        String Zodiac12_Pig = "猪";
+    }
 }

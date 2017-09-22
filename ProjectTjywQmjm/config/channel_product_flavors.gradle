@@ -163,11 +163,11 @@ android {
 //            buildConfigField "String", "CLIENT_C_ID", '"C1023"'
 //            buildConfigField "String", "CLIENT_C_NAME", '"易用汇金立"'
 //        }
-//        C1024 {
-//            resValue "string", "app_name", "起名字取名字"
-//            buildConfigField "String", "CLIENT_C_ID", '"C1024"'
-//            buildConfigField "String", "CLIENT_C_NAME", '"三星"'
-//        }
+        C1024 {
+            resValue "string", "app_name", "生辰八字-宝宝起名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1024"'
+            buildConfigField "String", "CLIENT_C_NAME", '"三星"'
+        }
 //        C1025 {
 //            resValue "string", "app_name", "起名字取名字"
 //            buildConfigField "String", "CLIENT_C_ID", '"C1025"'

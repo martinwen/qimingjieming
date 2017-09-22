@@ -17,6 +17,7 @@ import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.holder.BaZiSheetHolder;
+import com.tjyw.qmjm.holder.YunShiSheetHolder;
 import com.tjyw.qmjm.item.ExplainWuGeItem;
 import com.tjyw.qmjm.item.ExplainSanCaiItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
@@ -57,5 +58,8 @@ public class ExplainMasterDestinyFragment extends AtomPubBaseFragment {
 
         BaZiSheetHolder baZiSheetHolder = new BaZiSheetHolder(view);
         baZiSheetHolder.sheet(explain.nameZodiac);
+
+        YunShiSheetHolder yunShiSheetHolder = new YunShiSheetHolder(view);
+        yunShiSheetHolder.sheet(explain.nameZodiac);
     }
 }

@@ -72,15 +72,7 @@
                         android:paddingTop="4dp" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/explainNaming"
-                    style="@style/AtomPubStyleKa.White"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/atom_pub_ic_ink_text_red"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="@string/atom_pub_resStringExplainGoodName" />
+                <include layout="@layout/atom_pub_inc_name_base" />
             </LinearLayout>
 
             <LinearLayout

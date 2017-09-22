@@ -4,91 +4,217 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="4dp">
+        android:background="@color/atom_pubResColorBaziBackground"
+        android:gravity="center_vertical"
+        android:minHeight="36dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
 
         <TextView
             android:id="@+id/bodyTitle"
             style="@style/AtomStyle.BlackBigText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1.0"
             android:ellipsize="end"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:maxLines="1"
-            android:paddingRight="8dp"
             android:textStyle="bold"
             tools:text="bodyTitle" />
 
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
         <TextView
-            android:id="@+id/bodyCount"
-            style="@style/AtomStyle.BlackBigText"
-            android:layout_width="wrap_content"
+            android:id="@+id/bodyDesc"
+            style="@style/AtomStyle.GreySmallText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="3.0"
             android:ellipsize="end"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:maxLines="1"
-            android:paddingRight="8dp"
-            android:textStyle="bold"
-            tools:text="bodyCount" />
+            android:padding="8dp"
+            tools:text="bodyDesc" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:minHeight="36dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
 
         <TextView
             android:id="@+id/bodyJiXiong"
-            style="@style/AtomStyle.RedBigText"
-            android:layout_width="wrap_content"
+            style="@style/AtomStyle.RedNormalText"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1.0"
             android:ellipsize="end"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:maxLines="1"
-            android:paddingRight="8dp"
-            android:textStyle="bold"
             tools:text="bodyXiongJi" />
 
-        <TextView
-            style="@style/AtomStyle.BlackBigText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
-            android:text="@string/atom_pub_resStringExplainWuXing"
-            android:textStyle="bold" />
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
 
-        <TextView
-            android:id="@+id/bodyWuXing"
-            style="@style/AtomStyle.WhiteSmallText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/atom_pub_ic_elements_earth"
-            android:gravity="center"
-            android:maxLength="2"
-            android:maxLines="1"
-            android:text="Wx" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.0"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/bodyLiShu"
+                style="@style/AtomStyle.SomberNormalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                tools:text="@string/atom_pub_resStringExplainLiShu" />
+
+            <ImageView
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <TextView
+                android:id="@+id/bodyWuXing"
+                style="@style/AtomStyle.GreyNormalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                tools:text="@string/atom_pub_resStringExplainWuXingFormat" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/bodySubTitle"
-        style="@style/AtomStyle.RedNormalText"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:gravity="center_vertical"
-        android:maxLines="2"
-        android:paddingTop="4dp"
-        tools:text="bodySubTitle" />
+        android:layout_height="1px"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
 
-    <TextView
-        android:id="@+id/bodyContent"
-        style="@style/AtomStyle.BlackNormalText"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
+        android:background="@android:color/white"
         android:gravity="center_vertical"
-        android:lineSpacingExtra="8dp"
-        android:paddingTop="4dp"
-        tools:text="bodyContent" />
+        android:minHeight="36dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            android:id="@+id/bodySubTitle"
+            style="@style/AtomStyle.GreyNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="8dp"
+            android:padding="8dp"
+            tools:text="bodySubTitle" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:minHeight="36dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            android:id="@+id/bodyContent"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="8dp"
+            android:padding="8dp"
+            tools:text="bodyContent" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+    </LinearLayout>
 </LinearLayout>

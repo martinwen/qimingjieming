@@ -20,8 +20,19 @@ public interface HttpQmServices {
 
         String QM = "qm";
 
+        String QM_DATA = "qm/qmData";
+
         String JM = "jm";
     }
+
+    @FormUrlEncoded
+    @POST(API.QM_DATA)
+    Observable<RetroResult<RNameDefinition>> postNameDefinitionData(
+            @Field(IApiField.S.surname) String surname,
+            @Field(IApiField.D.day) String day,
+            @Field(IApiField.G.gender) int gender,
+            @Field(IApiField.N.nameNumber) int nameNumber
+    );
 
     @FormUrlEncoded
     @POST(API.QM)

@@ -9,17 +9,23 @@ import android.widget.TextView;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
+import com.tjyw.atom.network.presenter.NamingPresenter;
+import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
+import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
+import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.NameMasterAdapter;
 import com.tjyw.qmjm.dialog.NamingPayWindows;
 
+import nucleus.factory.RequiresPresenter;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Created by stephen on 19/09/2017.
  */
-public class NameMasterActivity extends BaseToolbarActivity {
+@RequiresPresenter(NamingPresenter.class)
+public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<NamingListActivity>> implements OnApiPostErrorListener, OnApiPostNamingListener {
 
     @From(R.id.nameAnalyze)
     protected TextView nameAnalyze;
@@ -127,5 +133,15 @@ public class NameMasterActivity extends BaseToolbarActivity {
                     nameRecommend.setSelected(false);
             }
         }
+    }
+
+    @Override
+    public void postOnExplainError(int postId, Throwable throwable) {
+
+    }
+
+    @Override
+    public void postOnNamingSuccess(RNameDefinition result) {
+
     }
 }

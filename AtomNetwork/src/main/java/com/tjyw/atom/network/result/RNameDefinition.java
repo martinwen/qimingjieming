@@ -2,6 +2,7 @@ package com.tjyw.atom.network.result;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tjyw.atom.network.conf.IApiField;
+import com.tjyw.atom.network.model.NameData;
 import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.param.ListRequestParam;
 
@@ -14,4 +15,6 @@ public class RNameDefinition extends RetroListResult<NameDefinition> {
 
     @JsonProperty(IApiField.I.info)
     public ListRequestParam param;
+
+    public NameData data;
 }

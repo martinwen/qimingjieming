@@ -19,10 +19,9 @@ import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
-import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 import com.tjyw.qmjm.adapter.ExplainMasterAdapter;
-import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.tjyw.qmjm.holder.HeaderWordHolder;
+import com.tjyw.qmjm.holder.NameBaseInfoHolder;
 
 import nucleus.factory.RequiresPresenter;
 import rx.Observable;
@@ -46,9 +45,6 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
 
     @From(R.id.explainEvaluateDesc)
     protected TextView explainEvaluateDesc;
-
-    @From(R.id.explainNaming)
-    protected TextView explainNaming;
 
     @From(R.id.explainOverview)
     protected TextView explainOverview;
@@ -93,7 +89,6 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
         explainZodiac.setOnClickListener(this);
         explainDestiny.setOnClickListener(this);
         explainSanCai.setOnClickListener(this);
-        explainNaming.setOnClickListener(this);
 
         explainMasterContainer.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 
@@ -132,9 +127,6 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.explainNaming:
-                IClientActivityLaunchFactory.launchClientMasterActivity(this, ClientMasterAdapter.POSITION.NAMING, true);
-                break ;
             case R.id.explainOverview:
                 setSelectedTab(v);
                 explainMasterAdapter.showOverviewFragment(explainMasterContainer);
@@ -194,6 +186,8 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
                         }
                     });
         }
+
+        new NameBaseInfoHolder(findViewById(android.R.id.content)).baseInfo(explain.nameZodiac);
     }
 
     @Override

@@ -12,12 +12,13 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/AtomStyle.BlackNormalText"
+            style="@style/AtomStyle.BlackBigText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:padding="8dp"
-            android:text="@string/atom_pub_resStringBaZi" />
+            android:text="@string/atom_pub_resStringBaZi"
+            android:textStyle="bold" />
 
         <include layout="@layout/atom_pub_inc_bazi" />
 
@@ -27,6 +28,16 @@
             android:layout_marginTop="16dp"
             android:scaleType="fitXY"
             android:src="@color/atom_pub_resColorDivider" />
-    </LinearLayout>
 
+        <TextView
+            style="@style/AtomStyle.BlackBigText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="8dp"
+            android:text="@string/atom_pub_resStringExplainDestinyYunShiXiangJie"
+            android:textStyle="bold" />
+
+        <include layout="@layout/atom_pub_inc_yunshijieshi" />
+    </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
