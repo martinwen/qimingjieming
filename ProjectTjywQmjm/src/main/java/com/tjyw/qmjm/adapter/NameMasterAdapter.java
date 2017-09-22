@@ -31,7 +31,7 @@ public class NameMasterAdapter extends FragmentPagerAdapter {
         return new NameMasterAdapter(fragmentManager)
                     .setAnalyzeFragment(NameMasterAnalyzeFragment.newInstance(definition.data))
                     .setRecommendFragment(NameMasterRecommendFragment.newInstance(definition))
-                    .setLuckyFragment(NameMasterLuckyFragment.newInstance(null));
+                    .setLuckyFragment(NameMasterLuckyFragment.newInstance(definition.param));
     }
 
     protected NameMasterAnalyzeFragment masterAnalyzeFragment;

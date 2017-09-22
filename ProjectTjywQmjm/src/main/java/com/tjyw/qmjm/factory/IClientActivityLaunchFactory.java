@@ -19,6 +19,7 @@ import com.tjyw.qmjm.activity.PayOrderActivity;
 import com.tjyw.qmjm.activity.PayOrderListActivity;
 import com.tjyw.qmjm.activity.UserFavoriteListActivity;
 import com.tjyw.qmjm.activity.UserSignInActivity;
+import com.tjyw.qmjm.fragment.BaseFragment;
 
 /**
  * Created by stephen on 07/08/2017.
@@ -41,6 +42,12 @@ public class IClientActivityLaunchFactory {
         context.startActivity(intent);
     }
 
+    public static void launchExplainMasterActivity(BaseFragment context, ListRequestParam listRequestParam) {
+        Intent intent = new Intent(context.getActivity(), ExplainMasterActivity.class);
+        intent.putExtra(IApiField.P.param, listRequestParam);
+        context.startActivity(intent);
+    }
+
     public static void launchNameMasterActivity(BaseActivity context, ListRequestParam listRequestParam) {
         Intent intent = new Intent(context, NameMasterActivity.class);
         intent.putExtra(IApiField.P.param, listRequestParam);
@@ -56,6 +63,13 @@ public class IClientActivityLaunchFactory {
 
     public static void launchPayOrderActivity(BaseActivity context, ListRequestParam param, PayService payService) {
         Intent intent = new Intent(context, PayOrderActivity.class);
+        intent.putExtra(IApiField.P.param, param);
+        intent.putExtra(IApiField.P.payService, payService);
+        context.startActivityForResult(intent, ICode.SECTION.PAY);
+    }
+
+    public static void launchPayOrderActivity(BaseFragment context, ListRequestParam param, PayService payService) {
+        Intent intent = new Intent(context.getActivity(), PayOrderActivity.class);
         intent.putExtra(IApiField.P.param, param);
         intent.putExtra(IApiField.P.payService, payService);
         context.startActivityForResult(intent, ICode.SECTION.PAY);

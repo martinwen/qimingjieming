@@ -47,6 +47,30 @@ public class PayPresenter<V extends ViewWithPresenter> extends FavoritePresenter
                 });
     }
 
+    public void postPayServiceShowLuck(String surname, String day) {
+        RetroHttpMethods.PAY().postPayServiceShowLuck(surname, day)
+                .compose(RxSchedulersHelper.<RetroResult<PayService>>io_main())
+                .subscribe(new Action1<RetroResult<PayService>>() {
+                    @Override
+                    public void call(RetroResult<PayService> result) {
+                        if (null == result || result.illegalRequest()) {
+                            if (presenterView instanceof OnApiPostErrorListener) {
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.PayOrder, new IllegalRequestException(result));
+                            }
+                        } else if (presenterView instanceof OnApiPayPostListener.PostPayServiceListener) {
+                            ((OnApiPayPostListener.PostPayServiceListener) presenterView).postOnPayServiceSuccess(result.items);
+                        }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        if (presenterView instanceof OnApiPostErrorListener) {
+                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.PayOrder, throwable);
+                        }
+                    }
+                });
+    }
+
     public void postPayPreview(int vipId, String surname, String day, int gender, int nameNumber) {
         RetroHttpMethods.PAY().postPayPreview(vipId, surname, day, gender, nameNumber)
                 .compose(RxSchedulersHelper.<RetroResult<RetroPayPreviewResult>>io_main())

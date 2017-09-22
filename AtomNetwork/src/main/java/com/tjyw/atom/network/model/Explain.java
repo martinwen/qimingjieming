@@ -29,6 +29,8 @@ public class Explain implements RetroResultItem {
 
         public String name;
 
+        public String desc;
+
         public int number;
 
         public String wuxing;

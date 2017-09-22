@@ -2,37 +2,51 @@ package com.tjyw.qmjm.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.mikepenz.fastadapter.adapters.HeaderAdapter;
 import com.tjyw.atom.network.conf.IApiField;
-import com.tjyw.atom.network.model.Explain;
-import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
+import com.tjyw.atom.network.model.PayService;
+import com.tjyw.atom.network.param.ListRequestParam;
+import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.pub.inject.From;
+import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
-import com.tjyw.qmjm.item.ExplainSanCaiItem;
+import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
+
+import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by stephen on 17-8-11.
  */
-public class NameMasterLuckyFragment extends AtomPubBaseFragment {
+@RequiresPresenter(NamingPresenter.class)
+public class NameMasterLuckyFragment extends NameMasterRecommendFragment {
 
-    public static NameMasterLuckyFragment newInstance(Explain explain) {
+    public static NameMasterLuckyFragment newInstance(ListRequestParam param) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(IApiField.E.explain, explain);
+        bundle.putSerializable(IApiField.P.param, param);
 
         NameMasterLuckyFragment fragment = new NameMasterLuckyFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
 
-    @From(R.id.nameLuckyContainer)
-    protected RecyclerView nameLuckyContainer;
+    @From(R.id.bodySurname)
+    protected TextView bodySurname;
 
-    protected HeaderAdapter<ExplainSanCaiItem> explainDestinyAdapter;
+    @From(R.id.bodyDate)
+    protected TextView bodyDate;
+
+    @From(R.id.bodyServiceName)
+    protected TextView bodyServiceName;
+
+    @From(R.id.bodyServicePrice)
+    protected TextView bodyServicePrice;
+
+    @From(R.id.atom_pub_resIdsOK)
+    protected TextView atom_pub_resIdsOK;
 
     @Nullable
     @Override
@@ -44,9 +58,43 @@ public class NameMasterLuckyFragment extends AtomPubBaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Explain explain = (Explain) pGetSerializableExtra(IApiField.E.explain);
-        if (null == explain) {
-            return ;
+        if (null != listRequestParam) {
+            requestListData();
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.atom_pub_resIdsOK:
+                IClientActivityLaunchFactory.launchPayOrderActivity(this, listRequestParam, payService);
+                break ;
+            default:
+                super.onClick(v);
+        }
+    }
+
+    @Override
+    public void postOnPayServiceSuccess(PayService payService) {
+        maskerHideProgressView();
+        this.payService = payService;
+
+        atom_pub_resIdsOK.setOnClickListener(this);
+
+        bodySurname.setText(payService.surname);
+        bodyDate.setText(payService.day);
+        bodyServiceName.setText(payService.service);
+        bodyServicePrice.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s, payService.money));
+    }
+
+    protected void requestListData() {
+        if (null != listRequestParam) {
+            maskerShowProgressView(false);
+            if (hasOrderNo()) {
+                getPresenter().postPayOrderNameList(listRequestParam.orderNo);
+            } else {
+                getPresenter().postPayServiceShowLuck(listRequestParam.surname, listRequestParam.day);
+            }
         }
     }
 }

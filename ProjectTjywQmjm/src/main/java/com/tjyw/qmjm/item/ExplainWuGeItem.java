@@ -72,6 +72,7 @@ public class ExplainWuGeItem extends AtomPubFastAdapterAbstractItem<Explain.WuGe
         @Override
         public void onBindView(Context context, Explain.WuGe wuGe) {
             bodyTitle.setText(wuGe.name);
+            bodyDesc.setText(wuGe.desc);
             bodyJiXiong.setText(wuGe.jixiong);
             bodyLiShu.setText(context.getString(R.string.atom_pub_resStringExplainLiShu, wuGe.number));
             bodyWuXing.setText(context.getString(R.string.atom_pub_resStringExplainWuXingFormat, wuGe.wuxing));

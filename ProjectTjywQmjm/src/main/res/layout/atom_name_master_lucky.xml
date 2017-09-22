@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/nameLuckyContainer"
+        android:id="@+id/nameListContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="32dp">
+
+        <include layout="@layout/atom_naming_pay" />
+    </LinearLayout>
+
+    <include layout="@layout/atom_pub_inc_loading" />
+</FrameLayout>
