@@ -2,27 +2,29 @@ package com.tjyw.qmjm.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mikepenz.fastadapter.adapters.HeaderAdapter;
+import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.IApiField;
-import com.tjyw.atom.network.model.Explain;
+import com.tjyw.atom.network.model.NameData;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.inject.From;
+import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
-import com.tjyw.qmjm.item.ExplainSanCaiItem;
+import com.tjyw.qmjm.item.NameMasterAnalyzeItem;
 
 /**
  * Created by stephen on 17-8-11.
  */
 public class NameMasterAnalyzeFragment extends AtomPubBaseFragment {
 
-    public static NameMasterAnalyzeFragment newInstance(Explain explain) {
+    public static NameMasterAnalyzeFragment newInstance(NameData data) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(IApiField.E.explain, explain);
+        bundle.putSerializable(IApiField.D.data, data);
 
         NameMasterAnalyzeFragment fragment = new NameMasterAnalyzeFragment();
         fragment.setArguments(bundle);
@@ -32,7 +34,7 @@ public class NameMasterAnalyzeFragment extends AtomPubBaseFragment {
     @From(R.id.nameAnalyzeContainer)
     protected RecyclerView nameAnalyzeContainer;
 
-    protected HeaderAdapter<ExplainSanCaiItem> explainDestinyAdapter;
+    FastItemAdapter<NameMasterAnalyzeItem> nameAnalyzeAdapter;
 
     @Nullable
     @Override
@@ -44,9 +46,13 @@ public class NameMasterAnalyzeFragment extends AtomPubBaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Explain explain = (Explain) pGetSerializableExtra(IApiField.E.explain);
-        if (null == explain) {
-            return ;
+        NameData data = (NameData) pGetSerializableExtra(IApiField.D.data);
+        if (null != data) {
+            nameAnalyzeAdapter = new FastItemAdapter<NameMasterAnalyzeItem>();
+            nameAnalyzeAdapter.add(new NameMasterAnalyzeItem(data));
+
+            nameAnalyzeContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
+            nameAnalyzeContainer.setAdapter(nameAnalyzeAdapter);
         }
     }
 }

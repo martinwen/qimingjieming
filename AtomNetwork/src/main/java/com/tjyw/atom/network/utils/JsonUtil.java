@@ -74,7 +74,7 @@ public class JsonUtil {
         }
     }
 
-    public List parseJavaArray(String text, Class clazz) {
+    public <T> List<T> parseJavaArray(String text, Class clazz) {
         try {
             JavaType javaType = getCollectionType(ArrayList.class, clazz);
             return this.mapper.readValue(text, javaType);

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- 起名详情页资料分析 -->
+    <item name="atom_pub_resFasterAdapterType_NameMasterAnalyzeItem" type="id"/>
+
     <!-- 解名详情页字义释解 -->
     <item name="atom_pub_resFasterAdapterType_ExplainOverviewItem" type="id"/>
 
@@ -26,7 +29,6 @@
 
     <!-- 我的收藏 -->
     <item name="atom_pub_resFasterAdapterType_UserFavoriteItem" type="id"/>
-
 
     <!-- 在线客服::本地QA问题 -->
     <item name="atom_pub_resFasterAdapterType_MessageHotLineLocalInboxItem" type="id"/>

@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.tjyw.atom.network.model.Explain;
+import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.qmjm.fragment.NameMasterAnalyzeFragment;
 import com.tjyw.qmjm.fragment.NameMasterLuckyFragment;
 import com.tjyw.qmjm.fragment.NameMasterRecommendFragment;
@@ -26,11 +27,11 @@ public class NameMasterAdapter extends FragmentPagerAdapter {
         int ALL = 3;
     }
 
-    public static NameMasterAdapter newInstance(FragmentManager fragmentManager, Explain explain) {
+    public static NameMasterAdapter newInstance(FragmentManager fragmentManager, RNameDefinition definition) {
         return new NameMasterAdapter(fragmentManager)
-                    .setAnalyzeFragment(NameMasterAnalyzeFragment.newInstance(explain))
-                    .setRecommendFragment(NameMasterRecommendFragment.newInstance(explain))
-                    .setLuckyFragment(NameMasterLuckyFragment.newInstance(explain));
+                    .setAnalyzeFragment(NameMasterAnalyzeFragment.newInstance(definition.data))
+                    .setRecommendFragment(NameMasterRecommendFragment.newInstance(definition))
+                    .setLuckyFragment(NameMasterLuckyFragment.newInstance(null));
     }
 
     protected NameMasterAnalyzeFragment masterAnalyzeFragment;

@@ -88,8 +88,12 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
             }
         });
 
-        nameMasterContainer.setAdapter(
-                nameMasterAdapter = NameMasterAdapter.newInstance(getSupportFragmentManager(), null)
+        maskerShowProgressView(false);
+        getPresenter().postNameDefinitionData(
+                listRequestParam.surname,
+                listRequestParam.day,
+                listRequestParam.gender,
+                listRequestParam.nameNumber
         );
     }
 
@@ -142,6 +146,9 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
 
     @Override
     public void postOnNamingSuccess(RNameDefinition result) {
-
+        maskerHideProgressView();
+        nameMasterContainer.setAdapter(
+                nameMasterAdapter = NameMasterAdapter.newInstance(getSupportFragmentManager(), result)
+        );
     }
 }

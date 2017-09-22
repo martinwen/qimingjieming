@@ -20,7 +20,7 @@ public interface HttpQmServices {
 
         String QM = "qm";
 
-        String QM_DATA = "qm/qmData";
+        String QM_DATA = "qmData";
 
         String JM = "jm";
     }
