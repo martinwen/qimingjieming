@@ -244,7 +244,7 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 switch (newState) {
                     case RecyclerView.SCROLL_STATE_IDLE:
-                        if (! recyclerView.canScrollVertically(1) && ! hasOrderNo()) {
+                        if (canShowPayInterceptWindow()) {
                             if (null == payService) {
                                 maskerShowProgressView(true);
                                 getPresenter().postPayService(listRequestParam.surname, listRequestParam.day);
@@ -328,6 +328,10 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
                 );
             }
         }
+    }
+
+    protected boolean canShowPayInterceptWindow() {
+        return ! nameListContainer.canScrollVertically(1) && ! hasOrderNo();
     }
 
     protected boolean hasOrderNo() {

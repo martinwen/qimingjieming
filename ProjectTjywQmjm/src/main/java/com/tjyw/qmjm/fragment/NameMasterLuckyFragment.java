@@ -97,6 +97,7 @@ public class NameMasterLuckyFragment extends NameMasterRecommendFragment {
         bodyServicePrice.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s, payService.money));
     }
 
+    @Override
     protected void requestListData() {
         if (null != listRequestParam) {
             maskerShowProgressView(false);
@@ -106,5 +107,10 @@ public class NameMasterLuckyFragment extends NameMasterRecommendFragment {
                 getPresenter().postPayServiceShowLuck(listRequestParam.surname, listRequestParam.day);
             }
         }
+    }
+
+    @Override
+    protected boolean canShowPayInterceptWindow() {
+        return false;
     }
 }
