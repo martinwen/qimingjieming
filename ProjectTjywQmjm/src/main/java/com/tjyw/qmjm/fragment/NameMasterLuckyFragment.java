@@ -11,6 +11,7 @@ import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
+import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
@@ -26,12 +27,15 @@ public class NameMasterLuckyFragment extends NameMasterRecommendFragment {
 
     public static NameMasterLuckyFragment newInstance(ListRequestParam param) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(IApiField.P.param, param);
+        bundle.putSerializable(IApiField.P.param, param.clone());
 
         NameMasterLuckyFragment fragment = new NameMasterLuckyFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
+
+    @From(R.id.namePayContainer)
+    protected ViewGroup namePayContainer;
 
     @From(R.id.bodySurname)
     protected TextView bodySurname;
@@ -72,6 +76,12 @@ public class NameMasterLuckyFragment extends NameMasterRecommendFragment {
             default:
                 super.onClick(v);
         }
+    }
+
+    @Override
+    public void postOnNamingSuccess(RNameDefinition result) {
+        super.postOnNamingSuccess(result);
+        namePayContainer.setVisibility(View.GONE);
     }
 
     @Override

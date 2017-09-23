@@ -38,9 +38,9 @@ public class ListRequestParam implements Serializable, Cloneable {
     }
 
     @Override
-    public Object clone() {
+    public ListRequestParam clone() {
         try {
-            return super.clone();
+            return (ListRequestParam) super.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
             return null;

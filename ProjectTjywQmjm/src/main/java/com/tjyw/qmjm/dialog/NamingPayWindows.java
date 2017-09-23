@@ -27,12 +27,18 @@ import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
  */
 public class NamingPayWindows extends DialogFragment implements View.OnClickListener {
 
-    public static NamingPayWindows newInstance(FragmentManager manager, ListRequestParam param, PayService payService) {
+    public interface OnPayShowWindowClickListener {
+
+        void payShowWindowOnPayClick(ListRequestParam param, PayService payService);
+    }
+
+    public static NamingPayWindows newInstance(FragmentManager manager, ListRequestParam param, PayService payService, OnPayShowWindowClickListener listener) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(IApiField.P.param, param);
         bundle.putSerializable(IApiField.P.payService, payService);
 
         NamingPayWindows windows = new NamingPayWindows();
+        windows.setOnPayShowWindowClickListener(listener);
         windows.setArguments(bundle);
         windows.show(manager, NamingPayWindows.class.getName());
         return windows;
@@ -56,6 +62,8 @@ public class NamingPayWindows extends DialogFragment implements View.OnClickList
     protected ListRequestParam param;
 
     protected PayService payService;
+
+    protected OnPayShowWindowClickListener onPayShowWindowClickListener;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -99,7 +107,11 @@ public class NamingPayWindows extends DialogFragment implements View.OnClickList
             case R.id.atom_pub_resIdsOK:
                 dismissAllowingStateLoss();
                 if (null != param) {
-                    IClientActivityLaunchFactory.launchPayOrderActivity((BaseActivity) getActivity(), param, payService);
+                    if (null == onPayShowWindowClickListener) {
+                        IClientActivityLaunchFactory.launchPayOrderActivity((BaseActivity) getActivity(), param, payService);
+                    } else {
+                        onPayShowWindowClickListener.payShowWindowOnPayClick(param, payService);
+                    }
                 }
                 break ;
             default:
@@ -113,5 +125,9 @@ public class NamingPayWindows extends DialogFragment implements View.OnClickList
         Dialog dialog = super.onCreateDialog(savedInstanceState);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         return dialog;
+    }
+
+    public void setOnPayShowWindowClickListener(OnPayShowWindowClickListener listener) {
+        this.onPayShowWindowClickListener = listener;
     }
 }

@@ -172,7 +172,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
                                 maskerShowProgressView(true);
                                 getPresenter().postPayService(listRequestParam.surname, listRequestParam.day);
                             } else if (null == namingPayWindows) {
-                                namingPayWindows = NamingPayWindows.newInstance(getSupportFragmentManager(), listRequestParam, payService);
+                                namingPayWindows = NamingPayWindows.newInstance(getSupportFragmentManager(), listRequestParam, payService, null);
                             } else if (!namingPayWindows.isVisible()) {
                                 namingPayWindows.show(getSupportFragmentManager(), NamingPayWindows.class.getName());
                             }
@@ -293,7 +293,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         maskerHideProgressView();
         this.payService = payService;
         if (null == namingPayWindows) {
-            namingPayWindows = NamingPayWindows.newInstance(getSupportFragmentManager(), listRequestParam, payService);
+            namingPayWindows = NamingPayWindows.newInstance(getSupportFragmentManager(), listRequestParam, payService, null);
         } else {
             namingPayWindows.show(getSupportFragmentManager(), NamingPayWindows.class.getName());
         }

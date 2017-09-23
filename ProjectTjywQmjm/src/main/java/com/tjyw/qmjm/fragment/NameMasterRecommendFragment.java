@@ -38,7 +38,6 @@ import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
-import com.tjyw.qmjm.activity.NamingListActivity;
 import com.tjyw.qmjm.dialog.NamingPayWindows;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.tjyw.qmjm.item.NameDefinitionFooterItem;
@@ -58,6 +57,7 @@ import rx.functions.Action1;
  */
 @RequiresPresenter(NamingPresenter.class)
 public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<NameMasterRecommendFragment>> implements
+        NamingPayWindows.OnPayShowWindowClickListener,
         OnApiPostErrorListener,
         OnApiPostNamingListener,
         OnApiFavoritePostListener.PostAddListener, OnApiFavoritePostListener.PostRemoveListener,
@@ -66,7 +66,7 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
     public static NameMasterRecommendFragment newInstance(RNameDefinition definition) {
         Bundle bundle = new Bundle();
         bundle.putString(IApiField.D.data, JsonUtil.getInstance().toJsonString(definition.list));
-        bundle.putSerializable(IApiField.P.param, definition.param);
+        bundle.putSerializable(IApiField.P.param, definition.param.clone());
 
         NameMasterRecommendFragment fragment = new NameMasterRecommendFragment();
         fragment.setArguments(bundle);
@@ -145,6 +145,11 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
     }
 
     @Override
+    public void payShowWindowOnPayClick(ListRequestParam param, PayService payService) {
+        IClientActivityLaunchFactory.launchPayOrderActivity(this, param, payService);
+    }
+
+    @Override
     public void postOnExplainError(int postId, Throwable throwable) {
         throwable.printStackTrace();
         switch (postId) {
@@ -213,7 +218,7 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
         maskerHideProgressView();
         this.payService = payService;
         if (null == namingPayWindows) {
-            namingPayWindows = NamingPayWindows.newInstance(getFragmentManager(), listRequestParam, payService);
+            namingPayWindows = NamingPayWindows.newInstance(getFragmentManager(), listRequestParam, payService, this);
         } else {
             namingPayWindows.show(getFragmentManager(), NamingPayWindows.class.getName());
         }
@@ -244,7 +249,7 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
                                 maskerShowProgressView(true);
                                 getPresenter().postPayService(listRequestParam.surname, listRequestParam.day);
                             } else if (null == namingPayWindows) {
-                                namingPayWindows = NamingPayWindows.newInstance(getFragmentManager(), listRequestParam, payService);
+                                namingPayWindows = NamingPayWindows.newInstance(getFragmentManager(), listRequestParam, payService, NameMasterRecommendFragment.this);
                             } else if (!namingPayWindows.isVisible()) {
                                 namingPayWindows.show(getFragmentManager(), NamingPayWindows.class.getName());
                             }
@@ -298,7 +303,7 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
                         ListRequestParam param = new ListRequestParam(((NamingWordItem) item).src);
                         IClientActivityLaunchFactory.launchExplainMasterActivity(NameMasterRecommendFragment.this, param);
                     } else {
-                        ListRequestParam param = (ListRequestParam) listRequestParam.clone();
+                        ListRequestParam param = listRequestParam.clone();
                         param.name = ((NamingWordItem) item).src.getGivenName();
                         IClientActivityLaunchFactory.launchExplainMasterActivity(NameMasterRecommendFragment.this, param);
                     }
