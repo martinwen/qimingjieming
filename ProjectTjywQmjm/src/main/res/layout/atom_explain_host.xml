@@ -53,7 +53,7 @@
 
                     <TextView
                         android:id="@+id/explainEvaluateValue"
-                        style="@style/AtomStyle.RedNormalText"
+                        style="@style/AtomStyle.RedHugeText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -62,7 +62,7 @@
 
                     <TextView
                         android:id="@+id/explainEvaluateDesc"
-                        style="@style/AtomStyle.BlackSmallText"
+                        style="@style/AtomStyle.GreyTinyText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
@@ -91,12 +91,12 @@
 
                     <TextView
                         android:id="@+id/explainOverview"
-                        style="@style/AtomPubStyleKa.White"
+                        style="@style/AtomPubStyleKa.White_16DP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/atom_pub_selector_ink_text"
+                        android:background="@drawable/atom_pub_ic_ink_text_select"
                         android:gravity="center"
-                        android:text="@string/atom_pub_resStringExplainOverview"
+                        android:text="@string/atom_pub_resStringExplainOverview" android:padding="16dp"
                         android:textColor="@color/atom_pub_black2white" />
                 </LinearLayout>
 
@@ -109,7 +109,7 @@
 
                     <TextView
                         android:id="@+id/explainZodiac"
-                        style="@style/AtomPubStyleKa.White"
+                        style="@style/AtomPubStyleKa.White_16DP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/atom_pub_selector_ink_text"
@@ -127,7 +127,7 @@
 
                     <TextView
                         android:id="@+id/explainDestiny"
-                        style="@style/AtomPubStyleKa.White"
+                        style="@style/AtomPubStyleKa.White_16DP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/atom_pub_selector_ink_text"
@@ -145,7 +145,7 @@
 
                     <TextView
                         android:id="@+id/explainSanCai"
-                        style="@style/AtomPubStyleKa.White"
+                        style="@style/AtomPubStyleKa.White_16DP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/atom_pub_selector_ink_text"
