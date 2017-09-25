@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mikepenz.fastadapter.adapters.FooterAdapter;
+import com.mikepenz.fastadapter.adapters.HeaderAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
@@ -39,7 +40,7 @@ public class ExplainMasterSanCaiFragment extends AtomPubBaseFragment {
     @From(R.id.explainScWgContainer)
     protected RecyclerView explainScWgContainer;
 
-    protected FooterAdapter<ExplainSanCaiItem> explainDestinyAdapter;
+    protected HeaderAdapter<ExplainSanCaiItem> explainDestinyAdapter;
 
     @Nullable
     @Override
@@ -64,7 +65,7 @@ public class ExplainMasterSanCaiFragment extends AtomPubBaseFragment {
         FastItemAdapter<ExplainWuGeItem> itemAdapter = new FastItemAdapter<ExplainWuGeItem>();
         itemAdapter.set(itemList);
 
-        explainDestinyAdapter = new FooterAdapter<>();
+        explainDestinyAdapter = new HeaderAdapter<ExplainSanCaiItem>();
         explainScWgContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
         explainScWgContainer.setAdapter(explainDestinyAdapter.wrap(itemAdapter));
 

@@ -5,20 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:scaleType="fitXY"
-        android:src="@color/atom_pub_resColorDivider" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_marginTop="16dp"
-        android:scaleType="fitXY"
-        android:src="@color/atom_pub_resColorDivider" />
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
 
     <TextView
         style="@style/AtomStyle.BlackBigText"
@@ -415,4 +403,19 @@
         android:scaleType="fitXY"
         android:src="@color/atom_pub_resColorDivider" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="16dp"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
+
+    <TextView
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:text="@string/atom_pub_resStringExplainWuGe"
+        android:textStyle="bold" />
 </LinearLayout>
