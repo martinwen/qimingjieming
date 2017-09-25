@@ -109,7 +109,7 @@ android {
 //            buildConfigField "String", "CLIENT_C_NAME", '"华为"'
 //        }
 //        C1013 {
-//            resValue "string", "app_name", "宝宝-起名软件"
+//            resValue "string", "app_name", "起名"
 //            buildConfigField "String", "CLIENT_C_ID", '"C1013"'
 //            buildConfigField "String", "CLIENT_C_NAME", '"魅族"'
 //        }
