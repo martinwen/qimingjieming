@@ -1,5 +1,6 @@
 package com.tjyw.qmjm.activity;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -7,6 +8,7 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.brianjmelton.stanley.ProxyGenerator;
+import com.tbruyelle.rxpermissions.RxPermissions;
 import com.tjyw.atom.network.RetroHttpMethods;
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.interfaces.IPrefClient;
@@ -59,7 +61,7 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
                     .subscribe(new Action1<RetroResult<ClientInit>>() {
                         @Override
                         public void call(RetroResult<ClientInit> result) { // 成功后进入主界面
-                            launchMasterActivity();
+                            requestPhoneStatePermission();
                             IPrefClient client = new ProxyGenerator().create(getApplicationContext(), IPrefClient.class);
                             if (null != client) {
                                 client.setClientInit(JsonUtil.getInstance().toJsonString(result.items));
@@ -69,7 +71,7 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
                         @Override
                         public void call(Throwable throwable) { // 初始化接口失败不退出APP，也进入主界面
                             throwable.printStackTrace();
-                            launchMasterActivity();
+                            requestPhoneStatePermission();
                         }
                     });
         } else { // 没有用户信息时，先请求register接口创建用户，再访问init接口初始化
@@ -96,7 +98,7 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
                             throwable.printStackTrace();
                             IPrefUser user = new ProxyGenerator().create(getApplicationContext(), IPrefUser.class);
                             if (null != user && ! TextUtils.isEmpty(user.getUserSession())) {
-                                launchMasterActivity();
+                                requestPhoneStatePermission();
                             } else { // 否则说明注册接口出现异常，弹窗提示并退出应用
                                 new AlertDialog.Builder(ClientWelcomeActivity.this)
                                         .setTitle(R.string.atom_pub_resStringTip)
@@ -118,7 +120,7 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
                                     .subscribe(new Action1<Long>() {
                                         @Override
                                         public void call(Long aLong) {
-                                            launchMasterActivity();
+                                            requestPhoneStatePermission();
                                         }
                                     });
                         }
@@ -133,6 +135,33 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
                 user.setUserSession(userInfo.sessionKey);
                 user.setUserInfo(JsonUtil.getInstance().toJsonString(userInfo));
             }
+        }
+    }
+
+    protected void requestPhoneStatePermission() {
+        RxPermissions permissions = new RxPermissions(this);
+        if (permissions.isGranted(Manifest.permission.READ_PHONE_STATE)) {
+            launchMasterActivity();
+        } else {
+            permissions
+                    .request(Manifest.permission.READ_PHONE_STATE)
+                    .compose(RxSchedulersHelper.<Boolean>io_main())
+                    .subscribe(new Action1<Boolean>() {
+                        @Override
+                        public void call(Boolean granted) {
+                            launchMasterActivity();
+                            if (! granted) {
+                                showToast(R.string.atom_pub_resStringPermissionByUserDeny);
+                            }
+                        }
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            throwable.printStackTrace();
+                            launchMasterActivity();
+                            showToast(R.string.atom_pub_resStringPermissionByUserDeny);
+                        }
+                    });
         }
     }
 

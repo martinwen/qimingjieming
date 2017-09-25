@@ -23,6 +23,7 @@ import com.tjyw.atom.network.model.ClientInit;
 import com.tjyw.atom.network.model.UserInfo;
 import com.tjyw.atom.network.presenter.ClientPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiClientPostListener;
+import com.tjyw.atom.network.utils.DeviceUtil;
 import com.tjyw.atom.network.utils.JsonUtil;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.inject.From;
@@ -122,7 +123,10 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment<ClientPresente
                         IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, clientInit.yunqibaodian, R.string.atom_pub_resStringMinePregnant);
                         break ;
                     case R.string.atom_pub_resStringMineAbout:
-                        IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, clientInit.about, R.string.atom_pub_resStringMineAbout);
+                        StringBuilder builder = new StringBuilder(clientInit.about);
+                        builder.append("?v=").append(DeviceUtil.getClientVersionName(ClientQmjmApplication.getContext()));
+                        builder.append("&n=").append(ClientQmjmApplication.pGetString(R.string.app_name));
+                        IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, builder.toString(), R.string.atom_pub_resStringMineAbout);
                         break ;
                     case R.string.atom_pub_resStringMineFeedback:
                         IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, clientInit.feedback, R.string.atom_pub_resStringMineFeedback);
