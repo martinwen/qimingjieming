@@ -55,10 +55,9 @@ public class IClientActivityLaunchFactory {
     }
 
     public static void launchNamingListActivity(BaseActivity context, ListRequestParam listRequestParam) {
-//        Intent intent = new Intent(context, NamingListActivity.class);
-//        intent.putExtra(IApiField.P.param, listRequestParam);
-//        context.startActivity(intent);
-        launchNameMasterActivity(context, listRequestParam);
+        Intent intent = new Intent(context, NamingListActivity.class);
+        intent.putExtra(IApiField.P.param, listRequestParam);
+        context.startActivity(intent);
     }
 
     public static void launchPayOrderActivity(BaseActivity context, ListRequestParam param, PayService payService) {
