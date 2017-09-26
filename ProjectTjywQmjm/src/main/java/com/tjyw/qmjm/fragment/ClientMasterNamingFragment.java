@@ -90,7 +90,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements G
             @Override
             public void onValidationSucceeded() {
                 listRequestParam.surname = nSurname.getText().toString();
-                IClientActivityLaunchFactory.launchNamingListActivity(
+                IClientActivityLaunchFactory.launchNameMasterActivity(
                         (BaseActivity) getActivity(), listRequestParam
                 );
             }
