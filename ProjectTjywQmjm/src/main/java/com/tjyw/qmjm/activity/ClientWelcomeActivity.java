@@ -139,7 +139,21 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
     }
 
     protected void requestPhoneStatePermission() {
-        RxPermissions permissions = new RxPermissions(this);
+        RxPermissions permissions = null;
+        if (isFinishing()) {
+            return ;
+        } else {
+            try {
+                permissions = new RxPermissions(this);
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
+        }
+
+        if (null == permissions) {
+            return ;
+        }
+
         if (permissions.isGranted(Manifest.permission.READ_PHONE_STATE)) {
             launchMasterActivity();
         } else {

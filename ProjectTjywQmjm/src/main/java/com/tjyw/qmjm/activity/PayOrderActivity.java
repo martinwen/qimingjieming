@@ -180,7 +180,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         if (payUseAlipay.isSelected()) {
             maskerShowProgressView(true);
             getPresenter().postPayPreview(
-                    1,
+                    payService.id,
                     listRequestParam.surname,
                     listRequestParam.day,
                     listRequestParam.gender,
@@ -189,7 +189,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         } else if (payUseWxPay.isSelected()) {
             maskerShowProgressView(true);
             getPresenter().postPayOrder(
-                    1,
+                    payService.id,
                     listRequestParam.surname,
                     listRequestParam.day,
                     listRequestParam.gender,
