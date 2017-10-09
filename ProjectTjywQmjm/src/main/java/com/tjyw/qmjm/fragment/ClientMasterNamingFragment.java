@@ -133,7 +133,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements G
             case R.id.nDateOfBirth:
                 if (null == gregorianWindows) {
                     gregorianWindows = GregorianWindows.newInstance(getFragmentManager(), null, this);
-                } else {
+                } else if (! gregorianWindows.isAdded()) {
                     gregorianWindows.show(getFragmentManager(), GregorianWindows.class.getName());
                 }
 
