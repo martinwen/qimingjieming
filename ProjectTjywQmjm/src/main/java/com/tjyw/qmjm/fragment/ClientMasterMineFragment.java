@@ -16,6 +16,7 @@ import com.brianjmelton.stanley.ProxyGenerator;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
+import com.tjyw.atom.network.Network;
 import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.interfaces.IPrefClient;
 import com.tjyw.atom.network.interfaces.IPrefUser;
@@ -126,6 +127,7 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment<ClientPresente
                         StringBuilder builder = new StringBuilder(clientInit.about);
                         builder.append("?v=").append(DeviceUtil.getClientVersionName(ClientQmjmApplication.getContext()));
                         builder.append("&n=").append(ClientQmjmApplication.pGetString(R.string.app_name));
+                        builder.append("&c=").append(Network.getInstance().getCid());
                         IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, builder.toString(), R.string.atom_pub_resStringMineAbout);
                         break ;
                     case R.string.atom_pub_resStringMineFeedback:
