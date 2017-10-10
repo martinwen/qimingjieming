@@ -21,7 +21,7 @@ import com.tjyw.atom.pub.interfaces.AtomPubValidationListener;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.activity.BaseActivity;
-import com.tjyw.qmjm.dialog.GregorianWindows;
+import com.tjyw.qmjm.activity.ClientMasterActivity;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.xhinliang.lunarcalendar.LunarCalendar;
 
@@ -30,7 +30,7 @@ import java.util.Calendar;
 /**
  * Created by stephen on 07/08/2017.
  */
-public class ClientMasterExplainFragment extends AtomPubBaseFragment implements GregorianWindows.OnGregorianSelectedListener {
+public class ClientMasterExplainFragment extends AtomPubBaseFragment implements ClientGregorianFragment.OnGregorianSelectedListener {
 
     @From(R.id.nGenderMale)
     protected ViewGroup nGenderMale;
@@ -55,8 +55,6 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
 
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
-
-    protected GregorianWindows gregorianWindows;
 
     protected ListRequestParam listRequestParam;
 
@@ -108,12 +106,7 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
                 nGenderMale.setSelected(false);
                 break ;
             case R.id.nDateOfBirth:
-                if (null == gregorianWindows) {
-                    gregorianWindows = GregorianWindows.newInstance(getFragmentManager(), null, this);
-                } else if (! gregorianWindows.isAdded()) {
-                    gregorianWindows.show(getFragmentManager(), GregorianWindows.class.getName());
-                }
-
+                ((ClientMasterActivity) getActivity()).showGregorianFragment(this);
                 break ;
             case R.id.atom_pub_resIdsOK:
                 validator.validate();

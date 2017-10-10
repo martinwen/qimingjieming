@@ -45,6 +45,20 @@ public class BaseActivity<P extends Presenter> extends AtomPubBaseActivity<P> im
     }
 
     @Override
+    public void maskerShowProgressView(boolean isAlpha, boolean anim) {
+        if (null != atomClientMaskerSupport) {
+            atomClientMaskerSupport.maskerShowProgressView(isAlpha, anim);
+        }
+    }
+
+    @Override
+    public void maskerShowProgressView(boolean isAlpha, boolean anim, String hint) {
+        if (null != atomClientMaskerSupport) {
+            atomClientMaskerSupport.maskerShowProgressView(isAlpha, anim, hint);
+        }
+    }
+
+    @Override
     public void maskerHideProgressView() {
         if (null != atomClientMaskerSupport) {
             atomClientMaskerSupport.maskerHideProgressView();

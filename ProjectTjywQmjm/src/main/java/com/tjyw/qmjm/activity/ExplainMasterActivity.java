@@ -23,6 +23,8 @@ import com.tjyw.qmjm.adapter.ExplainMasterAdapter;
 import com.tjyw.qmjm.holder.HeaderWordHolder;
 import com.tjyw.qmjm.holder.NameBaseInfoHolder;
 
+import java.util.concurrent.TimeUnit;
+
 import nucleus.factory.RequiresPresenter;
 import rx.Observable;
 import rx.functions.Action1;
@@ -110,13 +112,27 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
             }
         });
 
-        maskerShowProgressView(false);
-        getPresenter().postExplain(
-                listRequestParam.surname,
-                listRequestParam.name,
-                listRequestParam.day,
-                listRequestParam.gender
-        );
+        maskerShowProgressView(false, true, getString(R.string.atom_pub_resStringNetworkRequesting));
+        Observable.timer(2, TimeUnit.SECONDS)
+                .compose(RxSchedulersHelper.<Long>io_main())
+                .subscribe(new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        if (! isFinishing()) {
+                            getPresenter().postExplain(
+                                    listRequestParam.surname,
+                                    listRequestParam.name,
+                                    listRequestParam.day,
+                                    listRequestParam.gender
+                            );
+                        }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        finish();
+                    }
+                });
     }
 
     @Override

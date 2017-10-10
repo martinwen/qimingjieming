@@ -1,20 +1,14 @@
-package com.tjyw.qmjm.dialog;
+package com.tjyw.qmjm.fragment;
 
-import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.TextView;
 
-import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.network.utils.DateTimeUtils;
 import com.tjyw.atom.pub.inject.From;
@@ -41,19 +35,7 @@ import antistatic.spinnerwheel.adapters.ListWheelAdapter;
 /**
  * Created by stephen on 08/08/2017.
  */
-public class GregorianWindows extends DialogFragment implements View.OnClickListener, OnWheelChangedListener {
-
-    public static GregorianWindows newInstance(FragmentManager manager, LunarCalendar current, OnGregorianSelectedListener listener) {
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(IApiField.D.data, current);
-
-        GregorianWindows lunarDatePicker = new GregorianWindows();
-        lunarDatePicker.setOnGregorianSelectedListener(listener);
-        lunarDatePicker.setArguments(bundle);
-        lunarDatePicker.show(manager, GregorianWindows.class.getName());
-
-        return lunarDatePicker;
-    }
+public class ClientGregorianFragment extends BaseFragment implements OnWheelChangedListener {
 
     public interface OnGregorianSelectedListener {
 
@@ -104,6 +86,13 @@ public class GregorianWindows extends DialogFragment implements View.OnClickList
         gregorianYearContainer.addChangingListener(this);
         gregorianMonthContainer.addChangingListener(this);
 
+        return convertView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
         String[] resGregorian = ClientQmjmApplication.pGetResources().getStringArray(R.array.atom_pub_resGregorian);
         if (! ArrayUtil.isEmpty(resGregorian)) {
             gregorianSwitchContainer.setViewAdapter(
@@ -133,23 +122,13 @@ public class GregorianWindows extends DialogFragment implements View.OnClickList
             );
             gregorianHourContainer.setCurrentItem(1, false);
         }
-
-        return convertView;
-    }
-
-    @NonNull
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Dialog dialog = super.onCreateDialog(savedInstanceState);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        return dialog;
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.gregorianCancel:
-                dismissAllowingStateLoss();
+                pHideFragment(this);
                 break ;
             case R.id.gregorianOK:
                 GregorianCalendarAdapter adapter = (GregorianCalendarAdapter) gregorianDayContainer.getViewAdapter();
@@ -173,7 +152,7 @@ public class GregorianWindows extends DialogFragment implements View.OnClickList
                     }
                 }
 
-                dismissAllowingStateLoss();
+                pHideFragment(this);
         }
     }
 

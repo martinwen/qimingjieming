@@ -139,6 +139,7 @@
     <string name="atom_pub_resStringUserSignTip">* 未注用户册手机号，登录时将自动完成帐号注册</string>
 
     <!-- 加载/重试 -->
+    <string name="atom_pub_resStringNetworkRequesting">老师正在测算，请稍等…</string>
     <string name="atom_pub_resStringNetworkBroken">网络连接失败，请检测网络是否可用</string>
     <string name="atom_pub_resStringRetry">重试</string>
     <string name="atom_pub_resStringAppQuit">您确认要退出应用吗</string>

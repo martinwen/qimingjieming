@@ -15,6 +15,10 @@ public interface IAtomPubLayoutSupportMasker {
 
     void maskerShowProgressView(boolean isAlpha);
 
+    void maskerShowProgressView(boolean isAlpha, boolean anim);
+
+    void maskerShowProgressView(boolean isAlpha, boolean anim, String hint);
+
     void maskerHideProgressView();
 
     void maskerShowMaskerLayout(String msg, @StringRes int clickLabelRes);

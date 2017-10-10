@@ -16,6 +16,7 @@ import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ClientMasterAdapter;
+import com.tjyw.qmjm.fragment.ClientGregorianFragment;
 import com.umeng.analytics.MobclickAgent;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -30,6 +31,8 @@ public class ClientMasterActivity extends BaseActivity {
 
     protected FragmentNavigator fragmentNavigator;
 
+    protected ClientGregorianFragment gregorianFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +41,9 @@ public class ClientMasterActivity extends BaseActivity {
         immersionBarWith()
                 .statusBarDarkFont(true)
                 .init();
+
+        gregorianFragment = (ClientGregorianFragment) getSupportFragmentManager().findFragmentByTag(ClientGregorianFragment.class.getName());
+        pHideFragment(gregorianFragment);
 
         fragmentNavigator = new FragmentNavigator(getSupportFragmentManager(), ClientMasterAdapter.newInstance(this), R.id.masterFragmentContainer);
         fragmentNavigator.onCreate(savedInstanceState);
@@ -62,16 +68,22 @@ public class ClientMasterActivity extends BaseActivity {
         atomPubClientMasterNavigation.setOnTabSelectedListener(new AHBottomNavigation.OnTabSelectedListener() {
             @Override
             public boolean onTabSelected(int position, boolean wasSelected) {
-                switch (position) {
-                    case ClientMasterAdapter.POSITION.NAMING:
-                    case ClientMasterAdapter.POSITION.EXPLAIN:
-                        immersionBar.fitsSystemWindows(false).transparentStatusBar().statusBarDarkFont(true).init();
-                        break ;
-                    case ClientMasterAdapter.POSITION.MINE:
-                        immersionBar.fitsSystemWindows(true).statusBarColor(R.color.colorPrimary).statusBarDarkFont(true).init();
+                if (gregorianFragment.isVisible()) {
+                    pHideFragment(gregorianFragment);
+                    return false;
+                } else {
+                    switch (position) {
+                        case ClientMasterAdapter.POSITION.NAMING:
+                        case ClientMasterAdapter.POSITION.EXPLAIN:
+                            immersionBar.fitsSystemWindows(false).transparentStatusBar().statusBarDarkFont(true).init();
+                            break;
+                        case ClientMasterAdapter.POSITION.MINE:
+                            immersionBar.fitsSystemWindows(true).statusBarColor(R.color.colorPrimary).statusBarDarkFont(true).init();
+                    }
+
+                    fragmentNavigator.showFragment(position, false, false);
+                    return true;
                 }
-                fragmentNavigator.showFragment(position, false, false);
-                return true;
             }
         });
 
@@ -96,17 +108,26 @@ public class ClientMasterActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.atom_pub_resStringTip)
-                .setMessage(R.string.atom_pub_resStringAppQuit)
-                .setNegativeButton(R.string.atom_pub_resStringCancel, null)
-                .setPositiveButton(R.string.atom_pub_resStringOK, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        MobclickAgent.onKillProcess(ClientMasterActivity.this);
-                        ClientMasterActivity.super.onBackPressed();
-                    }
-                })
-                .show();
+        if (gregorianFragment.isVisible()) {
+            pHideFragment(gregorianFragment);
+        } else {
+            new AlertDialog.Builder(this)
+                    .setTitle(R.string.atom_pub_resStringTip)
+                    .setMessage(R.string.atom_pub_resStringAppQuit)
+                    .setNegativeButton(R.string.atom_pub_resStringCancel, null)
+                    .setPositiveButton(R.string.atom_pub_resStringOK, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            MobclickAgent.onKillProcess(ClientMasterActivity.this);
+                            ClientMasterActivity.super.onBackPressed();
+                        }
+                    })
+                    .show();
+        }
+    }
+
+    public void showGregorianFragment(ClientGregorianFragment.OnGregorianSelectedListener listener) {
+        gregorianFragment.setOnGregorianSelectedListener(listener);
+        pShowFragment(gregorianFragment);
     }
 }

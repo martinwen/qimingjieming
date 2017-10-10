@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
+import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
@@ -18,7 +19,11 @@ import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.NameMasterAdapter;
 import com.tjyw.qmjm.dialog.NamingPayWindows;
 
+import java.util.concurrent.TimeUnit;
+
 import nucleus.factory.RequiresPresenter;
+import rx.Observable;
+import rx.functions.Action1;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -88,13 +93,27 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
             }
         });
 
-        maskerShowProgressView(false);
-        getPresenter().postNameDefinitionData(
-                listRequestParam.surname,
-                listRequestParam.day,
-                listRequestParam.gender,
-                listRequestParam.nameNumber
-        );
+        maskerShowProgressView(false, true, getString(R.string.atom_pub_resStringNetworkRequesting));
+        Observable.timer(2, TimeUnit.SECONDS)
+                .compose(RxSchedulersHelper.<Long>io_main())
+                .subscribe(new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        if (! isFinishing()) {
+                            getPresenter().postNameDefinitionData(
+                                    listRequestParam.surname,
+                                    listRequestParam.day,
+                                    listRequestParam.gender,
+                                    listRequestParam.nameNumber
+                            );
+                        }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        finish();
+                    }
+                });
     }
 
     @Override

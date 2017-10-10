@@ -1,9 +1,13 @@
 package com.tjyw.qmjm.support;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,7 +47,18 @@ public class AtomClientMaskerSupport implements View.OnClickListener, IAtomPubLa
     @From(R.id.atomPubProgressView)
     protected ViewGroup atomPubProgressView;
 
+    @From(R.id.atomPubProgressReverseView)
+    protected ImageView atomPubProgressReverseView;
+
+    @From(R.id.atomPubProgressForwardView)
+    protected ImageView atomPubProgressForwardView;
+
+    @From(R.id.atomPubProgressHintView)
+    protected TextView atomPubProgressHintView;
+
     protected OnMaskerClickListener maskerClickListener;
+
+    protected AnimatorSet atomPubProgressAnimatorSet;
 
     public AtomClientMaskerSupport(OnMaskerClickListener listener, View source) {
         Injector.inject(this, source);
@@ -62,19 +77,54 @@ public class AtomClientMaskerSupport implements View.OnClickListener, IAtomPubLa
 
     @Override
     public void maskerShowProgressView(boolean isAlpha) {
-        atomPubProgressView.setVisibility(View.VISIBLE);
+        maskerShowProgressView(isAlpha, true, null);
+    }
+
+    @Override
+    public void maskerShowProgressView(boolean isAlpha, boolean anim) {
+        maskerShowProgressView(isAlpha, anim, null);
+    }
+
+    @Override
+    public void maskerShowProgressView(boolean isAlpha, boolean anim, String hint) {
         if (isAlpha) {
             atomPubProgressView.setBackgroundColor(Color.parseColor("#55000000"));
         } else {
-            atomPubProgressView.setBackgroundColor(ContextCompat.getColor(
-                    atomPubProgressView.getContext(), R.color.atom_pub_resColorBackground
-            ));
+            atomPubProgressView.setBackgroundColor(
+                    ContextCompat.getColor(
+                            atomPubProgressView.getContext(),
+                            R.color.atom_pub_resColorBackground
+                    )
+            );
         }
+
+        if (anim) {
+            if (null == atomPubProgressAnimatorSet) {
+                Animator forward = AnimatorInflater.loadAnimator(atomPubProgressForwardView.getContext(), R.animator.atom_pub_anim_rotate_forward);
+                forward.setTarget(atomPubProgressForwardView);
+                Animator reverse = AnimatorInflater.loadAnimator(atomPubProgressReverseView.getContext(), R.animator.atom_pub_anim_rotate_reverse);
+                reverse.setTarget(atomPubProgressReverseView);
+
+                atomPubProgressAnimatorSet = new AnimatorSet();
+                atomPubProgressAnimatorSet.setInterpolator(new LinearInterpolator());
+                atomPubProgressAnimatorSet.playTogether(forward, reverse);
+                atomPubProgressAnimatorSet.setDuration(3000);
+                atomPubProgressAnimatorSet.start();
+            } else if (! atomPubProgressAnimatorSet.isStarted()) {
+                atomPubProgressAnimatorSet.start();
+            }
+        }
+
+        atomPubProgressHintView.setText(hint);
+        atomPubProgressView.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void maskerHideProgressView() {
         atomPubProgressView.setVisibility(View.GONE);
+        if (null != atomPubProgressAnimatorSet) {
+            atomPubProgressAnimatorSet.cancel();
+        }
     }
 
     @Override

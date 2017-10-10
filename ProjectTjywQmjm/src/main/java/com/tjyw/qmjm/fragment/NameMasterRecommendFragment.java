@@ -123,7 +123,7 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
                             listRequestParam.orderNo = data.getStringExtra(IApiField.O.orderNo);
                             if (hasOrderNo()) {
                                 maskerShowProgressView(false);
-                                Observable.timer(2, TimeUnit.SECONDS)
+                                Observable.timer(3, TimeUnit.SECONDS)
                                         .compose(RxSchedulersHelper.<Long>io_main())
                                         .subscribe(new Action1<Long>() {
                                             @Override

@@ -44,4 +44,11 @@
         android:layout_alignParentBottom="true"
         android:background="@color/atom_pub_resColorTabBackground"
         app:translucentNavigationEnabled="true" />
+
+    <fragment
+        android:id="@+id/gregorianFragment"
+        class="com.tjyw.qmjm.fragment.ClientGregorianFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="com.tjyw.qmjm.fragment.ClientGregorianFragment" />
 </android.support.percent.PercentRelativeLayout>

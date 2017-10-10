@@ -5,11 +5,12 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
 /**
  * Created by stephen on 17-8-18.
  */
-public class AtomPubInterceptFrameLayout extends FrameLayout {
+public class AtomPubInterceptFrameLayout extends RelativeLayout {
 
     public AtomPubInterceptFrameLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
