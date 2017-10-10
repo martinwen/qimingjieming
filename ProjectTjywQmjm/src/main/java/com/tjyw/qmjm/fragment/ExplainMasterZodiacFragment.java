@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mikepenz.fastadapter.adapters.HeaderAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
@@ -16,6 +17,7 @@ import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.item.ExplainHeaderItem;
 import com.tjyw.qmjm.item.ExplainZodiacItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
@@ -36,6 +38,8 @@ public class ExplainMasterZodiacFragment extends AtomPubBaseFragment {
     @From(R.id.explainZodiacContainer)
     protected RecyclerView explainZodiacContainer;
 
+    protected HeaderAdapter<ExplainHeaderItem> explainHeaderAdapter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -55,13 +59,18 @@ public class ExplainMasterZodiacFragment extends AtomPubBaseFragment {
         itemAdapter.add(new ExplainZodiacItem(new Pair<Integer, String>(R.string.atom_pub_resStringExplainZodiacXi, explain.nameZodiac.shengxiaoxi)));
         itemAdapter.add(new ExplainZodiacItem(new Pair<Integer, String>(R.string.atom_pub_resStringExplainZodiacJi, explain.nameZodiac.shengxiaoji)));
 
+        explainHeaderAdapter = new HeaderAdapter<ExplainHeaderItem>();
+        explainHeaderAdapter.wrap(itemAdapter);
+        explainHeaderAdapter.add(new ExplainHeaderItem(explain));
+
         explainZodiacContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
-        explainZodiacContainer.setAdapter(itemAdapter);
+        explainZodiacContainer.setAdapter(explainHeaderAdapter);
         explainZodiacContainer.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
                         .color(R.color.atom_pub_resColorDivider)
                         .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDividerSize)
                         .marginResId(R.dimen.atom_pubResDimenRecyclerViewDivider16dp, R.dimen.atom_pubResDimenRecyclerViewDivider16dp)
                         .build());
+
     }
 }

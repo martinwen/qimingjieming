@@ -4,6 +4,9 @@
     <!-- 起名详情页资料分析 -->
     <item name="atom_pub_resFasterAdapterType_NameMasterAnalyzeItem" type="id"/>
 
+    <!-- 解名详情页Header -->
+    <item name="atom_pub_resFasterAdapterType_ExplainHeaderItem" type="id"/>
+
     <!-- 解名详情页字义释解 -->
     <item name="atom_pub_resFasterAdapterType_ExplainOverviewItem" type="id"/>
 

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mikepenz.fastadapter.adapters.HeaderAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
@@ -15,6 +16,7 @@ import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.item.ExplainHeaderItem;
 import com.tjyw.qmjm.item.ExplainOverviewItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
@@ -37,6 +39,8 @@ public class ExplainMasterOverviewFragment extends AtomPubBaseFragment {
 
     @From(R.id.explainOverviewContainer)
     protected RecyclerView explainOverviewContainer;
+
+    protected HeaderAdapter<ExplainHeaderItem> explainHeaderAdapter;
 
     @Nullable
     @Override
@@ -61,8 +65,12 @@ public class ExplainMasterOverviewFragment extends AtomPubBaseFragment {
         FastItemAdapter<ExplainOverviewItem> itemAdapter = new FastItemAdapter<ExplainOverviewItem>();
         itemAdapter.set(itemList);
 
+        explainHeaderAdapter = new HeaderAdapter<ExplainHeaderItem>();
+        explainHeaderAdapter.wrap(itemAdapter);
+        explainHeaderAdapter.add(new ExplainHeaderItem(explain));
+
         explainOverviewContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
-        explainOverviewContainer.setAdapter(itemAdapter);
+        explainOverviewContainer.setAdapter(explainHeaderAdapter);
         explainOverviewContainer.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
                         .color(R.color.atom_pub_resColorDivider)

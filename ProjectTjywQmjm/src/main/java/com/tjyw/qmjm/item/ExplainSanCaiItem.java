@@ -9,15 +9,16 @@ import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.holder.AtomExplainHeaderHolder;
 
 import java.util.List;
 
 /**
  * Created by stephen on 15/08/2017.
  */
-public class ExplainSanCaiItem extends AtomPubFastAdapterAbstractItem<Explain.SanCai, ExplainSanCaiItem, ExplainSanCaiItem.DestinyFooterHolder> {
+public class ExplainSanCaiItem extends AtomPubFastAdapterAbstractItem<Explain, ExplainSanCaiItem, ExplainSanCaiItem.DestinyFooterHolder> {
 
-    public ExplainSanCaiItem(Explain.SanCai src) {
+    public ExplainSanCaiItem(Explain src) {
         super(src);
     }
 
@@ -42,7 +43,7 @@ public class ExplainSanCaiItem extends AtomPubFastAdapterAbstractItem<Explain.Sa
         holder.onBindView(ClientQmjmApplication.getContext(), src);
     }
 
-    public static class DestinyFooterHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<Explain.SanCai> {
+    public static class DestinyFooterHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<Explain> {
 
         @From(R.id.bodyWuXing)
         protected TextView bodyWuXing;
@@ -65,20 +66,28 @@ public class ExplainSanCaiItem extends AtomPubFastAdapterAbstractItem<Explain.Sa
         @From(R.id.bodyXingGe)
         protected TextView bodyXingGe;
 
+        protected AtomExplainHeaderHolder explainHeaderHolder;
+
         public DestinyFooterHolder(View itemView) {
             super(itemView);
+            explainHeaderHolder = new AtomExplainHeaderHolder(itemView);
         }
 
         @Override
-        public void onBindView(Context context, Explain.SanCai sanCai) {
-            bodyWuXing.setText(sanCai.sancai);
-            bodyJiXiong.setText(sanCai.jixiong);
-            bodyZongLun.setText(sanCai.zonglun);
-            bodyJiChuYun.setText(sanCai.jichuyun);
-            bodyChengGongYun.setText(sanCai.chenggongyun);
-            bodyRenJiGuanXi.setText(sanCai.renjiyun);
-            bodyRenJiGuanXi.setText(sanCai.renjiyun);
-            bodyXingGe.setText(sanCai.xingge);
+        public void onBindView(Context context, Explain explain) {
+            explainHeaderHolder.layout(explain);
+
+            if (null != explain.sancai) {
+                Explain.SanCai sanCai = explain.sancai;
+                bodyWuXing.setText(sanCai.sancai);
+                bodyJiXiong.setText(sanCai.jixiong);
+                bodyZongLun.setText(sanCai.zonglun);
+                bodyJiChuYun.setText(sanCai.jichuyun);
+                bodyChengGongYun.setText(sanCai.chenggongyun);
+                bodyRenJiGuanXi.setText(sanCai.renjiyun);
+                bodyRenJiGuanXi.setText(sanCai.renjiyun);
+                bodyXingGe.setText(sanCai.xingge);
+            }
         }
     }
 }

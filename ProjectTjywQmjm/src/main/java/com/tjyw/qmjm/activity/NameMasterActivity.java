@@ -76,6 +76,7 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
         nameRecommend.setOnClickListener(this);
         nameLucky.setOnClickListener(this);
 
+        nameMasterContainer.setOffscreenPageLimit(NameMasterAdapter.POSITION.ALL);
         nameMasterContainer.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 
             @Override

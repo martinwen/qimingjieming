@@ -4,24 +4,18 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
-import com.tjyw.atom.network.model.NameCharacter;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostExplainListener;
-import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.pub.inject.From;
-import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ExplainMasterAdapter;
-import com.tjyw.qmjm.holder.HeaderWordHolder;
-import com.tjyw.qmjm.holder.NameBaseInfoHolder;
 
 import java.util.concurrent.TimeUnit;
 
@@ -35,18 +29,6 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  */
 @RequiresPresenter(NamingPresenter.class)
 public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<ExplainMasterActivity>> implements OnApiPostErrorListener, OnApiPostExplainListener {
-
-    @From(R.id.explainMasterHeaderContainer)
-    protected ViewGroup explainMasterHeaderContainer;
-
-    @From(R.id.explainNameContainer)
-    protected ViewGroup explainNameContainer;
-
-    @From(R.id.explainEvaluateValue)
-    protected TextView explainEvaluateValue;
-
-    @From(R.id.explainEvaluateDesc)
-    protected TextView explainEvaluateDesc;
 
     @From(R.id.explainOverview)
     protected TextView explainOverview;
@@ -92,6 +74,7 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
         explainDestiny.setOnClickListener(this);
         explainSanCai.setOnClickListener(this);
 
+        explainMasterContainer.setOffscreenPageLimit(ExplainMasterAdapter.POSITION.ALL);
         explainMasterContainer.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 
             @Override
@@ -167,43 +150,15 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     @Override
     public void postOnExplainError(int postId, Throwable throwable) {
         throwable.printStackTrace();
-        explainMasterHeaderContainer.setVisibility(View.INVISIBLE);
         maskerShowMaskerLayout(getString(R.string.atom_pub_resStringNetworkBroken), R.string.atom_pub_resStringRetry);
     }
 
     @Override
     public void postOnExplainSuccess(Explain explain) {
         maskerHideProgressView();
-        explainMasterHeaderContainer.setVisibility(View.VISIBLE);
         explainMasterContainer.setAdapter(
                 explainMasterAdapter = ExplainMasterAdapter.newInstance(getSupportFragmentManager(), explain)
         );
-
-        explainEvaluateValue.setText(getString(R.string.atom_pub_resStringExplainEvaluate, explain.nameScore.evaluation));
-        explainEvaluateDesc.setText(explain.nameScore.desc);
-
-        explainNameContainer.removeAllViews();
-        if (!ArrayUtil.isEmpty(explain.wordsList)) {
-            Observable.from(explain.wordsList)
-                    .take(4)
-                    .compose(RxSchedulersHelper.<NameCharacter>io_main())
-                    .subscribe(new Action1<NameCharacter>() {
-                        @Override
-                        public void call(NameCharacter character) {
-                            explainNameContainer.addView(
-                                    HeaderWordHolder.newInstance(ClientQmjmApplication.getContext(), character),
-                                    explainNameContainer.getChildCount()
-                            );
-                        }
-                    }, new Action1<Throwable>() {
-                        @Override
-                        public void call(Throwable throwable) {
-                            throwable.printStackTrace();
-                        }
-                    });
-        }
-
-        new NameBaseInfoHolder(findViewById(android.R.id.content)).baseInfo(explain.nameZodiac);
     }
 
     @Override

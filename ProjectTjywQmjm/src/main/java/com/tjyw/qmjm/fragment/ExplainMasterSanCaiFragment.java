@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mikepenz.fastadapter.adapters.FooterAdapter;
 import com.mikepenz.fastadapter.adapters.HeaderAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.IApiField;
@@ -69,6 +68,6 @@ public class ExplainMasterSanCaiFragment extends AtomPubBaseFragment {
         explainScWgContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
         explainScWgContainer.setAdapter(explainDestinyAdapter.wrap(itemAdapter));
 
-        explainDestinyAdapter.add(new ExplainSanCaiItem(explain.sancai));
+        explainDestinyAdapter.add(new ExplainSanCaiItem(explain));
     }
 }
