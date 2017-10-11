@@ -3,7 +3,6 @@ package com.tjyw.qmjm.support;
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
-import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.view.ViewGroup;
@@ -87,16 +86,11 @@ public class AtomClientMaskerSupport implements View.OnClickListener, IAtomPubLa
 
     @Override
     public void maskerShowProgressView(boolean isAlpha, boolean anim, String hint) {
-        if (isAlpha) {
-            atomPubProgressView.setBackgroundColor(Color.parseColor("#55000000"));
-        } else {
-            atomPubProgressView.setBackgroundColor(
-                    ContextCompat.getColor(
-                            atomPubProgressView.getContext(),
-                            R.color.atom_pub_resColorBackground
-                    )
-            );
-        }
+        atomPubProgressView.setBackgroundColor(
+                ContextCompat.getColor(atomPubProgressView.getContext(),
+                        isAlpha ? R.color.atom_pub_resColorLoadingBackgroundAlpha : R.color.atom_pub_resColorLoadingBackground
+                )
+        );
 
         if (anim) {
             if (null == atomPubProgressAnimatorSet) {

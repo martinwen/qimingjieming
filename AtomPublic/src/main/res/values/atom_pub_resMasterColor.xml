@@ -3,6 +3,10 @@
 
     <color name="atom_pub_resColorBackground">#FFF6F6F6</color>
 
+    <color name="atom_pub_resColorLoadingBackground">#FFF6F6F6</color>
+
+    <color name="atom_pub_resColorLoadingBackgroundAlpha">#88000000</color>
+
     <color name="atom_pub_resColorDivider">#FFC5C5C5</color>
 
     <color name="atom_pub_resColorTabBackground">#FFDCDCDC</color>
