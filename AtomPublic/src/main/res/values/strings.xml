@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">AtomRely</string>
     
-    <string name="atom_pub_fontPath">fonts/atom_pub_font_hyzk.ttf</string>
+    <string name="atom_pub_fontPath">fonts/atom_pub_font.ttf</string>
 </resources>
