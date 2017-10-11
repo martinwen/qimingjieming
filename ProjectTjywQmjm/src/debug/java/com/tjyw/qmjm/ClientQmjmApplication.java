@@ -25,7 +25,7 @@ public class ClientQmjmApplication extends MultiDexApplication {
         ClientInitializer.getInstance()
                 .atom(this, true)
                 .fresco(this)
-                .leakCanary(this)
+//                .leakCanary(this)
                 .uMeng(this, Configure.UMeng.APP_KEY)
                 .faceBookStetho(this)
                 .calligraphy();

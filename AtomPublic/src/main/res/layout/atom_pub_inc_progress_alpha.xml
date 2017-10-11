@@ -8,7 +8,7 @@
         android:id="@+id/atomPubProgressView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#55000000"
+        android:background="@color/atom_pub_resColorLoadingBackgroundAlpha"
         android:visibility="gone"
         tools:visibility="visible">
 
@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:scaleType="center"
-                android:src="@drawable/atom_pub_png_loading_border" />
+                android:src="@drawable/atom_pub_png_loading_border_dark" />
 
             <ImageView
                 android:id="@+id/atomPubProgressForwardView"
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:scaleType="center"
-                android:src="@drawable/atom_pub_png_loading_inside" />
+                android:src="@drawable/atom_pub_png_loading_inside_dark" />
         </FrameLayout>
 
         <TextView
