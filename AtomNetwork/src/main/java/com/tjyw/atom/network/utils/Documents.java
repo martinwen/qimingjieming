@@ -22,7 +22,7 @@ public class Documents {
         return documents;
     }
 
-    static final String adrTodayDating = "adrTodayDating";
+    static final String adrTjywQmjm = "adrTjywQmjm";
 
     static final String ROOT = "adr";
 
@@ -47,7 +47,7 @@ public class Documents {
     protected Documents(Context context) {
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             root = Environment.getExternalStorageDirectory();
-            root = new File(root, adrTodayDating);
+            root = new File(root, adrTjywQmjm);
             if (! root.exists()) root.mkdirs();
             root = new File(root, ROOT);
             if (! root.exists()) root.mkdirs();
