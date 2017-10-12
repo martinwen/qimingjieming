@@ -38,6 +38,7 @@
     <string name="atom_pub_resStringNameLunarDot">农历：</string>
     <string name="atom_pub_resStringNameGender">性别</string>
     <string name="atom_pub_resStringNameGenderDot">性别：</string>
+    <string name="atom_pub_resStringNamePayHint">将得到以下内容：\n国内最专业易学专家团队\n20余年潜心研究起名算法\n平安健康兴家旺运\n成功快人一步！</string>
 
     <!-- 八字 -->
     <string name="atom_pub_resStringBaZi">八字</string>
