@@ -113,7 +113,7 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
         });
 
         maskerShowProgressView(false, true, getString(R.string.atom_pub_resStringNetworkRequesting));
-        Observable.timer(2, TimeUnit.SECONDS)
+        Observable.timer(1, TimeUnit.SECONDS)
                 .compose(RxSchedulersHelper.<Long>io_main())
                 .subscribe(new Action1<Long>() {
                     @Override
