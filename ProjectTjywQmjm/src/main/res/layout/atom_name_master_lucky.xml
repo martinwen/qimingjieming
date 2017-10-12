@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -14,11 +16,99 @@
         android:id="@+id/namePayContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/atom_pub_png_name_lucky_bg"
         android:orientation="vertical"
-        android:paddingTop="32dp">
+        app:layout_heightPercent="90%"
+        app:layout_widthPercent="90%">
 
-        <include layout="@layout/atom_naming_pay" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY"
+            android:src="@drawable/atom_pub_png_name_lucky_slogan" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <TextView
+                android:id="@+id/bodySurname"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLength="2"
+                android:maxLines="1"
+                tools:text="bodySurname" />
+
+            <TextView
+                android:id="@+id/bodyDate"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:paddingLeft="16dp"
+                tools:text="bodyDate" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:id="@+id/bodyServiceName"
+                style="@style/AtomStyle.RedNormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLength="20"
+                android:maxLines="1"
+                tools:text="bodyServiceName" />
+
+            <TextView
+                android:id="@+id/bodyServicePrice"
+                style="@style/AtomStyle.RedNormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:paddingLeft="16dp"
+                tools:text="bodyServicePrice" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/AtomStyle.RedBigText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0"
+            android:lineSpacingExtra="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="@string/atom_pub_resStringNamePayHint" />
+
+        <TextView
+            android:id="@id/atom_pub_resIdsOK"
+            style="@style/AtomPubStyleKa.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@drawable/atom_pub_ic_ink_text_red"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringPayPay" />
     </LinearLayout>
 
     <include layout="@layout/atom_pub_inc_loading" />
-</FrameLayout>
+</android.support.percent.PercentFrameLayout>
