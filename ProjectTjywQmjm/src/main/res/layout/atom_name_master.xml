@@ -35,7 +35,7 @@
 
                 <TextView
                     android:id="@+id/nameAnalyze"
-                    style="@style/AtomPubStyleKa.White"
+                    style="@style/AtomPubStyleKa.White_16DP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/atom_pub_selector_ink_text"
@@ -52,8 +52,26 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/nameFreedom"
+                    style="@style/AtomPubStyleKa.White_16DP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/atom_pub_selector_ink_text"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringNameFreedom"
+                    android:textColor="@color/atom_pub_black2white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
                     android:id="@+id/nameRecommend"
-                    style="@style/AtomPubStyleKa.White"
+                    style="@style/AtomPubStyleKa.White_16DP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/atom_pub_selector_ink_text"
@@ -71,7 +89,7 @@
 
                 <TextView
                     android:id="@+id/nameLucky"
-                    style="@style/AtomPubStyleKa.White"
+                    style="@style/AtomPubStyleKa.White_16DP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/atom_pub_selector_ink_text"

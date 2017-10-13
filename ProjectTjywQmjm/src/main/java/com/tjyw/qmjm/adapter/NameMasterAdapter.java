@@ -5,9 +5,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import com.tjyw.atom.network.model.Explain;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.qmjm.fragment.NameMasterAnalyzeFragment;
+import com.tjyw.qmjm.fragment.NameMasterFreedomFragment;
 import com.tjyw.qmjm.fragment.NameMasterLuckyFragment;
 import com.tjyw.qmjm.fragment.NameMasterRecommendFragment;
 
@@ -20,21 +20,26 @@ public class NameMasterAdapter extends FragmentPagerAdapter {
 
         int ANALYZE = 0;
 
-        int RECOMMEND = 1;
+        int FREEDOM = 1;
 
-        int LUCKY = 2;
+        int RECOMMEND = 2;
 
-        int ALL = 3;
+        int LUCKY = 3;
+
+        int ALL = 4;
     }
 
     public static NameMasterAdapter newInstance(FragmentManager fragmentManager, RNameDefinition definition) {
         return new NameMasterAdapter(fragmentManager)
                     .setAnalyzeFragment(NameMasterAnalyzeFragment.newInstance(definition.data))
+                    .setMasterFreedomFragment(NameMasterFreedomFragment.newInstance(definition))
                     .setRecommendFragment(NameMasterRecommendFragment.newInstance(definition))
                     .setLuckyFragment(NameMasterLuckyFragment.newInstance(definition.param));
     }
 
     protected NameMasterAnalyzeFragment masterAnalyzeFragment;
+
+    protected NameMasterFreedomFragment masterFreedomFragment;
 
     protected NameMasterRecommendFragment masterRecommendFragment;
 
@@ -49,10 +54,16 @@ public class NameMasterAdapter extends FragmentPagerAdapter {
         return this;
     }
 
+    public NameMasterAdapter setMasterFreedomFragment(NameMasterFreedomFragment masterFreedomFragment) {
+        this.masterFreedomFragment = masterFreedomFragment;
+        return this;
+    }
+
     public NameMasterAdapter setRecommendFragment(NameMasterRecommendFragment masterRecommendFragment) {
         this.masterRecommendFragment = masterRecommendFragment;
         return this;
     }
+
     public NameMasterAdapter setLuckyFragment(NameMasterLuckyFragment masterLuckyFragment) {
         this.masterLuckyFragment = masterLuckyFragment;
         return this;
@@ -63,6 +74,8 @@ public class NameMasterAdapter extends FragmentPagerAdapter {
         switch (position) {
             case POSITION.ANALYZE:
                 return masterAnalyzeFragment;
+            case POSITION.FREEDOM:
+                return masterFreedomFragment;
             case POSITION.RECOMMEND:
                 return masterRecommendFragment;
             case POSITION.LUCKY:
@@ -79,6 +92,12 @@ public class NameMasterAdapter extends FragmentPagerAdapter {
     public void showAnalyzeFragment(ViewPager container) {
         if (null != container) {
             container.setCurrentItem(POSITION.ANALYZE);
+        }
+    }
+
+    public void showFreedomFragment(ViewPager container) {
+        if (null != container) {
+            container.setCurrentItem(POSITION.FREEDOM);
         }
     }
 

@@ -127,6 +127,7 @@ public class ClientMasterActivity extends BaseActivity {
     }
 
     public void showGregorianFragment(ClientGregorianFragment.OnGregorianSelectedListener listener) {
+        pHideSoftInput();
         gregorianFragment.setOnGregorianSelectedListener(listener);
         pShowFragment(gregorianFragment);
     }

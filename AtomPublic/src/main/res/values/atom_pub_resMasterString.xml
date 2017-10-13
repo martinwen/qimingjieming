@@ -30,6 +30,10 @@
     <string name="atom_pub_resStringName">起名</string>
     <string name="atom_pub_resStringNameAnalyze">资料分析</string>
     <string name="atom_pub_resStringNameAnalyzeTip">老师提醒</string>
+    <string name="atom_pub_resStringNameFreedom">自选名字</string>
+    <string name="atom_pub_resStringNameFreedomDjm">大吉名</string>
+    <string name="atom_pub_resStringNameFreedomXjm">小吉名</string>
+    <string name="atom_pub_resStringNameFreedomYbm">一般名</string>
     <string name="atom_pub_resStringNameRecommend">推荐名字</string>
     <string name="atom_pub_resStringNameLucky">天降吉名</string>
     <string name="atom_pub_resStringNameSolar">公历</string>

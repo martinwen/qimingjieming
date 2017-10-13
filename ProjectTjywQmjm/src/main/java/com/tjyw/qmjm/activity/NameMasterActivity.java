@@ -35,6 +35,9 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
     @From(R.id.nameAnalyze)
     protected TextView nameAnalyze;
 
+    @From(R.id.nameFreedom)
+    protected TextView nameFreedom;
+
     @From(R.id.nameRecommend)
     protected TextView nameRecommend;
 
@@ -73,6 +76,7 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
 
         nameAnalyze.setSelected(true);
         nameAnalyze.setOnClickListener(this);
+        nameFreedom.setOnClickListener(this);
         nameRecommend.setOnClickListener(this);
         nameLucky.setOnClickListener(this);
 
@@ -84,6 +88,9 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
                 switch (position) {
                     case NameMasterAdapter.POSITION.ANALYZE:
                         setSelectedTab(nameAnalyze);
+                        break ;
+                    case NameMasterAdapter.POSITION.FREEDOM:
+                        setSelectedTab(nameFreedom);
                         break ;
                     case NameMasterAdapter.POSITION.RECOMMEND:
                         setSelectedTab(nameRecommend);
@@ -128,6 +135,9 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
             case R.id.nameAnalyze:
                 nameMasterAdapter.showAnalyzeFragment(nameMasterContainer);
                 break ;
+            case R.id.nameFreedom:
+                nameMasterAdapter.showFreedomFragment(nameMasterContainer);
+                break ;
             case R.id.nameRecommend:
                 nameMasterAdapter.showRecommendFragment(nameMasterContainer);
                 break ;
@@ -146,14 +156,22 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
             switch (view.getId()) {
                 case R.id.nameAnalyze:
                     nameRecommend.setSelected(false);
+                    nameFreedom.setSelected(false);
+                    nameLucky.setSelected(false);
+                    break ;
+                case R.id.nameFreedom:
+                    nameAnalyze.setSelected(false);
+                    nameRecommend.setSelected(false);
                     nameLucky.setSelected(false);
                     break ;
                 case R.id.nameRecommend:
                     nameAnalyze.setSelected(false);
+                    nameFreedom.setSelected(false);
                     nameLucky.setSelected(false);
                     break ;
                 case R.id.nameLucky:
                     nameAnalyze.setSelected(false);
+                    nameFreedom.setSelected(false);
                     nameRecommend.setSelected(false);
             }
         }
