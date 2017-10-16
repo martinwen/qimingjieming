@@ -24,10 +24,6 @@ public interface HttpPayServices {
 
         String LIST_VIP = "pay/listVip";
 
-        String SHOW = "pay/show";
-
-        String SHOW_LUCK = "pay/showLuck";
-
         String PREVIEW = "pay/preview";
 
         String ORDER = "pay/order";
@@ -43,20 +39,6 @@ public interface HttpPayServices {
     @POST(API.LIST_VIP)
     Observable<RetroResult<PayService>> postPayListVip(
             @Field(IApiField.T.type) int type,
-            @Field(IApiField.S.surname) String surname,
-            @Field(IApiField.D.day) String day
-    );
-
-    @FormUrlEncoded
-    @POST(API.SHOW)
-    Observable<RetroResult<PayService>> postPayService(
-            @Field(IApiField.S.surname) String surname,
-            @Field(IApiField.D.day) String day
-    );
-
-    @FormUrlEncoded
-    @POST(API.SHOW_LUCK)
-    Observable<RetroResult<PayService>> postPayServiceShowLuck(
             @Field(IApiField.S.surname) String surname,
             @Field(IApiField.D.day) String day
     );

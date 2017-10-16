@@ -16,11 +16,6 @@ public interface OnApiPayPostListener {
         void postOnPayListVipSuccess(int type, PayService payService);
     }
 
-    interface PostPayServiceListener {
-
-        void postOnPayServiceSuccess(PayService payService);
-    }
-
     interface PostPayOrderListener {
 
         void postOnPayOrderSuccess(PayOrder payOrder);
@@ -29,11 +24,6 @@ public interface OnApiPayPostListener {
     interface PostPayOrderListListener {
 
         void postOnPayOrderListSuccess(RetroListResult<Order> result);
-    }
-
-    interface PostPayOrderNameListListener {
-
-        void postOnPayOrderNameListSuccess(PayOrder payOrder);
     }
 
     interface PostPayPreviewListener {

@@ -60,7 +60,7 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
         OnApiPostErrorListener,
         OnApiPostNamingListener,
         OnApiFavoritePostListener.PostAddListener, OnApiFavoritePostListener.PostRemoveListener,
-        OnApiPayPostListener.PostPayServiceListener {
+        OnApiPayPostListener.PostPayListVipListener {
 
     public static NameMasterRecommendFragment newInstance(RNameDefinition definition) {
         Bundle bundle = new Bundle();
@@ -206,7 +206,7 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
     }
 
     @Override
-    public void postOnPayServiceSuccess(PayService payService) {
+    public void postOnPayListVipSuccess(int type, PayService payService) {
         maskerHideProgressView();
         this.payService = payService;
         Fragment fragment = getFragmentManager().findFragmentById(R.id.payServiceFragment);
@@ -241,9 +241,13 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
                         if (canShowPayInterceptWindow()) {
                             if (null == payService) {
                                 maskerShowProgressView(true);
-                                getPresenter().postPayService(listRequestParam.surname, listRequestParam.day);
+                                getPresenter().postPayListVip(
+                                        1,
+                                        listRequestParam.surname,
+                                        listRequestParam.day
+                                );
                             } else {
-                                postOnPayServiceSuccess(payService);
+                                postOnPayListVipSuccess(1, payService);
                             }
                         }
                 }

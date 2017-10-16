@@ -85,7 +85,7 @@ public class NameMasterLuckyFragment extends NameMasterRecommendFragment {
     }
 
     @Override
-    public void postOnPayServiceSuccess(PayService payService) {
+    public void postOnPayListVipSuccess(int type, PayService payService) {
         maskerHideProgressView();
         this.payService = payService;
 
@@ -104,7 +104,11 @@ public class NameMasterLuckyFragment extends NameMasterRecommendFragment {
             if (hasOrderNo()) {
                 getPresenter().postPayOrderNameList(listRequestParam.orderNo);
             } else {
-                getPresenter().postPayServiceShowLuck(listRequestParam.surname, listRequestParam.day);
+                getPresenter().postPayListVip(
+                        2,
+                        listRequestParam.surname,
+                        listRequestParam.day
+                );
             }
         }
     }
