@@ -119,4 +119,11 @@
 
         <include layout="@layout/atom_pub_inc_loading" />
     </LinearLayout>
+
+    <fragment
+        android:id="@+id/payServiceFragment"
+        class="com.tjyw.qmjm.fragment.PayServiceFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="com.tjyw.qmjm.fragment.PayServiceFragment" />
 </RelativeLayout>

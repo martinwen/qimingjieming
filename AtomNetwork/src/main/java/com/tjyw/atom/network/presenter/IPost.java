@@ -29,13 +29,15 @@ public interface IPost {
 
     interface Pay {
 
-        int PayOrder = 1;
+        int PayListVip = 1;
 
-        int PayOrderList = 2;
+        int PayOrder = 2;
 
-        int PayOrderNameList = 3;
+        int PayOrderList = 3;
 
-        int PayPreview = 4;
+        int PayOrderNameList = 4;
+
+        int PayPreview = 5;
     }
 
     interface User {

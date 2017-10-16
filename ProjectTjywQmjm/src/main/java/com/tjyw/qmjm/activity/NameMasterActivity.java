@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
-import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
@@ -17,7 +16,7 @@ import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.NameMasterAdapter;
-import com.tjyw.qmjm.dialog.NamingPayWindows;
+import com.tjyw.qmjm.fragment.PayServiceFragment;
 
 import java.util.concurrent.TimeUnit;
 
@@ -49,11 +48,9 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
 
     protected NameMasterAdapter nameMasterAdapter;
 
-    protected NamingPayWindows namingPayWindows;
-
     protected ListRequestParam listRequestParam;
 
-    protected PayService payService;
+    protected PayServiceFragment payServiceFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +69,9 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
                     .statusBarColor(R.color.colorPrimary)
                     .statusBarDarkFont(true)
                     .init();
+
+            payServiceFragment = findFragmentById(R.id.payServiceFragment, PayServiceFragment.class);
+            pHideFragment(payServiceFragment);
         }
 
         nameAnalyze.setSelected(true);
@@ -127,6 +127,15 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (null != payServiceFragment && payServiceFragment.isVisible()) {
+            pHideFragment(payServiceFragment);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override

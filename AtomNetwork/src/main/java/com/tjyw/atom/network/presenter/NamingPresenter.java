@@ -89,4 +89,28 @@ public class NamingPresenter<V extends ViewWithPresenter> extends PayPresenter<V
                     }
                 });
     }
+
+    public void postNameDefinitionDataNormal(String surname, String day, int gender, int nameNumber) {
+        RetroHttpMethods.NAMING().postNameDefinitionDataNormal(surname, day, gender, nameNumber)
+                .compose(RxSchedulersHelper.<RetroResult<RNameDefinition>>io_main())
+                .subscribe(new Action1<RetroResult<RNameDefinition>>() {
+                    @Override
+                    public void call(RetroResult<RNameDefinition> result) {
+                        if (null == result || result.illegalRequest()) {
+                            if (presenterView instanceof OnApiPostErrorListener) {
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Naming, new IllegalRequestException(result));
+                            }
+                        } else if (presenterView instanceof OnApiPostNamingListener) {
+                            ((OnApiPostNamingListener) presenterView).postOnNamingSuccess(result.items);
+                        }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        if (presenterView instanceof OnApiPostErrorListener) {
+                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Naming, throwable);
+                        }
+                    }
+                });
+    }
 }

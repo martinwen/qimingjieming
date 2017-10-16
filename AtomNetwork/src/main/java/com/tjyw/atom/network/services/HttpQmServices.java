@@ -22,12 +22,23 @@ public interface HttpQmServices {
 
         String QM_DATA = "qmData";
 
+        String QM_DATA_NORMAL = "qmDataNormal";
+
         String JM = "jm";
     }
 
     @FormUrlEncoded
     @POST(API.QM_DATA)
     Observable<RetroResult<RNameDefinition>> postNameDefinitionData(
+            @Field(IApiField.S.surname) String surname,
+            @Field(IApiField.D.day) String day,
+            @Field(IApiField.G.gender) int gender,
+            @Field(IApiField.N.nameNumber) int nameNumber
+    );
+
+    @FormUrlEncoded
+    @POST(API.QM_DATA_NORMAL)
+    Observable<RetroResult<RNameDefinition>> postNameDefinitionDataNormal(
             @Field(IApiField.S.surname) String surname,
             @Field(IApiField.D.day) String day,
             @Field(IApiField.G.gender) int gender,

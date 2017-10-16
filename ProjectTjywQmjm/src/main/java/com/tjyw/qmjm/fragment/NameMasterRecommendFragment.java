@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -38,7 +39,6 @@ import com.tjyw.atom.pub.inject.From;
 import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
-import com.tjyw.qmjm.dialog.NamingPayWindows;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.tjyw.qmjm.item.NameDefinitionFooterItem;
 import com.tjyw.qmjm.item.NamingWordItem;
@@ -57,7 +57,6 @@ import rx.functions.Action1;
  */
 @RequiresPresenter(NamingPresenter.class)
 public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<NameMasterRecommendFragment>> implements
-        NamingPayWindows.OnPayShowWindowClickListener,
         OnApiPostErrorListener,
         OnApiPostNamingListener,
         OnApiFavoritePostListener.PostAddListener, OnApiFavoritePostListener.PostRemoveListener,
@@ -79,8 +78,6 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
     protected FastItemAdapter<AtomPubFastAdapterAbstractItem> nameDefinitionAdapter;
 
     protected FooterAdapter<NameDefinitionFooterItem> nameDefinitionFooterAdapter;
-
-    protected NamingPayWindows namingPayWindows;
 
     protected ListRequestParam listRequestParam;
 
@@ -142,11 +139,6 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
                         }
                 }
         }
-    }
-
-    @Override
-    public void payShowWindowOnPayClick(ListRequestParam param, PayService payService) {
-        IClientActivityLaunchFactory.launchPayOrderActivity(this, param, payService);
     }
 
     @Override
@@ -217,10 +209,12 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
     public void postOnPayServiceSuccess(PayService payService) {
         maskerHideProgressView();
         this.payService = payService;
-        if (null == namingPayWindows) {
-            namingPayWindows = NamingPayWindows.newInstance(getFragmentManager(), listRequestParam, payService, this);
-        } else {
-            namingPayWindows.show(getFragmentManager(), NamingPayWindows.class.getName());
+        Fragment fragment = getFragmentManager().findFragmentById(R.id.payServiceFragment);
+        if (fragment instanceof PayServiceFragment) {
+            PayServiceFragment payServiceFragment = (PayServiceFragment) fragment;
+            payServiceFragment.setListRequestParam(listRequestParam);
+            payServiceFragment.setPayService(payService);
+            pShowFragment(R.anim.abc_fade_in, R.anim.abc_fade_out, payServiceFragment);
         }
     }
 
@@ -248,10 +242,8 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
                             if (null == payService) {
                                 maskerShowProgressView(true);
                                 getPresenter().postPayService(listRequestParam.surname, listRequestParam.day);
-                            } else if (null == namingPayWindows) {
-                                namingPayWindows = NamingPayWindows.newInstance(getFragmentManager(), listRequestParam, payService, NameMasterRecommendFragment.this);
-                            } else if (!namingPayWindows.isVisible()) {
-                                namingPayWindows.show(getFragmentManager(), NamingPayWindows.class.getName());
+                            } else {
+                                postOnPayServiceSuccess(payService);
                             }
                         }
                 }

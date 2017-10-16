@@ -158,6 +158,10 @@ public abstract class AtomPubBaseActivity<P extends Presenter> extends NucleusAp
         }
     }
 
+    protected <F extends Fragment> F findFragmentById(int id, Class<F> clazz) {
+        return (F) getSupportFragmentManager().findFragmentById(id);
+    }
+
     protected ImmersionBar immersionBarWith() {
         return immersionBar = ImmersionBar.with(this);
     }

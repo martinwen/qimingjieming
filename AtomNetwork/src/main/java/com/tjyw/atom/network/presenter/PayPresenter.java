@@ -23,6 +23,30 @@ import rx.functions.Action1;
  */
 public class PayPresenter<V extends ViewWithPresenter> extends FavoritePresenter<V> {
 
+    public void postPayListVip(final int type, String surname, String day) {
+        RetroHttpMethods.PAY().postPayListVip(type, surname, day)
+                .compose(RxSchedulersHelper.<RetroResult<PayService>>io_main())
+                .subscribe(new Action1<RetroResult<PayService>>() {
+                    @Override
+                    public void call(RetroResult<PayService> result) {
+                        if (null == result || result.illegalRequest()) {
+                            if (presenterView instanceof OnApiPostErrorListener) {
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Pay.PayListVip, new IllegalRequestException(result));
+                            }
+                        } else if (presenterView instanceof OnApiPayPostListener.PostPayListVipListener) {
+                            ((OnApiPayPostListener.PostPayListVipListener) presenterView).postOnPayListVipSuccess(type, result.items);
+                        }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        if (presenterView instanceof OnApiPostErrorListener) {
+                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Pay.PayListVip, throwable);
+                        }
+                    }
+                });
+    }
+
     public void postPayService(String surname, String day) {
         RetroHttpMethods.PAY().postPayService(surname, day)
                 .compose(RxSchedulersHelper.<RetroResult<PayService>>io_main())

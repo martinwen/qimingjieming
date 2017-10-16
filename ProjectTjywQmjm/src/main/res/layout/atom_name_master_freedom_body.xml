@@ -12,6 +12,9 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:maxLines="1"
-        android:padding="8dp"
+        android:paddingBottom="12dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="12dp"
         tools:text="bodyTitle" />
 </LinearLayout>

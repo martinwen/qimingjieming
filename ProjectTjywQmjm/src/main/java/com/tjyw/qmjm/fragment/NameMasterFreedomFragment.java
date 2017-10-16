@@ -2,6 +2,7 @@ package com.tjyw.qmjm.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,14 +14,18 @@ import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.IApiField;
-import com.tjyw.atom.network.conf.ISection;
 import com.tjyw.atom.network.model.NameCharacter;
 import com.tjyw.atom.network.model.NameDefinition;
+import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
+import com.tjyw.atom.network.presenter.listener.OnApiFavoritePostListener;
+import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
+import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
+import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
+import com.tjyw.atom.network.result.RIdentifyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.utils.ArrayUtil;
-import com.tjyw.atom.network.utils.JsonUtil;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
@@ -31,14 +36,21 @@ import com.tjyw.qmjm.item.NameFreedomItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import nucleus.factory.RequiresPresenter;
+
 /**
  * Created by stephen on 17-10-13.
  */
-public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<NameMasterFreedomFragment>> {
+@RequiresPresenter(NamingPresenter.class)
+public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<NameMasterFreedomFragment>> implements
+        OnApiPostErrorListener,
+        OnApiPostNamingListener,
+        OnApiPayPostListener.PostPayListVipListener,
+        OnApiFavoritePostListener.PostAddListener,
+        OnApiFavoritePostListener.PostRemoveListener {
 
     public static NameMasterFreedomFragment newInstance(RNameDefinition definition) {
         Bundle bundle = new Bundle();
-        bundle.putString(IApiField.D.data, JsonUtil.getInstance().toJsonString(definition.list));
         bundle.putSerializable(IApiField.P.param, definition.param.clone());
 
         NameMasterFreedomFragment fragment = new NameMasterFreedomFragment();
@@ -90,7 +102,6 @@ public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<Name
 
         nameFreedomDjm.setOnClickListener(this);
         nameFreedomXjm.setOnClickListener(this);
-        nameFreedomYbm.setOnClickListener(this);
 
         nameFreedomContainer.setAdapter(nameFreedomAdapter = new FastItemAdapter<NameFreedomItem>());
         nameFreedomContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
@@ -103,32 +114,50 @@ public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<Name
             }
         });
 
-        List<NameDefinition> list = JsonUtil.getInstance().parseJavaArray(pGetStringExtra(IApiField.D.data, ISection.JSON.ARRAY), NameDefinition.class);
-        if (! ArrayUtil.isEmpty(list)) {
-            RNameDefinition definition = new RNameDefinition();
-            definition.list = list;
-            postOnNamingSuccess(definition);
-        }
+        getPresenter().postNameDefinitionDataNormal(
+                listRequestParam.surname,
+                listRequestParam.day,
+                listRequestParam.gender,
+                listRequestParam.nameNumber
+        );
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.nameFreedomDjm:
-
+                maskerShowProgressView(true);
+                getPresenter().postPayListVip(
+                        3,
+                        listRequestParam.surname,
+                        listRequestParam.day
+                );
                 break ;
             case R.id.nameFreedomXjm:
-
-                break ;
-            case R.id.nameFreedomYbm:
-
+                maskerShowProgressView(true);
+                getPresenter().postPayListVip(
+                        4,
+                        listRequestParam.surname,
+                        listRequestParam.day
+                );
                 break ;
             case R.id.nameWordCollect:
-
+                maskerShowProgressView(true);
+                if (nameDefinition.favorite && nameDefinition.id > 0) {
+                    getPresenter().postFavoriteRemove(nameDefinition.id, null);
+                } else {
+                    getPresenter().postFavoriteAdd(
+                            listRequestParam.surname,
+                            nameDefinition.getGivenName(),
+                            listRequestParam.day,
+                            listRequestParam.gender,
+                            null
+                    );
+                }
                 break ;
             case R.id.nameFreedomWordContainer:
-                ListRequestParam param = new ListRequestParam(nameDefinition);
-                param.day = listRequestParam.day;
+                ListRequestParam param = listRequestParam.clone();
+                param.name = nameDefinition.getGivenName();
                 IClientActivityLaunchFactory.launchExplainMasterActivity(this, param);
                 break ;
             default:
@@ -136,25 +165,60 @@ public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<Name
         }
     }
 
+    @Override
     public void postOnNamingSuccess(RNameDefinition result) {
-        maskerHideProgressView();
-        if (null == result || result.size() == 0) {
-            return ;
-        }
-
-        List<NameFreedomItem> itemList = new ArrayList<NameFreedomItem>();
-        int size = result.size();
-        for (int i = 0; i < size; i ++) {
-            NameDefinition definition = result.get(i);
-            if (null != definition) {
-                itemList.add(new NameFreedomItem(definition));
-                if (i == 0) {
-                    resetName(this.nameDefinition = definition);
+        int size = null == result ? 0 : result.size();
+        if (size > 0) {
+            List<NameFreedomItem> itemList = new ArrayList<NameFreedomItem>();
+            for (int i = 0; i < size; i ++) {
+                NameDefinition definition = result.get(i);
+                if (null != definition) {
+                    itemList.add(new NameFreedomItem(definition));
+                    if (i == 0) {
+                        resetName(this.nameDefinition = definition);
+                    }
                 }
             }
-        }
 
-        nameFreedomAdapter.add(itemList);
+            nameFreedomAdapter.add(itemList);
+        }
+    }
+
+    @Override
+    public void postOnExplainError(int postId, Throwable throwable) {
+
+    }
+
+    @Override
+    public void postOnPayListVipSuccess(int type, PayService payService) {
+        maskerHideProgressView();
+        Fragment fragment = getFragmentManager().findFragmentById(R.id.payServiceFragment);
+        if (fragment instanceof PayServiceFragment) {
+            PayServiceFragment payServiceFragment = (PayServiceFragment) fragment;
+            payServiceFragment.setListRequestParam(listRequestParam);
+            payServiceFragment.setPayService(payService);
+            pShowFragment(R.anim.abc_fade_in, R.anim.abc_fade_out, payServiceFragment);
+        }
+    }
+
+    @Override
+    public void postOnFavoriteAddSuccess(RIdentifyResult result, Object item) {
+        maskerHideProgressView();
+        if (null != nameDefinition) {
+            nameDefinition.id = result.id;
+            nameDefinition.favorite = true;
+            resetName(nameDefinition);
+        }
+    }
+
+    @Override
+    public void postOnFavoriteRemoveSuccess(Object item) {
+        maskerHideProgressView();
+        if (null != nameDefinition) {
+            nameDefinition.id = 0;
+            nameDefinition.favorite = false;
+            resetName(nameDefinition);
+        }
     }
 
     protected void resetName(NameDefinition nameDefinition) {

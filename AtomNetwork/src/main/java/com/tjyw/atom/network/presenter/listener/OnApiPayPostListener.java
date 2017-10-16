@@ -11,6 +11,11 @@ import com.tjyw.atom.network.result.RetroPayPreviewResult;
  */
 public interface OnApiPayPostListener {
 
+    interface PostPayListVipListener {
+
+        void postOnPayListVipSuccess(int type, PayService payService);
+    }
+
     interface PostPayServiceListener {
 
         void postOnPayServiceSuccess(PayService payService);
