@@ -96,26 +96,36 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
         });
 
         maskerShowProgressView(false, true, getString(R.string.atom_pub_resStringNetworkRequesting));
-        Observable.timer(1, TimeUnit.SECONDS)
-                .compose(RxSchedulersHelper.<Long>io_main())
-                .subscribe(new Action1<Long>() {
-                    @Override
-                    public void call(Long aLong) {
-                        if (! isFinishing()) {
-                            getPresenter().postExplain(
-                                    listRequestParam.surname,
-                                    listRequestParam.name,
-                                    listRequestParam.day,
-                                    listRequestParam.gender
-                            );
+        int delayed = pGetIntExtra(IApiField.D.delayed, 0);
+        if (delayed > 0) {
+            Observable.timer(1, TimeUnit.SECONDS)
+                    .compose(RxSchedulersHelper.<Long>io_main())
+                    .subscribe(new Action1<Long>() {
+                        @Override
+                        public void call(Long aLong) {
+                            if (! isFinishing()) {
+                                getPresenter().postExplain(
+                                        listRequestParam.surname,
+                                        listRequestParam.name,
+                                        listRequestParam.day,
+                                        listRequestParam.gender
+                                );
+                            }
                         }
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        finish();
-                    }
-                });
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            finish();
+                        }
+                    });
+        } else {
+            getPresenter().postExplain(
+                    listRequestParam.surname,
+                    listRequestParam.name,
+                    listRequestParam.day,
+                    listRequestParam.gender
+            );
+        }
     }
 
     @Override

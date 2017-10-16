@@ -158,7 +158,7 @@ public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<Name
             case R.id.nameFreedomWordContainer:
                 ListRequestParam param = listRequestParam.clone();
                 param.name = nameDefinition.getGivenName();
-                IClientActivityLaunchFactory.launchExplainMasterActivity(this, param);
+                IClientActivityLaunchFactory.launchExplainMasterActivity(this, param, 0);
                 break ;
             default:
                 super.onClick(v);

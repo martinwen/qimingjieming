@@ -297,11 +297,11 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
                 if (item instanceof NamingWordItem) {
                     if (hasOrderNo()) {
                         ListRequestParam param = new ListRequestParam(((NamingWordItem) item).src);
-                        IClientActivityLaunchFactory.launchExplainMasterActivity(NameMasterRecommendFragment.this, param);
+                        IClientActivityLaunchFactory.launchExplainMasterActivity(NameMasterRecommendFragment.this, param, 0);
                     } else {
                         ListRequestParam param = listRequestParam.clone();
                         param.name = ((NamingWordItem) item).src.getGivenName();
-                        IClientActivityLaunchFactory.launchExplainMasterActivity(NameMasterRecommendFragment.this, param);
+                        IClientActivityLaunchFactory.launchExplainMasterActivity(NameMasterRecommendFragment.this, param, 0);
                     }
                 }
 

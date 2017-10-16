@@ -32,6 +32,8 @@ public interface IApiField {
 
         String day = "day";
 
+        String delayed = "delayed";
+
         String detail = "detail";
     }
 

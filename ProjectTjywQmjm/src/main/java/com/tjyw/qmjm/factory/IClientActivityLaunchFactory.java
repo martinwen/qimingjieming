@@ -36,21 +36,24 @@ public class IClientActivityLaunchFactory {
         context.startActivity(intent);
     }
 
-    public static void launchExplainMasterActivity(BaseActivity context, ListRequestParam listRequestParam) {
+    public static void launchExplainMasterActivity(BaseActivity context, ListRequestParam listRequestParam, int delayed) {
         Intent intent = new Intent(context, ExplainMasterActivity.class);
         intent.putExtra(IApiField.P.param, listRequestParam);
+        intent.putExtra(IApiField.D.delayed, delayed);
         context.startActivity(intent);
     }
 
-    public static void launchExplainMasterActivity(BaseFragment context, ListRequestParam listRequestParam) {
+    public static void launchExplainMasterActivity(BaseFragment context, ListRequestParam listRequestParam, int delayed) {
         Intent intent = new Intent(context.getActivity(), ExplainMasterActivity.class);
         intent.putExtra(IApiField.P.param, listRequestParam);
+        intent.putExtra(IApiField.D.delayed, delayed);
         context.startActivity(intent);
     }
 
-    public static void launchNameMasterActivity(BaseActivity context, ListRequestParam listRequestParam) {
+    public static void launchNameMasterActivity(BaseActivity context, ListRequestParam listRequestParam, int delayed) {
         Intent intent = new Intent(context, NameMasterActivity.class);
         intent.putExtra(IApiField.P.param, listRequestParam);
+        intent.putExtra(IApiField.D.delayed, delayed);
         context.startActivity(intent);
     }
 
