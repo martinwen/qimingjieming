@@ -12,17 +12,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/atom_pub_png_pay_window"
+        android:background="@drawable/atom_pub_png_pay_background"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_widthPercent="80%">
+        app:layout_widthPercent="75%">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/atom_pub_png_pay_window_slogan" />
+            android:src="@drawable/atom_pub_png_pay_slogan" />
 
         <LinearLayout
             android:layout_width="match_parent"
