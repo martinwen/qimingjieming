@@ -63,7 +63,7 @@
 
                 <TextView
                     android:id="@+id/nameFreedomXjm"
-                    style="@style/AtomStyle.WhiteNormalText"
+                    style="@style/AtomStyle.RedNormalText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/atom_pub_ic_name_locked"
@@ -78,7 +78,7 @@
 
                 <TextView
                     android:id="@+id/nameFreedomYbm"
-                    style="@style/AtomStyle.RedNormalText"
+                    style="@style/AtomStyle.WhiteNormalText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/atom_pubResColorFreedomNameBackground"
