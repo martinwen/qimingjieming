@@ -111,7 +111,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
             @Override
             public boolean onClick(View v, IAdapter<NamingWordItem> adapter, NamingWordItem item, int position) {
                 ListRequestParam param = new ListRequestParam(item.src);
-                IClientActivityLaunchFactory.launchExplainMasterActivity(NamingListActivity.this, param, 0);
+                IClientActivityLaunchFactory.launchExplainMasterActivity(NamingListActivity.this, param, 100);
                 return true;
             }
         });

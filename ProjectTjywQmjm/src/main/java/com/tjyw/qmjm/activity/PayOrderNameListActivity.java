@@ -68,7 +68,7 @@ public class PayOrderNameListActivity extends BaseToolbarActivity<PayPresenter<P
             @Override
             public boolean onClick(View v, IAdapter<NamingWordItem> adapter, NamingWordItem item, int position) {
                 IClientActivityLaunchFactory.launchExplainMasterActivity(
-                        PayOrderNameListActivity.this, new ListRequestParam(item.src), 0
+                        PayOrderNameListActivity.this, new ListRequestParam(item.src), 100
                 );
                 return true;
             }

@@ -86,7 +86,7 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
                 listRequestParam.name = nGivenName.getText().toString();
 
                 IClientActivityLaunchFactory.launchExplainMasterActivity(
-                        (BaseActivity) getActivity(), listRequestParam, 1
+                        (BaseActivity) getActivity(), listRequestParam, 1000
                 );
             }
         });

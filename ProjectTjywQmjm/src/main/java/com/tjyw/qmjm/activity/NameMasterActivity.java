@@ -102,36 +102,26 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
         });
 
         maskerShowProgressView(false, true, getString(R.string.atom_pub_resStringNetworkRequesting));
-        int delayed = pGetIntExtra(IApiField.D.delayed, 0);
-        if (delayed > 0) {
-            Observable.timer(1, TimeUnit.SECONDS)
-                    .compose(RxSchedulersHelper.<Long>io_main())
-                    .subscribe(new Action1<Long>() {
-                        @Override
-                        public void call(Long aLong) {
-                            if (! isFinishing()) {
-                                getPresenter().postNameDefinitionData(
-                                        listRequestParam.surname,
-                                        listRequestParam.day,
-                                        listRequestParam.gender,
-                                        listRequestParam.nameNumber
-                                );
-                            }
+        Observable.timer(pGetIntExtra(IApiField.D.delayed, 100), TimeUnit.MILLISECONDS)
+                .compose(RxSchedulersHelper.<Long>io_main())
+                .subscribe(new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        if (! isFinishing()) {
+                            getPresenter().postNameDefinitionData(
+                                    listRequestParam.surname,
+                                    listRequestParam.day,
+                                    listRequestParam.gender,
+                                    listRequestParam.nameNumber
+                            );
                         }
-                    }, new Action1<Throwable>() {
-                        @Override
-                        public void call(Throwable throwable) {
-                            finish();
-                        }
-                    });
-        } else {
-            getPresenter().postNameDefinitionData(
-                    listRequestParam.surname,
-                    listRequestParam.day,
-                    listRequestParam.gender,
-                    listRequestParam.nameNumber
-            );
-        }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        finish();
+                    }
+                });
     }
 
     @Override

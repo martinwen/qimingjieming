@@ -1,5 +1,6 @@
 package com.tjyw.qmjm.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
+import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
+import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.model.NameCharacter;
 import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.model.PayService;
@@ -35,8 +38,11 @@ import com.tjyw.qmjm.item.NameFreedomItem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import nucleus.factory.RequiresPresenter;
+import rx.Observable;
+import rx.functions.Action1;
 
 /**
  * Created by stephen on 17-10-13.
@@ -123,6 +129,22 @@ public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<Name
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case ICode.SECTION.PAY:
+                switch (resultCode) {
+                    case ICode.PAY.ALIPAY_SUCCESS:
+                    case ICode.PAY.WX_SUCCESS:
+                        if (null != data) {
+                            listRequestParam.orderNo = data.getStringExtra(IApiField.O.orderNo);
+                            IClientActivityLaunchFactory.launchPayOrderListActivity(this);
+                        }
+                }
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.nameFreedomDjm:
@@ -158,7 +180,7 @@ public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<Name
             case R.id.nameFreedomWordContainer:
                 ListRequestParam param = listRequestParam.clone();
                 param.name = nameDefinition.getGivenName();
-                IClientActivityLaunchFactory.launchExplainMasterActivity(this, param, 0);
+                IClientActivityLaunchFactory.launchExplainMasterActivity(this, param, 100);
                 break ;
             default:
                 super.onClick(v);

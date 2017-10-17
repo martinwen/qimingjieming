@@ -82,6 +82,11 @@ public class IClientActivityLaunchFactory {
         context.startActivity(intent);
     }
 
+    public static void launchPayOrderListActivity(BaseFragment context) {
+        Intent intent = new Intent(context.getActivity(), PayOrderListActivity.class);
+        context.startActivity(intent);
+    }
+
     public static void launchUserSignInActivity(BaseActivity context) {
         Intent intent = new Intent(context, UserSignInActivity.class);
         context.startActivityForResult(intent, ICode.SECTION.SS);

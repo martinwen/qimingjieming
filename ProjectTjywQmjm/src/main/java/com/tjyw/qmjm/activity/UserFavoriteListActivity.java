@@ -76,7 +76,7 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
             public boolean onClick(View v, IAdapter<UserFavoriteItem> adapter, UserFavoriteItem item, int position) {
                 if (null != item.src) {
                     IClientActivityLaunchFactory.launchExplainMasterActivity(
-                            UserFavoriteListActivity.this, new ListRequestParam(item.src), 0
+                            UserFavoriteListActivity.this, new ListRequestParam(item.src), 100
                     );
                 }
                 return true;

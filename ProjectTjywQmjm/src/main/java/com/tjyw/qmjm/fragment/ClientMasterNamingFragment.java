@@ -89,7 +89,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements C
             public void onValidationSucceeded() {
                 listRequestParam.surname = nSurname.getText().toString();
                 IClientActivityLaunchFactory.launchNameMasterActivity(
-                        (BaseActivity) getActivity(), listRequestParam, 1
+                        (BaseActivity) getActivity(), listRequestParam, 1000
                 );
             }
         });
