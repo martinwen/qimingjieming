@@ -59,7 +59,7 @@ public class PayServiceFragment extends BaseFragment {
             return ;
         } else if (null == listRequestParam || null == payService) {
             return ;
-        } else {
+        } else if (null != getView()) {
             getView().setOnClickListener(this);
         }
 
@@ -76,7 +76,7 @@ public class PayServiceFragment extends BaseFragment {
             case R.id.atom_pub_resIdsOK:
                 pHideFragment(this);
                 if (null != listRequestParam) {
-                    IClientActivityLaunchFactory.launchPayOrderActivity((BaseActivity) getActivity(), listRequestParam, payService);
+                    IClientActivityLaunchFactory.launchPayOrderActivity(this, listRequestParam, payService);
                 }
                 break ;
             default:

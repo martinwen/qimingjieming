@@ -52,6 +52,9 @@ public class NameMasterAnalyzeItem extends AtomPubFastAdapterAbstractItem<NameDa
         @From(R.id.bodyAnalyzeTip)
         protected TextView bodyAnalyzeTip;
 
+        @From(R.id.nameMakeAGoodName)
+        protected TextView nameMakeAGoodName;
+
         public NameMasterAnalyzeHolder(View itemView) {
             super(itemView);
         }

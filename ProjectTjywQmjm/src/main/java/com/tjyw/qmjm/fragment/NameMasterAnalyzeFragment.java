@@ -1,6 +1,7 @@
 package com.tjyw.qmjm.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,13 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
+import com.mikepenz.fastadapter.listeners.ClickEventHook;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.NameData;
 import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.activity.NameMasterActivity;
 import com.tjyw.qmjm.item.NameMasterAnalyzeItem;
 
 /**
@@ -34,7 +38,7 @@ public class NameMasterAnalyzeFragment extends AtomPubBaseFragment {
     @From(R.id.nameAnalyzeContainer)
     protected RecyclerView nameAnalyzeContainer;
 
-    FastItemAdapter<NameMasterAnalyzeItem> nameAnalyzeAdapter;
+    protected FastItemAdapter<NameMasterAnalyzeItem> nameAnalyzeAdapter;
 
     @Nullable
     @Override
@@ -50,6 +54,20 @@ public class NameMasterAnalyzeFragment extends AtomPubBaseFragment {
         if (null != data) {
             nameAnalyzeAdapter = new FastItemAdapter<NameMasterAnalyzeItem>();
             nameAnalyzeAdapter.add(new NameMasterAnalyzeItem(data));
+            nameAnalyzeAdapter.withItemEvent(new ClickEventHook<NameMasterAnalyzeItem>() {
+                @Nullable
+                @Override
+                public View onBind(@NonNull RecyclerView.ViewHolder viewHolder) {
+                    return viewHolder.itemView.findViewById(R.id.nameMakeAGoodName);
+                }
+
+                @Override
+                public void onClick(View v, int position, FastAdapter<NameMasterAnalyzeItem> fastAdapter, NameMasterAnalyzeItem item) {
+                    if (getActivity() instanceof NameMasterActivity) {
+                        ((NameMasterActivity) getActivity()).showFreedomFragment();
+                    }
+                }
+            });
 
             nameAnalyzeContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
             nameAnalyzeContainer.setAdapter(nameAnalyzeAdapter);

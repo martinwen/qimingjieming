@@ -46,7 +46,7 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
     @From(R.id.nameMasterContainer)
     protected ViewPager nameMasterContainer;
 
-    protected NameMasterAdapter nameMasterAdapter;
+    public NameMasterAdapter nameMasterAdapter;
 
     protected ListRequestParam listRequestParam;
 
@@ -142,16 +142,16 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.nameAnalyze:
-                nameMasterAdapter.showAnalyzeFragment(nameMasterContainer);
+                showAnalyzeFragment();
                 break ;
             case R.id.nameFreedom:
-                nameMasterAdapter.showFreedomFragment(nameMasterContainer);
+                showFreedomFragment();
                 break ;
             case R.id.nameRecommend:
-                nameMasterAdapter.showRecommendFragment(nameMasterContainer);
+                showRecommendFragment();
                 break ;
             case R.id.nameLucky:
-                nameMasterAdapter.showLuckyFragment(nameMasterContainer);
+                showLuckyFragment();
                 break ;
             default:
                 super.onClick(v);
@@ -187,8 +187,21 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
     }
 
     @Override
-    public void postOnExplainError(int postId, Throwable throwable) {
+    public void maskerOnClick(View view, int clickLabelRes) {
+        super.maskerOnClick(view, clickLabelRes);
+        maskerShowProgressView(false);
+        getPresenter().postNameDefinitionData(
+                listRequestParam.surname,
+                listRequestParam.day,
+                listRequestParam.gender,
+                listRequestParam.nameNumber
+        );
+    }
 
+    @Override
+    public void postOnExplainError(int postId, Throwable throwable) {
+        throwable.printStackTrace();
+        maskerShowMaskerLayout(getString(R.string.atom_pub_resStringNetworkBroken), R.string.atom_pub_resStringRetry);
     }
 
     @Override
@@ -197,5 +210,29 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
         nameMasterContainer.setAdapter(
                 nameMasterAdapter = NameMasterAdapter.newInstance(getSupportFragmentManager(), result)
         );
+    }
+
+    public void showAnalyzeFragment() {
+        if (null != nameMasterAdapter) {
+            nameMasterAdapter.showAnalyzeFragment(nameMasterContainer);
+        }
+    }
+
+    public void showFreedomFragment() {
+        if (null != nameMasterAdapter) {
+            nameMasterAdapter.showFreedomFragment(nameMasterContainer);
+        }
+    }
+
+    public void showRecommendFragment() {
+        if (null != nameMasterAdapter) {
+            nameMasterAdapter.showRecommendFragment(nameMasterContainer);
+        }
+    }
+
+    public void showLuckyFragment() {
+        if (null != nameMasterAdapter) {
+            nameMasterAdapter.showLuckyFragment(nameMasterContainer);
+        }
     }
 }
