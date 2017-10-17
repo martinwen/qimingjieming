@@ -17,4 +17,6 @@
 
     <color name="atom_pubResColorBaziBackground">#FFFEF3D2</color>
 
+    <color name="atom_pubResColorFreedomNameBackground">#FFBCBCBC</color>
+
 </resources>

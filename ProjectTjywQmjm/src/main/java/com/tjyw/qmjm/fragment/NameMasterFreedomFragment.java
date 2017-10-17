@@ -2,6 +2,7 @@ package com.tjyw.qmjm.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,9 +13,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mikepenz.fastadapter.FastAdapter;
-import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
-import com.tjyw.atom.network.RxSchedulersHelper;
+import com.mikepenz.fastadapter.listeners.ClickEventHook;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.model.NameCharacter;
@@ -38,11 +38,9 @@ import com.tjyw.qmjm.item.NameFreedomItem;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.Set;
 
 import nucleus.factory.RequiresPresenter;
-import rx.Observable;
-import rx.functions.Action1;
 
 /**
  * Created by stephen on 17-10-13.
@@ -104,21 +102,39 @@ public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<Name
         listRequestParam = (ListRequestParam) pGetSerializableExtra(IApiField.P.param);
         if (null == listRequestParam) {
             return ;
+        } else {
+            nameFreedomDjm.setOnClickListener(this);
+            nameFreedomXjm.setOnClickListener(this);
         }
 
-        nameFreedomDjm.setOnClickListener(this);
-        nameFreedomXjm.setOnClickListener(this);
+        nameFreedomAdapter = new FastItemAdapter<NameFreedomItem>();
+        nameFreedomAdapter
+                .withSelectable(true)
+                .withItemEvent(new ClickEventHook<NameFreedomItem>() {
+                    @Nullable
+                    @Override
+                    public View onBind(@NonNull RecyclerView.ViewHolder viewHolder) {
+                        return viewHolder.itemView;
+                    }
 
-        nameFreedomContainer.setAdapter(nameFreedomAdapter = new FastItemAdapter<NameFreedomItem>());
+                    @Override
+                    public void onClick(View v, int position, FastAdapter<NameFreedomItem> fastAdapter, NameFreedomItem item) {
+                        resetName(nameDefinition = item.src);
+                        if (! item.isSelected()) {
+                            Set<Integer> selections = fastAdapter.getSelections();
+                            if (! selections.isEmpty()) {
+                                int selectedPosition = selections.iterator().next();
+                                fastAdapter.deselect();
+                                fastAdapter.notifyItemChanged(selectedPosition);
+                            }
+
+                            fastAdapter.select(position);
+                        }
+                    }
+                });
+
+        nameFreedomContainer.setAdapter(nameFreedomAdapter);
         nameFreedomContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
-
-        nameFreedomAdapter.withOnClickListener(new FastAdapter.OnClickListener<NameFreedomItem>() {
-            @Override
-            public boolean onClick(View v, IAdapter<NameFreedomItem> adapter, NameFreedomItem item, int position) {
-                resetName(nameDefinition = item.src);
-                return true;
-            }
-        });
 
         getPresenter().postNameDefinitionDataNormal(
                 listRequestParam.surname,
@@ -203,6 +219,7 @@ public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<Name
             }
 
             nameFreedomAdapter.add(itemList);
+            nameFreedomAdapter.select(0);
         }
     }
 

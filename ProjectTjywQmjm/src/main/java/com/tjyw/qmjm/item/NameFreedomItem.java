@@ -1,6 +1,7 @@
 package com.tjyw.qmjm.item;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
 
@@ -39,10 +40,10 @@ public class NameFreedomItem extends AtomPubFastAdapterAbstractItem<NameDefiniti
     @Override
     public void bindView(NameFreedomHolder holder, List<Object> payloads) {
         super.bindView(holder, payloads);
-        holder.onBindView(ClientQmjmApplication.getContext(), src);
+        holder.onBindView(ClientQmjmApplication.getContext(), this);
     }
 
-    public static class NameFreedomHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<NameDefinition> {
+    public static class NameFreedomHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<NameFreedomItem> {
 
         @From(R.id.bodyTitle)
         protected TextView bodyTitle;
@@ -52,8 +53,14 @@ public class NameFreedomItem extends AtomPubFastAdapterAbstractItem<NameDefiniti
         }
 
         @Override
-        public void onBindView(Context context, NameDefinition definition) {
+        public void onBindView(Context context, NameFreedomItem nameFreedomItem) {
+            NameDefinition definition = nameFreedomItem.src;
             bodyTitle.setText(definition.name);
+            if (nameFreedomItem.isSelected()) {
+                bodyTitle.setBackgroundColor(ContextCompat.getColor(context, R.color.atom_pubResColorFreedomNameBackground));
+            } else {
+                bodyTitle.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent));
+            }
         }
     }
 }
