@@ -85,7 +85,6 @@ public class PayOrderNameListActivity extends BaseToolbarActivity<PayPresenter<P
 
             @Override
             public void onClick(View v, int position, FastAdapter<NamingWordItem> fastAdapter, NamingWordItem item) {
-                maskerShowProgressView(true);
                 if (item.src.favorite && item.src.id > 0) {
                     getPresenter().postFavoriteRemove(item.src.id, item);
                 } else {
@@ -139,7 +138,6 @@ public class PayOrderNameListActivity extends BaseToolbarActivity<PayPresenter<P
 
     @Override
     public void postOnFavoriteAddSuccess(RIdentifyResult result, Object item) {
-        maskerHideProgressView();
         if (item instanceof NamingWordItem) {
             showToast(R.string.atom_pub_resStringFavoriteHintAdd);
             NamingWordItem namingWordItem = (NamingWordItem) item;
@@ -151,7 +149,6 @@ public class PayOrderNameListActivity extends BaseToolbarActivity<PayPresenter<P
 
     @Override
     public void postOnFavoriteRemoveSuccess(Object item) {
-        maskerHideProgressView();
         if (item instanceof NamingWordItem) {
             showToast(R.string.atom_pub_resStringFavoriteHintRemove);
             NamingWordItem namingWordItem = (NamingWordItem) item;

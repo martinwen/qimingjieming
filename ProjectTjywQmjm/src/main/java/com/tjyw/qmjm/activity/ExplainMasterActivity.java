@@ -95,8 +95,14 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
             }
         });
 
-        maskerShowProgressView(false, true, getString(R.string.atom_pub_resStringNetworkRequesting));
-        Observable.timer(pGetIntExtra(IApiField.D.delayed, 100), TimeUnit.MILLISECONDS)
+        int delayed = pGetIntExtra(IApiField.D.delayed, 100);
+        if (delayed >= 1000) {
+            maskerShowProgressView(false, true, getString(R.string.atom_pub_resStringNetworkRequesting));
+        } else {
+            maskerShowProgressView(false);
+        }
+
+        Observable.timer(delayed, TimeUnit.MILLISECONDS)
                 .compose(RxSchedulersHelper.<Long>io_main())
                 .subscribe(new Action1<Long>() {
                     @Override

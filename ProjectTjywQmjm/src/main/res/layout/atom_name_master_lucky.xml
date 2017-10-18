@@ -7,15 +7,9 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/nameListContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
     <LinearLayout
-        android:id="@+id/namePayContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/atom_pub_png_name_lucky_bg"
         android:orientation="vertical"
@@ -94,9 +88,7 @@
             android:layout_height="0dp"
             android:layout_weight="1.0"
             android:lineSpacingExtra="8dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="8dp"
+            android:padding="16dp"
             android:text="@string/atom_pub_resStringNamePayHint" />
 
         <TextView
@@ -105,6 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginTop="16dp"
             android:background="@drawable/atom_pub_ic_ink_text_red"
             android:gravity="center"
             android:text="@string/atom_pub_resStringPayPay" />

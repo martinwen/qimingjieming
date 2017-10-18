@@ -1,5 +1,6 @@
 package com.tjyw.qmjm.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -8,13 +9,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.conf.IApiField;
+import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
-import com.tjyw.atom.network.result.RNameDefinition;
+import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.activity.BaseActivity;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 
 import nucleus.factory.RequiresPresenter;
@@ -23,7 +26,7 @@ import nucleus.factory.RequiresPresenter;
  * Created by stephen on 17-8-11.
  */
 @RequiresPresenter(NamingPresenter.class)
-public class NameMasterLuckyFragment extends NameMasterRecommendFragment {
+public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMasterRecommendFragment>> implements OnApiPayPostListener.PostPayListVipListener {
 
     public static NameMasterLuckyFragment newInstance(ListRequestParam param) {
         Bundle bundle = new Bundle();
@@ -33,9 +36,6 @@ public class NameMasterLuckyFragment extends NameMasterRecommendFragment {
         fragment.setArguments(bundle);
         return fragment;
     }
-
-    @From(R.id.namePayContainer)
-    protected ViewGroup namePayContainer;
 
     @From(R.id.bodySurname)
     protected TextView bodySurname;
@@ -52,6 +52,10 @@ public class NameMasterLuckyFragment extends NameMasterRecommendFragment {
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
 
+    protected ListRequestParam listRequestParam;
+
+    protected PayService payService;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -62,8 +66,30 @@ public class NameMasterLuckyFragment extends NameMasterRecommendFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        listRequestParam = (ListRequestParam) pGetSerializableExtra(IApiField.P.param);
         if (null != listRequestParam) {
-            requestListData();
+            maskerShowProgressView(false);
+            getPresenter().postPayListVip(
+                    2,
+                    listRequestParam.surname,
+                    listRequestParam.day
+            );
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case ICode.SECTION.PAY:
+                switch (resultCode) {
+                    case ICode.PAY.ALIPAY_SUCCESS:
+                    case ICode.PAY.WX_SUCCESS:
+                        if (null != data) {
+                            listRequestParam.orderNo = data.getStringExtra(IApiField.O.orderNo);
+                            IClientActivityLaunchFactory.launchNamingListActivity((BaseActivity) getActivity(), listRequestParam);
+                        }
+                }
         }
     }
 
@@ -79,12 +105,6 @@ public class NameMasterLuckyFragment extends NameMasterRecommendFragment {
     }
 
     @Override
-    public void postOnNamingSuccess(RNameDefinition result) {
-        super.postOnNamingSuccess(result);
-        namePayContainer.setVisibility(View.GONE);
-    }
-
-    @Override
     public void postOnPayListVipSuccess(int type, PayService payService) {
         maskerHideProgressView();
         this.payService = payService;
@@ -95,26 +115,5 @@ public class NameMasterLuckyFragment extends NameMasterRecommendFragment {
         bodyDate.setText(payService.day);
         bodyServiceName.setText(payService.service);
         bodyServicePrice.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s, payService.money));
-    }
-
-    @Override
-    protected void requestListData() {
-        if (null != listRequestParam) {
-            maskerShowProgressView(false);
-            if (hasOrderNo()) {
-                getPresenter().postPayOrderNameList(listRequestParam.orderNo);
-            } else {
-                getPresenter().postPayListVip(
-                        2,
-                        listRequestParam.surname,
-                        listRequestParam.day
-                );
-            }
-        }
-    }
-
-    @Override
-    protected boolean canShowPayInterceptWindow() {
-        return false;
     }
 }

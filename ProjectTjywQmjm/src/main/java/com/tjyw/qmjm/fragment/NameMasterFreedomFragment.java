@@ -32,6 +32,7 @@ import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.activity.BaseActivity;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.tjyw.qmjm.holder.HeaderWordHolder;
 import com.tjyw.qmjm.item.NameFreedomItem;
@@ -154,7 +155,11 @@ public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<Name
                     case ICode.PAY.WX_SUCCESS:
                         if (null != data) {
                             listRequestParam.orderNo = data.getStringExtra(IApiField.O.orderNo);
-                            IClientActivityLaunchFactory.launchPayOrderListActivity(this);
+                            IClientActivityLaunchFactory.launchNamingListActivity((BaseActivity) getActivity(), listRequestParam);
+                            Fragment fragment = getFragmentManager().findFragmentById(R.id.payServiceFragment);
+                            if (null != fragment) {
+                                pHideFragment(R.anim.abc_fade_in, R.anim.abc_fade_out, fragment);
+                            }
                         }
                 }
         }
@@ -180,7 +185,6 @@ public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<Name
                 );
                 break ;
             case R.id.nameWordCollect:
-                maskerShowProgressView(true);
                 if (nameDefinition.favorite && nameDefinition.id > 0) {
                     getPresenter().postFavoriteRemove(nameDefinition.id, null);
                 } else {
@@ -242,7 +246,6 @@ public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<Name
 
     @Override
     public void postOnFavoriteAddSuccess(RIdentifyResult result, Object item) {
-        maskerHideProgressView();
         if (null != nameDefinition) {
             nameDefinition.id = result.id;
             nameDefinition.favorite = true;
@@ -252,7 +255,6 @@ public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<Name
 
     @Override
     public void postOnFavoriteRemoveSuccess(Object item) {
-        maskerHideProgressView();
         if (null != nameDefinition) {
             nameDefinition.id = 0;
             nameDefinition.favorite = false;

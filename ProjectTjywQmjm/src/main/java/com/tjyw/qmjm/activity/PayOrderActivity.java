@@ -35,8 +35,10 @@ import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.R;
 
 import java.lang.ref.WeakReference;
+import java.util.concurrent.TimeUnit;
 
 import nucleus.factory.RequiresPresenter;
+import rx.Observable;
 import rx.functions.Action1;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -115,7 +117,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                 data = new Intent();
                 data.putExtra(IApiField.O.orderNo, listRequestParam.orderNo);
                 setResult(ICode.PAY.WX_SUCCESS, data);
-                finish();
+                finishDelayed();
             } else if (! TextUtils.isEmpty(listRequestParam.orderNo)) {
                 getPresenter().postPayLog(
                         listRequestParam.orderNo,
@@ -239,7 +241,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                 Intent data = new Intent();
                 data.putExtra(IApiField.O.orderNo, listRequestParam.orderNo);
                 setResult(ICode.PAY.ALIPAY_SUCCESS, data);
-                finish();
+                finishDelayed();
                 break ;
             case RESULT_STATUS.FAIL:
             default:
@@ -252,6 +254,23 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                     );
                 }
         }
+    }
+
+    protected void finishDelayed() {
+        maskerShowProgressView(true, true, getString(R.string.atom_pub_resStringNetworkRequesting));
+        Observable.timer(3, TimeUnit.SECONDS)
+                .compose(RxSchedulersHelper.<Long>io_main())
+                .subscribe(new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        finish();
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        finish();
+                    }
+                });
     }
 
     public static class PayOrderHandler extends Handler {
