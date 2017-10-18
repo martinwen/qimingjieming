@@ -63,13 +63,6 @@ public class IClientActivityLaunchFactory {
         context.startActivity(intent);
     }
 
-    public static void launchPayOrderActivity(BaseActivity context, ListRequestParam param, PayService payService) {
-        Intent intent = new Intent(context, PayOrderActivity.class);
-        intent.putExtra(IApiField.P.param, param);
-        intent.putExtra(IApiField.P.payService, payService);
-        context.startActivityForResult(intent, ICode.SECTION.PAY);
-    }
-
     public static void launchPayOrderActivity(BaseFragment context, ListRequestParam param, PayService payService) {
         Intent intent = new Intent(context.getActivity(), PayOrderActivity.class);
         intent.putExtra(IApiField.P.param, param);

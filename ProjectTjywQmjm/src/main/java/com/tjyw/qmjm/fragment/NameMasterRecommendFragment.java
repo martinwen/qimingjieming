@@ -108,10 +108,6 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
                         if (null != data) {
                             listRequestParam.orderNo = data.getStringExtra(IApiField.O.orderNo);
                             IClientActivityLaunchFactory.launchNamingListActivity((BaseActivity) getActivity(), listRequestParam);
-                            Fragment fragment = getFragmentManager().findFragmentById(R.id.payServiceFragment);
-                            if (null != fragment) {
-                                pHideFragment(R.anim.abc_fade_in, R.anim.abc_fade_out, fragment);
-                            }
                         }
                 }
         }
@@ -179,6 +175,14 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
             PayServiceFragment payServiceFragment = (PayServiceFragment) fragment;
             payServiceFragment.setListRequestParam(listRequestParam);
             payServiceFragment.setPayService(payService);
+            payServiceFragment.setOnPayServiceClickListener(new PayServiceFragment.OnPayServiceClickListener() {
+                @Override
+                public void payOnServicePayClick(PayServiceFragment fragment, ListRequestParam listRequestParam, PayService payService) {
+                    if (null != listRequestParam && null != payService) {
+                        IClientActivityLaunchFactory.launchPayOrderActivity(NameMasterRecommendFragment.this, listRequestParam, payService);
+                    }
+                }
+            });
             pShowFragment(R.anim.abc_fade_in, R.anim.abc_fade_out, payServiceFragment);
         }
     }

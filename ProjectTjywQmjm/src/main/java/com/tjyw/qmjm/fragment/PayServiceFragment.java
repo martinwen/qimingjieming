@@ -12,13 +12,16 @@ import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
-import com.tjyw.qmjm.activity.BaseActivity;
-import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 
 /**
  * Created by stephen on 17-8-17.
  */
 public class PayServiceFragment extends BaseFragment {
+
+    public interface OnPayServiceClickListener {
+
+        void payOnServicePayClick(PayServiceFragment fragment, ListRequestParam listRequestParam, PayService payService);
+    }
 
     @From(R.id.bodySurname)
     protected TextView bodySurname;
@@ -39,12 +42,18 @@ public class PayServiceFragment extends BaseFragment {
 
     protected PayService payService;
 
+    protected OnPayServiceClickListener listener;
+
     public void setListRequestParam(ListRequestParam listRequestParam) {
         this.listRequestParam = listRequestParam;
     }
 
     public void setPayService(PayService payService) {
         this.payService = payService;
+    }
+
+    public void setOnPayServiceClickListener(OnPayServiceClickListener listener) {
+        this.listener = listener;
     }
 
     @Nullable
@@ -75,8 +84,8 @@ public class PayServiceFragment extends BaseFragment {
         switch (v.getId()) {
             case R.id.atom_pub_resIdsOK:
                 pHideFragment(this);
-                if (null != listRequestParam) {
-                    IClientActivityLaunchFactory.launchPayOrderActivity(this, listRequestParam, payService);
+                if (null != listener) {
+                    listener.payOnServicePayClick(this, listRequestParam, payService);
                 }
                 break ;
             default:
