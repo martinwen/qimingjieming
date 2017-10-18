@@ -46,6 +46,12 @@
                     android:text="@string/atom_pub_resStringPayPrice" />
             </LinearLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,18 +65,36 @@
                     android:scaleType="fitXY"
                     android:src="@color/atom_pub_resColorDivider" />
 
-                <TextView
+                <LinearLayout
                     android:id="@+id/payUseAlipay"
-                    style="@style/AtomStyle.BlackNormalText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/atom_pub_ic_pay_alipay"
-                    android:drawablePadding="16dp"
-                    android:drawableRight="@drawable/atom_pub_selector_pay_checked"
-                    android:gravity="center_vertical"
-                    android:minLines="1"
-                    android:padding="16dp"
-                    android:text="@string/atom_pub_resStringPayUseAliPay" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/AtomStyle.BlackNormalText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:drawableLeft="@drawable/atom_pub_ic_pay_alipay"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:minLines="1"
+                        android:padding="16dp"
+                        android:text="@string/atom_pub_resStringPayUseAliPay" />
+
+                    <TextView
+                        style="@style/AtomStyle.RedNormalText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="16dp"
+                        android:drawableRight="@drawable/atom_pub_selector_pay_checked"
+                        android:duplicateParentState="true"
+                        android:gravity="center_vertical"
+                        android:minLines="1"
+                        android:padding="16dp"
+                        android:text="@string/atom_pub_resStringPayUseAliPayRecommend" />
+                </LinearLayout>
 
                 <ImageView
                     android:layout_width="match_parent"

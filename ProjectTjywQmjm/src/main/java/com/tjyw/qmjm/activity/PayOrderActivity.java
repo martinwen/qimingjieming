@@ -11,6 +11,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.swiftfintech.pay.activity.PayPlugin;
@@ -56,7 +57,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     protected TextView payServicePrice;
 
     @From(R.id.payUseAlipay)
-    protected TextView payUseAlipay;
+    protected ViewGroup payUseAlipay;
 
     @From(R.id.payUseWxPay)
     protected TextView payUseWxPay;
