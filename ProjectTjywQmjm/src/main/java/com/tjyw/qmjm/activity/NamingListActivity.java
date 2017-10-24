@@ -10,7 +10,6 @@ import android.view.View;
 
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
-import com.mikepenz.fastadapter.adapters.FooterAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.listeners.ClickEventHook;
 import com.tjyw.atom.network.IllegalRequestException;
@@ -27,7 +26,6 @@ import com.tjyw.atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
-import com.tjyw.qmjm.item.NameDefinitionFooterItem;
 import com.tjyw.qmjm.item.NamingWordItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
@@ -50,8 +48,6 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     protected RecyclerView namingListContainer;
 
     protected FastItemAdapter<NamingWordItem> nameDefinitionAdapter;
-
-    protected FooterAdapter<NameDefinitionFooterItem> nameDefinitionFooterAdapter;
 
     protected ListRequestParam listRequestParam;
 
@@ -79,7 +75,6 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
                     .init();
         }
 
-        nameDefinitionFooterAdapter = new FooterAdapter<NameDefinitionFooterItem>();
         nameDefinitionAdapter = new FastItemAdapter<NamingWordItem>();
         nameDefinitionAdapter.withItemEvent(new ClickEventHook<NamingWordItem>() {
             @Nullable
@@ -116,7 +111,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         });
 
         namingListContainer.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-        namingListContainer.setAdapter(nameDefinitionFooterAdapter.wrap(nameDefinitionAdapter));
+        namingListContainer.setAdapter(nameDefinitionAdapter);
         namingListContainer.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
                         .color(R.color.atom_pub_resColorDivider)
@@ -170,8 +165,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         }
 
         nameDefinitionAdapter.add(itemList);
-        nameDefinitionFooterAdapter.add(new NameDefinitionFooterItem(null));
-        namingListContainer.setAdapter(nameDefinitionFooterAdapter);
+        namingListContainer.setAdapter(nameDefinitionAdapter);
     }
 
     @Override
