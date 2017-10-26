@@ -6,8 +6,8 @@ import android.widget.TextView;
 
 import com.tjyw.atom.network.conf.ISection;
 import com.tjyw.atom.network.model.NameZodiac;
-import com.tjyw.atom.pub.inject.From;
-import com.tjyw.atom.pub.inject.Injector;
+import atom.pub.inject.From;
+import atom.pub.inject.Injector;
 import com.tjyw.qmjm.R;
 
 /**

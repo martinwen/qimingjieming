@@ -5,8 +5,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.model.NameData;
-import com.tjyw.atom.pub.inject.From;
-import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
+import atom.pub.inject.From;
+import atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.holder.BaZiSheetHolder;

@@ -36,7 +36,7 @@ import android.util.AttributeSet;
 
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.ObjectAnimator;
-import com.tjyw.atom.pub.R;
+import atom.pub.R;
 
 /**
  * Abstract spinner antistatic.spinnerwheel view.

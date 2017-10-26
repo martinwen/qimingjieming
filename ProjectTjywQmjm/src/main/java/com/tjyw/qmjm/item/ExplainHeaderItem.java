@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.tjyw.atom.network.model.Explain;
-import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
+import atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.holder.AtomExplainHeaderHolder;

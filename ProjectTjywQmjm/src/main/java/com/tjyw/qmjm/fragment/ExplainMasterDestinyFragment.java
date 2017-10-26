@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
-import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
+import atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.holder.AtomExplainHeaderHolder;
 import com.tjyw.qmjm.holder.BaZiSheetHolder;

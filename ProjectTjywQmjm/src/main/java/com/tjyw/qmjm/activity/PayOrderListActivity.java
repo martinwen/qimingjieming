@@ -17,7 +17,7 @@ import com.tjyw.atom.network.presenter.PayPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.result.RetroListResult;
-import com.tjyw.atom.pub.inject.From;
+import atom.pub.inject.From;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;

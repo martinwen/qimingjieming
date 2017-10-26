@@ -3,7 +3,7 @@ package com.tjyw.qmjm.item;
 import android.content.Context;
 import android.view.View;
 
-import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
+import atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.qmjm.R;
 
 /**

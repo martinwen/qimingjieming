@@ -3,7 +3,7 @@ package com.tjyw.qmjm.activity;
 import android.support.annotation.LayoutRes;
 import android.view.View;
 
-import com.tjyw.atom.pub.interfaces.IAtomPubToolBar;
+import atom.pub.interfaces.IAtomPubToolBar;
 import com.tjyw.qmjm.support.AtomClientToolbarSupport;
 
 import nucleus.presenter.Presenter;

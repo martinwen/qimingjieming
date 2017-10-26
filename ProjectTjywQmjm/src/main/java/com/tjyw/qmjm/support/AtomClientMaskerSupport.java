@@ -10,9 +10,9 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.tjyw.atom.pub.inject.From;
-import com.tjyw.atom.pub.inject.Injector;
-import com.tjyw.atom.pub.interfaces.IAtomPubLayoutSupportMasker;
+import atom.pub.inject.From;
+import atom.pub.inject.Injector;
+import atom.pub.interfaces.IAtomPubLayoutSupportMasker;
 import com.tjyw.qmjm.R;
 
 /**

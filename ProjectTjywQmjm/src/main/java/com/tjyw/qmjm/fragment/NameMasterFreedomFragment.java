@@ -29,7 +29,7 @@ import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.RIdentifyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.utils.ArrayUtil;
-import com.tjyw.atom.pub.inject.From;
+import atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.activity.BaseActivity;

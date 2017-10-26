@@ -7,7 +7,7 @@ import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
-import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
+import atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.activity.BaseActivity;
 import com.tjyw.qmjm.activity.ClientMasterActivity;

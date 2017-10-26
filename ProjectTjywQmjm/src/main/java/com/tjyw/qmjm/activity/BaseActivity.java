@@ -4,9 +4,9 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
 import android.view.View;
 
-import com.tjyw.atom.pub.activity.AtomPubBaseActivity;
-import com.tjyw.atom.pub.inject.Injector;
-import com.tjyw.atom.pub.interfaces.IAtomPubLayoutSupportMasker;
+import atom.pub.activity.AtomPubBaseActivity;
+import atom.pub.inject.Injector;
+import atom.pub.interfaces.IAtomPubLayoutSupportMasker;
 import com.tjyw.qmjm.support.AtomClientMaskerSupport;
 
 import butterknife.ButterKnife;

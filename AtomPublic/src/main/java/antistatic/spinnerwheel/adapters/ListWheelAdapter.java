@@ -2,7 +2,7 @@ package antistatic.spinnerwheel.adapters;
 
 import android.content.Context;
 
-import com.tjyw.atom.pub.R;
+import atom.pub.R;
 
 import java.util.List;
 

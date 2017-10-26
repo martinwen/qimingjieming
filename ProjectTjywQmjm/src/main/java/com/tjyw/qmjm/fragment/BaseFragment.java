@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.view.View;
 
-import com.tjyw.atom.pub.fragment.AtomPubBaseFragment;
-import com.tjyw.atom.pub.inject.Injector;
-import com.tjyw.atom.pub.interfaces.IAtomPubLayoutSupportMasker;
+import atom.pub.fragment.AtomPubBaseFragment;
+import atom.pub.inject.Injector;
+import atom.pub.interfaces.IAtomPubLayoutSupportMasker;
 import com.tjyw.qmjm.support.AtomClientMaskerSupport;
 
 import butterknife.ButterKnife;

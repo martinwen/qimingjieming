@@ -32,7 +32,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.tjyw.atom.pub.R;
+import atom.pub.R;
 
 /**
  * Abstract antistatic.spinnerwheel adapter provides common functionality for adapters.

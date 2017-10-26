@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import com.tjyw.atom.pub.inject.From;
-import com.tjyw.atom.pub.inject.Injector;
-import com.tjyw.atom.pub.widget.AtomPubWordContainer;
+import atom.pub.inject.From;
+import atom.pub.inject.Injector;
+import atom.pub.widget.AtomPubWordContainer;
 import com.tjyw.qmjm.R;
 
 /**

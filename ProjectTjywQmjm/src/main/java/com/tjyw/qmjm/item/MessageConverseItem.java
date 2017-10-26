@@ -4,9 +4,9 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.mikepenz.fastadapter.IClickable;
 import com.mikepenz.fastadapter.IItem;
 import com.tjyw.atom.network.model.Message;
-import com.tjyw.atom.pub.fresco.ImageFacade;
-import com.tjyw.atom.pub.inject.From;
-import com.tjyw.atom.pub.item.AtomPubFastAdapterAbstractItem;
+import atom.pub.fresco.ImageFacade;
+import atom.pub.inject.From;
+import atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.qmjm.R;
 
 import java.util.List;

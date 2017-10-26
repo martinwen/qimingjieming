@@ -12,7 +12,7 @@ import com.aspsine.fragmentnavigator.FragmentNavigator;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.tjyw.atom.network.conf.IApiField;
-import com.tjyw.atom.pub.inject.From;
+import atom.pub.inject.From;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ClientMasterAdapter;

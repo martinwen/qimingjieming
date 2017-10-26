@@ -12,21 +12,17 @@ import android.widget.TextView;
 
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mobsandgeeks.saripaar.Validator;
-import com.mobsandgeeks.saripaar.annotation.NotEmpty;
-import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.model.MessageConverse;
 import com.tjyw.atom.network.presenter.IPost;
 import com.tjyw.atom.network.presenter.MessageHotLinePresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiMessageHotLinePostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.result.REmptyResult;
-import com.tjyw.atom.pub.inject.From;
-import com.tjyw.atom.pub.interfaces.AtomPubValidationListener;
+import atom.pub.inject.From;
+import atom.pub.interfaces.AtomPubValidationListener;
 import com.tjyw.qmjm.R;
 
 import nucleus.factory.RequiresPresenter;
-import rx.Observable;
-import rx.functions.Action1;
 
 /**
  * Created by stephen on 11/04/2017.

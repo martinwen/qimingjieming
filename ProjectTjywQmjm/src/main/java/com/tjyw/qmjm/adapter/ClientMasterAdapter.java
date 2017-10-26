@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.util.Pair;
 
 import com.aspsine.fragmentnavigator.FragmentNavigatorAdapter;
-import com.tjyw.atom.pub.activity.AtomPubBaseActivity;
+import atom.pub.activity.AtomPubBaseActivity;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.fragment.ClientMasterExplainFragment;
 import com.tjyw.qmjm.fragment.ClientMasterMineFragment;

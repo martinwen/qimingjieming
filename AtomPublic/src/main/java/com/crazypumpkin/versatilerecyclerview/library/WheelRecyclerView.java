@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.tjyw.atom.pub.R;
+import atom.pub.R;
 
 import java.util.ArrayList;
 import java.util.List;

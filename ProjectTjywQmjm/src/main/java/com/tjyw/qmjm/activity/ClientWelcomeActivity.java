@@ -18,7 +18,7 @@ import com.tjyw.atom.network.model.UserInfo;
 import com.tjyw.atom.network.presenter.UserPresenter;
 import com.tjyw.atom.network.result.RetroResult;
 import com.tjyw.atom.network.utils.JsonUtil;
-import com.tjyw.atom.pub.inject.From;
+import atom.pub.inject.From;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;

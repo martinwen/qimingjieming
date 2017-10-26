@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.utils.ArrayUtil;
-import com.tjyw.atom.pub.interfaces.IAtomPubToolBar;
+import atom.pub.interfaces.IAtomPubToolBar;
 import com.tjyw.qmjm.R;
 
 import butterknife.BindView;

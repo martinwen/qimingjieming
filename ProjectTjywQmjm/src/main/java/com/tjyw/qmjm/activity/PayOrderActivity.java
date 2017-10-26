@@ -32,7 +32,7 @@ import com.tjyw.atom.network.presenter.PayPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
-import com.tjyw.atom.pub.inject.From;
+import atom.pub.inject.From;
 import com.tjyw.qmjm.R;
 
 import java.lang.ref.WeakReference;

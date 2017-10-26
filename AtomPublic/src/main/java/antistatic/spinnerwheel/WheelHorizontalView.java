@@ -36,7 +36,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 
-import com.tjyw.atom.pub.R;
+import atom.pub.R;
 
 /**
  * Spinner wheel horizontal view.

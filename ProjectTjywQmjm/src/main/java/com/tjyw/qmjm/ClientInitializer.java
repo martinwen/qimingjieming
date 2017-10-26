@@ -15,7 +15,7 @@ import com.tjyw.atom.alipay.PayConfigure;
 import com.tjyw.atom.network.Network;
 import com.tjyw.atom.network.utils.DateTimeUtils;
 import com.tjyw.atom.network.utils.Documents;
-import com.tjyw.atom.pub.ClientCrashReport;
+import atom.pub.ClientCrashReport;
 import com.tjyw.qmjm.activity.ClientWelcomeActivity;
 import com.umeng.analytics.MobclickAgent;
 

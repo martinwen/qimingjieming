@@ -20,8 +20,8 @@ import com.tjyw.atom.network.presenter.UserPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiUserPostListener;
 import com.tjyw.atom.network.utils.JsonUtil;
-import com.tjyw.atom.pub.inject.From;
-import com.tjyw.atom.pub.interfaces.AtomPubValidationListener;
+import atom.pub.inject.From;
+import atom.pub.interfaces.AtomPubValidationListener;
 import com.tjyw.qmjm.R;
 
 import java.util.concurrent.TimeUnit;

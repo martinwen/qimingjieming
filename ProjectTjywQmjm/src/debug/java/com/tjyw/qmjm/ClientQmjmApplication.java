@@ -3,7 +3,7 @@ package com.tjyw.qmjm;
 import android.content.res.Resources;
 import android.support.multidex.MultiDexApplication;
 
-import com.tjyw.atom.pub.ForegroundCallbacks;
+import atom.pub.ForegroundCallbacks;
 
 import java.lang.ref.WeakReference;
 

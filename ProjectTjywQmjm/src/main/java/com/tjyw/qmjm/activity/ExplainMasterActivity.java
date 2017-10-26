@@ -13,7 +13,7 @@ import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostExplainListener;
-import com.tjyw.atom.pub.inject.From;
+import atom.pub.inject.From;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ExplainMasterAdapter;
 
