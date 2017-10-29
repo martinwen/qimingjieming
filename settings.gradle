@@ -1,1 +1,1 @@
-include ':ProjectTjywQmjm', ':AtomPublic', ':AtomNetwork', ':AtomSwiftPay'
+include ':ProjectTjywQmjm', ':AtomPublic', ':AtomNetwork', ':AtomSwiftPay', ':ProjectTjywBbqm'
