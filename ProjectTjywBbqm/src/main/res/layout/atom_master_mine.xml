@@ -13,9 +13,11 @@
         android:padding="8dp">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/atom_png_logo" />
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginLeft="8dp"
+            android:scaleType="center"
+            android:src="@mipmap/atom_ic_logo" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,7 +28,7 @@
 
             <TextView
                 android:id="@+id/masterMineUserSignIn"
-                style="@style/AtomStyle.GreyBigText"
+                style="@style/AtomStyle.WhiteBigText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/atom_pub_ic_login"
@@ -39,7 +41,7 @@
 
             <TextView
                 android:id="@+id/masterMineUserAccount"
-                style="@style/AtomStyle.GreyBigText"
+                style="@style/AtomStyle.WhiteBigText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"

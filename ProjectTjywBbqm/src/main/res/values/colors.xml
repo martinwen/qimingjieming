@@ -6,4 +6,6 @@
 
     <color name="atom_resColorTabHighLight">#FF4B3C2D</color>
 
+    <color name="atom_resColorTabBackground">#FFF6EFE4</color>
+
 </resources>

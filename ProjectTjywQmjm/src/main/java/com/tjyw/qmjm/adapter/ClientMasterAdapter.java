@@ -39,21 +39,21 @@ public class ClientMasterAdapter implements FragmentNavigatorAdapter {
         MASTER_TAB_RESOURCE.add(POSITION.NAMING,
                 new Pair<Integer, Integer>(
                         R.string.atom_pub_resStringMasterTabNaming,
-                        R.drawable.atom_pub_selector_master_tab_naming
+                        R.drawable.atom_selector_master_tab_naming
                 )
         );
 
         MASTER_TAB_RESOURCE.add(POSITION.EXPLAIN,
                 new Pair<Integer, Integer>(
                         R.string.atom_pub_resStringMasterTabExplain,
-                        R.drawable.atom_pub_selector_master_tab_explain
+                        R.drawable.atom_selector_master_tab_explain
                 )
         );
 
         MASTER_TAB_RESOURCE.add(POSITION.MINE,
                 new Pair<Integer, Integer>(
                         R.string.atom_pub_resStringMasterTabMine,
-                        R.drawable.atom_pub_selector_master_tab_mine
+                        R.drawable.atom_selector_master_tab_mine
                 )
         );
     }

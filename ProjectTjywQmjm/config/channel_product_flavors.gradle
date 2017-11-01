@@ -38,11 +38,11 @@ android {
 
     //渠道列表
     productFlavors {
-//        C1000 {
-//            resValue "string", "app_name", "生辰八字-宝宝起名"
-//            buildConfigField "String", "CLIENT_C_ID", '"C1000"'
-//            buildConfigField "String", "CLIENT_C_NAME", '"official"'
-//        }
+        C1000 {
+            resValue "string", "app_name", "生辰八字-宝宝起名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1000"'
+            buildConfigField "String", "CLIENT_C_NAME", '"official"'
+        }
 //        C1001 {
 //            resValue "string", "app_name", "起名字取名字"
 //            buildConfigField "String", "CLIENT_C_ID", '"C1001"'

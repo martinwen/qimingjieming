@@ -10,10 +10,11 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.tjyw.bbqm.R;
+
 import atom.pub.inject.From;
 import atom.pub.inject.Injector;
 import atom.pub.interfaces.IAtomPubLayoutSupportMasker;
-import com.tjyw.bbqm.R;
 
 /**
  * Created by stephen on 17-8-18.
@@ -86,11 +87,11 @@ public class AtomClientMaskerSupport implements View.OnClickListener, IAtomPubLa
 
     @Override
     public void maskerShowProgressView(boolean isAlpha, boolean anim, String hint) {
-        atomPubProgressView.setBackgroundColor(
-                ContextCompat.getColor(atomPubProgressView.getContext(),
-                        isAlpha ? R.color.atom_pub_resColorLoadingBackgroundAlpha : R.color.atom_pub_resColorLoadingBackground
-                )
-        );
+        if (isAlpha) {
+            atomPubProgressView.setBackgroundColor(ContextCompat.getColor(atomPubProgressView.getContext(), R.color.atom_pub_resColorLoadingBackgroundAlpha));
+        } else {
+            atomPubProgressView.setBackgroundResource(R.drawable.atom_shape_background);
+        }
 
         if (anim) {
             if (null == atomPubProgressAnimatorSet) {

@@ -9,11 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.utils.ArrayUtil;
+
+import atom.pub.inject.From;
+import atom.pub.inject.Injector;
 import atom.pub.interfaces.IAtomPubToolBar;
 import com.tjyw.qmjm.R;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by stephen on 17-8-4.
@@ -24,26 +24,26 @@ public class AtomClientToolbarSupport implements IAtomPubToolBar, View.OnClickLi
         return new AtomClientToolbarSupport(iAtomPubToolBar, source);
     }
 
-    @BindView(R.id.atomPubToolBar)
+    @From(R.id.atomPubToolBar)
     protected Toolbar atomPubToolBar;
 
-    @BindView(R.id.atomPubToolBarCenterView)
+    @From(R.id.atomPubToolBarCenterView)
     protected TextView atomPubToolBarCenterView;
 
-    @BindView(R.id.atomPubToolBarRightFirst)
+    @From(R.id.atomPubToolBarRightFirst)
     protected TextView atomPubToolBarRightFirst;
 
-    @BindView(R.id.atomPubToolBarRightSecondBubble)
+    @From(R.id.atomPubToolBarRightSecondBubble)
     protected ImageView atomPubToolBarRightSecondBubble;
 
-    @BindView(R.id.atomPubToolBarRightSecond)
+    @From(R.id.atomPubToolBarRightSecond)
     protected TextView atomPubToolBarRightSecond;
 
     protected IAtomPubToolBar iAtomPubToolBar;
 
     public AtomClientToolbarSupport(IAtomPubToolBar iAtomPubToolBar, View source) {
         this.iAtomPubToolBar = iAtomPubToolBar;
-        ButterKnife.bind(this, source);
+        Injector.inject(this, source);
     }
 
     @Override
@@ -59,7 +59,7 @@ public class AtomClientToolbarSupport implements IAtomPubToolBar, View.OnClickLi
         }
 
         if (hasBackBtn && null != atomPubToolBar) {
-            atomPubToolBar.setNavigationIcon(R.drawable.atom_pub_ic_backpress);
+            atomPubToolBar.setNavigationIcon(R.drawable.atom_ic_backpress);
             atomPubToolBar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

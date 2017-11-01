@@ -48,9 +48,6 @@ public class ClientMasterActivity extends BaseActivity {
         fragmentNavigator = new FragmentNavigator(getSupportFragmentManager(), ClientMasterAdapter.newInstance(this), R.id.masterFragmentContainer);
         fragmentNavigator.onCreate(savedInstanceState);
 
-        atomPubClientMasterNavigation.setAccentColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_resColorTabHighLight));
-        atomPubClientMasterNavigation.setInactiveColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_resColorTabHighLight));
-
         int size = ClientMasterAdapter.MASTER_TAB_RESOURCE.size();
         for (int i = 0; i < size; i ++) {
             Pair<Integer, Integer> masterTabResource = ClientMasterAdapter.getMasterTabResource(i);
@@ -88,6 +85,9 @@ public class ClientMasterActivity extends BaseActivity {
             }
         });
 
+        atomPubClientMasterNavigation.setAccentColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_resColorTabHighLight));
+        atomPubClientMasterNavigation.setInactiveColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_resColorTabHighLight));
+        atomPubClientMasterNavigation.setDefaultBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_resColorTabBackground));
         atomPubClientMasterNavigation.setCurrentItem(pGetIntExtra(IApiField.T.t, ClientMasterAdapter.POSITION.NAMING), true);
     }
 
