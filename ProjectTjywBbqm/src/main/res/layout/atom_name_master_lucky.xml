@@ -103,5 +103,5 @@
             android:text="@string/atom_pub_resStringPayPay" />
     </LinearLayout>
 
-    <include layout="@layout/atom_pub_inc_loading" />
+    <include layout="@layout/atom_inc_loading" />
 </android.support.percent.PercentFrameLayout>

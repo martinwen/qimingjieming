@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFDCDCDC</color>
-    <color name="colorPrimaryDark">#FFDCDCDC</color>
+    <color name="colorPrimary">#FF533F30</color>
+    <color name="colorPrimaryDark">#FF533F30</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="atom_resColorTabHighLight">#FF4B3C2D</color>
+
 </resources>

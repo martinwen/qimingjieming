@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/atom_pub_resColorBackground"
+    android:background="@drawable/atom_shape_background"
     android:orientation="vertical"
     tools:ignore="MissingPrefix">
 
@@ -41,7 +41,7 @@
                         style="@style/AtomPubStyleKa.White_16DP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/atom_pub_selector_ink_text"
+                        android:background="@drawable/atom_selector_ink_text"
                         android:gravity="center"
                         android:text="@string/atom_pub_resStringExplainOverview"
                         android:textColor="@color/atom_pub_black2white" />
@@ -59,7 +59,7 @@
                         style="@style/AtomPubStyleKa.White_16DP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/atom_pub_selector_ink_text"
+                        android:background="@drawable/atom_selector_ink_text"
                         android:gravity="center"
                         android:text="@string/atom_pub_resStringExplainZodiac"
                         android:textColor="@color/atom_pub_black2white" />
@@ -77,7 +77,7 @@
                         style="@style/AtomPubStyleKa.White_16DP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/atom_pub_selector_ink_text"
+                        android:background="@drawable/atom_selector_ink_text"
                         android:gravity="center"
                         android:text="@string/atom_pub_resStringExplainDestiny"
                         android:textColor="@color/atom_pub_black2white" />
@@ -95,7 +95,7 @@
                         style="@style/AtomPubStyleKa.White_16DP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/atom_pub_selector_ink_text"
+                        android:background="@drawable/atom_selector_ink_text"
                         android:gravity="center"
                         android:text="@string/atom_pub_resStringExplainSanCaiWuGe"
                         android:textColor="@color/atom_pub_black2white" />
@@ -114,6 +114,6 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
 
-        <include layout="@layout/atom_pub_inc_loading" />
+        <include layout="@layout/atom_inc_loading" />
     </FrameLayout>
 </LinearLayout>
