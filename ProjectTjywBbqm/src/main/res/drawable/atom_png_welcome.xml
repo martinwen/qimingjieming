@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <bitmap
+            android:gravity="top"
+            android:src="@drawable/atom_png_welcome_slogan" />
+    </item>
+
+    <item>
+        <bitmap
+            android:gravity="bottom"
+            android:src="@drawable/atom_png_welcome_bottom" />
+    </item>
+
+</layer-list>
