@@ -90,7 +90,7 @@
                     style="@style/AtomStyle.WhiteNormalText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/atom_pubResColorFreedomNameBackground"
+                    android:background="@color/atom_resColorFreedomNameBackground"
                     android:drawableLeft="@drawable/atom_pub_ic_name_unlock"
                     android:drawablePadding="8dp"
                     android:gravity="center_vertical"
