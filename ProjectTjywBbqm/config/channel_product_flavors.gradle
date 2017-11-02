@@ -33,7 +33,7 @@ android {
     allChannelNameMap.put('C9999', '官方');
 
     productFlavors.all { flavor ->
-        flavor.buildConfigField "String", "CLIENT_P_ID", '"20000"'
+        flavor.buildConfigField "String", "CLIENT_P_ID", '"20010"'
     }
 
     //渠道列表
