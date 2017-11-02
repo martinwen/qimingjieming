@@ -17,6 +17,6 @@
             android:layout_height="match_parent"
             android:scrollbars="none" />
 
-        <include layout="@layout/atom_pub_inc_loading" />
+        <include layout="@layout/atom_inc_loading" />
     </FrameLayout>
 </LinearLayout>

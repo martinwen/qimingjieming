@@ -9,5 +9,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <include layout="@layout/atom_pub_inc_loading" />
+    <include layout="@layout/atom_inc_loading" />
 </FrameLayout>

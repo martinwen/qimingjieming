@@ -43,11 +43,11 @@ android {
             buildConfigField "String", "CLIENT_C_ID", '"C1000"'
             buildConfigField "String", "CLIENT_C_NAME", '"official"'
         }
-        C1001 {
-            resValue "string", "app_name", "起名字取名字"
-            buildConfigField "String", "CLIENT_C_ID", '"C1001"'
-            buildConfigField "String", "CLIENT_C_NAME", '"应用宝"'
-        }
+//        C1001 {
+//            resValue "string", "app_name", "起名字取名字"
+//            buildConfigField "String", "CLIENT_C_ID", '"C1001"'
+//            buildConfigField "String", "CLIENT_C_NAME", '"应用宝"'
+//        }
 //        C1002 {
 //            resValue "string", "app_name", "起名字取名字"
 //            buildConfigField "String", "CLIENT_C_ID", '"C1002"'
@@ -104,7 +104,7 @@ android {
             buildConfigField "String", "CLIENT_C_NAME", '"华为"'
         }
         C1013 {
-            resValue "string", "app_name", "起名字-八字取名"
+            resValue "string", "app_name", "生辰八字-起名解名"
             buildConfigField "String", "CLIENT_C_ID", '"C1013"'
             buildConfigField "String", "CLIENT_C_NAME", '"魅族"'
         }

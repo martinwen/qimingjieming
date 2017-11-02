@@ -3,9 +3,9 @@ package com.tjyw.bbqm;
 import android.content.res.Resources;
 import android.support.multidex.MultiDexApplication;
 
-import com.tjyw.atom.pub.ForegroundCallbacks;
-
 import java.lang.ref.WeakReference;
+
+import atom.pub.ForegroundCallbacks;
 
 /**
  * Created by stephen on 1/6/16.

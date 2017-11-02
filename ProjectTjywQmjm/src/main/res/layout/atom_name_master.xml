@@ -38,7 +38,7 @@
                     style="@style/AtomPubStyleKa.White_16DP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/atom_pub_selector_ink_text"
+                    android:background="@drawable/atom_selector_ink_text"
                     android:gravity="center"
                     android:text="@string/atom_pub_resStringNameAnalyze"
                     android:textColor="@color/atom_pub_black2white" />
@@ -56,7 +56,7 @@
                     style="@style/AtomPubStyleKa.White_16DP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/atom_pub_selector_ink_text"
+                    android:background="@drawable/atom_selector_ink_text"
                     android:gravity="center"
                     android:text="@string/atom_pub_resStringNameFreedom"
                     android:textColor="@color/atom_pub_black2white" />
@@ -74,7 +74,7 @@
                     style="@style/AtomPubStyleKa.White_16DP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/atom_pub_selector_ink_text"
+                    android:background="@drawable/atom_selector_ink_text"
                     android:gravity="center"
                     android:text="@string/atom_pub_resStringNameRecommend"
                     android:textColor="@color/atom_pub_black2white" />
@@ -92,7 +92,7 @@
                     style="@style/AtomPubStyleKa.White_16DP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/atom_pub_selector_ink_text"
+                    android:background="@drawable/atom_selector_ink_text"
                     android:gravity="center"
                     android:text="@string/atom_pub_resStringNameLucky"
                     android:textColor="@color/atom_pub_black2white" />
@@ -117,7 +117,7 @@
         android:layout_below="@+id/atomPubToolBar"
         android:orientation="vertical">
 
-        <include layout="@layout/atom_pub_inc_loading" />
+        <include layout="@layout/atom_inc_loading" />
     </LinearLayout>
 
     <fragment

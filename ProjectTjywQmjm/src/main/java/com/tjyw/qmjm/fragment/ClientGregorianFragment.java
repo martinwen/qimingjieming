@@ -76,7 +76,7 @@ public class ClientGregorianFragment extends BaseFragment implements OnWheelChan
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View convertView = inflater.inflate(R.layout.atom_pub_gregorian, container, true);
+        View convertView = inflater.inflate(R.layout.atom_gregorian_master, container, true);
         Injector.inject(this, convertView);
 
         gregorianCancel.setOnClickListener(this);

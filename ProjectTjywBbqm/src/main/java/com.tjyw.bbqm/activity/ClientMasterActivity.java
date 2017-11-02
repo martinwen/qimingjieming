@@ -48,9 +48,6 @@ public class ClientMasterActivity extends BaseActivity {
         fragmentNavigator = new FragmentNavigator(getSupportFragmentManager(), ClientMasterAdapter.newInstance(this), R.id.masterFragmentContainer);
         fragmentNavigator.onCreate(savedInstanceState);
 
-        atomPubClientMasterNavigation.setAccentColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorBlack));
-        atomPubClientMasterNavigation.setInactiveColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorGrey));
-
         int size = ClientMasterAdapter.MASTER_TAB_RESOURCE.size();
         for (int i = 0; i < size; i ++) {
             Pair<Integer, Integer> masterTabResource = ClientMasterAdapter.getMasterTabResource(i);
@@ -58,7 +55,8 @@ public class ClientMasterActivity extends BaseActivity {
                 atomPubClientMasterNavigation.addItem(
                         new AHBottomNavigationItem(
                                 ClientQmjmApplication.pGetString(masterTabResource.first),
-                                ContextCompat.getDrawable(ClientQmjmApplication.getContext(), masterTabResource.second)
+                                ContextCompat.getDrawable(ClientQmjmApplication.getContext(), masterTabResource.second),
+                                ContextCompat.getColor(getApplicationContext(), R.color.atom_resColorTabHighLight)
                         )
                 );
             }
@@ -87,6 +85,9 @@ public class ClientMasterActivity extends BaseActivity {
             }
         });
 
+        atomPubClientMasterNavigation.setAccentColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_resColorTabHighLight));
+        atomPubClientMasterNavigation.setInactiveColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_resColorTabHighLight));
+        atomPubClientMasterNavigation.setDefaultBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_resColorTabBackground));
         atomPubClientMasterNavigation.setCurrentItem(pGetIntExtra(IApiField.T.t, ClientMasterAdapter.POSITION.NAMING), true);
     }
 

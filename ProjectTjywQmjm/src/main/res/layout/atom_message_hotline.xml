@@ -25,5 +25,5 @@
         <include layout="@layout/atom_message_converse_input" />
     </FrameLayout>
 
-    <include layout="@layout/atom_pub_inc_loading" />
+    <include layout="@layout/atom_inc_loading" />
 </RelativeLayout>

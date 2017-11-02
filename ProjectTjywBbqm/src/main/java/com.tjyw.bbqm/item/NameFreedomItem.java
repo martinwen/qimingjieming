@@ -57,7 +57,7 @@ public class NameFreedomItem extends AtomPubFastAdapterAbstractItem<NameDefiniti
             NameDefinition definition = nameFreedomItem.src;
             bodyTitle.setText(definition.name);
             if (nameFreedomItem.isSelected()) {
-                bodyTitle.setBackgroundColor(ContextCompat.getColor(context, R.color.atom_pubResColorFreedomNameBackground));
+                bodyTitle.setBackgroundColor(ContextCompat.getColor(context, R.color.atom_resColorFreedomNameBackground));
             } else {
                 bodyTitle.setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent));
             }

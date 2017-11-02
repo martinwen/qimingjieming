@@ -23,6 +23,6 @@
                 android:layout_height="match_parent" />
         </me.dkzwm.widget.srl.MaterialSmoothRefreshLayout>
 
-        <include layout="@layout/atom_pub_inc_loading" />
+        <include layout="@layout/atom_inc_loading" />
     </RelativeLayout>
 </LinearLayout>

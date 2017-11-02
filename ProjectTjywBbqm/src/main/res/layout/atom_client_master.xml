@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="1.0"
-    android:background="@color/atom_pub_resColorBackground"
+    android:background="@drawable/atom_shape_background"
     android:gravity="bottom"
     android:orientation="vertical">
 
@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_navigation_height"
         android:layout_alignParentBottom="true"
-        android:background="@color/atom_pub_resColorTabBackground"
+        android:background="#FF534233"
         app:translucentNavigationEnabled="true" />
 
     <fragment

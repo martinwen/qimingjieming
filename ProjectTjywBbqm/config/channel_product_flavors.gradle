@@ -33,18 +33,18 @@ android {
     allChannelNameMap.put('C9999', '官方');
 
     productFlavors.all { flavor ->
-        flavor.buildConfigField "String", "CLIENT_P_ID", '"20000"'
+        flavor.buildConfigField "String", "CLIENT_P_ID", '"20010"'
     }
 
     //渠道列表
     productFlavors {
         C1000 {
-            resValue "string", "app_name", "宝宝起名"
+            resValue "string", "app_name", "宝宝起名解名"
             buildConfigField "String", "CLIENT_C_ID", '"C1000"'
             buildConfigField "String", "CLIENT_C_NAME", '"official"'
         }
         C1001 {
-            resValue "string", "app_name", "宝宝起名"
+            resValue "string", "app_name", "宝宝起名解名"
             buildConfigField "String", "CLIENT_C_ID", '"C1001"'
             buildConfigField "String", "CLIENT_C_NAME", '"应用宝"'
         }

@@ -2,5 +2,12 @@
 <resources>
     <color name="colorPrimary">#FF533F30</color>
     <color name="colorPrimaryDark">#FF533F30</color>
-    <color name="colorAccent">#FFFFF2DB</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!-- 起名页自选名字::单个名字的选中背景色 -->
+    <color name="atom_resColorFreedomNameBackground">@color/colorPrimary</color>
+
+    <color name="atom_resColorTabHighLight">#FF4B3C2D</color>
+
+    <color name="atom_resColorTabBackground">#FFF6EFE4</color>
 </resources>
