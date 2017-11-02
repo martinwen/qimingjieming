@@ -128,6 +128,9 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment<ClientPresente
                         builder.append("?v=").append(DeviceUtil.getClientVersionName(ClientQmjmApplication.getContext()));
                         builder.append("&n=").append(ClientQmjmApplication.pGetString(R.string.app_name));
                         builder.append("&c=").append(Network.getInstance().getCid());
+                        builder.append("&pid=").append(Network.getInstance().getPid());
+                        builder.append("&pack=").append(ClientQmjmApplication.getContext().getPackageName());
+
                         IClientActivityLaunchFactory.launchTouchActivity(ClientMasterMineFragment.this, builder.toString(), R.string.atom_pub_resStringMineAbout);
                         break ;
                     case R.string.atom_pub_resStringMineFeedback:
