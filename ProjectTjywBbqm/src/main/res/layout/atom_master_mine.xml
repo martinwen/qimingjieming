@@ -15,8 +15,8 @@
         <ImageView
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:layout_marginLeft="8dp"
-            android:scaleType="center"
+            android:padding="8dp"
+            android:scaleType="centerInside"
             android:src="@mipmap/atom_ic_logo" />
 
         <LinearLayout
