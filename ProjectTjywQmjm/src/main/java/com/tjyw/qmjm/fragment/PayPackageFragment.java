@@ -1,6 +1,5 @@
 package com.tjyw.qmjm.fragment;
 
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -37,7 +36,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import atom.pub.inject.From;
+import nucleus.factory.RequiresPresenter;
 
+@RequiresPresenter(NamingPresenter.class)
 public class PayPackageFragment extends BaseFragment<NamingPresenter<NameMasterRecommendFragment>> implements
         OnApiPostErrorListener,
         OnApiFavoritePostListener.PostAddListener, OnApiFavoritePostListener.PostRemoveListener {
@@ -45,19 +46,16 @@ public class PayPackageFragment extends BaseFragment<NamingPresenter<NameMasterR
     public static PayPackageFragment newInstance(RNameDefinition definition) {
         Bundle bundle = new Bundle();
         bundle.putString(IApiField.D.data, JsonUtil.getInstance().toJsonString(definition.list));
-        bundle.putSerializable(IApiField.P.param, definition.param.clone());
 
         PayPackageFragment fragment = new PayPackageFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
 
-    @From(R.id.nameListContainer)
-    protected RecyclerView nameListContainer;
+    @From(R.id.payPackageListContainer)
+    protected RecyclerView payPackageListContainer;
 
     protected FastItemAdapter<NamingWordItem> nameDefinitionAdapter;
-
-    protected ListRequestParam listRequestParam;
 
     @Nullable
     @Override
@@ -69,14 +67,9 @@ public class PayPackageFragment extends BaseFragment<NamingPresenter<NameMasterR
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        listRequestParam = (ListRequestParam) pGetSerializableExtra(IApiField.P.param);
-        if (null == listRequestParam) {
-            return ;
-        }
-
-        nameListContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext(), LinearLayoutManager.VERTICAL, false));
-        nameListContainer.setAdapter(nameDefinitionAdapter = new FastItemAdapter<NamingWordItem>());
-        nameListContainer.addItemDecoration(
+        payPackageListContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext(), LinearLayoutManager.VERTICAL, false));
+        payPackageListContainer.setAdapter(nameDefinitionAdapter = new FastItemAdapter<NamingWordItem>());
+        payPackageListContainer.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
                         .color(R.color.atom_pub_resColorDivider)
                         .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDividerSize)
@@ -101,10 +94,10 @@ public class PayPackageFragment extends BaseFragment<NamingPresenter<NameMasterR
                     getPresenter().postFavoriteRemove(item.src.id, item);
                 } else {
                     getPresenter().postFavoriteAdd(
-                            listRequestParam.surname,
+                            item.src.surname,
                             item.src.getGivenName(),
-                            listRequestParam.day,
-                            listRequestParam.gender,
+                            item.src.day,
+                            item.src.gender,
                             item
                     );
                 }
@@ -112,8 +105,7 @@ public class PayPackageFragment extends BaseFragment<NamingPresenter<NameMasterR
         }).withOnClickListener(new FastAdapter.OnClickListener<NamingWordItem>() {
             @Override
             public boolean onClick(View v, IAdapter<NamingWordItem> adapter, NamingWordItem item, int position) {
-                ListRequestParam param = listRequestParam.clone();
-                param.name = item.src.getGivenName();
+                ListRequestParam param = new ListRequestParam(item.src);
                 IClientActivityLaunchFactory.launchExplainMasterActivity(PayPackageFragment.this, param, 100);
                 return true;
             }
