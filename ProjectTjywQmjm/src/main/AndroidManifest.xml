@@ -101,6 +101,10 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".activity.PayPackageActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".activity.UserSignInActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />

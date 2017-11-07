@@ -7,7 +7,6 @@ import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
-import atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.activity.BaseActivity;
 import com.tjyw.qmjm.activity.ClientMasterActivity;
@@ -17,9 +16,12 @@ import com.tjyw.qmjm.activity.NameMasterActivity;
 import com.tjyw.qmjm.activity.NamingListActivity;
 import com.tjyw.qmjm.activity.PayOrderActivity;
 import com.tjyw.qmjm.activity.PayOrderListActivity;
+import com.tjyw.qmjm.activity.PayPackageActivity;
 import com.tjyw.qmjm.activity.UserFavoriteListActivity;
 import com.tjyw.qmjm.activity.UserSignInActivity;
 import com.tjyw.qmjm.fragment.BaseFragment;
+
+import atom.pub.fragment.AtomPubBaseFragment;
 
 /**
  * Created by stephen on 07/08/2017.
@@ -59,6 +61,12 @@ public class IClientActivityLaunchFactory {
 
     public static void launchNamingListActivity(BaseActivity context, ListRequestParam listRequestParam) {
         Intent intent = new Intent(context, NamingListActivity.class);
+        intent.putExtra(IApiField.P.param, listRequestParam);
+        context.startActivity(intent);
+    }
+
+    public static void launchPayPackageActivity(BaseActivity context, ListRequestParam listRequestParam) {
+        Intent intent = new Intent(context, PayPackageActivity.class);
         intent.putExtra(IApiField.P.param, listRequestParam);
         context.startActivity(intent);
     }

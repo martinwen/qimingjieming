@@ -17,7 +17,6 @@ import com.tjyw.atom.network.presenter.PayPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.result.RetroListResult;
-import atom.pub.inject.From;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
@@ -27,6 +26,7 @@ import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 import java.util.ArrayList;
 import java.util.List;
 
+import atom.pub.inject.From;
 import me.dkzwm.widget.srl.SmoothRefreshLayout;
 import nucleus.factory.RequiresPresenter;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -74,7 +74,8 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
             public boolean onClick(View v, IAdapter<PayOrderListItem> adapter, PayOrderListItem item, int position) {
                 ListRequestParam listRequestParam = new ListRequestParam();
                 listRequestParam.orderNo = item.src.name;
-                IClientActivityLaunchFactory.launchNamingListActivity(PayOrderListActivity.this, listRequestParam);
+//                IClientActivityLaunchFactory.launchNamingListActivity(PayOrderListActivity.this, listRequestParam);
+                IClientActivityLaunchFactory.launchPayPackageActivity(PayOrderListActivity.this, listRequestParam);
                 return true;
             }
         });
