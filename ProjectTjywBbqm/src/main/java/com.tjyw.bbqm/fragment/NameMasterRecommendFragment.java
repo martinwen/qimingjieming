@@ -32,7 +32,6 @@ import com.tjyw.atom.network.result.RIdentifyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.network.utils.JsonUtil;
-import atom.pub.inject.From;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.activity.BaseActivity;
@@ -43,6 +42,7 @@ import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 import java.util.ArrayList;
 import java.util.List;
 
+import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
 
 /**
@@ -204,15 +204,17 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 switch (newState) {
                     case RecyclerView.SCROLL_STATE_IDLE:
-                        if (null == payService) {
-                            maskerShowProgressView(true);
-                            getPresenter().postPayListVip(
-                                    1,
-                                    listRequestParam.surname,
-                                    listRequestParam.day
-                            );
-                        } else {
-                            postOnPayListVipSuccess(1, payService);
+                        if (! recyclerView.canScrollVertically(1)) {
+                            if (null == payService) {
+                                maskerShowProgressView(true);
+                                getPresenter().postPayListVip(
+                                        1,
+                                        listRequestParam.surname,
+                                        listRequestParam.day
+                                );
+                            } else {
+                                postOnPayListVipSuccess(1, payService);
+                            }
                         }
                 }
             }
