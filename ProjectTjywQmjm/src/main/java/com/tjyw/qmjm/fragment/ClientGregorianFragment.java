@@ -132,7 +132,7 @@ public class ClientGregorianFragment extends BaseFragment implements OnWheelChan
                 break ;
             case R.id.gregorianOK:
                 GregorianCalendarAdapter adapter = (GregorianCalendarAdapter) gregorianDayContainer.getViewAdapter();
-                if (null != adapter) {
+                if (null != adapter && adapter.getItemsCount() > gregorianDayContainer.getCurrentItem()) {
                     LunarCalendar calendar = adapter.get(gregorianDayContainer.getCurrentItem());
                     if (null != calendar && null != onGregorianSelectedListener) {
                         if (! ArrayUtil.isEmpty(gregorianHourList)) {
