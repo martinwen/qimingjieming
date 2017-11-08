@@ -105,11 +105,14 @@
             android:background="@android:color/transparent"
             android:gravity="top"
             android:hint="@string/atom_pub_resStringSurnameHint"
+            android:imeOptions="actionNext"
+            android:inputType="text"
             android:maxLength="2"
             android:maxLines="1"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingTop="8dp"
+            android:singleLine="true"
             android:textColorHint="@color/atom_pub_resColorInputHint"
             app:layout_widthPercent="65%" />
 
@@ -163,11 +166,14 @@
             android:background="@android:color/transparent"
             android:gravity="top"
             android:hint="@string/atom_pub_resStringSurnameHint"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
             android:maxLength="2"
             android:maxLines="1"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
             android:paddingTop="8dp"
+            android:singleLine="true"
             android:textColorHint="@color/atom_pub_resColorInputHint"
             app:layout_widthPercent="65%" />
 
