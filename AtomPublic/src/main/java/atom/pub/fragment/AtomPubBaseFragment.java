@@ -11,15 +11,15 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.tjyw.atom.network.utils.ArrayUtil;
+
+import java.io.Serializable;
+
 import atom.pub.AtomPubDisplayConfigure;
 import atom.pub.activity.AtomPubBaseActivity;
 import atom.pub.inject.Injector;
 import atom.pub.interfaces.IAtomPubFragment;
 import atom.pub.interfaces.IAtomPubIntentExtra;
 import atom.pub.interfaces.IAtomPubTools;
-
-import java.io.Serializable;
-
 import butterknife.ButterKnife;
 import nucleus.presenter.Presenter;
 import nucleus.view.NucleusSupportFragment;

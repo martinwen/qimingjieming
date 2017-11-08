@@ -15,16 +15,14 @@ import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.listeners.ClickEventHook;
 import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.conf.IApiField;
-import com.tjyw.atom.network.conf.ISection;
-import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.IPost;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiFavoritePostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
+import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.RIdentifyResult;
-import com.tjyw.atom.network.utils.ArrayUtil;
-import com.tjyw.atom.network.utils.JsonUtil;
+import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
@@ -40,11 +38,13 @@ import nucleus.factory.RequiresPresenter;
 @RequiresPresenter(NamingPresenter.class)
 public class PayPackageFragment extends BaseFragment<NamingPresenter<NameMasterRecommendFragment>> implements
         OnApiPostErrorListener,
+        OnApiPostNamingListener,
         OnApiFavoritePostListener.PostAddListener, OnApiFavoritePostListener.PostRemoveListener {
 
-    public static PayPackageFragment newInstance(List<NameDefinition> list) {
+    public static PayPackageFragment newInstance(ListRequestParam listRequestParam, int listType) {
         Bundle bundle = new Bundle();
-        bundle.putString(IApiField.D.data, JsonUtil.getInstance().toJsonString(list));
+        bundle.putSerializable(IApiField.P.param, listRequestParam);
+        bundle.putInt(IApiField.L.listType, listType);
 
         PayPackageFragment fragment = new PayPackageFragment();
         fragment.setArguments(bundle);
@@ -55,6 +55,10 @@ public class PayPackageFragment extends BaseFragment<NamingPresenter<NameMasterR
     protected RecyclerView payPackageListContainer;
 
     protected FastItemAdapter<NamingWordItem> nameDefinitionAdapter;
+
+    protected ListRequestParam listRequestParam;
+
+    protected int listType;
 
     @Nullable
     @Override
@@ -110,15 +114,20 @@ public class PayPackageFragment extends BaseFragment<NamingPresenter<NameMasterR
             }
         });
 
-        List<NameDefinition> list = JsonUtil.getInstance().parseJavaArray(pGetStringExtra(IApiField.D.data, ISection.JSON.ARRAY), NameDefinition.class);
-        if (! ArrayUtil.isEmpty(list)) {
-            List<NamingWordItem> itemList = new ArrayList<NamingWordItem>();
-            int size = list.size();
-            for (int i = 0; i < size; i ++) {
-                itemList.add(new NamingWordItem(list.get(i)));
-            }
+        listRequestParam = (ListRequestParam) pGetSerializableExtra(IApiField.P.param);
+        if (null != listRequestParam) {
+            listType = pGetIntExtra(IApiField.L.listType, 0);
+            maskerShowProgressView(false);
+            getPresenter().postPayOrderNameList(listRequestParam.orderNo, listType == 0 ? null : listType);
+        }
+    }
 
-            nameDefinitionAdapter.add(itemList);
+    @Override
+    public void maskerOnClick(View view, int clickLabelRes) {
+        super.maskerOnClick(view, clickLabelRes);
+        if (null != listRequestParam) {
+            maskerShowProgressView(false);
+            getPresenter().postPayOrderNameList(listRequestParam.orderNo, listType == 0 ? listType : null);
         }
     }
 
@@ -136,6 +145,26 @@ public class PayPackageFragment extends BaseFragment<NamingPresenter<NameMasterR
             default:
                 maskerHideProgressView();
         }
+    }
+
+    @Override
+    public void postOnNamingSuccess(RNameDefinition result) {
+        maskerHideProgressView();
+        if (null == result) {
+            maskerShowMaskerLayout(getString(R.string.atom_pub_resStringNetworkBroken), 0);
+            return ;
+        } else if (result.size() == 0) {
+            maskerShowMaskerLayout(getString(R.string.atom_pub_resStringNamingListLack), R.string.atom_pub_resStringRetry);
+            return ;
+        }
+
+        List<NamingWordItem> itemList = new ArrayList<NamingWordItem>();
+        int size = result.size();
+        for (int i = 0; i < size; i ++) {
+            itemList.add(new NamingWordItem(result.get(i)));
+        }
+
+        nameDefinitionAdapter.add(itemList);
     }
 
     @Override

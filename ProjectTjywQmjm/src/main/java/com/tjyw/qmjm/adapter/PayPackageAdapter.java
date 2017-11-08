@@ -5,10 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import com.tjyw.atom.network.model.NameDefinition;
+import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.qmjm.fragment.PayPackageFragment;
-
-import java.util.List;
 
 /**
  * Created by stephen on 17-8-11.
@@ -26,16 +24,11 @@ public class PayPackageAdapter extends FragmentPagerAdapter {
         int ALL = 3;
     }
 
-    public static PayPackageAdapter newInstance(FragmentManager fragmentManager, List<List<NameDefinition>> list) {
-        int size = null == list ? 0 : list.size();
-        if (size < 3) {
-            return null;
-        } else {
-            return new PayPackageAdapter(fragmentManager)
-                    .setPayPackageNormalFragment(PayPackageFragment.newInstance(list.get(2)))
-                    .setPayPackageHighFragment(PayPackageFragment.newInstance(list.get(0)))
-                    .setPayPackageLuckyFragment(PayPackageFragment.newInstance(list.get(1)));
-        }
+    public static PayPackageAdapter newInstance(FragmentManager fragmentManager, ListRequestParam listRequestParam) {
+        return new PayPackageAdapter(fragmentManager)
+                .setPayPackageNormalFragment(PayPackageFragment.newInstance(listRequestParam, 3)) // 大吉名
+                .setPayPackageHighFragment(PayPackageFragment.newInstance(listRequestParam, 1)) // 高分吉名
+                .setPayPackageLuckyFragment(PayPackageFragment.newInstance(listRequestParam, 2)); // 天降吉名
     }
 
     protected PayPackageFragment payPackageNormalFragment;

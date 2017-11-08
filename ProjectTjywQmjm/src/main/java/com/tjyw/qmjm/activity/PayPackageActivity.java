@@ -7,16 +7,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.conf.IApiField;
-import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
-import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
-import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.PayPackageAdapter;
-
-import java.util.List;
 
 import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
@@ -26,7 +21,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * Created by stephen on 19/09/2017.
  */
 @RequiresPresenter(NamingPresenter.class)
-public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<NamingListActivity>> implements OnApiPostErrorListener, OnApiPayPostListener.PostPayPackageListener {
+public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<NamingListActivity>> implements OnApiPostErrorListener {
 
     @From(R.id.payPackageNormal)
     protected TextView payPackageNormal;
@@ -86,8 +81,9 @@ public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<Nami
             }
         });
 
-        maskerShowProgressView(false);
-        getPresenter().postPayOrderNameListPackage(listRequestParam.orderNo);
+        payPackageContainer.setAdapter(
+                payPackageAdapter = PayPackageAdapter.newInstance(getSupportFragmentManager(), listRequestParam)
+        );
     }
 
     @Override
@@ -133,27 +129,9 @@ public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<Nami
     }
 
     @Override
-    public void maskerOnClick(View view, int clickLabelRes) {
-        super.maskerOnClick(view, clickLabelRes);
-        maskerShowProgressView(false);
-        getPresenter().postPayOrderNameList(listRequestParam.orderNo);
-    }
-
-    @Override
     public void postOnExplainError(int postId, Throwable throwable) {
         throwable.printStackTrace();
         maskerShowMaskerLayout(getString(R.string.atom_pub_resStringNetworkBroken), R.string.atom_pub_resStringRetry);
-    }
-
-    @Override
-    public void postOnPayPackageSuccess(RetroListResult<List<NameDefinition>> result) {
-        maskerHideProgressView();
-        payPackageAdapter = PayPackageAdapter.newInstance(getSupportFragmentManager(), result.list);
-        if (null == payPackageAdapter) {
-            finish();
-        } else {
-            payPackageContainer.setAdapter(payPackageAdapter);
-        }
     }
 
     public void showPayPackageNormalFragment() {

@@ -139,7 +139,11 @@ public class PayPresenter<V extends ViewWithPresenter> extends FavoritePresenter
     }
 
     public void postPayOrderNameList(String orderNo) {
-        RetroHttpMethods.PAY().postPayOrderNameList(orderNo, 0, 1000)
+        postPayOrderNameList(orderNo, null);
+    }
+
+    public void postPayOrderNameList(String orderNo, Integer listType) {
+        RetroHttpMethods.PAY().postPayOrderNameList(orderNo, listType, 0, 1000)
                 .compose(RxSchedulersHelper.<RetroResult<RNameDefinition>>io_main())
                 .subscribe(new Action1<RetroResult<RNameDefinition>>() {
                     @Override

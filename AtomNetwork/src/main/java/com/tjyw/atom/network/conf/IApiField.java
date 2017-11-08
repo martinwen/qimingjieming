@@ -87,6 +87,8 @@ public interface IApiField {
         String length = "length";
 
         String limit = "limit";
+
+        String listType = "listType";
     }
 
     interface M {
