@@ -5,8 +5,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import com.tjyw.atom.network.result.RNameDefinition;
+import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.qmjm.fragment.PayPackageFragment;
+
+import java.util.List;
 
 /**
  * Created by stephen on 17-8-11.
@@ -24,11 +26,16 @@ public class PayPackageAdapter extends FragmentPagerAdapter {
         int ALL = 3;
     }
 
-    public static PayPackageAdapter newInstance(FragmentManager fragmentManager, RNameDefinition definition) {
-        return new PayPackageAdapter(fragmentManager)
-                    .setPayPackageNormalFragment(PayPackageFragment.newInstance(definition))
-                    .setPayPackageHighFragment(PayPackageFragment.newInstance(definition))
-                    .setPayPackageLuckyFragment(PayPackageFragment.newInstance(definition));
+    public static PayPackageAdapter newInstance(FragmentManager fragmentManager, List<List<NameDefinition>> list) {
+        int size = null == list ? 0 : list.size();
+        if (size < 3) {
+            return null;
+        } else {
+            return new PayPackageAdapter(fragmentManager)
+                    .setPayPackageNormalFragment(PayPackageFragment.newInstance(list.get(2)))
+                    .setPayPackageHighFragment(PayPackageFragment.newInstance(list.get(0)))
+                    .setPayPackageLuckyFragment(PayPackageFragment.newInstance(list.get(1)));
+        }
     }
 
     protected PayPackageFragment payPackageNormalFragment;

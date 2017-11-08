@@ -3,6 +3,7 @@ package com.tjyw.atom.network.presenter;
 import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.RetroHttpMethods;
 import com.tjyw.atom.network.RxSchedulersHelper;
+import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.model.Order;
 import com.tjyw.atom.network.model.PayOrder;
 import com.tjyw.atom.network.model.PayService;
@@ -14,6 +15,8 @@ import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
 import com.tjyw.atom.network.result.RetroResult;
+
+import java.util.List;
 
 import nucleus.view.ViewWithPresenter;
 import rx.functions.Action1;
@@ -147,6 +150,30 @@ public class PayPresenter<V extends ViewWithPresenter> extends FavoritePresenter
                             }
                         } else if (presenterView instanceof OnApiPostNamingListener) {
                             ((OnApiPostNamingListener) presenterView).postOnNamingSuccess(result.items);
+                        }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        if (presenterView instanceof OnApiPostErrorListener) {
+                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Pay.PayOrderNameList, throwable);
+                        }
+                    }
+                });
+    }
+
+    public void postPayOrderNameListPackage(String orderNo) {
+        RetroHttpMethods.PAY().postPayOrderNameListPackage(orderNo)
+                .compose(RxSchedulersHelper.<RetroResult<RetroListResult<List<NameDefinition>>>>io_main())
+                .subscribe(new Action1<RetroResult<RetroListResult<List<NameDefinition>>>>() {
+                    @Override
+                    public void call(RetroResult<RetroListResult<List<NameDefinition>>> result) {
+                        if (null == result || result.illegalRequest()) {
+                            if (presenterView instanceof OnApiPostErrorListener) {
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Pay.PayOrderNameList, new IllegalRequestException(result));
+                            }
+                        } else if (presenterView instanceof OnApiPayPostListener.PostPayPackageListener) {
+                            ((OnApiPayPostListener.PostPayPackageListener) presenterView).postOnPayPackageSuccess(result.items);
                         }
                     }
                 }, new Action1<Throwable>() {

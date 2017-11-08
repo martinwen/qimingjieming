@@ -74,9 +74,14 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
             public boolean onClick(View v, IAdapter<PayOrderListItem> adapter, PayOrderListItem item, int position) {
                 ListRequestParam listRequestParam = new ListRequestParam();
                 listRequestParam.orderNo = item.src.name;
-//                IClientActivityLaunchFactory.launchNamingListActivity(PayOrderListActivity.this, listRequestParam);
-                IClientActivityLaunchFactory.launchPayPackageActivity(PayOrderListActivity.this, listRequestParam);
-                return true;
+                switch (item.src.vipType) {
+                    case Order.VIP_TYPE.PACKAGE:
+                        IClientActivityLaunchFactory.launchPayPackageActivity(PayOrderListActivity.this, listRequestParam);
+                        return true;
+                    default:
+                        IClientActivityLaunchFactory.launchNamingListActivity(PayOrderListActivity.this, listRequestParam);
+                        return true;
+                }
             }
         });
 

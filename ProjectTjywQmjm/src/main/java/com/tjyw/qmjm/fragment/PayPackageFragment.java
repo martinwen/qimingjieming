@@ -23,7 +23,6 @@ import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiFavoritePostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.result.RIdentifyResult;
-import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.network.utils.JsonUtil;
 import com.tjyw.qmjm.ClientQmjmApplication;
@@ -43,9 +42,9 @@ public class PayPackageFragment extends BaseFragment<NamingPresenter<NameMasterR
         OnApiPostErrorListener,
         OnApiFavoritePostListener.PostAddListener, OnApiFavoritePostListener.PostRemoveListener {
 
-    public static PayPackageFragment newInstance(RNameDefinition definition) {
+    public static PayPackageFragment newInstance(List<NameDefinition> list) {
         Bundle bundle = new Bundle();
-        bundle.putString(IApiField.D.data, JsonUtil.getInstance().toJsonString(definition.list));
+        bundle.putString(IApiField.D.data, JsonUtil.getInstance().toJsonString(list));
 
         PayPackageFragment fragment = new PayPackageFragment();
         fragment.setArguments(bundle);

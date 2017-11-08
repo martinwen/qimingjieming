@@ -9,6 +9,11 @@ public class Order implements RetroResultItem {
 
     private static final long serialVersionUID = 7770933274986430275L;
 
+    public interface VIP_TYPE {
+
+        int PACKAGE = 5;
+    }
+
     public String name;
 
     public String money;
@@ -16,4 +21,6 @@ public class Order implements RetroResultItem {
     public String title;
 
     public String dateCreated;
+
+    public int vipType;
 }

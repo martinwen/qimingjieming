@@ -1,6 +1,7 @@
 package com.tjyw.atom.network.services;
 
 import com.tjyw.atom.network.conf.IApiField;
+import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.model.Order;
 import com.tjyw.atom.network.model.PayOrder;
 import com.tjyw.atom.network.model.PayService;
@@ -9,6 +10,8 @@ import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.result.RetroListResult;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
 import com.tjyw.atom.network.result.RetroResult;
+
+import java.util.List;
 
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -33,6 +36,8 @@ public interface HttpPayServices {
         String ORDER_LIST = "order/list";
 
         String ORDER_NAME_LIST = "order/nameList";
+
+        String ORDER_NAME_LIST_PACKAGE = "order/nameListPackage";
     }
 
     @FormUrlEncoded
@@ -85,5 +90,17 @@ public interface HttpPayServices {
             @Field(IApiField.O.orderNo) String orderNo,
             @Field(IApiField.O.offset) int offset,
             @Field(IApiField.L.limit) int limit
+    );
+
+    /**
+     * 0::高分吉名 1::天降吉名 2::大吉名
+     *
+     * @param orderNo
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(API.ORDER_NAME_LIST_PACKAGE)
+    Observable<RetroResult<RetroListResult<List<NameDefinition>>>> postPayOrderNameListPackage(
+            @Field(IApiField.O.orderNo) String orderNo
     );
 }
