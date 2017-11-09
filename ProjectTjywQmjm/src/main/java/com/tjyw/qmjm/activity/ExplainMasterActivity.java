@@ -13,12 +13,13 @@ import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostExplainListener;
-import atom.pub.inject.From;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ExplainMasterAdapter;
+import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 
 import java.util.concurrent.TimeUnit;
 
+import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
 import rx.Observable;
 import rx.functions.Action1;
@@ -204,6 +205,12 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
                     explainZodiac.setSelected(false);
                     explainDestiny.setSelected(false);
             }
+        }
+    }
+
+    public void launchNameMasterActivity(int position) {
+        if (null != listRequestParam) {
+            IClientActivityLaunchFactory.launchNameMasterActivity(this, listRequestParam, 100, position);
         }
     }
 }

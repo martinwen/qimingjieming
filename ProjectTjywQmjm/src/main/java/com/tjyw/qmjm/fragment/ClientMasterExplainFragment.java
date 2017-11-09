@@ -88,7 +88,7 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
             }
         });
 
-        nSurname.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        nGivenName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 switch (actionId) {

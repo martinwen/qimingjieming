@@ -23,6 +23,7 @@ import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.activity.BaseActivity;
 import com.tjyw.qmjm.activity.ClientMasterActivity;
+import com.tjyw.qmjm.adapter.NameMasterAdapter;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.xhinliang.lunarcalendar.LunarCalendar;
 
@@ -91,7 +92,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements C
             public void onValidationSucceeded() {
                 listRequestParam.surname = nSurname.getText().toString();
                 IClientActivityLaunchFactory.launchNameMasterActivity(
-                        (BaseActivity) getActivity(), listRequestParam, 1000
+                        (BaseActivity) getActivity(), listRequestParam, 1000, NameMasterAdapter.POSITION.ANALYZE
                 );
             }
         });

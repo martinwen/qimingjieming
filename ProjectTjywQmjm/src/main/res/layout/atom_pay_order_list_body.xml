@@ -8,7 +8,7 @@
     android:padding="8dp">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/bodyAvatar"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:scaleType="centerCrop"

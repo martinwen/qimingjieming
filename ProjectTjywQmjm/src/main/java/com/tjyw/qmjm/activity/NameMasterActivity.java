@@ -281,6 +281,7 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
         nameMasterContainer.setAdapter(
                 nameMasterAdapter = NameMasterAdapter.newInstance(getSupportFragmentManager(), result)
         );
+        nameMasterContainer.setCurrentItem(pGetIntExtra(IApiField.T.t, NameMasterAdapter.POSITION.ANALYZE), false);
     }
 
     @Override
