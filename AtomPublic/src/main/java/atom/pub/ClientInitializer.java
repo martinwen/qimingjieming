@@ -1,9 +1,7 @@
-package com.tjyw.bbqm;
+package atom.pub;
 
 import android.app.Application;
 import android.content.Context;
-import android.content.Intent;
-import android.widget.Toast;
 
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.common.internal.Supplier;
@@ -11,12 +9,9 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.LeakCanary;
-import com.tjyw.atom.alipay.PayConfigure;
 import com.tjyw.atom.network.Network;
-import com.tjyw.atom.network.utils.DateTimeUtils;
+import com.tjyw.atom.network.NetworkFlavorsConfig;
 import com.tjyw.atom.network.utils.Documents;
-import atom.pub.ClientCrashReport;
-import com.tjyw.bbqm.activity.ClientWelcomeActivity;
 import com.umeng.analytics.MobclickAgent;
 
 import java.io.File;
@@ -46,32 +41,25 @@ public class ClientInitializer {
         return _instance;
     }
 
+    public ClientInitializer registerActivityLifecycleCallbacks(Application application) {
+        application.registerActivityLifecycleCallbacks(ForegroundCallbacks.getInstance());
+        return this;
+    }
+
     /**
      * 初始化Atom的配置参数
      *
      * @param context
-     * @param enableStethoDebug
+     * @param networkApiServer
+     * @param networkFlavorsConfig
      * @return
      */
-    protected ClientInitializer atom(Context context, boolean enableStethoDebug) {
+    public ClientInitializer atomPubNetwork(Context context, String networkApiServer, NetworkFlavorsConfig networkFlavorsConfig) {
         Network.getInstance() // 网络层服务器地址、渠道设置等
-                .setNetworkApiServer(Configure.Network.SERVER)
-                .setNetworkFlavorsConfig(new FlavorsConfig.NetworkBuildConfig())
-//                .setNetworkFlavorsConfig(new FlavorsConfig.NetworkChannelConfig(context))
+                .setNetworkApiServer(networkApiServer)
+                .setNetworkFlavorsConfig(networkFlavorsConfig)
                 .setContext(context)
-                .setEnableStethoDebug(enableStethoDebug);
-
-        PayConfigure.getInstance() // 支付通道参数设置
-                .setContext(context)
-                .setAppId(Configure.ALI.APP_ID)
-                .setPartner(Configure.ALI.PARTNER)
-                .setSeller(Configure.ALI.SELLER)
-                .setRsaPrivate(Configure.ALI.RSA_PRIVATE)
-                .setRsaPublic(Configure.ALI.RSA_PUBLIC)
-                .setNotifyUrl(Configure.ALI.NOTIFY_URL)
-                .setWxAppId(Configure.WX.APP_ID) // 微信只需要APP_ID
-                .dump();
-
+                .setEnableStethoDebug(false);
         return this;
     }
 
@@ -81,7 +69,7 @@ public class ClientInitializer {
      * @param context
      * @return
      */
-    protected ClientInitializer fresco(final Context context) {
+    public ClientInitializer fresco(final Context context) {
         Fresco.initialize(context, ImagePipelineConfig.newBuilder(context)
                 .setDownsampleEnabled(true)
                 .setMainDiskCacheConfig(DiskCacheConfig.newBuilder(context).setBaseDirectoryPathSupplier(new Supplier<File>() {
@@ -115,39 +103,11 @@ public class ClientInitializer {
      * @param context
      * @return
      */
-    public ClientInitializer crashReport(Context context) {
+    public ClientInitializer crashReport(Context context, ClientCrashReport.OnCrashReportListener onCrashReportListener) {
         ClientCrashReport
                 .getInstance()
-                .setOnCrashReportListener(new ClientCrashReport.OnCrashReportListener() {
-                    @Override
-                    public void crashOnCaughtException(Context context, Thread thread, Throwable ex) {
-                        Intent intent = new Intent(context, ClientWelcomeActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        context.startActivity(intent);
-                    }
-
-                    @Override
-                    public void crashOnShowingToast(Context context) {
-                        Toast.makeText(context, "", Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public File crashOnDumpExceptionFile(Context context, String namespace) {
-                        Documents documents = Documents.getInstance(context, Documents.crash);
-                        if (documents.available()) {
-                            return documents.newFile(
-                                    String.format(
-                                            namespace,
-                                            DateTimeUtils.printCalendarByPattern(DateTimeUtils.getCalendar(System.currentTimeMillis()), DateTimeUtils.yyyy_MM_dd),
-                                            System.currentTimeMillis()
-                                    )
-                            );
-                        } else {
-                            return null;
-                        }
-                    }
-                }).init(context);
+                .setOnCrashReportListener(onCrashReportListener)
+                .init(context);
         return this;
     }
 

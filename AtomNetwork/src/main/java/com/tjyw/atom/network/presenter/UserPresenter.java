@@ -15,7 +15,7 @@ import rx.functions.Action1;
 /**
  * Created by stephen on 17-8-18.
  */
-public class UserPresenter<V extends ViewWithPresenter> extends BasePresenter<V> {
+public class UserPresenter<V extends ViewWithPresenter> extends ClientPresenter<V> {
 
     public void postUserRegister() {
         RetroHttpMethods.USER().postUserRegister(1)

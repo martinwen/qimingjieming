@@ -303,7 +303,4 @@ dependencies {
     compile project(':AtomNetwork')
     compile project(':AtomSwiftPay')
     compile project(':AtomPublic')
-
-    debugCompile libraryDependencies.leakcanaryDebug
-    releaseCompile libraryDependencies.leakcanaryRelease
 }

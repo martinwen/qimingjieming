@@ -43,7 +43,7 @@ public interface Configure {
 
     interface UMeng {
 
-        String APP_KEY = "59af62124ad1563ba6000059";
+        String APP_KEY = "59f6c0c7b27b0a0af0000055";
     }
 
     interface ACRA {

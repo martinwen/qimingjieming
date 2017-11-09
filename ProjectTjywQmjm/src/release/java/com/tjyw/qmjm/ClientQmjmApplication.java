@@ -5,7 +5,7 @@ import android.support.multidex.MultiDexApplication;
 
 import java.lang.ref.WeakReference;
 
-import atom.pub.ForegroundCallbacks;
+import atom.pub.ClientInitializer;
 
 /**
  * Created by stephen on 1/6/16.
@@ -24,12 +24,10 @@ public class ClientQmjmApplication extends MultiDexApplication {
 
         instance = new WeakReference<ClientQmjmApplication>(this);
 
-        registerActivityLifecycleCallbacks(ForegroundCallbacks.getInstance());
-
         ClientInitializer.getInstance()
-                .atom(this, false)
+                .registerActivityLifecycleCallbacks(this)
+                .atomPubNetwork(this, Configure.Network.SERVER, new FlavorsConfig.NetworkBuildConfig())
                 .fresco(this)
-                .leakCanary(this)
                 .uMeng(this, Configure.UMeng.APP_KEY)
                 .calligraphy();
     }

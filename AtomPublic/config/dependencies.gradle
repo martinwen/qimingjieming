@@ -56,4 +56,7 @@ dependencies {
     compile(mikePenzLibDependencies.fastAdapter) {
         transitive = true
     }
+
+    debugCompile libraryDependencies.leakcanaryDebug
+    releaseCompile libraryDependencies.leakcanaryRelease
 }

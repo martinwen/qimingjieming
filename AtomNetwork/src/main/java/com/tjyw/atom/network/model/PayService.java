@@ -18,4 +18,12 @@ public class PayService implements RetroResultItem {
     public String surname;
 
     public String day;
+
+    public String detail;
+
+    public String oldMoney;
+
+    public String eachDay;
+
+    public String validDate;
 }
