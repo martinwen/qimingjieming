@@ -118,6 +118,9 @@
     <string name="atom_pub_resStringPayPackageNormal">大吉名</string>
     <string name="atom_pub_resStringPayPackageHigh">高分吉名</string>
     <string name="atom_pub_resStringPayPackageLuck">天降吉名</string>
+    <string name="atom_pub_resStringPayPackageMoney">现价：</string>
+    <string name="atom_pub_resStringPayPackageOldMoney">原价：</string>
+    <string name="atom_pub_resStringPayPackageMoneyEach">（%s）</string>
 
     <!-- 我的页面 -->
     <string name="atom_pub_resStringMineUserAccount">注册帐号: %s</string>
@@ -157,6 +160,7 @@
 
     <!-- -->
     <string name="atom_pub_resStringRMB_s">￥%s</string>
+    <string name="atom_pub_resStringRMB_s_Yuan">￥%s元</string>
     <string name="atom_pub_resStringZodiac1_Rat">鼠</string>
     <string name="atom_pub_resStringZodiac2_Ox">牛</string>
     <string name="atom_pub_resStringZodiac3_Tiger">虎</string>

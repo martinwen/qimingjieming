@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -111,17 +112,22 @@
             android:layout_height="match_parent" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/nameMasterPayPackageEntry"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_margin="32dp"
-        android:scaleType="centerInside"
-        android:src="@mipmap/atom_ic_launcher"
-        android:visibility="gone"
-        tools:visibility="visible" />
+        app:layout_heightPercent="80%">
+
+        <ImageView
+            android:id="@+id/nameMasterPayPackageEntry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:scaleType="centerInside"
+            android:src="@drawable/atom_ic_pay_package_entry"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -145,4 +151,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:tag="com.tjyw.qmjm.fragment.PayPackageEntryFragment" />
-</RelativeLayout>
+</android.support.percent.PercentRelativeLayout>

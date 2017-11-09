@@ -22,6 +22,11 @@
         <item name="android:textColor">@color/atom_pub_resTextColorBlack</item>
     </style>
 
+    <style name="AtomPubStyleKa.Black_14DP" parent="AtomPubStyleKa">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/atom_pub_resTextColorBlack</item>
+    </style>
+
     <style name="AtomPubStyleKa.White" parent="AtomPubStyleKa">
         <item name="android:textSize">20dp</item>
         <item name="android:textColor">@android:color/white</item>

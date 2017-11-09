@@ -24,17 +24,23 @@ public class PayPackageEntryFragment extends BaseFragment {
         void payPackageOnServicePayClick(PayPackageEntryFragment fragment, ListRequestParam listRequestParam, PayService payService);
     }
 
-    @From(R.id.bodySurname)
-    protected TextView bodySurname;
-
-    @From(R.id.bodyDate)
-    protected TextView bodyDate;
-
     @From(R.id.bodyServiceName)
     protected TextView bodyServiceName;
 
+    @From(R.id.bodyServiceDesc)
+    protected TextView bodyServiceDesc;
+
     @From(R.id.bodyServicePrice)
     protected TextView bodyServicePrice;
+
+    @From(R.id.bodyServiceOldPrice)
+    protected TextView bodyServiceOldPrice;
+
+    @From(R.id.bodyServicePriceEach)
+    protected TextView bodyServicePriceEach;
+
+    @From(R.id.bodyValidDate)
+    protected TextView bodyValidDate;
 
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
@@ -73,11 +79,14 @@ public class PayPackageEntryFragment extends BaseFragment {
             getView().setOnClickListener(this);
         }
 
-        atom_pub_resIdsOK.setOnClickListener(this);
-        bodySurname.setText(payService.surname);
-        bodyDate.setText(payService.day);
         bodyServiceName.setText(payService.service);
-        bodyServicePrice.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s, payService.money));
+        bodyServiceDesc.setText(payService.detail);
+        bodyServicePrice.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan, payService.money));
+        bodyServiceOldPrice.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan, payService.oldMoney));
+        bodyServicePriceEach.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringPayPackageMoneyEach, payService.eachDay));
+        bodyValidDate.setText(payService.validDate);
+
+        atom_pub_resIdsOK.setOnClickListener(this);
     }
 
     @Override
