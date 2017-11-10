@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -116,17 +117,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="32dp"
-        app:layout_heightPercent="80%">
+        android:layout_marginRight="16dp"
+        app:layout_heightPercent="90%">
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/nameMasterPayPackageEntry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:layout_gravity="bottom"
-            android:scaleType="centerInside"
-            android:src="@drawable/atom_ic_pay_package_entry"
+            android:scaleType="centerCrop"
             android:visibility="gone"
+            fresco:actualImageScaleType="centerCrop"
             tools:visibility="visible" />
     </FrameLayout>
 

@@ -26,4 +26,6 @@ public class ClientInit implements RetroResultItem {
     public String feedback;
 
     public boolean listVip; // 是否在起名页显示套餐按钮
+
+    public String listVipImageUrl;
 }

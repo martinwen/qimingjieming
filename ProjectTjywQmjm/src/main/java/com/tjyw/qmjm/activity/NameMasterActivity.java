@@ -4,11 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.brianjmelton.stanley.ProxyGenerator;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
@@ -30,6 +31,7 @@ import com.tjyw.qmjm.fragment.PayServiceFragment;
 
 import java.util.concurrent.TimeUnit;
 
+import atom.pub.fresco.ImageFacade;
 import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
 import rx.Observable;
@@ -61,7 +63,7 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
     protected ViewPager nameMasterContainer;
 
     @From(R.id.nameMasterPayPackageEntry)
-    protected ImageView nameMasterPayPackageEntry;
+    protected SimpleDraweeView nameMasterPayPackageEntry;
 
     public NameMasterAdapter nameMasterAdapter;
 
@@ -154,7 +156,8 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
         IPrefClient client = new ProxyGenerator().create(getApplicationContext(), IPrefClient.class);
         if (null != client) {
             ClientInit clientInit = JsonUtil.getInstance().parseObject(client.getClientInit(), ClientInit.class);
-            if (null != clientInit && clientInit.listVip) {
+            if (null != clientInit && clientInit.listVip && ! TextUtils.isEmpty(clientInit.listVipImageUrl)) {
+                ImageFacade.loadImage(clientInit.listVipImageUrl, nameMasterPayPackageEntry);
                 nameMasterPayPackageEntry.setVisibility(View.VISIBLE);
                 nameMasterPayPackageEntry.setOnClickListener(this);
             }
@@ -171,7 +174,7 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
                     case ICode.PAY.WX_SUCCESS:
                         if (null != data) {
                             listRequestParam.orderNo = data.getStringExtra(IApiField.O.orderNo);
-                            IClientActivityLaunchFactory.launchNamingListActivity(this, listRequestParam);
+                            IClientActivityLaunchFactory.launchPayPackageActivity(this, listRequestParam);
                         }
                 }
         }
