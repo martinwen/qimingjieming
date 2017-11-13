@@ -1,5 +1,6 @@
 package com.tjyw.qmjm.fragment;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -77,6 +78,9 @@ public class PayPackageEntryFragment extends BaseFragment {
             return ;
         } else if (null != getView()) {
             getView().setOnClickListener(this);
+            if (null != bodyServiceOldPrice.getPaint()) {
+                bodyServiceOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+            }
         }
 
         bodyServiceName.setText(payService.service);
