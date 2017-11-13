@@ -50,10 +50,11 @@ public class IClientActivityLaunchFactory {
         context.startActivity(intent);
     }
 
-    public static void launchNameMasterActivity(BaseActivity context, ListRequestParam listRequestParam, int delayed) {
+    public static void launchNameMasterActivity(BaseActivity context, ListRequestParam listRequestParam, int delayed, int position) {
         Intent intent = new Intent(context, NameMasterActivity.class);
         intent.putExtra(IApiField.P.param, listRequestParam);
         intent.putExtra(IApiField.D.delayed, delayed);
+        intent.putExtra(IApiField.T.t, position);
         context.startActivity(intent);
     }
 

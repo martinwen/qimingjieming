@@ -2,9 +2,11 @@ package com.tjyw.bbqm.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,9 +17,6 @@ import com.mobsandgeeks.saripaar.annotation.Pattern;
 import com.tjyw.atom.network.conf.ISection;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.utils.DateTimeUtils;
-import atom.pub.fragment.AtomPubBaseFragment;
-import atom.pub.inject.From;
-import atom.pub.interfaces.AtomPubValidationListener;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.activity.BaseActivity;
@@ -26,6 +25,10 @@ import com.tjyw.bbqm.factory.IClientActivityLaunchFactory;
 import com.xhinliang.lunarcalendar.LunarCalendar;
 
 import java.util.Calendar;
+
+import atom.pub.fragment.AtomPubBaseFragment;
+import atom.pub.inject.From;
+import atom.pub.interfaces.AtomPubValidationListener;
 
 /**
  * Created by stephen on 07/08/2017.
@@ -71,12 +74,6 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        nGenderMale.setSelected(true);
-        nGenderMale.setOnClickListener(this);
-        nGenderFemale.setOnClickListener(this);
-        nDateOfBirth.setOnClickListener(this);
-        atom_pub_resIdsOK.setOnClickListener(this);
-
         validator = new Validator(this);
         validator.setValidationListener(new AtomPubValidationListener(ClientQmjmApplication.getContext()) {
 
@@ -90,6 +87,31 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
                 );
             }
         });
+
+        nGivenName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                switch (actionId) {
+                    case EditorInfo.IME_ACTION_SEARCH:
+                        validator.validate();
+                    default:
+                        return false;
+                }
+            }
+        });
+
+        Calendar calendar = DateTimeUtils.getCurrentDateTime();
+        if (null != calendar) {
+            listRequestParam.day = DateTimeUtils.printCalendarByPattern(calendar, DateTimeUtils.yyyy_MM_dd_HH);
+            nDateOfBirth.setText(DateTimeUtils.printCalendarByPattern(calendar, ClientQmjmApplication.pGetString(R.string.atom_pub_resStringDateSolar)));
+        }
+
+        nGenderMale.setSelected(true);
+
+        nGenderMale.setOnClickListener(this);
+        nGenderFemale.setOnClickListener(this);
+        nDateOfBirth.setOnClickListener(this);
+        atom_pub_resIdsOK.setOnClickListener(this);
     }
 
     @Override
