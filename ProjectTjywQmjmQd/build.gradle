@@ -1,0 +1,306 @@
+import com.android.builder.model.ProductFlavor
+
+import java.util.zip.ZipEntry
+import java.util.zip.ZipInputStream
+import java.util.zip.ZipOutputStream
+
+apply plugin: 'com.android.application'
+
+apply from: 'config/channel_product_flavors.gradle'
+
+android {
+
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
+    defaultConfig {
+
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+
+        applicationId rootProject.ext.proj[2].androidApplicationId
+        versionCode rootProject.ext.proj[2].androidVersionCode
+        versionName rootProject.ext.proj[2].androidVersionName
+
+        multiDexEnabled true
+
+        generatedDensities = []
+    }
+
+    aaptOptions {
+        additionalParameters "--no-version-vectors"
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    signingConfigs {
+
+        release {
+            storeFile file('src/release/adrTjywQmjm.jks')
+            storePassword 'adrTjywQmjm'
+            keyAlias 'adrTjywQmjm'
+            keyPassword 'adrTjywQmjm'
+            v2SigningEnabled false
+        }
+    }
+
+    buildTypes {
+
+        debug {
+            zipAlignEnabled true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles 'src/debug/proguard-rules.pro'
+            versionNameSuffix '-debug'
+            signingConfig signingConfigs.release
+            debuggable true
+        }
+
+        release {
+            zipAlignEnabled true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles 'src/release/proguard-rules.pro'
+            signingConfig signingConfigs.release
+            debuggable false
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    cleanOutputs()
+
+    makeChannels()
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            println "===variant.buildType.getName()::${variant.buildType.getName()}"
+//            speedyAssemble(output, defaultConfig.versionCode)
+            differentNameAssemble(output, variant.productFlavors, defaultConfig.versionCode)
+        }
+    }
+}
+
+def speedyAssemble(output, versionCode) {
+
+    output.assemble.doLast { // 空文件名区分多渠道，超速打包
+
+        def zipFile = output.outputFile
+        def newCid = ""
+        def newCname = ""
+        def newApkName = output.outputFile.name
+        //读取待打包渠道集合，无-Papp_channels参数就打
+        for (String key : channelNameMap.keySet()) {
+            newCid = key
+            newCname = channelNameMap.get(key)
+            if (output.baseName.contains('release')) {
+                newApkName = "adr_qmjmqd_master_${newCid}_${newCname}_${versionCode}.apk"
+            } else {
+                newApkName = "adr_qmjmqd_master_${newCid}_${newCname}_${versionCode}_${new Date().format('yyyyMMdd')}.apk"
+            }
+            //Step1.复制C100渠道的apk包，以替换了'渠道号和渠道名'的名称创建apk包
+            def newZipFile = new File(zipFile.parent + File.separator + newApkName)
+            newZipFile.createNewFile()
+            //Step2.创建并添加用于标识渠道号的空文件'glchannel_C1000'到apk包的META-INF中
+            def channelHolderFileName = "glchannel_${newCid}"
+            File channelHolderFile = new File(zipFile.parent + File.separator + channelHolderFileName)
+            channelHolderFile.createNewFile()
+            def channelHolderFileInputStream = channelHolderFile.newInputStream()
+            modifyZipFileByMetaInfo(zipFile, newZipFile, channelHolderFileName, channelHolderFileInputStream, null)
+            //Step3.清理临时文件
+            channelHolderFile.delete()
+            //替换操作日志
+            println "INFO: replace channel file at META-INF as ${channelHolderFileName} of apk[${newZipFile.name}]"
+        }
+        //Step5.渠道包完成打包，删除无渠道号的默认apk包
+        if (output.baseName.contains('release')) {
+            zipFile.delete()
+            println "INFO: delete default file at ${zipFile.parent} of apk[${zipFile.name}]"
+        }
+        //渠道打包统计日志
+        println "INFO: Build channel apks, total count is ${channelNameMap.size()}"
+    }
+}
+
+def differentNameAssemble(output, productFlavors, versionCode) {
+    def zipFile = output.outputFile
+    for (ProductFlavor flavor : productFlavors) {
+        def CLIENT_C_ID = flavor.getBuildConfigFields().get("CLIENT_C_ID").value
+        CLIENT_C_ID = CLIENT_C_ID.replace("\"", "")
+        def CLIENT_C_NAME = flavor.getBuildConfigFields().get("CLIENT_C_NAME").value
+        CLIENT_C_NAME = CLIENT_C_NAME.replace("\"", "")
+
+        def newApkName = null
+        if (output.baseName.contains("release")) {
+            newApkName = "adr_qmjmqd_master_${CLIENT_C_ID}_${CLIENT_C_NAME}_${versionCode}.apk"
+        } else {
+            newApkName = "adr_qmjmqd_master_${CLIENT_C_ID}_${CLIENT_C_NAME}_${versionCode}_${new Date().format('yyyyMMdd')}.apk"
+        }
+
+        output.outputFile = new File(zipFile.parent, newApkName)
+    }
+
+    zipFile.delete()
+}
+
+/**
+ * 清理build/outputs/apk目录
+ * */
+def cleanOutputs() {
+    File apkDir = new File("ProjectTjywQmjmQd/build/outputs/apk")
+    if (apkDir.exists() && apkDir.isDirectory()) {
+        apkDir.eachFile { outputFile ->
+            if (outputFile.name.endsWith("apk")) {
+                outputFile.delete()
+            }
+        }
+    }
+}
+
+def makeChannels() {
+    if (project.hasProperty("app_channels")) {
+        appChannels = project.properties.get("app_channels")
+        println "INFO: get -Papp_channels=[$appChannels]"
+        //英文逗号分隔渠道号
+        def lines = appChannels.split(',')
+        def line;
+        for (int i = 0; i < lines.length; i++) {
+            line = lines[i]
+            if (!line.startsWith("//")) {
+                def values = line.split(':')
+                if (values.length == 1) {//渠道号cid
+                    //渠道号cid:产品号:版本号versionCode
+                    cid = values[0]
+                    if (allChannelNameMap.containsKey(cid)) {
+                        channelName = allChannelNameMap.get(cid)
+                    } else {
+                        channelName = ""
+                    }
+                    channelNameMap.put(cid, channelName)
+                    println "INFO: add Channel [cid:pid:channelName, ${cid}:${pid}:${channelName}]"
+                } else if (values.length == 2) {//渠道号cid:产品号pid
+                    //渠道号cid:产品号:版本号versionCode
+                    cid = values[0]
+                    pid = values[1]
+                    if (allChannelNameMap.containsKey(cid)) {
+                        channelName = allChannelNameMap.get(cid)
+                    } else {
+                        channelName = ""
+                    }
+                    channelNameMap.put(cid, channelName)
+                    println "INFO: add Channel [cid:pid:channelName, ${cid}:${pid}:${channelName}]"
+                }
+            }
+        }
+        if (channelNameMap.size() == 0) {
+            def defaultCid = 'C1000'
+            def channelName = allChannelNameMap.get(defaultCid)
+            channelNameMap.put(defaultCid, channelName)
+            println "INFO: add Channel [cid:pid:channelName, ${defaultCid}:${pid}:${channelName}]"
+        }
+        println "INFO: Channel size of ${channelNameMap.size()} added"
+    } else {
+        if (channelNameMap.size() == 0) {
+            def defaultCid = 'C1000'
+            def channelName = allChannelNameMap.get(defaultCid)
+            channelNameMap.put(defaultCid, channelName)
+            println "INFO: add Channel [cid:pid:channelName, ${defaultCid}:${pid}:${channelName}]"
+        }
+        println "INFO: Channel size of ${channelNameMap.size()} added"
+    }
+}
+
+def modifyZipFileByMetaInfo(
+        File zipFile,
+        File newZipFile,
+        String fileToAddOrOverwrite,
+        InputStream fileToAddOrOverwriteInputStreams,
+        String fileToDelete) throws IOException {
+    ZipOutputStream out = null;
+    try {
+        out = new ZipOutputStream(new FileOutputStream(newZipFile));
+        // add existing ZIP entry to output stream
+        ZipInputStream zin = null;
+        try {
+            zin = new ZipInputStream(new FileInputStream(zipFile));
+            ZipEntry entry = null;
+            while ((entry = zin.getNextEntry()) != null) {
+                String name = entry.getName();
+
+                // check if the file should be deleted
+                if (fileToDelete != null) {
+                    boolean ignoreFile = false;
+                    if (name.equalsIgnoreCase(fileToDelete)) {
+                        ignoreFile = true;
+                    }
+                    if (ignoreFile) {
+                        continue;
+                    }
+                }
+
+                // check if the file should be kept as it is
+                boolean keepFileUnchanged = true;
+                if (fileToAddOrOverwrite != null) {
+                    if (name.equalsIgnoreCase(fileToAddOrOverwrite)) {
+                        keepFileUnchanged = false;
+                    }
+                }
+
+                if (keepFileUnchanged) {
+                    // copy the file as it is
+                    out.putNextEntry(new ZipEntry(name));
+                    copy(zin, out);
+                }
+            }
+        } finally {
+            if (zin != null) zin.close();
+        }
+
+        // add the modified or added files to the zip file
+        if (fileToAddOrOverwrite != null) {
+            try {
+                out.putNextEntry(new ZipEntry("META-INF/" + fileToAddOrOverwrite));
+                copy(fileToAddOrOverwriteInputStreams, out);
+                out.closeEntry();
+            } finally {
+                if (fileToAddOrOverwriteInputStreams != null) fileToAddOrOverwriteInputStreams.close();
+            }
+        }
+
+    } finally {
+        if (out != null) out.close();
+    }
+
+}
+
+int copy(InputStream input, OutputStream output)
+        throws IOException {
+    def DEFAULT_BUFFER_SIZE = 1024 * 4
+    byte[] buffer = new byte[DEFAULT_BUFFER_SIZE]
+    int count = 0;
+    int n = 0;
+    while (-1 != (n = input.read(buffer))) {
+        output.write(buffer, 0, n);
+        count += n;
+    }
+    return count;
+}
+
+dependencies {
+    compile project(':AtomNetwork')
+    compile project(':AtomSwiftPay')
+    compile project(':AtomPublic')
+}

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/atom_pub_resColorBackground"
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
+
+    <include
+        android:id="@+id/atomPubToolBar"
+        layout="@layout/atom_pub_inc_toolbar" />
+
+    <include layout="@layout/atom_pub_inc_symbol" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/atomPubToolBar"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/payPackageNormal"
+                    style="@style/AtomPubStyleKa.White_16DP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/atom_selector_ink_text"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringPayPackageNormal"
+                    android:textColor="@color/atom_pub_black2white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/payPackageHigh"
+                    style="@style/AtomPubStyleKa.White_16DP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/atom_selector_ink_text"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringPayPackageHigh"
+                    android:textColor="@color/atom_pub_black2white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/payPackageLuck"
+                    style="@style/AtomPubStyleKa.White_16DP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/atom_selector_ink_text"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringPayPackageLuck"
+                    android:textColor="@color/atom_pub_black2white" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/payPackageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/atom_pub_resColorBackground"
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
+
+    <include
+        android:id="@+id/atomPubToolBar"
+        layout="@layout/atom_pub_inc_toolbar" />
+
+    <include layout="@layout/atom_pub_inc_symbol" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/atomPubToolBar"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nameAnalyze"
+                    style="@style/AtomPubStyleKa.White_16DP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/atom_selector_ink_text"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringNameAnalyze"
+                    android:textColor="@color/atom_pub_black2white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nameFreedom"
+                    style="@style/AtomPubStyleKa.White_16DP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/atom_selector_ink_text"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringNameFreedom"
+                    android:textColor="@color/atom_pub_black2white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nameRecommend"
+                    style="@style/AtomPubStyleKa.White_16DP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/atom_selector_ink_text"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringNameRecommend"
+                    android:textColor="@color/atom_pub_black2white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nameLucky"
+                    style="@style/AtomPubStyleKa.White_16DP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/atom_selector_ink_text"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringNameLucky"
+                    android:textColor="@color/atom_pub_black2white" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/nameMasterContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        app:layout_heightPercent="90%">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/nameMasterPayPackageEntry"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="bottom"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            fresco:actualImageScaleType="centerCrop"
+            tools:visibility="visible" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/atomPubToolBar"
+        android:orientation="vertical">
+
+        <include layout="@layout/atom_inc_loading" />
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/payServiceFragment"
+        class="com.tjyw.qmjmqd.fragment.PayServiceFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="com.tjyw.qmjmqd.fragment.PayServiceFragment" />
+
+    <fragment
+        android:id="@+id/payPackageEntryFragment"
+        class="com.tjyw.qmjmqd.fragment.PayPackageEntryFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="com.tjyw.qmjmqd.fragment.PayPackageEntryFragment" />
+</android.support.percent.PercentRelativeLayout>
