@@ -3,6 +3,8 @@ package com.tjyw.qmjm;
 import android.content.res.Resources;
 import android.support.multidex.MultiDexApplication;
 
+import com.tjyw.atom.alipay.PayConfigure;
+
 import java.lang.ref.WeakReference;
 
 import atom.pub.ClientInitializer;
@@ -30,6 +32,17 @@ public class ClientQmjmApplication extends MultiDexApplication {
                 .fresco(this)
                 .uMeng(this, Configure.UMeng.APP_KEY)
                 .calligraphy();
+
+        PayConfigure.getInstance() // 支付通道参数设置
+                .setContext(this)
+                .setAppId(Configure.ALI.APP_ID)
+                .setPartner(Configure.ALI.PARTNER)
+                .setSeller(Configure.ALI.SELLER)
+                .setRsaPrivate(Configure.ALI.RSA_PRIVATE)
+                .setRsaPublic(Configure.ALI.RSA_PUBLIC)
+                .setNotifyUrl(Configure.ALI.NOTIFY_URL)
+                .setWxAppId(Configure.WX.APP_ID) // 微信只需要APP_ID
+                .dump();
     }
 
     public static ClientQmjmApplication getContext() {
