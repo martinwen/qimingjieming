@@ -22,6 +22,13 @@ public interface HttpUserServices {
         String GET_LOGIN_CODE = "user/getLoginCode";
 
         String LOGIN = "user/login";
+
+        interface PACKET {
+
+            String GET_NEW_RED_PACKET = "user/getNewRedPacket";
+
+            String LIST_PACKET = "user/listPacket";
+        }
     }
 
     @FormUrlEncoded
@@ -41,5 +48,17 @@ public interface HttpUserServices {
     Observable<RetroResult<UserInfo>> postUserLogin(
             @Field(IApiField.M.mobile) String mobile,
             @Field(IApiField.C.code) String code
+    );
+
+    @FormUrlEncoded
+    @POST(API.PACKET.GET_NEW_RED_PACKET)
+    Observable<RetroResult<UserInfo>> postUserGetNewRedPacket(
+            @Field(IApiField.I.id) int id
+    );
+
+    @FormUrlEncoded
+    @POST(API.PACKET.LIST_PACKET)
+    Observable<RetroResult<UserInfo>> postUserListPacket(
+            @Field(IApiField.I.ignore) int ignore
     );
 }

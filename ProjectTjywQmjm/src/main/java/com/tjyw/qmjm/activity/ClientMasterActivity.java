@@ -7,18 +7,27 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 
 import com.aspsine.fragmentnavigator.FragmentNavigator;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
+import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
 import atom.pub.inject.From;
+
+import com.tjyw.atom.network.model.ClientInit;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 import com.tjyw.qmjm.fragment.ClientGregorianFragment;
+import com.tjyw.qmjm.fragment.PayCouponFragment;
 import com.umeng.analytics.MobclickAgent;
 
+import java.util.concurrent.TimeUnit;
+
+import rx.Observable;
+import rx.functions.Action1;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
@@ -33,6 +42,8 @@ public class ClientMasterActivity extends BaseActivity {
 
     protected ClientGregorianFragment gregorianFragment;
 
+    protected PayCouponFragment payCouponFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +54,8 @@ public class ClientMasterActivity extends BaseActivity {
                 .init();
 
         gregorianFragment = (ClientGregorianFragment) getSupportFragmentManager().findFragmentByTag(ClientGregorianFragment.class.getName());
-        pHideFragment(gregorianFragment);
+        payCouponFragment = (PayCouponFragment) getSupportFragmentManager().findFragmentByTag(PayCouponFragment.class.getName());
+        pHideFragment(gregorianFragment, payCouponFragment);
 
         fragmentNavigator = new FragmentNavigator(getSupportFragmentManager(), ClientMasterAdapter.newInstance(this), R.id.masterFragmentContainer);
         fragmentNavigator.onCreate(savedInstanceState);
@@ -88,6 +100,23 @@ public class ClientMasterActivity extends BaseActivity {
         });
 
         atomPubClientMasterNavigation.setCurrentItem(pGetIntExtra(IApiField.T.t, ClientMasterAdapter.POSITION.NAMING), true);
+
+        ClientInit clientInit = ClientInit.getInstance(getApplicationContext());
+        if (null != clientInit && ! TextUtils.isEmpty(clientInit.red_image_link)) {
+            Observable.timer(1, TimeUnit.SECONDS)
+                    .compose(RxSchedulersHelper.<Long>io_main())
+                    .subscribe(new Action1<Long>() {
+                        @Override
+                        public void call(Long aLong) {
+                            pShowFragment(R.anim.abc_fade_in, R.anim.abc_fade_out, payCouponFragment);
+                        }
+                    }, new Action1<Throwable>() {
+                        @Override
+                        public void call(Throwable throwable) {
+                            throwable.printStackTrace();
+                        }
+                    });
+        }
     }
 
     @Override

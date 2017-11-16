@@ -11,14 +11,12 @@ import com.brianjmelton.stanley.ProxyGenerator;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.tjyw.atom.network.RetroHttpMethods;
 import com.tjyw.atom.network.RxSchedulersHelper;
-import com.tjyw.atom.network.interfaces.IPrefClient;
 import com.tjyw.atom.network.interfaces.IPrefUser;
 import com.tjyw.atom.network.model.ClientInit;
 import com.tjyw.atom.network.model.UserInfo;
 import com.tjyw.atom.network.presenter.UserPresenter;
 import com.tjyw.atom.network.result.RetroResult;
 import com.tjyw.atom.network.utils.JsonUtil;
-import atom.pub.inject.From;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
@@ -26,6 +24,7 @@ import com.umeng.analytics.MobclickAgent;
 
 import java.util.concurrent.TimeUnit;
 
+import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
 import rx.Observable;
 import rx.functions.Action0;
@@ -61,11 +60,8 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
                     .subscribe(new Action1<RetroResult<ClientInit>>() {
                         @Override
                         public void call(RetroResult<ClientInit> result) { // 成功后进入主界面
+                            result.items.saveInstance(getApplicationContext());
                             requestPhoneStatePermission();
-                            IPrefClient client = new ProxyGenerator().create(getApplicationContext(), IPrefClient.class);
-                            if (null != client) {
-                                client.setClientInit(JsonUtil.getInstance().toJsonString(result.items));
-                            }
                         }
                     }, new Action1<Throwable>() {
                         @Override
@@ -85,11 +81,7 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
                             if (result.items instanceof UserInfo) {
                                 saveUserInfo((UserInfo) result.items);
                             } else if (result.items instanceof ClientInit) {
-                                IPrefClient client = new ProxyGenerator().create(getApplicationContext(), IPrefClient.class);
-                                if (null != client) {
-                                    ClientInit clientInit = (ClientInit) result.items;
-                                    client.setClientInit(JsonUtil.getInstance().toJsonString(clientInit));
-                                }
+                                ((ClientInit) result.items).saveInstance(getApplicationContext());
                             }
                         }
                     }, new Action1<Throwable>() {

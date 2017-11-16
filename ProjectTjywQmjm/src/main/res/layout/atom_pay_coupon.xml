@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/atom_pub_resColorLoadingBackgroundAlpha">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/payCouponDisplayView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        app:layout_widthPercent="90%"
+        fresco:actualImageScaleType="fitCenter"
+        fresco:placeholderImageScaleType="fitCenter" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/payCouponDisplayView"
+        android:layout_centerHorizontal="true"
+        android:scaleType="center"
+        android:src="@drawable/atom_pub_ic_pay_coupon_cancel" />
+</android.support.percent.PercentRelativeLayout>
