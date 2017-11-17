@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.ContextCompat;
+import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -25,19 +27,25 @@ import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
+import com.tjyw.atom.network.model.PayCoupon;
 import com.tjyw.atom.network.model.PayOrder;
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.PayPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
+import com.tjyw.atom.network.presenter.listener.OnApiUserPostListener;
+import com.tjyw.atom.network.result.RPayPacketResult;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
-import atom.pub.inject.From;
+import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.qmjm.R;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
 import rx.Observable;
 import rx.functions.Action1;
@@ -47,14 +55,21 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * Created by stephen on 17-8-17.
  */
 @RequiresPresenter(PayPresenter.class)
-public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderActivity>>
-        implements OnApiPayPostListener.PostPayOrderListener, OnApiPayPostListener.PostPayPreviewListener, OnApiPostErrorListener, IAlipayCallback {
+public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderActivity>> implements
+        OnApiPostErrorListener,
+        OnApiUserPostListener.PostUserListPacketListener,
+        OnApiPayPostListener.PostPayOrderListener,
+        OnApiPayPostListener.PostPayPreviewListener,
+        IAlipayCallback {
 
     @From(R.id.payServiceName)
     protected TextView payServiceName;
 
     @From(R.id.payServicePrice)
     protected TextView payServicePrice;
+
+    @From(R.id.payServiceCoupon)
+    protected TextView payServiceCoupon;
 
     @From(R.id.payUseAlipay)
     protected ViewGroup payUseAlipay;
@@ -102,6 +117,9 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         payUseAlipay.setOnClickListener(this);
         payUseWxPay.setOnClickListener(this);
         atom_pub_resIdsOK.setOnClickListener(this);
+
+        maskerShowProgressView(true);
+        getPresenter().postUserListPacket();
     }
 
     @Override
@@ -196,8 +214,37 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                     listRequestParam.surname,
                     listRequestParam.day,
                     listRequestParam.gender,
-                    listRequestParam.nameNumber
+                    listRequestParam.nameNumber,
+                    listRequestParam.redPacketId
             );
+        }
+    }
+
+    @Override
+    public void postOnUserListPacketSuccess(RPayPacketResult result) {
+        maskerHideProgressView();
+
+        List<PayCoupon> list = new ArrayList<PayCoupon>();
+        result.getPayPacketList(list);
+        if (! ArrayUtil.isEmpty(list)) {
+            PayCoupon payCoupon = list.get(0);
+            if (null != payCoupon) {
+                SpannableStringBuilder builder = new SpannableStringBuilder(getString(R.string.atom_pub_resStringPayCoupon)).append(" - ");
+                int length = builder.length();
+                builder.append(getString(R.string.atom_pub_resStringRMB_d, payCoupon.money));
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorRed)), length, builder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                payServiceCoupon.setText(builder);
+
+                if (null != listRequestParam) {
+                    listRequestParam.redPacketId = payCoupon.id;
+                }
+            } else {
+                SpannableStringBuilder builder = new SpannableStringBuilder(getString(R.string.atom_pub_resStringPayCoupon));
+                int length = builder.length();
+                builder.append(getString(R.string.atom_pub_resStringPayCouponLack));
+                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorGrey)), length, builder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                payServiceCoupon.setText(builder);
+            }
         }
     }
 

@@ -74,8 +74,8 @@ public class PayPresenter<V extends ViewWithPresenter> extends FavoritePresenter
                 });
     }
 
-    public void postPayOrder(int vipId, String surname, String day, int gender, int nameNumber) {
-        RetroHttpMethods.PAY().postPayOrder(vipId, surname, day, gender, nameNumber)
+    public void postPayOrder(int vipId, String surname, String day, int gender, int nameNumber, int redPacketId) {
+        RetroHttpMethods.PAY().postPayOrder(vipId, surname, day, gender, nameNumber, redPacketId)
                 .compose(RxSchedulersHelper.<RetroResult<PayOrder>>io_main())
                 .subscribe(new Action1<RetroResult<PayOrder>>() {
                     @Override

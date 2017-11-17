@@ -196,7 +196,8 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                     listRequestParam.surname,
                     listRequestParam.day,
                     listRequestParam.gender,
-                    listRequestParam.nameNumber
+                    listRequestParam.nameNumber,
+                    listRequestParam.redPacketId
             );
         }
     }

@@ -17,7 +17,7 @@ import rx.functions.Action1;
 /**
  * Created by stephen on 27/08/2017.
  */
-public class FavoritePresenter<V extends ViewWithPresenter> extends BasePresenter<V> {
+public class FavoritePresenter<V extends ViewWithPresenter> extends UserPresenter<V> {
 
     public void postFavoriteAdd(String surname, String name, String day, int gender, final Object item) {
         RetroHttpMethods.FAVORITE().postFavoriteAdd(surname, name, day, gender)

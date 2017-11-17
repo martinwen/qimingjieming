@@ -73,9 +73,13 @@
         style="@style/AtomStyle.RedNormalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/atom_ic_pay_coupon_to_use"
         android:ellipsize="end"
         android:gravity="center_vertical"
         android:maxLines="1"
-        android:paddingTop="8dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="2dp"
         android:text="@string/atom_pub_resStringPayCouponToUse" />
 </LinearLayout>

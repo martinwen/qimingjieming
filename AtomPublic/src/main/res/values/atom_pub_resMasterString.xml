@@ -106,6 +106,8 @@
     <string name="atom_pub_resStringPayOrder">支付订单</string>
     <string name="atom_pub_resStringPayService">购买服务: %s</string>
     <string name="atom_pub_resStringPayPrice">商品价格: </string>
+    <string name="atom_pub_resStringPayCoupon">我的红包: </string>
+    <string name="atom_pub_resStringPayCouponLack">无红包可用</string>
     <string name="atom_pub_resStringPayUseAliPay">支付宝</string>
     <string name="atom_pub_resStringPayUseAliPayRecommend">推荐</string>
     <string name="atom_pub_resStringPayUseWxPay">微信</string>

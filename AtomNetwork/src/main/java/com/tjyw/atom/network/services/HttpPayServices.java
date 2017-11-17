@@ -65,7 +65,8 @@ public interface HttpPayServices {
             @Field(IApiField.S.surname) String surname,
             @Field(IApiField.D.day) String day,
             @Field(IApiField.G.gender) int gender,
-            @Field(IApiField.N.nameNumber) int nameNumber
+            @Field(IApiField.N.nameNumber) int nameNumber,
+            @Field(IApiField.R.redPacketId) int redPacketId
     );
 
     @FormUrlEncoded

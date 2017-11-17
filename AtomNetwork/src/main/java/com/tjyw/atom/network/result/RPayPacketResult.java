@@ -16,20 +16,20 @@ public class RPayPacketResult implements RetroResultItem {
 
     public int count = -1;
 
-    public List<PayCoupon> list;
+    public List<PayCoupon> newList;
 
     public PayCoupon getNewPacket(int position) {
-        return null == list ? null : list.get(position);
+        return null == newList ? null : newList.get(position);
     }
 
     public int sizeOfNewPacket() {
-        return null == list ? 0 : list.size();
+        return null == newList ? 0 : newList.size();
     }
 
     public void getPayPacketList(List<PayCoupon> list) {
         if (null != list) {
-            if (! ArrayUtil.isEmpty(this.list)) {
-                PayCoupon newPacket = this.list.get(0);
+            if (! ArrayUtil.isEmpty(newList)) {
+                PayCoupon newPacket = newList.get(0);
                 if (null != newPacket) {
                     list.add(newPacket);
                 }

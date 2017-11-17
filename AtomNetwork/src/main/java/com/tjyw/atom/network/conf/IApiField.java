@@ -147,6 +147,8 @@ public interface IApiField {
 
         String red = "red";
 
+        String redPacketId = "redPacketId";
+
         String result = "result";
 
         String resultStatus = "resultStatus";

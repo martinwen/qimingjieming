@@ -5,6 +5,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.mikepenz.fastadapter.FastAdapter;
+import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.model.PayCoupon;
 import com.tjyw.atom.network.presenter.UserPresenter;
@@ -13,6 +15,8 @@ import com.tjyw.atom.network.presenter.listener.OnApiUserPostListener;
 import com.tjyw.atom.network.result.RPayPacketResult;
 import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.qmjm.R;
+import com.tjyw.qmjm.adapter.ClientMasterAdapter;
+import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.tjyw.qmjm.item.PayCouponListItem;
 
 import java.util.ArrayList;
@@ -47,6 +51,18 @@ public class PayCouponListActivity extends BaseToolbarActivity<UserPresenter<Pay
                 .init();
 
         payCouponFastAdapter = new FastItemAdapter<PayCouponListItem>();
+        payCouponFastAdapter.withOnClickListener(new FastAdapter.OnClickListener<PayCouponListItem>() {
+            @Override
+            public boolean onClick(View v, IAdapter<PayCouponListItem> adapter, PayCouponListItem item, int position) {
+                switch (item.src.status) {
+                    case PayCoupon.STATUS.UNUSED:
+                        IClientActivityLaunchFactory.launchClientMasterActivity(PayCouponListActivity.this, ClientMasterAdapter.POSITION.NAMING, true);
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+        });
         payCouponListContainer.setAdapter(payCouponFastAdapter);
         payCouponListContainer.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
