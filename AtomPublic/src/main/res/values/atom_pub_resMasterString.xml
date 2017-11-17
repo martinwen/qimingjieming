@@ -121,10 +121,16 @@
     <string name="atom_pub_resStringPayPackageMoney">现价：</string>
     <string name="atom_pub_resStringPayPackageOldMoney">原价：</string>
     <string name="atom_pub_resStringPayPackageMoneyEach">（%s）</string>
+    <!-- 支付优惠 -->
+    <string name="atom_pub_resStringPayCouponToUse">立即使用</string>
+    <string name="atom_pub_resStringPayCouponCanUse">满%d元可用</string>
+    <string name="atom_pub_resStringPayCouponValidity">%1$s - %2$s</string>
+    <string name="atom_pub_resStringPayCouponListLack">您的卡包是空的</string>
 
     <!-- 我的页面 -->
     <string name="atom_pub_resStringMineUserAccount">注册帐号: %s</string>
     <string name="atom_pub_resStringMineOrder">我的订单</string>
+    <string name="atom_pub_resStringMineCoupon">我的卡包</string>
     <string name="atom_pub_resStringMineCollect">名字收藏</string>
     <string name="atom_pub_resStringMineService">客服中心</string>
     <string name="atom_pub_resStringMineBJX">百家姓</string>
@@ -159,6 +165,7 @@
     <string name="atom_pub_resStringAppQuit">您确认要退出应用吗</string>
 
     <!-- -->
+    <string name="atom_pub_resStringRMB_d">￥%d</string>
     <string name="atom_pub_resStringRMB_s">￥%s</string>
     <string name="atom_pub_resStringRMB_s_Yuan">￥%s元</string>
     <string name="atom_pub_resStringZodiac1_Rat">鼠</string>

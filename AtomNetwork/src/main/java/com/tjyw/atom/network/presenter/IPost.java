@@ -47,6 +47,10 @@ public interface IPost {
         int LoginCode = 2;
 
         int Login = 3;
+
+        int GetNewRedPacket = 4;
+
+        int ListPacket = 5;
     }
 
     interface Client {

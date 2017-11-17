@@ -42,7 +42,7 @@ import nucleus.factory.RequiresPresenter;
  * Created by stephen on 07/08/2017.
  */
 @RequiresPresenter(ClientPresenter.class)
-public class ClientMasterMineFragment extends AtomPubBaseFragment<ClientPresenter<ClientMasterMineFragment>> implements OnApiClientPostListener.PostClientInitListener {
+public class ClientMasterMineFragment extends BaseFragment<ClientPresenter<ClientMasterMineFragment>> implements OnApiClientPostListener.PostClientInitListener {
 
     @From(R.id.masterMineUserSignIn)
     protected TextView masterMineUserSignIn;
@@ -130,6 +130,7 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment<ClientPresente
     protected void drawWithClientInit(final ClientInit clientInit) {
         List<MasterMineItem> itemList = new ArrayList<MasterMineItem>();
         itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineOrder, R.drawable.atom_pub_ic_mine_order)));
+        itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineCoupon, R.drawable.atom_pub_ic_mine_order)));
         itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineCollect, R.drawable.atom_pub_ic_mine_collect)));
 //        itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineService, R.drawable.atom_pub_ic_mine_service)));
         itemList.add(new MasterMineItem(new Pair<Integer, Integer>(R.string.atom_pub_resStringMineBJX, R.drawable.atom_pub_ic_mine_bjx)));
@@ -158,6 +159,9 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment<ClientPresente
         switch (item.src.first) {
             case R.string.atom_pub_resStringMineOrder:
                 IClientActivityLaunchFactory.launchPayOrderListActivity((BaseActivity) getActivity());
+                break ;
+            case R.string.atom_pub_resStringMineCoupon:
+                IClientActivityLaunchFactory.launchPayCouponListActivity(ClientMasterMineFragment.this);
                 break ;
             case R.string.atom_pub_resStringMineCollect:
                 IClientActivityLaunchFactory.launchUserFavoriteListActivity(ClientMasterMineFragment.this);

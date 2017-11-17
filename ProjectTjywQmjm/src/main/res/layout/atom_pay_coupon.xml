@@ -23,4 +23,6 @@
         android:layout_centerHorizontal="true"
         android:scaleType="center"
         android:src="@drawable/atom_pub_ic_pay_coupon_cancel" />
+
+    <include layout="@layout/atom_inc_loading" />
 </android.support.percent.PercentRelativeLayout>

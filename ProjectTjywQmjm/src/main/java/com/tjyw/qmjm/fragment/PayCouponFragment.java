@@ -9,16 +9,20 @@ import android.view.ViewGroup;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.tjyw.atom.network.model.ClientInit;
+import com.tjyw.atom.network.presenter.UserPresenter;
+import com.tjyw.atom.network.presenter.listener.OnApiUserPostListener;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 
 import atom.pub.fresco.ImageFacade;
 import atom.pub.inject.From;
+import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by stephen on 17-11-16.
  */
-public class PayCouponFragment extends BaseFragment {
+@RequiresPresenter(UserPresenter.class)
+public class PayCouponFragment extends BaseFragment<UserPresenter<PayCouponFragment>> implements OnApiUserPostListener.PostUserGetNewRedPacketListener {
 
     @From(R.id.payCouponDisplayView)
     protected SimpleDraweeView payCouponDisplayView;
@@ -28,6 +32,7 @@ public class PayCouponFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.atom_pay_coupon, container, true);
         view.setOnClickListener(this);
+        maskerHideMaskerLayout();
         return view;
     }
 
@@ -48,11 +53,18 @@ public class PayCouponFragment extends BaseFragment {
             case R.id.payCouponDisplayView:
                 ClientInit clientInit = ClientInit.getInstance(ClientQmjmApplication.getContext());
                 if (null != clientInit) {
-                    showToast(clientInit.red_packet_id + "::" + clientInit.red_image_link);
+                    v.setOnClickListener(null);
+                    getPresenter().postUserGetNewRedPacket(clientInit.red_packet_id);
                 }
                 break ;
             default:
                 pHideFragment(R.anim.abc_fade_in, R.anim.abc_fade_out, this);
         }
+    }
+
+    @Override
+    public void postOnUserGetNewRedPacketSuccess(String message) {
+        showToast(message);
+        pHideFragment(R.anim.abc_fade_in, R.anim.abc_fade_out, this);
     }
 }

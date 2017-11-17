@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="96dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    tools:background="#FFCCCCCC">
+
+    <LinearLayout
+        android:layout_width="96dp"
+        android:layout_height="match_parent"
+        android:background="#FFFE6C6C"
+        android:gravity="center"
+        android:minHeight="96dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/bodyPrice"
+            style="@style/AtomStyle.WhiteSuperLargeHugeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="4dp"
+            tools:text="￥50" />
+
+        <TextView
+            android:id="@+id/bodyDesc"
+            style="@style/AtomStyle.WhiteTintSmallText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLength="10"
+            android:maxLines="1"
+            tools:text="bodyDesc" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingLeft="16dp">
+
+        <TextView
+            android:id="@+id/bodyTitle"
+            style="@style/AtomStyle.BlackBigText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.0"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            tools:text="bodyTitle" />
+
+        <TextView
+            android:id="@+id/bodyDate"
+            style="@style/AtomStyle.GreyTinyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:ellipsize="end"
+            android:maxLines="1"
+            tools:text="bodyDate" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/AtomStyle.RedNormalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:paddingTop="8dp"
+        android:text="@string/atom_pub_resStringPayCouponToUse" />
+</LinearLayout>
