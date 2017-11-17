@@ -2,6 +2,7 @@ package com.tjyw.qmjm.item;
 
 import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.model.PayCoupon;
@@ -45,11 +46,17 @@ public class PayCouponListItem extends AtomPubFastAdapterAbstractItem<PayCoupon,
 
     public static class PayCouponListHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<PayCoupon> {
 
+        @From(R.id.bodyPriceContainer)
+        protected ViewGroup bodyPriceContainer;
+
         @From(R.id.bodyPrice)
         protected TextView bodyPrice;
 
         @From(R.id.bodyDesc)
         protected TextView bodyDesc;
+
+        @From(R.id.bodyTitleContainer)
+        protected ViewGroup bodyTitleContainer;
 
         @From(R.id.bodyTitle)
         protected TextView bodyTitle;
@@ -67,6 +74,18 @@ public class PayCouponListItem extends AtomPubFastAdapterAbstractItem<PayCoupon,
             bodyDesc.setText(context.getString(R.string.atom_pub_resStringPayCouponCanUse, payCoupon.full_cut_money));
             bodyTitle.setText(payCoupon.title);
             bodyDate.setText(context.getString(R.string.atom_pub_resStringPayCouponValidity, payCoupon.startDate, payCoupon.endDate));
+
+            switch (payCoupon.status) {
+                case PayCoupon.STATUS.UNUSED:
+                    bodyPriceContainer.setBackgroundResource(R.drawable.atom_ic_pay_coupon_unuse_bg_left);
+                    bodyTitleContainer.setBackgroundResource(R.drawable.atom_ic_pay_coupon_unuse_bg_right);
+                    break ;
+                case PayCoupon.STATUS.USED:
+                case PayCoupon.STATUS.EXPIRE:
+                default:
+                    bodyPriceContainer.setBackgroundResource(R.drawable.atom_ic_pay_coupon_used_bg_left);
+                    bodyTitleContainer.setBackgroundResource(R.drawable.atom_ic_pay_coupon_used_bg_right);
+            }
         }
     }
 }

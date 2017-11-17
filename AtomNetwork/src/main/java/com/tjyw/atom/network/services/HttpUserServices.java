@@ -29,6 +29,8 @@ public interface HttpUserServices {
             String GET_NEW_RED_PACKET = "user/getNewRedPacket";
 
             String LIST_PACKET = "user/listPacket";
+
+            String MY_PACKET = "user/myPacket";
         }
     }
 
@@ -61,5 +63,11 @@ public interface HttpUserServices {
     @POST(API.PACKET.LIST_PACKET)
     Observable<RetroResult<RPayPacketResult>> postUserListPacket(
             @Field(IApiField.I.ignore) int ignore
+    );
+
+    @FormUrlEncoded
+    @POST(API.PACKET.MY_PACKET)
+    Observable<RetroResult<RPayPacketResult>> postUserMyPacket(
+            @Field(IApiField.V.vipId) int vipId
     );
 }

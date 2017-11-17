@@ -26,7 +26,7 @@ public class ListRequestParam implements Serializable, Cloneable {
 
     public String orderNo;
 
-    public int redPacketId;
+    public Integer redPacketId;
 
     public ListRequestParam() {
 

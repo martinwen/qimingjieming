@@ -119,7 +119,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         atom_pub_resIdsOK.setOnClickListener(this);
 
         maskerShowProgressView(true);
-        getPresenter().postUserListPacket();
+        getPresenter().postUserMyPacket(payService.id);
     }
 
     @Override
@@ -205,7 +205,8 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                     listRequestParam.surname,
                     listRequestParam.day,
                     listRequestParam.gender,
-                    listRequestParam.nameNumber
+                    listRequestParam.nameNumber,
+                    listRequestParam.redPacketId
             );
         } else if (payUseWxPay.isSelected()) {
             maskerShowProgressView(true);
@@ -238,14 +239,16 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                 if (null != listRequestParam) {
                     listRequestParam.redPacketId = payCoupon.id;
                 }
-            } else {
-                SpannableStringBuilder builder = new SpannableStringBuilder(getString(R.string.atom_pub_resStringPayCoupon));
-                int length = builder.length();
-                builder.append(getString(R.string.atom_pub_resStringPayCouponLack));
-                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorGrey)), length, builder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                payServiceCoupon.setText(builder);
             }
+
+            return ;
         }
+
+        SpannableStringBuilder builder = new SpannableStringBuilder(getString(R.string.atom_pub_resStringPayCoupon));
+        int length = builder.length();
+        builder.append(getString(R.string.atom_pub_resStringPayCouponLack));
+        builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorGrey)), length, builder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        payServiceCoupon.setText(builder);
     }
 
     @Override

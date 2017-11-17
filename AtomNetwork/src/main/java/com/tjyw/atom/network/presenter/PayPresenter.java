@@ -50,8 +50,8 @@ public class PayPresenter<V extends ViewWithPresenter> extends FavoritePresenter
                 });
     }
 
-    public void postPayPreview(int vipId, String surname, String day, int gender, int nameNumber) {
-        RetroHttpMethods.PAY().postPayPreview(vipId, surname, day, gender, nameNumber)
+    public void postPayPreview(int vipId, String surname, String day, int gender, int nameNumber, Integer redPacketId) {
+        RetroHttpMethods.PAY().postPayPreview(vipId, surname, day, gender, nameNumber, redPacketId)
                 .compose(RxSchedulersHelper.<RetroResult<RetroPayPreviewResult>>io_main())
                 .subscribe(new Action1<RetroResult<RetroPayPreviewResult>>() {
                     @Override
@@ -74,7 +74,7 @@ public class PayPresenter<V extends ViewWithPresenter> extends FavoritePresenter
                 });
     }
 
-    public void postPayOrder(int vipId, String surname, String day, int gender, int nameNumber, int redPacketId) {
+    public void postPayOrder(int vipId, String surname, String day, int gender, int nameNumber, Integer redPacketId) {
         RetroHttpMethods.PAY().postPayOrder(vipId, surname, day, gender, nameNumber, redPacketId)
                 .compose(RxSchedulersHelper.<RetroResult<PayOrder>>io_main())
                 .subscribe(new Action1<RetroResult<PayOrder>>() {
