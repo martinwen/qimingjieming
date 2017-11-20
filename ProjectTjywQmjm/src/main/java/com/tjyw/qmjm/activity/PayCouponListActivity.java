@@ -9,6 +9,7 @@ import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.model.PayCoupon;
+import com.tjyw.atom.network.model.PayOrderNumber;
 import com.tjyw.atom.network.presenter.UserPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiUserPostListener;
@@ -18,6 +19,8 @@ import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 import com.tjyw.qmjm.item.PayCouponListItem;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,6 +87,8 @@ public class PayCouponListActivity extends BaseToolbarActivity<UserPresenter<Pay
 
     @Override
     public void postOnUserListPacketSuccess(RPayPacketResult result) {
+        EventBus.getDefault().post(new PayOrderNumber()); // 清除掉主界面的新订单红点
+
         List<PayCoupon> list = new ArrayList<PayCoupon>();
         result.getPayPacketList(list);
 
