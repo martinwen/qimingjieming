@@ -3,6 +3,7 @@ package com.tjyw.qmjm.activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
@@ -14,9 +15,10 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
-import atom.pub.inject.From;
-
 import com.tjyw.atom.network.model.ClientInit;
+import com.tjyw.atom.network.model.PayOrderNumber;
+import com.tjyw.atom.network.presenter.PayPresenter;
+import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.adapter.ClientMasterAdapter;
@@ -24,8 +26,14 @@ import com.tjyw.qmjm.fragment.ClientGregorianFragment;
 import com.tjyw.qmjm.fragment.PayCouponFragment;
 import com.umeng.analytics.MobclickAgent;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.concurrent.TimeUnit;
 
+import atom.pub.inject.From;
+import nucleus.factory.RequiresPresenter;
 import rx.Observable;
 import rx.functions.Action1;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -33,7 +41,8 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 /**
  * Created by stephen on 07/08/2017.
  */
-public class ClientMasterActivity extends BaseActivity {
+@RequiresPresenter(PayPresenter.class)
+public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMasterActivity>> implements OnApiPayPostListener.PostPayOrderUnReadNumListener {
 
     @From(R.id.atomPubClientMasterNavigation)
     protected AHBottomNavigation atomPubClientMasterNavigation;
@@ -47,6 +56,7 @@ public class ClientMasterActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
 
         setContentView(R.layout.atom_client_master);
         immersionBarWith()
@@ -62,6 +72,7 @@ public class ClientMasterActivity extends BaseActivity {
 
         atomPubClientMasterNavigation.setAccentColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorBlack));
         atomPubClientMasterNavigation.setInactiveColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorGrey));
+        atomPubClientMasterNavigation.setNotificationBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.atom_pub_notification_background));
 
         int size = ClientMasterAdapter.MASTER_TAB_RESOURCE.size();
         for (int i = 0; i < size; i ++) {
@@ -120,6 +131,12 @@ public class ClientMasterActivity extends BaseActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
+    }
+
+    @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
@@ -153,6 +170,20 @@ public class ClientMasterActivity extends BaseActivity {
                     })
                     .show();
         }
+    }
+
+    @Override
+    public void postOnPayOrderUnReadNumSuccess(PayOrderNumber result) {
+        if (result.redNumber == 0) {
+            atomPubClientMasterNavigation.setNotification((String) null, ClientMasterAdapter.POSITION.MINE);
+        } else {
+            atomPubClientMasterNavigation.setNotification(" ", ClientMasterAdapter.POSITION.MINE);
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void postPayOrderUnReadNum(PayOrderNumber payOrderNumber) {
+        getPresenter().postPayOrderUnReadNum();
     }
 
     public void showGregorianFragment(ClientGregorianFragment.OnGregorianSelectedListener listener) {

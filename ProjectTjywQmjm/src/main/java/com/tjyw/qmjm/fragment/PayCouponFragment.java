@@ -9,10 +9,13 @@ import android.view.ViewGroup;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.tjyw.atom.network.model.ClientInit;
+import com.tjyw.atom.network.model.PayOrderNumber;
 import com.tjyw.atom.network.presenter.UserPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiUserPostListener;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
+
+import org.greenrobot.eventbus.EventBus;
 
 import atom.pub.fresco.ImageFacade;
 import atom.pub.inject.From;
@@ -64,6 +67,7 @@ public class PayCouponFragment extends BaseFragment<UserPresenter<PayCouponFragm
 
     @Override
     public void postOnUserGetNewRedPacketSuccess(String message) {
+        EventBus.getDefault().post(new PayOrderNumber());
         showToast(message);
         pHideFragment(R.anim.abc_fade_in, R.anim.abc_fade_out, this);
     }

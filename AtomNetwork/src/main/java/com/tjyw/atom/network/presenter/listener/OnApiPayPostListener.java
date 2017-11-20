@@ -2,6 +2,7 @@ package com.tjyw.atom.network.presenter.listener;
 
 import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.model.Order;
+import com.tjyw.atom.network.model.PayOrderNumber;
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.model.PayOrder;
 import com.tjyw.atom.network.result.RetroListResult;
@@ -37,5 +38,10 @@ public interface OnApiPayPostListener {
     interface PostPayPackageListener {
 
         void postOnPayPackageSuccess(RetroListResult<List<NameDefinition>> result);
+    }
+
+    interface PostPayOrderUnReadNumListener {
+
+        void postOnPayOrderUnReadNumSuccess(PayOrderNumber result);
     }
 }

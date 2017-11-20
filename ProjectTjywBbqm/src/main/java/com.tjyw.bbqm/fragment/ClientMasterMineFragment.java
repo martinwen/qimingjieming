@@ -65,6 +65,9 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment<ClientPresente
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        masterMineContainer.setAdapter(masterMineItemFastItemAdapter = new FastItemAdapter<MasterMineItem>());
+        masterMineContainer.setLayoutManager(new GridLayoutManager(getContext(), 3));
+
         drawWithUserInfo();
 
         ClientInit clientInit = ClientInit.getInstance(ClientQmjmApplication.getContext());
@@ -73,9 +76,6 @@ public class ClientMasterMineFragment extends AtomPubBaseFragment<ClientPresente
         } else {
             drawWithClientInit(clientInit);
         }
-
-        masterMineContainer.setAdapter(masterMineItemFastItemAdapter = new FastItemAdapter<MasterMineItem>());
-        masterMineContainer.setLayoutManager(new GridLayoutManager(getContext(), 3));
     }
 
     @Override

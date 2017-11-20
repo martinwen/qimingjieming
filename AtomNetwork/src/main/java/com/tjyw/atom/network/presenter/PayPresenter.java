@@ -6,6 +6,7 @@ import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.model.Order;
 import com.tjyw.atom.network.model.PayOrder;
+import com.tjyw.atom.network.model.PayOrderNumber;
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
@@ -178,6 +179,30 @@ public class PayPresenter<V extends ViewWithPresenter> extends FavoritePresenter
                             }
                         } else if (presenterView instanceof OnApiPayPostListener.PostPayPackageListener) {
                             ((OnApiPayPostListener.PostPayPackageListener) presenterView).postOnPayPackageSuccess(result.items);
+                        }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        if (presenterView instanceof OnApiPostErrorListener) {
+                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Pay.PayOrderNameList, throwable);
+                        }
+                    }
+                });
+    }
+
+    public void postPayOrderUnReadNum() {
+        RetroHttpMethods.PAY().postPayOrderUnReadNum(1)
+                .compose(RxSchedulersHelper.<RetroResult<PayOrderNumber>>io_main())
+                .subscribe(new Action1<RetroResult<PayOrderNumber>>() {
+                    @Override
+                    public void call(RetroResult<PayOrderNumber> result) {
+                        if (null == result || result.illegalRequest()) {
+                            if (presenterView instanceof OnApiPostErrorListener) {
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Pay.PayOrderNameList, new IllegalRequestException(result));
+                            }
+                        } else if (presenterView instanceof OnApiPayPostListener.PostPayOrderUnReadNumListener) {
+                            ((OnApiPayPostListener.PostPayOrderUnReadNumListener) presenterView).postOnPayOrderUnReadNumSuccess(result.items);
                         }
                     }
                 }, new Action1<Throwable>() {

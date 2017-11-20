@@ -4,6 +4,7 @@ import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.NameDefinition;
 import com.tjyw.atom.network.model.Order;
 import com.tjyw.atom.network.model.PayOrder;
+import com.tjyw.atom.network.model.PayOrderNumber;
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.result.REmptyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
@@ -38,6 +39,8 @@ public interface HttpPayServices {
         String ORDER_NAME_LIST = "order/nameList";
 
         String ORDER_NAME_LIST_PACKAGE = "order/nameListPackage";
+
+        String ORDER_UN_READ_NUM = "order/unReadNum";
     }
 
     @FormUrlEncoded
@@ -105,5 +108,11 @@ public interface HttpPayServices {
     @POST(API.ORDER_NAME_LIST_PACKAGE)
     Observable<RetroResult<RetroListResult<List<NameDefinition>>>> postPayOrderNameListPackage(
             @Field(IApiField.O.orderNo) String orderNo
+    );
+
+    @FormUrlEncoded
+    @POST(API.ORDER_UN_READ_NUM)
+    Observable<RetroResult<PayOrderNumber>> postPayOrderUnReadNum(
+            @Field(IApiField.I.ignore) int ignore
     );
 }
