@@ -101,7 +101,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements C
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 switch (actionId) {
-                    case EditorInfo.IME_ACTION_SEARCH:
+                    case EditorInfo.IME_ACTION_NEXT:
                         validator.validate();
                     default:
                         return false;

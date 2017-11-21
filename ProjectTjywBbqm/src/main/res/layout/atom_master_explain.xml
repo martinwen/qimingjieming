@@ -166,7 +166,7 @@
             android:background="@android:color/transparent"
             android:gravity="top"
             android:hint="@string/atom_pub_resStringSurnameHint"
-            android:imeOptions="actionSearch"
+            android:imeOptions="actionNext"
             android:inputType="text"
             android:maxLength="2"
             android:maxLines="1"
