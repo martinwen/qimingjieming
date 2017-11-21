@@ -4,6 +4,7 @@ import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.UserInfo;
 import com.tjyw.atom.network.result.REmptyResult;
 import com.tjyw.atom.network.result.RPayPacketResult;
+import com.tjyw.atom.network.result.RUserRegister;
 import com.tjyw.atom.network.result.RetroResult;
 
 import retrofit2.http.Field;
@@ -19,6 +20,8 @@ public interface HttpUserServices {
     interface API {
 
         String REGISTER = "user/register";
+
+        String NEW_REGISTER = "user/registerAndInit";
 
         String GET_LOGIN_CODE = "user/getLoginCode";
 
@@ -37,6 +40,12 @@ public interface HttpUserServices {
     @FormUrlEncoded
     @POST(API.REGISTER)
     Observable<RetroResult<UserInfo>> postUserRegister(
+            @Field(IApiField.I.ignore) int ignore
+    );
+
+    @FormUrlEncoded
+    @POST(API.NEW_REGISTER)
+    Observable<RetroResult<RUserRegister>> postNewUserRegister(
             @Field(IApiField.I.ignore) int ignore
     );
 

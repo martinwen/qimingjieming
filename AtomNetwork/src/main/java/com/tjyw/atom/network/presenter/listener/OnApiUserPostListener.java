@@ -2,6 +2,7 @@ package com.tjyw.atom.network.presenter.listener;
 
 import com.tjyw.atom.network.model.UserInfo;
 import com.tjyw.atom.network.result.RPayPacketResult;
+import com.tjyw.atom.network.result.RUserRegister;
 
 /**
  * Created by stephen on 17-8-24.
@@ -10,7 +11,7 @@ public interface OnApiUserPostListener {
 
     interface PostUserRegisterListener {
 
-        void postOnUserRegisterSuccess(UserInfo result);
+        void postOnUserRegisterSuccess(RUserRegister result);
     }
 
     interface PostUserLoginCodeListener {
