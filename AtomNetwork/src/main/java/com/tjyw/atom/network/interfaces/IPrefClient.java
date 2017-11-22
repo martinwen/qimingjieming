@@ -14,6 +14,8 @@ public interface IPrefClient {
     interface KEY {
 
         String KEY_CLIENT_INIT = "KEY_Client_INIT";
+
+        String KEY_NEW_FLAG_COUPON = "KEY_NEW_FLAG_COUPON";
     }
 
     @Accessor(key = KEY.KEY_CLIENT_INIT)
@@ -21,4 +23,10 @@ public interface IPrefClient {
 
     @Accessor(key = KEY.KEY_CLIENT_INIT)
     void setClientInit(String clientInit);
+
+    @Accessor(key = KEY.KEY_NEW_FLAG_COUPON)
+    boolean getNewFlagCoupon();
+
+    @Accessor(key = KEY.KEY_NEW_FLAG_COUPON)
+    void setNewFlagCoupon(boolean newFlagCoupon);
 }

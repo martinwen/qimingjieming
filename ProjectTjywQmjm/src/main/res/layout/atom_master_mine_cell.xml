@@ -87,14 +87,31 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:drawablePadding="4dp"
-                    android:drawableTop="@drawable/atom_pub_ic_mine_order"
+                    android:drawableTop="@drawable/atom_pub_ic_mine_coupon"
                     android:gravity="center"
                     android:text="@string/atom_pub_resStringMineCoupon" />
+
+                <TextView
+                    android:id="@+id/mineCellCouponNew"
+                    style="@style/AtomStyle.WhiteSmallText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/mineCellCoupon"
+                    android:background="@drawable/atom_ic_new_flag"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:scaleType="center"
+                    android:text="new"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
 
                 <ImageView
                     android:id="@+id/mineCellCouponBubble"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/mineCellCoupon"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="4dp"
                     android:layout_toRightOf="@+id/mineCellCoupon"
                     android:scaleType="center"
                     android:src="@drawable/atom_pub_notification_background"

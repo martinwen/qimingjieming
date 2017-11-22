@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.brianjmelton.stanley.ProxyGenerator;
 import com.tjyw.atom.network.Network;
 import com.tjyw.atom.network.conf.ICode;
+import com.tjyw.atom.network.interfaces.IPrefClient;
 import com.tjyw.atom.network.interfaces.IPrefUser;
 import com.tjyw.atom.network.model.ClientInit;
 import com.tjyw.atom.network.model.PayOrderNumber;
@@ -54,6 +55,9 @@ public class ClientMasterMineFragment extends BaseFragment<PayPresenter<ClientMa
     @From(R.id.mineCellCoupon)
     protected TextView mineCellCoupon;
 
+    @From(R.id.mineCellCouponNew)
+    protected TextView mineCellCouponNew;
+
     @From(R.id.mineCellCouponBubble)
     protected ImageView mineCellCouponBubble;
 
@@ -77,7 +81,6 @@ public class ClientMasterMineFragment extends BaseFragment<PayPresenter<ClientMa
 
     @From(R.id.mineCellFeedback)
     protected TextView mineCellFeedback;
-
 
     @Nullable
     @Override
@@ -114,6 +117,22 @@ public class ClientMasterMineFragment extends BaseFragment<PayPresenter<ClientMa
     public void onDestroy() {
         EventBus.getDefault().unregister(this);
         super.onDestroy();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        IPrefClient client = new ProxyGenerator().create(ClientQmjmApplication.getContext(), IPrefClient.class);
+        if (null != client) {
+            if (hidden) {
+                mineCellCouponNew.setVisibility(View.GONE);
+            } else if (client.getNewFlagCoupon()) {
+                mineCellCouponNew.setVisibility(View.GONE);
+            } else {
+                client.setNewFlagCoupon(true);
+                mineCellCouponNew.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
     @Override
