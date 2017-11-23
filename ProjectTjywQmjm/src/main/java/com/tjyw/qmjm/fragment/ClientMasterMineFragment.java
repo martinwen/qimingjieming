@@ -232,10 +232,10 @@ public class ClientMasterMineFragment extends BaseFragment<PayPresenter<ClientMa
 
     @Override
     public void postOnPayOrderUnReadNumSuccess(PayOrderNumber result) {
-        if (result.redNumber == 0) {
-            mineCellCouponBubble.setVisibility(View.GONE);
-        } else {
+        if (result.redNumber != 0 || result.orderNumber != 0) {
             mineCellCouponBubble.setVisibility(View.VISIBLE);
+        } else {
+            mineCellCouponBubble.setVisibility(View.GONE);
         }
 
         if (getActivity() instanceof ClientMasterActivity) {

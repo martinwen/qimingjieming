@@ -162,10 +162,10 @@ public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMaster
 
     @Override
     public void postOnPayOrderUnReadNumSuccess(PayOrderNumber result) {
-        if (result.redNumber == 0) {
-            atomPubClientMasterNavigation.setNotification((String) null, ClientMasterAdapter.POSITION.MINE);
-        } else {
+        if (result.redNumber != 0 || result.orderNumber != 0) {
             atomPubClientMasterNavigation.setNotification(" ", ClientMasterAdapter.POSITION.MINE);
+        } else {
+            atomPubClientMasterNavigation.setNotification((String) null, ClientMasterAdapter.POSITION.MINE);
         }
     }
 

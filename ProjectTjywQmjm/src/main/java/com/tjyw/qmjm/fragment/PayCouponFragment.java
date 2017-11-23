@@ -12,6 +12,7 @@ import com.tjyw.atom.network.model.ClientInit;
 import com.tjyw.atom.network.model.PayOrderNumber;
 import com.tjyw.atom.network.presenter.UserPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiUserPostListener;
+import com.tjyw.atom.network.utils.DateTimeUtils;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 
@@ -44,7 +45,8 @@ public class PayCouponFragment extends BaseFragment<UserPresenter<PayCouponFragm
         if (! hidden) {
             ClientInit clientInit = ClientInit.getInstance(ClientQmjmApplication.getContext());
             if (null != clientInit && ! TextUtils.isEmpty(clientInit.red_image_link)) {
-                ImageFacade.loadImage(clientInit.red_image_link + "?time=" + System.currentTimeMillis(), payCouponDisplayView);
+                String time = DateTimeUtils.printCalendarByPattern(DateTimeUtils.getCurrentDate(), DateTimeUtils.yyyy_MM_dd);
+                ImageFacade.loadImage(clientInit.red_image_link + "?time=" + time, payCouponDisplayView);
                 payCouponDisplayView.setOnClickListener(this);
             }
         }
