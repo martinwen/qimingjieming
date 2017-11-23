@@ -29,6 +29,7 @@ import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.model.PayCoupon;
 import com.tjyw.atom.network.model.PayOrder;
+import com.tjyw.atom.network.model.PayOrderNumber;
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.PayPresenter;
@@ -39,6 +40,8 @@ import com.tjyw.atom.network.result.RPayPacketResult;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
 import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.qmjm.R;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -324,6 +327,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     }
 
     protected void finishDelayed() {
+        EventBus.getDefault().post(new PayOrderNumber());
         maskerShowProgressView(true, true, getString(R.string.atom_pub_resStringNetworkRequesting));
         Observable.timer(3, TimeUnit.SECONDS)
                 .compose(RxSchedulersHelper.<Long>io_main())
