@@ -139,13 +139,14 @@
                     android:id="@+id/payUseWxPay"
                     style="@style/AtomStyle.BlackNormalText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="56dp"
                     android:drawableLeft="@drawable/atom_pub_ic_pay_wx"
                     android:drawablePadding="16dp"
                     android:drawableRight="@drawable/atom_pub_selector_pay_checked"
                     android:gravity="center_vertical"
                     android:minLines="1"
-                    android:padding="16dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
                     android:text="@string/atom_pub_resStringPayUseWxPay" />
 
                 <ImageView
