@@ -108,6 +108,7 @@
     <string name="atom_pub_resStringPayPrice">商品价格：</string>
     <string name="atom_pub_resStringPayCoupon">我的红包：</string>
     <string name="atom_pub_resStringPayCouponLack">无红包可用</string>
+    <string name="atom_pub_resStringPaySummary">小计：</string>
     <string name="atom_pub_resStringPayUseAliPay">支付宝</string>
     <string name="atom_pub_resStringPayUseAliPayRecommend">推荐</string>
     <string name="atom_pub_resStringPayUseWxPay">微信</string>
@@ -125,7 +126,7 @@
     <string name="atom_pub_resStringPayPackageMoneyEach">（%s）</string>
     <!-- 支付优惠 -->
     <string name="atom_pub_resStringPayCouponToUse">立即使用</string>
-    <string name="atom_pub_resStringPayCouponCanUse">满%d元可用</string>
+    <string name="atom_pub_resStringPayCouponCanUse">满%s元可用</string>
     <string name="atom_pub_resStringPayCouponValidity">%1$s - %2$s</string>
     <string name="atom_pub_resStringPayCouponListLack">您的卡包是空的</string>
 
@@ -170,6 +171,8 @@
     <string name="atom_pub_resStringRMB_d">￥%d</string>
     <string name="atom_pub_resStringRMB_s">￥%s</string>
     <string name="atom_pub_resStringRMB_s_Yuan">￥%s元</string>
+    <string name="atom_pub_resStringRMB_s_Yuan_Simple">%s元</string>
+    <string name="atom_pub_resStringRMB_d_Yuan_Simple">%d元</string>
     <string name="atom_pub_resStringZodiac1_Rat">鼠</string>
     <string name="atom_pub_resStringZodiac2_Ox">牛</string>
     <string name="atom_pub_resStringZodiac3_Tiger">虎</string>

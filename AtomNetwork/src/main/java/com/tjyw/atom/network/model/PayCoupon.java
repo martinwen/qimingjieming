@@ -27,9 +27,9 @@ public class PayCoupon implements RetroResultItem {
 
     public String title;
 
-    public int money;
+    public String money;
 
-    public int full_cut_money;
+    public String full_cut_money;
 
     public int status;
 
@@ -38,4 +38,6 @@ public class PayCoupon implements RetroResultItem {
     public String startDate;
 
     public String endDate;
+
+    public String subTotal; // 小计
 }

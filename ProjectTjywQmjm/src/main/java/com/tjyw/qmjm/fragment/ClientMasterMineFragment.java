@@ -26,6 +26,7 @@ import com.tjyw.atom.network.utils.JsonUtil;
 import com.tjyw.qmjm.ClientQmjmApplication;
 import com.tjyw.qmjm.R;
 import com.tjyw.qmjm.activity.BaseActivity;
+import com.tjyw.qmjm.activity.ClientMasterActivity;
 import com.tjyw.qmjm.factory.IClientActivityLaunchFactory;
 
 import org.greenrobot.eventbus.EventBus;
@@ -235,6 +236,10 @@ public class ClientMasterMineFragment extends BaseFragment<PayPresenter<ClientMa
             mineCellCouponBubble.setVisibility(View.GONE);
         } else {
             mineCellCouponBubble.setVisibility(View.VISIBLE);
+        }
+
+        if (getActivity() instanceof ClientMasterActivity) {
+            ((ClientMasterActivity) getActivity()).postOnPayOrderUnReadNumSuccess(result);
         }
     }
 

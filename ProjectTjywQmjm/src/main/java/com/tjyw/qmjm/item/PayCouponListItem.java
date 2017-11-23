@@ -64,13 +64,16 @@ public class PayCouponListItem extends AtomPubFastAdapterAbstractItem<PayCoupon,
         @From(R.id.bodyDate)
         protected TextView bodyDate;
 
+        @From(R.id.bodyUserIt)
+        protected TextView bodyUserIt;
+
         public PayCouponListHolder(View itemView) {
             super(itemView);
         }
 
         @Override
         public void onBindView(Context context, PayCoupon payCoupon) {
-            bodyPrice.setText(context.getString(R.string.atom_pub_resStringRMB_d, payCoupon.money));
+            bodyPrice.setText(context.getString(R.string.atom_pub_resStringRMB_s, payCoupon.money));
             bodyDesc.setText(context.getString(R.string.atom_pub_resStringPayCouponCanUse, payCoupon.full_cut_money));
             bodyTitle.setText(payCoupon.title);
             bodyDate.setText(context.getString(R.string.atom_pub_resStringPayCouponValidity, payCoupon.startDate, payCoupon.endDate));
@@ -79,12 +82,14 @@ public class PayCouponListItem extends AtomPubFastAdapterAbstractItem<PayCoupon,
                 case PayCoupon.STATUS.UNUSED:
                     bodyPriceContainer.setBackgroundResource(R.drawable.atom_ic_pay_coupon_unuse_bg_left);
                     bodyTitleContainer.setBackgroundResource(R.drawable.atom_ic_pay_coupon_unuse_bg_right);
+                    bodyUserIt.setVisibility(View.VISIBLE);
                     break ;
                 case PayCoupon.STATUS.USED:
                 case PayCoupon.STATUS.EXPIRE:
                 default:
                     bodyPriceContainer.setBackgroundResource(R.drawable.atom_ic_pay_coupon_used_bg_left);
                     bodyTitleContainer.setBackgroundResource(R.drawable.atom_ic_pay_coupon_used_bg_right);
+                    bodyUserIt.setVisibility(View.GONE);
             }
         }
     }

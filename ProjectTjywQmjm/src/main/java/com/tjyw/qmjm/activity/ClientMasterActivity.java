@@ -3,7 +3,6 @@ package com.tjyw.qmjm.activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
@@ -25,10 +24,6 @@ import com.tjyw.qmjm.adapter.ClientMasterAdapter;
 import com.tjyw.qmjm.fragment.ClientGregorianFragment;
 import com.tjyw.qmjm.fragment.PayCouponFragment;
 import com.umeng.analytics.MobclickAgent;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.concurrent.TimeUnit;
 
@@ -56,7 +51,6 @@ public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMaster
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EventBus.getDefault().register(this);
 
         setContentView(R.layout.atom_client_master);
         immersionBarWith()
@@ -131,12 +125,6 @@ public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMaster
     }
 
     @Override
-    protected void onDestroy() {
-        EventBus.getDefault().unregister(this);
-        super.onDestroy();
-    }
-
-    @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
@@ -179,11 +167,6 @@ public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMaster
         } else {
             atomPubClientMasterNavigation.setNotification(" ", ClientMasterAdapter.POSITION.MINE);
         }
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void postPayOrderUnReadNum(PayOrderNumber payOrderNumber) {
-        getPresenter().postPayOrderUnReadNum();
     }
 
     public void showGregorianFragment(ClientGregorianFragment.OnGregorianSelectedListener listener) {
