@@ -53,6 +53,9 @@ public class ClientMasterMineFragment extends BaseFragment<PayPresenter<ClientMa
     @From(R.id.mineCellOrder)
     protected TextView mineCellOrder;
 
+    @From(R.id.mineCellOrderBubble)
+    protected ImageView mineCellOrderBubble;
+
     @From(R.id.mineCellCoupon)
     protected TextView mineCellCoupon;
 
@@ -232,12 +235,8 @@ public class ClientMasterMineFragment extends BaseFragment<PayPresenter<ClientMa
 
     @Override
     public void postOnPayOrderUnReadNumSuccess(PayOrderNumber result) {
-        if (result.redNumber != 0 || result.orderNumber != 0) {
-            mineCellCouponBubble.setVisibility(View.VISIBLE);
-        } else {
-            mineCellCouponBubble.setVisibility(View.GONE);
-        }
-
+        mineCellOrderBubble.setVisibility(result.orderNumber == 0 ? View.GONE : View.VISIBLE);
+        mineCellCouponBubble.setVisibility(result.redNumber == 0 ? View.GONE : View.VISIBLE);
         if (getActivity() instanceof ClientMasterActivity) {
             ((ClientMasterActivity) getActivity()).postOnPayOrderUnReadNumSuccess(result);
         }
