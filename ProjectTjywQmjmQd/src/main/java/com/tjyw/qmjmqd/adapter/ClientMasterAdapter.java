@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.util.Pair;
 
 import com.aspsine.fragmentnavigator.FragmentNavigatorAdapter;
+import atom.pub.activity.AtomPubBaseActivity;
 import com.tjyw.qmjmqd.R;
 import com.tjyw.qmjmqd.fragment.ClientMasterExplainFragment;
 import com.tjyw.qmjmqd.fragment.ClientMasterMineFragment;
@@ -12,8 +13,6 @@ import com.tjyw.qmjmqd.fragment.ClientMasterNamingFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import atom.pub.activity.AtomPubBaseActivity;
 
 /**
  * Created by stephen on 07/08/2017.

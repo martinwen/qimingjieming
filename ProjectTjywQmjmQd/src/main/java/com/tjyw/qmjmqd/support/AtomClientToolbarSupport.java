@@ -9,11 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.utils.ArrayUtil;
-import com.tjyw.qmjmqd.R;
 
 import atom.pub.inject.From;
 import atom.pub.inject.Injector;
 import atom.pub.interfaces.IAtomPubToolBar;
+import com.tjyw.qmjmqd.R;
 
 /**
  * Created by stephen on 17-8-4.

@@ -16,11 +16,11 @@ import android.webkit.WebViewClient;
 
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
+import atom.pub.inject.From;
 import com.tjyw.qmjmqd.R;
 
 import java.util.concurrent.TimeUnit;
 
-import atom.pub.inject.From;
 import rx.Observable;
 import rx.functions.Action1;
 

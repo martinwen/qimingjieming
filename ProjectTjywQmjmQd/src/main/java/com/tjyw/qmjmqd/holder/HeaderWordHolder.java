@@ -5,10 +5,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.model.NameCharacter;
-import com.tjyw.qmjmqd.R;
-
 import atom.pub.inject.From;
 import atom.pub.inject.Injector;
+import com.tjyw.qmjmqd.R;
 
 public class HeaderWordHolder  {
 

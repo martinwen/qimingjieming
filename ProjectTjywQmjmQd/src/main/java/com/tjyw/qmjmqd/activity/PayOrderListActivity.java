@@ -11,6 +11,7 @@ import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.model.Order;
+import com.tjyw.atom.network.model.PayOrderNumber;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.IPost;
 import com.tjyw.atom.network.presenter.PayPresenter;
@@ -22,6 +23,8 @@ import com.tjyw.qmjmqd.adapter.ClientMasterAdapter;
 import com.tjyw.qmjmqd.factory.IClientActivityLaunchFactory;
 import com.tjyw.qmjmqd.item.PayOrderListItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -146,6 +149,7 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
         }
 
         if (payOrderRefreshLayout.isRefreshing()) {
+            EventBus.getDefault().post(new PayOrderNumber());
             payOrderAdapter.set(itemList);
         } else {
             payOrderAdapter.add(itemList);

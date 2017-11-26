@@ -18,10 +18,10 @@ import com.tjyw.atom.network.presenter.MessageHotLinePresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiMessageHotLinePostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.result.REmptyResult;
-import com.tjyw.qmjmqd.R;
-
 import atom.pub.inject.From;
 import atom.pub.interfaces.AtomPubValidationListener;
+import com.tjyw.qmjmqd.R;
+
 import nucleus.factory.RequiresPresenter;
 
 /**

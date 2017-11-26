@@ -3,9 +3,9 @@ package com.tjyw.qmjmqd.activity;
 import android.support.annotation.LayoutRes;
 import android.view.View;
 
+import atom.pub.interfaces.IAtomPubToolBar;
 import com.tjyw.qmjmqd.support.AtomClientToolbarSupport;
 
-import atom.pub.interfaces.IAtomPubToolBar;
 import nucleus.presenter.Presenter;
 
 /**

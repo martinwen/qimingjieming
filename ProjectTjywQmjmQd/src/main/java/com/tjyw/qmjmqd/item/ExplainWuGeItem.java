@@ -5,13 +5,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.model.Explain;
+import atom.pub.inject.From;
+import atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.qmjmqd.ClientQmjmApplication;
 import com.tjyw.qmjmqd.R;
 
 import java.util.List;
-
-import atom.pub.inject.From;
-import atom.pub.item.AtomPubFastAdapterAbstractItem;
 
 /**
  * Created by stephen on 15/08/2017.

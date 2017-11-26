@@ -5,11 +5,11 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.view.View;
 
-import com.tjyw.qmjmqd.support.AtomClientMaskerSupport;
-
 import atom.pub.fragment.AtomPubBaseFragment;
 import atom.pub.inject.Injector;
 import atom.pub.interfaces.IAtomPubLayoutSupportMasker;
+import com.tjyw.qmjmqd.support.AtomClientMaskerSupport;
+
 import butterknife.ButterKnife;
 import nucleus.presenter.Presenter;
 

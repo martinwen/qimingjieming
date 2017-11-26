@@ -12,6 +12,8 @@ import com.mikepenz.fastadapter.adapters.HeaderAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
+import atom.pub.fragment.AtomPubBaseFragment;
+import atom.pub.inject.From;
 import com.tjyw.qmjmqd.ClientQmjmApplication;
 import com.tjyw.qmjmqd.R;
 import com.tjyw.qmjmqd.item.ExplainHeaderItem;
@@ -20,9 +22,6 @@ import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import atom.pub.fragment.AtomPubBaseFragment;
-import atom.pub.inject.From;
 
 /**
  * Created by stephen on 17-8-11.

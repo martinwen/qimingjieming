@@ -3,9 +3,8 @@ package com.tjyw.qmjmqd.item;
 import android.content.Context;
 import android.view.View;
 
-import com.tjyw.qmjmqd.R;
-
 import atom.pub.item.AtomPubFastAdapterAbstractItem;
+import com.tjyw.qmjmqd.R;
 
 /**
  * Created by stephen on 04/09/2017.

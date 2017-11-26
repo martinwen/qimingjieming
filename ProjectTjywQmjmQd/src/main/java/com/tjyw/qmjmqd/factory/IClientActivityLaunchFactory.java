@@ -14,6 +14,7 @@ import com.tjyw.qmjmqd.activity.ClientTouchActivity;
 import com.tjyw.qmjmqd.activity.ExplainMasterActivity;
 import com.tjyw.qmjmqd.activity.NameMasterActivity;
 import com.tjyw.qmjmqd.activity.NamingListActivity;
+import com.tjyw.qmjmqd.activity.PayCouponListActivity;
 import com.tjyw.qmjmqd.activity.PayOrderActivity;
 import com.tjyw.qmjmqd.activity.PayOrderListActivity;
 import com.tjyw.qmjmqd.activity.PayPackageActivity;
@@ -93,6 +94,11 @@ public class IClientActivityLaunchFactory {
 
     public static void launchPayOrderListActivity(BaseFragment context) {
         Intent intent = new Intent(context.getActivity(), PayOrderListActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void launchPayCouponListActivity(BaseFragment context) {
+        Intent intent = new Intent(context.getActivity(), PayCouponListActivity.class);
         context.startActivity(intent);
     }
 

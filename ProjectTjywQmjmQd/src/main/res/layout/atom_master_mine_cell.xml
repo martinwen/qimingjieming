@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?colorPrimary"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                android:src="@mipmap/atom_ic_logo" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:id="@+id/masterMineUserSignIn"
+                    style="@style/AtomStyle.GreyBigText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/atom_pub_ic_login"
+                    android:gravity="center"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="8dp"
+                    android:text="@string/atom_pub_resStringUserSignInClick" />
+
+                <TextView
+                    android:id="@+id/masterMineUserAccount"
+                    style="@style/AtomStyle.GreyBigText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingTop="8dp"
+                    android:text="@string/atom_pub_resStringMineUserAccount" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 下半部分九宫格 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="16dp">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:id="@+id/mineCellOrder"
+                    style="@style/AtomStyle.BlackNormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:drawablePadding="4dp"
+                    android:drawableTop="@drawable/atom_pub_ic_mine_order"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringMineOrder" />
+
+
+                <ImageView
+                    android:id="@+id/mineCellOrderBubble"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/mineCellOrder"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_toRightOf="@+id/mineCellOrder"
+                    android:scaleType="center"
+                    android:src="@drawable/atom_pub_notification_background"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0">
+
+                <TextView
+                    android:id="@+id/mineCellCoupon"
+                    style="@style/AtomStyle.BlackNormalText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:drawablePadding="4dp"
+                    android:drawableTop="@drawable/atom_pub_ic_mine_coupon"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringMineCoupon" />
+
+                <TextView
+                    android:id="@+id/mineCellCouponNew"
+                    style="@style/AtomStyle.WhiteSmallText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/mineCellCoupon"
+                    android:background="@drawable/atom_ic_new_flag"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:scaleType="center"
+                    android:text="new"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/mineCellCouponBubble"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/mineCellCoupon"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_toRightOf="@+id/mineCellCoupon"
+                    android:scaleType="center"
+                    android:src="@drawable/atom_pub_notification_background"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/mineCellCollect"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:drawablePadding="4dp"
+                android:drawableTop="@drawable/atom_pub_ic_mine_order"
+                android:gravity="center"
+                android:text="@string/atom_pub_resStringMineCollect" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="16dp">
+
+            <TextView
+                android:id="@+id/mineCellBJX"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:drawablePadding="4dp"
+                android:drawableTop="@drawable/atom_pub_ic_mine_bjx"
+                android:gravity="center"
+                android:text="@string/atom_pub_resStringMineBJX" />
+
+            <TextView
+                android:id="@+id/mineCellZGJM"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:drawablePadding="4dp"
+                android:drawableTop="@drawable/atom_pub_ic_mine_zgjm"
+                android:gravity="center"
+                android:text="@string/atom_pub_resStringMineZGJM" />
+
+            <TextView
+                android:id="@+id/mineCellQTS"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:drawablePadding="4dp"
+                android:drawableTop="@drawable/atom_pub_ic_mine_qts"
+                android:gravity="center"
+                android:text="@string/atom_pub_resStringMineQTS" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="16dp">
+
+            <TextView
+                android:id="@+id/mineCellZodiac"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:drawablePadding="4dp"
+                android:drawableTop="@drawable/atom_pub_ic_mine_zodiac"
+                android:gravity="center"
+                android:text="@string/atom_pub_resStringMineZodiac" />
+
+            <TextView
+                android:id="@+id/mineCellAbout"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:drawablePadding="4dp"
+                android:drawableTop="@drawable/atom_pub_ic_mine_about"
+                android:gravity="center"
+                android:text="@string/atom_pub_resStringMineAbout" />
+
+            <TextView
+                android:id="@+id/mineCellFeedback"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:drawablePadding="4dp"
+                android:drawableTop="@drawable/atom_pub_ic_mine_feedback"
+                android:gravity="center"
+                android:text="@string/atom_pub_resStringMineFeedback" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

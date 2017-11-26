@@ -14,12 +14,12 @@ import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
+import atom.pub.inject.From;
 import com.tjyw.qmjmqd.ClientQmjmApplication;
 import com.tjyw.qmjmqd.R;
 import com.tjyw.qmjmqd.activity.BaseActivity;
 import com.tjyw.qmjmqd.factory.IClientActivityLaunchFactory;
 
-import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
 
 /**

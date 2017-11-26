@@ -105,6 +105,10 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".activity.PayCouponListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".activity.UserSignInActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
