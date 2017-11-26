@@ -54,7 +54,7 @@ android {
 //            buildConfigField "String", "CLIENT_C_NAME", '"联通沃商城"'
 //        }
         C1003 {
-            resValue "string", "app_name", "宝宝起名解名八字取名"
+            resValue "string", "app_name", "宝宝起名解名取名"
             buildConfigField "String", "CLIENT_C_ID", '"C1003"'
             buildConfigField "String", "CLIENT_C_NAME", '"百度应用中心"'
         }
