@@ -4,11 +4,11 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.StringRes;
 import android.view.View;
 
+import com.tjyw.bbqm.support.AtomClientMaskerSupport;
+
 import atom.pub.activity.AtomPubBaseActivity;
 import atom.pub.inject.Injector;
 import atom.pub.interfaces.IAtomPubLayoutSupportMasker;
-import com.tjyw.bbqm.support.AtomClientMaskerSupport;
-
 import butterknife.ButterKnife;
 import nucleus.presenter.Presenter;
 

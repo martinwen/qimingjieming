@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_weight="1.0"
-    android:background="@drawable/atom_shape_background"
-    android:gravity="bottom"
-    android:orientation="vertical">
+    android:background="@drawable/atom_shape_background" >
 
     <include layout="@layout/atom_pub_inc_symbol" />
 
     <FrameLayout
         android:id="@+id/masterFragmentContainer"
         android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/bottom_navigation_height"
         android:layout_height="match_parent">
 
         <fragment
@@ -41,8 +39,8 @@
         android:id="@+id/atomPubClientMasterNavigation"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottom_navigation_height"
-        android:layout_alignParentBottom="true"
-        android:background="#FF534233"
+        android:layout_gravity="bottom"
+        android:background="@color/atom_pub_resColorTabBackground"
         app:translucentNavigationEnabled="true" />
 
     <fragment
@@ -51,4 +49,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:tag="com.tjyw.bbqm.fragment.ClientGregorianFragment" />
-</android.support.percent.PercentRelativeLayout>
+
+    <fragment
+        android:id="@+id/payCouponFragment"
+        class="com.tjyw.bbqm.fragment.PayCouponFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="com.tjyw.bbqm.fragment.PayCouponFragment" />
+</FrameLayout>

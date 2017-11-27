@@ -8,13 +8,14 @@ import android.widget.TextView;
 import com.tjyw.atom.network.model.Favorite;
 import com.tjyw.atom.network.model.NameCharacter;
 import com.tjyw.atom.network.utils.ArrayUtil;
-import atom.pub.inject.From;
-import atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.holder.HeaderWordHolder;
 
 import java.util.List;
+
+import atom.pub.inject.From;
+import atom.pub.item.AtomPubFastAdapterAbstractItem;
 
 /**
  * Created by stephen on 27/08/2017.

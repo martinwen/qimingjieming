@@ -87,11 +87,11 @@ public class AtomClientMaskerSupport implements View.OnClickListener, IAtomPubLa
 
     @Override
     public void maskerShowProgressView(boolean isAlpha, boolean anim, String hint) {
-        if (isAlpha) {
-            atomPubProgressView.setBackgroundColor(ContextCompat.getColor(atomPubProgressView.getContext(), R.color.atom_pub_resColorLoadingBackgroundAlpha));
-        } else {
-            atomPubProgressView.setBackgroundResource(R.drawable.atom_shape_background);
-        }
+        atomPubProgressView.setBackgroundColor(
+                ContextCompat.getColor(atomPubProgressView.getContext(),
+                        isAlpha ? R.color.atom_pub_resColorLoadingBackgroundAlpha : R.color.atom_pub_resColorLoadingBackground
+                )
+        );
 
         if (anim) {
             if (null == atomPubProgressAnimatorSet) {

@@ -2,15 +2,17 @@ package com.tjyw.bbqm.item;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.model.Order;
-import atom.pub.inject.From;
-import atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
 
 import java.util.List;
+
+import atom.pub.inject.From;
+import atom.pub.item.AtomPubFastAdapterAbstractItem;
 
 /**
  * Created by stephen on 25/08/2017.
@@ -44,6 +46,9 @@ public class PayOrderListItem extends AtomPubFastAdapterAbstractItem<Order, PayO
 
     public static class PayOrderListHolder extends AtomPubFastAdapterAbstractItem.AtomPubFastAdapterItemHolder<Order> {
 
+        @From(R.id.bodyAvatar)
+        protected ImageView bodyAvatar;
+
         @From(R.id.bodyOrderNo)
         protected TextView bodyOrderNo;
 
@@ -66,6 +71,14 @@ public class PayOrderListItem extends AtomPubFastAdapterAbstractItem<Order, PayO
             bodyTitle.setText(order.title);
             bodyPrice.setText(context.getString(R.string.atom_pub_resStringRMB_s, order.money));
             bodyOrderDate.setText(order.dateCreated);
+
+            switch (order.vipType) {
+                case Order.VIP_TYPE.PACKAGE:
+                    bodyAvatar.setImageResource(R.drawable.atom_pub_ic_pay_order_package_avatar);
+                    break ;
+                default:
+                    bodyAvatar.setImageResource(R.drawable.atom_pub_ic_pay_order_avatar);
+            }
         }
     }
 }

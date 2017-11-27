@@ -12,13 +12,14 @@ import com.tjyw.atom.network.model.Message;
 import com.tjyw.atom.network.model.PropertyOption;
 import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.network.utils.DateTimeUtils;
-import atom.pub.inject.From;
-import atom.pub.inject.Injector;
-import atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
 
 import java.util.List;
+
+import atom.pub.inject.From;
+import atom.pub.inject.Injector;
+import atom.pub.item.AtomPubFastAdapterAbstractItem;
 
 /**
  * Created by stephen on 15/08/2017.

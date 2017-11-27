@@ -1,25 +1,38 @@
 package com.tjyw.bbqm.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.brianjmelton.stanley.ProxyGenerator;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
+import com.tjyw.atom.network.conf.ICode;
+import com.tjyw.atom.network.interfaces.IPrefClient;
+import com.tjyw.atom.network.model.ClientInit;
+import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
+import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.RNameDefinition;
-import atom.pub.inject.From;
+import com.tjyw.atom.network.utils.JsonUtil;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.adapter.NameMasterAdapter;
+import com.tjyw.bbqm.factory.IClientActivityLaunchFactory;
+import com.tjyw.bbqm.fragment.PayPackageEntryFragment;
 import com.tjyw.bbqm.fragment.PayServiceFragment;
 
 import java.util.concurrent.TimeUnit;
 
+import atom.pub.fresco.ImageFacade;
+import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
 import rx.Observable;
 import rx.functions.Action1;
@@ -29,7 +42,10 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * Created by stephen on 19/09/2017.
  */
 @RequiresPresenter(NamingPresenter.class)
-public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<NamingListActivity>> implements OnApiPostErrorListener, OnApiPostNamingListener {
+public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<NamingListActivity>> implements
+        OnApiPostErrorListener,
+        OnApiPostNamingListener,
+        OnApiPayPostListener.PostPayListVipListener {
 
     @From(R.id.nameAnalyze)
     protected TextView nameAnalyze;
@@ -46,11 +62,18 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
     @From(R.id.nameMasterContainer)
     protected ViewPager nameMasterContainer;
 
+    @From(R.id.nameMasterPayPackageEntry)
+    protected SimpleDraweeView nameMasterPayPackageEntry;
+
     public NameMasterAdapter nameMasterAdapter;
 
     protected ListRequestParam listRequestParam;
 
     protected PayServiceFragment payServiceFragment;
+
+    protected PayPackageEntryFragment payPackageEntryFragment;
+
+    protected PayService payService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +94,8 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
                     .init();
 
             payServiceFragment = findFragmentById(R.id.payServiceFragment, PayServiceFragment.class);
-            pHideFragment(payServiceFragment);
+            payPackageEntryFragment = findFragmentById(R.id.payPackageEntryFragment, PayPackageEntryFragment.class);
+            pHideFragment(payServiceFragment, payPackageEntryFragment);
         }
 
         nameAnalyze.setSelected(true);
@@ -128,6 +152,32 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
                         finish();
                     }
                 });
+
+        IPrefClient client = new ProxyGenerator().create(getApplicationContext(), IPrefClient.class);
+        if (null != client) {
+            ClientInit clientInit = JsonUtil.getInstance().parseObject(client.getClientInit(), ClientInit.class);
+            if (null != clientInit && clientInit.listVip && ! TextUtils.isEmpty(clientInit.listVipImageUrl)) {
+                ImageFacade.loadImage(clientInit.listVipImageUrl, nameMasterPayPackageEntry);
+                nameMasterPayPackageEntry.setVisibility(View.VISIBLE);
+                nameMasterPayPackageEntry.setOnClickListener(this);
+            }
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case ICode.SECTION.PAY:
+                switch (resultCode) {
+                    case ICode.PAY.ALIPAY_SUCCESS:
+                    case ICode.PAY.WX_SUCCESS:
+                        if (null != data) {
+                            listRequestParam.orderNo = data.getStringExtra(IApiField.O.orderNo);
+                            IClientActivityLaunchFactory.launchPayPackageActivity(this, listRequestParam);
+                        }
+                }
+        }
     }
 
     @Override
@@ -148,19 +198,37 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.nameAnalyze:
-                showAnalyzeFragment();
+                showContainerFragment(NameMasterAdapter.POSITION.ANALYZE, false);
                 break ;
             case R.id.nameFreedom:
-                showFreedomFragment();
+                showContainerFragment(NameMasterAdapter.POSITION.FREEDOM, false);
                 break ;
             case R.id.nameRecommend:
-                showRecommendFragment();
+                showContainerFragment(NameMasterAdapter.POSITION.RECOMMEND, false);
                 break ;
             case R.id.nameLucky:
-                showLuckyFragment();
+                showContainerFragment(NameMasterAdapter.POSITION.LUCKY, false);
+                break ;
+            case R.id.nameMasterPayPackageEntry:
+                if (null == payService) {
+                    maskerShowProgressView(true);
+                    getPresenter().postPayListVip(
+                            5,
+                            listRequestParam.surname,
+                            listRequestParam.day
+                    );
+                } else {
+                    postOnPayListVipSuccess(1, payService);
+                }
                 break ;
             default:
                 super.onClick(v);
+        }
+    }
+
+    public void showContainerFragment(int position, boolean smoothScroll) {
+        if (null != nameMasterAdapter) {
+            nameMasterContainer.setCurrentItem(position, smoothScroll);
         }
     }
 
@@ -216,29 +284,25 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
         nameMasterContainer.setAdapter(
                 nameMasterAdapter = NameMasterAdapter.newInstance(getSupportFragmentManager(), result)
         );
+        nameMasterContainer.setCurrentItem(pGetIntExtra(IApiField.T.t, NameMasterAdapter.POSITION.ANALYZE), false);
     }
 
-    public void showAnalyzeFragment() {
-        if (null != nameMasterAdapter) {
-            nameMasterAdapter.showAnalyzeFragment(nameMasterContainer);
-        }
-    }
+    @Override
+    public void postOnPayListVipSuccess(int type, PayService payService) {
+        maskerHideProgressView();
+        this.payService = payService;
 
-    public void showFreedomFragment() {
-        if (null != nameMasterAdapter) {
-            nameMasterAdapter.showFreedomFragment(nameMasterContainer);
-        }
-    }
+        payPackageEntryFragment.setListRequestParam(listRequestParam);
+        payPackageEntryFragment.setPayService(payService);
+        payPackageEntryFragment.setOnPayPackageEntryClickListener(new PayPackageEntryFragment.OnPayPackageEntryClickListener() {
+            @Override
+            public void payPackageOnServicePayClick(PayPackageEntryFragment fragment, ListRequestParam listRequestParam, PayService payService) {
+                if (null != listRequestParam && null != payService) {
+                    IClientActivityLaunchFactory.launchPayOrderActivity(NameMasterActivity.this, listRequestParam, payService);
+                }
+            }
+        });
 
-    public void showRecommendFragment() {
-        if (null != nameMasterAdapter) {
-            nameMasterAdapter.showRecommendFragment(nameMasterContainer);
-        }
-    }
-
-    public void showLuckyFragment() {
-        if (null != nameMasterAdapter) {
-            nameMasterAdapter.showLuckyFragment(nameMasterContainer);
-        }
+        pShowFragment(R.anim.abc_fade_in, R.anim.abc_fade_out, payPackageEntryFragment);
     }
 }

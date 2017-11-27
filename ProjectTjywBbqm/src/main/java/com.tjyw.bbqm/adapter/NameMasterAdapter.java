@@ -3,7 +3,6 @@ package com.tjyw.bbqm.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.bbqm.fragment.NameMasterAnalyzeFragment;
@@ -87,29 +86,5 @@ public class NameMasterAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return POSITION.ALL;
-    }
-
-    public void showAnalyzeFragment(ViewPager container) {
-        if (null != container) {
-            container.setCurrentItem(POSITION.ANALYZE);
-        }
-    }
-
-    public void showFreedomFragment(ViewPager container) {
-        if (null != container) {
-            container.setCurrentItem(POSITION.FREEDOM);
-        }
-    }
-
-    public void showRecommendFragment(ViewPager container) {
-        if (null != container) {
-            container.setCurrentItem(POSITION.RECOMMEND);
-        }
-    }
-
-    public void showLuckyFragment(ViewPager container) {
-        if (null != container) {
-            container.setCurrentItem(POSITION.LUCKY);
-        }
     }
 }

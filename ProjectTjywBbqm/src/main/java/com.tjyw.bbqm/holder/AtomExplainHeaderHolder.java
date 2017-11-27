@@ -8,11 +8,11 @@ import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.model.Explain;
 import com.tjyw.atom.network.model.NameCharacter;
 import com.tjyw.atom.network.utils.ArrayUtil;
-import atom.pub.inject.From;
-import atom.pub.inject.Injector;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
 
+import atom.pub.inject.From;
+import atom.pub.inject.Injector;
 import rx.Observable;
 import rx.functions.Action1;
 

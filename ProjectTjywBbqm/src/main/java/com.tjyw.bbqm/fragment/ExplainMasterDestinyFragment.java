@@ -5,14 +5,19 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
-import atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.bbqm.R;
+import com.tjyw.bbqm.activity.ExplainMasterActivity;
+import com.tjyw.bbqm.adapter.NameMasterAdapter;
 import com.tjyw.bbqm.holder.AtomExplainHeaderHolder;
 import com.tjyw.bbqm.holder.BaZiSheetHolder;
 import com.tjyw.bbqm.holder.YunShiSheetHolder;
+
+import atom.pub.fragment.AtomPubBaseFragment;
+import atom.pub.inject.From;
 
 /**
  * Created by stephen on 17-8-11.
@@ -28,6 +33,9 @@ public class ExplainMasterDestinyFragment extends AtomPubBaseFragment {
         return fragment;
     }
 
+    @From(R.id.explainGoodName)
+    protected TextView explainGoodName;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,9 +48,21 @@ public class ExplainMasterDestinyFragment extends AtomPubBaseFragment {
 
         Explain explain = (Explain) pGetSerializableExtra(IApiField.E.explain);
         if (null != explain) {
+            explainGoodName.setOnClickListener(this);
+
             new AtomExplainHeaderHolder(view).layout(explain);
             new BaZiSheetHolder(view).sheet(explain.nameZodiac);
             new YunShiSheetHolder(view).sheet(explain.nameZodiac);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.explainGoodName:
+            if (getActivity() instanceof ExplainMasterActivity) {
+                ((ExplainMasterActivity) getActivity()).launchNameMasterActivity(NameMasterAdapter.POSITION.FREEDOM);
+            }
         }
     }
 }

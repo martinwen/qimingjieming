@@ -29,7 +29,6 @@ import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.RIdentifyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.utils.ArrayUtil;
-import atom.pub.inject.From;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.activity.BaseActivity;
@@ -41,6 +40,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
 
 /**

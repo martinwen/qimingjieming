@@ -7,7 +7,6 @@ import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
-import atom.pub.fragment.AtomPubBaseFragment;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.activity.BaseActivity;
 import com.tjyw.bbqm.activity.ClientMasterActivity;
@@ -15,11 +14,15 @@ import com.tjyw.bbqm.activity.ClientTouchActivity;
 import com.tjyw.bbqm.activity.ExplainMasterActivity;
 import com.tjyw.bbqm.activity.NameMasterActivity;
 import com.tjyw.bbqm.activity.NamingListActivity;
+import com.tjyw.bbqm.activity.PayCouponListActivity;
 import com.tjyw.bbqm.activity.PayOrderActivity;
 import com.tjyw.bbqm.activity.PayOrderListActivity;
+import com.tjyw.bbqm.activity.PayPackageActivity;
 import com.tjyw.bbqm.activity.UserFavoriteListActivity;
 import com.tjyw.bbqm.activity.UserSignInActivity;
 import com.tjyw.bbqm.fragment.BaseFragment;
+
+import atom.pub.fragment.AtomPubBaseFragment;
 
 /**
  * Created by stephen on 07/08/2017.
@@ -64,6 +67,19 @@ public class IClientActivityLaunchFactory {
         context.startActivity(intent);
     }
 
+    public static void launchPayPackageActivity(BaseActivity context, ListRequestParam listRequestParam) {
+        Intent intent = new Intent(context, PayPackageActivity.class);
+        intent.putExtra(IApiField.P.param, listRequestParam);
+        context.startActivity(intent);
+    }
+
+    public static void launchPayOrderActivity(BaseActivity context, ListRequestParam param, PayService payService) {
+        Intent intent = new Intent(context, PayOrderActivity.class);
+        intent.putExtra(IApiField.P.param, param);
+        intent.putExtra(IApiField.P.payService, payService);
+        context.startActivityForResult(intent, ICode.SECTION.PAY);
+    }
+
     public static void launchPayOrderActivity(BaseFragment context, ListRequestParam param, PayService payService) {
         Intent intent = new Intent(context.getActivity(), PayOrderActivity.class);
         intent.putExtra(IApiField.P.param, param);
@@ -78,6 +94,11 @@ public class IClientActivityLaunchFactory {
 
     public static void launchPayOrderListActivity(BaseFragment context) {
         Intent intent = new Intent(context.getActivity(), PayOrderListActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void launchPayCouponListActivity(BaseFragment context) {
+        Intent intent = new Intent(context.getActivity(), PayCouponListActivity.class);
         context.startActivity(intent);
     }
 

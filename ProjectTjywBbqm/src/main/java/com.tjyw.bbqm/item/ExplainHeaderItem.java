@@ -4,12 +4,13 @@ import android.content.Context;
 import android.view.View;
 
 import com.tjyw.atom.network.model.Explain;
-import atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.holder.AtomExplainHeaderHolder;
 
 import java.util.List;
+
+import atom.pub.item.AtomPubFastAdapterAbstractItem;
 
 /**
  * Created by stephen on 10/10/2017.

@@ -4,9 +4,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.model.NameZodiac;
+import com.tjyw.bbqm.R;
+
 import atom.pub.inject.From;
 import atom.pub.inject.Injector;
-import com.tjyw.bbqm.R;
 
 /**
  * Created by stephen on 17-9-22.

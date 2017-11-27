@@ -11,22 +11,25 @@ import com.mikepenz.fastadapter.IAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.model.Order;
+import com.tjyw.atom.network.model.PayOrderNumber;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.IPost;
 import com.tjyw.atom.network.presenter.PayPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.result.RetroListResult;
-import atom.pub.inject.From;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.adapter.ClientMasterAdapter;
 import com.tjyw.bbqm.factory.IClientActivityLaunchFactory;
 import com.tjyw.bbqm.item.PayOrderListItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import atom.pub.inject.From;
 import me.dkzwm.widget.srl.SmoothRefreshLayout;
 import nucleus.factory.RequiresPresenter;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -74,8 +77,14 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
             public boolean onClick(View v, IAdapter<PayOrderListItem> adapter, PayOrderListItem item, int position) {
                 ListRequestParam listRequestParam = new ListRequestParam();
                 listRequestParam.orderNo = item.src.name;
-                IClientActivityLaunchFactory.launchNamingListActivity(PayOrderListActivity.this, listRequestParam);
-                return true;
+                switch (item.src.vipType) {
+                    case Order.VIP_TYPE.PACKAGE:
+                        IClientActivityLaunchFactory.launchPayPackageActivity(PayOrderListActivity.this, listRequestParam);
+                        return true;
+                    default:
+                        IClientActivityLaunchFactory.launchNamingListActivity(PayOrderListActivity.this, listRequestParam);
+                        return true;
+                }
             }
         });
 
@@ -140,6 +149,7 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
         }
 
         if (payOrderRefreshLayout.isRefreshing()) {
+            EventBus.getDefault().post(new PayOrderNumber());
             payOrderAdapter.set(itemList);
         } else {
             payOrderAdapter.add(itemList);

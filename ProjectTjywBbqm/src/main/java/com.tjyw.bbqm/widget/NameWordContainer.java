@@ -5,10 +5,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
+import com.tjyw.bbqm.R;
+
 import atom.pub.inject.From;
 import atom.pub.inject.Injector;
 import atom.pub.widget.AtomPubWordContainer;
-import com.tjyw.bbqm.R;
 
 /**
  * Created by stephen on 14/08/2017.

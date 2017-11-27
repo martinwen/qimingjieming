@@ -3,8 +3,9 @@ package com.tjyw.bbqm.item;
 import android.content.Context;
 import android.view.View;
 
-import atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.bbqm.R;
+
+import atom.pub.item.AtomPubFastAdapterAbstractItem;
 
 /**
  * Created by stephen on 04/09/2017.

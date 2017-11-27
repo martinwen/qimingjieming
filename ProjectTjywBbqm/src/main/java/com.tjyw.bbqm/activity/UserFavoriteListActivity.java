@@ -20,7 +20,6 @@ import com.tjyw.atom.network.presenter.IPost;
 import com.tjyw.atom.network.presenter.listener.OnApiFavoritePostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.result.RetroListResult;
-import atom.pub.inject.From;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.factory.IClientActivityLaunchFactory;
 import com.tjyw.bbqm.item.UserFavoriteItem;
@@ -29,6 +28,7 @@ import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 import java.util.ArrayList;
 import java.util.List;
 
+import atom.pub.inject.From;
 import me.dkzwm.widget.srl.SmoothRefreshLayout;
 import nucleus.factory.RequiresPresenter;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;

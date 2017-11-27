@@ -5,14 +5,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.model.NameData;
-import atom.pub.inject.From;
-import atom.pub.item.AtomPubFastAdapterAbstractItem;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.holder.BaZiSheetHolder;
 import com.tjyw.bbqm.holder.NameBaseInfoHolder;
 
 import java.util.List;
+
+import atom.pub.inject.From;
+import atom.pub.item.AtomPubFastAdapterAbstractItem;
 
 /**
  * Created by stephen on 17-9-22.

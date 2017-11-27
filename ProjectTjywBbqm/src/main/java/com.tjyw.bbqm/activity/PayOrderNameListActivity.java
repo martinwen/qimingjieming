@@ -19,7 +19,6 @@ import com.tjyw.atom.network.presenter.listener.OnApiFavoritePostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.RIdentifyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
-import atom.pub.inject.From;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.factory.IClientActivityLaunchFactory;
 import com.tjyw.bbqm.item.NamingWordItem;
@@ -28,6 +27,7 @@ import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 import java.util.ArrayList;
 import java.util.List;
 
+import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
 
 /**

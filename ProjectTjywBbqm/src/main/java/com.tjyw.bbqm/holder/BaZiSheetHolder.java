@@ -6,11 +6,12 @@ import android.widget.TextView;
 import com.tjyw.atom.network.conf.ISymbol;
 import com.tjyw.atom.network.model.NameZodiac;
 import com.tjyw.atom.network.utils.ArrayUtil;
-import atom.pub.inject.From;
-import atom.pub.inject.Injector;
 import com.tjyw.bbqm.R;
 
 import java.util.List;
+
+import atom.pub.inject.From;
+import atom.pub.inject.Injector;
 
 /**
  * Created by stephen on 21/09/2017.

@@ -14,12 +14,14 @@ import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.mikepenz.fastadapter.listeners.ClickEventHook;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.NameData;
-import atom.pub.fragment.AtomPubBaseFragment;
-import atom.pub.inject.From;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.activity.NameMasterActivity;
+import com.tjyw.bbqm.adapter.NameMasterAdapter;
 import com.tjyw.bbqm.item.NameMasterAnalyzeItem;
+
+import atom.pub.fragment.AtomPubBaseFragment;
+import atom.pub.inject.From;
 
 /**
  * Created by stephen on 17-8-11.
@@ -64,7 +66,7 @@ public class NameMasterAnalyzeFragment extends AtomPubBaseFragment {
                 @Override
                 public void onClick(View v, int position, FastAdapter<NameMasterAnalyzeItem> fastAdapter, NameMasterAnalyzeItem item) {
                     if (getActivity() instanceof NameMasterActivity) {
-                        ((NameMasterActivity) getActivity()).showFreedomFragment();
+                        ((NameMasterActivity) getActivity()).showContainerFragment(NameMasterAdapter.POSITION.FREEDOM, false);
                     }
                 }
             });

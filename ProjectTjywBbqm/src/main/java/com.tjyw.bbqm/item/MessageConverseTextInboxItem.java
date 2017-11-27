@@ -8,9 +8,10 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.tjyw.atom.network.model.Message;
 import com.tjyw.atom.network.utils.DateTimeUtils;
+import com.tjyw.bbqm.R;
+
 import atom.pub.inject.From;
 import atom.pub.item.AtomPubFastAdapterAbstractItem;
-import com.tjyw.bbqm.R;
 
 /**
  * Created by stephen on 18/09/2017.
