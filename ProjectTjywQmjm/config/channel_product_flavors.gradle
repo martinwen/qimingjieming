@@ -38,11 +38,11 @@ android {
 
     //渠道列表
     productFlavors {
-        C1000 {
-            resValue "string", "app_name", "生辰八字-宝宝起名"
-            buildConfigField "String", "CLIENT_C_ID", '"C1000"'
-            buildConfigField "String", "CLIENT_C_NAME", '"official"'
-        }
+//        C1000 {
+//            resValue "string", "app_name", "起名"
+//            buildConfigField "String", "CLIENT_C_ID", '"C1000"'
+//            buildConfigField "String", "CLIENT_C_NAME", '"official"'
+//        }
         C1001 {
             resValue "string", "app_name", "起名字取名字"
             buildConfigField "String", "CLIENT_C_ID", '"C1001"'
@@ -54,12 +54,12 @@ android {
 //            buildConfigField "String", "CLIENT_C_NAME", '"联通沃商城"'
 //        }
         C1003 {
-            resValue "string", "app_name", "宝宝起名解名取名"
+            resValue "string", "app_name", "起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1003"'
             buildConfigField "String", "CLIENT_C_NAME", '"百度应用中心"'
         }
         C1004 {
-            resValue "string", "app_name", "生辰八字-宝宝起名"
+            resValue "string", "app_name", "起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1004"'
             buildConfigField "String", "CLIENT_C_NAME", '"PP助手"'
         }
@@ -84,17 +84,17 @@ android {
 //            buildConfigField "String", "CLIENT_C_NAME", '"N多"'
 //        }
         C1009 {
-            resValue "string", "app_name", "生辰八字-宝宝起名"
+            resValue "string", "app_name", "起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1009"'
             buildConfigField "String", "CLIENT_C_NAME", '"小米"'
         }
         C1010 {
-            resValue "string", "app_name", "生辰八字-宝宝起名"
+            resValue "string", "app_name", "起名软件-起名取名"
             buildConfigField "String", "CLIENT_C_ID", '"C1010"'
             buildConfigField "String", "CLIENT_C_NAME", '"OPPO"'
         }
         C1011 {
-            resValue "string", "app_name", "起名字取名字"
+            resValue "string", "app_name", "起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1011"'
             buildConfigField "String", "CLIENT_C_NAME", '"VIVO"'
         }
@@ -104,12 +104,12 @@ android {
             buildConfigField "String", "CLIENT_C_NAME", '"华为"'
         }
         C1013 {
-            resValue "string", "app_name", "生辰八字-起名解名"
+            resValue "string", "app_name", "起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1013"'
             buildConfigField "String", "CLIENT_C_NAME", '"魅族"'
         }
         C1014 {
-            resValue "string", "app_name", "生辰八字-宝宝起名"
+            resValue "string", "app_name", "起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1014"'
             buildConfigField "String", "CLIENT_C_NAME", '"联想"'
         }
@@ -154,7 +154,7 @@ android {
 //            buildConfigField "String", "CLIENT_C_NAME", '"搜狗应用中心"'
 //        }
         C1023 {
-            resValue "string", "app_name", "生辰八字-宝宝起名"
+            resValue "string", "app_name", "起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1023"'
             buildConfigField "String", "CLIENT_C_NAME", '"易用汇金立"'
         }

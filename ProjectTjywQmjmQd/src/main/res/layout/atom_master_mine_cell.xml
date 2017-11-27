@@ -76,7 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:drawablePadding="4dp"
-                    android:drawableTop="@drawable/atom_pub_ic_mine_order"
+                    android:drawableTop="@drawable/atom_ic_mine_order"
                     android:gravity="center"
                     android:text="@string/atom_pub_resStringMineOrder" />
 
@@ -107,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:drawablePadding="4dp"
-                    android:drawableTop="@drawable/atom_pub_ic_mine_coupon"
+                    android:drawableTop="@drawable/atom_ic_mine_coupon"
                     android:gravity="center"
                     android:text="@string/atom_pub_resStringMineCoupon" />
 
@@ -146,7 +146,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:drawablePadding="4dp"
-                android:drawableTop="@drawable/atom_pub_ic_mine_order"
+                android:drawableTop="@drawable/atom_ic_mine_order"
                 android:gravity="center"
                 android:text="@string/atom_pub_resStringMineCollect" />
         </LinearLayout>
@@ -165,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:drawablePadding="4dp"
-                android:drawableTop="@drawable/atom_pub_ic_mine_bjx"
+                android:drawableTop="@drawable/atom_ic_mine_bjx"
                 android:gravity="center"
                 android:text="@string/atom_pub_resStringMineBJX" />
 
@@ -176,7 +176,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:drawablePadding="4dp"
-                android:drawableTop="@drawable/atom_pub_ic_mine_zgjm"
+                android:drawableTop="@drawable/atom_ic_mine_zgjm"
                 android:gravity="center"
                 android:text="@string/atom_pub_resStringMineZGJM" />
 
@@ -187,7 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:drawablePadding="4dp"
-                android:drawableTop="@drawable/atom_pub_ic_mine_qts"
+                android:drawableTop="@drawable/atom_ic_mine_qts"
                 android:gravity="center"
                 android:text="@string/atom_pub_resStringMineQTS" />
         </LinearLayout>
@@ -206,7 +206,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:drawablePadding="4dp"
-                android:drawableTop="@drawable/atom_pub_ic_mine_zodiac"
+                android:drawableTop="@drawable/atom_ic_mine_zodiac"
                 android:gravity="center"
                 android:text="@string/atom_pub_resStringMineZodiac" />
 
@@ -217,7 +217,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:drawablePadding="4dp"
-                android:drawableTop="@drawable/atom_pub_ic_mine_about"
+                android:drawableTop="@drawable/atom_ic_mine_about"
                 android:gravity="center"
                 android:text="@string/atom_pub_resStringMineAbout" />
 
@@ -228,7 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:drawablePadding="4dp"
-                android:drawableTop="@drawable/atom_pub_ic_mine_feedback"
+                android:drawableTop="@drawable/atom_ic_mine_feedback"
                 android:gravity="center"
                 android:text="@string/atom_pub_resStringMineFeedback" />
         </LinearLayout>
