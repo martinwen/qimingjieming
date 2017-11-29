@@ -3,17 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@android:color/white"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?colorPrimary"
+            android:background="@android:color/white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="8dp">
@@ -56,12 +58,19 @@
             </LinearLayout>
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@color/atom_pub_resColorDivider" />
+
         <!-- 下半部分九宫格 -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@android:color/white"
             android:gravity="center"
             android:orientation="horizontal"
+            android:paddingBottom="16dp"
             android:paddingTop="16dp">
 
             <RelativeLayout
@@ -151,88 +160,121 @@
                 android:text="@string/atom_pub_resStringMineCollect" />
         </LinearLayout>
 
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingTop="16dp">
+            android:layout_height="8dp"
+            android:background="@color/atom_pub_resColorDivider" />
 
-            <TextView
-                android:id="@+id/mineCellBJX"
-                style="@style/AtomStyle.BlackNormalText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:drawablePadding="4dp"
-                android:drawableTop="@drawable/atom_ic_mine_bjx"
-                android:gravity="center"
-                android:text="@string/atom_pub_resStringMineBJX" />
-
-            <TextView
-                android:id="@+id/mineCellZGJM"
-                style="@style/AtomStyle.BlackNormalText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:drawablePadding="4dp"
-                android:drawableTop="@drawable/atom_ic_mine_zgjm"
-                android:gravity="center"
-                android:text="@string/atom_pub_resStringMineZGJM" />
-
-            <TextView
-                android:id="@+id/mineCellQTS"
-                style="@style/AtomStyle.BlackNormalText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:drawablePadding="4dp"
-                android:drawableTop="@drawable/atom_ic_mine_qts"
-                android:gravity="center"
-                android:text="@string/atom_pub_resStringMineQTS" />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/mineCellBJX"
+            style="@style/AtomStyle.BlackBigText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingTop="16dp">
+            android:layout_height="48dp"
+            android:drawableLeft="@drawable/atom_ic_mine_bjx"
+            android:drawablePadding="8dp"
+            android:drawableRight="@drawable/atom_pub_ic_right_arrow"
+            android:gravity="center_vertical"
+            android:text="@string/atom_pub_resStringMineBJX" />
 
-            <TextView
-                android:id="@+id/mineCellZodiac"
-                style="@style/AtomStyle.BlackNormalText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:drawablePadding="4dp"
-                android:drawableTop="@drawable/atom_ic_mine_zodiac"
-                android:gravity="center"
-                android:text="@string/atom_pub_resStringMineZodiac" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="8dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
 
-            <TextView
-                android:id="@+id/mineCellAbout"
-                style="@style/AtomStyle.BlackNormalText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:drawablePadding="4dp"
-                android:drawableTop="@drawable/atom_ic_mine_about"
-                android:gravity="center"
-                android:text="@string/atom_pub_resStringMineAbout" />
+        <TextView
+            android:id="@+id/mineCellZGJM"
+            style="@style/AtomStyle.BlackBigText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableLeft="@drawable/atom_ic_mine_zgjm"
+            android:drawablePadding="8dp"
+            android:drawableRight="@drawable/atom_pub_ic_right_arrow"
+            android:gravity="center_vertical"
+            android:text="@string/atom_pub_resStringMineZGJM" />
 
-            <TextView
-                android:id="@+id/mineCellFeedback"
-                style="@style/AtomStyle.BlackNormalText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:drawablePadding="4dp"
-                android:drawableTop="@drawable/atom_ic_mine_feedback"
-                android:gravity="center"
-                android:text="@string/atom_pub_resStringMineFeedback" />
-        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="8dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
 
+        <TextView
+            android:id="@+id/mineCellQTS"
+            style="@style/AtomStyle.BlackBigText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableLeft="@drawable/atom_ic_mine_qts"
+            android:drawablePadding="8dp"
+            android:drawableRight="@drawable/atom_pub_ic_right_arrow"
+            android:gravity="center_vertical"
+            android:text="@string/atom_pub_resStringMineQTS" />
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="8dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            android:id="@+id/mineCellZodiac"
+            style="@style/AtomStyle.BlackBigText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableLeft="@drawable/atom_ic_mine_zodiac"
+            android:drawablePadding="8dp"
+            android:drawableRight="@drawable/atom_pub_ic_right_arrow"
+            android:gravity="center_vertical"
+            android:text="@string/atom_pub_resStringMineZodiac" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="8dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            android:id="@+id/mineCellAbout"
+            style="@style/AtomStyle.BlackBigText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableLeft="@drawable/atom_ic_mine_about"
+            android:drawablePadding="8dp"
+            android:drawableRight="@drawable/atom_pub_ic_right_arrow"
+            android:gravity="center_vertical"
+            android:text="@string/atom_pub_resStringMineAbout" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="8dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            android:id="@+id/mineCellFeedback"
+            style="@style/AtomStyle.BlackBigText"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:drawableLeft="@drawable/atom_ic_mine_feedback"
+            android:drawablePadding="8dp"
+            android:drawableRight="@drawable/atom_pub_ic_right_arrow"
+            android:gravity="center_vertical"
+            android:text="@string/atom_pub_resStringMineFeedback" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="8dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <android.support.v4.widget.Space
+            android:layout_width="match_parent"
+            android:layout_height="96dp" />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>
