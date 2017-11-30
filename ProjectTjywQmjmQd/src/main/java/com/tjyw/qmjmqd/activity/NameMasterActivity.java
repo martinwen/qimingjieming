@@ -189,6 +189,8 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
     public void onBackPressed() {
         if (null != payServiceFragment && payServiceFragment.isVisible()) {
             pHideFragment(payServiceFragment);
+        } else if (null != payPackageEntryFragment && payPackageEntryFragment.isVisible()) {
+            pHideFragment(payPackageEntryFragment);
         } else {
             super.onBackPressed();
         }

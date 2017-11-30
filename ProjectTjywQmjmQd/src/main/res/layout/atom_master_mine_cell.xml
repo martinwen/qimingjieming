@@ -37,10 +37,10 @@
 
                 <TextView
                     android:id="@+id/masterMineUserSignIn"
-                    style="@style/AtomStyle.GreyBigText"
+                    style="@style/AtomStyle.RedBigText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/atom_pub_ic_login"
+                    android:background="@drawable/atom_ic_login"
                     android:gravity="center"
                     android:paddingBottom="8dp"
                     android:paddingLeft="16dp"

@@ -16,11 +16,11 @@ import android.webkit.WebViewClient;
 
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
-import atom.pub.inject.From;
 import com.tjyw.qmjmqd.R;
 
 import java.util.concurrent.TimeUnit;
 
+import atom.pub.inject.From;
 import rx.Observable;
 import rx.functions.Action1;
 
@@ -47,6 +47,12 @@ public class ClientTouchActivity extends BaseToolbarActivity {
             return;
         } else {
             setContentView(R.layout.atom_client_touch);
+            immersionBarWith()
+                    .fitsSystemWindows(true)
+                    .statusBarColor(R.color.colorPrimary)
+                    .statusBarDarkFont(true)
+                    .init();
+
             tSetToolBar(pGetStringExtra(IApiField.T.title, defaultTitle));
         }
 

@@ -66,7 +66,7 @@ public class ClientMasterActivity extends BaseToolbarActivity<PayPresenter<Clien
         fragmentNavigator = new FragmentNavigator(getSupportFragmentManager(), ClientMasterAdapter.newInstance(this), R.id.masterFragmentContainer);
         fragmentNavigator.onCreate(savedInstanceState);
 
-        atomPubClientMasterNavigation.setAccentColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorBlack));
+        atomPubClientMasterNavigation.setAccentColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
         atomPubClientMasterNavigation.setInactiveColor(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorGrey));
         atomPubClientMasterNavigation.setNotificationBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.atom_pub_notification_background));
 
