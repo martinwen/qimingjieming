@@ -3,37 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/atom_pub_resColorBackground" >
+    android:background="@color/atom_pub_resColorBackground">
 
     <include layout="@layout/atom_pub_inc_symbol" />
 
-    <FrameLayout
-        android:id="@+id/masterFragmentContainer"
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/bottom_navigation_height"
-        android:layout_height="match_parent">
+        android:orientation="vertical">
 
-        <fragment
-            android:id="@+id/masterNamingFragment"
-            class="com.tjyw.qmjmqd.fragment.ClientMasterNamingFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:tag="com.tjyw.qmjmqd.fragment.ClientMasterNamingFragment" />
+        <include layout="@layout/atom_pub_inc_toolbar" />
 
-        <fragment
-            android:id="@+id/masterExplainFragment"
-            class="com.tjyw.qmjmqd.fragment.ClientMasterExplainFragment"
+        <FrameLayout
+            android:id="@+id/masterFragmentContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:tag="com.tjyw.qmjmqd.fragment.ClientMasterExplainFragment" />
+            android:layout_height="match_parent">
 
-        <fragment
-            android:id="@+id/masterMineFragment"
-            class="com.tjyw.qmjmqd.fragment.ClientMasterMineFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:tag="com.tjyw.qmjmqd.fragment.ClientMasterMineFragment" />
-    </FrameLayout>
+            <fragment
+                android:id="@+id/masterNamingFragment"
+                class="com.tjyw.qmjmqd.fragment.ClientMasterNamingFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="com.tjyw.qmjmqd.fragment.ClientMasterNamingFragment" />
+
+            <fragment
+                android:id="@+id/masterExplainFragment"
+                class="com.tjyw.qmjmqd.fragment.ClientMasterExplainFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="com.tjyw.qmjmqd.fragment.ClientMasterExplainFragment" />
+
+            <fragment
+                android:id="@+id/masterMineFragment"
+                class="com.tjyw.qmjmqd.fragment.ClientMasterMineFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="com.tjyw.qmjmqd.fragment.ClientMasterMineFragment" />
+        </FrameLayout>
+    </LinearLayout>
 
     <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
         android:id="@+id/atomPubClientMasterNavigation"

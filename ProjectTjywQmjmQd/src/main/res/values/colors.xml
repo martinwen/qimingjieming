@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFDCDCDC</color>
-    <color name="colorPrimaryDark">#FFDCDCDC</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#FF1C9CFF</color>
+    <color name="colorPrimaryDark">#FF1C9CFF</color>
+    <color name="colorAccent">#FF1C9CFF</color>
 
     <!-- 起名页自选名字::单个名字的选中背景色 -->
     <color name="atom_resColorFreedomNameBackground">#FFBCBCBC</color>

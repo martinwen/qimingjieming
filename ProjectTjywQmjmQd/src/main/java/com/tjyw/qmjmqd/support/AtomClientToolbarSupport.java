@@ -9,11 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.utils.ArrayUtil;
+import com.tjyw.qmjmqd.ClientQmjmApplication;
+import com.tjyw.qmjmqd.R;
 
 import atom.pub.inject.From;
 import atom.pub.inject.Injector;
 import atom.pub.interfaces.IAtomPubToolBar;
-import com.tjyw.qmjmqd.R;
 
 /**
  * Created by stephen on 17-8-4.
@@ -44,6 +45,10 @@ public class AtomClientToolbarSupport implements IAtomPubToolBar, View.OnClickLi
     public AtomClientToolbarSupport(IAtomPubToolBar iAtomPubToolBar, View source) {
         this.iAtomPubToolBar = iAtomPubToolBar;
         Injector.inject(this, source);
+
+        atomPubToolBarCenterView.setTextAppearance(ClientQmjmApplication.getContext(), R.style.AtomStyle_WhiteBigText);
+        atomPubToolBarRightFirst.setTextAppearance(ClientQmjmApplication.getContext(), R.style.AtomStyle_WhiteSmallText);
+        atomPubToolBarRightSecond.setTextAppearance(ClientQmjmApplication.getContext(), R.style.AtomStyle_WhiteSmallText);
     }
 
     @Override

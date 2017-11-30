@@ -37,7 +37,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * Created by stephen on 07/08/2017.
  */
 @RequiresPresenter(PayPresenter.class)
-public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMasterActivity>> implements OnApiPayPostListener.PostPayOrderUnReadNumListener {
+public class ClientMasterActivity extends BaseToolbarActivity<PayPresenter<ClientMasterActivity>> implements OnApiPayPostListener.PostPayOrderUnReadNumListener {
 
     @From(R.id.atomPubClientMasterNavigation)
     protected AHBottomNavigation atomPubClientMasterNavigation;
@@ -54,6 +54,8 @@ public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMaster
 
         setContentView(R.layout.atom_client_master);
         immersionBarWith()
+                .fitsSystemWindows(true)
+                .statusBarColor(R.color.colorPrimary)
                 .statusBarDarkFont(true)
                 .init();
 
@@ -91,11 +93,13 @@ public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMaster
                 } else {
                     switch (position) {
                         case ClientMasterAdapter.POSITION.NAMING:
+                            tSetToolBar(getString(R.string.atom_pub_resStringMasterTabNaming));
+                            break ;
                         case ClientMasterAdapter.POSITION.EXPLAIN:
-                            immersionBar.fitsSystemWindows(false).transparentStatusBar().statusBarDarkFont(true).init();
-                            break;
+                            tSetToolBar(getString(R.string.atom_pub_resStringMasterTabExplain));
+                            break ;
                         case ClientMasterAdapter.POSITION.MINE:
-                            immersionBar.fitsSystemWindows(true).statusBarColor(R.color.colorPrimary).statusBarDarkFont(true).init();
+                            tSetToolBar(getString(R.string.atom_pub_resStringMasterTabMine));
                     }
 
                     fragmentNavigator.showFragment(position, false, false);

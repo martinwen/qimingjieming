@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:fillViewport="true">
+    android:background="@android:color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,17 +15,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:gravity="center_vertical"
+            android:background="@drawable/atom_png_master_mine_header_bg"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:padding="8dp">
+            android:padding="16dp">
 
-            <ImageView
-                android:layout_width="96dp"
-                android:layout_height="96dp"
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
                 android:padding="8dp"
-                android:scaleType="centerInside"
-                android:src="@mipmap/atom_ic_logo" />
+                fresco:actualImageScaleType="centerInside"
+                fresco:placeholderImage="@mipmap/atom_ic_logo"
+                fresco:roundAsCircle="true" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -61,7 +62,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="8dp"
-            android:background="@color/atom_pub_resColorDivider" />
+            android:background="@color/atom_pub_resColorBackground_F2" />
 
         <!-- 下半部分九宫格 -->
         <LinearLayout
@@ -80,7 +81,7 @@
 
                 <TextView
                     android:id="@+id/mineCellOrder"
-                    style="@style/AtomStyle.BlackNormalText"
+                    style="@style/AtomStyle.BlackBigText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -89,12 +90,10 @@
                     android:gravity="center"
                     android:text="@string/atom_pub_resStringMineOrder" />
 
-
                 <ImageView
                     android:id="@+id/mineCellOrderBubble"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/mineCellOrder"
                     android:layout_marginBottom="16dp"
                     android:layout_marginLeft="4dp"
                     android:layout_toRightOf="@+id/mineCellOrder"
@@ -111,7 +110,7 @@
 
                 <TextView
                     android:id="@+id/mineCellCoupon"
-                    style="@style/AtomStyle.BlackNormalText"
+                    style="@style/AtomStyle.BlackBigText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -120,9 +119,21 @@
                     android:gravity="center"
                     android:text="@string/atom_pub_resStringMineCoupon" />
 
+                <ImageView
+                    android:id="@+id/mineCellCouponBubble"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_toRightOf="@+id/mineCellCoupon"
+                    android:scaleType="center"
+                    android:src="@drawable/atom_pub_notification_background"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
                 <TextView
                     android:id="@+id/mineCellCouponNew"
-                    style="@style/AtomStyle.WhiteSmallText"
+                    style="@style/AtomStyle.WhiteTinyText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/mineCellCoupon"
@@ -133,29 +144,16 @@
                     android:text="new"
                     android:visibility="gone"
                     tools:visibility="visible" />
-
-                <ImageView
-                    android:id="@+id/mineCellCouponBubble"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/mineCellCoupon"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginLeft="4dp"
-                    android:layout_toRightOf="@+id/mineCellCoupon"
-                    android:scaleType="center"
-                    android:src="@drawable/atom_pub_notification_background"
-                    android:visibility="gone"
-                    tools:visibility="visible" />
             </RelativeLayout>
 
             <TextView
                 android:id="@+id/mineCellCollect"
-                style="@style/AtomStyle.BlackNormalText"
+                style="@style/AtomStyle.BlackBigText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:drawablePadding="4dp"
-                android:drawableTop="@drawable/atom_ic_mine_order"
+                android:drawableTop="@drawable/atom_ic_mine_collect"
                 android:gravity="center"
                 android:text="@string/atom_pub_resStringMineCollect" />
         </LinearLayout>
@@ -163,7 +161,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="8dp"
-            android:background="@color/atom_pub_resColorDivider" />
+            android:background="@color/atom_pub_resColorBackground_F2" />
 
         <TextView
             android:id="@+id/mineCellBJX"
@@ -174,14 +172,17 @@
             android:drawablePadding="8dp"
             android:drawableRight="@drawable/atom_pub_ic_right_arrow"
             android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:text="@string/atom_pub_resStringMineBJX" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:scaleType="fitXY"
-            android:src="@color/atom_pub_resColorDivider" />
+            android:src="@color/atom_pub_resColorBackground_F2" />
 
         <TextView
             android:id="@+id/mineCellZGJM"
@@ -192,14 +193,17 @@
             android:drawablePadding="8dp"
             android:drawableRight="@drawable/atom_pub_ic_right_arrow"
             android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:text="@string/atom_pub_resStringMineZGJM" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:scaleType="fitXY"
-            android:src="@color/atom_pub_resColorDivider" />
+            android:src="@color/atom_pub_resColorBackground_F2" />
 
         <TextView
             android:id="@+id/mineCellQTS"
@@ -210,14 +214,17 @@
             android:drawablePadding="8dp"
             android:drawableRight="@drawable/atom_pub_ic_right_arrow"
             android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:text="@string/atom_pub_resStringMineQTS" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:scaleType="fitXY"
-            android:src="@color/atom_pub_resColorDivider" />
+            android:src="@color/atom_pub_resColorBackground_F2" />
 
         <TextView
             android:id="@+id/mineCellZodiac"
@@ -228,14 +235,17 @@
             android:drawablePadding="8dp"
             android:drawableRight="@drawable/atom_pub_ic_right_arrow"
             android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:text="@string/atom_pub_resStringMineZodiac" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:scaleType="fitXY"
-            android:src="@color/atom_pub_resColorDivider" />
+            android:src="@color/atom_pub_resColorBackground_F2" />
 
         <TextView
             android:id="@+id/mineCellAbout"
@@ -246,14 +256,17 @@
             android:drawablePadding="8dp"
             android:drawableRight="@drawable/atom_pub_ic_right_arrow"
             android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:text="@string/atom_pub_resStringMineAbout" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:scaleType="fitXY"
-            android:src="@color/atom_pub_resColorDivider" />
+            android:src="@color/atom_pub_resColorBackground_F2" />
 
         <TextView
             android:id="@+id/mineCellFeedback"
@@ -264,16 +277,19 @@
             android:drawablePadding="8dp"
             android:drawableRight="@drawable/atom_pub_ic_right_arrow"
             android:gravity="center_vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
             android:text="@string/atom_pub_resStringMineFeedback" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:scaleType="fitXY"
-            android:src="@color/atom_pub_resColorDivider" />
+            android:src="@color/atom_pub_resColorBackground_F2" />
 
-        <android.support.v4.widget.Space
+        <View
             android:layout_width="match_parent"
             android:layout_height="96dp" />
     </LinearLayout>
