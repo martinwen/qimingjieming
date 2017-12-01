@@ -47,6 +47,12 @@ public class ClientTouchActivity extends BaseToolbarActivity {
             return;
         } else {
             setContentView(R.layout.atom_client_touch);
+            immersionBarWith()
+                    .fitsSystemWindows(true)
+                    .statusBarColor(R.color.colorPrimary)
+                    .statusBarDarkFont(true)
+                    .init();
+
             tSetToolBar(pGetStringExtra(IApiField.T.title, defaultTitle));
         }
 
