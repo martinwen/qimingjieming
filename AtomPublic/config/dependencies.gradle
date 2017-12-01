@@ -21,6 +21,7 @@ dependencies {
     compile supportDependencies.supportDesign
     compile supportDependencies.supportPercent
     compile supportDependencies.supportCardview
+    compile supportDependencies.supportConstraintLayout
     compile supportDependencies.supportMultidex
 
     /*Nice Libraries*/
