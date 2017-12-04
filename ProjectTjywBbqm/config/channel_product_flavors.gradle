@@ -99,7 +99,7 @@ android {
             buildConfigField "String", "CLIENT_C_NAME", '"VIVO"'
         }
         C1012 {
-            resValue "string", "app_name", "起名"
+            resValue "string", "app_name", "取名"
             buildConfigField "String", "CLIENT_C_ID", '"C1012"'
             buildConfigField "String", "CLIENT_C_NAME", '"华为"'
         }
