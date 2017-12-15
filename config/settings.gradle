@@ -9,8 +9,8 @@ ext {
 
             qmjm = [
                     androidApplicationId : "com.tjyw.qmjm",
-                    androidVersionCode : 10003000,
-                    androidVersionName : "3.0.0"
+                    androidVersionCode : 10003100,
+                    androidVersionName : "3.1.0"
             ],
 
             bbqm = [

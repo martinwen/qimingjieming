@@ -38,11 +38,11 @@ android {
 
     //渠道列表
     productFlavors {
-//        C1000 {
-//            resValue "string", "app_name", "起名"
-//            buildConfigField "String", "CLIENT_C_ID", '"C1000"'
-//            buildConfigField "String", "CLIENT_C_NAME", '"official"'
-//        }
+        C1000 {
+            resValue "string", "app_name", "起名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1000"'
+            buildConfigField "String", "CLIENT_C_NAME", '"official"'
+        }
         C1001 {
             resValue "string", "app_name", "起名字取名字"
             buildConfigField "String", "CLIENT_C_ID", '"C1001"'
@@ -54,7 +54,7 @@ android {
 //            buildConfigField "String", "CLIENT_C_NAME", '"联通沃商城"'
 //        }
         C1003 {
-            resValue "string", "app_name", "起名"
+            resValue "string", "app_name", "起名取名"
             buildConfigField "String", "CLIENT_C_ID", '"C1003"'
             buildConfigField "String", "CLIENT_C_NAME", '"百度应用中心"'
         }
@@ -84,7 +84,7 @@ android {
 //            buildConfigField "String", "CLIENT_C_NAME", '"N多"'
 //        }
         C1009 {
-            resValue "string", "app_name", "生辰八字-起名解名"
+            resValue "string", "app_name", "生辰八字-起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1009"'
             buildConfigField "String", "CLIENT_C_NAME", '"小米"'
         }
@@ -94,7 +94,7 @@ android {
             buildConfigField "String", "CLIENT_C_NAME", '"OPPO"'
         }
         C1011 {
-            resValue "string", "app_name", "起名"
+            resValue "string", "app_name", "起名字取名字"
             buildConfigField "String", "CLIENT_C_ID", '"C1011"'
             buildConfigField "String", "CLIENT_C_NAME", '"VIVO"'
         }
