@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/atom_png_background_top" />
+    </item>
+    <item android:top="887px">
+        <bitmap
+            android:gravity="bottom"
+            android:src="@drawable/atom_png_background_bottom" />
+    </item>
+</layer-list>
