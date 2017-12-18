@@ -7,118 +7,175 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/masterNameGenderGuideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/masterNameGenderVerticalGuideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
-
     <TextView
-        android:id="@+id/masterNameGenderMale"
-        style="@style/AtomPubStyleKa.Black"
-        android:layout_width="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
-        android:layout_height="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
-        android:layout_marginRight="32dp"
-        android:background="@drawable/atom_ic_master_gender_press"
-        android:duplicateParentState="true"
-        android:gravity="center"
-        android:text="@string/atom_pub_resStringGenderMale"
-        android:textColor="@color/atom_pub_black2white"
-        app:layout_constraintBottom_toTopOf="@+id/masterNameGenderGuideline"
-        app:layout_constraintRight_toLeftOf="@+id/masterNameGenderVerticalGuideline" />
-
-    <TextView
-        android:id="@+id/masterNameGenderFemale"
-        style="@style/AtomPubStyleKa.Black"
-        android:layout_width="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
-        android:layout_height="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
-        android:layout_marginLeft="32dp"
-        android:background="@drawable/atom_ic_master_gender_press"
-        android:duplicateParentState="true"
-        android:gravity="center"
-        android:text="@string/atom_pub_resStringGenderFemale"
-        android:textColor="@color/atom_pub_black2white"
-        app:layout_constraintLeft_toRightOf="@+id/masterNameGenderVerticalGuideline"
-        app:layout_constraintTop_toTopOf="@id/masterNameGenderMale" />
+        android:id="@+id/masterNameSurnameLabelRect"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:background="@drawable/atom_ic_master_input_rect_default"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15" />
 
     <TextView
         android:id="@+id/masterNameSurnameLabel"
-        style="@style/AtomPubStyleKa.Black"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical|right"
         android:text="@string/atom_pub_resStringSurnameDot"
-        android:textStyle="bold"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/masterNameSurname"
-        app:layout_constraintTop_toBottomOf="@id/masterNameGenderGuideline" />
+        app:layout_constraintBottom_toBottomOf="@+id/masterNameSurnameLabelRect"
+        app:layout_constraintLeft_toLeftOf="@+id/masterNameSurnameLabelRect"
+        app:layout_constraintTop_toTopOf="@+id/masterNameSurnameLabelRect" />
 
     <EditText
         android:id="@+id/masterNameSurname"
-        style="@style/AtomStyle.BlackNormalText"
+        style="@style/AtomStyle.BlackBigText"
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginRight="16dp"
-        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:background="@android:color/transparent"
+        android:gravity="center_vertical|left"
         android:hint="@string/atom_pub_resStringSurnameHint"
         android:imeOptions="actionNext"
         android:inputType="text"
         android:maxLength="2"
         android:maxLines="1"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="8dp"
         android:singleLine="true"
         android:textColorHint="@color/atom_pub_resColorInputHint"
-        android:theme="@style/AtomPubStyle.BottomLineEditText"
-        app:layout_constraintBaseline_toBaselineOf="@+id/masterNameSurnameLabel"
-        app:layout_constraintHorizontal_weight="1.5"
+        app:layout_constraintBottom_toBottomOf="@+id/masterNameSurnameLabelRect"
         app:layout_constraintLeft_toRightOf="@+id/masterNameSurnameLabel"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="@+id/masterNameSurnameLabelRect"
+        app:layout_constraintTop_toTopOf="@+id/masterNameSurnameLabelRect" />
+
+    <!-- 出生日期 -->
+    <TextView
+        android:id="@+id/masterNameDateOfBirthLabelRect"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/atom_ic_master_input_rect_default"
+        app:layout_constraintLeft_toLeftOf="@+id/masterNameSurnameLabelRect"
+        app:layout_constraintRight_toRightOf="@+id/masterNameSurnameLabelRect"
+        app:layout_constraintTop_toBottomOf="@+id/masterNameSurnameLabelRect" />
 
     <TextView
-        android:id="@+id/masterNameGivenLabel"
-        style="@style/AtomPubStyleKa.Black"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/masterNameDateOfBirthLabel"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical|right"
-        android:text="@string/atom_pub_resStringGivenNameDot"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@id/masterNameSurnameLabel"
-        app:layout_constraintRight_toRightOf="@+id/masterNameSurnameLabel"
-        app:layout_constraintTop_toBottomOf="@id/masterNameSurnameLabel" />
+        android:text="@string/atom_pub_resStringDateOfBirthDot"
+        app:layout_constraintBottom_toBottomOf="@+id/masterNameDateOfBirthLabelRect"
+        app:layout_constraintLeft_toLeftOf="@+id/masterNameDateOfBirthLabelRect"
+        app:layout_constraintTop_toTopOf="@+id/masterNameDateOfBirthLabelRect" />
 
-    <EditText
-        android:id="@+id/masterNameGiven"
-        style="@style/AtomStyle.BlackNormalText"
+    <TextView
+        android:id="@+id/masterNameDateOfBirth"
+        style="@style/AtomStyle.BlackBigText"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:background="@android:color/transparent"
         android:gravity="center_vertical"
-        android:hint="@string/atom_pub_resStringGivenNameHint"
-        android:imeOptions="actionNext"
-        android:inputType="text"
-        android:maxLength="2"
+        android:hint="@string/atom_pub_resStringDateOfBirthHint"
         android:maxLines="1"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="8dp"
         android:singleLine="true"
         android:textColorHint="@color/atom_pub_resColorInputHint"
-        android:theme="@style/AtomPubStyle.BottomLineEditText"
-        app:layout_constraintBaseline_toBaselineOf="@+id/masterNameGivenLabel"
-        app:layout_constraintLeft_toLeftOf="@id/masterNameSurname"
-        app:layout_constraintRight_toRightOf="@+id/masterNameSurname"
-        app:layout_constraintTop_toBottomOf="@id/masterNameSurname" />
+        app:layout_constraintBottom_toBottomOf="@+id/masterNameDateOfBirthLabelRect"
+        app:layout_constraintLeft_toRightOf="@+id/masterNameDateOfBirthLabel"
+        app:layout_constraintRight_toRightOf="@+id/masterNameDateOfBirthLabelRect"
+        app:layout_constraintTop_toTopOf="@+id/masterNameDateOfBirthLabelRect" />
 
+    <FrameLayout
+        android:id="@+id/masterNameGenderMale"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/atom_selector_master_input_rect"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="@+id/masterNameDateOfBirthLabelRect"
+        app:layout_constraintRight_toLeftOf="@+id/masterNameGenderFemale"
+        app:layout_constraintTop_toBottomOf="@+id/masterNameDateOfBirthLabelRect">
+
+        <TextView
+            style="@style/AtomStyle.BlackBigText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/atom_selector_gender_male"
+            android:drawablePadding="8dp"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringGenderMale"
+            android:textColor="@color/atom_pub_black2white" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/masterNameGenderFemale"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/atom_selector_master_input_rect"
+        app:layout_constraintLeft_toRightOf="@+id/masterNameGenderMale"
+        app:layout_constraintRight_toRightOf="@+id/masterNameDateOfBirthLabelRect"
+        app:layout_constraintTop_toTopOf="@+id/masterNameGenderMale">
+
+        <TextView
+            style="@style/AtomStyle.BlackBigText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/atom_selector_gender_female"
+            android:drawablePadding="8dp"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringGenderFemale"
+            android:textColor="@color/atom_pub_black2white" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/masterNameSingle"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/atom_selector_master_input_rect"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringSingleName"
+        android:textColor="@color/atom_pub_black2white"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="@+id/masterNameGenderMale"
+        app:layout_constraintRight_toRightOf="@+id/masterNameGenderMale"
+        app:layout_constraintTop_toBottomOf="@+id/masterNameGenderMale" />
+
+    <TextView
+        android:id="@+id/masterNameDouble"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/atom_selector_master_input_rect"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringDoubleName"
+        android:textColor="@color/atom_pub_black2white"
+        app:layout_constraintLeft_toLeftOf="@+id/masterNameGenderFemale"
+        app:layout_constraintRight_toRightOf="@+id/masterNameGenderFemale"
+        app:layout_constraintTop_toBottomOf="@+id/masterNameGenderFemale" />
+
+    <TextView
+        android:id="@id/atom_pub_resIdsOK"
+        style="@style/AtomStyle.WhiteBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/atom_ic_master_complete"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringOK"
+        app:layout_constraintLeft_toLeftOf="@+id/masterNameSurnameLabelRect"
+        app:layout_constraintRight_toRightOf="@+id/masterNameSurnameLabelRect"
+        app:layout_constraintTop_toBottomOf="@+id/masterNameSingle" />
 </android.support.constraint.ConstraintLayout>

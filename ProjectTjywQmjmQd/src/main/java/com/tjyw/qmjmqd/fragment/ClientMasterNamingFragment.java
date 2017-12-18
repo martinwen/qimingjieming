@@ -40,30 +40,30 @@ import nucleus.factory.RequiresPresenter;
 @RequiresPresenter(NamingPresenter.class)
 public class ClientMasterNamingFragment extends AtomPubBaseFragment implements ClientGregorianFragment.OnGregorianSelectedListener {
 
-//    @From(R.id.nGenderMale)
-//    protected ViewGroup nGenderMale;
-//
-//    @From(R.id.nGenderFemale)
-//    protected ViewGroup nGenderFemale;
-//
-//    @From(R.id.nNameNumberSingle)
-//    protected ViewGroup nNameNumberSingle;
-//
-//    @From(R.id.nNameNumberDouble)
-//    protected ViewGroup nNameNumberDouble;
-//
-//    @Order(1)
-//    @Pattern(regex = "^[\\u4e00-\\u9fa5]{1,2}$", messageResId = R.string.atom_pub_resStringNameInputHint)
-//    @From(R.id.nSurname)
-//    protected EditText nSurname;
-//
-//    @Order(2)
-//    @Length(min = 1, messageResId = R.string.atom_pub_resStringDateOfBirthHint)
-//    @From(R.id.nDateOfBirth)
-//    protected TextView nDateOfBirth;
-//
-//    @From(R.id.atom_pub_resIdsOK)
-//    protected TextView atom_pub_resIdsOK;
+    @Order(1)
+    @Pattern(regex = "^[\\u4e00-\\u9fa5]{1,2}$", messageResId = R.string.atom_pub_resStringNameInputHint)
+    @From(R.id.masterNameSurname)
+    protected EditText masterNameSurname;
+
+    @Order(2)
+    @Length(min = 1, messageResId = R.string.atom_pub_resStringDateOfBirthHint)
+    @From(R.id.masterNameDateOfBirth)
+    protected TextView masterNameDateOfBirth;
+
+    @From(R.id.masterNameGenderMale)
+    protected ViewGroup masterNameGenderMale;
+
+    @From(R.id.masterNameGenderFemale)
+    protected ViewGroup masterNameGenderFemale;
+
+    @From(R.id.masterNameSingle)
+    protected TextView masterNameSingle;
+
+    @From(R.id.masterNameDouble)
+    protected TextView masterNameDouble;
+
+    @From(R.id.atom_pub_resIdsOK)
+    protected TextView atom_pub_resIdsOK;
 
     protected ListRequestParam listRequestParam;
 
@@ -81,102 +81,102 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements C
         return inflater.inflate(R.layout.atom_master_name, null);
     }
 
-//    @Override
-//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//
-//        validator = new Validator(this);
-//        validator.setValidationListener(new AtomPubValidationListener(ClientQmjmApplication.getContext()) {
-//
-//            @Override
-//            public void onValidationSucceeded() {
-//                listRequestParam.surname = nSurname.getText().toString();
-//                IClientActivityLaunchFactory.launchNameMasterActivity(
-//                        (BaseActivity) getActivity(), listRequestParam, 1000, NameMasterAdapter.POSITION.ANALYZE
-//                );
-//            }
-//        });
-//
-//        nSurname.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//            @Override
-//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-//                switch (actionId) {
-//                    case EditorInfo.IME_ACTION_NEXT:
-//                        validator.validate();
-//                    default:
-//                        return false;
-//                }
-//            }
-//        });
-//
-//        Calendar calendar = DateTimeUtils.getCurrentDateTime();
-//        if (null != calendar) {
-//            listRequestParam.day = DateTimeUtils.printCalendarByPattern(calendar, DateTimeUtils.yyyy_MM_dd_HH);
-//            nDateOfBirth.setText(DateTimeUtils.printCalendarByPattern(calendar, ClientQmjmApplication.pGetString(R.string.atom_pub_resStringDateSolar)));
-//        }
-//
-//        nGenderMale.setSelected(true);
-//        nNameNumberDouble.setSelected(true);
-//
-//        nGenderMale.setOnClickListener(this);
-//        nGenderFemale.setOnClickListener(this);
-//        nNameNumberSingle.setOnClickListener(this);
-//        nNameNumberDouble.setOnClickListener(this);
-//        nDateOfBirth.setOnClickListener(this);
-//        atom_pub_resIdsOK.setOnClickListener(this);
-//    }
-//
-//    @Override
-//    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.nGenderMale:
-//                listRequestParam.gender = ISection.GENDER.MALE;
-//                v.setSelected(true);
-//                nGenderFemale.setSelected(false);
-//                break ;
-//            case R.id.nGenderFemale:
-//                listRequestParam.gender = ISection.GENDER.FEMALE;
-//                v.setSelected(true);
-//                nGenderMale.setSelected(false);
-//                break ;
-//            case R.id.nNameNumberSingle:
-//                listRequestParam.nameNumber = ISection.NAME_COUNT.SINGLE;
-//                v.setSelected(true);
-//                nNameNumberDouble.setSelected(false);
-//                break ;
-//            case R.id.nNameNumberDouble:
-//                listRequestParam.nameNumber = ISection.NAME_COUNT.DOUBLE;
-//                v.setSelected(true);
-//                nNameNumberSingle.setSelected(false);
-//                break ;
-//            case R.id.nDateOfBirth:
-//                ((ClientMasterActivity) getActivity()).showGregorianFragment(this);
-//                break ;
-//            case R.id.atom_pub_resIdsOK:
-//                validator.validate();
-//        }
-//    }
-//
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        validator = new Validator(this);
+        validator.setValidationListener(new AtomPubValidationListener(ClientQmjmApplication.getContext()) {
+
+            @Override
+            public void onValidationSucceeded() {
+                listRequestParam.surname = masterNameSurname.getText().toString();
+                IClientActivityLaunchFactory.launchNameMasterActivity(
+                        (BaseActivity) getActivity(), listRequestParam, 1000, NameMasterAdapter.POSITION.ANALYZE
+                );
+            }
+        });
+
+        masterNameSurname.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                switch (actionId) {
+                    case EditorInfo.IME_ACTION_NEXT:
+                        validator.validate();
+                    default:
+                        return false;
+                }
+            }
+        });
+
+        Calendar calendar = DateTimeUtils.getCurrentDateTime();
+        if (null != calendar) {
+            listRequestParam.day = DateTimeUtils.printCalendarByPattern(calendar, DateTimeUtils.yyyy_MM_dd_HH);
+            masterNameDateOfBirth.setText(DateTimeUtils.printCalendarByPattern(calendar, ClientQmjmApplication.pGetString(R.string.atom_pub_resStringDateSolar)));
+        }
+
+        masterNameGenderMale.setSelected(true);
+        masterNameDouble.setSelected(true);
+
+        masterNameGenderMale.setOnClickListener(this);
+        masterNameGenderFemale.setOnClickListener(this);
+        masterNameSingle.setOnClickListener(this);
+        masterNameDouble.setOnClickListener(this);
+        masterNameDateOfBirth.setOnClickListener(this);
+        atom_pub_resIdsOK.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.masterNameGenderMale:
+                listRequestParam.gender = ISection.GENDER.MALE;
+                v.setSelected(true);
+                masterNameGenderFemale.setSelected(false);
+                break ;
+            case R.id.masterNameGenderFemale:
+                listRequestParam.gender = ISection.GENDER.FEMALE;
+                v.setSelected(true);
+                masterNameGenderMale.setSelected(false);
+                break ;
+            case R.id.masterNameSingle:
+                listRequestParam.nameNumber = ISection.NAME_COUNT.SINGLE;
+                v.setSelected(true);
+                masterNameDouble.setSelected(false);
+                break ;
+            case R.id.masterNameDouble:
+                listRequestParam.nameNumber = ISection.NAME_COUNT.DOUBLE;
+                v.setSelected(true);
+                masterNameSingle.setSelected(false);
+                break ;
+            case R.id.masterNameDateOfBirth:
+                ((ClientMasterActivity) getActivity()).showGregorianFragment(this);
+                break ;
+            case R.id.atom_pub_resIdsOK:
+                validator.validate();
+        }
+    }
+
     @Override
     public void gregorianOnSelected(LunarCalendar lunarCalendar, boolean isGregorianSolar, String hour, int postHour) {
-//        Calendar calendar = DateTimeUtils.getCalendar(lunarCalendar.getDate());
-//        if (null != calendar) {
-//            calendar.set(Calendar.HOUR_OF_DAY, postHour);
-//            listRequestParam.day = DateTimeUtils.printCalendarByPattern(calendar, DateTimeUtils.yyyy_MM_dd_HH);
-//        }
-//
-//        if (isGregorianSolar) {
-//            nDateOfBirth.setText(DateTimeUtils.printCalendarByPattern(calendar, ClientQmjmApplication.pGetString(R.string.atom_pub_resStringDateSolar)));
-//        } else {
-//            nDateOfBirth.setText(
-//                    ClientQmjmApplication.pGetString(
-//                            R.string.atom_pub_resStringDateLunar,
-//                            lunarCalendar.getLunarYear(),
-//                            lunarCalendar.getLunarMonth(),
-//                            lunarCalendar.getLunarDay(),
-//                            hour
-//                    )
-//            );
-//        }
+        Calendar calendar = DateTimeUtils.getCalendar(lunarCalendar.getDate());
+        if (null != calendar) {
+            calendar.set(Calendar.HOUR_OF_DAY, postHour);
+            listRequestParam.day = DateTimeUtils.printCalendarByPattern(calendar, DateTimeUtils.yyyy_MM_dd_HH);
+        }
+
+        if (isGregorianSolar) {
+            masterNameDateOfBirth.setText(DateTimeUtils.printCalendarByPattern(calendar, ClientQmjmApplication.pGetString(R.string.atom_pub_resStringDateSolar)));
+        } else {
+            masterNameDateOfBirth.setText(
+                    ClientQmjmApplication.pGetString(
+                            R.string.atom_pub_resStringDateLunar,
+                            lunarCalendar.getLunarYear(),
+                            lunarCalendar.getLunarMonth(),
+                            lunarCalendar.getLunarDay(),
+                            hour
+                    )
+            );
+        }
     }
 }

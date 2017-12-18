@@ -35,26 +35,26 @@ import atom.pub.interfaces.AtomPubValidationListener;
  */
 public class ClientMasterExplainFragment extends AtomPubBaseFragment implements ClientGregorianFragment.OnGregorianSelectedListener {
 
-    @From(R.id.nGenderMale)
-    protected ViewGroup nGenderMale;
-
-    @From(R.id.nGenderFemale)
-    protected ViewGroup nGenderFemale;
-
     @Order(1)
     @Pattern(regex = "^[\\u4e00-\\u9fa5]{1,2}$", messageResId = R.string.atom_pub_resStringNameInputHint)
-    @From(R.id.nSurname)
-    protected EditText nSurname;
+    @From(R.id.masterNameSurname)
+    protected EditText masterNameSurname;
 
     @Order(2)
     @Pattern(regex = "^[\\u4e00-\\u9fa5]{1,2}$", messageResId = R.string.atom_pub_resStringNameInputHint)
-    @From(R.id.nGivenName)
-    protected EditText nGivenName;
+    @From(R.id.masterNameGivenName)
+    protected EditText masterNameGivenName;
 
     @Order(3)
     @Length(min = 1, messageResId = R.string.atom_pub_resStringDateOfBirthHint)
-    @From(R.id.nDateOfBirth)
-    protected TextView nDateOfBirth;
+    @From(R.id.masterNameDateOfBirth)
+    protected TextView masterNameDateOfBirth;
+
+    @From(R.id.masterNameGenderMale)
+    protected ViewGroup masterNameGenderMale;
+
+    @From(R.id.masterNameGenderFemale)
+    protected ViewGroup masterNameGenderFemale;
 
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
@@ -79,8 +79,8 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
 
             @Override
             public void onValidationSucceeded() {
-                listRequestParam.surname = nSurname.getText().toString();
-                listRequestParam.name = nGivenName.getText().toString();
+                listRequestParam.surname = masterNameSurname.getText().toString();
+                listRequestParam.name = masterNameGivenName.getText().toString();
 
                 IClientActivityLaunchFactory.launchExplainMasterActivity(
                         (BaseActivity) getActivity(), listRequestParam, 1000
@@ -88,7 +88,7 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
             }
         });
 
-        nGivenName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        masterNameGivenName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 switch (actionId) {
@@ -103,31 +103,31 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
         Calendar calendar = DateTimeUtils.getCurrentDateTime();
         if (null != calendar) {
             listRequestParam.day = DateTimeUtils.printCalendarByPattern(calendar, DateTimeUtils.yyyy_MM_dd_HH);
-            nDateOfBirth.setText(DateTimeUtils.printCalendarByPattern(calendar, ClientQmjmApplication.pGetString(R.string.atom_pub_resStringDateSolar)));
+            masterNameDateOfBirth.setText(DateTimeUtils.printCalendarByPattern(calendar, ClientQmjmApplication.pGetString(R.string.atom_pub_resStringDateSolar)));
         }
 
-        nGenderMale.setSelected(true);
+        masterNameGenderMale.setSelected(true);
 
-        nGenderMale.setOnClickListener(this);
-        nGenderFemale.setOnClickListener(this);
-        nDateOfBirth.setOnClickListener(this);
+        masterNameGenderMale.setOnClickListener(this);
+        masterNameGenderFemale.setOnClickListener(this);
+        masterNameDateOfBirth.setOnClickListener(this);
         atom_pub_resIdsOK.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.nGenderMale:
+            case R.id.masterNameGenderMale:
                 listRequestParam.gender = ISection.GENDER.MALE;
                 v.setSelected(true);
-                nGenderFemale.setSelected(false);
+                masterNameGenderFemale.setSelected(false);
                 break ;
-            case R.id.nGenderFemale:
+            case R.id.masterNameGenderFemale:
                 listRequestParam.gender = ISection.GENDER.FEMALE;
                 v.setSelected(true);
-                nGenderMale.setSelected(false);
+                masterNameGenderMale.setSelected(false);
                 break ;
-            case R.id.nDateOfBirth:
+            case R.id.masterNameDateOfBirth:
                 ((ClientMasterActivity) getActivity()).showGregorianFragment(this);
                 break ;
             case R.id.atom_pub_resIdsOK:
@@ -144,9 +144,9 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
         }
 
         if (isGregorianSolar) {
-            nDateOfBirth.setText(DateTimeUtils.printCalendarByPattern(calendar, ClientQmjmApplication.pGetString(R.string.atom_pub_resStringDateSolar)));
+            masterNameDateOfBirth.setText(DateTimeUtils.printCalendarByPattern(calendar, ClientQmjmApplication.pGetString(R.string.atom_pub_resStringDateSolar)));
         } else {
-            nDateOfBirth.setText(
+            masterNameDateOfBirth.setText(
                     ClientQmjmApplication.pGetString(
                             R.string.atom_pub_resStringDateLunar,
                             lunarCalendar.getLunarYear(),
