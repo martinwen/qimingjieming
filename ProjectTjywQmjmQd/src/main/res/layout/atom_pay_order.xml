@@ -3,16 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/atomPubToolBar"
-        layout="@layout/atom_pub_inc_toolbar" />
+    <include layout="@layout/atom_inc_symbol" />
 
-    <include layout="@layout/atom_pub_inc_symbol" />
+    <include layout="@layout/atom_pub_inc_toolbar" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/atomPubToolBar">
+        android:layout_below="@+id/atomPubToolBar">
 
         <LinearLayout
             android:layout_width="match_parent"

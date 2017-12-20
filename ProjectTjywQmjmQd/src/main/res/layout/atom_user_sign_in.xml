@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/atom_pub_inc_symbol" />
+        <include layout="@layout/atom_inc_symbol" />
 
         <LinearLayout
             android:layout_width="match_parent"
