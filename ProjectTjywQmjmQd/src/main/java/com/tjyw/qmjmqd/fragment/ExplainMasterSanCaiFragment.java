@@ -18,6 +18,8 @@ import com.tjyw.qmjmqd.ClientQmjmApplication;
 import com.tjyw.qmjmqd.R;
 import com.tjyw.qmjmqd.item.ExplainSanCaiItem;
 import com.tjyw.qmjmqd.item.ExplainWuGeItem;
+import com.yqritc.recyclerviewflexibledivider.FlexibleDividerDecoration;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +69,16 @@ public class ExplainMasterSanCaiFragment extends AtomPubBaseFragment {
         explainDestinyAdapter = new HeaderAdapter<ExplainSanCaiItem>();
         explainScWgContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
         explainScWgContainer.setAdapter(explainDestinyAdapter.wrap(itemAdapter));
+        explainScWgContainer.addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
+                        .color(android.R.color.transparent)
+                        .sizeProvider(new FlexibleDividerDecoration.SizeProvider() {
+                            @Override
+                            public int dividerSize(int position, RecyclerView parent) {
+                                return position == 0 ? 0 : ClientQmjmApplication.pGetResources().getDimensionPixelOffset(R.dimen.atom_pubResDimenRecyclerViewDivider8dp);
+                            }
+                        })
+                        .build());
 
         explainDestinyAdapter.add(new ExplainSanCaiItem(explain));
     }

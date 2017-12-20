@@ -15,91 +15,53 @@
         android:layout_marginTop="16dp"
         android:background="@color/atom_pubResColorBaziBackground">
 
-        <!-- 第一行: xx格 + 标题 -->
+        <!-- 事业 -->
         <TextView
-            android:id="@+id/bodyTitle"
+            android:id="@+id/yunShiLabelShiYe"
             style="@style/AtomStyle.BlackNormalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/atom_pubResColorBaziBackground"
             android:gravity="center"
-            android:minHeight="64dp"
-            android:text="@string/atom_pub_resStringExplainSanCaiPeiZhi"
-            app:layout_constraintHorizontal_chainStyle="spread"
+            android:text="@string/atom_pub_resStringExplainDestinyShiYe"
+            app:layout_constraintBottom_toBottomOf="@+id/yunShiShiYe"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/bodyDesc" />
+            app:layout_constraintRight_toLeftOf="@+id/yunShiShiYe"
+            app:layout_constraintTop_toTopOf="@+id/yunShiShiYe" />
 
         <TextView
-            android:id="@+id/bodyDesc"
+            android:id="@+id/yunShiShiYe"
             style="@style/AtomStyle.BlackNormalText"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/atom_pubResColorBaziBackground"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
             android:gravity="center_vertical"
-            android:maxLines="1"
+            android:lineSpacingExtra="8dp"
+            android:minHeight="48dp"
             android:padding="8dp"
-            android:singleLine="true"
-            app:layout_constraintBottom_toBottomOf="@+id/bodyTitle"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintHorizontal_weight="4"
-            app:layout_constraintLeft_toRightOf="@+id/bodyTitle"
+            app:layout_constraintLeft_toRightOf="@+id/yunShiLabelShiYe"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bodyTitle"
-            tools:text="bodyDesc" />
+            tools:text="yunShiShiYe" />
 
-        <!-- 第二行 -->
+        <!-- 学业 -->
         <TextView
-            android:id="@+id/bodyJiXiong"
-            style="@style/AtomStyle.RedNormalText"
+            android:id="@+id/yunShiLabelXueYe"
+            style="@style/AtomStyle.BlackNormalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
+            android:background="@color/atom_pubResColorBaziBackground"
             android:gravity="center"
-            android:minHeight="48dp"
-            app:layout_constraintHorizontal_chainStyle="spread"
+            android:text="@string/atom_pub_resStringExplainDestinyXueYe"
+            app:layout_constraintBottom_toBottomOf="@+id/yunShiXueYe"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/bodyDesc"
-            app:layout_constraintTop_toBottomOf="@+id/bodyTitle"
-            tools:text="bodyJiXiong" />
+            app:layout_constraintRight_toLeftOf="@+id/yunShiXueYe"
+            app:layout_constraintTop_toTopOf="@+id/yunShiXueYe" />
 
         <TextView
-            android:id="@+id/bodyLiShu"
-            style="@style/AtomStyle.BlackNormalText"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@android:color/white"
-            android:gravity="center"
-            android:maxLines="1"
-            android:padding="8dp"
-            android:singleLine="true"
-            app:layout_constraintBottom_toBottomOf="@+id/bodyJiXiong"
-            app:layout_constraintHorizontal_weight="2"
-            app:layout_constraintLeft_toRightOf="@+id/bodyJiXiong"
-            app:layout_constraintRight_toLeftOf="@+id/bodyWuXing"
-            app:layout_constraintTop_toTopOf="@+id/bodyJiXiong"
-            tools:text="bodyLiShu" />
-
-        <TextView
-            android:id="@+id/bodyWuXing"
-            style="@style/AtomStyle.BlackNormalText"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@android:color/white"
-            android:gravity="center"
-            android:maxLines="1"
-            android:padding="8dp"
-            android:singleLine="true"
-            app:layout_constraintBottom_toBottomOf="@+id/bodyJiXiong"
-            app:layout_constraintHorizontal_weight="2"
-            app:layout_constraintLeft_toRightOf="@+id/bodyLiShu"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/bodyJiXiong"
-            tools:text="bodyWuXing" />
-
-        <!-- 第三行 -->
-        <TextView
-            android:id="@+id/bodySubTitle"
+            android:id="@+id/yunShiXueYe"
             style="@style/AtomStyle.BlackNormalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -108,25 +70,76 @@
             android:lineSpacingExtra="8dp"
             android:minHeight="48dp"
             android:padding="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="4"
+            app:layout_constraintLeft_toRightOf="@+id/yunShiLabelXueYe"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bodyJiXiong"
-            tools:text="bodySubTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/yunShiShiYe"
+            tools:text="yunShiXueYe" />
 
-        <!-- 第四行 -->
+        <!-- 财运 -->
         <TextView
-            android:id="@+id/bodyContent"
+            android:id="@+id/yunShiLabelCaiYun"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/atom_pubResColorBaziBackground"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringExplainDestinyCaiYun"
+            app:layout_constraintBottom_toBottomOf="@+id/yunShiCaiYun"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/yunShiCaiYun"
+            app:layout_constraintTop_toTopOf="@+id/yunShiCaiYun" />
+
+        <TextView
+            android:id="@+id/yunShiCaiYun"
             style="@style/AtomStyle.BlackNormalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
             android:gravity="center_vertical"
             android:lineSpacingExtra="8dp"
+            android:minHeight="48dp"
             android:padding="8dp"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="4"
+            app:layout_constraintLeft_toRightOf="@+id/yunShiLabelCaiYun"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bodySubTitle"
-            tools:text="bodyContent" />
+            app:layout_constraintTop_toBottomOf="@+id/yunShiXueYe"
+            tools:text="yunShiCaiYun" />
+
+        <!-- 爱情 -->
+        <TextView
+            android:id="@+id/yunShiLabelAiQing"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/atom_pubResColorBaziBackground"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringExplainDestinyAiQing"
+            app:layout_constraintBottom_toBottomOf="@+id/yunShiAiQing"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/yunShiAiQing"
+            app:layout_constraintTop_toTopOf="@+id/yunShiAiQing" />
+
+        <TextView
+            android:id="@+id/yunShiAiQing"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="8dp"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="4"
+            app:layout_constraintLeft_toRightOf="@+id/yunShiLabelAiQing"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/yunShiCaiYun"
+            tools:text="yunShiAiQing" />
 
         <!-- 横向分割线 -->
         <ImageView
@@ -145,7 +158,7 @@
             android:src="@color/atom_pub_resColorDividerRed"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bodyTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/yunShiShiYe" />
 
         <ImageView
             android:layout_width="0dp"
@@ -154,7 +167,7 @@
             android:src="@color/atom_pub_resColorDividerRed"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bodyJiXiong" />
+            app:layout_constraintTop_toBottomOf="@+id/yunShiXueYe" />
 
         <ImageView
             android:layout_width="0dp"
@@ -163,7 +176,7 @@
             android:src="@color/atom_pub_resColorDividerRed"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bodySubTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/yunShiCaiYun" />
 
         <ImageView
             android:layout_width="0dp"
@@ -189,18 +202,9 @@
             android:layout_height="0dp"
             android:scaleType="fitXY"
             android:src="@color/atom_pub_resColorDividerRed"
-            app:layout_constraintBottom_toBottomOf="@+id/bodyJiXiong"
-            app:layout_constraintLeft_toRightOf="@+id/bodyTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/yunShiLabelShiYe"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:layout_width="1dp"
-            android:layout_height="0dp"
-            android:scaleType="fitXY"
-            android:src="@color/atom_pub_resColorDividerRed"
-            app:layout_constraintBottom_toBottomOf="@+id/bodyLiShu"
-            app:layout_constraintLeft_toRightOf="@+id/bodyLiShu"
-            app:layout_constraintTop_toTopOf="@+id/bodyLiShu" />
 
         <ImageView
             android:layout_width="1dp"

@@ -73,9 +73,8 @@ public class ExplainMasterOverviewFragment extends AtomPubBaseFragment {
         explainOverviewContainer.setAdapter(explainHeaderAdapter);
         explainOverviewContainer.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
-                        .color(R.color.atom_pub_resColorDivider)
-                        .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDividerSize)
-                        .marginResId(R.dimen.atom_pubResDimenRecyclerViewDivider16dp, R.dimen.atom_pubResDimenRecyclerViewDivider16dp)
+                        .color(android.R.color.transparent)
+                        .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDivider8dp)
                         .build());
     }
 }

@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:paddingBottom="16dp"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingTop="16dp">
+
+    <!-- 横向四柱标签 -->
+    <TextView
+        android:id="@+id/baZiLabelSiZhu"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/atom_pubResColorBaziBackground"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/atom_pub_resStringBaZiSiZhu"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/baZiLabelNianZhu" />
+
+    <TextView
+        android:id="@+id/baZiLabelNianZhu"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/atom_pubResColorBaziBackground"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringBaZiNianZhu"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintLeft_toRightOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintRight_toLeftOf="@+id/baZiLabelYueZhu"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelSiZhu" />
+
+    <TextView
+        android:id="@+id/baZiLabelYueZhu"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/atom_pubResColorBaziBackground"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringBaZiYueZhu"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintLeft_toRightOf="@+id/baZiLabelNianZhu"
+        app:layout_constraintRight_toLeftOf="@+id/baZiLabelRiZhu"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelSiZhu" />
+
+    <TextView
+        android:id="@+id/baZiLabelRiZhu"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/atom_pubResColorBaziBackground"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringBaZiRiZhu"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintLeft_toRightOf="@+id/baZiLabelYueZhu"
+        app:layout_constraintRight_toLeftOf="@+id/baZiLabelShiZhu"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelSiZhu" />
+
+    <TextView
+        android:id="@+id/baZiLabelShiZhu"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/atom_pubResColorBaziBackground"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringBaZiShiZhu"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintLeft_toRightOf="@+id/baZiLabelRiZhu"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelSiZhu" />
+
+    <!-- 纵向标签 -->
+    <!-- 十神 -->
+    <TextView
+        android:id="@+id/baZiLabelShiShen"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/atom_pubResColorBaziBackground"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/atom_pub_resStringBaZiShiShen"
+        app:layout_constraintLeft_toLeftOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintRight_toRightOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintTop_toBottomOf="@+id/baZiLabelSiZhu" />
+
+    <!-- 干支 -->
+    <TextView
+        android:id="@+id/baZiLabelGanZhi"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/atom_pubResColorBaziBackground"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/atom_pub_resStringBaZiGanZhi"
+        app:layout_constraintLeft_toLeftOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintRight_toRightOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintTop_toBottomOf="@+id/baZiLabelShiShen" />
+
+    <!-- 五行 -->
+    <TextView
+        android:id="@+id/baZiLabelWuXing"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/atom_pubResColorBaziBackground"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/atom_pub_resStringBaZiWuXing"
+        app:layout_constraintLeft_toLeftOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintRight_toRightOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintTop_toBottomOf="@+id/baZiLabelGanZhi" />
+
+    <!-- 藏干 -->
+    <TextView
+        android:id="@+id/baZiLabelCangGan"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/atom_pubResColorBaziBackground"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/atom_pub_resStringBaZiCangGan"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiCangGanThird"
+        app:layout_constraintLeft_toLeftOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintRight_toRightOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintTop_toBottomOf="@+id/baZiLabelWuXing" />
+
+    <!-- 纳音 -->
+    <TextView
+        android:id="@+id/baZiLabelNaYin"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/atom_pubResColorBaziBackground"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:text="@string/atom_pub_resStringBaZiNaYin"
+        app:layout_constraintLeft_toLeftOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintRight_toRightOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintTop_toBottomOf="@+id/baZiLabelCangGan" />
+
+    <!-- 横向分割线 -->
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDividerRed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDividerRed"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/baZiLabelSiZhu" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDividerRed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <!-- 纵向分割线 -->
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDividerRed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDividerRed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/baZiLabelSiZhu"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDividerRed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 十神横向内容 -->
+    <TextView
+        android:id="@+id/baZiShiShenFirst"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelShiShen"
+        app:layout_constraintLeft_toRightOf="@+id/baZiLabelShiShen"
+        app:layout_constraintRight_toLeftOf="@+id/baZiShiShenSecond"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelShiShen" />
+
+    <TextView
+        android:id="@+id/baZiShiShenSecond"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelShiShen"
+        app:layout_constraintLeft_toRightOf="@+id/baZiShiShenFirst"
+        app:layout_constraintRight_toLeftOf="@+id/baZiShiShenThird"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelShiShen" />
+
+    <TextView
+        android:id="@+id/baZiShiShenThird"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelShiShen"
+        app:layout_constraintLeft_toRightOf="@+id/baZiShiShenSecond"
+        app:layout_constraintRight_toLeftOf="@+id/baZiShiShenFourth"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelShiShen" />
+
+    <TextView
+        android:id="@+id/baZiShiShenFourth"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelShiShen"
+        app:layout_constraintLeft_toRightOf="@+id/baZiShiShenThird"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelShiShen" />
+
+    <!-- 干支横向内容 -->
+    <TextView
+        android:id="@+id/baZiGanZhiFirst"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelGanZhi"
+        app:layout_constraintLeft_toRightOf="@+id/baZiLabelGanZhi"
+        app:layout_constraintRight_toLeftOf="@+id/baZiGanZhiSecond"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelGanZhi" />
+
+    <TextView
+        android:id="@+id/baZiGanZhiSecond"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelGanZhi"
+        app:layout_constraintLeft_toRightOf="@+id/baZiGanZhiFirst"
+        app:layout_constraintRight_toLeftOf="@+id/baZiGanZhiThird"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelGanZhi" />
+
+    <TextView
+        android:id="@+id/baZiGanZhiThird"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelGanZhi"
+        app:layout_constraintLeft_toRightOf="@+id/baZiGanZhiSecond"
+        app:layout_constraintRight_toLeftOf="@+id/baZiGanZhiFourth"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelGanZhi" />
+
+    <TextView
+        android:id="@+id/baZiGanZhiFourth"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelGanZhi"
+        app:layout_constraintLeft_toRightOf="@+id/baZiGanZhiThird"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelGanZhi" />
+
+    <!-- 五行横向内容 -->
+    <TextView
+        android:id="@+id/baZiWuXingFirst"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelWuXing"
+        app:layout_constraintLeft_toRightOf="@+id/baZiLabelWuXing"
+        app:layout_constraintRight_toLeftOf="@+id/baZiWuXingSecond"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelWuXing" />
+
+    <TextView
+        android:id="@+id/baZiWuXingSecond"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelWuXing"
+        app:layout_constraintLeft_toRightOf="@+id/baZiWuXingFirst"
+        app:layout_constraintRight_toLeftOf="@+id/baZiWuXingThird"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelWuXing" />
+
+    <TextView
+        android:id="@+id/baZiWuXingThird"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelWuXing"
+        app:layout_constraintLeft_toRightOf="@+id/baZiWuXingSecond"
+        app:layout_constraintRight_toLeftOf="@+id/baZiWuXingFourth"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelWuXing" />
+
+    <TextView
+        android:id="@+id/baZiWuXingFourth"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelWuXing"
+        app:layout_constraintLeft_toRightOf="@+id/baZiWuXingThird"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelWuXing" />
+
+    <!-- 藏干横向内容 -->
+    <TextView
+        android:id="@+id/baZiCangGanFirst"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelCangGan"
+        app:layout_constraintLeft_toRightOf="@+id/baZiLabelCangGan"
+        app:layout_constraintRight_toLeftOf="@+id/baZiCangGanSecond"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelCangGan" />
+
+    <TextView
+        android:id="@+id/baZiCangGanSecond"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelCangGan"
+        app:layout_constraintLeft_toRightOf="@+id/baZiCangGanFirst"
+        app:layout_constraintRight_toLeftOf="@+id/baZiCangGanThird"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelCangGan" />
+
+    <TextView
+        android:id="@+id/baZiCangGanThird"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintLeft_toRightOf="@+id/baZiCangGanSecond"
+        app:layout_constraintRight_toLeftOf="@+id/baZiCangGanFourth"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelCangGan" />
+
+    <TextView
+        android:id="@+id/baZiCangGanFourth"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelCangGan"
+        app:layout_constraintLeft_toRightOf="@+id/baZiCangGanThird"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelCangGan" />
+
+    <!-- 纳音横向内容 -->
+    <TextView
+        android:id="@+id/baZiNaYinFirst"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelNaYin"
+        app:layout_constraintLeft_toRightOf="@+id/baZiLabelNaYin"
+        app:layout_constraintRight_toLeftOf="@+id/baZiNaYinSecond"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelNaYin" />
+
+    <TextView
+        android:id="@+id/baZiNaYinSecond"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelNaYin"
+        app:layout_constraintLeft_toRightOf="@+id/baZiNaYinFirst"
+        app:layout_constraintRight_toLeftOf="@+id/baZiNaYinThird"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelNaYin" />
+
+    <TextView
+        android:id="@+id/baZiNaYinThird"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelNaYin"
+        app:layout_constraintLeft_toRightOf="@+id/baZiNaYinSecond"
+        app:layout_constraintRight_toLeftOf="@+id/baZiNaYinFourth"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelNaYin" />
+
+    <TextView
+        android:id="@+id/baZiNaYinFourth"
+        style="@style/AtomStyle.BlackNormalText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:lineSpacingExtra="8dp"
+        android:padding="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/baZiLabelNaYin"
+        app:layout_constraintLeft_toRightOf="@+id/baZiNaYinThird"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/baZiLabelNaYin" />
+
+    <!-- 四个角的图纹 -->
+    <!-- 左上 -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:src="@drawable/atom_ic_bazi_corner_left_top"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 右上 -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:src="@drawable/atom_ic_bazi_corner_right_top"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 右下 -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:src="@drawable/atom_ic_bazi_corner_right_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <!-- 左下 -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:src="@drawable/atom_ic_bazi_corner_left_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+</android.support.constraint.ConstraintLayout>

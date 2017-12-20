@@ -3,10 +3,10 @@ package com.tjyw.qmjmqd.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.TextView;
 
 import com.brianjmelton.stanley.ProxyGenerator;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -47,17 +47,8 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
         OnApiPostNamingListener,
         OnApiPayPostListener.PostPayListVipListener {
 
-    @From(R.id.nameAnalyze)
-    protected TextView nameAnalyze;
-
-    @From(R.id.nameFreedom)
-    protected TextView nameFreedom;
-
-    @From(R.id.nameRecommend)
-    protected TextView nameRecommend;
-
-    @From(R.id.nameLucky)
-    protected TextView nameLucky;
+    @From(R.id.nameTabHost)
+    protected TabLayout explainTabHost;
 
     @From(R.id.nameMasterContainer)
     protected ViewPager nameMasterContainer;
@@ -65,7 +56,7 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
     @From(R.id.nameMasterPayPackageEntry)
     protected SimpleDraweeView nameMasterPayPackageEntry;
 
-    public NameMasterAdapter nameMasterAdapter;
+    protected NameMasterAdapter nameMasterAdapter;
 
     protected ListRequestParam listRequestParam;
 
@@ -97,33 +88,6 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
             payPackageEntryFragment = findFragmentById(R.id.payPackageEntryFragment, PayPackageEntryFragment.class);
             pHideFragment(payServiceFragment, payPackageEntryFragment);
         }
-
-        nameAnalyze.setSelected(true);
-        nameAnalyze.setOnClickListener(this);
-        nameFreedom.setOnClickListener(this);
-        nameRecommend.setOnClickListener(this);
-        nameLucky.setOnClickListener(this);
-
-        nameMasterContainer.setOffscreenPageLimit(NameMasterAdapter.POSITION.ALL);
-        nameMasterContainer.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-
-            @Override
-            public void onPageSelected(int position) {
-                switch (position) {
-                    case NameMasterAdapter.POSITION.ANALYZE:
-                        setSelectedTab(nameAnalyze);
-                        break ;
-                    case NameMasterAdapter.POSITION.FREEDOM:
-                        setSelectedTab(nameFreedom);
-                        break ;
-                    case NameMasterAdapter.POSITION.RECOMMEND:
-                        setSelectedTab(nameRecommend);
-                        break ;
-                    case NameMasterAdapter.POSITION.LUCKY:
-                        setSelectedTab(nameLucky);
-                }
-            }
-        });
 
         int delayed = pGetIntExtra(IApiField.D.delayed, 100);
         if (delayed >= 1000) {
@@ -199,18 +163,6 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.nameAnalyze:
-                showContainerFragment(NameMasterAdapter.POSITION.ANALYZE, false);
-                break ;
-            case R.id.nameFreedom:
-                showContainerFragment(NameMasterAdapter.POSITION.FREEDOM, false);
-                break ;
-            case R.id.nameRecommend:
-                showContainerFragment(NameMasterAdapter.POSITION.RECOMMEND, false);
-                break ;
-            case R.id.nameLucky:
-                showContainerFragment(NameMasterAdapter.POSITION.LUCKY, false);
-                break ;
             case R.id.nameMasterPayPackageEntry:
                 if (null == payService) {
                     maskerShowProgressView(true);
@@ -231,34 +183,6 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
     public void showContainerFragment(int position, boolean smoothScroll) {
         if (null != nameMasterAdapter) {
             nameMasterContainer.setCurrentItem(position, smoothScroll);
-        }
-    }
-
-    protected void setSelectedTab(View view) {
-        if (! view.isSelected()) {
-            view.setSelected(true);
-
-            switch (view.getId()) {
-                case R.id.nameAnalyze:
-                    nameRecommend.setSelected(false);
-                    nameFreedom.setSelected(false);
-                    nameLucky.setSelected(false);
-                    break ;
-                case R.id.nameFreedom:
-                    nameAnalyze.setSelected(false);
-                    nameRecommend.setSelected(false);
-                    nameLucky.setSelected(false);
-                    break ;
-                case R.id.nameRecommend:
-                    nameAnalyze.setSelected(false);
-                    nameFreedom.setSelected(false);
-                    nameLucky.setSelected(false);
-                    break ;
-                case R.id.nameLucky:
-                    nameAnalyze.setSelected(false);
-                    nameFreedom.setSelected(false);
-                    nameRecommend.setSelected(false);
-            }
         }
     }
 
@@ -283,10 +207,13 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
     @Override
     public void postOnNamingSuccess(RNameDefinition result) {
         maskerHideProgressView();
-        nameMasterContainer.setAdapter(
-                nameMasterAdapter = NameMasterAdapter.newInstance(getSupportFragmentManager(), result)
-        );
+
+        nameMasterAdapter = NameMasterAdapter.newInstance(getSupportFragmentManager(), result);
+        nameMasterContainer.setOffscreenPageLimit(NameMasterAdapter.POSITION.ALL);
+        nameMasterContainer.setAdapter(nameMasterAdapter);
         nameMasterContainer.setCurrentItem(pGetIntExtra(IApiField.T.t, NameMasterAdapter.POSITION.ANALYZE), false);
+
+        explainTabHost.setupWithViewPager(nameMasterContainer);
     }
 
     @Override

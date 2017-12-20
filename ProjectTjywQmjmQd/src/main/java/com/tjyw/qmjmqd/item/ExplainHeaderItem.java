@@ -32,7 +32,7 @@ public class ExplainHeaderItem extends AtomPubFastAdapterAbstractItem<Explain, E
 
     @Override
     public int getLayoutRes() {
-        return R.layout.atom_explain_header;
+        return R.layout.atom_inc_explain_header;
     }
 
     @Override

@@ -11,6 +11,8 @@
 
     <color name="atom_pub_resColorDivider">#FFC5C5C5</color>
 
+    <color name="atom_pub_resColorDividerRed">#FFC7171E</color>
+
     <color name="atom_pub_resColorTabBackground">#FFDCDCDC</color>
 
     <color name="atom_pub_resColorInputHint">#FFBCBCBC</color>

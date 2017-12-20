@@ -39,6 +39,7 @@
         android:background="@android:color/transparent"
         android:gravity="center_vertical|left"
         android:hint="@string/atom_pub_resStringSurnameHint"
+        android:text="郭"
         android:imeOptions="actionNext"
         android:inputType="text"
         android:maxLength="2"

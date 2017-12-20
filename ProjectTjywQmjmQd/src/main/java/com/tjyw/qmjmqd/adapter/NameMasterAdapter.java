@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.tjyw.atom.network.result.RNameDefinition;
+import com.tjyw.qmjmqd.ClientQmjmApplication;
+import com.tjyw.qmjmqd.R;
 import com.tjyw.qmjmqd.fragment.NameMasterAnalyzeFragment;
 import com.tjyw.qmjmqd.fragment.NameMasterFreedomFragment;
 import com.tjyw.qmjmqd.fragment.NameMasterLuckyFragment;
@@ -86,5 +88,20 @@ public class NameMasterAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return POSITION.ALL;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position) {
+        switch (position) {
+            case POSITION.ANALYZE:
+                return ClientQmjmApplication.pGetString(R.string.atom_pub_resStringNameAnalyze);
+            case POSITION.FREEDOM:
+                return ClientQmjmApplication.pGetString(R.string.atom_pub_resStringNameFreedom);
+            case POSITION.RECOMMEND:
+                return ClientQmjmApplication.pGetString(R.string.atom_pub_resStringNameRecommend);
+            case POSITION.LUCKY:
+            default:
+                return ClientQmjmApplication.pGetString(R.string.atom_pub_resStringNameLucky);
+        }
     }
 }

@@ -3,9 +3,10 @@ package com.tjyw.qmjmqd.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 
 import com.tjyw.atom.network.model.Explain;
+import com.tjyw.qmjmqd.ClientQmjmApplication;
+import com.tjyw.qmjmqd.R;
 import com.tjyw.qmjmqd.fragment.ExplainMasterDestinyFragment;
 import com.tjyw.qmjmqd.fragment.ExplainMasterOverviewFragment;
 import com.tjyw.qmjmqd.fragment.ExplainMasterSanCaiFragment;
@@ -89,27 +90,18 @@ public class ExplainMasterAdapter extends FragmentPagerAdapter {
         return POSITION.ALL;
     }
 
-    public void showOverviewFragment(ViewPager container) {
-        if (null != container) {
-            container.setCurrentItem(POSITION.OVERVIEW);
-        }
-    }
-
-    public void showZodiacFragment(ViewPager container) {
-        if (null != container) {
-            container.setCurrentItem(POSITION.ZODIAC);
-        }
-    }
-
-    public void showDestinyFragment(ViewPager container) {
-        if (null != container) {
-            container.setCurrentItem(POSITION.DESTINY);
-        }
-    }
-
-    public void showSanCaiFragment(ViewPager container) {
-        if (null != container) {
-            container.setCurrentItem(POSITION.SANCAI);
+    @Override
+    public CharSequence getPageTitle(int position) {
+        switch (position) {
+            case POSITION.OVERVIEW:
+                return ClientQmjmApplication.pGetString(R.string.atom_pub_resStringExplainOverview);
+            case POSITION.ZODIAC:
+                return ClientQmjmApplication.pGetString(R.string.atom_pub_resStringExplainZodiac);
+            case POSITION.DESTINY:
+                return ClientQmjmApplication.pGetString(R.string.atom_pub_resStringExplainDestiny);
+            case POSITION.SANCAI:
+            default:
+                return ClientQmjmApplication.pGetString(R.string.atom_pub_resStringExplainSanCaiWuGe);
         }
     }
 }
