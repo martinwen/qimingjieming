@@ -3,26 +3,25 @@
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
         android:orientation="vertical">
 
         <LinearLayout
+            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/atom_png_master_mine_header_bg"
+            android:background="@android:color/white"
             android:gravity="center"
             android:orientation="horizontal"
             android:padding="16dp">
 
             <com.facebook.drawee.view.SimpleDraweeView
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:padding="8dp"
                 fresco:actualImageScaleType="centerInside"
                 fresco:placeholderImage="@mipmap/atom_ic_logo"
@@ -59,10 +58,9 @@
             </LinearLayout>
         </LinearLayout>
 
-        <View
+        <android.support.v4.widget.Space
             android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:background="@color/atom_pub_resColorBackground_F2" />
+            android:layout_height="8dp" />
 
         <!-- 下半部分九宫格 -->
         <LinearLayout
@@ -158,12 +156,12 @@
                 android:text="@string/atom_pub_resStringMineCollect" />
         </LinearLayout>
 
-        <View
+        <android.support.v4.widget.Space
             android:layout_width="match_parent"
-            android:layout_height="8dp"
-            android:background="@color/atom_pub_resColorBackground_F2" />
+            android:layout_height="8dp" />
 
         <TextView
+            android:background="@android:color/white"
             android:id="@+id/mineCellBJX"
             style="@style/AtomStyle.BlackBigText"
             android:layout_width="match_parent"
@@ -185,6 +183,7 @@
             android:src="@color/atom_pub_resColorBackground_F2" />
 
         <TextView
+            android:background="@android:color/white"
             android:id="@+id/mineCellZGJM"
             style="@style/AtomStyle.BlackBigText"
             android:layout_width="match_parent"
@@ -209,6 +208,7 @@
             android:id="@+id/mineCellQTS"
             style="@style/AtomStyle.BlackBigText"
             android:layout_width="match_parent"
+            android:background="@android:color/white"
             android:layout_height="48dp"
             android:drawableLeft="@drawable/atom_ic_mine_qts"
             android:drawablePadding="8dp"
@@ -228,6 +228,7 @@
 
         <TextView
             android:id="@+id/mineCellZodiac"
+            android:background="@android:color/white"
             style="@style/AtomStyle.BlackBigText"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -249,6 +250,7 @@
 
         <TextView
             android:id="@+id/mineCellAbout"
+            android:background="@android:color/white"
             style="@style/AtomStyle.BlackBigText"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -270,6 +272,7 @@
 
         <TextView
             android:id="@+id/mineCellFeedback"
+            android:background="@android:color/white"
             style="@style/AtomStyle.BlackBigText"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -289,7 +292,7 @@
             android:scaleType="fitXY"
             android:src="@color/atom_pub_resColorBackground_F2" />
 
-        <View
+        <android.support.v4.widget.Space
             android:layout_width="match_parent"
             android:layout_height="96dp" />
     </LinearLayout>
