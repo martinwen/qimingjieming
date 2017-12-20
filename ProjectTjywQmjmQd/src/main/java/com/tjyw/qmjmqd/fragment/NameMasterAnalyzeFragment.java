@@ -1,24 +1,19 @@
 package com.tjyw.qmjmqd.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.mikepenz.fastadapter.FastAdapter;
-import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
-import com.mikepenz.fastadapter.listeners.ClickEventHook;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.NameData;
-import com.tjyw.qmjmqd.ClientQmjmApplication;
 import com.tjyw.qmjmqd.R;
 import com.tjyw.qmjmqd.activity.NameMasterActivity;
 import com.tjyw.qmjmqd.adapter.NameMasterAdapter;
-import com.tjyw.qmjmqd.item.NameMasterAnalyzeItem;
+import com.tjyw.qmjmqd.holder.BaZiSheetHolder;
+import com.tjyw.qmjmqd.holder.NameBaseInfoHolder;
 
 import atom.pub.fragment.AtomPubBaseFragment;
 import atom.pub.inject.From;
@@ -37,10 +32,14 @@ public class NameMasterAnalyzeFragment extends AtomPubBaseFragment {
         return fragment;
     }
 
-    @From(R.id.nameAnalyzeContainer)
-    protected RecyclerView nameAnalyzeContainer;
+    @From(R.id.bodyAnalyzeContent)
+    protected TextView bodyAnalyzeContent;
 
-    protected FastItemAdapter<NameMasterAnalyzeItem> nameAnalyzeAdapter;
+    @From(R.id.bodyAnalyzeTip)
+    protected TextView bodyAnalyzeTip;
+
+    @From(R.id.nameMakeAGoodName)
+    protected TextView nameMakeAGoodName;
 
     @Nullable
     @Override
@@ -54,25 +53,29 @@ public class NameMasterAnalyzeFragment extends AtomPubBaseFragment {
 
         NameData data = (NameData) pGetSerializableExtra(IApiField.D.data);
         if (null != data) {
-            nameAnalyzeAdapter = new FastItemAdapter<NameMasterAnalyzeItem>();
-            nameAnalyzeAdapter.add(new NameMasterAnalyzeItem(data));
-            nameAnalyzeAdapter.withItemEvent(new ClickEventHook<NameMasterAnalyzeItem>() {
-                @Nullable
-                @Override
-                public View onBind(@NonNull RecyclerView.ViewHolder viewHolder) {
-                    return viewHolder.itemView.findViewById(R.id.nameMakeAGoodName);
-                }
+            BaZiSheetHolder baZiSheetHolder = new BaZiSheetHolder(getView());
+            baZiSheetHolder.sheet(data);
 
-                @Override
-                public void onClick(View v, int position, FastAdapter<NameMasterAnalyzeItem> fastAdapter, NameMasterAnalyzeItem item) {
-                    if (getActivity() instanceof NameMasterActivity) {
-                        ((NameMasterActivity) getActivity()).showContainerFragment(NameMasterAdapter.POSITION.FREEDOM, false);
-                    }
-                }
-            });
+            NameBaseInfoHolder nameBaseInfoHolder = new NameBaseInfoHolder(getView());
+            nameBaseInfoHolder.baseInfo(data);
 
-            nameAnalyzeContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
-            nameAnalyzeContainer.setAdapter(nameAnalyzeAdapter);
+            bodyAnalyzeContent.setText(data.fenxi);
+            bodyAnalyzeTip.setText(data.tixing);
+
+            nameMakeAGoodName.setOnClickListener(this);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.nameMakeAGoodName:
+                if (getActivity() instanceof NameMasterActivity) {
+                    ((NameMasterActivity) getActivity()).showContainerFragment(NameMasterAdapter.POSITION.FREEDOM, false);
+                }
+                break ;
+            default:
+                super.onClick(v);
         }
     }
 }
