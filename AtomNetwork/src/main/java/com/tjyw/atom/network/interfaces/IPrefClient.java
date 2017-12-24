@@ -16,6 +16,8 @@ public interface IPrefClient {
         String KEY_CLIENT_INIT = "KEY_Client_INIT";
 
         String KEY_NEW_FLAG_COUPON = "KEY_NEW_FLAG_COUPON";
+
+        String KEY_SHOW_APP_GUIDE_VER = "KEY_SHOW_APP_GUIDE_VER";
     }
 
     @Accessor(key = KEY.KEY_CLIENT_INIT)
@@ -29,4 +31,10 @@ public interface IPrefClient {
 
     @Accessor(key = KEY.KEY_NEW_FLAG_COUPON)
     void setNewFlagCoupon(boolean newFlagCoupon);
+
+    @Accessor(key = KEY.KEY_SHOW_APP_GUIDE_VER)
+    int getShowAppGuideVersion();
+
+    @Accessor(key = KEY.KEY_SHOW_APP_GUIDE_VER)
+    void setShowAppGuideVersion(int version);
 }

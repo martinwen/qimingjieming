@@ -2,6 +2,8 @@
 <resources>
 
     <string name="atom_pub_resStringPermissionByUserDeny">您需要开启相关的使用权限才可以继续操作，可通过 设置-应用程序 来允许您所需要的权限</string>
+    
+    <string name="atom_pub_resStringGuideLaunch">开始起名</string>
 
     <string name="atom_pub_resStringMasterTabNaming">起名</string>
     <string name="atom_pub_resStringMasterTabExplain">解名</string>

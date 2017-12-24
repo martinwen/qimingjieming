@@ -1,15 +1,22 @@
 package com.tjyw.qmjmqd.activity;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.brianjmelton.stanley.ProxyGenerator;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.tjyw.atom.network.RxSchedulersHelper;
+import com.tjyw.atom.network.interfaces.IPrefClient;
 import com.tjyw.atom.network.interfaces.IPrefUser;
 import com.tjyw.atom.network.model.ClientInit;
 import com.tjyw.atom.network.model.UserInfo;
@@ -18,14 +25,17 @@ import com.tjyw.atom.network.presenter.listener.OnApiClientPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiUserPostListener;
 import com.tjyw.atom.network.result.RUserRegister;
+import com.tjyw.atom.network.utils.DeviceUtil;
 import com.tjyw.atom.network.utils.JsonUtil;
 import com.tjyw.qmjmqd.R;
+import com.tjyw.qmjmqd.adapter.ClientGuideAdapter;
 import com.tjyw.qmjmqd.adapter.ClientMasterAdapter;
 import com.tjyw.qmjmqd.factory.IClientActivityLaunchFactory;
 import com.umeng.analytics.MobclickAgent;
 
 import java.util.concurrent.TimeUnit;
 
+import atom.pub.fresco.ImageFacade;
 import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
 import rx.Observable;
@@ -38,14 +48,33 @@ import rx.functions.Action1;
 public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelcomeActivity>> implements
         OnApiPostErrorListener,
         OnApiClientPostListener.PostClientInitListener,
-        OnApiUserPostListener.PostUserRegisterListener {
+        OnApiUserPostListener.PostUserRegisterListener,
+        ClientGuideAdapter.OnClientGuideClickListener {
 
     static final int DELAY_TO_LAUNCH_MASTER = 2000;
 
     protected long createMillisTime;
 
     @From(R.id.welcomeSloganView)
-    protected ImageView welcomeSloganView;
+    protected SimpleDraweeView welcomeSloganView;
+
+    @From(R.id.welcomeGuideRoot)
+    protected ViewGroup welcomeGuideRoot;
+
+    @From(R.id.welcomeGuideContainer)
+    protected ViewPager welcomeGuideContainer;
+
+    @From(R.id.welcomeGuideLaunch)
+    protected TextView welcomeGuideLaunch;
+
+    @From(R.id.welcomeGuideIndicateLeft)
+    protected ImageView welcomeGuideIndicateLeft;
+
+    @From(R.id.welcomeGuideIndicateCenter)
+    protected ImageView welcomeGuideIndicateCenter;
+
+    @From(R.id.welcomeGuideIndicateRight)
+    protected ImageView welcomeGuideIndicateRight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +85,8 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
                 .statusBarDarkFont(true)
                 .init();
 
+        ImageFacade.loadImage(R.drawable.atom_png_welcome_bottom, welcomeSloganView);
+
         createMillisTime = System.currentTimeMillis();
         IPrefUser user = new ProxyGenerator().create(getApplicationContext(), IPrefUser.class);
         if (null != user && ! TextUtils.isEmpty(user.getUserSession())) { // 判断本地是否有用户信息
@@ -63,6 +94,12 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
         } else { // 没有用户信息时，先请求register接口创建用户，再访问init接口初始化
             getPresenter().postNewUserRegister();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        IClientActivityLaunchFactory.launchClientMasterActivity(ClientWelcomeActivity.this, ClientMasterAdapter.POSITION.NAMING, false);
+        super.onBackPressed();
     }
 
     @Override
@@ -109,6 +146,14 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
                         requestPhoneStatePermission();
                     }
                 });
+    }
+
+    @Override
+    public void guideOnLaunchClick(View view) {
+        if (welcomeGuideContainer.getCurrentItem() == 2) {
+            IClientActivityLaunchFactory.launchClientMasterActivity(this, ClientMasterAdapter.POSITION.NAMING, false);
+            finish();
+        }
     }
 
     protected void saveUserInfo(UserInfo userInfo) {
@@ -162,6 +207,44 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
         }
     }
 
+    protected boolean needShowAppGuideFrame() {
+        IPrefClient iPrefClient = new ProxyGenerator().create(getApplicationContext(), IPrefClient.class);
+        if (null != iPrefClient) {
+            int version = DeviceUtil.getClientVersionCode(getApplicationContext());
+            if (version > iPrefClient.getShowAppGuideVersion()) {
+                iPrefClient.setShowAppGuideVersion(version);
+
+                welcomeGuideContainer.setOffscreenPageLimit(3);
+                welcomeGuideContainer.setAdapter(new ClientGuideAdapter(this));
+                welcomeGuideContainer.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+
+                    @Override
+                    public void onPageSelected(int position) {
+                        welcomeGuideIndicateLeft.setImageResource(position == 0 ? R.drawable.atom_ic_guide_indicate_select : R.drawable.atom_ic_guide_indicate_default);
+                        welcomeGuideIndicateCenter.setImageResource(position == 1 ? R.drawable.atom_ic_guide_indicate_select : R.drawable.atom_ic_guide_indicate_default);
+                        welcomeGuideIndicateRight.setImageResource(position == 2 ? R.drawable.atom_ic_guide_indicate_select : R.drawable.atom_ic_guide_indicate_default);
+
+                        if (position == 2) {
+                            welcomeGuideLaunch.setVisibility(View.VISIBLE);
+                            ObjectAnimator animator = ObjectAnimator.ofFloat(welcomeGuideLaunch, "alpha", 0, 1, 1).setDuration(500);
+                            animator.start();
+                        } else {
+                            welcomeGuideLaunch.setVisibility(View.INVISIBLE);
+                        }
+                    }
+                });
+
+                welcomeGuideRoot.setVisibility(View.VISIBLE);
+                ObjectAnimator animator = ObjectAnimator.ofFloat(welcomeGuideRoot, "alpha", 0, 1, 1);
+                animator.start();
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     protected void launchMasterActivity() {
         createMillisTime = Math.abs(createMillisTime - System.currentTimeMillis());
         if (createMillisTime < DELAY_TO_LAUNCH_MASTER) {
@@ -170,11 +253,13 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
                     .subscribe(new Action1<Long>() {
                         @Override
                         public void call(Long aLong) {
-                            IClientActivityLaunchFactory.launchClientMasterActivity(ClientWelcomeActivity.this, ClientMasterAdapter.POSITION.NAMING, false);
-                            finish();
+                            if (! needShowAppGuideFrame()) {
+                                IClientActivityLaunchFactory.launchClientMasterActivity(ClientWelcomeActivity.this, ClientMasterAdapter.POSITION.NAMING, false);
+                                finish();
+                            }
                         }
                     });
-        } else {
+        } else if (! needShowAppGuideFrame()) {
             IClientActivityLaunchFactory.launchClientMasterActivity(this, ClientMasterAdapter.POSITION.NAMING, false);
             finish();
         }
