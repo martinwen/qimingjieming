@@ -7,11 +7,9 @@
     android:orientation="vertical"
     tools:ignore="MissingPrefix">
 
-    <include
-        android:id="@+id/atomPubToolBar"
-        layout="@layout/atom_pub_inc_toolbar" />
+    <include layout="@layout/atom_inc_symbol" />
 
-    <include layout="@layout/atom_pub_inc_symbol" />
+    <include layout="@layout/atom_pub_inc_toolbar" />
 
     <LinearLayout
         android:layout_width="match_parent"
