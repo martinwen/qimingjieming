@@ -148,11 +148,11 @@ android {
 //            buildConfigField "String", "CLIENT_C_ID", '"C1021"'
 //            buildConfigField "String", "CLIENT_C_NAME", '"网易应用中心"'
 //        }
-//        C1022 {
-//            resValue "string", "app_name", "起名字取名字"
-//            buildConfigField "String", "CLIENT_C_ID", '"C1022"'
-//            buildConfigField "String", "CLIENT_C_NAME", '"搜狗应用中心"'
-//        }
+        C1022 {
+            resValue "string", "app_name", "起名字取名字"
+            buildConfigField "String", "CLIENT_C_ID", '"C1022"'
+            buildConfigField "String", "CLIENT_C_NAME", '"搜狗应用中心"'
+        }
         C1023 {
             resValue "string", "app_name", "起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1023"'
