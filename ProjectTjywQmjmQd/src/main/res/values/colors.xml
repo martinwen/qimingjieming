@@ -3,6 +3,9 @@
     <color name="colorPrimary">#FFD4C4A3</color>
     <color name="colorPrimaryDark">#FFD4C4A3</color>
     <color name="colorAccent">#FFD4C4A3</color>
+    
+    <!-- -->
+    <color name="atom_resColorMasterBackground">#FFF7EBD1</color>
 
     <!-- 起名页自选名字::单个名字的选中背景色 -->
     <color name="atom_resColorFreedomNameBackground">#FFCEC3A4</color>

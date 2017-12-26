@@ -62,6 +62,8 @@ public class AtomClientMaskerSupport implements View.OnClickListener, IAtomPubLa
     public AtomClientMaskerSupport(OnMaskerClickListener listener, View source) {
         Injector.inject(this, source);
         this.maskerClickListener = listener;
+
+        atomPubMaskerImage.setImageResource(R.drawable.atom_ic_illegal);
     }
 
     @Override
