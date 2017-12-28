@@ -93,13 +93,13 @@ public class ClientMasterActivity extends BaseToolbarActivity<PayPresenter<Clien
                 } else {
                     switch (position) {
                         case ClientMasterAdapter.POSITION.NAMING:
-                            tSetToolBar(getString(R.string.atom_pub_resStringMasterTabNaming));
+                            tSetToolBar(getString(R.string.atom_pub_resStringMasterTabNaming), false);
                             break ;
                         case ClientMasterAdapter.POSITION.EXPLAIN:
-                            tSetToolBar(getString(R.string.atom_pub_resStringMasterTabExplain));
+                            tSetToolBar(getString(R.string.atom_pub_resStringMasterTabExplain), false);
                             break ;
                         case ClientMasterAdapter.POSITION.MINE:
-                            tSetToolBar(getString(R.string.atom_pub_resStringMasterTabMine));
+                            tSetToolBar(getString(R.string.atom_pub_resStringMasterTabMine), false);
                     }
 
                     fragmentNavigator.showFragment(position, false, false);
