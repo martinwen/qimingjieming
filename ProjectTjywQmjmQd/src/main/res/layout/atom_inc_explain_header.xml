@@ -31,7 +31,7 @@
 
     <TextView
         android:id="@+id/explainEvaluateDesc"
-        style="@style/AtomStyle.GreyNormalText"
+        style="@style/AtomStyle.GreySmallText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="36dp"
