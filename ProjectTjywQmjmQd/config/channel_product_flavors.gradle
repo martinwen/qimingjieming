@@ -94,17 +94,17 @@ android {
             buildConfigField "String", "CLIENT_C_NAME", '"OPPO"'
         }
         C1011 {
-            resValue "string", "app_name", "宝宝起名解名"
+            resValue "string", "app_name", "宝宝起名起名取名"
             buildConfigField "String", "CLIENT_C_ID", '"C1011"'
             buildConfigField "String", "CLIENT_C_NAME", '"VIVO"'
         }
         C1012 {
-            resValue "string", "app_name", "宝宝起名解名"
+            resValue "string", "app_name", "起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1012"'
             buildConfigField "String", "CLIENT_C_NAME", '"华为"'
         }
         C1013 {
-            resValue "string", "app_name", "宝宝起名解名"
+            resValue "string", "app_name", "宝宝起名字姓名起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1013"'
             buildConfigField "String", "CLIENT_C_NAME", '"魅族"'
         }
@@ -149,17 +149,17 @@ android {
 //            buildConfigField "String", "CLIENT_C_NAME", '"网易应用中心"'
 //        }
         C1022 {
-            resValue "string", "app_name", "宝宝起名解名"
+            resValue "string", "app_name", "起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1022"'
             buildConfigField "String", "CLIENT_C_NAME", '"搜狗应用中心"'
         }
         C1023 {
-            resValue "string", "app_name", "宝宝起名解名"
+            resValue "string", "app_name", "起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1023"'
             buildConfigField "String", "CLIENT_C_NAME", '"易用汇金立"'
         }
         C1024 {
-            resValue "string", "app_name", "宝宝起名解名"
+            resValue "string", "app_name", "起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1024"'
             buildConfigField "String", "CLIENT_C_NAME", '"三星"'
         }
@@ -169,7 +169,7 @@ android {
 //            buildConfigField "String", "CLIENT_C_NAME", '"中国移动MM"'
 //        }
         C1026 {
-            resValue "string", "app_name", "宝宝起名解名"
+            resValue "string", "app_name", "起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1026"'
             buildConfigField "String", "CLIENT_C_NAME", '"锤子"'
         }

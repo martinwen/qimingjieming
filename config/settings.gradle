@@ -21,8 +21,8 @@ ext {
 
             qmjmqd = [
                     androidApplicationId : "com.tjyw.qmjmqd",
-                    androidVersionCode : 10001000,
-                    androidVersionName : "1.0.0"
+                    androidVersionCode : 10001100,
+                    androidVersionName : "1.1.0"
             ]
     ]
 
