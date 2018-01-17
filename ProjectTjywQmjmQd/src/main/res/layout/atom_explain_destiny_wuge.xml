@@ -37,7 +37,7 @@
             android:layout_height="0dp"
             android:background="@color/atom_pubResColorBaziBackground"
             android:gravity="center_vertical"
-            android:maxLines="1"
+            android:lineSpacingExtra="8dp"
             android:padding="8dp"
             android:singleLine="true"
             app:layout_constraintBottom_toBottomOf="@+id/bodyTitle"
@@ -116,7 +116,7 @@
         <!-- 第四行 -->
         <TextView
             android:id="@+id/bodyContent"
-            style="@style/AtomStyle.BlackNormalText"
+            style="@style/AtomStyle.GreyNormalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
