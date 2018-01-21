@@ -3,12 +3,15 @@
     <color name="colorPrimary">#FF68C69F</color>
     <color name="colorPrimaryDark">#FF68C69F</color>
     <color name="colorAccent">#FF68C69F</color>
-    
+
+    <!-- APP的辅助色 -->
+    <color name="atom_resColorMasterSecond">#FFEF8C17</color>
+
     <!-- -->
     <color name="atom_resColorMasterBackground">#FFF4F4F4</color>
 
     <!-- 起名页自选名字::单个名字的选中背景色 -->
-    <color name="atom_resColorFreedomNameBackground">#FFF7F8F9</color>
+    <color name="atom_resColorFreedomNameBackground">@color/atom_resColorMasterSecond</color>
 
     <!-- 主界面导航栏图标选中状态颜色 -->
     <color name="atom_resColorNavigationAccent">@color/colorPrimary</color>

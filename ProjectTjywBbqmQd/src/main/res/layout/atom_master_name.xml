@@ -1,34 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/masterNameSurnameLabelRect"
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/masterNameBanner"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:background="@drawable/atom_ic_master_input_rect_default"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="144dp"
+        android:scaleType="centerCrop"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.15" />
+        fresco:actualImageScaleType="centerCrop"
+        fresco:placeholderImage="@color/atom_resColorMasterSecond"
+        fresco:placeholderImageScaleType="centerCrop" />
 
     <TextView
         android:id="@+id/masterNameSurnameLabel"
         style="@style/AtomStyle.BlackBigText"
         android:layout_width="96dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:gravity="center_vertical|right"
         android:text="@string/atom_pub_resStringSurnameDot"
-        app:layout_constraintBottom_toBottomOf="@+id/masterNameSurnameLabelRect"
-        app:layout_constraintLeft_toLeftOf="@+id/masterNameSurnameLabelRect"
-        app:layout_constraintTop_toTopOf="@+id/masterNameSurnameLabelRect" />
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/masterNameBanner" />
 
     <EditText
         android:id="@+id/masterNameSurname"
@@ -39,17 +42,15 @@
         android:background="@android:color/transparent"
         android:gravity="center_vertical|left"
         android:hint="@string/atom_pub_resStringSurnameHint"
-        android:text="郭"
         android:imeOptions="actionNext"
         android:inputType="text"
         android:maxLength="2"
         android:maxLines="1"
         android:singleLine="true"
+        android:text="郭"
         android:textColorHint="@color/atom_pub_resColorInputHint"
-        app:layout_constraintBottom_toBottomOf="@+id/masterNameSurnameLabelRect"
         app:layout_constraintLeft_toRightOf="@+id/masterNameSurnameLabel"
-        app:layout_constraintRight_toRightOf="@+id/masterNameSurnameLabelRect"
-        app:layout_constraintTop_toTopOf="@+id/masterNameSurnameLabelRect" />
+        app:layout_constraintTop_toTopOf="@+id/masterNameSurnameLabel" />
 
     <!-- 出生日期 -->
     <TextView
