@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFEFD">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/welcomeSloganView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        fresco:actualImageScaleType="centerCrop" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/welcomeGuideRoot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/welcomeGuideContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/welcomeGuideLaunch"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="64dp"
+            android:background="@drawable/atom_ic_guide_launch"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringGuideLaunch"
+            android:textColor="#FF7B5826"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <ImageView
+            android:id="@+id/welcomeGuideIndicateCenter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/atom_ic_guide_indicate_default"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/welcomeGuideLaunch" />
+
+        <ImageView
+            android:id="@+id/welcomeGuideIndicateLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/atom_ic_guide_indicate_select"
+            app:layout_constraintRight_toLeftOf="@+id/welcomeGuideIndicateCenter"
+            app:layout_constraintTop_toTopOf="@+id/welcomeGuideIndicateCenter" />
+
+        <ImageView
+            android:id="@+id/welcomeGuideIndicateRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:src="@drawable/atom_ic_guide_indicate_default"
+            app:layout_constraintLeft_toRightOf="@+id/welcomeGuideIndicateCenter"
+            app:layout_constraintTop_toTopOf="@+id/welcomeGuideIndicateCenter" />
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>

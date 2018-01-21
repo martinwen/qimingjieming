@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="#AA000000">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/atom_png_pay_package_entry_bg"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/bodyServiceName"
+            style="@style/AtomPubStyleKa.Black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:maxLength="20"
+            android:maxLines="1"
+            tools:text="bodyServiceName" />
+
+        <TextView
+            android:id="@+id/bodyServiceDesc"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            tools:text="bodyDesc" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/AtomPubStyleKa.Black_14DP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:text="@string/atom_pub_resStringPayPackageMoney" />
+
+            <TextView
+                android:id="@+id/bodyServicePrice"
+                style="@style/AtomPubStyleKa.Black_14DP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:textColor="@color/atom_pub_resTextColorRed"
+                tools:text="bodyServicePrice" />
+
+            <TextView
+                android:id="@+id/bodyServicePriceEach"
+                style="@style/AtomPubStyleKa.Black_14DP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLength="20"
+                android:maxLines="1"
+                tools:text="bodyServicePriceEach" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/AtomPubStyleKa.Black_14DP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:text="@string/atom_pub_resStringPayPackageOldMoney" />
+
+            <TextView
+                android:id="@+id/bodyServiceOldPrice"
+                style="@style/AtomPubStyleKa.Black_14DP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLength="20"
+                android:maxLines="1"
+                tools:text="bodyServiceOldPrice" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/bodyValidDate"
+            style="@style/AtomPubStyleKa.Black_14DP"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1.0"
+            android:lineSpacingExtra="8dp"
+            tools:text="bodyValidDate" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1.0">
+
+            <TextView
+                android:id="@id/atom_pub_resIdsOK"
+                style="@style/AtomPubStyleKa.White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/atom_pub_ic_ink_text_red"
+                android:gravity="center"
+                android:text="@string/atom_pub_resStringPayPay" />
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

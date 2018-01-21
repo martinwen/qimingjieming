@@ -166,7 +166,7 @@
 -keep class com.brianjmelton.stanley.annot.** { *; }
 -keep class com.beloo.widget.** { *; }
 
--keep class com.tjyw.qmjm.item.** { *; }
+-keep class com.tjyw.qmjmqd.item.** { *; }
 
 # android-saripaar
 -keep class com.mobsandgeeks.saripaar.** {*;}

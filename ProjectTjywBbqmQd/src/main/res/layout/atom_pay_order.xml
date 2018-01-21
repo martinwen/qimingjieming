@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/atom_inc_symbol" />
+
+    <include layout="@layout/atom_pub_inc_toolbar" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/atomPubToolBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/payServiceName"
+                    style="@style/AtomStyle.BlackNormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minLines="1"
+                    android:text="@string/atom_pub_resStringPayService" />
+
+                <TextView
+                    android:id="@+id/payServicePrice"
+                    style="@style/AtomStyle.BlackNormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minLines="1"
+                    android:paddingTop="16dp"
+                    android:text="@string/atom_pub_resStringPayPrice" />
+
+                <TextView
+                    android:id="@+id/payServiceCoupon"
+                    style="@style/AtomStyle.BlackNormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minLines="1"
+                    android:paddingTop="16dp"
+                    android:text="@string/atom_pub_resStringPayCoupon" />
+
+                <TextView
+                    android:id="@+id/payServiceSummary"
+                    style="@style/AtomStyle.BlackNormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:minLines="1"
+                    android:paddingTop="16dp"
+                    android:text="@string/atom_pub_resStringPaySummary" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:scaleType="fitXY"
+                    android:src="@color/atom_pub_resColorDivider" />
+
+                <LinearLayout
+                    android:id="@+id/payUseAlipay"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
+
+                    <TextView
+                        style="@style/AtomStyle.BlackNormalText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:drawableLeft="@drawable/atom_pub_ic_pay_alipay"
+                        android:drawablePadding="16dp"
+                        android:gravity="center_vertical"
+                        android:minLines="1"
+                        android:text="@string/atom_pub_resStringPayUseAliPay" />
+
+                    <TextView
+                        style="@style/AtomStyle.WhiteSmallText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/atom_ic_new_flag"
+                        android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
+                        android:scaleType="center"
+                        android:text="@string/atom_pub_resStringPayUseAliPayRecommend" />
+
+                    <TextView
+                        style="@style/AtomStyle.RedNormalText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="1.0"
+                        android:drawablePadding="16dp"
+                        android:drawableRight="@drawable/atom_pub_selector_pay_checked"
+                        android:duplicateParentState="true"
+                        android:gravity="center_vertical"
+                        android:minLines="1" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:scaleType="fitXY"
+                    android:src="@color/atom_pub_resColorDivider" />
+
+                <TextView
+                    android:id="@+id/payUseWxPay"
+                    style="@style/AtomStyle.BlackNormalText"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:drawableLeft="@drawable/atom_pub_ic_pay_wx"
+                    android:drawablePadding="16dp"
+                    android:drawableRight="@drawable/atom_pub_selector_pay_checked"
+                    android:gravity="center_vertical"
+                    android:minLines="1"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:text="@string/atom_pub_resStringPayUseWxPay" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:scaleType="fitXY"
+                    android:src="@color/atom_pub_resColorDivider" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@id/atom_pub_resIdsOK"
+                style="@style/AtomPubStyleKa.White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/atom_pub_ic_ink_text_red"
+                android:gravity="center"
+                android:text="@string/atom_pub_resStringPayPay" />
+        </LinearLayout>
+
+        <include layout="@layout/atom_inc_loading" />
+    </FrameLayout>
+</RelativeLayout>

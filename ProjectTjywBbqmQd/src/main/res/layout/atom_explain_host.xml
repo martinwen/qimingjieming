@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/atom_pub_resColorBackground"
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
+
+    <include layout="@layout/atom_inc_symbol" />
+
+    <include
+        android:id="@+id/atomPubToolBar"
+        layout="@layout/atom_pub_inc_toolbar" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/explainTabHost"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:tabBackground="@drawable/atom_ic_explain_tab"
+        app:tabSelectedTextColor="@color/atom_pub_resTextColorBlack"
+        app:tabTextColor="@color/atom_pub_resTextColorBlack"
+        app:tabIndicatorColor="@color/atom_pub_resColorDividerRed"
+        app:tabIndicatorHeight="2dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/atomPubToolBar" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/explainMasterContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/explainTabHost" />
+
+    <include layout="@layout/atom_inc_loading" />
+</android.support.constraint.ConstraintLayout>

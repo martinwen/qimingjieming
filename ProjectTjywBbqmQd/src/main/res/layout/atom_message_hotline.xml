@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/atom_pub_resColorBackground"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/atomPubToolBar"
+        layout="@layout/atom_pub_inc_toolbar" />
+
+    <include layout="@layout/atom_inc_symbol" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/messageConverseContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/atomPubToolBar" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <include layout="@layout/atom_message_converse_input" />
+    </FrameLayout>
+
+    <include layout="@layout/atom_inc_loading" />
+</RelativeLayout>

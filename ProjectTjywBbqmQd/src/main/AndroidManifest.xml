@@ -1,0 +1,125 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.tjyw.bbqmqd">
+
+    <!-- 屏幕支持 -->
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <!--<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:name=".ClientQmjmApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/atom_ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="icon, label, name">
+
+        <activity
+            android:name=".activity.ClientWelcomeActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- SwiftPay -->
+        <activity
+            android:name="com.swiftfintech.pay.activity.UnifiedPay"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <!-- Alipay -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" />
+
+        <activity
+            android:name=".activity.ClientMasterActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".activity.ExplainMasterActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.NamingListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.NameMasterActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.PayOrderActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.PayOrderListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.PayOrderNameListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.PayPackageActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.PayCouponListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.UserSignInActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".activity.UserFavoriteListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ClientTouchActivity"
+            android:screenOrientation="portrait" />
+
+    </application>
+</manifest>

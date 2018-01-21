@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:gravity="center_vertical">
+
+    <LinearLayout
+        android:id="@+id/bodyPriceContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/atom_ic_pay_coupon_used_bg_left"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/bodyPrice"
+            style="@style/AtomStyle.WhiteSuperLargeHugeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="4dp"
+            tools:text="￥50" />
+
+        <TextView
+            android:id="@+id/bodyDesc"
+            style="@style/AtomStyle.WhiteTintSmallText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLength="10"
+            android:maxLines="1"
+            tools:text="bodyDesc" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bodyTitleContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/atom_ic_pay_coupon_used_bg_right"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="16dp">
+
+            <TextView
+                android:id="@+id/bodyTitle"
+                style="@style/AtomStyle.BlackBigText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                tools:text="bodyTitle" />
+
+            <TextView
+                android:id="@+id/bodyDate"
+                style="@style/AtomStyle.GreyTinyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:ellipsize="end"
+                android:maxLines="1"
+                tools:text="bodyDate" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/bodyUserIt"
+            style="@style/AtomStyle.RedNormalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/atom_ic_pay_coupon_to_use"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingBottom="2dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="2dp"
+            android:text="@string/atom_pub_resStringPayCouponToUse" />
+    </LinearLayout>
+</LinearLayout>

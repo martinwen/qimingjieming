@@ -1,0 +1,177 @@
+android {
+    //cid与渠道名的字典
+    channelNameMap = new HashMap<String, String>()
+    allChannelNameMap = new HashMap<String, String>()
+    //全渠道字典
+    allChannelNameMap.put('C1000', 'official'); // 360手机助手
+    allChannelNameMap.put('C1001', '应用宝');
+    allChannelNameMap.put('C1002', '联通沃商城');
+    allChannelNameMap.put('C1003', '百度应用中心');
+    allChannelNameMap.put('C1004', 'PP助手');
+    allChannelNameMap.put('C1005', '豌豆荚');
+    allChannelNameMap.put('C1006', '安智市场');
+    allChannelNameMap.put('C1007', '木蚂蚁');
+    allChannelNameMap.put('C1008', 'N多');
+    allChannelNameMap.put('C1009', '小米');
+    allChannelNameMap.put('C1010', 'OPPO');
+    allChannelNameMap.put('C1011', 'VIVO');
+    allChannelNameMap.put('C1012', '华为');
+    allChannelNameMap.put('C1013', '魅族');
+    allChannelNameMap.put('C1014', '联想');
+    allChannelNameMap.put('C1015', '乐视');
+    allChannelNameMap.put('C1016', '安卓市场');
+    allChannelNameMap.put('C1017', '91助手');
+    allChannelNameMap.put('C1018', '机锋');
+    allChannelNameMap.put('C1019', '应用汇');
+    allChannelNameMap.put('C1020', '优亿市场');
+    allChannelNameMap.put('C1021', '网易应用中心');
+    allChannelNameMap.put('C1022', '搜狗应用中心');
+    allChannelNameMap.put('C1023', '易用汇金立');
+    allChannelNameMap.put('C1024', '三星');
+    allChannelNameMap.put('C1025', '中国移动MM');
+    allChannelNameMap.put('C1026', '锤子');
+    allChannelNameMap.put('C9999', '官方');
+
+    productFlavors.all { flavor ->
+        flavor.buildConfigField "String", "CLIENT_P_ID", '"20030"'
+    }
+
+    //渠道列表
+    productFlavors {
+        C1000 {
+            resValue "string", "app_name", "宝宝起名解名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1000"'
+            buildConfigField "String", "CLIENT_C_NAME", '"official"'
+        }
+        C1001 {
+            resValue "string", "app_name", "宝宝起名解名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1001"'
+            buildConfigField "String", "CLIENT_C_NAME", '"应用宝"'
+        }
+//        C1002 {
+//            resValue "string", "app_name", "宝宝起名解名"
+//            buildConfigField "String", "CLIENT_C_ID", '"C1002"'
+//            buildConfigField "String", "CLIENT_C_NAME", '"联通沃商城"'
+//        }
+        C1003 {
+            resValue "string", "app_name", "宝宝起名解名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1003"'
+            buildConfigField "String", "CLIENT_C_NAME", '"百度应用中心"'
+        }
+        C1004 {
+            resValue "string", "app_name", "宝宝起名解名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1004"'
+            buildConfigField "String", "CLIENT_C_NAME", '"PP助手"'
+        }
+//        C1005 {
+//            resValue "string", "app_name", "宝宝起名解名"
+//            buildConfigField "String", "CLIENT_C_ID", '"C1005"'
+//            buildConfigField "String", "CLIENT_C_NAME", '"豌豆荚"'
+//        }
+//        C1006 {
+//            resValue "string", "app_name", "宝宝起名解名"
+//            buildConfigField "String", "CLIENT_C_ID", '"C1006"'
+//            buildConfigField "String", "CLIENT_C_NAME", '"安智市场"'
+//        }
+//        C1007 {
+//            resValue "string", "app_name", "宝宝起名解名"
+//            buildConfigField "String", "CLIENT_C_ID", '"C1007"'
+//            buildConfigField "String", "CLIENT_C_NAME", '"木蚂蚁"'
+//        }
+//        C1008 {
+//            resValue "string", "app_name", "宝宝起名解名"
+//            buildConfigField "String", "CLIENT_C_ID", '"C1008"'
+//            buildConfigField "String", "CLIENT_C_NAME", '"N多"'
+//        }
+        C1009 {
+            resValue "string", "app_name", "宝宝起名解名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1009"'
+            buildConfigField "String", "CLIENT_C_NAME", '"小米"'
+        }
+        C1010 {
+            resValue "string", "app_name", "宝宝起名解名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1010"'
+            buildConfigField "String", "CLIENT_C_NAME", '"OPPO"'
+        }
+        C1011 {
+            resValue "string", "app_name", "宝宝起名起名取名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1011"'
+            buildConfigField "String", "CLIENT_C_NAME", '"VIVO"'
+        }
+        C1012 {
+            resValue "string", "app_name", "起名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1012"'
+            buildConfigField "String", "CLIENT_C_NAME", '"华为"'
+        }
+        C1013 {
+            resValue "string", "app_name", "宝宝起名字姓名起名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1013"'
+            buildConfigField "String", "CLIENT_C_NAME", '"魅族"'
+        }
+        C1014 {
+            resValue "string", "app_name", "宝宝起名解名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1014"'
+            buildConfigField "String", "CLIENT_C_NAME", '"联想"'
+        }
+        C1015 {
+            resValue "string", "app_name", "宝宝起名解名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1015"'
+            buildConfigField "String", "CLIENT_C_NAME", '"乐视"'
+        }
+//        C1016 {
+//            resValue "string", "app_name", "宝宝起名解名"
+//            buildConfigField "String", "CLIENT_C_ID", '"C1016"'
+//            buildConfigField "String", "CLIENT_C_NAME", '"安卓市场"'
+//        }
+//        C1017 {
+//            resValue "string", "app_name", "宝宝起名解名"
+//            buildConfigField "String", "CLIENT_C_ID", '"C1017"'
+//            buildConfigField "String", "CLIENT_C_NAME", '"91助手"'
+//        }
+//        C1018 {
+//            resValue "string", "app_name", "宝宝起名解名"
+//            buildConfigField "String", "CLIENT_C_ID", '"C1018"'
+//            buildConfigField "String", "CLIENT_C_NAME", '"机锋"'
+//        }
+//        C1019 {
+//            resValue "string", "app_name", "宝宝起名解名"
+//            buildConfigField "String", "CLIENT_C_ID", '"C1019"'
+//            buildConfigField "String", "CLIENT_C_NAME", '"应用汇"'
+//        }
+//        C1020 {
+//            resValue "string", "app_name", "宝宝起名解名"
+//            buildConfigField "String", "CLIENT_C_ID", '"C1020"'
+//            buildConfigField "String", "CLIENT_C_NAME", '"优亿市场"'
+//        }
+//        C1021 {
+//            resValue "string", "app_name", "宝宝起名解名"
+//            buildConfigField "String", "CLIENT_C_ID", '"C1021"'
+//            buildConfigField "String", "CLIENT_C_NAME", '"网易应用中心"'
+//        }
+        C1022 {
+            resValue "string", "app_name", "起名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1022"'
+            buildConfigField "String", "CLIENT_C_NAME", '"搜狗应用中心"'
+        }
+        C1023 {
+            resValue "string", "app_name", "起名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1023"'
+            buildConfigField "String", "CLIENT_C_NAME", '"易用汇金立"'
+        }
+        C1024 {
+            resValue "string", "app_name", "起名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1024"'
+            buildConfigField "String", "CLIENT_C_NAME", '"三星"'
+        }
+//        C1025 {
+//            resValue "string", "app_name", "宝宝起名解名"
+//            buildConfigField "String", "CLIENT_C_ID", '"C1025"'
+//            buildConfigField "String", "CLIENT_C_NAME", '"中国移动MM"'
+//        }
+        C1026 {
+            resValue "string", "app_name", "起名"
+            buildConfigField "String", "CLIENT_C_ID", '"C1026"'
+            buildConfigField "String", "CLIENT_C_NAME", '"锤子"'
+        }
+    }
+}
