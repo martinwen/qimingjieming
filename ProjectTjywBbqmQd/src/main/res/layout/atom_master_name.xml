@@ -20,37 +20,73 @@
         fresco:placeholderImage="@color/atom_resColorMasterSecond"
         fresco:placeholderImageScaleType="centerCrop" />
 
-    <TextView
-        android:id="@+id/masterNameSurnameLabel"
-        style="@style/AtomStyle.BlackBigText"
-        android:layout_width="96dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center_vertical|right"
-        android:text="@string/atom_pub_resStringSurnameDot"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/masterNameBanner" />
-
     <EditText
         android:id="@+id/masterNameSurname"
         style="@style/AtomStyle.BlackBigText"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:background="@android:color/transparent"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/atom_ic_master_input_bg"
         android:gravity="center_vertical|left"
         android:hint="@string/atom_pub_resStringSurnameHint"
         android:imeOptions="actionNext"
         android:inputType="text"
         android:maxLength="2"
         android:maxLines="1"
+        android:paddingLeft="16dp"
         android:singleLine="true"
         android:text="郭"
         android:textColorHint="@color/atom_pub_resColorInputHint"
-        app:layout_constraintLeft_toRightOf="@+id/masterNameSurnameLabel"
-        app:layout_constraintTop_toTopOf="@+id/masterNameSurnameLabel" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/masterNameBanner" />
+
+    <TextView
+        android:id="@+id/masterNameSurnameLabel"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="96dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical|right"
+        android:paddingLeft="16dp"
+        android:text="@string/atom_pub_resStringSurnameDot"
+        app:layout_constraintBottom_toBottomOf="@+id/masterNameSurname"
+        app:layout_constraintRight_toLeftOf="@+id/masterNameSurname"
+        app:layout_constraintTop_toTopOf="@+id/masterNameSurname" />
+
+    <TextView
+        android:id="@+id/masterNameMode"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/atom_ic_master_input_bg"
+        android:gravity="center_vertical|left"
+        android:hint="@string/atom_pub_resStringSurnameHint"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:maxLength="2"
+        android:maxLines="1"
+        android:paddingLeft="16dp"
+        android:singleLine="true"
+        android:text="单姓"
+        android:textColorHint="@color/atom_pub_resColorInputHint"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/masterNameSurname" />
+
+    <TextView
+        android:id="@+id/masterNameModeLabel"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="96dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical|right"
+        android:paddingLeft="16dp"
+        android:text="@string/atom_pub_resStringSurnameDot"
+        app:layout_constraintBottom_toBottomOf="@+id/masterNameMode"
+        app:layout_constraintRight_toLeftOf="@+id/masterNameMode"
+        app:layout_constraintTop_toTopOf="@+id/masterNameMode" />
 
     <!-- 出生日期 -->
     <TextView
