@@ -22,5 +22,5 @@
     <!-- 我的页面::圆圈的颜色 -->
     <color name="atom_resColorMineCircleFirst">@color/colorPrimary</color>
     <color name="atom_resColorMineCircleSecond">#FFEF9E69</color>
-    <color name="atom_resColorMineCircleThrid">#FF9ECD5D</color>
+    <color name="atom_resColorMineCircleThird">#FF9ECD5D</color>
 </resources>

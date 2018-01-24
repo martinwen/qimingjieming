@@ -1,58 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:paddingTop="8dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/masterMineHeaderRect"
+        android:layout_width="0dp"
+        android:layout_height="112dp"
+        android:layout_margin="8dp"
+        fresco:layout_constraintLeft_toLeftOf="parent"
+        fresco:layout_constraintRight_toRightOf="parent"
+        fresco:placeholderImage="@android:color/white"
+        fresco:roundedCornerRadius="8dp" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/masterMineLogo"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/masterMineHeaderRect"
+        app:layout_constraintLeft_toLeftOf="@+id/masterMineHeaderRect"
+        app:layout_constraintTop_toTopOf="@+id/masterMineHeaderRect"
+        fresco:actualImageScaleType="centerInside"
+        fresco:placeholderImage="@mipmap/atom_ic_logo"
+        fresco:roundAsCircle="true" />
+
+    <TextView
+        android:id="@+id/masterMineUserSignIn"
+        style="@style/AtomStyle.GreyBigText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="?colorPrimary"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/atom_pub_ic_login"
+        android:gravity="center"
+        android:paddingBottom="8dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:text="@string/atom_pub_resStringUserSignInClick"
+        app:layout_constraintBottom_toBottomOf="@+id/masterMineHeaderRect"
+        app:layout_constraintLeft_toRightOf="@+id/masterMineLogo"
+        app:layout_constraintTop_toTopOf="@+id/masterMineHeaderRect"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <TextView
+        android:id="@+id/masterMineUserAccount"
+        style="@style/AtomStyle.GreyBigText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="8dp">
+        android:text="@string/atom_pub_resStringMineUserAccount"
+        app:layout_constraintLeft_toLeftOf="@+id/masterMineUserSignIn"
+        app:layout_constraintTop_toBottomOf="@+id/masterMineUserSignIn" />
 
-        <ImageView
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:padding="8dp"
-            android:scaleType="centerInside"
-            android:src="@mipmap/atom_ic_logo" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:scaleType="center"
+        android:src="@drawable/atom_pub_ic_right_arrow"
+        app:layout_constraintBottom_toBottomOf="@+id/masterMineHeaderRect"
+        app:layout_constraintRight_toRightOf="@+id/masterMineHeaderRect"
+        app:layout_constraintTop_toTopOf="@+id/masterMineHeaderRect" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="vertical"
-            android:paddingLeft="16dp">
+    <!-- 我的订单 -->
+    <TextView
+        android:id="@+id/masterMineOrder"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:drawablePadding="8dp"
+        android:drawableTop="@drawable/atom_ic_master_mine_order"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringMineOrder"
+        android:textColor="@color/atom_resColorMineCircleFirst"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/masterMineCoupon"
+        app:layout_constraintTop_toBottomOf="@+id/masterMineHeaderRect" />
 
-            <TextView
-                android:id="@+id/masterMineUserSignIn"
-                style="@style/AtomStyle.GreyBigText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/atom_pub_ic_login"
-                android:gravity="center"
-                android:paddingBottom="8dp"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:paddingTop="8dp"
-                android:text="@string/atom_pub_resStringUserSignInClick" />
+    <ImageView
+        android:id="@+id/masterMineOrderBubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="4dp"
+        android:scaleType="center"
+        android:src="@drawable/atom_pub_notification_background"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@+id/masterMineOrder"
+        app:layout_constraintTop_toTopOf="@+id/masterMineOrder" />
 
-            <TextView
-                android:id="@+id/masterMineUserAccount"
-                style="@style/AtomStyle.GreyBigText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:paddingTop="8dp"
-                android:text="@string/atom_pub_resStringMineUserAccount" />
-        </LinearLayout>
-    </LinearLayout>
+    <!-- 我的卡券 -->
+    <TextView
+        android:id="@+id/masterMineCoupon"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:drawableTop="@drawable/atom_ic_master_mine_coupon"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringMineCoupon"
+        android:textColor="@color/atom_resColorMineCircleSecond"
+        app:layout_constraintLeft_toRightOf="@+id/masterMineOrder"
+        app:layout_constraintRight_toLeftOf="@+id/masterMineCollect"
+        app:layout_constraintTop_toTopOf="@+id/masterMineOrder" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/masterMineContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="8dp" />
-</LinearLayout>
+    <ImageView
+        android:id="@+id/masterMineCouponBubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="4dp"
+        android:scaleType="center"
+        android:src="@drawable/atom_pub_notification_background"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@+id/masterMineCoupon"
+        app:layout_constraintTop_toTopOf="@+id/masterMineCoupon" />
+
+    <TextView
+        android:id="@+id/masterMineCouponNew"
+        style="@style/AtomStyle.WhiteTinyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/atom_ic_new_flag"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:scaleType="center"
+        android:text="new"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@+id/masterMineCoupon"
+        app:layout_constraintTop_toTopOf="@+id/masterMineCoupon" />
+
+    <!-- 我的收藏 -->
+    <TextView
+        android:id="@+id/masterMineCollect"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:drawableTop="@drawable/atom_ic_master_mine_collect"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringMineCollect"
+        android:textColor="@color/atom_resColorMineCircleThird"
+        app:layout_constraintLeft_toRightOf="@+id/masterMineCoupon"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/masterMineOrder" />
+
+    <!-- 百家姓 -->
+    <TextView
+        android:id="@+id/masterMineBJX"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:drawablePadding="8dp"
+        android:drawableTop="@drawable/atom_ic_master_mine_bjx"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringMineBJX"
+        android:textColor="@color/atom_resColorMineCircleThird"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/masterMineZGJM"
+        app:layout_constraintTop_toBottomOf="@+id/masterMineOrder" />
+
+    <!-- 周公解梦 -->
+    <TextView
+        android:id="@+id/masterMineZGJM"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:drawableTop="@drawable/atom_ic_master_mine_zgjm"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringMineZGJM"
+        android:textColor="@color/atom_resColorMineCircleFirst"
+        app:layout_constraintLeft_toRightOf="@+id/masterMineBJX"
+        app:layout_constraintRight_toLeftOf="@+id/masterMineQTS"
+        app:layout_constraintTop_toTopOf="@+id/masterMineBJX" />
+
+    <!-- 全唐诗 -->
+    <TextView
+        android:id="@+id/masterMineQTS"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:drawableTop="@drawable/atom_ic_master_mine_qts"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringMineQTS"
+        android:textColor="@color/atom_resColorMineCircleSecond"
+        app:layout_constraintLeft_toRightOf="@+id/masterMineZGJM"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/masterMineBJX" />
+
+    <!-- 十二生肖 -->
+    <TextView
+        android:id="@+id/masterMineZodiac"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:drawablePadding="8dp"
+        android:drawableTop="@drawable/atom_ic_master_mine_zodiac"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringMineZodiac"
+        android:textColor="@color/atom_resColorMineCircleFirst"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/masterMineAbout"
+        app:layout_constraintTop_toBottomOf="@+id/masterMineBJX" />
+
+    <!-- 关于我们 -->
+    <TextView
+        android:id="@+id/masterMineAbout"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:drawableTop="@drawable/atom_ic_master_mine_about"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringMineAbout"
+        android:textColor="@color/atom_resColorMineCircleSecond"
+        app:layout_constraintLeft_toRightOf="@+id/masterMineZodiac"
+        app:layout_constraintRight_toLeftOf="@+id/masterMineFeedback"
+        app:layout_constraintTop_toTopOf="@+id/masterMineZodiac" />
+
+    <!-- 信息反馈 -->
+    <TextView
+        android:id="@+id/masterMineFeedback"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:drawableTop="@drawable/atom_ic_master_mine_feedback"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringMineFeedback"
+        android:textColor="@color/atom_resColorMineCircleThird"
+        app:layout_constraintLeft_toRightOf="@+id/masterMineAbout"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/masterMineZodiac" />
+
+    <android.support.v4.widget.Space
+        android:layout_width="wrap_content"
+        android:layout_height="96dp"
+        app:layout_constraintTop_toBottomOf="@+id/masterMineZodiac" />
+</android.support.constraint.ConstraintLayout>

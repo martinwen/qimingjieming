@@ -15,32 +15,38 @@
 
         <include layout="@layout/atom_pub_inc_toolbar" />
 
-        <FrameLayout
-            android:id="@+id/masterFragmentContainer"
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
-            <fragment
-                android:id="@+id/masterNamingFragment"
-                class="com.tjyw.bbqmqd.fragment.ClientMasterNamingFragment"
+            <FrameLayout
+                android:id="@+id/masterFragmentContainer"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:tag="com.tjyw.bbqmqd.fragment.ClientMasterNamingFragment" />
+                android:layout_height="match_parent">
 
-            <fragment
-                android:id="@+id/masterExplainFragment"
-                class="com.tjyw.bbqmqd.fragment.ClientMasterExplainFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:tag="com.tjyw.bbqmqd.fragment.ClientMasterExplainFragment" />
+                <fragment
+                    android:id="@+id/masterNamingFragment"
+                    class="com.tjyw.bbqmqd.fragment.ClientMasterNamingFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:tag="com.tjyw.bbqmqd.fragment.ClientMasterNamingFragment" />
 
-            <fragment
-                android:id="@+id/masterMineFragment"
-                class="com.tjyw.bbqmqd.fragment.ClientMasterMineFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:tag="com.tjyw.bbqmqd.fragment.ClientMasterMineFragment" />
-        </FrameLayout>
+                <fragment
+                    android:id="@+id/masterExplainFragment"
+                    class="com.tjyw.bbqmqd.fragment.ClientMasterExplainFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:tag="com.tjyw.bbqmqd.fragment.ClientMasterExplainFragment" />
+
+                <fragment
+                    android:id="@+id/masterMineFragment"
+                    class="com.tjyw.bbqmqd.fragment.ClientMasterMineFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:tag="com.tjyw.bbqmqd.fragment.ClientMasterMineFragment" />
+            </FrameLayout>
+        </android.support.v4.widget.NestedScrollView>
     </LinearLayout>
 
     <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
