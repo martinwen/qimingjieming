@@ -1,21 +1,55 @@
 package com.tjyw.bbqmqd.holder;
 
+import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.conf.ISymbol;
 import com.tjyw.atom.network.model.NameZodiac;
 import com.tjyw.atom.network.utils.ArrayUtil;
-import atom.pub.inject.From;
-import atom.pub.inject.Injector;
+import com.tjyw.bbqmqd.ClientQmjmApplication;
 import com.tjyw.bbqmqd.R;
 
 import java.util.List;
+
+import atom.pub.inject.From;
+import atom.pub.inject.Injector;
 
 /**
  * Created by stephen on 21/09/2017.
  */
 public class BaZiSheetHolder {
+
+    @From(R.id.baZiLabelSiZhu)
+    protected TextView baZiLabelSiZhu;
+
+    @From(R.id.baZiLabelNianZhu)
+    protected TextView baZiLabelNianZhu;
+
+    @From(R.id.baZiLabelYueZhu)
+    protected TextView baZiLabelYueZhu;
+
+    @From(R.id.baZiLabelRiZhu)
+    protected TextView baZiLabelRiZhu;
+
+    @From(R.id.baZiLabelShiZhu)
+    protected TextView baZiLabelShiZhu;
+
+    @From(R.id.baZiLabelShiShen)
+    protected TextView baZiLabelShiShen;
+
+    @From(R.id.baZiLabelGanZhi)
+    protected TextView baZiLabelGanZhi;
+
+    @From(R.id.baZiLabelWuXing)
+    protected TextView baZiLabelWuXing;
+
+    @From(R.id.baZiLabelCangGan)
+    protected TextView baZiLabelCangGan;
+
+    @From(R.id.baZiLabelNaYin)
+    protected TextView baZiLabelNaYin;
 
     @From(R.id.baZiShiShenFirst)
     protected TextView baZiShiShenFirst;
@@ -81,12 +115,31 @@ public class BaZiSheetHolder {
         Injector.inject(this, view);
     }
 
-    public void sheet(NameZodiac nameZodiac) {
+    public BaZiSheetHolder sheet(NameZodiac nameZodiac) {
         sheetShiShen(nameZodiac.shishen);
         sheetGanZhi(nameZodiac.ganzhi);
         sheetWuXing(nameZodiac.wuxing);
         sheetCangGan(nameZodiac.zanggan);
         sheetNaYin(nameZodiac.nayin);
+        return this;
+    }
+
+    public BaZiSheetHolder setBaziTableHighLight(@ColorRes int color) {
+        int resColor = ContextCompat.getColor(ClientQmjmApplication.getContext(), color);
+
+        baZiLabelSiZhu.setBackgroundColor(resColor);
+        baZiLabelNianZhu.setBackgroundColor(resColor);
+        baZiLabelYueZhu.setBackgroundColor(resColor);
+        baZiLabelRiZhu.setBackgroundColor(resColor);
+        baZiLabelShiZhu.setBackgroundColor(resColor);
+
+        baZiLabelShiShen.setBackgroundColor(resColor);
+        baZiLabelGanZhi.setBackgroundColor(resColor);
+        baZiLabelWuXing.setBackgroundColor(resColor);
+        baZiLabelCangGan.setBackgroundColor(resColor);
+        baZiLabelNaYin.setBackgroundColor(resColor);
+
+        return this;
     }
 
     protected void sheetShiShen(List<String> list) {

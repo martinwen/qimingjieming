@@ -23,4 +23,10 @@
     <color name="atom_resColorMineCircleFirst">@color/colorPrimary</color>
     <color name="atom_resColorMineCircleSecond">#FFEF9E69</color>
     <color name="atom_resColorMineCircleThird">#FF9ECD5D</color>
+
+    <!-- 二级页面表格的高亮颜色 -->
+    <color name="atom_resColorTableBackground">#FFF8F8F8</color>
+
+    <!-- 二级页面表格的分割线颜色 -->
+    <color name="atom_resColorTableDivider">@color/atom_resColorMineCircleSecond</color>
 </resources>

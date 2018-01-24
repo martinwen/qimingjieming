@@ -99,7 +99,7 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:scaleType="fitXY"
-            android:src="@color/atom_pub_resColorDividerRed"
+            android:src="@color/atom_resColorTableDivider"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -108,7 +108,7 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:scaleType="fitXY"
-            android:src="@color/atom_pub_resColorDividerRed"
+            android:src="@color/atom_resColorTableDivider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
@@ -118,7 +118,7 @@
             android:layout_width="1dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            android:src="@color/atom_pub_resColorDividerRed"
+            android:src="@color/atom_resColorTableDivider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -127,7 +127,7 @@
             android:layout_width="1dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            android:src="@color/atom_pub_resColorDividerRed"
+            android:src="@color/atom_resColorTableDivider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/nameFreedomContainer"
             app:layout_constraintTop_toTopOf="parent" />
@@ -136,7 +136,7 @@
             android:layout_width="1dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            android:src="@color/atom_pub_resColorDividerRed"
+            android:src="@color/atom_resColorTableDivider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

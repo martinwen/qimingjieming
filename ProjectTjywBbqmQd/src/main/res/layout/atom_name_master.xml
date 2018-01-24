@@ -23,9 +23,9 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/atomPubToolBar"
         app:tabBackground="@drawable/atom_ic_explain_tab"
-        app:tabIndicatorColor="@color/atom_pub_resColorDividerRed"
+        app:tabIndicatorColor="@color/colorPrimary"
         app:tabIndicatorHeight="2dp"
-        app:tabSelectedTextColor="@color/atom_pub_resTextColorBlack"
+        app:tabSelectedTextColor="@color/colorPrimary"
         app:tabTextColor="@color/atom_pub_resTextColorBlack" />
 
     <android.support.v4.view.ViewPager

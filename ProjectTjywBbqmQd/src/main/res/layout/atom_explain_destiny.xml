@@ -27,7 +27,7 @@
             android:paddingTop="16dp"
             android:text="@string/atom_pub_resStringBaZi" />
 
-        <include layout="@layout/atom_pub_inc_bazi_advance" />
+        <include layout="@layout/atom_inc_bazi" />
 
         <android.support.v4.widget.Space
             android:layout_width="match_parent"
@@ -44,7 +44,7 @@
             android:paddingTop="16dp"
             android:text="@string/atom_pub_resStringExplainDestinyYunShiXiangJie" />
 
-        <include layout="@layout/atom_pub_inc_yunshijieshi_advance" />
+        <include layout="@layout/atom_inc_yunshijieshi" />
 
         <FrameLayout
             android:layout_width="match_parent"
