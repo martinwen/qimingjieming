@@ -1,7 +1,11 @@
 package com.tjyw.bbqmqd.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mobsandgeeks.saripaar.Validator;
@@ -40,6 +45,9 @@ import nucleus.factory.RequiresPresenter;
 @RequiresPresenter(NamingPresenter.class)
 public class ClientMasterNamingFragment extends AtomPubBaseFragment implements ClientGregorianFragment.OnGregorianSelectedListener {
 
+    @From(R.id.masterNameBanner)
+    protected ViewPager masterNameBanner;
+
     @Order(1)
     @Pattern(regex = "^[\\u4e00-\\u9fa5]{1,2}$", messageResId = R.string.atom_pub_resStringNameInputHint)
     @From(R.id.masterNameSurname)
@@ -51,16 +59,16 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements C
     protected TextView masterNameDateOfBirth;
 
     @From(R.id.masterNameGenderMale)
-    protected ViewGroup masterNameGenderMale;
+    protected ImageView masterNameGenderMale;
 
     @From(R.id.masterNameGenderFemale)
-    protected ViewGroup masterNameGenderFemale;
+    protected ImageView masterNameGenderFemale;
 
-    @From(R.id.masterNameSingle)
-    protected TextView masterNameSingle;
+    @From(R.id.masterNameGenderSelect)
+    protected ImageView masterNameGenderSelect;
 
-    @From(R.id.masterNameDouble)
-    protected TextView masterNameDouble;
+    @From(R.id.masterNameMode)
+    protected TextView masterNameMode;
 
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
@@ -78,6 +86,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements C
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         listRequestParam = new ListRequestParam();
+        listRequestParam.nameNumber = ISection.NAME_COUNT.SINGLE;
         return inflater.inflate(R.layout.atom_master_name, null);
     }
 
@@ -116,12 +125,10 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements C
         }
 
         masterNameGenderMale.setSelected(true);
-        masterNameDouble.setSelected(true);
 
         masterNameGenderMale.setOnClickListener(this);
         masterNameGenderFemale.setOnClickListener(this);
-        masterNameSingle.setOnClickListener(this);
-        masterNameDouble.setOnClickListener(this);
+        masterNameMode.setOnClickListener(this);
         masterNameDateOfBirth.setOnClickListener(this);
         atom_pub_resIdsOK.setOnClickListener(this);
     }
@@ -133,21 +140,35 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements C
                 listRequestParam.gender = ISection.GENDER.MALE;
                 v.setSelected(true);
                 masterNameGenderFemale.setSelected(false);
+
+                ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) masterNameGenderSelect.getLayoutParams();
+                layoutParams.rightToRight = v.getId();
+                masterNameGenderSelect.setLayoutParams(layoutParams);
                 break ;
             case R.id.masterNameGenderFemale:
                 listRequestParam.gender = ISection.GENDER.FEMALE;
                 v.setSelected(true);
                 masterNameGenderMale.setSelected(false);
+
+                layoutParams = (ConstraintLayout.LayoutParams) masterNameGenderSelect.getLayoutParams();
+                layoutParams.rightToRight = v.getId();
+                masterNameGenderSelect.setLayoutParams(layoutParams);
                 break ;
-            case R.id.masterNameSingle:
-                listRequestParam.nameNumber = ISection.NAME_COUNT.SINGLE;
-                v.setSelected(true);
-                masterNameDouble.setSelected(false);
-                break ;
-            case R.id.masterNameDouble:
-                listRequestParam.nameNumber = ISection.NAME_COUNT.DOUBLE;
-                v.setSelected(true);
-                masterNameSingle.setSelected(false);
+            case R.id.masterNameMode:
+                new AlertDialog.Builder(getActivity()).setItems(R.array.atom_pub_resStringSurnameMode, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case 0:
+                                listRequestParam.nameNumber = ISection.NAME_COUNT.SINGLE;
+                                masterNameMode.setText(R.string.atom_pub_resStringSingleName);
+                                break ;
+                            case 1:
+                                listRequestParam.nameNumber = ISection.NAME_COUNT.DOUBLE;
+                                masterNameMode.setText(R.string.atom_pub_resStringDoubleName);
+                        }
+                    }
+                }).show();
                 break ;
             case R.id.masterNameDateOfBirth:
                 ((ClientMasterActivity) getActivity()).showGregorianFragment(this);

@@ -12,4 +12,9 @@
         <item>育儿宝典</item>
         <item>孕期宝典</item>
     </string-array>
+
+    <string-array name="atom_pub_resStringSurnameMode">
+        <item>单名</item>
+        <item>双名</item>
+    </string-array>
 </resources>

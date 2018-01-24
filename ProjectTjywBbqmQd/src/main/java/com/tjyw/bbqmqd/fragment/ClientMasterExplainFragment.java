@@ -2,12 +2,14 @@ package com.tjyw.bbqmqd.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mobsandgeeks.saripaar.Validator;
@@ -51,10 +53,13 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
     protected TextView masterNameDateOfBirth;
 
     @From(R.id.masterNameGenderMale)
-    protected ViewGroup masterNameGenderMale;
+    protected ImageView masterNameGenderMale;
 
     @From(R.id.masterNameGenderFemale)
-    protected ViewGroup masterNameGenderFemale;
+    protected ImageView masterNameGenderFemale;
+
+    @From(R.id.masterNameGenderSelect)
+    protected ImageView masterNameGenderSelect;
 
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
@@ -121,11 +126,19 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
                 listRequestParam.gender = ISection.GENDER.MALE;
                 v.setSelected(true);
                 masterNameGenderFemale.setSelected(false);
+
+                ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) masterNameGenderSelect.getLayoutParams();
+                layoutParams.rightToRight = v.getId();
+                masterNameGenderSelect.setLayoutParams(layoutParams);
                 break ;
             case R.id.masterNameGenderFemale:
                 listRequestParam.gender = ISection.GENDER.FEMALE;
                 v.setSelected(true);
                 masterNameGenderMale.setSelected(false);
+
+                layoutParams = (ConstraintLayout.LayoutParams) masterNameGenderSelect.getLayoutParams();
+                layoutParams.rightToRight = v.getId();
+                masterNameGenderSelect.setLayoutParams(layoutParams);
                 break ;
             case R.id.masterNameDateOfBirth:
                 ((ClientMasterActivity) getActivity()).showGregorianFragment(this);

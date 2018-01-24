@@ -16,6 +16,8 @@
     <string name="atom_pub_resStringSurname">姓</string>
     <string name="atom_pub_resStringSurnameDot">姓：</string>
     <string name="atom_pub_resStringSurnameHint">您的姓氏（必须是汉字）</string>
+    <string name="atom_pub_resStringSurnameMode">姓形式</string>
+    <string name="atom_pub_resStringSurnameModeDot">姓形式：</string>
     <string name="atom_pub_resStringGivenName">名</string>
     <string name="atom_pub_resStringGivenNameDot">名：</string>
     <string name="atom_pub_resStringGivenNameHint">您的名字（必须是汉字）</string>
