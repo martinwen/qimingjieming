@@ -124,6 +124,10 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
                 ImageFacade.loadImage(clientInit.listVipImageUrl, nameMasterPayPackageEntry);
                 nameMasterPayPackageEntry.setVisibility(View.VISIBLE);
                 nameMasterPayPackageEntry.setOnClickListener(this);
+
+//                AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(getApplicationContext(), R.animator.atom_anim_scale_set);
+//                set.setTarget(nameMasterPayPackageEntry);
+//                set.start();
             }
         }
     }
