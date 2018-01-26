@@ -69,7 +69,7 @@ public class UserSignInActivity extends BaseToolbarActivity<UserPresenter<UserSi
         immersionBarWith()
                 .fitsSystemWindows(true)
                 .statusBarColor(R.color.colorPrimary)
-                .statusBarDarkFont(true)
+                .statusBarDarkFont(STATUSBAR_DARK_FONT)
                 .init();
 
         userSignInAuthCodeGet.setOnClickListener(this);

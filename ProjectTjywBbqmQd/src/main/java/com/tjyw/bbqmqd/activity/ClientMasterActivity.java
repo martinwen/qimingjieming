@@ -51,7 +51,7 @@ public class ClientMasterActivity extends BaseToolbarActivity<PayPresenter<Clien
         immersionBarWith()
                 .fitsSystemWindows(true)
                 .statusBarColor(R.color.colorPrimary)
-                .statusBarDarkFont(true)
+                .statusBarDarkFont(STATUSBAR_DARK_FONT)
                 .init();
 
         gregorianFragment = (ClientGregorianFragment) getSupportFragmentManager().findFragmentByTag(ClientGregorianFragment.class.getName());

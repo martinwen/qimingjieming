@@ -54,7 +54,7 @@ public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<Nami
             immersionBarWith()
                     .fitsSystemWindows(true)
                     .statusBarColor(R.color.colorPrimary)
-                    .statusBarDarkFont(true)
+                    .statusBarDarkFont(STATUSBAR_DARK_FONT)
                     .init();
         }
 

@@ -50,7 +50,7 @@ public class ClientTouchActivity extends BaseToolbarActivity {
             immersionBarWith()
                     .fitsSystemWindows(true)
                     .statusBarColor(R.color.colorPrimary)
-                    .statusBarDarkFont(true)
+                    .statusBarDarkFont(STATUSBAR_DARK_FONT)
                     .init();
 
             tSetToolBar(pGetStringExtra(IApiField.T.title, defaultTitle));

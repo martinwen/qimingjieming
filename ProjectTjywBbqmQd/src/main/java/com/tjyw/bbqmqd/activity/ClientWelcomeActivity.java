@@ -55,9 +55,6 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
 
     protected long createMillisTime;
 
-    @From(R.id.welcomeSloganView)
-    protected SimpleDraweeView welcomeSloganView;
-
     @From(R.id.welcomeGuideRoot)
     protected ViewGroup welcomeGuideRoot;
 
@@ -82,10 +79,8 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
 
         setContentView(R.layout.atom_master_welcome);
         immersionBarWith()
-                .statusBarDarkFont(true)
+                .statusBarDarkFont(STATUSBAR_DARK_FONT)
                 .init();
-
-        ImageFacade.loadImage(R.drawable.atom_png_welcome_bottom, welcomeSloganView);
 
         createMillisTime = System.currentTimeMillis();
         IPrefUser user = new ProxyGenerator().create(getApplicationContext(), IPrefUser.class);

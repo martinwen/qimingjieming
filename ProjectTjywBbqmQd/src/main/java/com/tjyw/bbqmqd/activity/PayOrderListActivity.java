@@ -68,7 +68,7 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
         immersionBarWith()
                 .fitsSystemWindows(true)
                 .statusBarColor(R.color.colorPrimary)
-                .statusBarDarkFont(true)
+                .statusBarDarkFont(STATUSBAR_DARK_FONT)
                 .init();
 
         payOrderAdapter = new FastItemAdapter<PayOrderListItem>();
