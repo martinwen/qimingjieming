@@ -3,6 +3,7 @@ package com.tjyw.bbqmqd.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.view.ViewPager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.tjyw.bbqmqd.ClientQmjmApplication;
 import com.tjyw.bbqmqd.R;
 import com.tjyw.bbqmqd.activity.BaseActivity;
 import com.tjyw.bbqmqd.activity.ClientMasterActivity;
+import com.tjyw.bbqmqd.adapter.ClientBannerAdapter;
 import com.tjyw.bbqmqd.factory.IClientActivityLaunchFactory;
 import com.xhinliang.lunarcalendar.LunarCalendar;
 
@@ -36,6 +38,9 @@ import atom.pub.interfaces.AtomPubValidationListener;
  * Created by stephen on 07/08/2017.
  */
 public class ClientMasterExplainFragment extends AtomPubBaseFragment implements ClientGregorianFragment.OnGregorianSelectedListener {
+
+    @From(R.id.masterNameBanner)
+    protected ViewPager masterNameBanner;
 
     @Order(1)
     @Pattern(regex = "^[\\u4e00-\\u9fa5]{1,2}$", messageResId = R.string.atom_pub_resStringNameInputHint)
@@ -92,6 +97,10 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
                 );
             }
         });
+
+        ClientBannerAdapter bannerAdapter = new ClientBannerAdapter();
+        bannerAdapter.addBanner(R.drawable.atom_png_banner_explain);
+        masterNameBanner.setAdapter(bannerAdapter);
 
         masterNameGivenName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

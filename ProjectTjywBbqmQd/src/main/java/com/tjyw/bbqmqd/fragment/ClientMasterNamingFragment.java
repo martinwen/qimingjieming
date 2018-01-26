@@ -28,6 +28,7 @@ import com.tjyw.bbqmqd.ClientQmjmApplication;
 import com.tjyw.bbqmqd.R;
 import com.tjyw.bbqmqd.activity.BaseActivity;
 import com.tjyw.bbqmqd.activity.ClientMasterActivity;
+import com.tjyw.bbqmqd.adapter.ClientBannerAdapter;
 import com.tjyw.bbqmqd.adapter.NameMasterAdapter;
 import com.tjyw.bbqmqd.factory.IClientActivityLaunchFactory;
 import com.xhinliang.lunarcalendar.LunarCalendar;
@@ -105,6 +106,10 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements C
                 );
             }
         });
+
+        ClientBannerAdapter bannerAdapter = new ClientBannerAdapter();
+        bannerAdapter.addBanner(R.drawable.atom_png_banner_name);
+        masterNameBanner.setAdapter(bannerAdapter);
 
         masterNameSurname.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

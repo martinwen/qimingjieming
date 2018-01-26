@@ -17,4 +17,5 @@
     <!-- 用户头像(小)图片的高度(多用于对话聊天页) -->
     <dimen name="atom_pubResDimenUserTinyAvatarDiameter">48dp</dimen>
 
+    <dimen name="atom_pubResDimenMasterBannerHeight">192dp</dimen>
 </resources>

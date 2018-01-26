@@ -10,7 +10,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/masterNameBanner"
         android:layout_width="match_parent"
-        android:layout_height="144dp"
+        android:layout_height="@dimen/atom_pubResDimenMasterBannerHeight"
         android:background="@color/atom_pubResColorImageDefault" />
 
     <ImageView
