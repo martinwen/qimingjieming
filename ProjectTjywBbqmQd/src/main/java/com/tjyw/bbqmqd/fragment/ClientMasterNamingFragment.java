@@ -108,7 +108,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements C
         });
 
         ClientBannerAdapter bannerAdapter = new ClientBannerAdapter();
-        bannerAdapter.addBanner(R.drawable.atom_png_banner_name);
+        bannerAdapter.addBanner(R.drawable.atom_png_banner_naming);
         masterNameBanner.setAdapter(bannerAdapter);
 
         masterNameSurname.setOnEditorActionListener(new TextView.OnEditorActionListener() {

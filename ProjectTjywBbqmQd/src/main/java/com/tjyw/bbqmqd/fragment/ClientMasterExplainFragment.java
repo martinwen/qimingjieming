@@ -99,7 +99,7 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
         });
 
         ClientBannerAdapter bannerAdapter = new ClientBannerAdapter();
-        bannerAdapter.addBanner(R.drawable.atom_png_banner_explain);
+        bannerAdapter.addBanner(R.drawable.atom_png_banner_explian);
         masterNameBanner.setAdapter(bannerAdapter);
 
         masterNameGivenName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
