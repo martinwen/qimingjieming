@@ -16,6 +16,12 @@ android {
         versionName "1.0"
 
         multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
     }
 
     buildTypes {
@@ -31,9 +37,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs/baidu', include: ['*.jar'])
-    compile fileTree(dir: 'libs/mi', include: ['*.jar'])
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs/baidu', include: ['*.jar'])
+    api fileTree(dir: 'libs/mi', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.jar'])
 
-    compile project(':AtomNetwork')
+    implementation project(':AtomNetwork')
 }

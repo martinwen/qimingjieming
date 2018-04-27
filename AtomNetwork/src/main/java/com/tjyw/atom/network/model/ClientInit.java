@@ -50,6 +50,8 @@ public class ClientInit implements RetroResultItem {
 
     public int red_packet_id; // 新手红包ID参数
 
+    public String payButtonText; // 立即解锁
+
     public boolean saveInstance(Context context) {
         IPrefClient client = new ProxyGenerator().create(context, IPrefClient.class);
         if (null != client) {

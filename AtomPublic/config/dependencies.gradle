@@ -1,63 +1,67 @@
 dependencies {
 
-    compile rxDependencies.rxAndroid
-    compile rxDependencies.rxJava
-    compile rxDependencies.retrofit2Retrofit
-    compile rxDependencies.retrofit2ConverterJackson
-    compile rxDependencies.retrofit2AdapterRxjava
+    api "${rxDependencies.rxAndroid}"
+    api "${rxDependencies.rxJava}"
+    api "${rxDependencies.retrofit2Retrofit}"
+    api "${rxDependencies.retrofit2ConverterJackson}"
+    api "${rxDependencies.retrofit2AdapterRxjava}"
 
-    compile fackbookDependencies.fresco
-    compile fackbookDependencies.frescoGif
-    compile fackbookDependencies.facebookRebound
-    compile fackbookDependencies.stetho
-    compile fackbookDependencies.stethoOkHttp
+    api "${fackbookDependencies.fresco}"
+    api "${fackbookDependencies.frescoGif}"
+    api "${fackbookDependencies.facebookRebound}"
+    api ("${fackbookDependencies.stetho}") {
+        exclude module :'support-v7'
+    }
+    api "${fackbookDependencies.stethoOkHttp}"
 
     /* Android Support */
-    compile supportDependencies.appcompatV7
-    compile supportDependencies.supportRecyclerView
-    compile supportDependencies.supportV4CoreUI
-    compile supportDependencies.supportV4Fragment
-    compile supportDependencies.supportAnnotation
-    compile supportDependencies.supportDesign
-    compile supportDependencies.supportPercent
-    compile supportDependencies.supportCardview
-    compile supportDependencies.supportConstraintLayout
-    compile supportDependencies.supportMultidex
+    api "${supportDependencies.appcompatV7}"
+    api "${supportDependencies.supportRecyclerView}"
+    api "${supportDependencies.supportV4CoreUI}"
+    api "${supportDependencies.supportV4Fragment}"
+    api "${supportDependencies.supportAnnotation}"
+    api "${supportDependencies.supportDesign}"
+    api "${supportDependencies.supportPercent}"
+    api "${supportDependencies.supportCardview}"
+    api "${supportDependencies.supportConstraintLayout}"
+    api "${supportDependencies.supportMultidex}"
 
     /*Nice Libraries*/
-    compile niceLibraryDependencies.eventBus
-    compile niceLibraryDependencies.nucleus
-    compile niceLibraryDependencies.nucleusSupportV4
-    compile niceLibraryDependencies.nucleusSupportV7
-    compile niceLibraryDependencies.matisse
-    compile niceLibraryDependencies.photoDraweeView
-    compile niceLibraryDependencies.butterKnife
-    compile niceLibraryDependencies.butterKnifeCompiler
+    api "${niceLibraryDependencies.eventBus}"
+    api "${niceLibraryDependencies.nucleus}"
+    api "${niceLibraryDependencies.nucleusSupportV4}"
+    api ("${niceLibraryDependencies.nucleusSupportV7}") {
+        exclude module :'support-v7'
+    }
+    api "${niceLibraryDependencies.matisse}"
+    api "${niceLibraryDependencies.photoDraweeView}"
+    api "${niceLibraryDependencies.butterKnife}"
+    api "${niceLibraryDependencies.butterKnifeCompiler}"
 
     /* Libraries */
-    compile libraryDependencies.imageCrop
-    compile libraryDependencies.timber
-    compile libraryDependencies.roundCornerProgressBar
-    compile libraryDependencies.swipeback
-    compile libraryDependencies.umengAnalytics
-    compile libraryDependencies.saripaar
-    compile libraryDependencies.flexibleDivider
-    compile libraryDependencies.rxPermissions
-    compile libraryDependencies.ahBottomBavigation
-    compile libraryDependencies.navigationTabStrip
-    compile libraryDependencies.chipsLayoutManager
-    compile libraryDependencies.smoothRefreshLayout
-    compile libraryDependencies.stanley
-    compile libraryDependencies.barlibrary
-    compile libraryDependencies.calligraphy
-    compile libraryDependencies.circularProgressView
+    api "${libraryDependencies.imageCrop}"
+    api "${libraryDependencies.timber}"
+    api "${libraryDependencies.roundCornerProgressBar}"
+    api "${libraryDependencies.swipeback}"
+    api "${libraryDependencies.umengAnalytics}"
+    api "${libraryDependencies.saripaar}"
+    api "${libraryDependencies.flexibleDivider}"
+    api "${libraryDependencies.rxPermissions}"
+    api "${libraryDependencies.ahBottomBavigation}"
+    api "${libraryDependencies.navigationTabStrip}"
+    api "${libraryDependencies.chipsLayoutManager}"
+    api "${libraryDependencies.smoothRefreshLayout}"
+    api "${libraryDependencies.stanley}"
+    api "${libraryDependencies.barlibrary}"
+    api "${libraryDependencies.calligraphy}"
+    api "${libraryDependencies.circularProgressView}"
 
-    compile mikePenzLibDependencies.fastAdapterCommons
-    compile mikePenzLibDependencies.fastAdapterExtensions
-    compile(mikePenzLibDependencies.fastAdapter) {
+    api "${mikePenzLibDependencies.fastAdapterCommons}"
+    api "${mikePenzLibDependencies.fastAdapterExtensions}"
+    api ("${mikePenzLibDependencies.fastAdapter}") {
         transitive = true
     }
 
-    debugCompile libraryDependencies.leakcanaryDebug
-    releaseCompile libraryDependencies.leakcanaryRelease
+    debugApi "${libraryDependencies.leakcanaryDebug}"
+    releaseApi "${libraryDependencies.leakcanaryRelease}"
 }

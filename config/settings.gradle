@@ -27,25 +27,25 @@ ext {
 
             bbqmqd = [
                     androidApplicationId : "com.tjyw.bbqmqd",
-                    androidVersionCode : 10001000,
-                    androidVersionName : "1.0.0"
+                    androidVersionCode : 10001100,
+                    androidVersionName : "1.1.0"
             ]
     ]
 
     // Android
-    androidBuildToolsVersion = "25.0.3"
+    androidBuildToolsVersion = "27.0.3"
     androidMinSdkVersion = 15
-    androidTargetSdkVersion = 23
-    androidCompileSdkVersion = 25
+    androidTargetSdkVersion = 27
+    androidCompileSdkVersion = 27
 
     libVersions = [
 
-            VER_SupportBase                 : "25.1.1",
+            VER_SupportBase                 : "27.1.0",
             VER_SupportMultidex             : "1.0.0",
             VER_SupportConstraintLayout     : "1.0.2",
 
-            VER_Rx_Java                     : "1.2.0",
-            VER_Rx_Andorid                  : "1.2.0",
+            VER_Rx_Java                     : "1.3.8",
+            VER_Rx_Andorid                  : "1.2.1",
             VER_Rx_Java_2                   : "2.0.1",
             VER_Rx_Andorid_2                : "2.0.1",
 
@@ -57,18 +57,18 @@ ext {
             VER_Squareup_Retrofit_Jackson   : "2.2.0",
             VER_Squareup_Retrofit_Adapter   : "2.2.0",
 
-            VER_Facebook_Fresco             : "1.1.0",
+            VER_Facebook_Fresco             : "1.9.0",
             VER_Facebook_Rebound            : "0.3.8",
             VER_Facebook_Stetho             : "1.5.0",
 
             VER_Nice_Event_Bus              : "3.0.0",
-            VER_Nice_Nucleus                : "4.0.0",
+            VER_Nice_Nucleus                : "6.0.0",
             VER_Nice_Matisse                : "0.4.3",
             VER_Nice_PhotoDraweeView        : "1.1.3",
             VER_Nice_ButterKnife            : "8.5.1",
 
             VER_Image_Crop                  : "1.0.1@aar",
-            VER_Timber                      : "4.5.1",
+            VER_Timber                      : "4.7.0",
             VER_RoundCornerProgressBar      : "2.0.3",
             VER_Swipeback                   : "1.0.4",
             VER_Umeng                       : "6.1.1",
@@ -117,7 +117,7 @@ ext {
             fresco                          : "com.facebook.fresco:fresco:${libVersions.VER_Facebook_Fresco}",
             frescoGif                       : "com.facebook.fresco:animated-gif:${libVersions.VER_Facebook_Fresco}",
             facebookRebound                 : "com.facebook.rebound:rebound:${libVersions.VER_Facebook_Rebound}",
-            stetho                          : "com.facebook.stetho:stetho:${libVersions.VER_Facebook_Stetho}",
+            stetho                          : "com.facebook.fresco:stetho:${libVersions.VER_Facebook_Stetho}",
             stethoOkHttp                    : "com.facebook.stetho:stetho-okhttp3:${libVersions.VER_Facebook_Stetho}"
     ]
 
@@ -147,7 +147,7 @@ ext {
             ahBottomBavigation              : "com.aurelhubert:ahbottomnavigation:${libVersions.VER_AHBottomNavigation}",
             chipsLayoutManager              : "com.beloo.widget:ChipsLayoutManager:${libVersions.VER_Chips_Layout_Manager}",
             smoothRefreshLayout             : "com.github.dkzwm:SmoothRefreshLayout:${libVersions.VER_SmoothRefreshLayout}",
-            stanley                         : "com.brianjmelton:stanley:${libVersions.VER_Stanley}",
+            stanley                         : "com.github.iambmelt:Stanley:${libVersions.VER_Stanley}",
             barlibrary                      : "com.gyf.barlibrary:barlibrary:${libVersions.VER_BarLiberay}",
             calligraphy                     : "uk.co.chrisjenx:calligraphy:${libVersions.VER_Calligraphy}",
             circularProgressView            : "com.github.rahatarmanahmed:circularprogressview:${libVersions.VER_CircularProgressView}"

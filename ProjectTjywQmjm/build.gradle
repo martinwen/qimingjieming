@@ -25,6 +25,14 @@ android {
         multiDexEnabled true
 
         generatedDensities = []
+
+        flavorDimensions "versionCode"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
     }
 
     aaptOptions {
@@ -150,10 +158,10 @@ def differentNameAssemble(output, productFlavors, versionCode) {
             newApkName = "adr_qmjm_master_${CLIENT_C_ID}_${CLIENT_C_NAME}_${versionCode}_${new Date().format('yyyyMMdd')}.apk"
         }
 
-        output.outputFile = new File(zipFile.parent, newApkName)
+//        output.outputFile = new File(zipFile.parent, newApkName)
     }
 
-    zipFile.delete()
+//    zipFile.delete()
 }
 
 /**
@@ -300,7 +308,7 @@ int copy(InputStream input, OutputStream output)
 }
 
 dependencies {
-    compile project(':AtomNetwork')
-    compile project(':AtomSwiftPay')
-    compile project(':AtomPublic')
+    implementation project(':AtomNetwork')
+    implementation project(':AtomSwiftPay')
+    implementation project(':AtomPublic')
 }

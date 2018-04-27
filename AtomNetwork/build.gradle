@@ -14,6 +14,12 @@ android {
         versionName "1.0"
 
         multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
     }
 
     buildTypes {
@@ -31,26 +37,29 @@ android {
 
 dependencies {
 
-    compile supportDependencies.supportMultidex
+    api "${supportDependencies.supportMultidex}"
 
-    compile fackbookDependencies.stetho
-    compile fackbookDependencies.stethoOkHttp
+    api "${fackbookDependencies.stetho}"
+    api "${fackbookDependencies.stethoOkHttp}"
 
-    compile rxDependencies.rxAndroid
-    compile rxDependencies.rxJava
-    compile rxDependencies.retrofit2Retrofit
-    compile rxDependencies.retrofit2ConverterJackson
-    compile rxDependencies.retrofit2AdapterRxjava
+    api "${rxDependencies.rxAndroid}"
+    api "${rxDependencies.rxJava}"
+    api "${rxDependencies.retrofit2Retrofit}"
+    api "${rxDependencies.retrofit2ConverterJackson}"
+    api "${rxDependencies.retrofit2AdapterRxjava}"
 
-    compile rxDependencies.squareupOkio
-    compile rxDependencies.squareupOkhttp
-    compile rxDependencies.squareupLogging
+    api "${rxDependencies.squareupOkio}"
+    api "${rxDependencies.squareupOkhttp}"
+    api "${rxDependencies.squareupLogging}"
 
-    compile niceLibraryDependencies.eventBus
-    compile niceLibraryDependencies.nucleus
-    compile niceLibraryDependencies.nucleusSupportV4
-    compile niceLibraryDependencies.nucleusSupportV7
+    api "${niceLibraryDependencies.eventBus}"
+    api "${niceLibraryDependencies.nucleus}"
+    api "${niceLibraryDependencies.nucleusSupportV4}"
+    api ("${niceLibraryDependencies.nucleusSupportV7}") {
+        exclude module :'support-v7'
+    }
 
-    compile libraryDependencies.timber
-    compile libraryDependencies.stanley
+    api "${libraryDependencies.timber}"
+    api "${libraryDependencies.stanley}"
+
 }

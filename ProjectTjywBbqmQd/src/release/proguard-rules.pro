@@ -185,7 +185,7 @@
 
 
 # ============  SwiftPay  ============
--libraryjars ../../../AtomSwiftPay/libs/wftsdk_wap_1.4.jar
+#-libraryjars ../../../AtomSwiftPay/libs/wftsdk_wap_1.4.jar
 
 -dontwarn com.swiftfintech.pay.**
--keep class com.swiftfintech.pay.** { *;}
+-keep class com.swiftfintech.pay.** { *; }
