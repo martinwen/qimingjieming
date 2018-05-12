@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.tjyw.atom.network.model.ClientInit;
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.bbqmqd.ClientQmjmApplication;
@@ -90,6 +91,7 @@ public class PayPackageEntryFragment extends BaseFragment {
         bodyServicePriceEach.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringPayPackageMoneyEach, payService.eachDay));
         bodyValidDate.setText(payService.validDate);
 
+        atom_pub_resIdsOK.setText(ClientInit.getPayButtonText(ClientQmjmApplication.getContext(), ClientQmjmApplication.pGetString(R.string.atom_pub_resStringPayPay)));
         atom_pub_resIdsOK.setOnClickListener(this);
     }
 

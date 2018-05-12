@@ -1,104 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/payServiceContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
     android:background="#AA000000">
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/payServiceBackgroundView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/atom_pub_png_name_lucky_bg"
-        android:orientation="vertical"
-        app:layout_widthPercent="80%">
+        android:src="@drawable/atom_pub_png_pay_window_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="fitXY"
-            android:src="@drawable/atom_pub_png_name_lucky_slogan" />
+    <ImageView
+        android:id="@+id/payServiceClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:src="@drawable/atom_ic_pay_window_close"
+        app:layout_constraintRight_toRightOf="@+id/payServiceBackgroundView"
+        app:layout_constraintTop_toTopOf="@+id/payServiceBackgroundView" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp">
+    <TextView
+        android:id="@+id/payServiceZXMZ"
+        style="@style/AtomStyle.WhiteHugeText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/atom_pubResDimenRecyclerViewDivider16dp"
+        android:text="自选名字"
+        app:layout_constraintLeft_toLeftOf="@+id/payServiceBackgroundView"
+        app:layout_constraintRight_toRightOf="@+id/payServiceBackgroundView"
+        app:layout_constraintTop_toTopOf="@+id/payServiceBackgroundView" />
 
-            <TextView
-                android:id="@+id/bodySurname"
-                style="@style/AtomStyle.BlackNormalText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:maxLength="2"
-                android:maxLines="1"
-                tools:text="bodySurname" />
+    <TextView
+        android:id="@+id/payServiceHint"
+        style="@style/AtomStyle.WhiteContentTitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="@string/atom_pub_resStringNamePayHintNew"
+        app:layout_constraintLeft_toLeftOf="@+id/payServiceBackgroundView"
+        app:layout_constraintRight_toRightOf="@+id/payServiceBackgroundView"
+        app:layout_constraintTop_toBottomOf="@+id/payServiceZXMZ" />
 
-            <TextView
-                android:id="@+id/bodyDate"
-                style="@style/AtomStyle.BlackNormalText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:maxLength="20"
-                android:maxLines="1"
-                android:paddingLeft="16dp"
-                tools:text="bodyDate" />
-        </LinearLayout>
+    <ImageView
+        android:id="@+id/payServiceCircleBackgroundView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:src="@drawable/atom_pub_png_pay_window_circle_bg"
+        app:layout_constraintLeft_toLeftOf="@+id/payServiceBackgroundView"
+        app:layout_constraintRight_toRightOf="@+id/payServiceBackgroundView"
+        app:layout_constraintTop_toBottomOf="@+id/payServiceHint" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="8dp">
+    <ImageView
+        android:id="@+id/payServiceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        app:layout_constraintBottom_toBottomOf="@+id/payServiceCircleBackgroundView"
+        app:layout_constraintLeft_toLeftOf="@+id/payServiceBackgroundView"
+        app:layout_constraintRight_toRightOf="@+id/payServiceBackgroundView"
+        app:layout_constraintTop_toTopOf="@+id/payServiceCircleBackgroundView"
+        tools:src="@drawable/atom_pub_png_pay_window_djm" />
 
-            <TextView
-                android:id="@+id/bodyServiceName"
-                style="@style/AtomStyle.RedNormalText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:maxLength="20"
-                android:maxLines="1"
-                tools:text="bodyServiceName" />
-
-            <TextView
-                android:id="@+id/bodyServicePrice"
-                style="@style/AtomStyle.RedNormalText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:maxLength="20"
-                android:maxLines="1"
-                android:paddingLeft="16dp"
-                tools:text="bodyServicePrice" />
-        </LinearLayout>
-
-        <TextView
-            style="@style/AtomStyle.RedBigText"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.0"
-            android:lineSpacingExtra="8dp"
-            android:padding="16dp"
-            android:text="@string/atom_pub_resStringNamePayHint" />
+    <LinearLayout
+        android:id="@+id/payServicePriceContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        app:layout_constraintLeft_toLeftOf="@+id/payServiceBackgroundView"
+        app:layout_constraintRight_toRightOf="@+id/payServiceBackgroundView"
+        app:layout_constraintTop_toBottomOf="@+id/payServiceCircleBackgroundView">
 
         <TextView
-            android:id="@id/atom_pub_resIdsOK"
-            style="@style/AtomPubStyleKa.White"
+            style="@style/AtomStyle.WhiteBigText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/atom_pub_ic_ink_text_red"
             android:gravity="center"
-            android:text="@string/atom_pub_resStringPayPay" />
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@string/atom_pub_resStringNamePayPrice1" />
+
+        <TextView
+            android:id="@+id/payServicePrice"
+            style="@style/AtomStyle.WhiteSuperLargeHugeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="#FFFFFF00"
+            tools:text="25" />
+
+        <TextView
+            style="@style/AtomStyle.WhiteBigText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@string/atom_pub_resStringNamePayPrice2" />
+
+        <TextView
+            android:id="@+id/payServiceOldPrice"
+            style="@style/AtomStyle.WhiteBigText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="#FFFFFF00"
+            tools:text="88" />
     </LinearLayout>
-</android.support.percent.PercentFrameLayout>
+
+    <ImageView
+        android:id="@+id/payServiceBuy"
+        style="@style/AtomStyle.WhiteBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:singleLine="true"
+        android:src="@drawable/atom_pub_ic_pay_window_buy"
+        android:text="@string/atom_pub_resStringNamePayPrice1"
+        app:layout_constraintLeft_toLeftOf="@+id/payServiceBackgroundView"
+        app:layout_constraintRight_toRightOf="@+id/payServiceBackgroundView"
+        app:layout_constraintTop_toBottomOf="@+id/payServicePriceContainer" />
+
+    <ImageView
+        android:id="@+id/payServiceSuit"
+        style="@style/AtomStyle.WhiteBigText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:src="@drawable/atom_pub_ic_pay_window_suit"
+        android:text="@string/atom_pub_resStringNamePayPrice1"
+        app:layout_constraintLeft_toLeftOf="@+id/payServiceBackgroundView"
+        app:layout_constraintRight_toRightOf="@+id/payServiceBackgroundView"
+        app:layout_constraintTop_toBottomOf="@+id/payServiceBuy" />
+</android.support.constraint.ConstraintLayout>

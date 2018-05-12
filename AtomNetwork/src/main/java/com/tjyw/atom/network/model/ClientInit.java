@@ -1,6 +1,7 @@
 package com.tjyw.atom.network.model;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import com.brianjmelton.stanley.ProxyGenerator;
 import com.tjyw.atom.network.interfaces.IPrefClient;
@@ -24,6 +25,15 @@ public class ClientInit implements RetroResultItem {
         }
 
         return new ClientInit();
+    }
+
+    public static String getPayButtonText(Context context, String _default) {
+        ClientInit clientInit = getInstance(context);
+        if (null == clientInit || TextUtils.isEmpty(clientInit.payButtonText)) {
+            return _default;
+        } else {
+            return clientInit.payButtonText;
+        }
     }
 
     public String baijiaxing;

@@ -1,17 +1,19 @@
 package com.tjyw.bbqmqd.fragment;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
-import atom.pub.inject.From;
-import com.tjyw.bbqmqd.ClientQmjmApplication;
 import com.tjyw.bbqmqd.R;
+
+import atom.pub.inject.From;
 
 /**
  * Created by stephen on 17-8-17.
@@ -23,20 +25,23 @@ public class PayServiceFragment extends BaseFragment {
         void payOnServicePayClick(PayServiceFragment fragment, ListRequestParam listRequestParam, PayService payService);
     }
 
-    @From(R.id.bodySurname)
-    protected TextView bodySurname;
+    @From(R.id.payServiceClose)
+    protected ImageView payServiceClose;
 
-    @From(R.id.bodyDate)
-    protected TextView bodyDate;
+    @From(R.id.payServiceName)
+    protected ImageView payServiceName;
 
-    @From(R.id.bodyServiceName)
-    protected TextView bodyServiceName;
+    @From(R.id.payServicePrice)
+    protected TextView payServicePrice;
 
-    @From(R.id.bodyServicePrice)
-    protected TextView bodyServicePrice;
+    @From(R.id.payServiceOldPrice)
+    protected TextView payServiceOldPrice;
 
-    @From(R.id.atom_pub_resIdsOK)
-    protected TextView atom_pub_resIdsOK;
+    @From(R.id.payServiceBuy)
+    protected ImageView payServiceBuy;
+
+    @From(R.id.payServiceSuit)
+    protected ImageView payServiceSuit;
 
     protected ListRequestParam listRequestParam;
 
@@ -72,22 +77,43 @@ public class PayServiceFragment extends BaseFragment {
             getView().setOnClickListener(this);
         }
 
-        atom_pub_resIdsOK.setOnClickListener(this);
-        bodySurname.setText(payService.surname);
-        bodyDate.setText(payService.day);
-        bodyServiceName.setText(payService.service);
-        bodyServicePrice.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s, payService.money));
+        payServiceClose.setOnClickListener(this);
+        payServiceBuy.setOnClickListener(this);
+        payServiceSuit.setOnClickListener(this);
+
+        payServicePrice.setText(String.valueOf(payService.money));
+
+        payServiceOldPrice.setText("88");
+        payServiceOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+
+        switch (payService.id) {
+            case PayService.VIP_ID.RECOMMEND:
+                payServiceName.setImageResource(R.drawable.atom_pub_png_pay_window_recommend);
+                break ;
+            case PayService.VIP_ID.LUCKY:
+                payServiceName.setImageResource(R.drawable.atom_pub_png_pay_window_lucky);
+                break ;
+            case PayService.VIP_ID.DJM:
+                payServiceName.setImageResource(R.drawable.atom_pub_png_pay_window_djm);
+                break ;
+            case PayService.VIP_ID.XJM:
+                payServiceName.setImageResource(R.drawable.atom_pub_png_pay_window_xjm);
+        }
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.atom_pub_resIdsOK:
+            case R.id.payServiceBuy:
                 pHideFragment(this);
                 if (null != listener) {
                     listener.payOnServicePayClick(this, listRequestParam, payService);
                 }
                 break ;
+            case R.id.payServiceSuit:
+
+                break ;
+            case R.id.payServiceClose:
             default:
                 pHideFragment(this);
         }

@@ -27,6 +27,7 @@ import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
+import com.tjyw.atom.network.model.ClientInit;
 import com.tjyw.atom.network.model.PayCoupon;
 import com.tjyw.atom.network.model.PayOrder;
 import com.tjyw.atom.network.model.PayOrderNumber;
@@ -39,6 +40,7 @@ import com.tjyw.atom.network.presenter.listener.OnApiUserPostListener;
 import com.tjyw.atom.network.result.RPayPacketResult;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
 import com.tjyw.atom.network.utils.ArrayUtil;
+import com.tjyw.bbqmqd.ClientQmjmApplication;
 import com.tjyw.bbqmqd.R;
 
 import org.greenrobot.eventbus.EventBus;
@@ -122,6 +124,8 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         payUseAlipay.setSelected(true);
         payUseAlipay.setOnClickListener(this);
         payUseWxPay.setOnClickListener(this);
+
+        atom_pub_resIdsOK.setText(ClientInit.getPayButtonText(ClientQmjmApplication.getContext(), ClientQmjmApplication.pGetString(R.string.atom_pub_resStringPayPay)));
         atom_pub_resIdsOK.setOnClickListener(this);
 
         maskerShowProgressView(true);

@@ -9,6 +9,17 @@ public class PayService implements RetroResultItem {
 
     private static final long serialVersionUID = -2282241746086150868L;
 
+    public interface VIP_ID {
+
+        int RECOMMEND = 1;
+
+        int LUCKY = 2;
+
+        int DJM = 3;
+
+        int XJM = 4;
+    }
+
     public int id;
 
     public String service;

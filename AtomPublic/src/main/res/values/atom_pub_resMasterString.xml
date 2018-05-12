@@ -49,7 +49,10 @@
     <string name="atom_pub_resStringNameLunarDot">农历：</string>
     <string name="atom_pub_resStringNameGender">性别</string>
     <string name="atom_pub_resStringNameGenderDot">性别：</string>
-    <string name="atom_pub_resStringNamePayHint">将得到以下内容：\n国内最专业易学专家团队\n20余年潜心研究起名算法\n平安健康兴家旺运\n成功快人一步！</string>
+    <string name="atom_pub_resStringNamePayHint">将得到以下内容：\n八字大运幸福人生起名法\n多家主流媒体极力推荐\n国学大师20年起名经验\n起名满意度达99%！</string>
+    <string name="atom_pub_resStringNamePayHintNew">多家主流媒体极力推荐; 国学大师20年起名经验</string>
+    <string name="atom_pub_resStringNamePayPrice1">仅需支付 </string>
+    <string name="atom_pub_resStringNamePayPrice2"> 元 原价</string>
     <string name="atom_pub_resStringNameMakeAGoodName">选个助运好名</string>
 
     <!-- 八字 -->
@@ -119,7 +122,7 @@
     <string name="atom_pub_resStringPayUseAliPay">支付宝</string>
     <string name="atom_pub_resStringPayUseAliPayRecommend">推荐</string>
     <string name="atom_pub_resStringPayUseWxPay">微信</string>
-    <string name="atom_pub_resStringPayPay">立即支付</string>
+    <string name="atom_pub_resStringPayPay">立即解锁</string>
     <!-- 支付列表 -->
     <string name="atom_pub_resStringPayList">我的订单</string>
     <string name="atom_pub_resStringPayNoData">没有订单记录</string>
