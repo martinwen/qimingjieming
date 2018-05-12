@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mikepenz.fastadapter.adapters.FooterAdapter;
 import com.mikepenz.fastadapter.adapters.HeaderAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.IApiField;
@@ -17,6 +18,7 @@ import atom.pub.fragment.AtomPubBaseFragment;
 import atom.pub.inject.From;
 import com.tjyw.bbqmqd.ClientQmjmApplication;
 import com.tjyw.bbqmqd.R;
+import com.tjyw.bbqmqd.item.ExplainFooterItem;
 import com.tjyw.bbqmqd.item.ExplainHeaderItem;
 import com.tjyw.bbqmqd.item.ExplainZodiacItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
@@ -62,6 +64,10 @@ public class ExplainMasterZodiacFragment extends AtomPubBaseFragment {
         explainHeaderAdapter = new HeaderAdapter<ExplainHeaderItem>();
         explainHeaderAdapter.wrap(itemAdapter);
         explainHeaderAdapter.add(new ExplainHeaderItem(explain));
+
+        FooterAdapter<ExplainFooterItem> footerAdapter = new FooterAdapter<ExplainFooterItem>();
+        footerAdapter.wrap(explainHeaderAdapter);
+        footerAdapter.add(new ExplainFooterItem(explain));
 
         explainZodiacContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
         explainZodiacContainer.setAdapter(explainHeaderAdapter);

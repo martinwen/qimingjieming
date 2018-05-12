@@ -4,11 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/atom_pub_resColorBackground"
     android:orientation="vertical"
     tools:ignore="MissingPrefix">
-
-    <include layout="@layout/atom_inc_symbol" />
 
     <include
         android:id="@+id/atomPubToolBar"
@@ -18,14 +15,14 @@
         android:id="@+id/explainTabHost"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:tabBackground="@drawable/atom_ic_explain_tab"
-        app:tabSelectedTextColor="@color/colorPrimary"
-        app:tabTextColor="@color/atom_pub_resTextColorBlack"
-        app:tabIndicatorColor="@color/colorPrimary"
-        app:tabIndicatorHeight="2dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/atomPubToolBar" />
+        app:layout_constraintTop_toBottomOf="@+id/atomPubToolBar"
+        app:tabBackground="@drawable/atom_ic_explain_tab"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabIndicatorHeight="2dp"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabTextColor="@color/atom_pub_resTextColorBlack" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/explainMasterContainer"
@@ -35,6 +32,20 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/explainTabHost" />
+
+    <TextView
+        android:id="@+id/explainGoodName"
+        style="@style/AtomPubStyleKa.White"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/atom_pub_ic_ink_text_red"
+        android:gravity="center"
+        android:text="@string/atom_pub_resStringExplainGoodName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <include layout="@layout/atom_inc_loading" />
 </android.support.constraint.ConstraintLayout>

@@ -46,20 +46,10 @@
 
         <include layout="@layout/atom_inc_yunshijieshi" />
 
-        <FrameLayout
+        <android.support.v4.widget.Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:layout_height="@dimen/atom_pubResDimenRecyclerViewDivider8dp" />
 
-            <TextView
-                android:id="@+id/explainGoodName"
-                style="@style/AtomPubStyleKa.White"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/atom_pub_ic_ink_text_red"
-                android:gravity="center"
-                android:text="@string/atom_pub_resStringExplainGoodName" />
-        </FrameLayout>
+        <include layout="@layout/atom_explain_footer" />
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

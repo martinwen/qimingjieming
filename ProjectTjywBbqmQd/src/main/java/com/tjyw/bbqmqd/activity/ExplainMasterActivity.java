@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.TextView;
 
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
@@ -15,6 +16,7 @@ import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostExplainListener;
 import com.tjyw.bbqmqd.R;
 import com.tjyw.bbqmqd.adapter.ExplainMasterAdapter;
+import com.tjyw.bbqmqd.adapter.NameMasterAdapter;
 import com.tjyw.bbqmqd.factory.IClientActivityLaunchFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -37,6 +39,9 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     @From(R.id.explainMasterContainer)
     protected ViewPager explainMasterContainer;
 
+    @From(R.id.explainGoodName)
+    protected TextView explainGoodName;
+
     protected ExplainMasterAdapter explainMasterAdapter;
 
     protected ListRequestParam listRequestParam;
@@ -58,6 +63,8 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
                     .statusBarColor(R.color.colorPrimary)
                     .statusBarDarkFont(STATUSBAR_DARK_FONT)
                     .init();
+
+            explainGoodName.setOnClickListener(this);
         }
 
         int delayed = pGetIntExtra(IApiField.D.delayed, 100);
@@ -95,6 +102,19 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     }
 
     @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.explainGoodName:
+                if (null != listRequestParam) {
+                    IClientActivityLaunchFactory.launchNameMasterActivity(this, listRequestParam, 100, NameMasterAdapter.POSITION.FREEDOM);
+                }
+                break ;
+            default:
+                super.onClick(v);
+        }
+    }
+
+    @Override
     public void postOnExplainError(int postId, Throwable throwable) {
         throwable.printStackTrace();
         maskerShowMaskerLayout(getString(R.string.atom_pub_resStringNetworkBroken), R.string.atom_pub_resStringRetry);
@@ -123,11 +143,5 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
                 listRequestParam.day,
                 listRequestParam.gender
         );
-    }
-
-    public void launchNameMasterActivity(int position) {
-        if (null != listRequestParam) {
-            IClientActivityLaunchFactory.launchNameMasterActivity(this, listRequestParam, 100, position);
-        }
     }
 }

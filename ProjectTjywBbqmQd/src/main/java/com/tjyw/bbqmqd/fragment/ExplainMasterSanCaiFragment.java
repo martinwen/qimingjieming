@@ -8,14 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mikepenz.fastadapter.adapters.FooterAdapter;
 import com.mikepenz.fastadapter.adapters.HeaderAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
-import atom.pub.fragment.AtomPubBaseFragment;
-import atom.pub.inject.From;
 import com.tjyw.bbqmqd.ClientQmjmApplication;
 import com.tjyw.bbqmqd.R;
+import com.tjyw.bbqmqd.item.ExplainFooterItem;
 import com.tjyw.bbqmqd.item.ExplainSanCaiItem;
 import com.tjyw.bbqmqd.item.ExplainWuGeItem;
 import com.yqritc.recyclerviewflexibledivider.FlexibleDividerDecoration;
@@ -23,6 +23,9 @@ import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import atom.pub.fragment.AtomPubBaseFragment;
+import atom.pub.inject.From;
 
 /**
  * Created by stephen on 17-8-11.
@@ -67,8 +70,15 @@ public class ExplainMasterSanCaiFragment extends AtomPubBaseFragment {
         itemAdapter.set(itemList);
 
         explainDestinyAdapter = new HeaderAdapter<ExplainSanCaiItem>();
+        explainDestinyAdapter.wrap(itemAdapter);
+        explainDestinyAdapter.add(new ExplainSanCaiItem(explain));
+
+        FooterAdapter<ExplainFooterItem> footerAdapter = new FooterAdapter<ExplainFooterItem>();
+        footerAdapter.wrap(explainDestinyAdapter);
+        footerAdapter.add(new ExplainFooterItem(explain));
+
         explainScWgContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
-        explainScWgContainer.setAdapter(explainDestinyAdapter.wrap(itemAdapter));
+        explainScWgContainer.setAdapter(footerAdapter);
         explainScWgContainer.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
                         .color(android.R.color.transparent)
@@ -80,6 +90,5 @@ public class ExplainMasterSanCaiFragment extends AtomPubBaseFragment {
                         })
                         .build());
 
-        explainDestinyAdapter.add(new ExplainSanCaiItem(explain));
     }
 }

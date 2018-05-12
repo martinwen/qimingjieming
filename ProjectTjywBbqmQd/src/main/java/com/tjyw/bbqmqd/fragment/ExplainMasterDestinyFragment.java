@@ -33,9 +33,6 @@ public class ExplainMasterDestinyFragment extends AtomPubBaseFragment {
         return fragment;
     }
 
-    @From(R.id.explainGoodName)
-    protected TextView explainGoodName;
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,21 +45,9 @@ public class ExplainMasterDestinyFragment extends AtomPubBaseFragment {
 
         Explain explain = (Explain) pGetSerializableExtra(IApiField.E.explain);
         if (null != explain) {
-            explainGoodName.setOnClickListener(this);
-
             new AtomExplainHeaderHolder(view).layout(explain);
             new BaZiSheetHolder(view).sheet(explain.nameZodiac);
-            new YunShiSheetHolder(view).sheet(explain.nameZodiac);
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.explainGoodName:
-            if (getActivity() instanceof ExplainMasterActivity) {
-                ((ExplainMasterActivity) getActivity()).launchNameMasterActivity(NameMasterAdapter.POSITION.FREEDOM);
-            }
+//            new YunShiSheetHolder(view).sheet(explain.nameZodiac);
         }
     }
 }
