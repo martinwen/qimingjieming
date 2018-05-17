@@ -92,7 +92,7 @@ public class ClientMasterExplainFragment extends AtomPubBaseFragment implements 
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 switch (actionId) {
-                    case EditorInfo.IME_ACTION_NEXT:
+                    case EditorInfo.IME_ACTION_GO:
                         validator.validate();
                     default:
                         return false;

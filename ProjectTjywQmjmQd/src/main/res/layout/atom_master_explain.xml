@@ -81,7 +81,7 @@
         android:background="@android:color/transparent"
         android:gravity="center_vertical|left"
         android:hint="@string/atom_pub_resStringGivenNameHint"
-        android:imeOptions="actionNext"
+        android:imeOptions="actionGo"
         android:inputType="text"
         android:maxLength="2"
         android:maxLines="1"

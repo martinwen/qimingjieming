@@ -158,6 +158,7 @@ def differentNameAssemble(output, productFlavors, versionCode) {
             newApkName = "adr_bbqmqd_master_${CLIENT_C_ID}_${CLIENT_C_NAME}_${versionCode}_${new Date().format('yyyyMMdd')}.apk"
         }
 
+        println "===zipFile.parent::$zipFile.parent, newApkName::$newApkName"
 //        output.outputFile = new File(zipFile.parent, newApkName)
     }
 

@@ -17,6 +17,7 @@ import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
+import com.tjyw.atom.network.services.HttpPayServices;
 import com.tjyw.bbqmqd.R;
 import com.tjyw.bbqmqd.activity.BaseActivity;
 import com.tjyw.bbqmqd.factory.IClientActivityLaunchFactory;
@@ -80,8 +81,8 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
         listRequestParam = (ListRequestParam) pGetSerializableExtra(IApiField.P.param);
         if (null != listRequestParam) {
             maskerShowProgressView(false);
-            getPresenter().postPayListVip(
-                    2,
+            getPresenter().postPayListVipDiscount(
+                    HttpPayServices.VIP_ID.TJJM,
                     listRequestParam.surname,
                     listRequestParam.day
             );
@@ -110,6 +111,13 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
             case R.id.payServiceBuy:
                 IClientActivityLaunchFactory.launchPayOrderActivity(this, listRequestParam, payService);
                 break ;
+            case R.id.payServiceSuit:
+                maskerShowProgressView(true);
+                getPresenter().postPayListVipDiscount(
+                        HttpPayServices.VIP_ID.NEW_SUIT,
+                        listRequestParam.surname,
+                        listRequestParam.day
+                );
             default:
                 super.onClick(v);
         }
@@ -118,28 +126,22 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
     @Override
     public void postOnPayListVipSuccess(int type, PayService payService) {
         maskerHideProgressView();
-        this.payService = payService;
+        switch (payService.id) {
+            case HttpPayServices.VIP_ID.NEW_SUIT:
+                IClientActivityLaunchFactory.launchPayOrderActivity(this, listRequestParam, payService);
+                return ;
+            default:
+                this.payService = payService;
+        }
 
         payServiceBuy.setOnClickListener(this);
         payServiceSuit.setOnClickListener(this);
 
         payServicePrice.setText(String.valueOf(payService.money));
 
-        payServiceOldPrice.setText("88");
+        payServiceOldPrice.setText(payService.oldMoney);
         payServiceOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 
-        switch (payService.id) {
-            case PayService.VIP_ID.RECOMMEND:
-                payServiceName.setImageResource(R.drawable.atom_pub_png_pay_window_recommend);
-                break ;
-            case PayService.VIP_ID.LUCKY:
-                payServiceName.setImageResource(R.drawable.atom_pub_png_pay_window_lucky);
-                break ;
-            case PayService.VIP_ID.DJM:
-                payServiceName.setImageResource(R.drawable.atom_pub_png_pay_window_djm);
-                break ;
-            case PayService.VIP_ID.XJM:
-                payServiceName.setImageResource(R.drawable.atom_pub_png_pay_window_xjm);
-        }
+        payServiceName.setImageResource(R.drawable.atom_pub_png_pay_window_lucky);
     }
 }

@@ -17,4 +17,6 @@ public class RNameDefinition extends RetroListResult<NameDefinition> {
     public ListRequestParam param;
 
     public NameData data;
+
+    public String statusLabel;
 }

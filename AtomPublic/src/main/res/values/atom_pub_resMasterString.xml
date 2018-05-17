@@ -112,7 +112,14 @@
     <string name="atom_pub_resStringExplainSanCaiShiYi">释义</string>
 
     <!-- 支付 -->
-    <string name="atom_pub_resStringPay"></string>
+    <string name="atom_pub_resStringPaySuitAd1">精准算法</string>
+    <string name="atom_pub_resStringPaySuitAd11">八字大运幸福人生起名法</string>
+    <string name="atom_pub_resStringPaySuitAd2">业界权威</string>
+    <string name="atom_pub_resStringPaySuitAd21">多家主流媒体极力推荐</string>
+    <string name="atom_pub_resStringPaySuitAd3">经验丰富</string>
+    <string name="atom_pub_resStringPaySuitAd31">国学大师20年起名经验</string>
+    <string name="atom_pub_resStringPaySuitAd4">内容优质</string>
+    <string name="atom_pub_resStringPaySuitAd41">起名满意度达99%</string>
     <string name="atom_pub_resStringPayOrder">支付订单</string>
     <string name="atom_pub_resStringPayService">购买服务：%s</string>
     <string name="atom_pub_resStringPayPrice">商品价格：</string>
@@ -134,6 +141,7 @@
     <string name="atom_pub_resStringPayPackageMoney">现价：</string>
     <string name="atom_pub_resStringPayPackageOldMoney">原价：</string>
     <string name="atom_pub_resStringPayPackageMoneyEach">（%s）</string>
+    <string name="atom_pub_resStringPayPackageDiscount">%d折优惠</string>
     <!-- 支付优惠 -->
     <string name="atom_pub_resStringPayCouponToUse">立即使用</string>
     <string name="atom_pub_resStringPayCouponCanUse">满%s元可用</string>

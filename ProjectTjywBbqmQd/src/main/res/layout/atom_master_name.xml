@@ -63,7 +63,7 @@
         android:background="@drawable/atom_ic_master_input_bg_long"
         android:gravity="center_vertical|left"
         android:hint="@string/atom_pub_resStringSurnameHint"
-        android:imeOptions="actionNext"
+        android:imeOptions="actionGo"
         android:inputType="text"
         android:maxLength="2"
         android:maxLines="1"
@@ -98,7 +98,7 @@
         android:maxLines="1"
         android:paddingRight="16dp"
         android:singleLine="true"
-        android:text="@string/atom_pub_resStringSingleName"
+        android:text="@string/atom_pub_resStringDoubleName"
         android:textColorHint="@color/atom_pub_resColorInputHint"
         app:layout_constraintLeft_toRightOf="@+id/masterNameVerticalLine"
         app:layout_constraintTop_toBottomOf="@+id/masterNameSurname" />
@@ -108,7 +108,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical|right"
-        android:text="@string/atom_pub_resStringSurnameModeDot"
+        android:text="@string/atom_pub_resStringGivenNameDot"
         app:layout_constraintBottom_toBottomOf="@+id/masterNameMode"
         app:layout_constraintRight_toLeftOf="@+id/masterNameMode"
         app:layout_constraintTop_toTopOf="@+id/masterNameMode" />

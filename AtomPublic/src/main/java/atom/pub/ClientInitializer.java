@@ -8,7 +8,6 @@ import com.facebook.common.internal.Supplier;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.stetho.Stetho;
-import com.squareup.leakcanary.LeakCanary;
 import com.tjyw.atom.network.Network;
 import com.tjyw.atom.network.NetworkFlavorsConfig;
 import com.tjyw.atom.network.utils.Documents;
@@ -90,9 +89,9 @@ public class ClientInitializer {
      * @return
      */
     public ClientInitializer leakCanary(Application context) {
-        if (! LeakCanary.isInAnalyzerProcess(context)) {
-            LeakCanary.install(context);
-        }
+//        if (! LeakCanary.isInAnalyzerProcess(context)) {
+//            LeakCanary.install(context);
+//        }
 
         return this;
     }

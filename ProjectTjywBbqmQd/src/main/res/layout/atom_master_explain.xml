@@ -92,7 +92,7 @@
         android:background="@drawable/atom_ic_master_input_bg_long"
         android:gravity="center_vertical|left"
         android:hint="@string/atom_pub_resStringSurnameHint"
-        android:imeOptions="actionNext"
+        android:imeOptions="actionGo"
         android:inputType="text"
         android:maxLength="2"
         android:maxLines="1"

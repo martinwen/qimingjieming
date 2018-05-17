@@ -152,4 +152,6 @@
         app:layout_constraintLeft_toLeftOf="@+id/payServiceBackgroundView"
         app:layout_constraintRight_toRightOf="@+id/payServiceBackgroundView"
         app:layout_constraintTop_toBottomOf="@+id/payServiceBuy" />
+
+    <include layout="@layout/atom_pub_inc_progress_alpha" />
 </android.support.constraint.ConstraintLayout>

@@ -3,6 +3,10 @@ package com.tjyw.bbqmqd.fragment;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,14 +39,11 @@ public class PayPackageEntryFragment extends BaseFragment {
     @From(R.id.bodyServicePrice)
     protected TextView bodyServicePrice;
 
+    @From(R.id.bodyServiceDiscount)
+    protected TextView bodyServiceDiscount;
+
     @From(R.id.bodyServiceOldPrice)
     protected TextView bodyServiceOldPrice;
-
-    @From(R.id.bodyServicePriceEach)
-    protected TextView bodyServicePriceEach;
-
-    @From(R.id.bodyValidDate)
-    protected TextView bodyValidDate;
 
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
@@ -68,7 +69,7 @@ public class PayPackageEntryFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.atom_pay_package_entry, container, true);
+        return inflater.inflate(R.layout.atom_pay_suit, container, true);
     }
 
     @Override
@@ -86,10 +87,24 @@ public class PayPackageEntryFragment extends BaseFragment {
 
         bodyServiceName.setText(payService.service);
         bodyServiceDesc.setText(payService.detail);
-        bodyServicePrice.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan, payService.money));
+
+        SpannableStringBuilder builder = new SpannableStringBuilder(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringPayPackageMoney));
+        int length = builder.length();
+        builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan, payService.money));
+        builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringPayPackageMoneyEach, payService.eachDay));
+        bodyServicePrice.setText(builder);
+
+        if (payService.discount < 10) {
+            bodyServiceDiscount.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringPayPackageDiscount, payService.discount));
+        } else {
+            bodyServiceDiscount.setVisibility(View.GONE);
+        }
+
         bodyServiceOldPrice.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan, payService.oldMoney));
-        bodyServicePriceEach.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringPayPackageMoneyEach, payService.eachDay));
-        bodyValidDate.setText(payService.validDate);
+        if (null != bodyServiceOldPrice.getPaint()) {
+            bodyServiceOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+        }
 
         atom_pub_resIdsOK.setText(ClientInit.getPayButtonText(ClientQmjmApplication.getContext(), ClientQmjmApplication.pGetString(R.string.atom_pub_resStringPayPay)));
         atom_pub_resIdsOK.setOnClickListener(this);

@@ -212,6 +212,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
             maskerShowProgressView(true);
             getPresenter().postPayPreview(
                     payService.id,
+                    payService.money,
                     listRequestParam.surname,
                     listRequestParam.day,
                     listRequestParam.gender,

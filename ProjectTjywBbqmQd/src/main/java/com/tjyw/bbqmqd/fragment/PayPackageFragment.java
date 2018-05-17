@@ -25,6 +25,7 @@ import com.tjyw.atom.network.result.RIdentifyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.bbqmqd.ClientQmjmApplication;
 import com.tjyw.bbqmqd.R;
+import com.tjyw.bbqmqd.activity.PayPackageActivity;
 import com.tjyw.bbqmqd.factory.IClientActivityLaunchFactory;
 import com.tjyw.bbqmqd.item.NamingWordItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
@@ -165,6 +166,9 @@ public class PayPackageFragment extends BaseFragment<NamingPresenter<NameMasterR
         }
 
         nameDefinitionAdapter.add(itemList);
+        if (getActivity() instanceof PayPackageActivity) {
+            ((PayPackageActivity) getActivity()).setPayOrderRepeatPay(result.statusLabel);
+        }
     }
 
     @Override

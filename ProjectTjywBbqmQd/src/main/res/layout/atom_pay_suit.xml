@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/atom_pub_resColorBackgroundTransparent">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/bodyServiceSuitContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/atom_png_pay_suit_rect"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent=".65"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".8">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/bodyServiceSuitAdGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/bodyServiceSuitPriceGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.55" />
+
+        <TextView
+            android:id="@+id/bodyServiceName"
+            style="@style/AtomPubStyleKa.Black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:textSize="24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="bodyServiceName" />
+
+        <TextView
+            android:id="@+id/bodyServiceDesc"
+            style="@style/AtomPubStyleKa.Black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="2"
+            android:padding="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceName"
+            tools:text="bodyServiceDesc" />
+
+        <TextView
+            android:id="@+id/bodyPaySuitAd1"
+            style="@style/AtomPubStyleKa.Black_16DP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/atom_pub_shape_red_stroke"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/atom_pub_resStringPaySuitAd1"
+            android:textColor="@color/atom_pub_resTextColorRed"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/bodyPaySuitAd11"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceSuitAdGuideline" />
+
+        <TextView
+            android:id="@+id/bodyPaySuitAd11"
+            style="@style/AtomPubStyleKa.Black_16DP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/atom_pub_resStringPaySuitAd11"
+            app:layout_constraintBaseline_toBaselineOf="@+id/bodyPaySuitAd1"
+            app:layout_constraintLeft_toRightOf="@+id/bodyPaySuitAd1"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/bodyPaySuitAd2"
+            style="@style/AtomPubStyleKa.Black_16DP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/atom_pub_shape_red_stroke"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/atom_pub_resStringPaySuitAd2"
+            android:textColor="@color/atom_pub_resTextColorRed"
+            app:layout_constraintRight_toRightOf="@+id/bodyPaySuitAd1"
+            app:layout_constraintTop_toBottomOf="@+id/bodyPaySuitAd1" />
+
+        <TextView
+            android:id="@+id/bodyPaySuitAd21"
+            style="@style/AtomPubStyleKa.Black_16DP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/atom_pub_resStringPaySuitAd21"
+            app:layout_constraintBaseline_toBaselineOf="@+id/bodyPaySuitAd2"
+            app:layout_constraintLeft_toRightOf="@+id/bodyPaySuitAd2" />
+
+        <TextView
+            android:id="@+id/bodyPaySuitAd3"
+            style="@style/AtomPubStyleKa.Black_16DP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/atom_pub_shape_red_stroke"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/atom_pub_resStringPaySuitAd3"
+            android:textColor="@color/atom_pub_resTextColorRed"
+            app:layout_constraintRight_toRightOf="@+id/bodyPaySuitAd2"
+            app:layout_constraintTop_toBottomOf="@+id/bodyPaySuitAd2" />
+
+        <TextView
+            android:id="@+id/bodyPaySuitAd31"
+            style="@style/AtomPubStyleKa.Black_16DP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/atom_pub_resStringPaySuitAd31"
+            app:layout_constraintBaseline_toBaselineOf="@+id/bodyPaySuitAd3"
+            app:layout_constraintLeft_toRightOf="@+id/bodyPaySuitAd3" />
+
+        <TextView
+            android:id="@+id/bodyPaySuitAd4"
+            style="@style/AtomPubStyleKa.Black_16DP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/atom_pub_shape_red_stroke"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/atom_pub_resStringPaySuitAd4"
+            android:textColor="@color/atom_pub_resTextColorRed"
+            app:layout_constraintRight_toRightOf="@+id/bodyPaySuitAd3"
+            app:layout_constraintTop_toBottomOf="@+id/bodyPaySuitAd3" />
+
+        <TextView
+            android:id="@+id/bodyPaySuitAd41"
+            style="@style/AtomPubStyleKa.Black_16DP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/atom_pub_resStringPaySuitAd41"
+            app:layout_constraintBaseline_toBaselineOf="@+id/bodyPaySuitAd4"
+            app:layout_constraintLeft_toRightOf="@+id/bodyPaySuitAd4" />
+
+        <TextView
+            android:id="@+id/bodyServicePrice"
+            style="@style/AtomPubStyleKa.Black_16DP"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            app:layout_constraintLeft_toLeftOf="@+id/bodyPaySuitAd4"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceSuitPriceGuideline"
+            tools:text="bodyServicePrice" />
+
+        <TextView
+            android:id="@+id/bodyServiceDiscount"
+            style="@style/AtomPubStyleKa.Black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textColor="@color/atom_pub_resTextColorRed"
+            app:layout_constraintLeft_toLeftOf="@+id/bodyServicePrice"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServicePrice"
+            tools:text="bodyServiceDiscount" />
+
+        <TextView
+            android:id="@+id/bodyServiceOldPriceLabel"
+            style="@style/AtomPubStyleKa.Black_16DP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="@string/atom_pub_resStringPayPackageOldMoney"
+            app:layout_constraintLeft_toLeftOf="@+id/bodyServicePrice"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceDiscount" />
+
+        <TextView
+            android:id="@+id/bodyServiceOldPrice"
+            style="@style/AtomPubStyleKa.Black_16DP"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            app:layout_constraintBaseline_toBaselineOf="@+id/bodyServiceOldPriceLabel"
+            app:layout_constraintLeft_toRightOf="@+id/bodyServiceOldPriceLabel"
+            tools:text="bodyServiceOldPrice" />
+
+        <TextView
+            android:id="@id/atom_pub_resIdsOK"
+            style="@style/AtomPubStyleKa.White_16DP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/atom_ic_pay_suit_btn_rect"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringPayPay"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

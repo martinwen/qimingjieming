@@ -6,7 +6,9 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.TextView;
 
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
@@ -46,6 +48,9 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
 
     @From(R.id.namingListContainer)
     protected RecyclerView namingListContainer;
+
+    @From(R.id.payOrderRepeatPay)
+    protected TextView payOrderRepeatPay;
 
     protected FastItemAdapter<NamingWordItem> nameDefinitionAdapter;
 
@@ -165,7 +170,12 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         }
 
         nameDefinitionAdapter.add(itemList);
-        namingListContainer.setAdapter(nameDefinitionAdapter);
+        if (TextUtils.isEmpty(result.statusLabel)) {
+            payOrderRepeatPay.setVisibility(View.GONE);
+        } else {
+            payOrderRepeatPay.setVisibility(View.VISIBLE);
+            payOrderRepeatPay.setText(result.statusLabel);
+        }
     }
 
     @Override

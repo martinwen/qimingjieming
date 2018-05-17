@@ -98,6 +98,8 @@ public interface IApiField {
         String message = "message";
 
         String mobile = "mobile";
+
+        String money = "money";
     }
 
     interface N {

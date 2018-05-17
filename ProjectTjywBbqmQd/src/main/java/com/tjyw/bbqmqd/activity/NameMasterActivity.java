@@ -22,6 +22,7 @@ import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.RNameDefinition;
+import com.tjyw.atom.network.services.HttpPayServices;
 import com.tjyw.atom.network.utils.JsonUtil;
 import com.tjyw.bbqmqd.R;
 import com.tjyw.bbqmqd.adapter.NameMasterAdapter;
@@ -42,7 +43,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * Created by stephen on 19/09/2017.
  */
 @RequiresPresenter(NamingPresenter.class)
-public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<NamingListActivity>> implements
+public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<NameMasterActivity>> implements
         OnApiPostErrorListener,
         OnApiPostNamingListener,
         OnApiPayPostListener.PostPayListVipListener {
@@ -170,8 +171,8 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
             case R.id.nameMasterPayPackageEntry:
                 if (null == payService) {
                     maskerShowProgressView(true);
-                    getPresenter().postPayListVip(
-                            5,
+                    getPresenter().postPayListVipDiscount(
+                            HttpPayServices.VIP_ID.NEW_SUIT,
                             listRequestParam.surname,
                             listRequestParam.day
                     );

@@ -3,13 +3,13 @@ package com.tjyw.bbqmqd.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
-import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.bbqmqd.R;
 import com.tjyw.bbqmqd.adapter.PayPackageAdapter;
 
@@ -21,7 +21,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * Created by stephen on 19/09/2017.
  */
 @RequiresPresenter(NamingPresenter.class)
-public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<NamingListActivity>> implements OnApiPostErrorListener {
+public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<PayPackageActivity>> {
 
     @From(R.id.payPackageNormal)
     protected TextView payPackageNormal;
@@ -34,6 +34,9 @@ public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<Nami
 
     @From(R.id.payPackageContainer)
     protected ViewPager payPackageContainer;
+
+    @From(R.id.payOrderRepeatPay)
+    protected TextView payOrderRepeatPay;
 
     protected PayPackageAdapter payPackageAdapter;
 
@@ -128,10 +131,13 @@ public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<Nami
         }
     }
 
-    @Override
-    public void postOnExplainError(int postId, Throwable throwable) {
-        throwable.printStackTrace();
-        maskerShowMaskerLayout(getString(R.string.atom_pub_resStringNetworkBroken), R.string.atom_pub_resStringRetry);
+    public void setPayOrderRepeatPay(String statusLabel) {
+        if (TextUtils.isEmpty(statusLabel)) {
+            payOrderRepeatPay.setVisibility(View.GONE);
+        } else {
+            payOrderRepeatPay.setVisibility(View.VISIBLE);
+            payOrderRepeatPay.setText(statusLabel);
+        }
     }
 
     public void showPayPackageNormalFragment() {

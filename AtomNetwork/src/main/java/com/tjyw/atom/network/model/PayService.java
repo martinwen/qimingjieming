@@ -37,4 +37,10 @@ public class PayService implements RetroResultItem {
     public String eachDay;
 
     public String validDate;
+
+    public boolean payRepeat; // 是否复购
+
+    public int discount; // 打折
+
+    public String discountMoney; // 打折价
 }

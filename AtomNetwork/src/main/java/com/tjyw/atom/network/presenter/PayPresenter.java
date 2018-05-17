@@ -14,6 +14,7 @@ import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.REmptyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.result.RetroListResult;
+import com.tjyw.atom.network.result.RetroOrderListResult;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
 import com.tjyw.atom.network.result.RetroResult;
 
@@ -27,6 +28,31 @@ import rx.functions.Action1;
  */
 public class PayPresenter<V extends ViewWithPresenter> extends FavoritePresenter<V> {
 
+    public void postPayListVipDiscount(final int type, String surname, String day) {
+        RetroHttpMethods.PAY().postPayListVipDiscount(type, surname, day)
+                .compose(RxSchedulersHelper.<RetroResult<PayService>>io_main())
+                .subscribe(new Action1<RetroResult<PayService>>() {
+                    @Override
+                    public void call(RetroResult<PayService> result) {
+                        if (null == result || result.illegalRequest()) {
+                            if (presenterView instanceof OnApiPostErrorListener) {
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Pay.PayListVip, new IllegalRequestException(result));
+                            }
+                        } else if (presenterView instanceof OnApiPayPostListener.PostPayListVipListener) {
+                            ((OnApiPayPostListener.PostPayListVipListener) presenterView).postOnPayListVipSuccess(type, result.items);
+                        }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        if (presenterView instanceof OnApiPostErrorListener) {
+                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.Pay.PayListVip, throwable);
+                        }
+                    }
+                });
+    }
+
+    @Deprecated
     public void postPayListVip(final int type, String surname, String day) {
         RetroHttpMethods.PAY().postPayListVip(type, surname, day)
                 .compose(RxSchedulersHelper.<RetroResult<PayService>>io_main())
@@ -51,8 +77,8 @@ public class PayPresenter<V extends ViewWithPresenter> extends FavoritePresenter
                 });
     }
 
-    public void postPayPreview(int vipId, String surname, String day, int gender, int nameNumber, Integer redPacketId) {
-        RetroHttpMethods.PAY().postPayPreview(vipId, surname, day, gender, nameNumber, redPacketId)
+    public void postPayPreview(int vipId, String money, String surname, String day, int gender, int nameNumber, Integer redPacketId) {
+        RetroHttpMethods.PAY().postPayPreview(vipId, money, surname, day, gender, nameNumber, redPacketId)
                 .compose(RxSchedulersHelper.<RetroResult<RetroPayPreviewResult>>io_main())
                 .subscribe(new Action1<RetroResult<RetroPayPreviewResult>>() {
                     @Override

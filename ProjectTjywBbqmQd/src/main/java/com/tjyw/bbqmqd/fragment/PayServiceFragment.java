@@ -11,14 +11,23 @@ import android.widget.TextView;
 
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
+import com.tjyw.atom.network.presenter.PayPresenter;
+import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
+import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
+import com.tjyw.atom.network.services.HttpPayServices;
 import com.tjyw.bbqmqd.R;
+import com.tjyw.bbqmqd.factory.IClientActivityLaunchFactory;
 
 import atom.pub.inject.From;
+import nucleus.factory.RequiresPresenter;
 
 /**
  * Created by stephen on 17-8-17.
  */
-public class PayServiceFragment extends BaseFragment {
+@RequiresPresenter(PayPresenter.class)
+public class PayServiceFragment extends BaseFragment<PayPresenter<PayServiceFragment>> implements
+        OnApiPostErrorListener,
+        OnApiPayPostListener.PostPayListVipListener {
 
     public interface OnPayServiceClickListener {
 
@@ -83,7 +92,7 @@ public class PayServiceFragment extends BaseFragment {
 
         payServicePrice.setText(String.valueOf(payService.money));
 
-        payServiceOldPrice.setText("88");
+        payServiceOldPrice.setText(payService.oldMoney);
         payServiceOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 
         switch (payService.id) {
@@ -104,18 +113,34 @@ public class PayServiceFragment extends BaseFragment {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.payServiceSuit:
+                maskerShowProgressView(true);
+                getPresenter().postPayListVipDiscount(
+                        HttpPayServices.VIP_ID.NEW_SUIT,
+                        listRequestParam.surname,
+                        listRequestParam.day
+                );
+
+                break ;
             case R.id.payServiceBuy:
-                pHideFragment(this);
                 if (null != listener) {
                     listener.payOnServicePayClick(this, listRequestParam, payService);
                 }
-                break ;
-            case R.id.payServiceSuit:
-
-                break ;
             case R.id.payServiceClose:
             default:
                 pHideFragment(this);
         }
+    }
+
+    @Override
+    public void postOnPayListVipSuccess(int type, PayService payService) {
+        maskerHideProgressView();
+        pHideFragment(this);
+        IClientActivityLaunchFactory.launchPayOrderActivity(this, listRequestParam, payService);
+    }
+
+    @Override
+    public void postOnExplainError(int postId, Throwable throwable) {
+        throwable.printStackTrace();
     }
 }

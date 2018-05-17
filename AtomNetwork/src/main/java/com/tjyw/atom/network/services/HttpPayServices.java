@@ -9,6 +9,7 @@ import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.result.REmptyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.result.RetroListResult;
+import com.tjyw.atom.network.result.RetroOrderListResult;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
 import com.tjyw.atom.network.result.RetroResult;
 
@@ -26,7 +27,10 @@ public interface HttpPayServices {
 
     interface API {
 
+        @Deprecated
         String LIST_VIP = "pay/listVip";
+
+        String LIST_VIP_DISCOUNT = "pay/listVipDiscount";
 
         String PREVIEW = "pay/preview";
 
@@ -43,6 +47,29 @@ public interface HttpPayServices {
         String ORDER_UN_READ_NUM = "order/unReadNum";
     }
 
+    interface VIP_ID {
+
+        int RECOMMEND = 1;
+
+        int TJJM = 2;
+
+        int DJM = 3;
+
+        int XJM = 4;
+
+        int SUIT = 5;
+
+        int NEW_SUIT = 6;
+    }
+
+    @FormUrlEncoded
+    @POST(API.LIST_VIP_DISCOUNT)
+    Observable<RetroResult<PayService>> postPayListVipDiscount(
+            @Field(IApiField.T.type) int type,
+            @Field(IApiField.S.surname) String surname,
+            @Field(IApiField.D.day) String day
+    );
+
     @FormUrlEncoded
     @POST(API.LIST_VIP)
     Observable<RetroResult<PayService>> postPayListVip(
@@ -55,6 +82,7 @@ public interface HttpPayServices {
     @POST(API.PREVIEW)
     Observable<RetroResult<RetroPayPreviewResult>> postPayPreview(
             @Field(IApiField.V.vipId) int vipId,
+            @Field(IApiField.M.money) String money,
             @Field(IApiField.S.surname) String surname,
             @Field(IApiField.D.day) String day,
             @Field(IApiField.G.gender) int gender,

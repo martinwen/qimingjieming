@@ -87,7 +87,6 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements C
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         listRequestParam = new ListRequestParam();
-        listRequestParam.nameNumber = ISection.NAME_COUNT.SINGLE;
         return inflater.inflate(R.layout.atom_master_name, null);
     }
 
@@ -115,7 +114,7 @@ public class ClientMasterNamingFragment extends AtomPubBaseFragment implements C
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 switch (actionId) {
-                    case EditorInfo.IME_ACTION_NEXT:
+                    case EditorInfo.IME_ACTION_GO:
                         validator.validate();
                     default:
                         return false;
