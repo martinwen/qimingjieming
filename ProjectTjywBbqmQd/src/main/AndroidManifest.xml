@@ -55,20 +55,17 @@
         <!-- SwiftPay -->
         <activity
             android:name="com.swiftfintech.pay.activity.UnifiedPay"
-            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!-- Alipay -->
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
-            android:exported="false"
-            android:screenOrientation="behind" />
+            android:exported="false"/>
         <activity
             android:name="com.alipay.sdk.auth.AuthActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
-            android:exported="false"
-            android:screenOrientation="behind" />
+            android:exported="false"  />
 
         <activity
             android:name=".activity.ClientMasterActivity"
