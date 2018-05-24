@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <include layout="@layout/atom_pub_inc_toolbar" />
@@ -20,10 +20,11 @@
 
         <TextView
             android:id="@+id/payOrderRepeatPay"
-            style="@style/AtomStyle.BlackNormalText"
+            style="@style/AtomStyle.WhiteNormalText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:background="#AAFFCA1D"
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="2"

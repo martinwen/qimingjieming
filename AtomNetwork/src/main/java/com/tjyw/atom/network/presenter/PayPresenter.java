@@ -14,7 +14,6 @@ import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.REmptyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.atom.network.result.RetroListResult;
-import com.tjyw.atom.network.result.RetroOrderListResult;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
 import com.tjyw.atom.network.result.RetroResult;
 
@@ -29,7 +28,7 @@ import rx.functions.Action1;
 public class PayPresenter<V extends ViewWithPresenter> extends FavoritePresenter<V> {
 
     public void postPayListVipDiscount(final int type, String surname, String day) {
-        RetroHttpMethods.PAY().postPayListVipDiscount(type, surname, day)
+        RetroHttpMethods.PAY().postPayListVipDiscount(type, surname, day, 1)
                 .compose(RxSchedulersHelper.<RetroResult<PayService>>io_main())
                 .subscribe(new Action1<RetroResult<PayService>>() {
                     @Override

@@ -22,6 +22,7 @@
         style="@style/AtomPubStyleKa.White_16DP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:background="@drawable/atom_selector_ink_text"
         android:gravity="center"
         android:text="@string/atom_pub_resStringPayPackageNormal"
@@ -60,6 +61,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginTop="8dp"
         android:scaleType="fitXY"
         android:src="@color/atom_pub_resColorDivider"
         app:layout_constraintTop_toBottomOf="@+id/payPackageNormal" />
@@ -69,14 +71,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="1px"
+        android:paddingTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/payPackageNormal" />
 
     <TextView
         android:id="@+id/payOrderRepeatPay"
-        style="@style/AtomStyle.BlackNormalText"
+        style="@style/AtomStyle.WhiteNormalText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#CCFFCA1D"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="2"

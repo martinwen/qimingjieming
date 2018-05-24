@@ -107,6 +107,8 @@ public interface IApiField {
         String name = "name";
 
         String nameNumber = "nameNumber";
+
+        String needSuit = "needSuit";
     }
 
     interface O {

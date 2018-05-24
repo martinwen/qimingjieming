@@ -43,6 +43,17 @@
     <string name="atom_pub_resStringNameFreedomYbm">一般名</string>
     <string name="atom_pub_resStringNameRecommend">推荐名字</string>
     <string name="atom_pub_resStringNameLucky">天降吉名</string>
+    <string name="atom_pub_resStringNameLuckyTag1">助运最佳</string>
+    <string name="atom_pub_resStringNameLuckyTag2">吉名精选</string>
+    <string name="atom_pub_resStringNameLuckyTag3">吉名组合</string>
+    <string name="atom_pub_resStringNameLuckySubTitle">好名字带给您幸运与成功\n有好名，才能脱颖而出，一“名”惊人</string>
+    <string name="atom_pub_resStringNameLuckySubTitle2">业界领先八字精算，更精准测八字喜用神\n三才五格，精选200余套天降吉名</string>
+    <string name="atom_pub_resStringNameLuckyUnlock">解锁天降吉名</string>
+    <string name="atom_pub_resStringNameLuckyUnlock1">解锁200套天降吉名，仅需</string>
+    <string name="atom_pub_resStringNameLuckyUnlock2">，原价</string>
+    <string name="atom_pub_resStringNameLuckyUnlockAll">解锁全部套餐</string>
+    <string name="atom_pub_resStringNameLuckyUnlockAll1">解锁全部800套名字，仅需</string>
+    <string name="atom_pub_resStringNameLuckyUnlockAll2">，原价</string>
     <string name="atom_pub_resStringNameSolar">公历</string>
     <string name="atom_pub_resStringNameSolarDot">公历：</string>
     <string name="atom_pub_resStringNameLunar">农历</string>
@@ -51,7 +62,7 @@
     <string name="atom_pub_resStringNameGenderDot">性别：</string>
     <string name="atom_pub_resStringNamePayHint">将得到以下内容：\n八字大运幸福人生起名法\n多家主流媒体极力推荐\n国学大师20年起名经验\n起名满意度达99%！</string>
     <string name="atom_pub_resStringNamePayHintNew">多家主流媒体极力推荐; 国学大师20年起名经验</string>
-    <string name="atom_pub_resStringNamePayPrice1">仅需支付 </string>
+    <string name="atom_pub_resStringNamePayPrice1">仅需支付</string>
     <string name="atom_pub_resStringNamePayPrice2"> 元 原价</string>
     <string name="atom_pub_resStringNameMakeAGoodName">选个助运好名</string>
 
@@ -120,16 +131,24 @@
     <string name="atom_pub_resStringPaySuitAd31">国学大师20年起名经验</string>
     <string name="atom_pub_resStringPaySuitAd4">内容优质</string>
     <string name="atom_pub_resStringPaySuitAd41">起名满意度达99%</string>
+    <string name="atom_pub_resStringPaySuitPrice">仅需支付</string>
+    <string name="atom_pub_resStringPaySuitUnlock">，即可解锁800套吉名</string>
     <string name="atom_pub_resStringPayOrder">支付订单</string>
-    <string name="atom_pub_resStringPayService">购买服务：%s</string>
+    <string name="atom_pub_resStringPayService">商品名称：%s</string>
     <string name="atom_pub_resStringPayPrice">商品价格：</string>
-    <string name="atom_pub_resStringPayCoupon">我的红包：</string>
+    <string name="atom_pub_resStringPayOldPrice">原价￥%s</string>
+    <string name="atom_pub_resStringPaySalePrice">即时优惠</string>
+    <string name="atom_pub_resStringPayRealPrice">实付款</string>
+    <string name="atom_pub_resStringPayDiscountPrice">%d折优惠价</string>
+    <string name="atom_pub_resStringPayCoupon">我的红包&#160;</string>
     <string name="atom_pub_resStringPayCouponLack">无红包可用</string>
-    <string name="atom_pub_resStringPaySummary">小计：</string>
+    <string name="atom_pub_resStringPaySummary">小计</string>
     <string name="atom_pub_resStringPayUseAliPay">支付宝</string>
     <string name="atom_pub_resStringPayUseAliPayRecommend">推荐</string>
     <string name="atom_pub_resStringPayUseWxPay">微信</string>
     <string name="atom_pub_resStringPayPay">立即解锁</string>
+    <string name="atom_pub_resStringPayCountDown">距优惠结束还剩：</string>
+    <string name="atom_pub_resStringPayCountDownUnit">%02d:%02d</string>
     <!-- 支付列表 -->
     <string name="atom_pub_resStringPayList">我的订单</string>
     <string name="atom_pub_resStringPayNoData">没有订单记录</string>

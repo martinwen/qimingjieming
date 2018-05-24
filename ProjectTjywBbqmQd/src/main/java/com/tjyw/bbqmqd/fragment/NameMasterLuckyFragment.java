@@ -1,10 +1,14 @@
 package com.tjyw.bbqmqd.fragment;
 
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +22,7 @@ import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.services.HttpPayServices;
+import com.tjyw.bbqmqd.ClientQmjmApplication;
 import com.tjyw.bbqmqd.R;
 import com.tjyw.bbqmqd.activity.BaseActivity;
 import com.tjyw.bbqmqd.factory.IClientActivityLaunchFactory;
@@ -40,26 +45,20 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
         return fragment;
     }
 
-    @From(R.id.payServiceContainer)
-    protected ViewGroup payServiceContainer;
+    @From(R.id.bodyServiceDiscount)
+    protected ImageView bodyServiceDiscount;
 
-    @From(R.id.payServiceClose)
-    protected ImageView payServiceClose;
+    @From(R.id.bodyServiceUnlock)
+    protected TextView bodyServiceUnlock;
 
-    @From(R.id.payServiceName)
-    protected ImageView payServiceName;
+    @From(R.id.bodyServiceUnlockPrice)
+    protected TextView bodyServiceUnlockPrice;
 
-    @From(R.id.payServicePrice)
-    protected TextView payServicePrice;
+    @From(R.id.bodyServiceUnlockAll)
+    protected TextView bodyServiceUnlockAll;
 
-    @From(R.id.payServiceOldPrice)
-    protected TextView payServiceOldPrice;
-
-    @From(R.id.payServiceBuy)
-    protected ImageView payServiceBuy;
-
-    @From(R.id.payServiceSuit)
-    protected ImageView payServiceSuit;
+    @From(R.id.bodyServiceUnlockAllPrice)
+    protected TextView bodyServiceUnlockAllPrice;
 
     protected ListRequestParam listRequestParam;
 
@@ -68,15 +67,12 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.atom_pay_service, null);
+        return inflater.inflate(R.layout.atom_name_master_lucky, null);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        payServiceContainer.setBackgroundResource(android.R.color.transparent);
-        payServiceClose.setVisibility(View.GONE);
 
         listRequestParam = (ListRequestParam) pGetSerializableExtra(IApiField.P.param);
         if (null != listRequestParam) {
@@ -108,10 +104,10 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.payServiceBuy:
+            case R.id.bodyServiceUnlock:
                 IClientActivityLaunchFactory.launchPayOrderActivity(this, listRequestParam, payService);
                 break ;
-            case R.id.payServiceSuit:
+            case R.id.bodyServiceUnlockAll:
                 maskerShowProgressView(true);
                 getPresenter().postPayListVipDiscount(
                         HttpPayServices.VIP_ID.NEW_SUIT,
@@ -134,14 +130,35 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
                 this.payService = payService;
         }
 
-        payServiceBuy.setOnClickListener(this);
-        payServiceSuit.setOnClickListener(this);
+        bodyServiceDiscount.setVisibility(payService.discount < 10 ? View.VISIBLE : View.GONE);
 
-        payServicePrice.setText(String.valueOf(payService.money));
+        bodyServiceUnlock.setOnClickListener(this);
+        bodyServiceUnlockAll.setOnClickListener(this);
 
-        payServiceOldPrice.setText(payService.oldMoney);
-        payServiceOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 
-        payServiceName.setImageResource(R.drawable.atom_pub_png_pay_window_lucky);
+
+        SpannableStringBuilder builder = new SpannableStringBuilder(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringNameLuckyUnlock1));
+        int length = builder.length();
+        builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.money));
+        builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        builder.setSpan(new RelativeSizeSpan(2f), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringNameLuckyUnlock2));
+        length = builder.length();
+        builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.oldMoney));
+        builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        bodyServiceUnlockPrice.setText(builder);
+
+        if (null != payService.suit) {
+            builder = new SpannableStringBuilder(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringNameLuckyUnlockAll1));
+            length = builder.length();
+            builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.suit.money));
+            builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            builder.setSpan(new RelativeSizeSpan(2f), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringNameLuckyUnlockAll2));
+            length = builder.length();
+            builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.suit.oldMoney));
+            builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            bodyServiceUnlockAllPrice.setText(builder);
+        }
     }
 }

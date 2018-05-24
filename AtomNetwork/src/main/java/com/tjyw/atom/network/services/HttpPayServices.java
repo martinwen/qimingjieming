@@ -67,7 +67,8 @@ public interface HttpPayServices {
     Observable<RetroResult<PayService>> postPayListVipDiscount(
             @Field(IApiField.T.type) int type,
             @Field(IApiField.S.surname) String surname,
-            @Field(IApiField.D.day) String day
+            @Field(IApiField.D.day) String day,
+            @Field(IApiField.N.needSuit) int needSuit
     );
 
     @FormUrlEncoded

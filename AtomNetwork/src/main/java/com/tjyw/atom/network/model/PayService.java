@@ -43,4 +43,6 @@ public class PayService implements RetroResultItem {
     public int discount; // 打折
 
     public String discountMoney; // 打折价
+
+    public PayService suit;
 }
