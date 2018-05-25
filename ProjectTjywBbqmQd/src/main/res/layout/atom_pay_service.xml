@@ -165,7 +165,6 @@
             android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:gravity="center_vertical"
-            android:lineSpacingExtra="4dp"
             android:maxLines="3"
             app:layout_constraintLeft_toLeftOf="@+id/bodyServiceAdLeftContainer"
             app:layout_constraintRight_toRightOf="@+id/bodyServiceAdRightContainer"

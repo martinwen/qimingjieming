@@ -124,18 +124,17 @@
             app:layout_constraintTop_toBottomOf="@+id/bodyServiceDesc2">
 
             <TextView
-                style="@style/AtomPubStyleKa.Black_16DP"
+                style="@style/AtomStyle.RedNormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
                 android:background="@drawable/atom_pub_shape_red_stroke"
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="@string/atom_pub_resStringPaySuitAd1"
-                android:textColor="@color/atom_pub_resTextColorRed" />
+                android:text="@string/atom_pub_resStringPaySuitAd1" />
 
             <TextView
-                style="@style/AtomPubStyleKa.Black_16DP"
+                style="@style/AtomStyle.RedNormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
                 android:layout_marginTop="@dimen/atom_pubResDimenPayServiceAdSpace"
@@ -143,11 +142,10 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="@string/atom_pub_resStringPaySuitAd2"
-                android:textColor="@color/atom_pub_resTextColorRed" />
+                android:text="@string/atom_pub_resStringPaySuitAd2" />
 
             <TextView
-                style="@style/AtomPubStyleKa.Black_16DP"
+                style="@style/AtomStyle.RedNormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
                 android:layout_marginTop="@dimen/atom_pubResDimenPayServiceAdSpace"
@@ -155,11 +153,10 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="@string/atom_pub_resStringPaySuitAd3"
-                android:textColor="@color/atom_pub_resTextColorRed" />
+                android:text="@string/atom_pub_resStringPaySuitAd3" />
 
             <TextView
-                style="@style/AtomPubStyleKa.Black_16DP"
+                style="@style/AtomStyle.RedNormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
                 android:layout_marginTop="@dimen/atom_pubResDimenPayServiceAdSpace"
@@ -167,8 +164,7 @@
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-                android:text="@string/atom_pub_resStringPaySuitAd4"
-                android:textColor="@color/atom_pub_resTextColorRed" />
+                android:text="@string/atom_pub_resStringPaySuitAd4" />
         </LinearLayout>
 
         <LinearLayout
@@ -182,7 +178,7 @@
             app:layout_constraintTop_toTopOf="@+id/bodyServiceAdLeftContainer">
 
             <TextView
-                style="@style/AtomPubStyleKa.Black_16DP"
+                style="@style/AtomStyle.BlackNormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
                 android:ellipsize="end"
@@ -191,7 +187,7 @@
                 android:text="@string/atom_pub_resStringPaySuitAd11" />
 
             <TextView
-                style="@style/AtomPubStyleKa.Black_16DP"
+                style="@style/AtomStyle.BlackNormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
                 android:layout_marginTop="@dimen/atom_pubResDimenPayServiceAdSpace"
@@ -201,7 +197,7 @@
                 android:text="@string/atom_pub_resStringPaySuitAd21" />
 
             <TextView
-                style="@style/AtomPubStyleKa.Black_16DP"
+                style="@style/AtomStyle.BlackNormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
                 android:layout_marginTop="@dimen/atom_pubResDimenPayServiceAdSpace"
@@ -211,7 +207,7 @@
                 android:text="@string/atom_pub_resStringPaySuitAd31" />
 
             <TextView
-                style="@style/AtomPubStyleKa.Black_16DP"
+                style="@style/AtomStyle.BlackNormalText"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
                 android:layout_marginTop="@dimen/atom_pubResDimenPayServiceAdSpace"
@@ -223,7 +219,7 @@
 
         <TextView
             android:id="@+id/bodyServiceUnlock"
-            style="@style/AtomPubStyleKa.White_16DP"
+            style="@style/AtomStyle.WhiteContentTitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -231,9 +227,9 @@
             android:background="@drawable/atom_ic_pay_suit_btn_rect"
             android:gravity="center"
             android:text="@string/atom_pub_resStringNameLuckyUnlock"
+            app:layout_constraintBottom_toTopOf="@+id/bodyServiceUnlockPrice"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bodyServiceAdLeftContainer" />
+            app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
             android:id="@+id/bodyServiceUnlockPrice"
@@ -243,26 +239,26 @@
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="2"
+            android:paddingBottom="16dp"
             android:paddingTop="4dp"
             android:text="@string/atom_pub_resStringNameLuckyUnlock1"
+            app:layout_constraintBottom_toTopOf="@+id/bodyServiceUnlockAll"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bodyServiceUnlock" />
+            app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
             android:id="@+id/bodyServiceUnlockAll"
-            style="@style/AtomPubStyleKa.White_16DP"
+            style="@style/AtomStyle.WhiteContentTitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="8dp"
             android:background="@drawable/atom_ic_naming_lucky_unlock_all"
             android:gravity="center"
             android:text="@string/atom_pub_resStringNameLuckyUnlockAll"
+            app:layout_constraintBottom_toTopOf="@+id/bodyServiceUnlockAllPrice"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bodyServiceUnlockPrice" />
+            app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
             android:id="@+id/bodyServiceUnlockAllPrice"
@@ -275,9 +271,9 @@
             android:paddingBottom="16dp"
             android:paddingTop="4dp"
             android:text="@string/atom_pub_resStringNameLuckyUnlockAll1"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bodyServiceUnlockAll" />
+            app:layout_constraintRight_toRightOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.NestedScrollView>

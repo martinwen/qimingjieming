@@ -19,6 +19,6 @@
 
     <dimen name="atom_pubResDimenMasterBannerHeight">144dp</dimen>
 
-    <dimen name="atom_pubResDimenPayServiceAdHeight">28dp</dimen>
+    <dimen name="atom_pubResDimenPayServiceAdHeight">24dp</dimen>
     <dimen name="atom_pubResDimenPayServiceAdSpace">4dp</dimen>
 </resources>

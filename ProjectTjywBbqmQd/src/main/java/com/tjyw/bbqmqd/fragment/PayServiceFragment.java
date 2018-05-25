@@ -96,7 +96,7 @@ public class PayServiceFragment extends BaseFragment<PayPresenter<PayServiceFrag
             int length = builder.length();
             builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.money));
             builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pubResColorYellow)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            builder.setSpan(new RelativeSizeSpan(2f), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            builder.setSpan(new RelativeSizeSpan(1.4f), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             builder.append(payPriceWords[0]);
             length = builder.length();
             builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.oldMoney));
@@ -109,6 +109,7 @@ public class PayServiceFragment extends BaseFragment<PayPresenter<PayServiceFrag
             bodyServicePrice.setText(builder);
         }
 
+        bodyServiceDiscount.setVisibility(payService.discount < 10 ? View.VISIBLE : View.GONE);
         switch (payService.id) {
             case PayService.VIP_ID.RECOMMEND:
                 bodyServiceName.setText(R.string.atom_pub_resStringNameServiceTitleRecommend);
