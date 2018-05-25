@@ -17,4 +17,20 @@
         <item>单名</item>
         <item>双名</item>
     </string-array>
+
+    <string-array name="atom_pub_resStringPayPriceWord">
+        <item>，原价</item>
+
+        <!-- 推荐名字 | 吉名套餐 -->
+        <item>仅需支付</item>
+        <item>即可解锁</item>
+        <item>400</item>
+        <item>余套吉名</item>
+
+        <!-- 天降吉名 -->
+        <item>解锁</item>
+        <item>套天降吉名，仅需</item>
+        <item>解锁全部</item>
+        <item>套名字，仅需</item>
+    </string-array>
 </resources>

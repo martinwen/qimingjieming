@@ -1,8 +1,12 @@
 package com.tjyw.bbqmqd.fragment;
 
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +19,8 @@ import com.tjyw.atom.network.presenter.PayPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.services.HttpPayServices;
+import com.tjyw.atom.network.utils.ArrayUtil;
+import com.tjyw.bbqmqd.ClientQmjmApplication;
 import com.tjyw.bbqmqd.R;
 import com.tjyw.bbqmqd.factory.IClientActivityLaunchFactory;
 
@@ -34,23 +40,20 @@ public class PayServiceFragment extends BaseFragment<PayPresenter<PayServiceFrag
         void payOnServicePayClick(PayServiceFragment fragment, ListRequestParam listRequestParam, PayService payService);
     }
 
-    @From(R.id.payServiceClose)
-    protected ImageView payServiceClose;
+    @From(R.id.bodyServiceDiscount)
+    protected ImageView bodyServiceDiscount;
 
-    @From(R.id.payServiceName)
-    protected ImageView payServiceName;
+    @From(R.id.bodyServiceName)
+    protected TextView bodyServiceName;
 
-    @From(R.id.payServicePrice)
-    protected TextView payServicePrice;
+    @From(R.id.bodyServiceLogo)
+    protected ImageView bodyServiceLogo;
 
-    @From(R.id.payServiceOldPrice)
-    protected TextView payServiceOldPrice;
+    @From(R.id.bodyServicePrice)
+    protected TextView bodyServicePrice;
 
-    @From(R.id.payServiceBuy)
-    protected ImageView payServiceBuy;
-
-    @From(R.id.payServiceSuit)
-    protected ImageView payServiceSuit;
+    @From(R.id.bodyServiceUnlock)
+    protected TextView bodyServiceUnlock;
 
     protected ListRequestParam listRequestParam;
 
@@ -84,49 +87,47 @@ public class PayServiceFragment extends BaseFragment<PayPresenter<PayServiceFrag
             return ;
         } else if (null != getView()) {
             getView().setOnClickListener(this);
+            bodyServiceUnlock.setOnClickListener(this);
         }
 
-        payServiceClose.setOnClickListener(this);
-        payServiceBuy.setOnClickListener(this);
-        payServiceSuit.setOnClickListener(this);
-
-        payServicePrice.setText(String.valueOf(payService.money));
-
-        payServiceOldPrice.setText(payService.oldMoney);
-        payServiceOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+        String[] payPriceWords = ClientQmjmApplication.pGetResources().getStringArray(R.array.atom_pub_resStringPayPriceWord);
+        if (! ArrayUtil.isEmpty(payPriceWords)) {
+            SpannableStringBuilder builder = new SpannableStringBuilder(payPriceWords[1]);
+            int length = builder.length();
+            builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.money));
+            builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pubResColorYellow)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            builder.setSpan(new RelativeSizeSpan(2f), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            builder.append(payPriceWords[0]);
+            length = builder.length();
+            builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.oldMoney));
+            builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pubResColorYellow)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            builder.append(payPriceWords[2]);
+            length = builder.length();
+            builder.append(payPriceWords[3]);
+            builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pubResColorYellow)), length, builder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            builder.append(payPriceWords[4]);
+            bodyServicePrice.setText(builder);
+        }
 
         switch (payService.id) {
             case PayService.VIP_ID.RECOMMEND:
-                payServiceName.setImageResource(R.drawable.atom_pub_png_pay_window_recommend);
-                break ;
-            case PayService.VIP_ID.LUCKY:
-                payServiceName.setImageResource(R.drawable.atom_pub_png_pay_window_lucky);
+                bodyServiceName.setText(R.string.atom_pub_resStringNameServiceTitleRecommend);
+                bodyServiceLogo.setImageResource(R.drawable.atom_png_pay_service_logo_recommend);
                 break ;
             case PayService.VIP_ID.DJM:
-                payServiceName.setImageResource(R.drawable.atom_pub_png_pay_window_djm);
-                break ;
             case PayService.VIP_ID.XJM:
-                payServiceName.setImageResource(R.drawable.atom_pub_png_pay_window_xjm);
+                bodyServiceName.setText(R.string.atom_pub_resStringNameServiceTitleSelf);
+                bodyServiceLogo.setImageResource(R.drawable.atom_png_pay_service_logo_jm);
         }
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.payServiceSuit:
-                maskerShowProgressView(true);
-                getPresenter().postPayListVipDiscount(
-                        HttpPayServices.VIP_ID.NEW_SUIT,
-                        listRequestParam.surname,
-                        listRequestParam.day
-                );
-
-                break ;
-            case R.id.payServiceBuy:
+            case R.id.bodyServiceUnlock:
                 if (null != listener) {
                     listener.payOnServicePayClick(this, listRequestParam, payService);
                 }
-            case R.id.payServiceClose:
             default:
                 pHideFragment(this);
         }

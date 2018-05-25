@@ -66,6 +66,17 @@
     <string name="atom_pub_resStringNamePayPrice2"> 元 原价</string>
     <string name="atom_pub_resStringNameMakeAGoodName">选个助运好名</string>
 
+    <string name="atom_pub_resStringNameServiceTitleRecommend">推荐名字</string>
+    <string name="atom_pub_resStringNameServiceTitleSelf">自选名字</string>
+    <string name="atom_pub_resStringNameServiceSubtitle">好名字带给您幸运与成功</string>
+    <string name="atom_pub_resStringNameServiceAd1">内容最优</string>
+    <string name="atom_pub_resStringNameServiceAd11">多家主流媒体极力推荐</string>
+    <string name="atom_pub_resStringNameServiceAd2">业界权威</string>
+    <string name="atom_pub_resStringNameServiceAd21">国学大师20年起名经验</string>
+    <string name="atom_pub_resStringNameServiceAd3">专业分析</string>
+    <string name="atom_pub_resStringNameServiceAd31">百里挑一的吉名组合</string>
+    <string name="atom_pub_resStringNameServiceUnlock">立即支付解锁</string>
+
     <!-- 八字 -->
     <string name="atom_pub_resStringBaZi">八字</string>
     <string name="atom_pub_resStringBaZiShiShen">十神</string>
