@@ -95,6 +95,7 @@ public interface HttpPayServices {
     @POST(API.ORDER)
     Observable<RetroResult<PayOrder>> postPayOrder(
             @Field(IApiField.V.vipId) int vipId,
+            @Field(IApiField.M.money) String money,
             @Field(IApiField.S.surname) String surname,
             @Field(IApiField.D.day) String day,
             @Field(IApiField.G.gender) int gender,

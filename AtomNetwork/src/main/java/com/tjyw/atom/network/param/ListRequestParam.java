@@ -3,6 +3,7 @@ package com.tjyw.atom.network.param;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tjyw.atom.network.conf.ISection;
 import com.tjyw.atom.network.model.NameDefinition;
+import com.tjyw.atom.network.result.RNameDefinition;
 
 import java.io.Serializable;
 
@@ -37,6 +38,13 @@ public class ListRequestParam implements Serializable, Cloneable {
         this.name = definition.getGivenName();
         this.day = definition.day;
         this.gender = definition.gender;
+    }
+
+    public ListRequestParam(RNameDefinition definition) {
+        this.surname = definition.surname;
+        this.day = definition.day;
+        this.gender = definition.gender;
+        this.nameNumber = definition.nameNumber;
     }
 
     @Override

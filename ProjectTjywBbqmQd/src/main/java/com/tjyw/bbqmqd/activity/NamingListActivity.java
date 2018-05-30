@@ -27,6 +27,7 @@ import com.tjyw.atom.network.result.RNameDefinition;
 import atom.pub.inject.From;
 import com.tjyw.bbqmqd.ClientQmjmApplication;
 import com.tjyw.bbqmqd.R;
+import com.tjyw.bbqmqd.adapter.NameMasterAdapter;
 import com.tjyw.bbqmqd.factory.IClientActivityLaunchFactory;
 import com.tjyw.bbqmqd.item.NamingWordItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
@@ -130,6 +131,17 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     }
 
     @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.payOrderRepeatPay:
+                ListRequestParam param = (ListRequestParam) v.getTag();
+                if (null != param) {
+                    IClientActivityLaunchFactory.launchNameMasterActivity(this, param, 100, NameMasterAdapter.POSITION.FREEDOM);
+                }
+        }
+    }
+
+    @Override
     public void maskerOnClick(View view, int clickLabelRes) {
         super.maskerOnClick(view, clickLabelRes);
         maskerShowProgressView(true);
@@ -173,6 +185,8 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         if (TextUtils.isEmpty(result.statusLabel)) {
             payOrderRepeatPay.setVisibility(View.GONE);
         } else {
+            payOrderRepeatPay.setTag(new ListRequestParam(result));
+            payOrderRepeatPay.setOnClickListener(this);
             payOrderRepeatPay.setVisibility(View.VISIBLE);
             payOrderRepeatPay.setText(result.statusLabel);
         }

@@ -167,7 +167,7 @@ public class PayPackageFragment extends BaseFragment<NamingPresenter<NameMasterR
 
         nameDefinitionAdapter.add(itemList);
         if (getActivity() instanceof PayPackageActivity) {
-            ((PayPackageActivity) getActivity()).setPayOrderRepeatPay(result.statusLabel);
+            ((PayPackageActivity) getActivity()).setPayOrderRepeatPay(result);
         }
     }
 

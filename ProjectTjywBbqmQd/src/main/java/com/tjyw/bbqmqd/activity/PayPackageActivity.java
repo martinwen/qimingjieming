@@ -10,8 +10,11 @@ import android.widget.TextView;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
+import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.bbqmqd.R;
+import com.tjyw.bbqmqd.adapter.NameMasterAdapter;
 import com.tjyw.bbqmqd.adapter.PayPackageAdapter;
+import com.tjyw.bbqmqd.factory.IClientActivityLaunchFactory;
 
 import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
@@ -106,6 +109,12 @@ public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<PayP
             case R.id.payPackageLuck:
                 showPayPackageLuckyFragment();
                 break ;
+            case R.id.payOrderRepeatPay:
+                ListRequestParam param = (ListRequestParam) v.getTag();
+                if (null != param) {
+                    IClientActivityLaunchFactory.launchNameMasterActivity(this, param, 100, NameMasterAdapter.POSITION.FREEDOM);
+                }
+                break ;
             default:
                 super.onClick(v);
         }
@@ -131,12 +140,16 @@ public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<PayP
         }
     }
 
-    public void setPayOrderRepeatPay(String statusLabel) {
-        if (TextUtils.isEmpty(statusLabel)) {
-            payOrderRepeatPay.setVisibility(View.GONE);
-        } else {
-            payOrderRepeatPay.setVisibility(View.VISIBLE);
-            payOrderRepeatPay.setText(statusLabel);
+    public void setPayOrderRepeatPay(RNameDefinition result) {
+        if (null != result) {
+            if (TextUtils.isEmpty(result.statusLabel)) {
+                payOrderRepeatPay.setVisibility(View.GONE);
+            } else {
+                payOrderRepeatPay.setTag(new ListRequestParam(result));
+                payOrderRepeatPay.setOnClickListener(this);
+                payOrderRepeatPay.setVisibility(View.VISIBLE);
+                payOrderRepeatPay.setText(result.statusLabel);
+            }
         }
     }
 

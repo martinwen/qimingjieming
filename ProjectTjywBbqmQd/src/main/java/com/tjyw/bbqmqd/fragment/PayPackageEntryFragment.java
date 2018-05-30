@@ -84,7 +84,7 @@ public class PayPackageEntryFragment extends BaseFragment {
         bodyServiceDiscount.setVisibility(payService.discount < 10 ? View.VISIBLE : View.GONE);
 
         bodyServiceName.setText(payService.service);
-        bodyServiceDesc.setText(payService.detail);
+//        bodyServiceDesc.setText(payService.detail);
 
         String[] payPriceWords = ClientQmjmApplication.pGetResources().getStringArray(R.array.atom_pub_resStringPayPriceWord);
         if (! ArrayUtil.isEmpty(payPriceWords)) {

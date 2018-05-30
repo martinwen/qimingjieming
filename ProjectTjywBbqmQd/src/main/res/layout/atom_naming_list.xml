@@ -20,11 +20,11 @@
 
         <TextView
             android:id="@+id/payOrderRepeatPay"
-            style="@style/AtomStyle.WhiteNormalText"
+            style="@style/AtomStyle.BlackNormalText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="#AAFFCA1D"
+            android:background="#CCFFCA1D"
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="2"

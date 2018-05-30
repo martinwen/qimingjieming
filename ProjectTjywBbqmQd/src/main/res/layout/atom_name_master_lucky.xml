@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
@@ -223,13 +222,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/atom_ic_pay_suit_btn_rect"
             android:gravity="center"
             android:text="@string/atom_pub_resStringNameLuckyUnlock"
-            app:layout_constraintBottom_toTopOf="@+id/bodyServiceUnlockPrice"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceAdLeftContainer" />
 
         <TextView
             android:id="@+id/bodyServiceUnlockPrice"
@@ -242,10 +241,10 @@
             android:paddingBottom="16dp"
             android:paddingTop="4dp"
             android:text="@string/atom_pub_resStringNameLuckyUnlock1"
-            app:layout_constraintBottom_toTopOf="@+id/bodyServiceUnlockAll"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceUnlock" />
 
         <TextView
             android:id="@+id/bodyServiceUnlockAll"
@@ -256,9 +255,9 @@
             android:background="@drawable/atom_ic_naming_lucky_unlock_all"
             android:gravity="center"
             android:text="@string/atom_pub_resStringNameLuckyUnlockAll"
-            app:layout_constraintBottom_toTopOf="@+id/bodyServiceUnlockAllPrice"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceUnlockPrice" />
 
         <TextView
             android:id="@+id/bodyServiceUnlockAllPrice"
@@ -271,9 +270,9 @@
             android:paddingBottom="16dp"
             android:paddingTop="4dp"
             android:text="@string/atom_pub_resStringNameLuckyUnlockAll1"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceUnlockAll" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.NestedScrollView>

@@ -19,4 +19,14 @@ public class RNameDefinition extends RetroListResult<NameDefinition> {
     public NameData data;
 
     public String statusLabel;
+
+    public String surname;
+
+    public String name;
+
+    public String day;
+
+    public int gender;
+
+    public int nameNumber;
 }

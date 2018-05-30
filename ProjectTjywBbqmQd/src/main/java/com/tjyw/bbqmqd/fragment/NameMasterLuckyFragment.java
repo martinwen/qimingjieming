@@ -26,6 +26,7 @@ import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.bbqmqd.ClientQmjmApplication;
 import com.tjyw.bbqmqd.R;
 import com.tjyw.bbqmqd.activity.BaseActivity;
+import com.tjyw.bbqmqd.adapter.NameMasterAdapter;
 import com.tjyw.bbqmqd.factory.IClientActivityLaunchFactory;
 
 import atom.pub.inject.From;

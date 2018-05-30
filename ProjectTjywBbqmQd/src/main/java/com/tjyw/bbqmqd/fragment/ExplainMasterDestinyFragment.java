@@ -47,7 +47,7 @@ public class ExplainMasterDestinyFragment extends AtomPubBaseFragment {
         if (null != explain) {
             new AtomExplainHeaderHolder(view).layout(explain);
             new BaZiSheetHolder(view).sheet(explain.nameZodiac);
-//            new YunShiSheetHolder(view).sheet(explain.nameZodiac);
+            new YunShiSheetHolder(view).sheet(explain.nameZodiac);
         }
     }
 }
