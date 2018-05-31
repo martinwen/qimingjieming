@@ -148,7 +148,7 @@
     <string name="atom_pub_resStringPayService">商品名称：%s</string>
     <string name="atom_pub_resStringPayPrice">商品价格：</string>
     <string name="atom_pub_resStringPayOldPrice">原价￥%s</string>
-    <string name="atom_pub_resStringPaySalePrice">即时优惠</string>
+    <string name="atom_pub_resStringPaySalePrice">限时优惠</string>
     <string name="atom_pub_resStringPayRealPrice">实付款</string>
     <string name="atom_pub_resStringPayDiscountPrice">%d折优惠价</string>
     <string name="atom_pub_resStringPayCoupon">我的红包&#160;</string>
