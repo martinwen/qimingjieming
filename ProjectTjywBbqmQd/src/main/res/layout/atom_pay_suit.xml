@@ -115,7 +115,7 @@
             android:lineSpacingExtra="4dp"
             android:maxLines="2"
             android:padding="8dp"
-            android:text="@string/atom_pub_resStringNameLuckySubTitle2"
+            android:text="@string/atom_pub_resStringNameLuckySubTitle3"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

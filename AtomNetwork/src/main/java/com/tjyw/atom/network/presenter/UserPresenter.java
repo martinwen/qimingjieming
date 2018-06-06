@@ -162,4 +162,28 @@ public class UserPresenter<V extends ViewWithPresenter> extends ClientPresenter<
                     }
                 });
     }
+
+    public void postUserMyPacketDiscount(int vipId) {
+        RetroHttpMethods.USER().postUserMyPacketDiscount(vipId)
+                .compose(RxSchedulersHelper.<RetroResult<RPayPacketResult>>io_main())
+                .subscribe(new Action1<RetroResult<RPayPacketResult>>() {
+                    @Override
+                    public void call(RetroResult<RPayPacketResult> result) {
+                        if (null == result || null == result.items) {
+                            if (presenterView instanceof OnApiPostErrorListener) {
+                                ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.User.ListPacket, new IllegalRequestException(result));
+                            }
+                        } else if (presenterView instanceof OnApiUserPostListener.PostUserListPacketListener) {
+                            ((OnApiUserPostListener.PostUserListPacketListener) presenterView).postOnUserListPacketSuccess(result.items);
+                        }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        if (presenterView instanceof OnApiPostErrorListener) {
+                            ((OnApiPostErrorListener) presenterView).postOnExplainError(IPost.User.ListPacket, throwable);
+                        }
+                    }
+                });
+    }
 }

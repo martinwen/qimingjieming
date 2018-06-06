@@ -34,6 +34,8 @@ public interface HttpUserServices {
             String LIST_PACKET = "user/listPacket";
 
             String MY_PACKET = "user/myPacket";
+
+            String MY_PACKET_DISCOUNT = "user/myPacketDiscount";
         }
     }
 
@@ -77,6 +79,12 @@ public interface HttpUserServices {
     @FormUrlEncoded
     @POST(API.PACKET.MY_PACKET)
     Observable<RetroResult<RPayPacketResult>> postUserMyPacket(
+            @Field(IApiField.V.vipId) int vipId
+    );
+
+    @FormUrlEncoded
+    @POST(API.PACKET.MY_PACKET_DISCOUNT)
+    Observable<RetroResult<RPayPacketResult>> postUserMyPacketDiscount(
             @Field(IApiField.V.vipId) int vipId
     );
 }

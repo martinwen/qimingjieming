@@ -148,7 +148,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         atom_pub_resIdsOK.setOnClickListener(this);
 
         maskerShowProgressView(true);
-        getPresenter().postUserMyPacket(payService.id);
+        getPresenter().postUserMyPacketDiscount(payService.id);
 
         countDownCache = Pair.create(new AtomicInteger(15), new AtomicInteger(0));
         payCountDown.setText(getString(R.string.atom_pub_resStringPayCountDownUnit, countDownCache.first.get(), countDownCache.second.get()));
