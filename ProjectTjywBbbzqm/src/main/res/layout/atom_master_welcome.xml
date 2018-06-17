@@ -16,10 +16,9 @@
     <ImageView
         android:id="@+id/welcomeBackgroundBottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
+        android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:scaleType="center"
+        android:scaleType="centerCrop"
         android:src="@drawable/atom_png_welcome_content" />
 
     <android.support.constraint.ConstraintLayout
