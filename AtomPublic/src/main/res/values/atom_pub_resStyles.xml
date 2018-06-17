@@ -50,4 +50,12 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
+    <style name="AtomPubStyle_TabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/AtomPubStyle_TabLayout_Tab</item>
+    </style>
+
+    <style name="AtomPubStyle_TabLayout_Tab" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
+
 </resources>

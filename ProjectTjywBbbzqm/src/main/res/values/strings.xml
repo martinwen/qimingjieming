@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--<string name="app_name">起名字取名字</string>-->
+
+    <string name="atom_resStringNamingSurnameLabel">姓氏：</string>
+    <string name="atom_resStringNamingGenderLabel">姓别：</string>
+    <string name="atom_resStringNamingGivenNameLabel">名字：</string>
+    <string name="atom_resStringNamingGivenNameHint">您的名字（必须是汉字）</string>
+    <string name="atom_resStringNamingGivenNameModeLabel">形式：</string>
+    <string name="atom_resStringNamingGivenNameModeSingle">单名</string>
+    <string name="atom_resStringNamingGivenNameModeDouble">双名</string>
+    <string name="atom_resStringNamingDateOfBirthLabel">出生日期：</string>
+    <string name="atom_resStringNamingDateOfBirthHint">选择您的出生时间</string>
+
+</resources>

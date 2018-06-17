@@ -29,6 +29,12 @@ ext {
                     androidApplicationId : "com.tjyw.bbqmqd",
                     androidVersionCode : 10001200,
                     androidVersionName : "1.2.0"
+            ],
+
+            bbbzqm = [
+                    androidApplicationId : "com.tjyw.bbbzqm",
+                    androidVersionCode : 10001000,
+                    androidVersionName : "1.0.0"
             ]
     ]
 

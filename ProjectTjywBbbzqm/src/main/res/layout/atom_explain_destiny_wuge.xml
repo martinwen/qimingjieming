@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/atom_resColorTableBackground">
+
+        <!-- 第一行: xx格 + 标题 -->
+        <TextView
+            android:id="@+id/bodyTitle"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/atom_resColorTableBackground"
+            android:gravity="center"
+            android:minHeight="64dp"
+            android:text="@string/atom_pub_resStringExplainSanCaiPeiZhi"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/bodyDesc" />
+
+        <TextView
+            android:id="@+id/bodyDesc"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/atom_resColorTableBackground"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="8dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/bodyTitle"
+            app:layout_constraintHorizontal_weight="4"
+            app:layout_constraintLeft_toRightOf="@+id/bodyTitle"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bodyTitle"
+            tools:text="bodyDesc" />
+
+        <!-- 第二行 -->
+        <TextView
+            android:id="@+id/bodyJiXiong"
+            style="@style/AtomStyle.RedNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:minHeight="48dp"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/bodyDesc"
+            app:layout_constraintTop_toBottomOf="@+id/bodyTitle"
+            tools:text="bodyJiXiong" />
+
+        <TextView
+            android:id="@+id/bodyLiShu"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:singleLine="true"
+            app:layout_constraintBottom_toBottomOf="@+id/bodyJiXiong"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintLeft_toRightOf="@+id/bodyJiXiong"
+            app:layout_constraintRight_toLeftOf="@+id/bodyWuXing"
+            app:layout_constraintTop_toTopOf="@+id/bodyJiXiong"
+            tools:text="bodyLiShu" />
+
+        <TextView
+            android:id="@+id/bodyWuXing"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:singleLine="true"
+            app:layout_constraintBottom_toBottomOf="@+id/bodyJiXiong"
+            app:layout_constraintHorizontal_weight="2"
+            app:layout_constraintLeft_toRightOf="@+id/bodyLiShu"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bodyJiXiong"
+            tools:text="bodyWuXing" />
+
+        <!-- 第三行 -->
+        <TextView
+            android:id="@+id/bodySubTitle"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="8dp"
+            android:minHeight="48dp"
+            android:padding="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyJiXiong"
+            tools:text="bodySubTitle" />
+
+        <!-- 第四行 -->
+        <TextView
+            android:id="@+id/bodyContent"
+            style="@style/AtomStyle.GreyNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="8dp"
+            android:padding="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodySubTitle"
+            tools:text="bodyContent" />
+
+        <!-- 横向分割线 -->
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_resColorTableDivider"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_resColorTableDivider"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyTitle" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_resColorTableDivider"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyJiXiong" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_resColorTableDivider"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodySubTitle" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_resColorTableDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <!-- 纵向分割线 -->
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_resColorTableDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_resColorTableDivider"
+            app:layout_constraintBottom_toBottomOf="@+id/bodyJiXiong"
+            app:layout_constraintLeft_toRightOf="@+id/bodyTitle"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_resColorTableDivider"
+            app:layout_constraintBottom_toBottomOf="@+id/bodyLiShu"
+            app:layout_constraintLeft_toRightOf="@+id/bodyLiShu"
+            app:layout_constraintTop_toTopOf="@+id/bodyLiShu" />
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_resColorTableDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>
