@@ -19,6 +19,7 @@
         android:id="@+id/masterMineLogo"
         android:layout_width="72dp"
         android:layout_height="72dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/masterMineHeader"
         app:layout_constraintLeft_toLeftOf="@+id/masterMineHeader"
         app:layout_constraintRight_toRightOf="@+id/masterMineHeader"
@@ -29,15 +30,17 @@
 
     <TextView
         android:id="@+id/masterMineUserSignIn"
-        style="@style/AtomStyle.BlackBigText"
+        style="@style/AtomStyle.BlackSuperHugeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="8dp"
         android:text="@string/atom_pub_resStringUserSignInClick"
+        app:layout_constraintBottom_toTopOf="@+id/masterMineUserAccount"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/masterMineLogo" />
+        app:layout_constraintTop_toTopOf="@+id/masterMineHeader"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/masterMineUserAccount"
@@ -46,6 +49,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:text="@string/atom_pub_resStringMineUserAccount"
+        app:layout_constraintBottom_toBottomOf="@+id/masterMineHeader"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/masterMineUserSignIn" />
@@ -56,7 +60,6 @@
         style="@style/AtomStyle.BlackBigText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:drawablePadding="8dp"
         android:drawableTop="@drawable/atom_bitmap_master_mine_order"
         android:gravity="center"
@@ -138,7 +141,7 @@
         style="@style/AtomStyle.BlackBigText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:drawablePadding="8dp"
         android:drawableTop="@drawable/atom_bitmap_master_mine_bjx"
         android:gravity="center"
@@ -182,7 +185,7 @@
         style="@style/AtomStyle.BlackBigText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:drawablePadding="8dp"
         android:drawableTop="@drawable/atom_bitmap_master_mine_zodiac"
         android:gravity="center"
