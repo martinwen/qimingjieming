@@ -55,6 +55,9 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
 
     protected long createMillisTime;
 
+    @From(R.id.welcomeBackgroundBottom)
+    protected ImageView welcomeBackgroundBottom;
+
     @From(R.id.welcomeGuideRoot)
     protected ViewGroup welcomeGuideRoot;
 
@@ -210,15 +213,18 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
             if (version > iPrefClient.getShowAppGuideVersion()) {
                 iPrefClient.setShowAppGuideVersion(version);
 
+                welcomeBackgroundBottom.setVisibility(View.GONE);
+                welcomeGuideIndicateLeft.setSelected(true);
+
                 welcomeGuideContainer.setOffscreenPageLimit(3);
                 welcomeGuideContainer.setAdapter(new ClientGuideAdapter(this));
                 welcomeGuideContainer.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 
                     @Override
                     public void onPageSelected(int position) {
-                        welcomeGuideIndicateLeft.setImageResource(position == 0 ? R.drawable.atom_ic_guide_indicate_select : R.drawable.atom_ic_guide_indicate_default);
-                        welcomeGuideIndicateCenter.setImageResource(position == 1 ? R.drawable.atom_ic_guide_indicate_select : R.drawable.atom_ic_guide_indicate_default);
-                        welcomeGuideIndicateRight.setImageResource(position == 2 ? R.drawable.atom_ic_guide_indicate_select : R.drawable.atom_ic_guide_indicate_default);
+                        welcomeGuideIndicateLeft.setSelected(position == 0);
+                        welcomeGuideIndicateCenter.setSelected(position == 1);
+                        welcomeGuideIndicateRight.setSelected(position == 2);
 
                         if (position == 2) {
                             welcomeGuideLaunch.setVisibility(View.VISIBLE);

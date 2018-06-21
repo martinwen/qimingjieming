@@ -127,39 +127,27 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
         bodyServiceUnlockAll.setOnClickListener(this);
         bodyServiceDiscount.setVisibility(payService.discount < 10 ? View.VISIBLE : View.GONE);
 
-        String[] payPriceWords = ClientQmjmApplication.pGetResources().getStringArray(R.array.atom_pub_resStringPayPriceWord);
-        if (! ArrayUtil.isEmpty(payPriceWords)) {
-            SpannableStringBuilder builder = new SpannableStringBuilder(payPriceWords[6]);
-            int length = builder.length();
-            builder.append(payPriceWords[7]);
-            builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            builder.append(payPriceWords[8]);
-            length = builder.length();
-            builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.money));
-            builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            builder.setSpan(new RelativeSizeSpan(1.4f), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            builder.append(payPriceWords[0]);
-            length = builder.length();
-            builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.oldMoney));
-            builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            bodyServiceUnlockPrice.setText(builder);
+        SpannableStringBuilder builder = new SpannableStringBuilder(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAdTJJM1));
+        int length = builder.length();
+        builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.money));
+        builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-            if (null != payService.suit) {
-                builder = new SpannableStringBuilder(payPriceWords[9]);
-                length = builder.length();
-                builder.append(payPriceWords[10]);
-                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                builder.append(payPriceWords[11]);
-                length = builder.length();
-                builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.suit.money));
-                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                builder.setSpan(new RelativeSizeSpan(1.4f), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                builder.append(payPriceWords[0]);
-                length = builder.length();
-                builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.suit.oldMoney));
-                builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-                bodyServiceUnlockAllPrice.setText(builder);
-            }
+        builder.append(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAdTJJM2)); // 原价
+        builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.oldMoney));
+        builder.append(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAdTJJM3));
+        bodyServiceUnlockPrice.setText(builder);
+
+        if (null != payService.suit) {
+            builder = new SpannableStringBuilder(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAd88_4));
+            length = builder.length();
+            builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.suit.money));
+            builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            builder.append(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAd88_2)); // 原价
+            builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.suit.oldMoney));
+            builder.append(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAd88_3));
+
+            bodyServiceUnlockAllPrice.setText(builder);
         }
     }
 }

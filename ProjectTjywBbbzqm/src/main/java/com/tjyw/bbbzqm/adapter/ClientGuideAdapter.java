@@ -4,7 +4,6 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.tjyw.bbbzqm.ClientQmjmApplication;
@@ -62,11 +61,7 @@ public class ClientGuideAdapter extends PagerAdapter implements View.OnClickList
         convertView.setOnClickListener(this);
         container.addView(convertView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
-        SimpleDraweeView bodyImage = (SimpleDraweeView) convertView.findViewById(R.id.bodyImage);
-        ImageFacade.loadImage(GUIDE_RESOURCE[position], bodyImage);
-
-        TextView bodyStart = (TextView) convertView.findViewById(R.id.bodyStart);
-//        bodyStart.setVisibility(position == 2 ? View.VISIBLE : View.GONE);
+        ImageFacade.loadImage(GUIDE_RESOURCE[position], (SimpleDraweeView) convertView);
 
         return convertView;
     }

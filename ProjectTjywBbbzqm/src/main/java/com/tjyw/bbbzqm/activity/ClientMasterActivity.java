@@ -50,7 +50,7 @@ public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMaster
         setContentView(R.layout.atom_client_master);
         immersionBarWith()
 //                .statusBarView(R.id.masterImmersionBarView)
-//                .statusBarDarkFont(true)
+                .statusBarDarkFont(true)
                 .init();
 
         gregorianFragment = (ClientGregorianFragment) getSupportFragmentManager().findFragmentByTag(ClientGregorianFragment.class.getName());

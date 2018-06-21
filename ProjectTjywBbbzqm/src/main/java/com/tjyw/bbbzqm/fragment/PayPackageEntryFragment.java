@@ -6,7 +6,6 @@ import android.support.v4.content.ContextCompat;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.RelativeSizeSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import android.widget.TextView;
 
 import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
-import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.bbbzqm.ClientQmjmApplication;
 import com.tjyw.bbbzqm.R;
 
@@ -86,24 +84,16 @@ public class PayPackageEntryFragment extends BaseFragment {
         bodyServiceName.setText(payService.service);
 //        bodyServiceDesc.setText(payService.detail);
 
-        String[] payPriceWords = ClientQmjmApplication.pGetResources().getStringArray(R.array.atom_pub_resStringPayPriceWord);
-        if (! ArrayUtil.isEmpty(payPriceWords)) {
-            SpannableStringBuilder builder = new SpannableStringBuilder(payPriceWords[1]);
-            int length = builder.length();
-            builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.money));
-            builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            builder.setSpan(new RelativeSizeSpan(1.4f), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            builder.append(payPriceWords[0]);
-            length = builder.length();
-            builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.oldMoney));
-            builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            builder.append(payPriceWords[2]);
-            length = builder.length();
-            builder.append(payPriceWords[5]);
-            builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            builder.append(payPriceWords[4]);
-            bodyServicePrice.setText(builder);
-        }
+        SpannableStringBuilder builder = new SpannableStringBuilder(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAd88_1));
+        int length = builder.length();
+        builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.money));
+        builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        builder.append(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAd88_2)); // 原价
+        builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.oldMoney));
+        builder.append(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAd88_3));
+
+        bodyServicePrice.setText(builder);
     }
 
     @Override
