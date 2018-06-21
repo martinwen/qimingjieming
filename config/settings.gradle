@@ -27,8 +27,8 @@ ext {
 
             bbqmqd = [
                     androidApplicationId : "com.tjyw.bbqmqd",
-                    androidVersionCode : 10001200,
-                    androidVersionName : "1.2.0"
+                    androidVersionCode : 10001300,
+                    androidVersionName : "1.3.0"
             ],
 
             bbbzqm = [
