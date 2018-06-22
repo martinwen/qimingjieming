@@ -97,7 +97,13 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
                     case ICode.PAY.WX_SUCCESS:
                         if (null != data) {
                             listRequestParam.orderNo = data.getStringExtra(IApiField.O.orderNo);
-                            IClientActivityLaunchFactory.launchNamingListActivity((BaseActivity) getActivity(), listRequestParam);
+                            switch (payService.id) {
+                                case HttpPayServices.VIP_ID.NEW_SUIT:
+                                    IClientActivityLaunchFactory.launchPayPackageActivity((BaseActivity) getActivity(), listRequestParam);
+                                    break ;
+                                default:
+                                    IClientActivityLaunchFactory.launchNamingListActivity((BaseActivity) getActivity(), listRequestParam);
+                            }
                         }
                 }
         }

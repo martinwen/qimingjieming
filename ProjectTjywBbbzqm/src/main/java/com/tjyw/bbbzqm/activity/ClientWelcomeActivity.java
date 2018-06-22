@@ -113,8 +113,8 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
                     .setPositiveButton(R.string.atom_pub_resStringOK, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-//                            MobclickAgent.onKillProcess(getApplicationContext());
-//                            finish();
+                            MobclickAgent.onKillProcess(getApplicationContext());
+                            finish();
                             launchMasterActivity();
                         }
                     }).show();
