@@ -37,8 +37,6 @@ android {
 }
 
 dependencies {
-    api fileTree(dir: 'libs/baidu', include: ['*.jar'])
-    api fileTree(dir: 'libs/mi', include: ['*.jar'])
     api fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(':AtomNetwork')

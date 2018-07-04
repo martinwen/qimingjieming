@@ -64,7 +64,7 @@
             android:imeOptions="actionGo"
             android:inputType="text"
             android:maxLength="2"
-            android:maxLines="1" android:text="郭"
+            android:maxLines="1"
             android:singleLine="true"
             android:textColorHint="@color/atom_pub_resColorInputHint"
             app:layout_constraintBaseline_toBaselineOf="@+id/masterNameSurnameLabel"

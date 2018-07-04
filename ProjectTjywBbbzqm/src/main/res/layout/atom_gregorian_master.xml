@@ -111,13 +111,13 @@
 
         <TextView
             android:id="@+id/gregorianCancel"
-            style="@style/AtomStyle.WhiteBigText"
+            style="@style/AtomStyle.GreyBigText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/atom_ic_master_complete"
+            android:background="@drawable/atom_shape_gregorian_cancel"
             android:gravity="center"
             android:minWidth="96dp"
             android:text="@string/atom_pub_resStringCancel"
@@ -126,13 +126,13 @@
 
         <TextView
             android:id="@+id/gregorianOK"
-            style="@style/AtomStyle.WhiteBigText"
+            style="@style/AtomStyle.BlackBigText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/atom_ic_master_complete"
+            android:background="@drawable/atom_shape_gregorian_ok"
             android:gravity="center"
             android:minWidth="96dp"
             android:text="@string/atom_pub_resStringOK"

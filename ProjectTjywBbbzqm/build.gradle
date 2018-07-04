@@ -95,7 +95,6 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
-            println "===variant.buildType.getName()::${variant.buildType.getName()}"
 //            speedyAssemble(output, defaultConfig.versionCode)
             differentNameAssemble(output, variant.productFlavors, defaultConfig.versionCode)
         }
@@ -144,7 +143,6 @@ def speedyAssemble(output, versionCode) {
 }
 
 def differentNameAssemble(output, productFlavors, versionCode) {
-    def zipFile = output.outputFile
     for (ProductFlavor flavor : productFlavors) {
         def CLIENT_C_ID = flavor.getBuildConfigFields().get("CLIENT_C_ID").value
         CLIENT_C_ID = CLIENT_C_ID.replace("\"", "")
@@ -158,11 +156,12 @@ def differentNameAssemble(output, productFlavors, versionCode) {
             newApkName = "adr_bbbzqm_master_${CLIENT_C_ID}_${CLIENT_C_NAME}_${versionCode}_${new Date().format('yyyyMMdd')}.apk"
         }
 
-        println "===zipFile.parent::$zipFile.parent, newApkName::$newApkName"
-//        output.outputFile = new File(zipFile.parent, newApkName)
+        output.outputFileName = newApkName
+
+        println "===newFile::$newApkName"
     }
 
-//    zipFile.delete()
+    output.outputFile.delete()
 }
 
 /**
@@ -171,9 +170,16 @@ def differentNameAssemble(output, productFlavors, versionCode) {
 def cleanOutputs() {
     File apkDir = new File("ProjectTjywBbbzqm/build/outputs/apk")
     if (apkDir.exists() && apkDir.isDirectory()) {
-        apkDir.eachFile { outputFile ->
-            if (outputFile.name.endsWith("apk")) {
-                outputFile.delete()
+        apkDir.eachFile { flavorsDir ->
+            if (flavorsDir.isDirectory()) {
+                flavorsDir.eachFile { realFile ->
+                    println "cleanOutputs::realFile::${realFile}"
+                    if (realFile.name.endsWith("apk")) {
+                        realFile.delete()
+                    }
+                }
+            } else {
+                flavorsDir.delete()
             }
         }
     }
