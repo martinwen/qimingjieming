@@ -43,6 +43,6 @@ public interface Configure {
 
     interface UMeng {
 
-        String APP_KEY = "5a61c53ba40fa3364e00013e";
+        String APP_KEY = "5b4c64618f4a9d64e2000046";
     }
 }
