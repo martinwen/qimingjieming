@@ -30,6 +30,7 @@ import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.RIdentifyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
+import com.tjyw.atom.network.services.HttpPayServices;
 import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.atom.network.utils.JsonUtil;
 import com.tjyw.qmjmqd.ClientQmjmApplication;
@@ -207,8 +208,8 @@ public class NameMasterRecommendFragment extends BaseFragment<NamingPresenter<Na
                         if (! recyclerView.canScrollVertically(1)) {
                             if (null == payService) {
                                 maskerShowProgressView(true);
-                                getPresenter().postPayListVip(
-                                        1,
+                                getPresenter().postPayListVipDiscount(
+                                        HttpPayServices.VIP_ID.RECOMMEND,
                                         listRequestParam.surname,
                                         listRequestParam.day
                                 );

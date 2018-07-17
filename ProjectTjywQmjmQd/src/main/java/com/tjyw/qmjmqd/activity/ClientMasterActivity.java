@@ -107,7 +107,7 @@ public class ClientMasterActivity extends BaseToolbarActivity<PayPresenter<Clien
 
         ClientInit clientInit = ClientInit.getInstance(getApplicationContext());
         if (null != clientInit && ! TextUtils.isEmpty(clientInit.red_image_link)) {
-            pShowFragment(R.anim.abc_fade_in, R.anim.abc_fade_out, payCouponFragment);
+            pShowFragment(payCouponFragment);
         }
     }
 

@@ -14,6 +14,7 @@
         android:adjustViewBounds="true"
         app:layout_widthPercent="90%"
         fresco:actualImageScaleType="fitCenter"
+        fresco:placeholderImage="@drawable/atom_png_new_red"
         fresco:placeholderImageScaleType="fitCenter" />
 
     <ImageView

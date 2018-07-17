@@ -13,16 +13,16 @@ import com.tjyw.qmjmqd.R;
  */
 public class YunShiSheetHolder {
 
-    @From(R.id.yunShiShiYe)
+    @From(value = R.id.yunShiShiYe, canBeNull = true)
     protected TextView yunShiShiYe;
 
-    @From(R.id.yunShiXueYe)
+    @From(value = R.id.yunShiXueYe, canBeNull = true)
     protected TextView yunShiXueYe;
 
-    @From(R.id.yunShiCaiYun)
+    @From(value = R.id.yunShiCaiYun, canBeNull = true)
     protected TextView yunShiCaiYun;
 
-    @From(R.id.yunShiAiQing)
+    @From(value = R.id.yunShiAiQing, canBeNull = true)
     protected TextView yunShiAiQing;
 
     public YunShiSheetHolder(View view) {
@@ -30,9 +30,20 @@ public class YunShiSheetHolder {
     }
 
     public void sheet(NameZodiac nameZodiac) {
-        yunShiShiYe.setText(nameZodiac.shiye);
-        yunShiXueYe.setText(nameZodiac.xueye);
-        yunShiCaiYun.setText(nameZodiac.caiyun);
-        yunShiAiQing.setText(nameZodiac.aiqing);
+        if (null != yunShiShiYe) {
+            yunShiShiYe.setText(nameZodiac.shiye);
+        }
+
+        if (null != yunShiXueYe) {
+            yunShiXueYe.setText(nameZodiac.xueye);
+        }
+
+        if (null != yunShiCaiYun) {
+            yunShiCaiYun.setText(nameZodiac.caiyun);
+        }
+
+        if (null != yunShiAiQing) {
+            yunShiAiQing.setText(nameZodiac.aiqing);
+        }
     }
 }

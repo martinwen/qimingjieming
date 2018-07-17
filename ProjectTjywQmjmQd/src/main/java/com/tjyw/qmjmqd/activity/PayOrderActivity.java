@@ -3,6 +3,7 @@ package com.tjyw.qmjmqd.activity;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +13,7 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
+import android.util.Pair;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ import com.tjyw.atom.network.IllegalRequestException;
 import com.tjyw.atom.network.RxSchedulersHelper;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.conf.ICode;
+import com.tjyw.atom.network.model.ClientInit;
 import com.tjyw.atom.network.model.PayCoupon;
 import com.tjyw.atom.network.model.PayOrder;
 import com.tjyw.atom.network.model.PayOrderNumber;
@@ -39,6 +42,7 @@ import com.tjyw.atom.network.presenter.listener.OnApiUserPostListener;
 import com.tjyw.atom.network.result.RPayPacketResult;
 import com.tjyw.atom.network.result.RetroPayPreviewResult;
 import com.tjyw.atom.network.utils.ArrayUtil;
+import com.tjyw.qmjmqd.ClientQmjmApplication;
 import com.tjyw.qmjmqd.R;
 
 import org.greenrobot.eventbus.EventBus;
@@ -47,10 +51,12 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
 import rx.Observable;
+import rx.Subscription;
 import rx.functions.Action1;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -68,8 +74,14 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     @From(R.id.payServiceName)
     protected TextView payServiceName;
 
-    @From(R.id.payServicePrice)
-    protected TextView payServicePrice;
+    @From(R.id.payServiceOldPrice)
+    protected TextView payServiceOldPrice;
+
+    @From(R.id.payServiceSalePrice)
+    protected TextView payServiceSalePrice;
+
+    @From(R.id.payCountDown)
+    protected TextView payCountDown;
 
     @From(R.id.payServiceCoupon)
     protected TextView payServiceCoupon;
@@ -92,6 +104,10 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
     protected PayService payService;
 
+    protected Subscription countDownSubscription;
+
+    protected Pair<AtomicInteger, AtomicInteger> countDownCache;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,20 +128,57 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                     .init();
         }
 
-        SpannableStringBuilder builder = new SpannableStringBuilder(getString(R.string.atom_pub_resStringPayPrice));
-        int length = builder.length();
-        builder.append(getString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.money));
-        builder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.atom_pub_resTextColorRed)), length, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        payServicePrice.setText(builder);
         payServiceName.setText(getString(R.string.atom_pub_resStringPayService, payService.service));
+        payServiceOldPrice.setText(getString(R.string.atom_pub_resStringPayOldPrice, payService.oldMoney));
+        if (null != payServiceOldPrice.getPaint()) {
+            payServiceOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+        }
+
+        SpannableStringBuilder builder = new SpannableStringBuilder(getString(R.string.atom_pub_resStringPaySalePrice));
+        int length = builder.length();
+        builder.append(getString(R.string.atom_pub_resStringRMB_s, payService.money));
+        builder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.atom_pub_resTextColorRed)), length, builder.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        payServiceSalePrice.setText(builder);
 
         payUseAlipay.setSelected(true);
         payUseAlipay.setOnClickListener(this);
         payUseWxPay.setOnClickListener(this);
+
+        atom_pub_resIdsOK.setText(ClientInit.getPayButtonText(ClientQmjmApplication.getContext(), ClientQmjmApplication.pGetString(R.string.atom_pub_resStringPayPay)));
         atom_pub_resIdsOK.setOnClickListener(this);
 
         maskerShowProgressView(true);
-        getPresenter().postUserMyPacket(payService.id);
+        getPresenter().postUserMyPacketDiscount(payService.id);
+
+        countDownCache = Pair.create(new AtomicInteger(15), new AtomicInteger(0));
+        payCountDown.setText(getString(R.string.atom_pub_resStringPayCountDownUnit, countDownCache.first.get(), countDownCache.second.get()));
+        countDownSubscription = Observable.interval(1, 1, TimeUnit.SECONDS)
+                .compose(RxSchedulersHelper.<Long>io_main())
+                .subscribe(new Action1<Long>() {
+                    @Override
+                    public void call(Long aLong) {
+                        int first = countDownCache.first.get();
+                        int second = countDownCache.second.decrementAndGet();
+                        if (second < 0) {
+                            countDownCache.second.set(second = 59);
+                            first = countDownCache.first.decrementAndGet();
+                            if (first < 0) {
+                                if (! countDownSubscription.isUnsubscribed()) {
+                                    countDownSubscription.unsubscribe();
+                                    countDownSubscription = null;
+                                    return ;
+                                }
+                            }
+                        }
+
+                        payCountDown.setText(getString(R.string.atom_pub_resStringPayCountDownUnit, first, second));
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        throwable.printStackTrace();
+                    }
+                });
     }
 
     @Override
@@ -156,6 +209,10 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
     @Override
     protected void onDestroy() {
+        if (null != countDownSubscription && ! countDownSubscription.isUnsubscribed()) {
+            countDownSubscription.unsubscribe();
+        }
+
         if (null != payOrderHandler) {
             payOrderHandler.clear();
             payOrderHandler = null;
@@ -219,7 +276,8 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
             maskerShowProgressView(true);
             getPresenter().postPayOrder(
                     payService.id,
-                    null, listRequestParam.surname,
+                    payService.money,
+                    listRequestParam.surname,
                     listRequestParam.day,
                     listRequestParam.gender,
                     listRequestParam.nameNumber,
@@ -239,8 +297,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
             if (null != payCoupon) {
                 SpannableStringBuilder builder = new SpannableStringBuilder(getString(R.string.atom_pub_resStringPayCoupon));
                 int length = builder.length();
-                builder.append(" - ");
-                builder.append(getString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payCoupon.money));
+                builder.append(getString(R.string.atom_pub_resStringRMB_s, payCoupon.money));
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorRed)), length, builder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 payServiceCoupon.setText(builder);
 
@@ -248,9 +305,16 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                     listRequestParam.redPacketId = payCoupon.id;
                 }
 
-                builder = new SpannableStringBuilder(getString(R.string.atom_pub_resStringPaySummary));
-                length = builder.length();
-                builder.append(getString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payCoupon.subTotal));
+                builder = new SpannableStringBuilder();
+                if (payService.discount < 10) {
+                    builder.append(getString(R.string.atom_pub_resStringPayDiscountPrice, payService.discount));
+                    length = 0;
+                } else {
+                    builder.append(getString(R.string.atom_pub_resStringPayRealPrice));
+                    length = builder.length();
+                }
+
+                builder.append(getString(R.string.atom_pub_resStringRMB_s, payCoupon.subTotal));
                 builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorRed)), length, builder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 payServiceSummary.setText(builder);
             }
@@ -264,9 +328,16 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorGrey)), length, builder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         payServiceCoupon.setText(builder);
 
-        builder = new SpannableStringBuilder(getString(R.string.atom_pub_resStringPaySummary));
-        length = builder.length();
-        builder.append(getString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.money));
+        builder = new SpannableStringBuilder();
+        if (payService.discount < 10) {
+            builder.append(getString(R.string.atom_pub_resStringPayDiscountPrice, payService.discount));
+            length = 0;
+        } else {
+            builder.append(getString(R.string.atom_pub_resStringPayRealPrice));
+            length = builder.length();
+        }
+
+        builder.append(getString(R.string.atom_pub_resStringRMB_s, payService.money));
         builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(), R.color.atom_pub_resTextColorRed)), length, builder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         payServiceSummary.setText(builder);
     }

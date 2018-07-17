@@ -3,4 +3,33 @@
 
     <!--<string name="app_name">起名字取名字</string>-->
 
+    <string name="atom_resStringGuideLaunch">启动</string>
+
+    <string name="atom_resStringNamingSurnameLabel">姓氏：</string>
+    <string name="atom_resStringNamingGenderLabel">姓别：</string>
+    <string name="atom_resStringNamingGivenNameLabel">名字：</string>
+    <string name="atom_resStringNamingGivenNameHint">您的名字(必须是汉字)</string>
+    <string name="atom_resStringNamingGivenNameModeLabel">形式：</string>
+    <string name="atom_resStringNamingGivenNameModeSingle">单名</string>
+    <string name="atom_resStringNamingGivenNameModeDouble">双名</string>
+    <string name="atom_resStringNamingDateOfBirthLabel">出生日期：</string>
+    <string name="atom_resStringNamingDateOfBirthHint">选择您的出生时间</string>
+
+    <!-- 大小|高分吉名 -->
+    <string name="atom_resStringSuitAdJiMing1">仅需支付</string>
+    <string name="atom_resStringSuitAdJiMing2">(原价</string>
+    <string name="atom_resStringSuitAdJiMing3">)\n即可解锁大吉好名200余套</string> <!-- 大小吉名-->
+    <string name="atom_resStringSuitAdJiMing4">)\n即可解锁专业推荐吉名</string> <!-- 高分吉名 -->
+
+    <!-- 天降吉名 -->
+    <string name="atom_resStringSuitAdTJJM1">解锁天降吉名200余套，仅需</string>
+    <string name="atom_resStringSuitAdTJJM2">(原价</string>
+    <string name="atom_resStringSuitAdTJJM3">)</string>
+
+    <!-- 88套餐 -->
+    <string name="atom_resStringSuitAd88_1">解锁全部800余套吉名\n仅需</string>
+    <string name="atom_resStringSuitAd88_2">(原价</string>
+    <string name="atom_resStringSuitAd88_3">)</string>
+    <string name="atom_resStringSuitAd88_4">解锁全部800余套吉名，仅需</string>
+
 </resources>

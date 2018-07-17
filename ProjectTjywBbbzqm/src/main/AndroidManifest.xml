@@ -95,10 +95,6 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.PayOrderNameListActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
             android:name=".activity.PayPackageActivity"
             android:screenOrientation="portrait" />
 

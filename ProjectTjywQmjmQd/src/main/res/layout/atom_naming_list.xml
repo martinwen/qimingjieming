@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -16,6 +17,19 @@
             android:id="@+id/namingListContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/payOrderRepeatPay"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#CCFFCA1D"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="2"
+            android:padding="16dp"
+            tools:text="payOrderRepeatPay" />
 
         <include layout="@layout/atom_inc_loading" />
     </RelativeLayout>
