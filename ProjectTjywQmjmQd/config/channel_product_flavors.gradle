@@ -84,7 +84,7 @@ android {
 //            buildConfigField "String", "CLIENT_C_NAME", '"N多"'
 //        }
         C1009 {
-            resValue "string", "app_name", "起名字"
+            resValue "string", "app_name", "宝宝起名解名"
             buildConfigField "String", "CLIENT_C_ID", '"C1009"'
             buildConfigField "String", "CLIENT_C_NAME", '"小米"'
         }
