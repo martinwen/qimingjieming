@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@drawable/atom_ic_name_tab_icon_bg"
+        android:gravity="center" />
+
+    <item
+        android:drawable="@drawable/atom_ic_name_tab_recommend"
+        android:gravity="center" />
+</layer-list>

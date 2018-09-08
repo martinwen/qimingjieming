@@ -17,6 +17,8 @@ import nucleus.presenter.Presenter;
  */
 public class BaseActivity<P extends Presenter> extends AtomPubBaseActivity<P> implements IAtomPubLayoutSupportMasker, IAtomPubLayoutSupportMasker.OnMaskerClickListener {
 
+    protected boolean STATUSBAR_DARK_FONT = false;
+
     protected AtomClientMaskerSupport atomClientMaskerSupport;
 
     @Override

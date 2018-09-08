@@ -8,21 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.mikepenz.fastadapter.adapters.FooterAdapter;
 import com.mikepenz.fastadapter.adapters.HeaderAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
+import atom.pub.fragment.AtomPubBaseFragment;
+import atom.pub.inject.From;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
+import com.tjyw.bbqm.item.ExplainFooterItem;
 import com.tjyw.bbqm.item.ExplainHeaderItem;
 import com.tjyw.bbqm.item.ExplainOverviewItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import atom.pub.fragment.AtomPubBaseFragment;
-import atom.pub.inject.From;
 
 /**
  * Created by stephen on 17-8-11.
@@ -70,13 +71,16 @@ public class ExplainMasterOverviewFragment extends AtomPubBaseFragment {
         explainHeaderAdapter.wrap(itemAdapter);
         explainHeaderAdapter.add(new ExplainHeaderItem(explain));
 
+        FooterAdapter<ExplainFooterItem> footerAdapter = new FooterAdapter<ExplainFooterItem>();
+        footerAdapter.wrap(explainHeaderAdapter);
+        footerAdapter.add(new ExplainFooterItem(explain));
+
         explainOverviewContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
-        explainOverviewContainer.setAdapter(explainHeaderAdapter);
+        explainOverviewContainer.setAdapter(footerAdapter);
         explainOverviewContainer.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
-                        .color(R.color.atom_pub_resColorDivider)
-                        .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDividerSize)
-                        .marginResId(R.dimen.atom_pubResDimenRecyclerViewDivider16dp, R.dimen.atom_pubResDimenRecyclerViewDivider16dp)
+                        .color(android.R.color.transparent)
+                        .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDivider8dp)
                         .build());
     }
 }

@@ -1,107 +1,278 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:fillViewport="true"
+    android:scrollbars="none">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/atom_pub_png_name_lucky_bg"
-        android:orientation="vertical"
-        app:layout_heightPercent="90%"
-        app:layout_widthPercent="90%">
+        android:background="@drawable/atom_png_naming_lucky_bg">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:scaleType="fitXY"
-            android:src="@drawable/atom_pub_png_name_lucky_slogan" />
+            android:id="@+id/bodyServiceDiscount"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/atom_ic_pay_discount_no_shadow" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/bodyServiceName"
+            style="@style/AtomStyle.BlackSuperHugeText"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:maxLength="20"
+            android:maxLines="1"
+            android:text="@string/atom_pub_resStringNameLucky"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/bodyServiceDesc"
+            style="@style/AtomStyle.BlackNormalText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp">
-
-            <TextView
-                android:id="@+id/bodySurname"
-                style="@style/AtomStyle.BlackNormalText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:maxLength="2"
-                android:maxLines="1"
-                tools:text="bodySurname" />
-
-            <TextView
-                android:id="@+id/bodyDate"
-                style="@style/AtomStyle.BlackNormalText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:maxLength="20"
-                android:maxLines="1"
-                android:paddingLeft="16dp"
-                tools:text="bodyDate" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:maxLines="2"
+            android:paddingBottom="8dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:paddingTop="8dp">
+            android:paddingTop="8dp"
+            android:text="@string/atom_pub_resStringNameLuckySubTitle"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceName" />
+
+        <LinearLayout
+            android:id="@+id/bodyServiceTagContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceDesc">
 
             <TextView
-                android:id="@+id/bodyServiceName"
-                style="@style/AtomStyle.RedNormalText"
+                style="@style/AtomStyle.WhiteSmallText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:maxLength="20"
+                android:background="@color/atom_pub_resTextColorRed"
+                android:ellipsize="end"
+                android:gravity="center"
                 android:maxLines="1"
-                tools:text="bodyServiceName" />
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringNameLuckyTag1" />
 
             <TextView
-                android:id="@+id/bodyServicePrice"
-                style="@style/AtomStyle.RedNormalText"
+                style="@style/AtomStyle.WhiteSmallText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:maxLength="20"
+                android:layout_marginLeft="16dp"
+                android:background="@color/atom_pub_resTextColorRed"
+                android:ellipsize="end"
+                android:gravity="center"
                 android:maxLines="1"
-                android:paddingLeft="16dp"
-                tools:text="bodyServicePrice" />
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringNameLuckyTag2" />
+
+            <TextView
+                style="@style/AtomStyle.WhiteSmallText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:background="@color/atom_pub_resTextColorRed"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:padding="4dp"
+                android:text="@string/atom_pub_resStringNameLuckyTag3" />
         </LinearLayout>
 
         <TextView
-            style="@style/AtomStyle.RedBigText"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.0"
-            android:lineSpacingExtra="8dp"
-            android:padding="16dp"
-            android:text="@string/atom_pub_resStringNamePayHint" />
-
-        <TextView
-            android:id="@id/atom_pub_resIdsOK"
-            style="@style/AtomPubStyleKa.White"
+            android:id="@+id/bodyServiceDesc2"
+            style="@style/AtomStyle.BlackNormalText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/atom_pub_ic_ink_text_red"
+            android:ellipsize="end"
             android:gravity="center"
-            android:text="@string/atom_pub_resStringPayPay" />
-    </LinearLayout>
+            android:lineSpacingExtra="4dp"
+            android:maxLines="2"
+            android:padding="8dp"
+            android:text="@string/atom_pub_resStringNameLuckySubTitle2"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceTagContainer" />
 
-    <include layout="@layout/atom_inc_loading" />
-</android.support.percent.PercentFrameLayout>
+        <LinearLayout
+            android:id="@+id/bodyServiceAdLeftContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/bodyServiceAdRightContainer"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceDesc2">
+
+            <TextView
+                style="@style/AtomStyle.RedNormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
+                android:background="@drawable/atom_pub_shape_red_stroke"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/atom_pub_resStringPaySuitAd1" />
+
+            <TextView
+                style="@style/AtomStyle.RedNormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
+                android:layout_marginTop="@dimen/atom_pubResDimenPayServiceAdSpace"
+                android:background="@drawable/atom_pub_shape_red_stroke"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/atom_pub_resStringPaySuitAd2" />
+
+            <TextView
+                style="@style/AtomStyle.RedNormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
+                android:layout_marginTop="@dimen/atom_pubResDimenPayServiceAdSpace"
+                android:background="@drawable/atom_pub_shape_red_stroke"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/atom_pub_resStringPaySuitAd3" />
+
+            <TextView
+                style="@style/AtomStyle.RedNormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
+                android:layout_marginTop="@dimen/atom_pubResDimenPayServiceAdSpace"
+                android:background="@drawable/atom_pub_shape_red_stroke"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/atom_pub_resStringPaySuitAd4" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bodyServiceAdRightContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toRightOf="@+id/bodyServiceAdLeftContainer"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/bodyServiceAdLeftContainer">
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/atom_pub_resStringPaySuitAd11" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
+                android:layout_marginTop="@dimen/atom_pubResDimenPayServiceAdSpace"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/atom_pub_resStringPaySuitAd21" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
+                android:layout_marginTop="@dimen/atom_pubResDimenPayServiceAdSpace"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/atom_pub_resStringPaySuitAd31" />
+
+            <TextView
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/atom_pubResDimenPayServiceAdHeight"
+                android:layout_marginTop="@dimen/atom_pubResDimenPayServiceAdSpace"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@string/atom_pub_resStringPaySuitAd41" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/bodyServiceUnlock"
+            style="@style/AtomStyle.WhiteContentTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/atom_ic_pay_suit_btn_rect"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringNameLuckyUnlock"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceAdLeftContainer" />
+
+        <TextView
+            android:id="@+id/bodyServiceUnlockPrice"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="2"
+            android:paddingBottom="16dp"
+            android:paddingTop="4dp"
+            android:text="@string/atom_pub_resStringNameLuckyUnlock1"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceUnlock" />
+
+        <TextView
+            android:id="@+id/bodyServiceUnlockAll"
+            style="@style/AtomStyle.WhiteContentTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/atom_ic_naming_lucky_unlock_all"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringNameLuckyUnlockAll"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceUnlockPrice" />
+
+        <TextView
+            android:id="@+id/bodyServiceUnlockAllPrice"
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="2"
+            android:paddingBottom="16dp"
+            android:paddingTop="4dp"
+            android:text="@string/atom_pub_resStringNameLuckyUnlockAll1"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bodyServiceUnlockAll" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>

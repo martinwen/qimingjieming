@@ -7,7 +7,7 @@ public interface Configure {
 
     interface Network {
 
-        String HOST = "api.qimingjieming.com:8088";
+        String HOST = "api.qimingjieming.com";
 
         String SERVER = String.format("http://%s/qm/", HOST);
     }
