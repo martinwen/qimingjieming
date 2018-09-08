@@ -6,6 +6,7 @@ import android.support.v4.util.Pair;
 
 import com.aspsine.fragmentnavigator.FragmentNavigatorAdapter;
 import com.tjyw.bbqm.R;
+import com.tjyw.bbqm.fragment.ClientMasterCeSuanFragment;
 import com.tjyw.bbqm.fragment.ClientMasterExplainFragment;
 import com.tjyw.bbqm.fragment.ClientMasterMineFragment;
 import com.tjyw.bbqm.fragment.ClientMasterNamingFragment;
@@ -30,9 +31,11 @@ public class ClientMasterAdapter implements FragmentNavigatorAdapter {
 
         int EXPLAIN = 1;
 
-        int MINE = 2;
+        int CE_SUAN = 2;
 
-        int ALL = 3;
+        int MINE = 3;
+
+        int ALL = 4;
     }
 
     public static List<Pair<Integer, Integer>> MASTER_TAB_RESOURCE = new ArrayList<Pair<Integer, Integer>>();
@@ -48,6 +51,13 @@ public class ClientMasterAdapter implements FragmentNavigatorAdapter {
                 new Pair<Integer, Integer>(
                         R.string.atom_pub_resStringMasterTabExplain,
                         R.drawable.atom_selector_master_tab_explain
+                )
+        );
+
+        MASTER_TAB_RESOURCE.add(POSITION.CE_SUAN,
+                new Pair<Integer, Integer>(
+                        R.string.atom_pub_resStringMasterTabCeSuan,
+                        R.drawable.atom_selector_master_tab_cesuan
                 )
         );
 
@@ -78,6 +88,8 @@ public class ClientMasterAdapter implements FragmentNavigatorAdapter {
                     return fragmentManager.findFragmentById(R.id.masterNamingFragment);
                 case POSITION.EXPLAIN:
                     return fragmentManager.findFragmentById(R.id.masterExplainFragment);
+                case POSITION.CE_SUAN:
+                    return fragmentManager.findFragmentById(R.id.masterCeSuanFragment);
                 case POSITION.MINE:
                     return fragmentManager.findFragmentById(R.id.masterMineFragment);
                 default:
@@ -95,6 +107,8 @@ public class ClientMasterAdapter implements FragmentNavigatorAdapter {
                 return ClientMasterNamingFragment.class.getName();
             case POSITION.EXPLAIN:
                 return ClientMasterExplainFragment.class.getName();
+            case POSITION.CE_SUAN:
+                return ClientMasterCeSuanFragment.class.getName();
             case POSITION.MINE:
                 return ClientMasterMineFragment.class.getName();
             default:

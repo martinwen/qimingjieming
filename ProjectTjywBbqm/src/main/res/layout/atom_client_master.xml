@@ -28,6 +28,13 @@
             android:tag="com.tjyw.bbqm.fragment.ClientMasterExplainFragment" />
 
         <fragment
+            android:id="@+id/masterCeSuanFragment"
+            class="com.tjyw.bbqm.fragment.ClientMasterCeSuanFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:tag="com.tjyw.bbqm.fragment.ClientMasterCeSuanFragment" />
+
+        <fragment
             android:id="@+id/masterMineFragment"
             class="com.tjyw.bbqm.fragment.ClientMasterMineFragment"
             android:layout_width="match_parent"
