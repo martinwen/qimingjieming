@@ -3,44 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/atom_shape_background" >
+    android:background="@color/atom_pub_resColorBackground">
 
     <include layout="@layout/atom_pub_inc_symbol" />
 
-    <FrameLayout
-        android:id="@+id/masterFragmentContainer"
+    <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/bottom_navigation_height"
-        android:layout_height="match_parent">
+        android:orientation="vertical">
 
-        <fragment
-            android:id="@+id/masterNamingFragment"
-            class="com.tjyw.bbqm.fragment.ClientMasterNamingFragment"
+        <FrameLayout
+            android:id="@+id/masterFragmentContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:tag="com.tjyw.bbqm.fragment.ClientMasterNamingFragment" />
+            android:layout_height="match_parent">
 
-        <fragment
-            android:id="@+id/masterExplainFragment"
-            class="com.tjyw.bbqm.fragment.ClientMasterExplainFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:tag="com.tjyw.bbqm.fragment.ClientMasterExplainFragment" />
+            <fragment
+                android:id="@+id/masterNamingFragment"
+                class="com.tjyw.bbqm.fragment.ClientMasterNamingFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="com.tjyw.bbqm.fragment.ClientMasterNamingFragment" />
 
-        <fragment
-            android:id="@+id/masterCeSuanFragment"
-            class="com.tjyw.bbqm.fragment.ClientMasterCeSuanFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:tag="com.tjyw.bbqm.fragment.ClientMasterCeSuanFragment" />
+            <fragment
+                android:id="@+id/masterExplainFragment"
+                class="com.tjyw.bbqm.fragment.ClientMasterExplainFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="com.tjyw.bbqm.fragment.ClientMasterExplainFragment" />
 
-        <fragment
-            android:id="@+id/masterMineFragment"
-            class="com.tjyw.bbqm.fragment.ClientMasterMineFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:tag="com.tjyw.bbqm.fragment.ClientMasterMineFragment" />
-    </FrameLayout>
+            <fragment
+                android:id="@+id/masterCeSuanFragment"
+                class="com.tjyw.bbqm.fragment.ClientMasterCeSuanFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="com.tjyw.bbqm.fragment.ClientMasterCeSuanFragment" />
+
+            <fragment
+                android:id="@+id/masterMineFragment"
+                class="com.tjyw.bbqm.fragment.ClientMasterMineFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:tag="com.tjyw.bbqm.fragment.ClientMasterMineFragment" />
+        </FrameLayout>
+    </LinearLayout>
 
     <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
         android:id="@+id/atomPubClientMasterNavigation"

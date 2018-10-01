@@ -62,6 +62,8 @@ public class ClientInit implements RetroResultItem {
 
     public String payButtonText; // 立即解锁
 
+    public String qmsmwap; // 测算页面的地址
+
     public boolean saveInstance(Context context) {
         IPrefClient client = new ProxyGenerator().create(context, IPrefClient.class);
         if (null != client) {

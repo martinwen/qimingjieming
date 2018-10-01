@@ -8,6 +8,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.WindowManager;
 
 import com.aspsine.fragmentnavigator.FragmentNavigator;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
@@ -21,6 +23,7 @@ import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.adapter.ClientMasterAdapter;
 import com.tjyw.bbqm.fragment.ClientGregorianFragment;
+import com.tjyw.bbqm.fragment.ClientMasterCeSuanFragment;
 import com.tjyw.bbqm.fragment.PayCouponFragment;
 import com.umeng.analytics.MobclickAgent;
 
@@ -50,6 +53,7 @@ public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMaster
         setContentView(R.layout.atom_client_master);
         immersionBarWith()
                 .statusBarDarkFont(true)
+                .keyboardEnable(true, WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
                 .init();
 
         gregorianFragment = (ClientGregorianFragment) getSupportFragmentManager().findFragmentByTag(ClientGregorianFragment.class.getName());
@@ -89,6 +93,7 @@ public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMaster
                         case ClientMasterAdapter.POSITION.EXPLAIN:
                             immersionBar.fitsSystemWindows(false).transparentStatusBar().statusBarDarkFont(true).init();
                             break;
+                        case ClientMasterAdapter.POSITION.CE_SUAN:
                         case ClientMasterAdapter.POSITION.MINE:
                             immersionBar.fitsSystemWindows(true).statusBarColor(R.color.colorPrimary).statusBarDarkFont(true).init();
                     }
@@ -140,6 +145,17 @@ public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMaster
                         }
                     })
                     .show();
+        }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        ClientMasterCeSuanFragment fragment = findFragmentById(R.id.masterCeSuanFragment, ClientMasterCeSuanFragment.class);
+        if (null != fragment && fragment.canGoBack()) {
+            fragment.goBack();
+            return false;
+        } else {
+            return super.onKeyDown(keyCode, event);
         }
     }
 

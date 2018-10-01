@@ -1,253 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:orientation="vertical">
-
-    <android.support.v4.widget.Space
-        android:layout_width="match_parent"
-        android:layout_height="96dp" />
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <FrameLayout
-            android:id="@+id/nGenderMale"
-            android:layout_width="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
-            android:layout_height="@dimen/atom_pubResDimenMasterSelectorBackgroundBound">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:duplicateParentState="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/atom_selector_master_gender" />
-
-            <TextView
-                style="@style/AtomPubStyleKa.Black"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:duplicateParentState="true"
-                android:gravity="center"
-                android:text="@string/atom_pub_resStringGenderMale"
-                android:textColor="@color/atom_pub_black2white" />
-        </FrameLayout>
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
 
         <android.support.v4.widget.Space
-            android:layout_width="48dp"
-            android:layout_height="1dp" />
-
-        <FrameLayout
-            android:id="@+id/nGenderFemale"
-            android:layout_width="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
-            android:layout_height="@dimen/atom_pubResDimenMasterSelectorBackgroundBound">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:duplicateParentState="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/atom_selector_master_gender" />
-
-            <TextView
-                style="@style/AtomPubStyleKa.Black"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:duplicateParentState="true"
-                android:gravity="center"
-                android:text="@string/atom_pub_resStringGenderFemale"
-                android:textColor="@color/atom_pub_black2white" />
-        </FrameLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <FrameLayout
-            android:id="@+id/nNameNumberSingle"
-            android:layout_width="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
-            android:layout_height="@dimen/atom_pubResDimenMasterSelectorBackgroundBound">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:duplicateParentState="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/atom_selector_master_gender" />
-
-            <TextView
-                style="@style/AtomPubStyleKa.Black"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:duplicateParentState="true"
-                android:gravity="center"
-                android:text="@string/atom_pub_resStringSingleName"
-                android:textColor="@color/atom_pub_black2white" />
-        </FrameLayout>
-
-        <android.support.v4.widget.Space
-            android:layout_width="48dp"
-            android:layout_height="1dp" />
-
-        <FrameLayout
-            android:id="@+id/nNameNumberDouble"
-            android:layout_width="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
-            android:layout_height="@dimen/atom_pubResDimenMasterSelectorBackgroundBound">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:duplicateParentState="true"
-                android:scaleType="centerCrop"
-                android:src="@drawable/atom_selector_master_gender" />
-
-            <TextView
-                style="@style/AtomPubStyleKa.Black"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:duplicateParentState="true"
-                android:gravity="center"
-                android:text="@string/atom_pub_resStringDoubleName"
-                android:textColor="@color/atom_pub_black2white" />
-        </FrameLayout>
-    </LinearLayout>
-
-    <android.support.percent.PercentRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <TextView
-            android:id="@+id/nSurnameLabel"
-            style="@style/AtomPubStyleKa.Black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/nSurname"
-            android:gravity="center_vertical|right"
-            android:text="@string/atom_pub_resStringSurname"
-            android:textStyle="bold"
-            app:layout_widthPercent="25%" />
-
-        <TextView
-            android:id="@+id/nSurnameLabelDot"
-            style="@style/AtomStyle.BlackSmallText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/nSurname"
-            android:layout_toRightOf="@+id/nSurnameLabel"
-            android:paddingLeft="2dp"
-            android:text="@string/atom_pub_resStringChineseDoc"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/nSurname"
-            style="@style/AtomStyle.BlackNormalText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_toRightOf="@+id/nSurnameLabel"
-            android:background="@android:color/transparent"
-            android:gravity="top"
-            android:hint="@string/atom_pub_resStringSurnameHint"
-            android:imeOptions="actionNext"
-            android:inputType="text"
-            android:maxLength="2"
-            android:maxLines="1"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingTop="8dp"
-            android:singleLine="true"
-            android:textColorHint="@color/atom_pub_resColorInputHint"
-            app:layout_widthPercent="65%" />
-
-        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_alignLeft="@+id/nSurname"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/nSurname"
-            android:layout_marginTop="4dp"
-            android:scaleType="fitXY"
-            android:src="#FFBBBBBB" />
-    </android.support.percent.PercentRelativeLayout>
+            android:layout_height="96dp" />
 
-    <android.support.percent.PercentRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <TextView
-            android:id="@+id/nDateOfBirthLabel"
-            style="@style/AtomPubStyleKa.Black"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/nDateOfBirth"
-            android:gravity="center_vertical|right"
-            android:text="@string/atom_pub_resStringDateOfBirth"
-            android:textStyle="bold"
-            app:layout_widthPercent="25%" />
-
-        <TextView
-            android:id="@+id/nDateOfBirthLabelDot"
-            style="@style/AtomStyle.BlackSmallText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/nDateOfBirth"
-            android:layout_toRightOf="@+id/nDateOfBirthLabel"
-            android:paddingLeft="2dp"
-            android:text="@string/atom_pub_resStringChineseDoc"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/nDateOfBirth"
-            style="@style/AtomStyle.BlackNormalText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_toRightOf="@+id/nDateOfBirthLabel"
-            android:background="@android:color/transparent"
-            android:hint="@string/atom_pub_resStringDateOfBirthHint"
-            android:maxLines="1"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingTop="8dp"
-            android:textColorHint="@color/atom_pub_resColorInputHint"
-            app:layout_widthPercent="65%" />
-
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_alignLeft="@+id/nDateOfBirth"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/nDateOfBirth"
-            android:layout_marginTop="4dp"
-            android:scaleType="fitXY"
-            android:src="#FFBBBBBB" />
-    </android.support.percent.PercentRelativeLayout>
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@id/atom_pub_resIdsOK"
-        style="@style/AtomPubStyleKa.White"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/atom_selector_ink_text_no_default"
-        android:gravity="center"
-        android:minWidth="96dp"
-        android:text="@string/atom_pub_resStringOK" />
-</LinearLayout>
+            <FrameLayout
+                android:id="@+id/nGenderMale"
+                android:layout_width="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
+                android:layout_height="@dimen/atom_pubResDimenMasterSelectorBackgroundBound">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:duplicateParentState="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/atom_selector_master_gender" />
+
+                <TextView
+                    style="@style/AtomPubStyleKa.Black"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:duplicateParentState="true"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringGenderMale"
+                    android:textColor="@color/atom_pub_black2white" />
+            </FrameLayout>
+
+            <android.support.v4.widget.Space
+                android:layout_width="48dp"
+                android:layout_height="1dp" />
+
+            <FrameLayout
+                android:id="@+id/nGenderFemale"
+                android:layout_width="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
+                android:layout_height="@dimen/atom_pubResDimenMasterSelectorBackgroundBound">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:duplicateParentState="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/atom_selector_master_gender" />
+
+                <TextView
+                    style="@style/AtomPubStyleKa.Black"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:duplicateParentState="true"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringGenderFemale"
+                    android:textColor="@color/atom_pub_black2white" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/nNameNumberSingle"
+                android:layout_width="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
+                android:layout_height="@dimen/atom_pubResDimenMasterSelectorBackgroundBound">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:duplicateParentState="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/atom_selector_master_gender" />
+
+                <TextView
+                    style="@style/AtomPubStyleKa.Black"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:duplicateParentState="true"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringSingleName"
+                    android:textColor="@color/atom_pub_black2white" />
+            </FrameLayout>
+
+            <android.support.v4.widget.Space
+                android:layout_width="48dp"
+                android:layout_height="1dp" />
+
+            <FrameLayout
+                android:id="@+id/nNameNumberDouble"
+                android:layout_width="@dimen/atom_pubResDimenMasterSelectorBackgroundBound"
+                android:layout_height="@dimen/atom_pubResDimenMasterSelectorBackgroundBound">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:duplicateParentState="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/atom_selector_master_gender" />
+
+                <TextView
+                    style="@style/AtomPubStyleKa.Black"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:duplicateParentState="true"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringDoubleName"
+                    android:textColor="@color/atom_pub_black2white" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/nSurnameLabel"
+                style="@style/AtomPubStyleKa.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/nSurname"
+                android:gravity="center_vertical|right"
+                android:text="@string/atom_pub_resStringSurname"
+                android:textStyle="bold"
+                app:layout_widthPercent="25%" />
+
+            <TextView
+                android:id="@+id/nSurnameLabelDot"
+                style="@style/AtomStyle.BlackSmallText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/nSurname"
+                android:layout_toRightOf="@+id/nSurnameLabel"
+                android:paddingLeft="2dp"
+                android:text="@string/atom_pub_resStringChineseDoc"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/nSurname"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/nSurnameLabel"
+                android:background="@android:color/transparent"
+                android:gravity="top"
+                android:hint="@string/atom_pub_resStringSurnameHint"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:maxLength="2"
+                android:maxLines="1"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:singleLine="true"
+                android:textColorHint="@color/atom_pub_resColorInputHint"
+                app:layout_widthPercent="65%" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignLeft="@+id/nSurname"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/nSurname"
+                android:layout_marginTop="4dp"
+                android:scaleType="fitXY"
+                android:src="#FFBBBBBB" />
+        </android.support.percent.PercentRelativeLayout>
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/nDateOfBirthLabel"
+                style="@style/AtomPubStyleKa.Black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/nDateOfBirth"
+                android:gravity="center_vertical|right"
+                android:text="@string/atom_pub_resStringDateOfBirth"
+                android:textStyle="bold"
+                app:layout_widthPercent="25%" />
+
+            <TextView
+                android:id="@+id/nDateOfBirthLabelDot"
+                style="@style/AtomStyle.BlackSmallText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/nDateOfBirth"
+                android:layout_toRightOf="@+id/nDateOfBirthLabel"
+                android:paddingLeft="2dp"
+                android:text="@string/atom_pub_resStringChineseDoc"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/nDateOfBirth"
+                style="@style/AtomStyle.BlackNormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/nDateOfBirthLabel"
+                android:background="@android:color/transparent"
+                android:hint="@string/atom_pub_resStringDateOfBirthHint"
+                android:maxLines="1"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp"
+                android:textColorHint="@color/atom_pub_resColorInputHint"
+                app:layout_widthPercent="65%" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignLeft="@+id/nDateOfBirth"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/nDateOfBirth"
+                android:layout_marginTop="4dp"
+                android:scaleType="fitXY"
+                android:src="#FFBBBBBB" />
+        </android.support.percent.PercentRelativeLayout>
+
+        <TextView
+            android:id="@id/atom_pub_resIdsOK"
+            style="@style/AtomPubStyleKa.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/atom_selector_ink_text_no_default"
+            android:gravity="center"
+            android:minWidth="96dp"
+            android:text="@string/atom_pub_resStringOK" />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -49,6 +49,8 @@ public interface IApiField {
         String filename = "file\"; filename=\"image.jpg";
 
         String from = "from";
+
+        String fromNative = "fromNative";
     }
 
     interface G {
@@ -64,7 +66,7 @@ public interface IApiField {
 
         String id = "id";
 
-        String info = "info";
+        String ignore = "ignore";
 
         String images = "images";
 
@@ -72,7 +74,9 @@ public interface IApiField {
 
         String imageType = "image/jpg";
 
-        String ignore = "ignore";
+        String imei = "imei";
+
+        String info = "info";
     }
 
     interface K {
@@ -203,6 +207,8 @@ public interface IApiField {
         String url = "url";
 
         String user = "user";
+
+        String userAgent = "userAgent";
 
         String userId = "userId";
     }

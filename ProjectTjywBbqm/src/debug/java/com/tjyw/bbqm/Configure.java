@@ -7,7 +7,7 @@ public interface Configure {
 
     interface Network {
 
-        String HOST = "api.qimingjieming.com";
+        String HOST = "api.qimingjieming.com:8088";
 
         String SERVER = String.format("http://%s/qm/", HOST);
     }
@@ -31,9 +31,9 @@ public interface Configure {
 
         String RSA_PUBLIC = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC/2orzzCo+/5qU+SPRAEVoOqYgJ2xVuEUhTxFvcVFslFqB6IOwFfeYC0axavFXOxfyj/fYUazEoonPTZBCGm+4uVQSfJnJzR21iusokKtIQ3SrjBOlFJOJqzRzcYZj86oIN77i6WapVU+hpFVj59oWCQqy6yKjQqXw2KUJJ5EgoQIDAQAB";// 支付宝公钥
 
-        String NOTIFY_URL = "http://47.93.177.203:8088/qm/pay/alipayNotify";
+//        String NOTIFY_URL = "http://47.93.177.203:8088/qm/pay/alipayNotify";
 
-//        String NOTIFY_URL = String.format("%s/pay/alipayNotify", Network.SERVER);
+        String NOTIFY_URL = String.format("%s/pay/alipayNotify", Network.SERVER);
     }
 
     interface WX {

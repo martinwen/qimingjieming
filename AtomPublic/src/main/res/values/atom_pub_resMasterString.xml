@@ -8,6 +8,7 @@
     <string name="atom_pub_resStringMasterTabNaming">起名</string>
     <string name="atom_pub_resStringMasterTabExplain">解名</string>
     <string name="atom_pub_resStringMasterTabCeSuan">测算</string>
+    <string name="atom_pub_resStringMasterTabCeSuanTitle">在线测算</string>
     <string name="atom_pub_resStringMasterTabMine">我的</string>
 
     <string name="atom_pub_resStringGenderMale">男</string>

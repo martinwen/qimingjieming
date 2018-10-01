@@ -77,7 +77,7 @@
                 android:layout_gravity="center"
                 android:scaleType="fitCenter"
                 android:src="@drawable/atom_pub_png_zodiac_1_rat"
-                android:tint="@color/colorPrimary"
+                android:tint="#FFCA3C3C"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
