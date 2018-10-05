@@ -4,25 +4,26 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.model.NameZodiac;
+import com.tjyw.bbqm.R;
+
 import atom.pub.inject.From;
 import atom.pub.inject.Injector;
-import com.tjyw.bbqm.R;
 
 /**
  * Created by stephen on 17-9-22.
  */
 public class YunShiSheetHolder {
 
-    @From(value = R.id.yunShiShiYe, canBeNull = true)
+    @From(R.id.yunShiShiYe)
     protected TextView yunShiShiYe;
 
-    @From(value = R.id.yunShiXueYe, canBeNull = true)
+    @From(R.id.yunShiXueYe)
     protected TextView yunShiXueYe;
 
-    @From(value = R.id.yunShiCaiYun, canBeNull = true)
+    @From(R.id.yunShiCaiYun)
     protected TextView yunShiCaiYun;
 
-    @From(value = R.id.yunShiAiQing, canBeNull = true)
+    @From(R.id.yunShiAiQing)
     protected TextView yunShiAiQing;
 
     public YunShiSheetHolder(View view) {
@@ -30,20 +31,9 @@ public class YunShiSheetHolder {
     }
 
     public void sheet(NameZodiac nameZodiac) {
-        if (null != yunShiShiYe) {
-            yunShiShiYe.setText(nameZodiac.shiye);
-        }
-
-        if (null != yunShiXueYe) {
-            yunShiXueYe.setText(nameZodiac.xueye);
-        }
-
-        if (null != yunShiCaiYun) {
-            yunShiCaiYun.setText(nameZodiac.caiyun);
-        }
-
-        if (null != yunShiAiQing) {
-            yunShiAiQing.setText(nameZodiac.aiqing);
-        }
+        yunShiShiYe.setText(nameZodiac.shiye);
+        yunShiXueYe.setText(nameZodiac.xueye);
+        yunShiCaiYun.setText(nameZodiac.caiyun);
+        yunShiAiQing.setText(nameZodiac.aiqing);
     }
 }

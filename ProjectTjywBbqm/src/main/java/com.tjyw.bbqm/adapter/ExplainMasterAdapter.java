@@ -1,19 +1,11 @@
 package com.tjyw.bbqm.adapter;
 
-import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.ContextCompat;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.style.ImageSpan;
+import android.support.v4.view.ViewPager;
 
 import com.tjyw.atom.network.model.Explain;
-import com.tjyw.bbqm.ClientQmjmApplication;
-import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.fragment.ExplainMasterDestinyFragment;
 import com.tjyw.bbqm.fragment.ExplainMasterOverviewFragment;
 import com.tjyw.bbqm.fragment.ExplainMasterSanCaiFragment;
@@ -39,10 +31,10 @@ public class ExplainMasterAdapter extends FragmentPagerAdapter {
 
     public static ExplainMasterAdapter newInstance(FragmentManager fragmentManager, Explain explain) {
         return new ExplainMasterAdapter(fragmentManager)
-                .setOverviewFragment(ExplainMasterOverviewFragment.newInstance(explain))
-                .setZodiacFragment(ExplainMasterZodiacFragment.newInstance(explain))
-                .setDestinyFragment(ExplainMasterDestinyFragment.newInstance(explain))
-                .setSanCaiFragment(ExplainMasterSanCaiFragment.newInstance(explain));
+                    .setOverviewFragment(ExplainMasterOverviewFragment.newInstance(explain))
+                    .setZodiacFragment(ExplainMasterZodiacFragment.newInstance(explain))
+                    .setDestinyFragment(ExplainMasterDestinyFragment.newInstance(explain))
+                    .setSanCaiFragment(ExplainMasterSanCaiFragment.newInstance(explain));
     }
 
     protected ExplainMasterOverviewFragment overviewFragment;
@@ -97,31 +89,27 @@ public class ExplainMasterAdapter extends FragmentPagerAdapter {
         return POSITION.ALL;
     }
 
-    @Override
-    public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case ExplainMasterAdapter.POSITION.OVERVIEW:
-                return getPageTitle(R.string.atom_pub_resStringExplainOverview, R.drawable.atom_bitmap_explain_tab_overview);
-            case ExplainMasterAdapter.POSITION.ZODIAC:
-                return getPageTitle(R.string.atom_pub_resStringExplainZodiac, R.drawable.atom_bitmap_explain_tab_zodiac);
-            case ExplainMasterAdapter.POSITION.DESTINY:
-                return getPageTitle(R.string.atom_pub_resStringExplainDestiny, R.drawable.atom_bitmap_explain_tab_destiny);
-            case ExplainMasterAdapter.POSITION.SANCAI:
-            default:
-                return getPageTitle(R.string.atom_pub_resStringExplainSanCaiWuGe, R.drawable.atom_bitmap_explain_tab_sancaiwuge);
+    public void showOverviewFragment(ViewPager container) {
+        if (null != container) {
+            container.setCurrentItem(POSITION.OVERVIEW);
         }
     }
 
-    protected CharSequence getPageTitle(@StringRes int resId, @DrawableRes int drawable) {
-        Drawable image = ContextCompat.getDrawable(ClientQmjmApplication.getContext(), drawable);
-        if (null != image) {
-            image.setBounds(0, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
-            SpannableStringBuilder builder = new SpannableStringBuilder(ClientQmjmApplication.pGetString(resId));
-            builder.insert(0, " \n");
-            builder.setSpan(new ImageSpan(image, ImageSpan.ALIGN_BASELINE), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            return builder;
-        } else {
-            return ClientQmjmApplication.pGetString(resId);
+    public void showZodiacFragment(ViewPager container) {
+        if (null != container) {
+            container.setCurrentItem(POSITION.ZODIAC);
+        }
+    }
+
+    public void showDestinyFragment(ViewPager container) {
+        if (null != container) {
+            container.setCurrentItem(POSITION.DESTINY);
+        }
+    }
+
+    public void showSanCaiFragment(ViewPager container) {
+        if (null != container) {
+            container.setCurrentItem(POSITION.SANCAI);
         }
     }
 }

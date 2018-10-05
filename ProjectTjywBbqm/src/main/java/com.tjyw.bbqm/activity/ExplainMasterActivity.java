@@ -2,7 +2,6 @@ package com.tjyw.bbqm.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
@@ -16,7 +15,6 @@ import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostExplainListener;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.adapter.ExplainMasterAdapter;
-import com.tjyw.bbqm.adapter.NameMasterAdapter;
 import com.tjyw.bbqm.factory.IClientActivityLaunchFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -33,14 +31,20 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 @RequiresPresenter(NamingPresenter.class)
 public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<ExplainMasterActivity>> implements OnApiPostErrorListener, OnApiPostExplainListener {
 
-    @From(R.id.explainTabHost)
-    protected TabLayout explainTabHost;
+    @From(R.id.explainOverview)
+    protected TextView explainOverview;
+
+    @From(R.id.explainZodiac)
+    protected TextView explainZodiac;
+
+    @From(R.id.explainDestiny)
+    protected TextView explainDestiny;
+
+    @From(R.id.explainSanCai)
+    protected TextView explainSanCai;
 
     @From(R.id.explainMasterContainer)
     protected ViewPager explainMasterContainer;
-
-    @From(R.id.explainGoodName)
-    protected TextView explainGoodName;
 
     protected ExplainMasterAdapter explainMasterAdapter;
 
@@ -61,11 +65,36 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
             immersionBarWith()
                     .fitsSystemWindows(true)
                     .statusBarColor(R.color.colorPrimary)
-                    .statusBarDarkFont(STATUSBAR_DARK_FONT)
+                    .statusBarDarkFont(true)
                     .init();
-
-            explainGoodName.setOnClickListener(this);
         }
+
+        explainOverview.setSelected(true);
+        explainOverview.setOnClickListener(this);
+        explainZodiac.setOnClickListener(this);
+        explainDestiny.setOnClickListener(this);
+        explainSanCai.setOnClickListener(this);
+
+        explainMasterContainer.setOffscreenPageLimit(ExplainMasterAdapter.POSITION.ALL);
+        explainMasterContainer.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case ExplainMasterAdapter.POSITION.OVERVIEW:
+                        setSelectedTab(explainOverview);
+                        break ;
+                    case ExplainMasterAdapter.POSITION.ZODIAC:
+                        setSelectedTab(explainZodiac);
+                        break ;
+                    case ExplainMasterAdapter.POSITION.DESTINY:
+                        setSelectedTab(explainDestiny);
+                        break ;
+                    case ExplainMasterAdapter.POSITION.SANCAI:
+                        setSelectedTab(explainSanCai);
+                }
+            }
+        });
 
         int delayed = pGetIntExtra(IApiField.D.delayed, 100);
         if (delayed >= 1000) {
@@ -104,10 +133,21 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.explainGoodName:
-                if (null != listRequestParam) {
-                    IClientActivityLaunchFactory.launchNameMasterActivity(this, listRequestParam, 100, NameMasterAdapter.POSITION.FREEDOM);
-                }
+            case R.id.explainOverview:
+                setSelectedTab(v);
+                explainMasterAdapter.showOverviewFragment(explainMasterContainer);
+                break ;
+            case R.id.explainZodiac:
+                setSelectedTab(v);
+                explainMasterAdapter.showZodiacFragment(explainMasterContainer);
+                break ;
+            case R.id.explainDestiny:
+                setSelectedTab(v);
+                explainMasterAdapter.showDestinyFragment(explainMasterContainer);
+                break ;
+            case R.id.explainSanCai:
+                setSelectedTab(v);
+                explainMasterAdapter.showSanCaiFragment(explainMasterContainer);
                 break ;
             default:
                 super.onClick(v);
@@ -123,14 +163,9 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
     @Override
     public void postOnExplainSuccess(Explain explain) {
         maskerHideProgressView();
-
-        explainMasterContainer.setOffscreenPageLimit(ExplainMasterAdapter.POSITION.ALL);
         explainMasterContainer.setAdapter(
                 explainMasterAdapter = ExplainMasterAdapter.newInstance(getSupportFragmentManager(), explain)
         );
-
-        explainTabHost.setupWithViewPager(explainMasterContainer);
-        explainTabHost.getTabAt(0).select();
     }
 
     @Override
@@ -143,5 +178,39 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
                 listRequestParam.day,
                 listRequestParam.gender
         );
+    }
+
+    protected void setSelectedTab(View view) {
+        if (! view.isSelected()) {
+            view.setSelected(true);
+
+            switch (view.getId()) {
+                case R.id.explainOverview:
+                    explainZodiac.setSelected(false);
+                    explainDestiny.setSelected(false);
+                    explainSanCai.setSelected(false);
+                    break ;
+                case R.id.explainZodiac:
+                    explainOverview.setSelected(false);
+                    explainDestiny.setSelected(false);
+                    explainSanCai.setSelected(false);
+                    break ;
+                case R.id.explainDestiny:
+                    explainOverview.setSelected(false);
+                    explainZodiac.setSelected(false);
+                    explainSanCai.setSelected(false);
+                    break ;
+                case R.id.explainSanCai:
+                    explainOverview.setSelected(false);
+                    explainZodiac.setSelected(false);
+                    explainDestiny.setSelected(false);
+            }
+        }
+    }
+
+    public void launchNameMasterActivity(int position) {
+        if (null != listRequestParam) {
+            IClientActivityLaunchFactory.launchNameMasterActivity(this, listRequestParam, 100, position);
+        }
     }
 }

@@ -1,15 +1,11 @@
 package com.tjyw.bbqm.fragment;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.model.PayService;
@@ -29,9 +25,6 @@ public class PayPackageEntryFragment extends BaseFragment {
         void payPackageOnServicePayClick(PayPackageEntryFragment fragment, ListRequestParam listRequestParam, PayService payService);
     }
 
-    @From(R.id.bodyServiceDiscount)
-    protected ImageView bodyServiceDiscount;
-
     @From(R.id.bodyServiceName)
     protected TextView bodyServiceName;
 
@@ -41,8 +34,17 @@ public class PayPackageEntryFragment extends BaseFragment {
     @From(R.id.bodyServicePrice)
     protected TextView bodyServicePrice;
 
-    @From(R.id.bodyServiceUnlock)
-    protected TextView bodyServiceUnlock;
+    @From(R.id.bodyServiceOldPrice)
+    protected TextView bodyServiceOldPrice;
+
+    @From(R.id.bodyServicePriceEach)
+    protected TextView bodyServicePriceEach;
+
+    @From(R.id.bodyValidDate)
+    protected TextView bodyValidDate;
+
+    @From(R.id.atom_pub_resIdsOK)
+    protected TextView atom_pub_resIdsOK;
 
     protected ListRequestParam listRequestParam;
 
@@ -65,7 +67,7 @@ public class PayPackageEntryFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.atom_pay_suit, container, true);
+        return inflater.inflate(R.layout.atom_pay_package_entry, container, true);
     }
 
     @Override
@@ -76,30 +78,25 @@ public class PayPackageEntryFragment extends BaseFragment {
             return ;
         } else if (null != getView()) {
             getView().setOnClickListener(this);
-            bodyServiceUnlock.setOnClickListener(this);
+            if (null != bodyServiceOldPrice.getPaint()) {
+                bodyServiceOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+            }
         }
 
-        bodyServiceDiscount.setVisibility(payService.discount < 10 ? View.VISIBLE : View.GONE);
-
         bodyServiceName.setText(payService.service);
-//        bodyServiceDesc.setText(payService.detail);
+        bodyServiceDesc.setText(payService.detail);
+        bodyServicePrice.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan, payService.money));
+        bodyServiceOldPrice.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan, payService.oldMoney));
+        bodyServicePriceEach.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringPayPackageMoneyEach, payService.eachDay));
+        bodyValidDate.setText(payService.validDate);
 
-        SpannableStringBuilder builder = new SpannableStringBuilder(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAd88_1));
-        int length = builder.length();
-        builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.money));
-        builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        builder.append(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAd88_2)); // 原价
-        builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.oldMoney));
-        builder.append(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAd88_3));
-
-        bodyServicePrice.setText(builder);
+        atom_pub_resIdsOK.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.bodyServiceUnlock:
+            case R.id.atom_pub_resIdsOK:
                 pHideFragment(this);
                 if (null != onPayPackageEntryClickListener) {
                     onPayPackageEntryClickListener.payPackageOnServicePayClick(this, listRequestParam, payService);

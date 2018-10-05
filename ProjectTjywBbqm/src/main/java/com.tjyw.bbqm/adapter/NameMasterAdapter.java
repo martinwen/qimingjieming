@@ -1,19 +1,10 @@
 package com.tjyw.bbqm.adapter;
 
-import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.content.ContextCompat;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.style.ImageSpan;
 
 import com.tjyw.atom.network.result.RNameDefinition;
-import com.tjyw.bbqm.ClientQmjmApplication;
-import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.fragment.NameMasterAnalyzeFragment;
 import com.tjyw.bbqm.fragment.NameMasterFreedomFragment;
 import com.tjyw.bbqm.fragment.NameMasterLuckyFragment;
@@ -39,10 +30,10 @@ public class NameMasterAdapter extends FragmentPagerAdapter {
 
     public static NameMasterAdapter newInstance(FragmentManager fragmentManager, RNameDefinition definition) {
         return new NameMasterAdapter(fragmentManager)
-                .setAnalyzeFragment(NameMasterAnalyzeFragment.newInstance(definition.data))
-                .setMasterFreedomFragment(NameMasterFreedomFragment.newInstance(definition))
-                .setRecommendFragment(NameMasterRecommendFragment.newInstance(definition))
-                .setLuckyFragment(NameMasterLuckyFragment.newInstance(definition.param));
+                    .setAnalyzeFragment(NameMasterAnalyzeFragment.newInstance(definition.data))
+                    .setMasterFreedomFragment(NameMasterFreedomFragment.newInstance(definition))
+                    .setRecommendFragment(NameMasterRecommendFragment.newInstance(definition))
+                    .setLuckyFragment(NameMasterLuckyFragment.newInstance(definition.param));
     }
 
     protected NameMasterAnalyzeFragment masterAnalyzeFragment;
@@ -95,33 +86,5 @@ public class NameMasterAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         return POSITION.ALL;
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
-        switch (position) {
-            case POSITION.ANALYZE:
-                return getPageTitle(R.string.atom_pub_resStringNameAnalyze, R.drawable.atom_bitmap_name_tab_analyze);
-            case POSITION.FREEDOM:
-                return getPageTitle(R.string.atom_pub_resStringNameFreedom, R.drawable.atom_bitmap_name_tab_freedom);
-            case POSITION.RECOMMEND:
-                return getPageTitle(R.string.atom_pub_resStringNameRecommend, R.drawable.atom_bitmap_name_tab_recommend);
-            case POSITION.LUCKY:
-            default:
-                return getPageTitle(R.string.atom_pub_resStringNameLucky, R.drawable.atom_bitmap_name_tab_lucky);
-        }
-    }
-
-    protected CharSequence getPageTitle(@StringRes int resId, @DrawableRes int drawable) {
-        Drawable image = ContextCompat.getDrawable(ClientQmjmApplication.getContext(), drawable);
-        if (null != image) {
-            image.setBounds(0, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
-            SpannableStringBuilder builder = new SpannableStringBuilder(ClientQmjmApplication.pGetString(resId));
-            builder.insert(0, " \n");
-            builder.setSpan(new ImageSpan(image, ImageSpan.ALIGN_BASELINE), 0, 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            return builder;
-        } else {
-            return ClientQmjmApplication.pGetString(resId);
-        }
     }
 }

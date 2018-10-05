@@ -6,9 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.View;
-import android.widget.TextView;
 
 import com.mikepenz.fastadapter.FastAdapter;
 import com.mikepenz.fastadapter.IAdapter;
@@ -24,10 +22,8 @@ import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.RIdentifyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
-import atom.pub.inject.From;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
-import com.tjyw.bbqm.adapter.NameMasterAdapter;
 import com.tjyw.bbqm.factory.IClientActivityLaunchFactory;
 import com.tjyw.bbqm.item.NamingWordItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
@@ -35,6 +31,7 @@ import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 import java.util.ArrayList;
 import java.util.List;
 
+import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -49,9 +46,6 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
 
     @From(R.id.namingListContainer)
     protected RecyclerView namingListContainer;
-
-    @From(R.id.payOrderRepeatPay)
-    protected TextView payOrderRepeatPay;
 
     protected FastItemAdapter<NamingWordItem> nameDefinitionAdapter;
 
@@ -77,7 +71,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
             immersionBarWith()
                     .fitsSystemWindows(true)
                     .statusBarColor(R.color.colorPrimary)
-                    .statusBarDarkFont(STATUSBAR_DARK_FONT)
+                    .statusBarDarkFont(true)
                     .init();
         }
 
@@ -131,17 +125,6 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.payOrderRepeatPay:
-                ListRequestParam param = (ListRequestParam) v.getTag();
-                if (null != param) {
-                    IClientActivityLaunchFactory.launchNameMasterActivity(this, param, 100, NameMasterAdapter.POSITION.FREEDOM);
-                }
-        }
-    }
-
-    @Override
     public void maskerOnClick(View view, int clickLabelRes) {
         super.maskerOnClick(view, clickLabelRes);
         maskerShowProgressView(true);
@@ -182,14 +165,7 @@ public class NamingListActivity extends BaseToolbarActivity<NamingPresenter<Nami
         }
 
         nameDefinitionAdapter.add(itemList);
-        if (TextUtils.isEmpty(result.statusLabel)) {
-            payOrderRepeatPay.setVisibility(View.GONE);
-        } else {
-            payOrderRepeatPay.setTag(new ListRequestParam(result));
-            payOrderRepeatPay.setOnClickListener(this);
-            payOrderRepeatPay.setVisibility(View.VISIBLE);
-            payOrderRepeatPay.setText(result.statusLabel);
-        }
+        namingListContainer.setAdapter(nameDefinitionAdapter);
     }
 
     @Override

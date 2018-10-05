@@ -6,7 +6,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.model.Order;
-import com.tjyw.atom.network.services.HttpPayServices;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
 
@@ -74,8 +73,7 @@ public class PayOrderListItem extends AtomPubFastAdapterAbstractItem<Order, PayO
             bodyOrderDate.setText(order.dateCreated);
 
             switch (order.vipType) {
-                case HttpPayServices.VIP_ID.SUIT:
-                case HttpPayServices.VIP_ID.NEW_SUIT:
+                case Order.VIP_TYPE.PACKAGE:
                     bodyAvatar.setImageResource(R.drawable.atom_pub_ic_pay_order_package_avatar);
                     break ;
                 default:

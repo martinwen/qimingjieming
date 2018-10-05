@@ -3,12 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white"
     android:orientation="vertical"
-    android:paddingBottom="16dp"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp"
-    android:paddingTop="16dp">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/bodyTitle"
@@ -17,6 +13,7 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:gravity="center_vertical"
+        android:textStyle="bold"
         tools:text="tools" />
 
     <TextView
@@ -26,6 +23,6 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:lineSpacingExtra="8dp"
-        android:paddingTop="16dp"
+        android:paddingTop="4dp"
         tools:text="bodyContent" />
 </LinearLayout>

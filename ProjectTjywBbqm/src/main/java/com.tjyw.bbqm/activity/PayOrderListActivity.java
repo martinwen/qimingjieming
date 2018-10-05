@@ -18,7 +18,6 @@ import com.tjyw.atom.network.presenter.PayPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.result.RetroListResult;
-import com.tjyw.atom.network.services.HttpPayServices;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.adapter.ClientMasterAdapter;
 import com.tjyw.bbqm.factory.IClientActivityLaunchFactory;
@@ -69,7 +68,7 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
         immersionBarWith()
                 .fitsSystemWindows(true)
                 .statusBarColor(R.color.colorPrimary)
-                .statusBarDarkFont(STATUSBAR_DARK_FONT)
+                .statusBarDarkFont(true)
                 .init();
 
         payOrderAdapter = new FastItemAdapter<PayOrderListItem>();
@@ -79,8 +78,7 @@ public class PayOrderListActivity extends BaseToolbarActivity<PayPresenter<PayOr
                 ListRequestParam listRequestParam = new ListRequestParam();
                 listRequestParam.orderNo = item.src.name;
                 switch (item.src.vipType) {
-                    case HttpPayServices.VIP_ID.SUIT:
-                    case HttpPayServices.VIP_ID.NEW_SUIT:
+                    case Order.VIP_TYPE.PACKAGE:
                         IClientActivityLaunchFactory.launchPayPackageActivity(PayOrderListActivity.this, listRequestParam);
                         return true;
                     default:

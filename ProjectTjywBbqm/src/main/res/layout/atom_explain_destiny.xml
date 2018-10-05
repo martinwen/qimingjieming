@@ -3,53 +3,76 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include layout="@layout/atom_inc_explain_header" />
-
-        <android.support.v4.widget.Space
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/atom_pubResDimenRecyclerViewDivider8dp" />
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp">
+
+            <include layout="@layout/atom_pub_inc_explain_header" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
 
         <TextView
             style="@style/AtomStyle.BlackBigText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
             android:gravity="center_vertical"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:paddingTop="16dp"
-            android:text="@string/atom_pub_resStringBaZi" />
+            android:padding="8dp"
+            android:text="@string/atom_pub_resStringBaZi"
+            android:textStyle="bold" />
 
-        <include layout="@layout/atom_inc_bazi" />
+        <include layout="@layout/atom_pub_inc_bazi" />
 
-        <android.support.v4.widget.Space
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/atom_pubResDimenRecyclerViewDivider8dp" />
+            android:layout_height="1px"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
 
         <TextView
             style="@style/AtomStyle.BlackBigText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
             android:gravity="center_vertical"
-            android:paddingLeft="24dp"
-            android:paddingRight="24dp"
-            android:paddingTop="16dp"
-            android:text="@string/atom_pub_resStringExplainDestinyYunShiXiangJie" />
+            android:padding="8dp"
+            android:text="@string/atom_pub_resStringExplainDestinyYunShiXiangJie"
+            android:textStyle="bold" />
 
-        <include layout="@layout/atom_inc_yunshijieshi" />
+        <include layout="@layout/atom_pub_inc_yunshijieshi" />
 
-        <android.support.v4.widget.Space
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/atom_pubResDimenRecyclerViewDivider8dp" />
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
-        <include layout="@layout/atom_explain_footer" />
+            <TextView
+                android:id="@+id/explainGoodName"
+                style="@style/AtomPubStyleKa.White"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/atom_pub_ic_ink_text_red"
+                android:gravity="center"
+                android:text="@string/atom_pub_resStringExplainGoodName" />
+        </FrameLayout>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

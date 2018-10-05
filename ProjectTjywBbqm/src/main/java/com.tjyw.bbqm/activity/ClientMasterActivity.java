@@ -53,7 +53,7 @@ public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMaster
         setContentView(R.layout.atom_client_master);
         immersionBarWith()
                 .statusBarDarkFont(true)
-                .keyboardEnable(true, WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+//                .keyboardEnable(true, WindowManager.LayoutParams.SOFT_INPUT_ADJUST_UNSPECIFIED)
                 .init();
 
         gregorianFragment = (ClientGregorianFragment) getSupportFragmentManager().findFragmentByTag(ClientGregorianFragment.class.getName());
@@ -91,11 +91,16 @@ public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMaster
                     switch (position) {
                         case ClientMasterAdapter.POSITION.NAMING:
                         case ClientMasterAdapter.POSITION.EXPLAIN:
-                            immersionBar.fitsSystemWindows(false).transparentStatusBar().statusBarDarkFont(true).init();
+                            immersionBar
+                                    .fitsSystemWindows(false).transparentStatusBar().statusBarDarkFont(true).init();
                             break;
                         case ClientMasterAdapter.POSITION.CE_SUAN:
+                            immersionBar
+                                    .fitsSystemWindows(true).statusBarColor(R.color.colorPrimary).statusBarDarkFont(true).init();
+                            break;
                         case ClientMasterAdapter.POSITION.MINE:
-                            immersionBar.fitsSystemWindows(true).statusBarColor(R.color.colorPrimary).statusBarDarkFont(true).init();
+                            immersionBar
+                                    .fitsSystemWindows(true).statusBarColor(R.color.colorPrimary).statusBarDarkFont(true).init();
                     }
 
                     fragmentNavigator.showFragment(position, false, false);

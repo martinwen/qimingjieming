@@ -1,55 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/atom_shape_background"
     android:orientation="vertical"
     tools:ignore="MissingPrefix">
-
-    <include layout="@layout/atom_pub_inc_symbol" />
 
     <include
         android:id="@+id/atomPubToolBar"
         layout="@layout/atom_pub_inc_toolbar" />
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/explainTabHost"
-        style="@style/AtomPubStyle_TabLayout"
-        android:layout_width="0dp"
-        android:layout_height="72dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/atomPubToolBar"
-        app:tabBackground="@drawable/atom_ic_explain_tab"
-        app:tabIndicatorColor="@color/colorPrimary"
-        app:tabIndicatorHeight="2dp"
-        app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/colorPrimary"
-        app:tabTextColor="@color/atom_pub_resTextColorBlack" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/explainMasterContainer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/explainTabHost" />
+        <include layout="@layout/atom_pub_inc_symbol" />
 
-    <TextView
-        android:id="@+id/explainGoodName"
-        style="@style/AtomPubStyleKa.White"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/atom_pub_ic_ink_text_red"
-        android:gravity="center"
-        android:text="@string/atom_pub_resStringExplainGoodName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <include layout="@layout/atom_inc_loading" />
-</android.support.constraint.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/explainOverview"
+                        style="@style/AtomPubStyleKa.White_16DP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/atom_selector_ink_text"
+                        android:gravity="center"
+                        android:text="@string/atom_pub_resStringExplainOverview"
+                        android:textColor="@color/atom_pub_black2white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/explainZodiac"
+                        style="@style/AtomPubStyleKa.White_16DP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/atom_selector_ink_text"
+                        android:gravity="center"
+                        android:text="@string/atom_pub_resStringExplainZodiac"
+                        android:textColor="@color/atom_pub_black2white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/explainDestiny"
+                        style="@style/AtomPubStyleKa.White_16DP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/atom_selector_ink_text"
+                        android:gravity="center"
+                        android:text="@string/atom_pub_resStringExplainDestiny"
+                        android:textColor="@color/atom_pub_black2white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/explainSanCai"
+                        style="@style/AtomPubStyleKa.White_16DP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/atom_selector_ink_text"
+                        android:gravity="center"
+                        android:text="@string/atom_pub_resStringExplainSanCaiWuGe"
+                        android:textColor="@color/atom_pub_black2white" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:scaleType="fitXY"
+                android:src="@color/atom_pub_resColorDivider" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/explainMasterContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <include layout="@layout/atom_inc_loading" />
+    </FrameLayout>
+</LinearLayout>

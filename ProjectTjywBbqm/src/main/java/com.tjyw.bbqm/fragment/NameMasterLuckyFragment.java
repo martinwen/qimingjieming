@@ -2,16 +2,10 @@ package com.tjyw.bbqm.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.conf.IApiField;
@@ -20,7 +14,6 @@ import com.tjyw.atom.network.model.PayService;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
-import com.tjyw.atom.network.services.HttpPayServices;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.activity.BaseActivity;
@@ -44,20 +37,20 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
         return fragment;
     }
 
-    @From(R.id.bodyServiceDiscount)
-    protected ImageView bodyServiceDiscount;
+    @From(R.id.bodySurname)
+    protected TextView bodySurname;
 
-    @From(R.id.bodyServiceUnlock)
-    protected TextView bodyServiceUnlock;
+    @From(R.id.bodyDate)
+    protected TextView bodyDate;
 
-    @From(R.id.bodyServiceUnlockPrice)
-    protected TextView bodyServiceUnlockPrice;
+    @From(R.id.bodyServiceName)
+    protected TextView bodyServiceName;
 
-    @From(R.id.bodyServiceUnlockAll)
-    protected TextView bodyServiceUnlockAll;
+    @From(R.id.bodyServicePrice)
+    protected TextView bodyServicePrice;
 
-    @From(R.id.bodyServiceUnlockAllPrice)
-    protected TextView bodyServiceUnlockAllPrice;
+    @From(R.id.atom_pub_resIdsOK)
+    protected TextView atom_pub_resIdsOK;
 
     protected ListRequestParam listRequestParam;
 
@@ -65,7 +58,7 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.atom_name_master_lucky, null);
     }
 
@@ -76,8 +69,8 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
         listRequestParam = (ListRequestParam) pGetSerializableExtra(IApiField.P.param);
         if (null != listRequestParam) {
             maskerShowProgressView(false);
-            getPresenter().postPayListVipDiscount(
-                    HttpPayServices.VIP_ID.TJJM,
+            getPresenter().postPayListVip(
+                    2,
                     listRequestParam.surname,
                     listRequestParam.day
             );
@@ -94,13 +87,7 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
                     case ICode.PAY.WX_SUCCESS:
                         if (null != data) {
                             listRequestParam.orderNo = data.getStringExtra(IApiField.O.orderNo);
-                            switch (payService.id) {
-                                case HttpPayServices.VIP_ID.NEW_SUIT:
-                                    IClientActivityLaunchFactory.launchPayPackageActivity((BaseActivity) getActivity(), listRequestParam);
-                                    break ;
-                                default:
-                                    IClientActivityLaunchFactory.launchNamingListActivity((BaseActivity) getActivity(), listRequestParam);
-                            }
+                            IClientActivityLaunchFactory.launchNamingListActivity((BaseActivity) getActivity(), listRequestParam);
                         }
                 }
         }
@@ -109,13 +96,9 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.bodyServiceUnlock:
+            case R.id.atom_pub_resIdsOK:
                 IClientActivityLaunchFactory.launchPayOrderActivity(this, listRequestParam, payService);
                 break ;
-            case R.id.bodyServiceUnlockAll:
-                if (null != payService.suit) {
-                    IClientActivityLaunchFactory.launchPayOrderActivity(this, listRequestParam, payService.suit);
-                }
             default:
                 super.onClick(v);
         }
@@ -123,34 +106,14 @@ public class NameMasterLuckyFragment extends BaseFragment<NamingPresenter<NameMa
 
     @Override
     public void postOnPayListVipSuccess(int type, PayService payService) {
-        this.payService = payService;
         maskerHideProgressView();
+        this.payService = payService;
 
-        bodyServiceUnlock.setOnClickListener(this);
-        bodyServiceUnlockAll.setOnClickListener(this);
-        bodyServiceDiscount.setVisibility(payService.discount < 10 ? View.VISIBLE : View.GONE);
+        atom_pub_resIdsOK.setOnClickListener(this);
 
-        SpannableStringBuilder builder = new SpannableStringBuilder(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAdTJJM1));
-        int length = builder.length();
-        builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.money));
-        builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        builder.append(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAdTJJM2)); // 原价
-        builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.oldMoney));
-        builder.append(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAdTJJM3));
-        bodyServiceUnlockPrice.setText(builder);
-
-        if (null != payService.suit) {
-            builder = new SpannableStringBuilder(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAd88_4));
-            length = builder.length();
-            builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.suit.money));
-            builder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(ClientQmjmApplication.getContext(), R.color.atom_pub_resTextColorRed)), length, builder.length() - 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-            builder.append(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAd88_2)); // 原价
-            builder.append(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s_Yuan_Simple, payService.suit.oldMoney));
-            builder.append(ClientQmjmApplication.pGetString(R.string.atom_resStringSuitAd88_3));
-
-            bodyServiceUnlockAllPrice.setText(builder);
-        }
+        bodySurname.setText(payService.surname);
+        bodyDate.setText(payService.day);
+        bodyServiceName.setText(payService.service);
+        bodyServicePrice.setText(ClientQmjmApplication.pGetString(R.string.atom_pub_resStringRMB_s, payService.money));
     }
 }

@@ -9,14 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mikepenz.fastadapter.adapters.FooterAdapter;
 import com.mikepenz.fastadapter.adapters.HeaderAdapter;
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.model.Explain;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
-import com.tjyw.bbqm.item.ExplainFooterItem;
 import com.tjyw.bbqm.item.ExplainHeaderItem;
 import com.tjyw.bbqm.item.ExplainZodiacItem;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
@@ -66,16 +64,13 @@ public class ExplainMasterZodiacFragment extends AtomPubBaseFragment {
         explainHeaderAdapter.wrap(itemAdapter);
         explainHeaderAdapter.add(new ExplainHeaderItem(explain));
 
-        FooterAdapter<ExplainFooterItem> footerAdapter = new FooterAdapter<ExplainFooterItem>();
-        footerAdapter.wrap(explainHeaderAdapter);
-        footerAdapter.add(new ExplainFooterItem(explain));
-
         explainZodiacContainer.setLayoutManager(new LinearLayoutManager(ClientQmjmApplication.getContext()));
         explainZodiacContainer.setAdapter(explainHeaderAdapter);
         explainZodiacContainer.addItemDecoration(
                 new HorizontalDividerItemDecoration.Builder(ClientQmjmApplication.getContext())
-                        .color(android.R.color.transparent)
-                        .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDivider8dp)
+                        .color(R.color.atom_pub_resColorDivider)
+                        .sizeResId(R.dimen.atom_pubResDimenRecyclerViewDividerSize)
+                        .marginResId(R.dimen.atom_pubResDimenRecyclerViewDivider16dp, R.dimen.atom_pubResDimenRecyclerViewDivider16dp)
                         .build());
 
     }

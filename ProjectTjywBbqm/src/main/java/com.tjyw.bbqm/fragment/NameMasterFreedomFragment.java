@@ -28,7 +28,6 @@ import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.RIdentifyResult;
 import com.tjyw.atom.network.result.RNameDefinition;
-import com.tjyw.atom.network.services.HttpPayServices;
 import com.tjyw.atom.network.utils.ArrayUtil;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
@@ -167,16 +166,16 @@ public class NameMasterFreedomFragment extends BaseFragment<NamingPresenter<Name
         switch (v.getId()) {
             case R.id.nameFreedomDjm:
                 maskerShowProgressView(true);
-                getPresenter().postPayListVipDiscount(
-                        HttpPayServices.VIP_ID.DJM,
+                getPresenter().postPayListVip(
+                        3,
                         listRequestParam.surname,
                         listRequestParam.day
                 );
                 break ;
             case R.id.nameFreedomXjm:
                 maskerShowProgressView(true);
-                getPresenter().postPayListVipDiscount(
-                        HttpPayServices.VIP_ID.XJM,
+                getPresenter().postPayListVip(
+                        4,
                         listRequestParam.surname,
                         listRequestParam.day
                 );

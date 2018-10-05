@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,38 +14,424 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <include layout="@layout/atom_inc_explain_header" />
+        <include layout="@layout/atom_pub_inc_explain_header" />
     </LinearLayout>
 
-    <android.support.v4.widget.Space
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/atom_pubResDimenRecyclerViewDivider8dp" />
+        android:layout_height="1px"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
 
     <TextView
-        style="@style/AtomStyle.BlackSuperBigText"
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:text="@string/atom_pub_resStringExplainSanCai"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
+
+    <!-- 三才配置 -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:gravity="center_vertical"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:paddingTop="16dp"
-        android:text="@string/atom_pub_resStringExplainSanCai" />
+        android:minHeight="36dp"
+        android:orientation="horizontal">
 
-    <include layout="@layout/atom_inc_explain_sancai" />
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
 
-    <android.support.v4.widget.Space
+        <TextView
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringExplainSanCaiPeiZhi" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            android:id="@+id/bodyWuXing"
+            style="@style/AtomStyle.RedNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.0"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="bodyWuXing" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+    </LinearLayout>
+
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/atom_pubResDimenRecyclerViewDivider8dp" />
+        android:layout_height="1px"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
 
-    <TextView
-        style="@style/AtomStyle.BlackSuperBigText"
+    <!-- 吉凶分析 -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:gravity="center_vertical"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:paddingTop="16dp"
-        android:text="@string/atom_pub_resStringExplainWuGe" />
+        android:minHeight="36dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringExplainSanCaiJiXiong" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            android:id="@+id/bodyJiXiong"
+            style="@style/AtomStyle.RedNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.0"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:padding="8dp"
+            tools:text="bodyJiXiong" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
+
+    <!-- 命运简批 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:minHeight="36dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringExplainSanCaiZongLun" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            android:id="@+id/bodyZongLun"
+            style="@style/AtomStyle.GreyNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.0"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="8dp"
+            android:padding="8dp"
+            tools:text="bodyZongLun" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
+
+    <!-- 基础运 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:minHeight="36dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringExplainSanCaiJiChuYun" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            android:id="@+id/bodyJiChuYun"
+            style="@style/AtomStyle.GreyNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.0"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="8dp"
+            android:padding="8dp"
+            tools:text="bodyJiChuYun" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
+
+    <!-- 成功运 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:minHeight="36dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringExplainSanCaiChengGongYun" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            android:id="@+id/bodyChengGongYun"
+            style="@style/AtomStyle.GreyNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.0"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="8dp"
+            android:padding="8dp"
+            tools:text="bodyChengGongYun" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
+
+    <!-- 人际关系 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:minHeight="36dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringExplainSanCaiRenJiGuanXi" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            android:id="@+id/bodyRenJiGuanXi"
+            style="@style/AtomStyle.GreyNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.0"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="8dp"
+            android:padding="8dp"
+            tools:text="bodyRenJiGuanXi" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
+
+    <!-- 性格 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:minHeight="36dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            style="@style/AtomStyle.BlackNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:text="@string/atom_pub_resStringExplainSanCaiXingGe" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <TextView
+            android:id="@+id/bodyXingGe"
+            style="@style/AtomStyle.GreyNormalText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.0"
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="8dp"
+            android:padding="8dp"
+            tools:text="bodyXingGe" />
+
+        <ImageView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="16dp"
+        android:scaleType="fitXY"
+        android:src="@color/atom_pub_resColorDivider" />
+
+    <TextView
+        style="@style/AtomStyle.BlackBigText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:text="@string/atom_pub_resStringExplainWuGe"
+        android:textStyle="bold" />
 </LinearLayout>

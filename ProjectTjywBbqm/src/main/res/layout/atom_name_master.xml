@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,54 +9,136 @@
     android:orientation="vertical"
     tools:ignore="MissingPrefix">
 
-    <include layout="@layout/atom_pub_inc_symbol" />
-
     <include
         android:id="@+id/atomPubToolBar"
         layout="@layout/atom_pub_inc_toolbar" />
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/nameTabHost"
-        style="@style/AtomPubStyle_TabLayout"
-        android:layout_width="0dp"
-        android:layout_height="72dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/atomPubToolBar"
-        app:tabBackground="@drawable/atom_ic_explain_tab"
-        app:tabIndicatorColor="@color/colorPrimary"
-        app:tabIndicatorHeight="2dp"
-        app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/colorPrimary"
-        app:tabTextColor="@color/atom_pub_resTextColorBlack" />
+    <include layout="@layout/atom_pub_inc_symbol" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/nameMasterContainer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTabHost" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/atomPubToolBar"
+        android:orientation="vertical">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/nameMasterPayPackageEntry"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:scaleType="centerCrop"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95"
-        fresco:actualImageScaleType="centerCrop"
-        tools:visibility="visible" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="8dp">
 
-    <include
-        layout="@layout/atom_inc_loading"
-        app:layout_constraintTop_toBottomOf="@+id/atomPubToolBar" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nameAnalyze"
+                    style="@style/AtomPubStyleKa.White_16DP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/atom_selector_ink_text"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringNameAnalyze"
+                    android:textColor="@color/atom_pub_black2white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nameFreedom"
+                    style="@style/AtomPubStyleKa.White_16DP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/atom_selector_ink_text"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringNameFreedom"
+                    android:textColor="@color/atom_pub_black2white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nameRecommend"
+                    style="@style/AtomPubStyleKa.White_16DP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/atom_selector_ink_text"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringNameRecommend"
+                    android:textColor="@color/atom_pub_black2white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/nameLucky"
+                    style="@style/AtomPubStyleKa.White_16DP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/atom_selector_ink_text"
+                    android:gravity="center"
+                    android:text="@string/atom_pub_resStringNameLucky"
+                    android:textColor="@color/atom_pub_black2white" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:scaleType="fitXY"
+            android:src="@color/atom_pub_resColorDivider" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/nameMasterContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        app:layout_heightPercent="90%">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/nameMasterPayPackageEntry"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="bottom"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            fresco:actualImageScaleType="centerCrop"
+            tools:visibility="visible" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/atomPubToolBar"
+        android:orientation="vertical">
+
+        <include layout="@layout/atom_inc_loading" />
+    </LinearLayout>
 
     <fragment
         android:id="@+id/payServiceFragment"
@@ -71,4 +153,4 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:tag="com.tjyw.bbqm.fragment.PayPackageEntryFragment" />
-</android.support.constraint.ConstraintLayout>
+</android.support.percent.PercentRelativeLayout>
