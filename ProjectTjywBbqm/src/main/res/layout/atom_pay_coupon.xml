@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/atom_pub_resColorLoadingBackgroundAlpha">
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <ImageView
         android:id="@+id/payCouponDisplayView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:adjustViewBounds="true"
-        app:layout_widthPercent="90%"
-        fresco:actualImageScaleType="fitCenter"
-        fresco:placeholderImageScaleType="fitCenter" />
+        android:scaleType="center"
+        android:src="@drawable/atom_pub_png_new_package"
+        app:layout_widthPercent="90%" />
 
     <ImageView
         android:layout_width="wrap_content"

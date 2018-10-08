@@ -50,7 +50,6 @@ public class PayCouponListActivity extends BaseToolbarActivity<UserPresenter<Pay
         immersionBarWith()
                 .fitsSystemWindows(true)
                 .statusBarColor(R.color.colorPrimary)
-                .statusBarDarkFont(true)
                 .init();
 
         payCouponFastAdapter = new FastItemAdapter<PayCouponListItem>();

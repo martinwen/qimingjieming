@@ -52,9 +52,7 @@ public class ClientWelcomeActivity extends BaseActivity<UserPresenter<ClientWelc
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.atom_master_welcome);
-        immersionBarWith()
-                .statusBarDarkFont(true)
-                .init();
+        immersionBarWith().init();
 
         createMillisTime = System.currentTimeMillis();
         IPrefUser user = new ProxyGenerator().create(getApplicationContext(), IPrefUser.class);

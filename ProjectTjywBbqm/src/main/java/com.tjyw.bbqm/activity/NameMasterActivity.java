@@ -22,6 +22,7 @@ import com.tjyw.atom.network.presenter.listener.OnApiPayPostListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
 import com.tjyw.atom.network.presenter.listener.OnApiPostNamingListener;
 import com.tjyw.atom.network.result.RNameDefinition;
+import com.tjyw.atom.network.services.HttpPayServices;
 import com.tjyw.atom.network.utils.JsonUtil;
 import com.tjyw.bbqm.R;
 import com.tjyw.bbqm.adapter.NameMasterAdapter;
@@ -90,7 +91,6 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
             immersionBarWith()
                     .fitsSystemWindows(true)
                     .statusBarColor(R.color.colorPrimary)
-                    .statusBarDarkFont(true)
                     .init();
 
             payServiceFragment = findFragmentById(R.id.payServiceFragment, PayServiceFragment.class);
@@ -214,8 +214,8 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
             case R.id.nameMasterPayPackageEntry:
                 if (null == payService) {
                     maskerShowProgressView(true);
-                    getPresenter().postPayListVip(
-                            5,
+                    getPresenter().postPayListVipDiscount(
+                            HttpPayServices.VIP_ID.SUIT,
                             listRequestParam.surname,
                             listRequestParam.day
                     );

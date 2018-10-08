@@ -2,23 +2,20 @@ package com.tjyw.bbqm.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.tjyw.atom.network.model.ClientInit;
 import com.tjyw.atom.network.model.PayOrderNumber;
 import com.tjyw.atom.network.presenter.UserPresenter;
 import com.tjyw.atom.network.presenter.listener.OnApiUserPostListener;
-import com.tjyw.atom.network.utils.DateTimeUtils;
 import com.tjyw.bbqm.ClientQmjmApplication;
 import com.tjyw.bbqm.R;
 
 import org.greenrobot.eventbus.EventBus;
 
-import atom.pub.fresco.ImageFacade;
 import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
 
@@ -29,7 +26,7 @@ import nucleus.factory.RequiresPresenter;
 public class PayCouponFragment extends BaseFragment<UserPresenter<PayCouponFragment>> implements OnApiUserPostListener.PostUserGetNewRedPacketListener {
 
     @From(R.id.payCouponDisplayView)
-    protected SimpleDraweeView payCouponDisplayView;
+    protected ImageView payCouponDisplayView;
 
     @Nullable
     @Override
@@ -41,15 +38,9 @@ public class PayCouponFragment extends BaseFragment<UserPresenter<PayCouponFragm
     }
 
     @Override
-    public void onHiddenChanged(boolean hidden) {
-        if (! hidden) {
-            ClientInit clientInit = ClientInit.getInstance(ClientQmjmApplication.getContext());
-            if (null != clientInit && ! TextUtils.isEmpty(clientInit.red_image_link)) {
-                String time = DateTimeUtils.printCalendarByPattern(DateTimeUtils.getCurrentDate(), DateTimeUtils.yyyy_MM_dd);
-                ImageFacade.loadImage(clientInit.red_image_link + "?time=" + time, payCouponDisplayView);
-                payCouponDisplayView.setOnClickListener(this);
-            }
-        }
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        payCouponDisplayView.setOnClickListener(this);
     }
 
     @Override

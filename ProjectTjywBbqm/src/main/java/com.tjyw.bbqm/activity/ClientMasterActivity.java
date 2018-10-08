@@ -96,11 +96,11 @@ public class ClientMasterActivity extends BaseActivity<PayPresenter<ClientMaster
                             break;
                         case ClientMasterAdapter.POSITION.CE_SUAN:
                             immersionBar
-                                    .fitsSystemWindows(true).statusBarColor(R.color.colorPrimary).statusBarDarkFont(true).init();
+                                    .fitsSystemWindows(true).statusBarColor(R.color.colorPrimary).init();
                             break;
                         case ClientMasterAdapter.POSITION.MINE:
                             immersionBar
-                                    .fitsSystemWindows(true).statusBarColor(R.color.colorPrimary).statusBarDarkFont(true).init();
+                                    .fitsSystemWindows(true).statusBarColor(R.color.colorPrimary).init();
                     }
 
                     fragmentNavigator.showFragment(position, false, false);

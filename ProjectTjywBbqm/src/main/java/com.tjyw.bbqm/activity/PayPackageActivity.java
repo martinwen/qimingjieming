@@ -3,15 +3,18 @@ package com.tjyw.bbqm.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
 import com.tjyw.atom.network.conf.IApiField;
 import com.tjyw.atom.network.param.ListRequestParam;
 import com.tjyw.atom.network.presenter.NamingPresenter;
-import com.tjyw.atom.network.presenter.listener.OnApiPostErrorListener;
+import com.tjyw.atom.network.result.RNameDefinition;
 import com.tjyw.bbqm.R;
+import com.tjyw.bbqm.adapter.NameMasterAdapter;
 import com.tjyw.bbqm.adapter.PayPackageAdapter;
+import com.tjyw.bbqm.factory.IClientActivityLaunchFactory;
 
 import atom.pub.inject.From;
 import nucleus.factory.RequiresPresenter;
@@ -21,7 +24,7 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * Created by stephen on 19/09/2017.
  */
 @RequiresPresenter(NamingPresenter.class)
-public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<NamingListActivity>> implements OnApiPostErrorListener {
+public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<PayPackageActivity>> {
 
     @From(R.id.payPackageNormal)
     protected TextView payPackageNormal;
@@ -34,6 +37,9 @@ public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<Nami
 
     @From(R.id.payPackageContainer)
     protected ViewPager payPackageContainer;
+
+    @From(R.id.payOrderRepeatPay)
+    protected TextView payOrderRepeatPay;
 
     protected PayPackageAdapter payPackageAdapter;
 
@@ -54,7 +60,6 @@ public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<Nami
             immersionBarWith()
                     .fitsSystemWindows(true)
                     .statusBarColor(R.color.colorPrimary)
-                    .statusBarDarkFont(true)
                     .init();
         }
 
@@ -103,6 +108,12 @@ public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<Nami
             case R.id.payPackageLuck:
                 showPayPackageLuckyFragment();
                 break ;
+            case R.id.payOrderRepeatPay:
+                ListRequestParam param = (ListRequestParam) v.getTag();
+                if (null != param) {
+                    IClientActivityLaunchFactory.launchNameMasterActivity(this, param, 100, NameMasterAdapter.POSITION.FREEDOM);
+                }
+                break ;
             default:
                 super.onClick(v);
         }
@@ -128,10 +139,17 @@ public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<Nami
         }
     }
 
-    @Override
-    public void postOnExplainError(int postId, Throwable throwable) {
-        throwable.printStackTrace();
-        maskerShowMaskerLayout(getString(R.string.atom_pub_resStringNetworkBroken), R.string.atom_pub_resStringRetry);
+    public void setPayOrderRepeatPay(RNameDefinition result) {
+        if (null != result) {
+            if (TextUtils.isEmpty(result.statusLabel)) {
+                payOrderRepeatPay.setVisibility(View.GONE);
+            } else {
+                payOrderRepeatPay.setTag(new ListRequestParam(result));
+                payOrderRepeatPay.setOnClickListener(this);
+                payOrderRepeatPay.setVisibility(View.VISIBLE);
+                payOrderRepeatPay.setText(result.statusLabel);
+            }
+        }
     }
 
     public void showPayPackageNormalFragment() {

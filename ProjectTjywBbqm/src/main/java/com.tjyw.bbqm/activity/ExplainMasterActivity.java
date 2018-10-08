@@ -65,7 +65,6 @@ public class ExplainMasterActivity extends BaseToolbarActivity<NamingPresenter<E
             immersionBarWith()
                     .fitsSystemWindows(true)
                     .statusBarColor(R.color.colorPrimary)
-                    .statusBarDarkFont(true)
                     .init();
         }
 

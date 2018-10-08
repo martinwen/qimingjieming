@@ -67,7 +67,6 @@ public class UserFavoriteListActivity extends BaseToolbarActivity<FavoritePresen
         immersionBarWith()
                 .fitsSystemWindows(true)
                 .statusBarColor(R.color.colorPrimary)
-                .statusBarDarkFont(true)
                 .init();
 
         userFavoriteAdapter = new FastItemAdapter<UserFavoriteItem>();
