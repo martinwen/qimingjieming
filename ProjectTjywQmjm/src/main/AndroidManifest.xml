@@ -54,7 +54,6 @@
         <!-- SwiftPay -->
         <activity
             android:name="com.swiftfintech.pay.activity.UnifiedPay"
-            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!-- Alipay -->
