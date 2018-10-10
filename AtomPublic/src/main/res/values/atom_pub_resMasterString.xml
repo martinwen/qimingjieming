@@ -93,7 +93,7 @@
     <string name="atom_pub_resStringBaZiRiZhu">日柱</string>
     <string name="atom_pub_resStringBaZiShiZhu">时柱</string>
 
-    <string name="atom_pub_resStringNamingList">推荐起名</string>
+    <string name="atom_pub_resStringNamingList">订单详情</string>
     <string name="atom_pub_resStringNamingFavorite">收藏</string>
     <string name="atom_pub_resStringNamingFavorited">已收藏</string>
     <string name="atom_pub_resStringNamingAnalysis">解析</string>

@@ -55,7 +55,7 @@ public class PayPackageActivity extends BaseToolbarActivity<NamingPresenter<PayP
             return ;
         } else {
             setContentView(R.layout.atom_pay_package);
-            tSetToolBar(getString(R.string.atom_pub_resStringName));
+            tSetToolBar(getString(R.string.atom_pub_resStringNamingList));
 
             immersionBarWith()
                     .fitsSystemWindows(true)

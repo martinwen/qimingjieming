@@ -215,7 +215,7 @@ public class NameMasterActivity extends BaseToolbarActivity<NamingPresenter<Nami
                 if (null == payService) {
                     maskerShowProgressView(true);
                     getPresenter().postPayListVipDiscount(
-                            HttpPayServices.VIP_ID.SUIT,
+                            HttpPayServices.VIP_ID.NEW_SUIT,
                             listRequestParam.surname,
                             listRequestParam.day
                     );
