@@ -192,6 +192,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
             String result = data.getStringExtra("resultCode");
             if ("success".equalsIgnoreCase(result)) {
                 data = new Intent();
+                data.putExtra(IApiField.I.id, payService.id);
                 data.putExtra(IApiField.O.orderNo, listRequestParam.orderNo);
                 setResult(ICode.PAY.WX_SUCCESS, data);
                 finishDelayed();
@@ -380,6 +381,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         switch (resultStatus) {
             case RESULT_STATUS.SUCCESS:
                 Intent data = new Intent();
+                data.putExtra(IApiField.I.id, payService.id);
                 data.putExtra(IApiField.O.orderNo, listRequestParam.orderNo);
                 setResult(ICode.PAY.ALIPAY_SUCCESS, data);
                 finishDelayed();

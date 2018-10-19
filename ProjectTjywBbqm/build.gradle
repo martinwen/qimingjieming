@@ -144,7 +144,6 @@ def speedyAssemble(output, versionCode) {
 }
 
 def differentNameAssemble(output, productFlavors, versionCode) {
-    def zipFile = output.outputFile
     for (ProductFlavor flavor : productFlavors) {
         def CLIENT_C_ID = flavor.getBuildConfigFields().get("CLIENT_C_ID").value
         CLIENT_C_ID = CLIENT_C_ID.replace("\"", "")
@@ -158,10 +157,12 @@ def differentNameAssemble(output, productFlavors, versionCode) {
             newApkName = "adr_bbqm_master_${CLIENT_C_ID}_${CLIENT_C_NAME}_${versionCode}_${new Date().format('yyyyMMdd')}.apk"
         }
 
-//        output.outputFile = new File(zipFile.parent, newApkName)
+        output.outputFileName = newApkName
+
+        println "===newFile::$newApkName"
     }
 
-//    zipFile.delete()
+    output.outputFile.delete()
 }
 
 /**
