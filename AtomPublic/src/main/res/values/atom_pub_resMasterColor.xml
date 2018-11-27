@@ -25,4 +25,6 @@
 
     <color name="atom_pubResColorYellow">#FFFFFF00</color>
 
+    <color name="transparent">#00000000</color>
+
 </resources>

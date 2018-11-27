@@ -67,16 +67,15 @@ public class ClientQmjmApplication extends MultiDexApplication {
                     }
                 });
 
-        PayConfigure.getInstance() // 支付通道参数设置
-                .setContext(this)
-                .setAppId(Configure.ALI.APP_ID)
-                .setPartner(Configure.ALI.PARTNER)
-                .setSeller(Configure.ALI.SELLER)
-                .setRsaPrivate(Configure.ALI.RSA_PRIVATE)
-                .setRsaPublic(Configure.ALI.RSA_PUBLIC)
-                .setNotifyUrl(Configure.ALI.NOTIFY_URL)
-                .setWxAppId(Configure.WX.APP_ID) // 微信只需要APP_ID
-                .dump();
+            PayConfigure.getInstance() // 支付通道参数设置
+                    .setContext(this)
+                    .setAppId(Configure.ALI.APP_ID)
+                    .setPartner(Configure.ALI.PARTNER)
+                    .setSeller(Configure.ALI.SELLER)
+                    .setRsaPrivate(Configure.ALI.RSA_PRIVATE)
+                    .setRsaPublic(Configure.ALI.RSA_PUBLIC)
+                    .setNotifyUrl(Configure.ALI.NOTIFY_URL)
+                    .dump();
     }
 
     public static ClientQmjmApplication getContext() {

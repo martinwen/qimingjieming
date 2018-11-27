@@ -34,7 +34,7 @@ public interface HttpPayServices {
 
         String PREVIEW = "pay/preview";
 
-        String ORDER = "pay/order";
+        String ORDER = "pay/wxOrder";
 
         String LOG = "pay/log";
 

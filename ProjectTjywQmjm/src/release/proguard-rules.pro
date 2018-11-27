@@ -68,14 +68,14 @@
   public static final android.os.Parcelable$Creator *;
 }
 
--assumenosideeffects class android.util.Log {
-    public static *** d(...);
-    public static *** v(...);
-    public static *** i(...);
-    public static *** e(...);
-    public static *** wtf(...);
-    public static *** println(...);
-}
+#-assumenosideeffects class android.util.Log {
+#    public static *** d(...);
+#    public static *** v(...);
+#    public static *** i(...);
+#    public static *** e(...);
+#    public static *** wtf(...);
+#    public static *** println(...);
+#}
 
 # ============  EventBus  ============
 -keepclassmembers class ** {
@@ -189,3 +189,9 @@
 
 -dontwarn com.swiftfintech.pay.**
 -keep class com.swiftfintech.pay.** { *;}
+
+-keep class com.tencent.mm.opensdk.** {*;}
+
+-keep class com.tencent.wxop.** {*;}
+
+-keep class com.tencent.mm.sdk.** {*;}

@@ -26,4 +26,29 @@ public class PayOrder implements RetroResultItem {
     public String version;
 
     public String orderNo;
+
+    public Wxparameter data;
+
+    public class Wxparameter implements RetroResultItem {
+
+        private static final long serialVersionUID = 6437711568496752033L;
+
+        public String timestamp;
+
+        public String sign;
+
+        public String returnCode;
+
+        public String returnMsg;
+
+        public String packageValue;
+
+        public String partnerId;
+
+        public String nonceStr;
+
+        public String prepayId;
+
+        public String appID;
+    }
 }

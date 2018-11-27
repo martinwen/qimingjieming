@@ -40,4 +40,5 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation project(':AtomNetwork')
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 }
