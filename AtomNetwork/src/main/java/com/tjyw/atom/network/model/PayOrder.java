@@ -9,27 +9,15 @@ public class PayOrder implements RetroResultItem {
 
     private static final long serialVersionUID = -2282241746086150868L;
 
-    public String charset;
+    public String title;
 
-    public String mch_id;
-
-    public String nonce_str;
-
-    public String services;
-
-    public String sign_type;
-
-    public String status;
-
-    public String token_id;
-
-    public String version;
+    public int money;
 
     public String orderNo;
 
     public Wxparameter data;
 
-    public class Wxparameter implements RetroResultItem {
+    public static class Wxparameter implements RetroResultItem {
 
         private static final long serialVersionUID = 6437711568496752033L;
 

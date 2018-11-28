@@ -68,14 +68,14 @@
   public static final android.os.Parcelable$Creator *;
 }
 
-#-assumenosideeffects class android.util.Log {
-#    public static *** d(...);
-#    public static *** v(...);
-#    public static *** i(...);
-#    public static *** e(...);
-#    public static *** wtf(...);
-#    public static *** println(...);
-#}
+-assumenosideeffects class android.util.Log {
+    public static *** d(...);
+    public static *** v(...);
+    public static *** i(...);
+    public static *** e(...);
+    public static *** wtf(...);
+    public static *** println(...);
+}
 
 # ============  EventBus  ============
 -keepclassmembers class ** {
@@ -167,6 +167,7 @@
 -keep class com.beloo.widget.** { *; }
 
 -keep class com.tjyw.qmjm.item.** { *; }
+-keep class com.tjyw.qmjm.Constans { *; }
 
 # android-saripaar
 -keep class com.mobsandgeeks.saripaar.** {*;}
@@ -184,11 +185,7 @@
 -dontwarn com.xiaomi.push.**
 
 
-# ============  SwiftPay  ============
-#-libraryjars ../../../AtomSwiftPay/libs/wftsdk_wap_1.4.jar
-
--dontwarn com.swiftfintech.pay.**
--keep class com.swiftfintech.pay.** { *;}
+# ============  WxPay  ============
 
 -keep class com.tencent.mm.opensdk.** {*;}
 
