@@ -15,26 +15,26 @@ ext {
 
             bbqm = [
                     androidApplicationId : "com.tjyw.bbqm",
-                    androidVersionCode : 10002300,
-                    androidVersionName : "2.3.0"
+                    androidVersionCode : 10002400,
+                    androidVersionName : "2.4.0"
             ],
 
             qmjmqd = [
                     androidApplicationId : "com.tjyw.qmjmqd",
-                    androidVersionCode : 10001300,
-                    androidVersionName : "1.3.0"
+                    androidVersionCode : 10001400,
+                    androidVersionName : "1.4.0"
             ],
 
             bbqmqd = [
                     androidApplicationId : "com.tjyw.bbqmqd",
-                    androidVersionCode : 10001300,
-                    androidVersionName : "1.3.0"
+                    androidVersionCode : 10001400,
+                    androidVersionName : "1.4.0"
             ],
 
             bbbzqm = [
                     androidApplicationId : "com.tjyw.bbbzqm",
-                    androidVersionCode : 10001000,
-                    androidVersionName : "1.0.0"
+                    androidVersionCode : 10001100,
+                    androidVersionName : "1.1.0"
             ]
     ]
 

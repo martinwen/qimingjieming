@@ -75,7 +75,6 @@ public class ClientQmjmApplication extends MultiDexApplication {
                 .setRsaPrivate(Configure.ALI.RSA_PRIVATE)
                 .setRsaPublic(Configure.ALI.RSA_PUBLIC)
                 .setNotifyUrl(Configure.ALI.NOTIFY_URL)
-                .setWxAppId(Configure.WX.APP_ID) // 微信只需要APP_ID
                 .dump();
     }
 

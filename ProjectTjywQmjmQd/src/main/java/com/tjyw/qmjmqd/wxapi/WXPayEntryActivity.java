@@ -1,4 +1,4 @@
-package com.tjyw.bbqmqd.wxapi;
+package com.tjyw.qmjmqd.wxapi;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-import com.tjyw.bbqmqd.R;
+import com.tjyw.qmjmqd.R;
 
-import static com.tjyw.bbqmqd.Constans.*;
+import static com.tjyw.qmjmqd.Constans.*;
 
 
 public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {

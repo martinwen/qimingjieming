@@ -1,4 +1,4 @@
-package com.tjyw.bbqmqd.wxapi;
+package com.tjyw.qmjmqd;
 
 /**
  * Created by licong on 2018/11/27.
@@ -6,7 +6,7 @@ package com.tjyw.bbqmqd.wxapi;
 
 public class Constans {
 
-    public static final String WX_APPID = "wxd7214e6e766fd1d5";
+    public static final String WX_APPID = "wx8ed8a37b79e240a6";
     public static final String PAY_BROADCASTRECEIVER = "pay_broadcastreceiver";
     public static final String PAY_ORDER_STATUS = "pay_order_status";
 }
