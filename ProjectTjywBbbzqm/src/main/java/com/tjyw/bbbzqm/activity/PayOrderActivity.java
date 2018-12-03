@@ -18,9 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.swiftfintech.pay.activity.PayPlugin;
-import com.swiftfintech.pay.bean.RequestMsg;
-import com.swiftfintech.pay.handle.PayHandlerManager;
 import com.tbruyelle.rxpermissions.RxPermissions;
 import com.tjyw.atom.alipay.AlipayResult;
 import com.tjyw.atom.alipay.IAlipayCallback;
@@ -348,14 +345,6 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         if (null == payOrderHandler) {
             payOrderHandler = new PayOrderHandler(PayOrderActivity.this, payOrder.orderNo);
         }
-
-        PayHandlerManager.registerHandler(PayHandlerManager.PAY_H5_RESULT, payOrderHandler);
-        maskerHideProgressView();
-
-        RequestMsg msg = new RequestMsg();
-        msg.setTokenId(payOrder.token_id);
-        msg.setTradeType(payOrder.services);
-        PayPlugin.unifiedH5Pay(this, msg);
     }
 
     @Override
@@ -433,18 +422,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                 PayOrderActivity payOrderActivity = context.get();
                 if (null != payOrderActivity && ! payOrderActivity.isFinishing()) {
                     switch (msg.what) {
-                        case PayHandlerManager.PAY_H5_FAILED:
-                            payOrderActivity.showToast(String.valueOf(msg.obj));
-                            try {
-                                payOrderActivity.getPresenter().postPayLog(
-                                        orderNo,
-                                        "9999",
-                                        2,
-                                        String.valueOf(msg.obj)
-                                );
-                            } catch (Throwable throwable) {
-                                throwable.printStackTrace();
-                            }
+
                     }
                 } else {
                     clear();

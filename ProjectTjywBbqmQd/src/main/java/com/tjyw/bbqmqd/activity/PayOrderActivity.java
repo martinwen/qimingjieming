@@ -1,12 +1,12 @@
 package com.tjyw.bbqmqd.activity;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.content.ContextCompat;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -18,10 +18,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.swiftfintech.pay.activity.PayPlugin;
-import com.swiftfintech.pay.bean.RequestMsg;
-import com.swiftfintech.pay.handle.PayHandlerManager;
 import com.tbruyelle.rxpermissions.RxPermissions;
+import com.tencent.mm.opensdk.modelpay.PayReq;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tjyw.atom.alipay.AlipayResult;
 import com.tjyw.atom.alipay.IAlipayCallback;
 import com.tjyw.atom.alipay.PayAlipayBuilder;
@@ -47,7 +47,6 @@ import com.tjyw.bbqmqd.R;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -59,6 +58,8 @@ import rx.Observable;
 import rx.Subscription;
 import rx.functions.Action1;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
+import static com.tjyw.bbqmqd.wxapi.Constans.*;
 
 /**
  * Created by stephen on 17-8-17.
@@ -98,11 +99,11 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     @From(R.id.atom_pub_resIdsOK)
     protected TextView atom_pub_resIdsOK;
 
-    protected PayOrderHandler payOrderHandler;
-
     protected ListRequestParam listRequestParam;
 
     protected PayService payService;
+
+    private MyReceiver receiver;
 
     protected Subscription countDownSubscription;
 
@@ -116,7 +117,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         payService = (PayService) pGetSerializableExtra(IApiField.P.payService);
         if (null == listRequestParam || null == payService) {
             finish();
-            return ;
+            return;
         } else {
             setContentView(R.layout.atom_pay_order);
             tSetToolBar(getString(R.string.atom_pub_resStringPayOrder));
@@ -147,6 +148,9 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         atom_pub_resIdsOK.setText(ClientInit.getPayButtonText(ClientQmjmApplication.getContext(), ClientQmjmApplication.pGetString(R.string.atom_pub_resStringPayPay)));
         atom_pub_resIdsOK.setOnClickListener(this);
 
+        receiver = new MyReceiver();
+        registerReceiver(receiver, new IntentFilter(PAY_BROADCASTRECEIVER));
+
         maskerShowProgressView(true);
         getPresenter().postUserMyPacketDiscount(payService.id);
 
@@ -163,10 +167,10 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                             countDownCache.second.set(second = 59);
                             first = countDownCache.first.decrementAndGet();
                             if (first < 0) {
-                                if (! countDownSubscription.isUnsubscribed()) {
+                                if (!countDownSubscription.isUnsubscribed()) {
                                     countDownSubscription.unsubscribe();
                                     countDownSubscription = null;
-                                    return ;
+                                    return;
                                 }
                             }
                         }
@@ -189,34 +193,15 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (null != data) {
-            String result = data.getStringExtra("resultCode");
-            if ("success".equalsIgnoreCase(result)) {
-                data = new Intent();
-                data.putExtra(IApiField.O.orderNo, listRequestParam.orderNo);
-                setResult(ICode.PAY.WX_SUCCESS, data);
-                finishDelayed();
-            } else if (! TextUtils.isEmpty(listRequestParam.orderNo)) {
-                getPresenter().postPayLog(
-                        listRequestParam.orderNo,
-                        "9999",
-                        2,
-                        result
-                );
-            }
-        }
     }
 
     @Override
     protected void onDestroy() {
-        if (null != countDownSubscription && ! countDownSubscription.isUnsubscribed()) {
+        if (null != countDownSubscription && !countDownSubscription.isUnsubscribed()) {
             countDownSubscription.unsubscribe();
         }
 
-        if (null != payOrderHandler) {
-            payOrderHandler.clear();
-            payOrderHandler = null;
-        }
+        unregisterReceiver(receiver);
 
         super.onDestroy();
     }
@@ -227,11 +212,11 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
             case R.id.payUseAlipay:
                 v.setSelected(true);
                 payUseWxPay.setSelected(false);
-                break ;
+                break;
             case R.id.payUseWxPay:
                 v.setSelected(true);
                 payUseAlipay.setSelected(false);
-                break ;
+                break;
             case R.id.atom_pub_resIdsOK:
                 RxPermissions permissions = new RxPermissions(this);
                 if (permissions.isGranted(Manifest.permission.READ_PHONE_STATE)) {
@@ -292,7 +277,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
 
         List<PayCoupon> list = new ArrayList<PayCoupon>();
         result.getPayPacketList(list);
-        if (! ArrayUtil.isEmpty(list)) {
+        if (!ArrayUtil.isEmpty(list)) {
             PayCoupon payCoupon = list.get(0);
             if (null != payCoupon) {
                 SpannableStringBuilder builder = new SpannableStringBuilder(getString(R.string.atom_pub_resStringPayCoupon));
@@ -319,7 +304,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                 payServiceSummary.setText(builder);
             }
 
-            return ;
+            return;
         }
 
         SpannableStringBuilder builder = new SpannableStringBuilder(getString(R.string.atom_pub_resStringPayCoupon));
@@ -345,17 +330,20 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
     @Override
     public void postOnPayOrderSuccess(PayOrder payOrder) {
         listRequestParam.orderNo = payOrder.orderNo;
-        if (null == payOrderHandler) {
-            payOrderHandler = new PayOrderHandler(PayOrderActivity.this, payOrder.orderNo);
-        }
-
-        PayHandlerManager.registerHandler(PayHandlerManager.PAY_H5_RESULT, payOrderHandler);
         maskerHideProgressView();
 
-        RequestMsg msg = new RequestMsg();
-        msg.setTokenId(payOrder.token_id);
-        msg.setTradeType(payOrder.services);
-        PayPlugin.unifiedH5Pay(this, msg);
+        PayOrder.Wxparameter wxparameter = payOrder.data;
+        final IWXAPI iwxapi = WXAPIFactory.createWXAPI(this, wxparameter.appID);
+        iwxapi.registerApp(wxparameter.appID);
+        PayReq request = new PayReq();
+        request.appId = wxparameter.appID;
+        request.partnerId = wxparameter.partnerId;
+        request.prepayId = wxparameter.prepayId;
+        request.packageValue = wxparameter.packageValue;
+        request.nonceStr = wxparameter.nonceStr;
+        request.timeStamp = wxparameter.timestamp;
+        request.sign = wxparameter.sign;
+        iwxapi.sendReq(request);
     }
 
     @Override
@@ -384,10 +372,10 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                 data.putExtra(IApiField.O.orderNo, listRequestParam.orderNo);
                 setResult(ICode.PAY.ALIPAY_SUCCESS, data);
                 finishDelayed();
-                break ;
+                break;
             case RESULT_STATUS.FAIL:
             default:
-                if (null != result && ! TextUtils.isEmpty(listRequestParam.orderNo)) {
+                if (null != result && !TextUtils.isEmpty(listRequestParam.orderNo)) {
                     getPresenter().postPayLog(
                             listRequestParam.orderNo,
                             String.valueOf(resultStatus),
@@ -416,47 +404,23 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
                 });
     }
 
-    public static class PayOrderHandler extends Handler {
-
-        protected WeakReference<PayOrderActivity> context;
-
-        protected String orderNo;
-
-        public PayOrderHandler(PayOrderActivity payOrderActivity, String orderNo) {
-            this.context = new WeakReference<PayOrderActivity>(payOrderActivity);
-            this.orderNo = orderNo;
-        }
+    public class MyReceiver extends BroadcastReceiver {
 
         @Override
-        public void handleMessage(Message msg) {
-            if (null != context) {
-                PayOrderActivity payOrderActivity = context.get();
-                if (null != payOrderActivity && ! payOrderActivity.isFinishing()) {
-                    switch (msg.what) {
-                        case PayHandlerManager.PAY_H5_FAILED:
-                            payOrderActivity.showToast(String.valueOf(msg.obj));
-                            try {
-                                payOrderActivity.getPresenter().postPayLog(
-                                        orderNo,
-                                        "9999",
-                                        2,
-                                        String.valueOf(msg.obj)
-                                );
-                            } catch (Throwable throwable) {
-                                throwable.printStackTrace();
-                            }
-                    }
-                } else {
-                    clear();
-                }
-            }
-        }
-
-        public void clear() {
-            removeCallbacksAndMessages(null);
-            if (null != context) {
-                context.clear();
-                context = null;
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getIntExtra(PAY_ORDER_STATUS, 100) == 0) {
+                Intent data = new Intent();
+//                data.putExtra(IApiField.I.id, payService.id);
+                data.putExtra(IApiField.O.orderNo, listRequestParam.orderNo);
+                PayOrderActivity.this.setResult(ICode.PAY.WX_SUCCESS, data);
+                finishDelayed();
+            } else if (!TextUtils.isEmpty(listRequestParam.orderNo)) {
+                getPresenter().postPayLog(
+                        listRequestParam.orderNo,
+                        "9999",
+                        2,
+                        intent.getIntExtra(PAY_ORDER_STATUS, 100) + ""
+                );
             }
         }
     }

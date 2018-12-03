@@ -38,7 +38,7 @@ public interface Configure {
 
     interface WX {
 
-        String APP_ID = "wx6e1cf27e64180e8c";
+        String APP_ID = "wx0f8d6bda1ac379f1";
     }
 
     interface UMeng {

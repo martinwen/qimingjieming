@@ -77,7 +77,7 @@ android {
             shrinkResources true
             proguardFiles 'src/release/proguard-rules.pro'
             signingConfig signingConfigs.release
-            debuggable false
+            debuggable true
         }
     }
 

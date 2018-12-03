@@ -68,14 +68,14 @@
   public static final android.os.Parcelable$Creator *;
 }
 
--assumenosideeffects class android.util.Log {
-    public static *** d(...);
-    public static *** v(...);
-    public static *** i(...);
-    public static *** e(...);
-    public static *** wtf(...);
-    public static *** println(...);
-}
+#-assumenosideeffects class android.util.Log {
+#    public static *** d(...);
+#    public static *** v(...);
+#    public static *** i(...);
+#    public static *** e(...);
+#    public static *** wtf(...);
+#    public static *** println(...);
+#}
 
 # ============  EventBus  ============
 -keepclassmembers class ** {
@@ -184,8 +184,10 @@
 -dontwarn com.xiaomi.push.**
 
 
-# ============  SwiftPay  ============
-#-libraryjars ../../../AtomSwiftPay/libs/wftsdk_wap_1.4.jar
+# ============  WxPay  ============
 
--dontwarn com.swiftfintech.pay.**
--keep class com.swiftfintech.pay.** { *;}
+-keep class com.tencent.mm.opensdk.** {*;}
+
+-keep class com.tencent.wxop.** {*;}
+
+-keep class com.tencent.mm.sdk.** {*;}

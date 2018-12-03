@@ -94,7 +94,7 @@ android {
             buildConfigField "String", "CLIENT_C_NAME", '"OPPO"'
         }
         C1011 {
-            resValue "string", "app_name", "起名字取名字"
+            resValue "string", "app_name", "宝宝起名字宝典-周易起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1011"'
             buildConfigField "String", "CLIENT_C_NAME", '"VIVO"'
         }
