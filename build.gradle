@@ -24,9 +24,12 @@ buildscript {
             url "http://jcenter.bintray.com/"
         }
 
-        jcenter()
-
-        google()
+//        jcenter()
+//
+//        google()
+        maven { url "https://maven.aliyun.com/repository/google" }
+        maven { url "https://maven.aliyun.com/repository/jcenter" }
+        maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
     }
 
     dependencies {
@@ -59,9 +62,12 @@ allprojects {
             url "http://jcenter.bintray.com/"
         }
 
-        jcenter()
-
-        google()
+//        jcenter()
+//
+//        google()
+        maven { url "https://maven.aliyun.com/repository/google" }
+        maven { url "https://maven.aliyun.com/repository/jcenter" }
+        maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
     }
 }
 

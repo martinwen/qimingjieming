@@ -59,7 +59,7 @@ import rx.Subscription;
 import rx.functions.Action1;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-import static com.tjyw.bbqmqd.wxapi.Constans.*;
+import static com.tjyw.bbqmqd.Constans.*;
 
 /**
  * Created by stephen on 17-8-17.
@@ -200,9 +200,7 @@ public class PayOrderActivity extends BaseToolbarActivity<PayPresenter<PayOrderA
         if (null != countDownSubscription && !countDownSubscription.isUnsubscribed()) {
             countDownSubscription.unsubscribe();
         }
-
         unregisterReceiver(receiver);
-
         super.onDestroy();
     }
 
