@@ -59,7 +59,7 @@ android {
             buildConfigField "String", "CLIENT_C_NAME", '"百度应用中心"'
         }
         C1004 {
-            resValue "string", "app_name", "宝宝起名生辰八字"
+            resValue "string", "app_name", "宝宝起名"
             buildConfigField "String", "CLIENT_C_ID", '"C1004"'
             buildConfigField "String", "CLIENT_C_NAME", '"PP助手"'
         }
@@ -94,7 +94,7 @@ android {
             buildConfigField "String", "CLIENT_C_NAME", '"OPPO"'
         }
         C1011 {
-            resValue "string", "app_name", "宝宝起名字宝典-周易起名"
+            resValue "string", "app_name", "宝宝起名字取名字生辰八字"
             buildConfigField "String", "CLIENT_C_ID", '"C1011"'
             buildConfigField "String", "CLIENT_C_NAME", '"VIVO"'
         }
